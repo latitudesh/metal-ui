@@ -2,29 +2,39 @@
   "name": "@maxihost/metal-ui",
   "version": "1.0.0",
   "description": "Maxihost UI Components",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "files": [
+    "./dist"
+  ],
   "scripts": {
     "dev": "start-storybook -p 9001",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "build:umd": "webpack --config config/umd.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Maxihost/metal-ui.git"
   },
   "devDependencies": {
-    "@babel/cli": "7.1.0",
+    "@babel/cli": "^7.1.2",
     "@babel/core": "7.1.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "7.1.0",
     "@babel/preset-react": "7.0.0",
     "@storybook/react": "^5.3.18",
     "@storybook/storybook-deployer": "^2.8.5",
     "babel-loader": "8.0.2",
-    "css-loader": "1.0.0",
-    "postcss-preset-env": "^6.7.0",
-    "style-loader": "0.23.0"
+    "path": "^0.12.7",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "peerDependencies": {
+    "react": "16.x",
+    "react-dom": "16.x"
   },
   "dependencies": {
     "@tailwindcss/ui": "^0.2.2",
+    "babel-preset-react-app": "^9.1.2",
     "classnames": "^2.2.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
