@@ -7,7 +7,7 @@
     "./dist"
   ],
   "scripts": {
-    "dev": "start-storybook -p 9001",
+    "dev": "start-storybook -s ./public 9001",
     "deploy-storybook": "storybook-to-ghpages",
     "build:umd": "webpack --config config/umd.js"
   },
@@ -21,6 +21,7 @@
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "7.1.0",
     "@babel/preset-react": "7.0.0",
+    "@storybook/addon-actions": "^5.3.18",
     "@storybook/react": "^5.3.18",
     "@storybook/storybook-deployer": "^2.8.5",
     "babel-loader": "8.0.2",
