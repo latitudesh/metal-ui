@@ -7,11 +7,11 @@ storiesOf("Box", module)
     <div style={{ width: 500, padding: 10 }}>{getStory()}</div>
   ))
   .add("default", () => <Box>content</Box>)
-  .add("with backgroundColor", () => (
+  .add("backgroundColor props", () => (
     <Box backgroundColor="gray-100">content</Box>
   ))
-  .add("with rootCard", () => <Box rootCard>content</Box>)
-  .add("with noPadding", () => (
+  .add("rootCard props", () => <Box rootCard>content</Box>)
+  .add("noPadding props", () => (
     <Box noPadding rootCard>
       content
     </Box>

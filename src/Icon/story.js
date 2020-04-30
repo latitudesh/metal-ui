@@ -13,9 +13,9 @@ import OkIcon from "./OkIcon";
 import SortingIcon from "./SortingIcon";
 
 storiesOf("Icon", module)
-  .add("with onClick", () => <ActivityIcon onClick={action("clicked")} />)
-  .add("with width", () => <ActivityIcon size={100} />)
-  .add("with color", () => <ActivityIcon color="red" />)
+  .add("onClick props", () => <ActivityIcon onClick={action("clicked")} />)
+  .add("width props", () => <ActivityIcon size={100} />)
+  .add("color props", () => <ActivityIcon color="red" />)
   .add("Activity", () => <ActivityIcon />)
   .add("Bell", () => <BellIcon />)
   .add("Cheveron Down", () => <CheveronDownIcon />)
