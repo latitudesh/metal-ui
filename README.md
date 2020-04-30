@@ -6,7 +6,7 @@ A shared set of UI components using React.
 
 Install package:
 
-`npm install @maxihost/metal-ui``
+`npm install @maxihost/metal-ui`
 
 Import the component:
 
