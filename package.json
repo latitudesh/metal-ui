@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "start-storybook -s ./public 9001",
     "deploy-storybook": "storybook-to-ghpages",
-    "build:umd": "webpack --config config/umd.js"
+    "build": "webpack --config config/umd.js"
   },
   "repository": {
     "type": "git",
