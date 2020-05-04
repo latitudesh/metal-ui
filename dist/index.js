@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -108,7 +108,7 @@ return /******/ (function(modules) { // webpackBootstrap
 if (false) { var throwOnDirectAccess, ReactIs; } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(3)();
+  module.exports = __webpack_require__(4)();
 }
 
 
@@ -179,6 +179,60 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(this && this[arg] || arg);
+			} else if (Array.isArray(arg)) {
+				classes.push(classNames.apply(this, arg));
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(this && this[key] || key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -189,7 +243,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 
-var ReactPropTypesSecret = __webpack_require__(4);
+var ReactPropTypesSecret = __webpack_require__(5);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -247,7 +301,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -266,7 +320,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -276,6 +330,10 @@ __webpack_require__.r(__webpack_exports__);
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, "Table", function() { return /* reexport */ src_Table; });
 __webpack_require__.d(__webpack_exports__, "Heading", function() { return /* reexport */ src_Heading; });
+__webpack_require__.d(__webpack_exports__, "Content", function() { return /* reexport */ src_Content; });
+__webpack_require__.d(__webpack_exports__, "Dropdown", function() { return /* reexport */ src_Dropdown; });
+__webpack_require__.d(__webpack_exports__, "Box", function() { return /* reexport */ src_Box; });
+__webpack_require__.d(__webpack_exports__, "Menu", function() { return /* reexport */ src_Menu; });
 __webpack_require__.d(__webpack_exports__, "ActivityIcon", function() { return /* reexport */ Icon_ActivityIcon; });
 __webpack_require__.d(__webpack_exports__, "BellIcon", function() { return /* reexport */ Icon_BellIcon; });
 __webpack_require__.d(__webpack_exports__, "CheveronDownIcon", function() { return /* reexport */ Icon_CheveronDownIcon; });
@@ -286,7 +344,6 @@ __webpack_require__.d(__webpack_exports__, "ServersIcon", function() { return /*
 __webpack_require__.d(__webpack_exports__, "SettingsIcon", function() { return /* reexport */ Icon_SettingsIcon; });
 __webpack_require__.d(__webpack_exports__, "SortingIcon", function() { return /* reexport */ Icon_SortingIcon; });
 __webpack_require__.d(__webpack_exports__, "TeamIcon", function() { return /* reexport */ TeamIcon; });
-__webpack_require__.d(__webpack_exports__, "Box", function() { return /* reexport */ src_Box; });
 
 // EXTERNAL MODULE: external {"commonjs":"react","commonjs2":"react","amd":"react","root":"React"}
 var external_commonjs_react_commonjs2_react_amd_react_root_React_ = __webpack_require__(1);
@@ -412,6 +469,206 @@ Heading_Heading.propTypes = {
   rightContent: prop_types_default.a.node
 };
 /* harmony default export */ var src_Heading = (Heading_Heading);
+// CONCATENATED MODULE: ./src/Content/index.js
+
+
+
+var Content_Content = function Content(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_react_root_React_default.a.createElement("div", {
+    className: "max-w-7xl mx-auto px-4 sm:px-6 md:px-8"
+  }, /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_react_root_React_default.a.createElement("div", {
+    className: "py-8"
+  }, children));
+};
+
+Content_Content.propTypes = {
+  children: prop_types_default.a.node
+};
+/* harmony default export */ var src_Content = (Content_Content);
+// EXTERNAL MODULE: ./node_modules/classnames/bind.js
+var bind = __webpack_require__(3);
+var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
+
+// CONCATENATED MODULE: ./src/Dropdown/index.js
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+var positionType = {
+  bottomLeft: "mt-2 left-0",
+  bottomRight: "mt-2 right-0",
+  topRight: "mb-2 bottom-full right-0",
+  topLeft: "mb-2 bottom-full left-0"
+};
+
+var Dropdown_Dropdown = function Dropdown(_ref) {
+  var content = _ref.content,
+      position = _ref.position,
+      children = _ref.children,
+      className = _ref.className;
+  var dropdown = Object(external_commonjs_react_commonjs2_react_amd_react_root_React_["useRef"])();
+
+  var _useState = Object(external_commonjs_react_commonjs2_react_amd_react_root_React_["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var cx = bind_default.a.bind(positionType);
+
+  var handleClick = function handleClick(event) {
+    if (dropdown.current.contains(event.target)) {
+      return;
+    } else {
+      setOpen(false);
+    }
+  };
+
+  Object(external_commonjs_react_commonjs2_react_amd_react_root_React_["useEffect"])(function () {
+    document.addEventListener("mousedown", handleClick);
+    return function () {
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, []);
+  var dropdownPosition = cx("absolute w-56 min-w-0 shadow-lg", _defineProperty({}, position, true));
+  return /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_react_root_React_default.a.createElement("div", {
+    ref: dropdown,
+    className: bind_default()("relative inline-block text-left z-50", className)
+  }, Object(external_commonjs_react_commonjs2_react_amd_react_root_React_["cloneElement"])(children, {
+    onClick: function onClick() {
+      return setOpen(!open);
+    }
+  }), open && /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_react_root_React_default.a.createElement("div", {
+    className: dropdownPosition
+  }, content));
+};
+
+Dropdown_Dropdown.propTypes = {
+  content: prop_types_default.a.element,
+  position: prop_types_default.a.string,
+  children: prop_types_default.a.element,
+  className: prop_types_default.a.string
+};
+/* harmony default export */ var src_Dropdown = (Dropdown_Dropdown);
+// CONCATENATED MODULE: ./src/Box/index.js
+function Box_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+var Box_Box = function Box(_ref) {
+  var _classNames;
+
+  var flex = _ref.flex,
+      alignItems = _ref.alignItems,
+      justifyContent = _ref.justifyContent,
+      backgroundColor = _ref.backgroundColor,
+      flexDirection = _ref.flexDirection,
+      children = _ref.children,
+      className = _ref.className,
+      rootCard = _ref.rootCard,
+      noPadding = _ref.noPadding;
+  return /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_react_root_React_default.a.createElement("div", {
+    className: classnames_default()("overflow-hidden", className, (_classNames = {
+      flex: Boolean(flex),
+      "bg-white": !Boolean(backgroundColor)
+    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 shadow rounded-sm", Boolean(rootCard)), Box_defineProperty(_classNames, "px-4 py-5 sm:px-6 sm:py-4", !Boolean(noPadding)), _classNames))
+  }, children);
+};
+
+Box_Box.propTypes = {
+  flex: prop_types_default.a.bool,
+  alignItems: prop_types_default.a.string,
+  justifyContent: prop_types_default.a.string,
+  backgroundColor: prop_types_default.a.string,
+  flexDirection: prop_types_default.a.string,
+  children: prop_types_default.a.node,
+  className: prop_types_default.a.string,
+  rootCard: prop_types_default.a.bool,
+  noPadding: prop_types_default.a.bool
+};
+/* harmony default export */ var src_Box = (Box_Box);
+// CONCATENATED MODULE: ./src/Menu/index.js
+function Menu_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var itemType = {
+  iconAfter: "justify-between",
+  disabled: "opacity-50",
+  danger: "text-red-600 hover:text-red-600 focus:text-red-600",
+  default: "text-gray-700 hover:text-gray-900 focus:text-gray-900"
+};
+
+var Menu_Menu = function Menu(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_react_root_React_default.a.createElement("div", {
+    className: "rounded-sm bg-white shadow-xs"
+  }, children);
+};
+
+Menu_Menu.Group = function (_ref2) {
+  var children = _ref2.children;
+  return /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_react_root_React_default.a.createElement("div", {
+    className: "py-1"
+  }, children);
+};
+
+Menu_Menu.Divider = function () {
+  return /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_react_root_React_default.a.createElement("div", {
+    className: "border-t border-gray-100"
+  });
+};
+
+Menu_Menu.Item = function (_ref3) {
+  var iconBefore = _ref3.iconBefore,
+      iconAfter = _ref3.iconAfter,
+      disabled = _ref3.disabled,
+      onSelect = _ref3.onSelect,
+      className = _ref3.className,
+      type = _ref3.type,
+      children = _ref3.children,
+      component = _ref3.component;
+  var cx = bind_default.a.bind(itemType);
+  var content = /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_react_root_React_default.a.createElement(external_commonjs_react_commonjs2_react_amd_react_root_React_default.a.Fragment, null, iconBefore && Object(external_commonjs_react_commonjs2_react_amd_react_root_React_["cloneElement"])(iconBefore, {
+    className: "mr-2 transition ease-in-out duration-150"
+  }), children, iconAfter && Object(external_commonjs_react_commonjs2_react_amd_react_root_React_["cloneElement"])(iconAfter, {
+    className: "mr-2 transition ease-in-out duration-150"
+  }));
+  var classes = cx("flex text-left min-w-full px-4 py-2 text-sm leading-5 hover:bg-gray-100 focus:outline-none focus:bg-gray-100", className, Menu_defineProperty({
+    iconAfter: iconAfter,
+    disabled: disabled && onSelect,
+    default: !type
+  }, type, true));
+
+  if (component) {
+    return Object(external_commonjs_react_commonjs2_react_amd_react_root_React_["cloneElement"])(component, {
+      className: classes
+    });
+  } else {
+    return /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_react_root_React_default.a.createElement("button", {
+      disabled: disabled,
+      onClick: onSelect,
+      className: classes
+    }, content);
+  }
+};
+
+/* harmony default export */ var src_Menu = (Menu_Menu);
 // CONCATENATED MODULE: ./src/Icon/Icon.js
 
 
@@ -764,46 +1021,10 @@ TeamIcon_ServersIcon.propTypes = {
 
 
 
-// CONCATENATED MODULE: ./src/Box/index.js
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-var Box_Box = function Box(_ref) {
-  var _classNames;
-
-  var flex = _ref.flex,
-      alignItems = _ref.alignItems,
-      justifyContent = _ref.justifyContent,
-      backgroundColor = _ref.backgroundColor,
-      flexDirection = _ref.flexDirection,
-      children = _ref.children,
-      className = _ref.className,
-      rootCard = _ref.rootCard,
-      noPadding = _ref.noPadding;
-  return /*#__PURE__*/external_commonjs_react_commonjs2_react_amd_react_root_React_default.a.createElement("div", {
-    className: classnames_default()("overflow-hidden", className, (_classNames = {
-      flex: Boolean(flex),
-      "bg-white": !Boolean(backgroundColor)
-    }, _defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), _defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), _defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), _defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), _defineProperty(_classNames, "mb-4 shadow rounded-sm", Boolean(rootCard)), _defineProperty(_classNames, "px-4 py-5 sm:px-6 sm:py-4", !Boolean(noPadding)), _classNames))
-  }, children);
-};
-
-Box_Box.propTypes = {
-  flex: prop_types_default.a.bool,
-  alignItems: prop_types_default.a.string,
-  justifyContent: prop_types_default.a.string,
-  backgroundColor: prop_types_default.a.string,
-  flexDirection: prop_types_default.a.string,
-  children: prop_types_default.a.node,
-  className: prop_types_default.a.string,
-  rootCard: prop_types_default.a.bool,
-  noPadding: prop_types_default.a.bool
-};
-/* harmony default export */ var src_Box = (Box_Box);
 // CONCATENATED MODULE: ./src/index.js
+
+
+
 
 
 
