@@ -1,6 +1,6 @@
 {
   "name": "@maxihost/metal-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Maxihost UI Components",
   "main": "dist/index.js",
   "files": [
@@ -27,9 +27,7 @@
     "babel-loader": "8.0.2",
     "path": "^0.12.7",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
-    "react": "^16.3",
-    "react-dom": "^16.3"
+    "webpack-cli": "^3.3.11"
   },
   "peerDependencies": {
     "react": "^16.3",
