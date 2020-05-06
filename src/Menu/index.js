@@ -8,11 +8,15 @@ const itemType = {
   default: "text-gray-700 hover:text-gray-900 focus:text-gray-900",
 };
 
-const Menu = ({ children }) => (
-  <div className="rounded-sm bg-white shadow-xs">{children}</div>
+const Menu = ({ children, className }) => (
+  <div className={classNames("rounded-sm bg-white shadow-xs", className)}>
+    {children}
+  </div>
 );
 
-Menu.Group = ({ children }) => <div className="py-1">{children}</div>;
+Menu.Group = ({ children, className }) => (
+  <div className={className}>{children}</div>
+);
 
 Menu.Divider = () => <div className="border-t border-gray-100"></div>;
 
@@ -43,18 +47,31 @@ Menu.Item = ({
   );
 
   const classes = cx(
-    "flex text-left min-w-full px-4 py-2 text-sm leading-5 hover:bg-gray-100 focus:outline-none focus:bg-gray-100",
-    className,
+    "flex text-left min-w-full px-4 py-2 text-sm leading-5 focus:outline-none",
     {
+      "focus:bg-gray-100 hover:bg-gray-100": !component,
       iconAfter: iconAfter,
       disabled: disabled && onSelect,
-      default: !type,
+      default: !type && !component,
       [type]: true,
-    }
+    },
+    className
   );
 
+  console.log(component);
+
   if (component) {
-    return cloneElement(component, { className: classes });
+    if (
+      component.props.children &&
+      component.props.children.$$typeof === "Symbol(react.element)"
+    ) {
+      const children = cloneElement(component.props.children, {
+        className: classes,
+      });
+      return cloneElement(component, {}, children);
+    } else {
+      return cloneElement(component, { className: classes });
+    }
   } else {
     return (
       <button disabled={disabled} onClick={onSelect} className={classes}>

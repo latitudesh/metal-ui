@@ -18,16 +18,16 @@ module.exports = {
   },
   externals: {
     react: {
-      commonjs: "react",
-      commonjs2: "react",
-      amd: "react",
       root: "React",
+      commonjs2: "react",
+      commonjs: "react",
+      amd: "react",
     },
-    ["react-dom"]: {
-      commonjs: "react-dom",
-      commonjs2: "react-dom",
-      amd: "react-dom",
+    "react-dom": {
       root: "ReactDOM",
+      commonjs2: "react-dom",
+      commonjs: "react-dom",
+      amd: "react-dom",
     },
   },
 
@@ -44,7 +44,10 @@ module.exports = {
   },
 
   resolve: {
-    modules: [resolve(__dirname), "..", "node_modules"],
+    alias: {
+      react: require.resolve("react"),
+    },
+    modules: [resolve("node_modules"), "node_modules"],
     extensions: [".js", ".jsx"],
   },
 };

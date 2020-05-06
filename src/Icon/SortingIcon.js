@@ -2,9 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import Icon from "./Icon";
 
-const SortingIcon = ({ onClick, color = "#000", size = 24 }) => {
+const SortingIcon = ({ className, onClick, color, size = 24 }) => {
   return (
-    <Icon onClick={onClick} size={size} color={color}>
+    <Icon
+      className={className}
+      onClick={onClick}
+      size={size}
+      color={color}
+      withStroke
+    >
       <svg
         role="img"
         xmlns="http://www.w3.org/2000/svg"
@@ -13,9 +19,9 @@ const SortingIcon = ({ onClick, color = "#000", size = 24 }) => {
         viewBox="0 0 20 20"
         aria-labelledby="sortingIconTitle"
         stroke={color}
-        stroke-width="2"
-        stroke-linecap="square"
-        stroke-linejoin="miter"
+        strokeWidth="2"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
         fill="none"
         color={color}
       >
@@ -30,6 +36,7 @@ SortingIcon.propTypes = {
   onClick: PropTypes.func,
   size: PropTypes.number,
   color: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default SortingIcon;
