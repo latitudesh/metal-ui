@@ -58,12 +58,10 @@ Menu.Item = ({
     className
   );
 
-  console.log(component);
-
   if (component) {
     if (
       component.props.children &&
-      component.props.children.$$typeof === "Symbol(react.element)"
+      typeof component.props.children !== "string"
     ) {
       const children = cloneElement(component.props.children, {
         className: classes,

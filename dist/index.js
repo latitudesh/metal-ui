@@ -625,7 +625,7 @@ Button_Button.propTypes = {
   className: prop_types_default.a.string,
   iconBefore: prop_types_default.a.element,
   iconAfter: prop_types_default.a.element,
-  label: prop_types_default.a.string.isRequired,
+  label: prop_types_default.a.string,
   onClick: prop_types_default.a.func,
   type: prop_types_default.a.string,
   component: prop_types_default.a.element
@@ -727,7 +727,7 @@ Menu_Menu.Item = function (_ref3) {
   }, type, true), className);
 
   if (component) {
-    if (component.props.children) {
+    if (component.props.children && typeof component.props.children !== "string") {
       var _children = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component.props.children, {
         className: classes
       });
