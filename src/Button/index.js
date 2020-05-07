@@ -87,7 +87,7 @@ Button.propTypes = {
   className: PropTypes.string,
   iconBefore: PropTypes.element,
   iconAfter: PropTypes.element,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   onClick: PropTypes.func,
   type: PropTypes.string,
   component: PropTypes.element,

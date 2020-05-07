@@ -1,8 +1,14 @@
-import React from "react";
-import classNames from "classnames";
+import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 
-const Icon = ({ onClick, color, size = 24, children, className }) => {
+const Icon = ({
+  onClick,
+  color = "#9fa6b2",
+  size = 24,
+  children,
+  className,
+  withStroke,
+}) => {
   return (
     <svg
       width={size}
@@ -10,10 +16,14 @@ const Icon = ({ onClick, color, size = 24, children, className }) => {
       onClick={onClick}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      className={classNames(className, { "fill-current": Boolean(color) })}
+      className={className}
       color={color}
+      style={{ fill: color }}
     >
-      {children}
+      {cloneElement(children, {
+        color: color,
+        stroke: withStroke && color,
+      })}
     </svg>
   );
 };
@@ -24,6 +34,7 @@ Icon.propTypes = {
   color: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
+  withStroke: PropTypes.bool,
 };
 
 export default Icon;
