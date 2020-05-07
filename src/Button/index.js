@@ -59,6 +59,20 @@ const Button = ({
     }
   );
 
+  const RenderComponent = () => {
+    if (
+      component.props.children &&
+      typeof component.props.children !== "string"
+    ) {
+      const children = cloneElement(component.props.children, {
+        className: ButtonClasses,
+      });
+      return cloneElement(component, {}, children);
+    } else {
+      return cloneElement(component, { className: ButtonClasses });
+    }
+  };
+
   return (
     <span
       className={classNames("inline-flex rounded-sm", className, {
@@ -66,7 +80,7 @@ const Button = ({
       })}
     >
       {component ? (
-        cloneElement(component, { className: ButtonClasses })
+        <RenderComponent />
       ) : (
         <button
           type={"button"}

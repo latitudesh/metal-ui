@@ -605,13 +605,25 @@ var Button_Button = function Button(_ref) {
     disabled: disabled,
     default: !type
   }, type, true));
+
+  var RenderComponent = function RenderComponent() {
+    if (component.props.children && typeof component.props.children !== "string") {
+      var children = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component.props.children, {
+        className: ButtonClasses
+      });
+      return Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {}, children);
+    } else {
+      return Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {
+        className: ButtonClasses
+      });
+    }
+  };
+
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
     className: bind_default()("inline-flex rounded-sm", className, {
       "shadow-sm": !minimal
     })
-  }, component ? Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {
-    className: ButtonClasses
-  }) : /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("button", {
+  }, component ? /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(RenderComponent, null) : /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("button", {
     type: "button",
     onClick: onClick,
     disabled: disabled,
