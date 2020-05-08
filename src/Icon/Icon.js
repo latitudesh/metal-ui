@@ -38,7 +38,7 @@ Icon.propTypes = {
   onClick: PropTypes.func,
   color: PropTypes.string,
   size: PropTypes.number,
-  fill = PropTypes.bool,
+  fill: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
   strokeWidth: PropTypes.string,
