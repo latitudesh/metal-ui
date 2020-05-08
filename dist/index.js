@@ -144,13 +144,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
-				classes.push(this && this[arg] || arg);
-			} else if (Array.isArray(arg)) {
-				classes.push(classNames.apply(this, arg));
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
 			} else if (argType === 'object') {
 				for (var key in arg) {
 					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(this && this[key] || key);
+						classes.push(key);
 					}
 				}
 			}
@@ -198,16 +201,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg) && arg.length) {
-				var inner = classNames.apply(null, arg);
-				if (inner) {
-					classes.push(inner);
-				}
+				classes.push(this && this[arg] || arg);
+			} else if (Array.isArray(arg)) {
+				classes.push(classNames.apply(this, arg));
 			} else if (argType === 'object') {
 				for (var key in arg) {
 					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
+						classes.push(this && this[key] || key);
 					}
 				}
 			}
@@ -356,7 +356,7 @@ var prop_types = __webpack_require__(0);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(3);
+var classnames = __webpack_require__(2);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
 // CONCATENATED MODULE: ./src/Table/index.js
@@ -475,13 +475,30 @@ Heading_Heading.propTypes = {
 
 
 
+
 var Content_Content = function Content(_ref) {
-  var children = _ref.children;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    className: "max-w-7xl mx-auto px-4 sm:px-6 md:px-8"
+  var children = _ref.children,
+      size = _ref.size,
+      centered = _ref.centered,
+      className = _ref.className;
+  var base = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: classnames_default()("mx-auto px-4 sm:px-6 md:px-8", {
+      "max-w-lg": size === "small",
+      "max-w-full": size === "full",
+      "max-w-7xl": size === "default" || !size,
+      "flex-auto": centered
+    }, className)
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: "py-8"
   }, children));
+
+  if (centered) {
+    return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+      class: "flex h-full items-center justify-center w-full"
+    }, base);
+  } else {
+    return base;
+  }
 };
 
 Content_Content.propTypes = {
@@ -489,7 +506,7 @@ Content_Content.propTypes = {
 };
 /* harmony default export */ var src_Content = (Content_Content);
 // EXTERNAL MODULE: ./node_modules/classnames/bind.js
-var bind = __webpack_require__(2);
+var bind = __webpack_require__(3);
 var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
 
 // CONCATENATED MODULE: ./src/Dropdown/index.js
@@ -778,7 +795,7 @@ var Icon_Icon = function Icon(_ref) {
     height: size,
     onClick: onClick,
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 24 24",
+    viewBox: "0 0 ".concat(size, " ").concat(size),
     className: className,
     color: color,
     style: {
@@ -898,6 +915,7 @@ var HelpIcon_HelpIcon = function HelpIcon(_ref) {
       color = _ref.color,
       _ref$size = _ref.size,
       size = _ref$size === void 0 ? 24 : _ref$size;
+  var viewBox = parseInt(size + 4);
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Icon_Icon, {
     className: className,
     onClick: onClick,
@@ -909,14 +927,16 @@ var HelpIcon_HelpIcon = function HelpIcon(_ref) {
     xmlns: "http://www.w3.org/2000/svg",
     width: size,
     height: size,
-    viewBox: "0 0 24 24",
+    viewBox: "0 0 ".concat(viewBox, " ").concat(viewBox),
     stroke: color,
     strokeWidth: "2",
     strokeLinecap: "square",
     strokeLinejoin: "miter",
     fill: "none",
     color: color
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("title", {
+    id: "helpIconTitle"
+  }, "Help"), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
     d: "M12 14C12 12 13.576002 11.6652983 14.1186858 11.1239516 14.663127 10.5808518 15 9.82976635 15 9 15 7.34314575 13.6568542 6 12 6 11.1040834 6 10.2998929 6.39272604 9.75018919 7.01541737 9.49601109 7.30334431 9.29624369 7.64043912 9.16697781 8.01061095"
   }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("line", {
     x1: "12",
@@ -986,7 +1006,7 @@ var MenuIcon_MenuIcon = function MenuIcon(_ref) {
     className: "h-6 w-6",
     stroke: color,
     fill: "none",
-    viewBox: "0 0 24 24"
+    viewBox: "0 0 ".concat(size, " ").concat(size)
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
     className: "inline-flex",
     strokeLinecap: "round",
@@ -1031,7 +1051,7 @@ var OkIcon_OkIcon = function OkIcon(_ref) {
     xmlns: "http://www.w3.org/2000/svg",
     width: size,
     height: size,
-    viewBox: "0 0 24 24",
+    viewBox: "0 0 ".concat(size, " ").concat(size),
     stroke: color,
     strokeWidth: "2",
     strokeLinecap: "square",
@@ -1130,7 +1150,7 @@ var SortingIcon_SortingIcon = function SortingIcon(_ref) {
     xmlns: "http://www.w3.org/2000/svg",
     width: size,
     height: size,
-    viewBox: "0 0 20 20",
+    viewBox: "0 0 ".concat(size, " ").concat(size),
     "aria-labelledby": "sortingIconTitle",
     stroke: color,
     strokeWidth: "2",
