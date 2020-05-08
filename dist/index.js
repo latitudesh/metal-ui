@@ -787,23 +787,28 @@ var Icon_Icon = function Icon(_ref) {
       color = _ref$color === void 0 ? "#9fa6b2" : _ref$color,
       _ref$size = _ref.size,
       size = _ref$size === void 0 ? 24 : _ref$size,
+      _ref$fill = _ref.fill,
+      fill = _ref$fill === void 0 ? true : _ref$fill,
       children = _ref.children,
       className = _ref.className,
-      withStroke = _ref.withStroke;
+      strokeWidth = _ref.strokeWidth,
+      strokeLinecap = _ref.strokeLinecap,
+      strokeLinejoin = _ref.strokeLinejoin;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
-    width: size,
-    height: size,
+    width: "".concat(size, "px"),
+    height: "".concat(size, "px"),
     onClick: onClick,
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 ".concat(size, " ").concat(size),
+    viewBox: "0 0 24 24",
     className: className,
-    color: color,
-    style: {
-      fill: color
-    }
+    fill: fill ? color : "none",
+    color: !fill ? color : "none",
+    stroke: strokeWidth ? color : "none",
+    strokeWidth: strokeWidth,
+    strokeLinecap: strokeLinecap,
+    strokeLinejoin: strokeLinejoin
   }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(children, {
-    color: color,
-    stroke: withStroke && color
+    color: color
   }));
 };
 
@@ -915,28 +920,16 @@ var HelpIcon_HelpIcon = function HelpIcon(_ref) {
       color = _ref.color,
       _ref$size = _ref.size,
       size = _ref$size === void 0 ? 24 : _ref$size;
-  var viewBox = parseInt(size + 4);
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Icon_Icon, {
     className: className,
     onClick: onClick,
     size: size,
+    fill: false,
     color: color,
-    withStroke: true
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
-    role: "img",
-    xmlns: "http://www.w3.org/2000/svg",
-    width: size,
-    height: size,
-    viewBox: "0 0 ".concat(viewBox, " ").concat(viewBox),
-    stroke: color,
     strokeWidth: "2",
     strokeLinecap: "square",
-    strokeLinejoin: "miter",
-    fill: "none",
-    color: color
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("title", {
-    id: "helpIconTitle"
-  }, "Help"), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    strokeLinejoin: "miter"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
     d: "M12 14C12 12 13.576002 11.6652983 14.1186858 11.1239516 14.663127 10.5808518 15 9.82976635 15 9 15 7.34314575 13.6568542 6 12 6 11.1040834 6 10.2998929 6.39272604 9.75018919 7.01541737 9.49601109 7.30334431 9.29624369 7.64043912 9.16697781 8.01061095"
   }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("line", {
     x1: "12",
@@ -1045,22 +1038,13 @@ var OkIcon_OkIcon = function OkIcon(_ref) {
     onClick: onClick,
     size: size,
     color: color,
-    withStroke: true
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
-    role: "img",
-    xmlns: "http://www.w3.org/2000/svg",
-    width: size,
-    height: size,
-    viewBox: "0 0 ".concat(size, " ").concat(size),
-    stroke: color,
+    fill: false,
     strokeWidth: "2",
     strokeLinecap: "square",
-    strokeLinejoin: "miter",
-    fill: "none",
-    color: color
+    strokeLinejoin: "miter"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("polyline", {
     points: "4 13 9 18 20 7"
-  })));
+  }));
 };
 
 OkIcon_OkIcon.propTypes = {
@@ -1144,21 +1128,11 @@ var SortingIcon_SortingIcon = function SortingIcon(_ref) {
     onClick: onClick,
     size: size,
     color: color,
-    withStroke: true
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
-    role: "img",
-    xmlns: "http://www.w3.org/2000/svg",
-    width: size,
-    height: size,
-    viewBox: "0 0 ".concat(size, " ").concat(size),
-    "aria-labelledby": "sortingIconTitle",
-    stroke: color,
+    fill: false,
     strokeWidth: "2",
     strokeLinecap: "square",
-    strokeLinejoin: "miter",
-    fill: "none",
-    color: color
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("polyline", {
+    strokeLinejoin: "miter"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("polyline", {
     points: "8 8.333 12 4.333 16 8.333 16 8.333"
   }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("polyline", {
     points: "16 15.667 12 19.667 8 15.667 8 15.667"
