@@ -36,11 +36,14 @@ const Icon = ({
 
 Icon.propTypes = {
   onClick: PropTypes.func,
-  size: PropTypes.number,
   color: PropTypes.string,
+  size: PropTypes.number,
+  fill = PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
-  withStroke: PropTypes.bool,
+  strokeWidth: PropTypes.string,
+  strokeLinecap: PropTypes.string,
+  strokeLinejoin: PropTypes.string,
 };
 
 export default Icon;
