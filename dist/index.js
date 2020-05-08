@@ -502,7 +502,10 @@ var Content_Content = function Content(_ref) {
 };
 
 Content_Content.propTypes = {
-  children: prop_types_default.a.node
+  children: prop_types_default.a.node,
+  size: prop_types_default.a.string,
+  centered: prop_types_default.a.bool,
+  className: prop_types_default.a.string
 };
 /* harmony default export */ var src_Content = (Content_Content);
 // EXTERNAL MODULE: ./node_modules/classnames/bind.js

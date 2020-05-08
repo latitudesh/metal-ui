@@ -31,6 +31,9 @@ const Content = ({ children, size, centered, className }) => {
 
 Content.propTypes = {
   children: PropTypes.node,
+  size: PropTypes.string,
+  centered: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 export default Content;
