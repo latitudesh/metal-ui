@@ -814,11 +814,14 @@ var Icon_Icon = function Icon(_ref) {
 
 Icon_Icon.propTypes = {
   onClick: prop_types_default.a.func,
-  size: prop_types_default.a.number,
   color: prop_types_default.a.string,
+  size: prop_types_default.a.number,
+  fill: prop_types_default.a.bool,
   children: prop_types_default.a.node,
   className: prop_types_default.a.string,
-  withStroke: prop_types_default.a.bool
+  strokeWidth: prop_types_default.a.string,
+  strokeLinecap: prop_types_default.a.string,
+  strokeLinejoin: prop_types_default.a.string
 };
 /* harmony default export */ var src_Icon_Icon = (Icon_Icon);
 // CONCATENATED MODULE: ./src/Icon/ActivityIcon.js
