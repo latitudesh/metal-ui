@@ -14,7 +14,7 @@ import SortingIcon from "./SortingIcon";
 
 storiesOf("Icon", module)
   .add("onClick props", () => <ActivityIcon onClick={action("clicked")} />)
-  .add("width props", () => <ActivityIcon size={100} />)
+  .add("size props", () => <ActivityIcon size={100} />)
   .add("color props", () => <ActivityIcon color="red" />)
   .add("Activity", () => <ActivityIcon />)
   .add("Bell", () => <BellIcon />)

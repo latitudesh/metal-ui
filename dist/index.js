@@ -144,13 +144,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
-				classes.push(this && this[arg] || arg);
-			} else if (Array.isArray(arg)) {
-				classes.push(classNames.apply(this, arg));
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
 			} else if (argType === 'object') {
 				for (var key in arg) {
 					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(this && this[key] || key);
+						classes.push(key);
 					}
 				}
 			}
@@ -198,16 +201,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg) && arg.length) {
-				var inner = classNames.apply(null, arg);
-				if (inner) {
-					classes.push(inner);
-				}
+				classes.push(this && this[arg] || arg);
+			} else if (Array.isArray(arg)) {
+				classes.push(classNames.apply(this, arg));
 			} else if (argType === 'object') {
 				for (var key in arg) {
 					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
+						classes.push(this && this[key] || key);
 					}
 				}
 			}
@@ -356,7 +356,7 @@ var prop_types = __webpack_require__(0);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(3);
+var classnames = __webpack_require__(2);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
 // CONCATENATED MODULE: ./src/Table/index.js
@@ -475,21 +475,41 @@ Heading_Heading.propTypes = {
 
 
 
+
 var Content_Content = function Content(_ref) {
-  var children = _ref.children;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    className: "max-w-7xl mx-auto px-4 sm:px-6 md:px-8"
+  var children = _ref.children,
+      size = _ref.size,
+      centered = _ref.centered,
+      className = _ref.className;
+  var base = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: classnames_default()("mx-auto px-4 sm:px-6 md:px-8", {
+      "max-w-lg": size === "small",
+      "max-w-full": size === "full",
+      "max-w-7xl": size === "default" || !size,
+      "flex-auto": centered
+    }, className)
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: "py-8"
   }, children));
+
+  if (centered) {
+    return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+      class: "flex h-full items-center justify-center w-full"
+    }, base);
+  } else {
+    return base;
+  }
 };
 
 Content_Content.propTypes = {
-  children: prop_types_default.a.node
+  children: prop_types_default.a.node,
+  size: prop_types_default.a.string,
+  centered: prop_types_default.a.bool,
+  className: prop_types_default.a.string
 };
 /* harmony default export */ var src_Content = (Content_Content);
 // EXTERNAL MODULE: ./node_modules/classnames/bind.js
-var bind = __webpack_require__(2);
+var bind = __webpack_require__(3);
 var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
 
 // CONCATENATED MODULE: ./src/Dropdown/index.js
@@ -770,33 +790,41 @@ var Icon_Icon = function Icon(_ref) {
       color = _ref$color === void 0 ? "#9fa6b2" : _ref$color,
       _ref$size = _ref.size,
       size = _ref$size === void 0 ? 24 : _ref$size,
+      _ref$fill = _ref.fill,
+      fill = _ref$fill === void 0 ? true : _ref$fill,
       children = _ref.children,
       className = _ref.className,
-      withStroke = _ref.withStroke;
+      strokeWidth = _ref.strokeWidth,
+      strokeLinecap = _ref.strokeLinecap,
+      strokeLinejoin = _ref.strokeLinejoin;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
-    width: size,
-    height: size,
+    width: "".concat(size, "px"),
+    height: "".concat(size, "px"),
     onClick: onClick,
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 24 24",
     className: className,
-    color: color,
-    style: {
-      fill: color
-    }
+    fill: fill ? color : "none",
+    color: !fill ? color : "none",
+    stroke: strokeWidth ? color : "none",
+    strokeWidth: strokeWidth,
+    strokeLinecap: strokeLinecap,
+    strokeLinejoin: strokeLinejoin
   }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(children, {
-    color: color,
-    stroke: withStroke && color
+    color: color
   }));
 };
 
 Icon_Icon.propTypes = {
   onClick: prop_types_default.a.func,
-  size: prop_types_default.a.number,
   color: prop_types_default.a.string,
+  size: prop_types_default.a.number,
+  fill: prop_types_default.a.bool,
   children: prop_types_default.a.node,
   className: prop_types_default.a.string,
-  withStroke: prop_types_default.a.bool
+  strokeWidth: prop_types_default.a.string,
+  strokeLinecap: prop_types_default.a.string,
+  strokeLinejoin: prop_types_default.a.string
 };
 /* harmony default export */ var src_Icon_Icon = (Icon_Icon);
 // CONCATENATED MODULE: ./src/Icon/ActivityIcon.js
@@ -902,21 +930,12 @@ var HelpIcon_HelpIcon = function HelpIcon(_ref) {
     className: className,
     onClick: onClick,
     size: size,
+    fill: false,
     color: color,
-    withStroke: true
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
-    role: "img",
-    xmlns: "http://www.w3.org/2000/svg",
-    width: size,
-    height: size,
-    viewBox: "0 0 24 24",
-    stroke: color,
     strokeWidth: "2",
     strokeLinecap: "square",
-    strokeLinejoin: "miter",
-    fill: "none",
-    color: color
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    strokeLinejoin: "miter"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
     d: "M12 14C12 12 13.576002 11.6652983 14.1186858 11.1239516 14.663127 10.5808518 15 9.82976635 15 9 15 7.34314575 13.6568542 6 12 6 11.1040834 6 10.2998929 6.39272604 9.75018919 7.01541737 9.49601109 7.30334431 9.29624369 7.64043912 9.16697781 8.01061095"
   }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("line", {
     x1: "12",
@@ -986,7 +1005,7 @@ var MenuIcon_MenuIcon = function MenuIcon(_ref) {
     className: "h-6 w-6",
     stroke: color,
     fill: "none",
-    viewBox: "0 0 24 24"
+    viewBox: "0 0 ".concat(size, " ").concat(size)
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
     className: "inline-flex",
     strokeLinecap: "round",
@@ -1025,22 +1044,13 @@ var OkIcon_OkIcon = function OkIcon(_ref) {
     onClick: onClick,
     size: size,
     color: color,
-    withStroke: true
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
-    role: "img",
-    xmlns: "http://www.w3.org/2000/svg",
-    width: size,
-    height: size,
-    viewBox: "0 0 24 24",
-    stroke: color,
+    fill: false,
     strokeWidth: "2",
     strokeLinecap: "square",
-    strokeLinejoin: "miter",
-    fill: "none",
-    color: color
+    strokeLinejoin: "miter"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("polyline", {
     points: "4 13 9 18 20 7"
-  })));
+  }));
 };
 
 OkIcon_OkIcon.propTypes = {
@@ -1124,21 +1134,11 @@ var SortingIcon_SortingIcon = function SortingIcon(_ref) {
     onClick: onClick,
     size: size,
     color: color,
-    withStroke: true
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
-    role: "img",
-    xmlns: "http://www.w3.org/2000/svg",
-    width: size,
-    height: size,
-    viewBox: "0 0 20 20",
-    "aria-labelledby": "sortingIconTitle",
-    stroke: color,
+    fill: false,
     strokeWidth: "2",
     strokeLinecap: "square",
-    strokeLinejoin: "miter",
-    fill: "none",
-    color: color
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("polyline", {
+    strokeLinejoin: "miter"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("polyline", {
     points: "8 8.333 12 4.333 16 8.333 16 8.333"
   }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("polyline", {
     points: "16 15.667 12 19.667 8 15.667 8 15.667"

@@ -11,7 +11,12 @@ const MenuIcon = ({ className, onClick, color, size = 24 }) => {
       color={color}
       withStroke
     >
-      <svg className="h-6 w-6" stroke={color} fill="none" viewBox="0 0 24 24">
+      <svg
+        className="h-6 w-6"
+        stroke={color}
+        fill="none"
+        viewBox={`0 0 ${size} ${size}`}
+      >
         <path
           className="inline-flex"
           strokeLinecap="round"
