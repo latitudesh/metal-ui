@@ -24,5 +24,4 @@ BRFlag.propTypes = {
   size: PropTypes.number
 };
 
-
 export default BRFlag;

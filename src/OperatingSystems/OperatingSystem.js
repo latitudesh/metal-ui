@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Flag = ({
-  size = 256,
+const OperatingSystem = ({
+  size = 40,
   children
 }) => {
   return (
@@ -10,20 +10,19 @@ const Flag = ({
       width={`${size}px`}
       height={`${size}px`}
       xmlns="http://www.w3.org/2000/svg"
+      xmlSpace="preserve"
+      enableBackground="new 0 0 60 60"
       x="0"
       y="0"
-      enableBackground="new 0 0 512 512"
-      version="1.1"
-      viewBox="0 0 512 512"
-      xmlSpace="preserve"
     >
       {children}
     </svg>
   );
 };
 
-Flag.propTypes = {
+OperatingSystem.propTypes = {
+  color: PropTypes.string,
   size: PropTypes.number
 };
 
-export default Flag;
+export default OperatingSystem;
