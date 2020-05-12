@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"));
+		module.exports = factory(require("react"), require("react-dom"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react"], factory);
+		define(["react", "react-dom"], factory);
 	else if(typeof exports === 'object')
-		exports["metal-ui"] = factory(require("react"));
+		exports["metal-ui"] = factory(require("react"), require("react-dom"));
 	else
-		root["metal-ui"] = factory(root["React"]);
-})((typeof window !== 'undefined' ? window : this), function(__WEBPACK_EXTERNAL_MODULE__1__) {
+		root["metal-ui"] = factory(root["React"], root["ReactDOM"]);
+})((typeof window !== 'undefined' ? window : this), function(__WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__4__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -108,7 +108,7 @@ return /******/ (function(modules) { // webpackBootstrap
 if (false) { var throwOnDirectAccess, ReactIs; } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(4)();
+  module.exports = __webpack_require__(5)();
 }
 
 
@@ -231,6 +231,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__4__;
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -243,7 +249,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 
-var ReactPropTypesSecret = __webpack_require__(5);
+var ReactPropTypesSecret = __webpack_require__(6);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -301,7 +307,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -320,7 +326,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -508,11 +514,18 @@ Content_Content.propTypes = {
   className: prop_types_default.a.string
 };
 /* harmony default export */ var src_Content = (Content_Content);
+// EXTERNAL MODULE: external {"root":"ReactDOM","commonjs2":"react-dom","commonjs":"react-dom","amd":"react-dom"}
+var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_ = __webpack_require__(4);
+
 // EXTERNAL MODULE: ./node_modules/classnames/bind.js
 var bind = __webpack_require__(3);
 var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
 
 // CONCATENATED MODULE: ./src/Dropdown/index.js
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -530,6 +543,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var positionType = {
   bottomLeft: "mt-2 left-0",
   bottomRight: "mt-2 right-0",
@@ -537,22 +551,49 @@ var positionType = {
   topLeft: "mb-2 bottom-full left-0"
 };
 
-var Dropdown_Dropdown = function Dropdown(_ref) {
-  var content = _ref.content,
-      position = _ref.position,
-      children = _ref.children,
-      className = _ref.className;
+var Dropdown_DropdownContent = function DropdownContent(_ref) {
+  var id = _ref.id,
+      children = _ref.children;
+  if (typeof window === "undefined") return null;
+  var element = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(document.getElementById(id) || document.createElement("div"));
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (!document.getElementById(id)) {
+      element.current.id = id;
+      document.body.appendChild(element.current);
+    }
+
+    return function () {
+      if (element.current.parentElement) {
+        element.current.parentElement.removeChild(element.current);
+      }
+    };
+  }, [id]);
+  return Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
+};
+
+var Dropdown_Dropdown = function Dropdown(_ref2) {
+  var content = _ref2.content,
+      position = _ref2.position,
+      children = _ref2.children,
+      className = _ref2.className;
   var dropdown = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
+  var portal = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
       open = _useState2[0],
       setOpen = _useState2[1];
 
-  var cx = bind_default.a.bind(positionType);
+  var _useState3 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])({
+    top: 0,
+    left: 0
+  }),
+      _useState4 = _slicedToArray(_useState3, 2),
+      dropdownPosition = _useState4[0],
+      setDropdownPosition = _useState4[1];
 
-  var handleClick = function handleClick(event) {
-    if (dropdown.current.contains(event.target)) {
+  var onOutSideClick = function onOutSideClick(event) {
+    if (dropdown.current.contains(event.target) || portal.current && portal.current.contains(event.target)) {
       return;
     } else {
       setOpen(false);
@@ -560,12 +601,42 @@ var Dropdown_Dropdown = function Dropdown(_ref) {
   };
 
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
-    document.addEventListener("mousedown", handleClick);
+    if (open) {
+      var button = dropdown.current.getBoundingClientRect();
+
+      var _content = portal.current.getBoundingClientRect();
+
+      var paddingTop = 10;
+
+      if (position === "LeftTop") {
+        setDropdownPosition({
+          left: button.left,
+          top: button.top - (_content.height + paddingTop)
+        });
+      } else if (position === "RightTop") {
+        setDropdownPosition({
+          left: button.right - _content.width,
+          top: button.top - (_content.height + paddingTop)
+        });
+      } else if (position === "RightBottom") {
+        setDropdownPosition({
+          left: button.right - _content.width,
+          top: button.bottom + paddingTop
+        });
+      } else {
+        setDropdownPosition({
+          left: button.left,
+          top: button.bottom + paddingTop
+        });
+      }
+    }
+  }, [open]);
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    document.addEventListener("mousedown", onOutSideClick);
     return function () {
-      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("mousedown", onOutSideClick);
     };
   }, []);
-  var dropdownPosition = cx("absolute w-56 min-w-0 shadow-lg", _defineProperty({}, position, true));
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     ref: dropdown,
     className: bind_default()("relative inline-block text-left z-50", className)
@@ -573,9 +644,13 @@ var Dropdown_Dropdown = function Dropdown(_ref) {
     onClick: function onClick() {
       return setOpen(!open);
     }
-  }), open && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    className: dropdownPosition
-  }, content));
+  }), open && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Dropdown_DropdownContent, {
+    id: "dropdown-content"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    ref: portal,
+    style: _objectSpread({}, dropdownPosition),
+    className: "fixed z-50 w-56 min-w-0 shadow-lg"
+  }, content)));
 };
 
 Dropdown_Dropdown.propTypes = {
@@ -624,7 +699,7 @@ var Button_Button = function Button(_ref) {
   var ButtonClasses = cx("inline-flex items-center px-3 py-1.5 border text-sm leading-5 font-medium rounded focus:outline-none transition ease-in-out duration-150", Button_defineProperty({
     disabled: disabled,
     default: !type
-  }, type, true));
+  }, type, Boolean(type)));
 
   var RenderComponent = function RenderComponent() {
     if (component.props.children && typeof component.props.children !== "string") {
@@ -755,8 +830,8 @@ Menu_Menu.Item = function (_ref3) {
     "focus:bg-gray-100 hover:bg-gray-100": !component,
     iconAfter: iconAfter,
     disabled: disabled && onSelect,
-    default: !type && !component
-  }, type, true), className);
+    default: !type
+  }, type, Boolean(type)), className);
 
   if (component) {
     if (component.props.children && typeof component.props.children !== "string") {
