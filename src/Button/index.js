@@ -55,7 +55,7 @@ const Button = ({
     {
       disabled: disabled,
       default: !type,
-      [type]: true,
+      [type]: Boolean(type),
     }
   );
 

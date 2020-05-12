@@ -52,8 +52,8 @@ Menu.Item = ({
       "focus:bg-gray-100 hover:bg-gray-100": !component,
       iconAfter: iconAfter,
       disabled: disabled && onSelect,
-      default: !type && !component,
-      [type]: true,
+      default: !type,
+      [type]: Boolean(type),
     },
     className
   );
