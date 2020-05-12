@@ -28,4 +28,9 @@ storiesOf("Dropdown", module)
     <Dropdown position="LeftTop" content={<p>TEST</p>}>
       <Button type="secondary" label="click here" />
     </Dropdown>
+  ))
+  .add("position='LeftBottom' props", () => (
+    <Dropdown position="LeftBottom" content={<p>TEST</p>}>
+      <Button type="secondary" label="click here" />
+    </Dropdown>
   ));
