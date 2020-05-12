@@ -618,14 +618,14 @@ var Dropdown_Dropdown = function Dropdown(_ref2) {
           left: button.right - _content.width,
           top: button.top - (_content.height + paddingTop)
         });
-      } else if (position === "RightBottom") {
+      } else if (position === "LeftBottom") {
         setDropdownPosition({
-          left: button.right - _content.width,
+          left: button.left,
           top: button.bottom + paddingTop
         });
       } else {
         setDropdownPosition({
-          left: button.left,
+          left: button.right - _content.width,
           top: button.bottom + paddingTop
         });
       }
