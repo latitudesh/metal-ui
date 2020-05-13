@@ -6,3 +6,5 @@ export { default as Button } from "./Button";
 export { default as Box } from "./Box";
 export { default as Menu } from "./Menu";
 export * from "./Icon";
+export * from "./Flags";
+export * from "./OperatingSystems";

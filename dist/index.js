@@ -7,7 +7,7 @@
 		exports["metal-ui"] = factory(require("react"), require("react-dom"));
 	else
 		root["metal-ui"] = factory(root["React"], root["ReactDOM"]);
-})((typeof window !== 'undefined' ? window : this), function(__WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__4__) {
+})((typeof window !== 'undefined' ? window : this), function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__4__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -96,6 +96,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -111,12 +117,6 @@ if (false) { var throwOnDirectAccess, ReactIs; } else {
   module.exports = __webpack_require__(5)();
 }
 
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
 
 /***/ }),
 /* 2 */
@@ -352,13 +352,21 @@ __webpack_require__.d(__webpack_exports__, "ServersIcon", function() { return /*
 __webpack_require__.d(__webpack_exports__, "SettingsIcon", function() { return /* reexport */ Icon_SettingsIcon; });
 __webpack_require__.d(__webpack_exports__, "SortingIcon", function() { return /* reexport */ Icon_SortingIcon; });
 __webpack_require__.d(__webpack_exports__, "TeamIcon", function() { return /* reexport */ TeamIcon; });
+__webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
+__webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
+__webpack_require__.d(__webpack_exports__, "USFlag", function() { return /* reexport */ Flags_USFlag; });
+__webpack_require__.d(__webpack_exports__, "CentOS", function() { return /* reexport */ OperatingSystems_CentOS; });
+__webpack_require__.d(__webpack_exports__, "UbuntuOS", function() { return /* reexport */ OperatingSystems_UbuntuOS; });
+__webpack_require__.d(__webpack_exports__, "WindowsOS", function() { return /* reexport */ OperatingSystems_WindowsOS; });
+__webpack_require__.d(__webpack_exports__, "DebianOS", function() { return /* reexport */ OperatingSystems_DebianOS; });
+__webpack_require__.d(__webpack_exports__, "EsxiOS", function() { return /* reexport */ OperatingSystems_EsxiOS; });
 
 // EXTERNAL MODULE: external {"root":"React","commonjs2":"react","commonjs":"react","amd":"react"}
-var external_root_React_commonjs2_react_commonjs_react_amd_react_ = __webpack_require__(1);
+var external_root_React_commonjs2_react_commonjs_react_amd_react_ = __webpack_require__(0);
 var external_root_React_commonjs2_react_commonjs_react_amd_react_default = /*#__PURE__*/__webpack_require__.n(external_root_React_commonjs2_react_commonjs_react_amd_react_);
 
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(0);
+var prop_types = __webpack_require__(1);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
@@ -618,14 +626,14 @@ var Dropdown_Dropdown = function Dropdown(_ref2) {
           left: button.right - _content.width,
           top: button.top - (_content.height + paddingTop)
         });
-      } else if (position === "RightBottom") {
+      } else if (position === "LeftBottom") {
         setDropdownPosition({
-          left: button.right - _content.width,
+          left: button.left,
           top: button.bottom + paddingTop
         });
       } else {
         setDropdownPosition({
-          left: button.left,
+          left: button.right - _content.width,
           top: button.bottom + paddingTop
         });
       }
@@ -1268,7 +1276,310 @@ TeamIcon_ServersIcon.propTypes = {
 
 
 
+// CONCATENATED MODULE: ./src/Flags/Flag.js
+
+
+
+var Flag_Flag = function Flag(_ref) {
+  var _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 256 : _ref$size,
+      children = _ref.children;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
+    width: "".concat(size, "px"),
+    height: "".concat(size, "px"),
+    xmlns: "http://www.w3.org/2000/svg",
+    x: "0",
+    y: "0",
+    enableBackground: "new 0 0 512 512",
+    version: "1.1",
+    viewBox: "0 0 512 512",
+    xmlSpace: "preserve"
+  }, children);
+};
+
+Flag_Flag.propTypes = {
+  size: prop_types_default.a.number
+};
+/* harmony default export */ var Flags_Flag = (Flag_Flag);
+// CONCATENATED MODULE: ./src/Flags/BRFlag.js
+
+
+
+
+var BRFlag_BRFlag = function BRFlag(_ref) {
+  var _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 40 : _ref$size;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Flags_Flag, {
+    size: size
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("circle", {
+    cx: "256",
+    cy: "256",
+    r: "256",
+    fill: "#6DA544"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    fill: "#FFDA44",
+    d: "M256 100.174L467.478 256 256 411.826 44.522 256z"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("circle", {
+    cx: "256",
+    cy: "256",
+    r: "89.043",
+    fill: "#F0F0F0"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("g", {
+    fill: "#0052B4"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M211.478 250.435c-15.484 0-30.427 2.355-44.493 6.725.623 48.64 40.227 87.884 89.015 87.884 30.168 0 56.812-15.017 72.919-37.968-27.557-34.497-69.958-56.641-117.441-56.641zM343.393 273.06a89.45 89.45 0 001.651-17.06c0-49.178-39.866-89.043-89.043-89.043-36.694 0-68.194 22.201-81.826 53.899a183.693 183.693 0 0137.305-3.812c51.717-.001 98.503 21.497 131.913 56.016z"
+  })));
+};
+
+BRFlag_BRFlag.propTypes = {
+  size: prop_types_default.a.number
+};
+/* harmony default export */ var Flags_BRFlag = (BRFlag_BRFlag);
+// CONCATENATED MODULE: ./src/Flags/AUFlag.js
+
+
+
+
+var AUFlag_AUFlag = function AUFlag(_ref) {
+  var _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 40 : _ref$size;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Flags_Flag, {
+    size: size
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    fill: "#0052B4",
+    d: "M512 256c0 141.384-114.616 256-256 256S0 397.384 0 256C0 256.06 256 .029 256 0c141.384 0 256 114.616 256 256z"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("g", {
+    fill: "#F0F0F0"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M256 0l-.043.001L256 0zM255.315 256H256v-.685l-.685.685z"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M256 133.566V.001h-.043C114.592.024 0 114.629 0 256h133.565v-75.212L208.777 256h46.539l.685-.685v-46.536l-75.213-75.213H256z"
+  })), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("g", {
+    fill: "#D80027"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M129.515 33.391a257.222 257.222 0 00-96.124 96.124V256h66.783V100.174H256V33.391H129.515z"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M256 224.519l-90.953-90.952h-31.481c0-.001 0 0 0 0L255.999 256H256v-31.481z"
+  })), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("g", {
+    fill: "#F0F0F0"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M154.395 300.522L168.445 329.9 200.172 322.567 185.964 351.869 211.478 372.102 179.711 379.262 179.8 411.826 154.395 391.453 128.991 411.826 129.08 379.262 97.312 372.102 122.827 351.869 108.617 322.567 140.346 329.9z"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M383.284 356.174L390.309 370.863 406.173 367.196 399.068 381.847 411.826 391.964 395.942 395.544 395.986 411.826 383.284 401.639 370.582 411.826 370.626 395.544 354.743 391.964 367.5 381.847 360.396 367.196 376.259 370.863z"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M317.933 200.348L324.957 215.038 340.821 211.37 333.717 226.021 346.474 236.138 330.591 239.718 330.634 256 317.933 245.813 305.231 256 305.274 239.718 289.391 236.138 302.148 226.021 295.044 211.37 310.908 215.038z"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M383.284 111.304L390.309 125.994 406.173 122.327 399.069 136.978 411.825 147.094 395.942 150.675 395.986 166.957 383.284 156.77 370.582 166.957 370.626 150.675 354.743 147.094 367.499 136.978 360.396 122.327 376.259 125.994z"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M440.368 178.087L447.392 192.777 463.256 189.109 456.152 203.76 468.909 213.877 453.025 217.458 453.069 233.739 440.368 223.553 427.666 233.739 427.709 217.458 411.826 213.877 424.583 203.76 417.479 189.109 433.342 192.777z"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M399.55 256L405.075 273.006 422.957 273.006 408.49 283.517 414.017 300.522 399.55 290.012 385.084 300.522 390.609 283.517 376.143 273.006 394.024 273.006z"
+  })));
+};
+
+AUFlag_AUFlag.propTypes = {
+  size: prop_types_default.a.number
+};
+/* harmony default export */ var Flags_AUFlag = (AUFlag_AUFlag);
+// CONCATENATED MODULE: ./src/Flags/USFlag.js
+
+
+
+
+var USFlag_USFlag = function USFlag(_ref) {
+  var _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 40 : _ref$size;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Flags_Flag, {
+    size: size
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("circle", {
+    cx: "256",
+    cy: "256",
+    r: "256",
+    fill: "#F0F0F0"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("g", {
+    fill: "#D80027"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M244.87 256H512c0-23.106-3.08-45.49-8.819-66.783H244.87V256zM244.87 122.435h229.556a257.35 257.35 0 00-59.07-66.783H244.87v66.783zM256 512c60.249 0 115.626-20.824 159.356-55.652H96.644C140.374 491.176 195.751 512 256 512zM37.574 389.565h436.852a254.474 254.474 0 0028.755-66.783H8.819a254.474 254.474 0 0028.755 66.783z"
+  })), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    fill: "#0052B4",
+    d: "M118.584 39.978h23.329l-21.7 15.765 8.289 25.509-21.699-15.765-21.699 15.765 7.16-22.037a257.407 257.407 0 00-49.652 55.337h7.475l-13.813 10.035a255.58 255.58 0 00-6.194 10.938l6.596 20.301-12.306-8.941a253.567 253.567 0 00-8.372 19.873l7.267 22.368h26.822l-21.7 15.765 8.289 25.509-21.699-15.765-12.998 9.444A258.468 258.468 0 000 256h256V0c-50.572 0-97.715 14.67-137.416 39.978zm9.918 190.422l-21.699-15.765L85.104 230.4l8.289-25.509-21.7-15.765h26.822l8.288-25.509 8.288 25.509h26.822l-21.7 15.765 8.289 25.509zm-8.289-100.083l8.289 25.509-21.699-15.765-21.699 15.765 8.289-25.509-21.7-15.765h26.822l8.288-25.509 8.288 25.509h26.822l-21.7 15.765zM220.328 230.4l-21.699-15.765L176.93 230.4l8.289-25.509-21.7-15.765h26.822l8.288-25.509 8.288 25.509h26.822l-21.7 15.765 8.289 25.509zm-8.289-100.083l8.289 25.509-21.699-15.765-21.699 15.765 8.289-25.509-21.7-15.765h26.822l8.288-25.509 8.288 25.509h26.822l-21.7 15.765zm0-74.574l8.289 25.509-21.699-15.765-21.699 15.765 8.289-25.509-21.7-15.765h26.822l8.288-25.509 8.288 25.509h26.822l-21.7 15.765z"
+  }));
+};
+
+USFlag_USFlag.propTypes = {
+  size: prop_types_default.a.number
+};
+/* harmony default export */ var Flags_USFlag = (USFlag_USFlag);
+// CONCATENATED MODULE: ./src/Flags/index.js
+
+
+
+// CONCATENATED MODULE: ./src/OperatingSystems/OperatingSystem.js
+
+
+
+var OperatingSystem_OperatingSystem = function OperatingSystem(_ref) {
+  var _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 40 : _ref$size,
+      _ref$viewBox = _ref.viewBox,
+      viewBox = _ref$viewBox === void 0 ? '0 0 60 60' : _ref$viewBox,
+      children = _ref.children;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
+    width: "".concat(size, "px"),
+    height: "".concat(size, "px"),
+    xmlns: "http://www.w3.org/2000/svg",
+    xmlSpace: "preserve",
+    x: "0",
+    y: "0",
+    viewBox: viewBox,
+    enableBackground: "accumulate"
+  }, children);
+};
+
+OperatingSystem_OperatingSystem.propTypes = {
+  color: prop_types_default.a.string,
+  size: prop_types_default.a.number,
+  viewBox: prop_types_default.a.string
+};
+/* harmony default export */ var OperatingSystems_OperatingSystem = (OperatingSystem_OperatingSystem);
+// CONCATENATED MODULE: ./src/OperatingSystems/CentOS.js
+
+
+
+
+var CentOS_CentOS = function CentOS(_ref) {
+  var size = _ref.size,
+      viewBox = _ref.viewBox,
+      enableBackground = _ref.enableBackground;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(OperatingSystems_OperatingSystem, {
+    size: size,
+    viewBox: viewBox,
+    enableBackground: enableBackground
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M51.6 27.1H37.4c3.2-3.2 6.7-6.6 10.1-10.1 1 1 2.4 2.5 4.1 4.4v5.7zM12.9 16.8L23.1 27H8.5v-5.9c1.4-1.4 2.9-2.9 4.4-4.3zm10.3 15.8c-3.6 3.6-7.1 7-10.5 10.5-1.3-1.4-2.6-2.9-4.2-4.6v-5.9h14.7zm4.1 18.6H21l-4.1-4.1c3.5-3.4 7-6.8 10.4-10.2v14.3zm9.8-18.6h14.5v5.6c-1.6 1.5-3.1 3-4.5 4.4-3.3-3.3-6.6-6.7-10-10zm-9.8-9.8C24 19.4 20.5 16 17 12.4c1.2-1.1 2.6-2.4 4.4-3.9h5.9v14.3zm15.3 24.5c-1 .9-2.5 2.3-4.3 3.9h-5.4V37.5c3 3 6.4 6.4 9.7 9.8zM32.8 8.5h5.8c1.6 1.5 3.1 2.9 4.3 4L32.8 22.6V8.5z"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M30.5 33.8c.1.7.4 1.3.4 2v17.4h5.6c-2.4 2.3-4.6 4.4-6.7 6.4-1.8-1.9-4.1-4.2-6.2-6.4h5.5c0-.9.1-1.5.1-2.1V35.8c0-.7.2-1.3.3-2h1zm-4.4-3.6c-.7.1-1.3.4-2 .4H6.5v5.8L0 29.9c2-2 4.2-4.1 6.4-6.3V29c.8 0 1.4.1 2 .1h15.7c.6 0 1.3.2 1.9.3 0 .3.1.5.1.8zM47 45.6c1.5-1.3 2.9-2.6 4.5-4.1v9.6h-9.6c1.3-1.4 2.5-2.8 3.8-4.2-.6-.6-1-1.1-1.4-1.5L33.7 34.8c-.5-.5-.8-1.1-1.3-1.7 1.3-.8 1.8 0 2.3.5 3.6 3.6 7.2 7.2 10.9 10.8.5.3.9.7 1.4 1.2zM29.2 6.4h-5.7C25.7 4.2 27.8 2 29.8 0c2 2 4.1 4.2 6.3 6.4h-5.2c0 .9-.1 1.5-.1 2.1v15.2c0 .7-.3 1.5-.4 2.2-1.5-.3-1.2-1.2-1.2-1.9V6.4zM13 13.9c-1.5 1.4-2.9 2.7-4.5 4.3V8.6h9.6c-1.3 1.4-2.5 2.7-3.9 4.1.4.5.8.9 1.2 1.3 3.7 3.7 7.4 7.4 11 11.2.4.5.8 1 1.2 1.6-1.3.8-1.7-.1-2.3-.6L14.2 15.1 13 13.9zm47 15.9c-2 2-4.2 4.2-6.4 6.5v-5.7H36c-.7 0-1.3-.2-2-.3v-.7c.7-.1 1.4-.3 2-.3h17.5v-5.9c2.3 2.1 4.4 4.2 6.5 6.4zm-27-2.5c-.7-1.3.1-1.7.6-2.2L44.7 14c.4-.4.8-.8 1.3-1.4-1.3-1.3-2.5-2.6-3.9-4.1h9.5v9.4c-1.5-1.4-2.9-2.8-4.4-4.2-.6.5-1 .9-1.5 1.4L34.6 26.2c-.4.5-1 .8-1.6 1.1zM12.9 45.9c3.3-3.4 6.6-6.6 9.8-9.8l3-3c.4-.4 1-.5 1.6-.5-.8 2.2-2.6 3.4-4.1 4.9-1.5 1.6-3.1 3.1-4.6 4.6-1.5 1.5-3.1 3.1-4.8 4.7 1.3 1.4 2.6 2.7 4 4.2H8.4v-9.4c1.6 1.5 2.9 2.8 4.5 4.3z"
+  }));
+};
+
+CentOS_CentOS.propTypes = {
+  size: prop_types_default.a.number,
+  viewBox: prop_types_default.a.string,
+  enableBackground: prop_types_default.a.string
+};
+/* harmony default export */ var OperatingSystems_CentOS = (CentOS_CentOS);
+// CONCATENATED MODULE: ./src/OperatingSystems/UbuntuOS.js
+
+
+
+
+var UbuntuOS_UbuntuOS = function UbuntuOS(_ref) {
+  var size = _ref.size,
+      viewBox = _ref.viewBox,
+      enableBackground = _ref.enableBackground;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(OperatingSystems_OperatingSystem, {
+    size: size,
+    viewBox: viewBox,
+    enableBackground: enableBackground
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("g", null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M7.565 24.556c3.092 0 5.565 2.573 5.565 5.59 0 3.104-2.562 5.588-5.565 5.588C4.473 35.734 2 33.16 2 30.145c0-3.105 2.562-5.589 5.565-5.589zm25.44-16.5c1.325 0 2.738.09 3.975.355v.71c0 4.258 3.445 7.718 7.685 7.718 1.59 0 3.268-.533 4.505-1.42 3.003 3.371 4.77 7.275 5.212 11.976l-8.834.266c-.706-6.387-6.183-10.911-12.72-10.911-1.855 0-3.621.355-5.123 1.065l-4.328-7.54a21.94 21.94 0 019.628-2.219z"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M45.548 46.468c3.092 0 5.565 2.572 5.565 5.588 0 3.105-2.561 5.59-5.565 5.59-3.091 0-5.565-2.573-5.565-5.59 0-3.104 2.562-5.588 5.565-5.588zm-24.821.976c-3.71-2.662-6.625-6.388-8.127-10.823 2.12-1.33 3.357-3.726 3.357-6.476S14.543 25 12.335 23.581a21.327 21.327 0 018.127-11.444l4.593 7.452a12.85 12.85 0 00-4.858 10.113c0 4.08 1.943 7.629 4.77 10.024l-4.24 7.718z"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M54.47 31.21c-.353 5.145-2.562 9.846-5.918 13.395-1.06-.532-2.297-.887-3.534-.887-4.063 0-7.42 3.193-7.685 7.185-1.325.266-2.826.444-4.24.444-3.356 0-6.536-.799-9.451-2.218L27.97 41.5c1.502.621 3.268.976 5.035.976 6.625 0 12.013-4.968 12.72-11.444l8.745.178zM45.107 3c3.091 0 5.565 2.573 5.565 5.589 0 3.105-2.562 5.588-5.565 5.588-3.092 0-5.565-2.572-5.565-5.588S42.015 3 45.107 3z"
+  })));
+};
+
+UbuntuOS_UbuntuOS.propTypes = {
+  size: prop_types_default.a.number,
+  viewBox: prop_types_default.a.string,
+  enableBackground: prop_types_default.a.string
+};
+/* harmony default export */ var OperatingSystems_UbuntuOS = (UbuntuOS_UbuntuOS);
+// CONCATENATED MODULE: ./src/OperatingSystems/WindowsOS.js
+
+
+
+
+var WindowsOS_WindowsOS = function WindowsOS(_ref) {
+  var size = _ref.size,
+      viewBox = _ref.viewBox,
+      enableBackground = _ref.enableBackground;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(OperatingSystems_OperatingSystem, {
+    size: size,
+    viewBox: "0 0 480 480",
+    enableBackground: enableBackground
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("g", null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M.176 224L.001 67.963l192-26.072V224H.176zM224.001 37.241L479.937 0v224H224.001V37.241zM479.999 256l-.062 224-255.936-36.008V256h255.998zM192.001 439.918L.157 413.621.147 256h191.854v183.918z"
+  })));
+};
+
+WindowsOS_WindowsOS.propTypes = {
+  size: prop_types_default.a.number,
+  viewBox: prop_types_default.a.string,
+  enableBackground: prop_types_default.a.string
+};
+/* harmony default export */ var OperatingSystems_WindowsOS = (WindowsOS_WindowsOS);
+// CONCATENATED MODULE: ./src/OperatingSystems/DebianOS.js
+
+
+
+
+var DebianOS_DebianOS = function DebianOS(_ref) {
+  var size = _ref.size,
+      viewBox = _ref.viewBox,
+      enableBackground = _ref.enableBackground;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(OperatingSystems_OperatingSystem, {
+    size: size,
+    viewBox: viewBox,
+    enableBackground: enableBackground
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M33.508 59.115c-9.049-3.246-14.36-7.18-20.262-16.131-1.476-2.46-4.131-7.87-4.033-15.05-.197-7.082 3.344-15.245 10.033-19.672 6.492-4.623 14.852-4.721 19.77-2.852 6 2.36 10.033 7.377 11.312 12.688 1.475 5.115 0 13.574-7.082 17.017-3.246 1.77-7.476 2.065-10.721.787-3.345-1.377-5.705-4.23-6.492-7.279-1.77-6.787 3.344-10.426 5.606-10.82 9.148-3.049 13.87 11.312 3.05 12.492 4.918 1.672 9.934-3.344 8.95-8.459 0-5.016-6.196-10.131-13.082-8.066-1.77.492-4.524 1.771-6.59 4.525-2.164 2.754-3.147 7.18-2.065 11.41 1.082 4.328 4.426 8.36 9.049 10.23 4.721 1.77 9.934 1.278 14.262-.984 9.246-4.525 11.115-15.64 9.246-21.836-1.574-6.59-5.213-9.541-5.016-9.64-.099.197-2.656-3.737-8.951-6.098C34.295-.885 24.557-.689 16.885 4.721 9.016 9.934 4.69 19.87 4.984 27.934c-.099 8.164 2.95 14.46 4.623 17.214 6.688 10.229 14.36 13.475 23.901 13.967"
+  }));
+};
+
+DebianOS_DebianOS.propTypes = {
+  size: prop_types_default.a.number,
+  viewBox: prop_types_default.a.string,
+  enableBackground: prop_types_default.a.string
+};
+/* harmony default export */ var OperatingSystems_DebianOS = (DebianOS_DebianOS);
+// CONCATENATED MODULE: ./src/OperatingSystems/EsxiOS.js
+
+
+
+
+var EsxiOS_EsxiOS = function EsxiOS(_ref) {
+  var size = _ref.size,
+      viewBox = _ref.viewBox,
+      enableBackground = _ref.enableBackground;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(OperatingSystems_OperatingSystem, {
+    size: size,
+    viewBox: "0 0 24 10",
+    enableBackground: enableBackground
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("g", {
+    fillRule: "nonzero",
+    transform: "translate(-1 -1)"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M2.016.988a1.007 1.007 0 00-.871.469c-.188.3-.2.676-.04.988l4 8.004a1 1 0 001.766.043l3.75-6.625c.004-.004.004-.008.004-.015 0 .003.484-.852 1.375-.852h.016s.289.008.543.133c.254.129.441.18.441.867v6c-.004.36.184.695.496.879.313.18.695.18 1.008 0 .312-.184.5-.52.496-.879V4.5a1.5 1.5 0 013 0V10c-.008.523.395.965.918 1.012.031 0 .062.004.098.004.55-.012.992-.465.984-1.016V4.5a1.5 1.5 0 013 0V10c-.004.36.184.695.496.879.313.18.695.18 1.008 0 .312-.184.5-.52.496-.879V4.5c0-1.793-1.395-3.238-3.14-3.43A1.015 1.015 0 0021.5 1 3.49 3.49 0 0019 2.063 3.49 3.49 0 0016.5 1a1.018 1.018 0 00-.36.074 3.555 3.555 0 00-1.937.856 2.642 2.642 0 00-.762-.586C12.7.977 12 1 11.992 1c-2.105.008-3.117 1.898-3.117 1.898l.004-.015-2.824 4.992-3.16-6.32a1 1 0 00-.88-.567h.001z"
+  })));
+};
+
+EsxiOS_EsxiOS.propTypes = {
+  size: prop_types_default.a.number,
+  viewBox: prop_types_default.a.string,
+  enableBackground: prop_types_default.a.string
+};
+/* harmony default export */ var OperatingSystems_EsxiOS = (EsxiOS_EsxiOS);
+// CONCATENATED MODULE: ./src/OperatingSystems/index.js
+
+
+
+
+
 // CONCATENATED MODULE: ./src/index.js
+
+
 
 
 

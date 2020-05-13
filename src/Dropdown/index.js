@@ -65,14 +65,14 @@ const Dropdown = ({ content, position, children, className }) => {
           left: button.right - content.width,
           top: button.top - (content.height + paddingTop),
         });
-      } else if (position === "RightBottom") {
+      } else if (position === "LeftBottom") {
         setDropdownPosition({
-          left: button.right - content.width,
+          left: button.left,
           top: button.bottom + paddingTop,
         });
       } else {
         setDropdownPosition({
-          left: button.left,
+          left: button.right - content.width,
           top: button.bottom + paddingTop,
         });
       }
