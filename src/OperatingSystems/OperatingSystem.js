@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const OperatingSystem = ({
   size = 40,
+  viewBox = '0 0 60 60',
   children
 }) => {
   return (
@@ -11,9 +12,10 @@ const OperatingSystem = ({
       height={`${size}px`}
       xmlns="http://www.w3.org/2000/svg"
       xmlSpace="preserve"
-      enableBackground="new 0 0 60 60"
       x="0"
       y="0"
+      viewBox={viewBox}
+      enableBackground="accumulate"
     >
       {children}
     </svg>
@@ -22,7 +24,8 @@ const OperatingSystem = ({
 
 OperatingSystem.propTypes = {
   color: PropTypes.string,
-  size: PropTypes.number
+  size: PropTypes.number,
+  viewBox: PropTypes.string
 };
 
 export default OperatingSystem;

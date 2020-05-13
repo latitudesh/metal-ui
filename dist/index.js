@@ -356,6 +356,10 @@ __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reex
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
 __webpack_require__.d(__webpack_exports__, "USFlag", function() { return /* reexport */ Flags_USFlag; });
 __webpack_require__.d(__webpack_exports__, "CentOS", function() { return /* reexport */ OperatingSystems_CentOS; });
+__webpack_require__.d(__webpack_exports__, "UbuntuOS", function() { return /* reexport */ OperatingSystems_UbuntuOS; });
+__webpack_require__.d(__webpack_exports__, "WindowsOS", function() { return /* reexport */ OperatingSystems_WindowsOS; });
+__webpack_require__.d(__webpack_exports__, "DebianOS", function() { return /* reexport */ OperatingSystems_DebianOS; });
+__webpack_require__.d(__webpack_exports__, "EsxiOS", function() { return /* reexport */ OperatingSystems_EsxiOS; });
 
 // EXTERNAL MODULE: external {"root":"React","commonjs2":"react","commonjs":"react","amd":"react"}
 var external_root_React_commonjs2_react_commonjs_react_amd_react_ = __webpack_require__(0);
@@ -1417,21 +1421,25 @@ USFlag_USFlag.propTypes = {
 var OperatingSystem_OperatingSystem = function OperatingSystem(_ref) {
   var _ref$size = _ref.size,
       size = _ref$size === void 0 ? 40 : _ref$size,
+      _ref$viewBox = _ref.viewBox,
+      viewBox = _ref$viewBox === void 0 ? '0 0 60 60' : _ref$viewBox,
       children = _ref.children;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
     width: "".concat(size, "px"),
     height: "".concat(size, "px"),
     xmlns: "http://www.w3.org/2000/svg",
     xmlSpace: "preserve",
-    enableBackground: "new 0 0 60 60",
     x: "0",
-    y: "0"
+    y: "0",
+    viewBox: viewBox,
+    enableBackground: "accumulate"
   }, children);
 };
 
 OperatingSystem_OperatingSystem.propTypes = {
   color: prop_types_default.a.string,
-  size: prop_types_default.a.number
+  size: prop_types_default.a.number,
+  viewBox: prop_types_default.a.string
 };
 /* harmony default export */ var OperatingSystems_OperatingSystem = (OperatingSystem_OperatingSystem);
 // CONCATENATED MODULE: ./src/OperatingSystems/CentOS.js
@@ -1440,12 +1448,13 @@ OperatingSystem_OperatingSystem.propTypes = {
 
 
 var CentOS_CentOS = function CentOS(_ref) {
-  var _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 40 : _ref$size,
-      viewBox = _ref.viewBox;
+  var size = _ref.size,
+      viewBox = _ref.viewBox,
+      enableBackground = _ref.enableBackground;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(OperatingSystems_OperatingSystem, {
     size: size,
-    viewBox: "0 0 60 60"
+    viewBox: viewBox,
+    enableBackground: enableBackground
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
     d: "M51.6 27.1H37.4c3.2-3.2 6.7-6.6 10.1-10.1 1 1 2.4 2.5 4.1 4.4v5.7zM12.9 16.8L23.1 27H8.5v-5.9c1.4-1.4 2.9-2.9 4.4-4.3zm10.3 15.8c-3.6 3.6-7.1 7-10.5 10.5-1.3-1.4-2.6-2.9-4.2-4.6v-5.9h14.7zm4.1 18.6H21l-4.1-4.1c3.5-3.4 7-6.8 10.4-10.2v14.3zm9.8-18.6h14.5v5.6c-1.6 1.5-3.1 3-4.5 4.4-3.3-3.3-6.6-6.7-10-10zm-9.8-9.8C24 19.4 20.5 16 17 12.4c1.2-1.1 2.6-2.4 4.4-3.9h5.9v14.3zm15.3 24.5c-1 .9-2.5 2.3-4.3 3.9h-5.4V37.5c3 3 6.4 6.4 9.7 9.8zM32.8 8.5h5.8c1.6 1.5 3.1 2.9 4.3 4L32.8 22.6V8.5z"
   }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
@@ -1454,10 +1463,119 @@ var CentOS_CentOS = function CentOS(_ref) {
 };
 
 CentOS_CentOS.propTypes = {
-  size: prop_types_default.a.number
+  size: prop_types_default.a.number,
+  viewBox: prop_types_default.a.string,
+  enableBackground: prop_types_default.a.string
 };
 /* harmony default export */ var OperatingSystems_CentOS = (CentOS_CentOS);
+// CONCATENATED MODULE: ./src/OperatingSystems/UbuntuOS.js
+
+
+
+
+var UbuntuOS_UbuntuOS = function UbuntuOS(_ref) {
+  var size = _ref.size,
+      viewBox = _ref.viewBox,
+      enableBackground = _ref.enableBackground;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(OperatingSystems_OperatingSystem, {
+    size: size,
+    viewBox: viewBox,
+    enableBackground: enableBackground
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("g", null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M7.565 24.556c3.092 0 5.565 2.573 5.565 5.59 0 3.104-2.562 5.588-5.565 5.588C4.473 35.734 2 33.16 2 30.145c0-3.105 2.562-5.589 5.565-5.589zm25.44-16.5c1.325 0 2.738.09 3.975.355v.71c0 4.258 3.445 7.718 7.685 7.718 1.59 0 3.268-.533 4.505-1.42 3.003 3.371 4.77 7.275 5.212 11.976l-8.834.266c-.706-6.387-6.183-10.911-12.72-10.911-1.855 0-3.621.355-5.123 1.065l-4.328-7.54a21.94 21.94 0 019.628-2.219z"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M45.548 46.468c3.092 0 5.565 2.572 5.565 5.588 0 3.105-2.561 5.59-5.565 5.59-3.091 0-5.565-2.573-5.565-5.59 0-3.104 2.562-5.588 5.565-5.588zm-24.821.976c-3.71-2.662-6.625-6.388-8.127-10.823 2.12-1.33 3.357-3.726 3.357-6.476S14.543 25 12.335 23.581a21.327 21.327 0 018.127-11.444l4.593 7.452a12.85 12.85 0 00-4.858 10.113c0 4.08 1.943 7.629 4.77 10.024l-4.24 7.718z"
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M54.47 31.21c-.353 5.145-2.562 9.846-5.918 13.395-1.06-.532-2.297-.887-3.534-.887-4.063 0-7.42 3.193-7.685 7.185-1.325.266-2.826.444-4.24.444-3.356 0-6.536-.799-9.451-2.218L27.97 41.5c1.502.621 3.268.976 5.035.976 6.625 0 12.013-4.968 12.72-11.444l8.745.178zM45.107 3c3.091 0 5.565 2.573 5.565 5.589 0 3.105-2.562 5.588-5.565 5.588-3.092 0-5.565-2.572-5.565-5.588S42.015 3 45.107 3z"
+  })));
+};
+
+UbuntuOS_UbuntuOS.propTypes = {
+  size: prop_types_default.a.number,
+  viewBox: prop_types_default.a.string,
+  enableBackground: prop_types_default.a.string
+};
+/* harmony default export */ var OperatingSystems_UbuntuOS = (UbuntuOS_UbuntuOS);
+// CONCATENATED MODULE: ./src/OperatingSystems/WindowsOS.js
+
+
+
+
+var WindowsOS_WindowsOS = function WindowsOS(_ref) {
+  var size = _ref.size,
+      viewBox = _ref.viewBox,
+      enableBackground = _ref.enableBackground;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(OperatingSystems_OperatingSystem, {
+    size: size,
+    viewBox: "0 0 480 480",
+    enableBackground: enableBackground
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("g", null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M.176 224L.001 67.963l192-26.072V224H.176zM224.001 37.241L479.937 0v224H224.001V37.241zM479.999 256l-.062 224-255.936-36.008V256h255.998zM192.001 439.918L.157 413.621.147 256h191.854v183.918z"
+  })));
+};
+
+WindowsOS_WindowsOS.propTypes = {
+  size: prop_types_default.a.number,
+  viewBox: prop_types_default.a.string,
+  enableBackground: prop_types_default.a.string
+};
+/* harmony default export */ var OperatingSystems_WindowsOS = (WindowsOS_WindowsOS);
+// CONCATENATED MODULE: ./src/OperatingSystems/DebianOS.js
+
+
+
+
+var DebianOS_DebianOS = function DebianOS(_ref) {
+  var size = _ref.size,
+      viewBox = _ref.viewBox,
+      enableBackground = _ref.enableBackground;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(OperatingSystems_OperatingSystem, {
+    size: size,
+    viewBox: viewBox,
+    enableBackground: enableBackground
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M33.508 59.115c-9.049-3.246-14.36-7.18-20.262-16.131-1.476-2.46-4.131-7.87-4.033-15.05-.197-7.082 3.344-15.245 10.033-19.672 6.492-4.623 14.852-4.721 19.77-2.852 6 2.36 10.033 7.377 11.312 12.688 1.475 5.115 0 13.574-7.082 17.017-3.246 1.77-7.476 2.065-10.721.787-3.345-1.377-5.705-4.23-6.492-7.279-1.77-6.787 3.344-10.426 5.606-10.82 9.148-3.049 13.87 11.312 3.05 12.492 4.918 1.672 9.934-3.344 8.95-8.459 0-5.016-6.196-10.131-13.082-8.066-1.77.492-4.524 1.771-6.59 4.525-2.164 2.754-3.147 7.18-2.065 11.41 1.082 4.328 4.426 8.36 9.049 10.23 4.721 1.77 9.934 1.278 14.262-.984 9.246-4.525 11.115-15.64 9.246-21.836-1.574-6.59-5.213-9.541-5.016-9.64-.099.197-2.656-3.737-8.951-6.098C34.295-.885 24.557-.689 16.885 4.721 9.016 9.934 4.69 19.87 4.984 27.934c-.099 8.164 2.95 14.46 4.623 17.214 6.688 10.229 14.36 13.475 23.901 13.967"
+  }));
+};
+
+DebianOS_DebianOS.propTypes = {
+  size: prop_types_default.a.number,
+  viewBox: prop_types_default.a.string,
+  enableBackground: prop_types_default.a.string
+};
+/* harmony default export */ var OperatingSystems_DebianOS = (DebianOS_DebianOS);
+// CONCATENATED MODULE: ./src/OperatingSystems/EsxiOS.js
+
+
+
+
+var EsxiOS_EsxiOS = function EsxiOS(_ref) {
+  var size = _ref.size,
+      viewBox = _ref.viewBox,
+      enableBackground = _ref.enableBackground;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(OperatingSystems_OperatingSystem, {
+    size: size,
+    viewBox: "0 0 24 10",
+    enableBackground: enableBackground
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("g", {
+    fillRule: "nonzero",
+    transform: "translate(-1 -1)"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    d: "M2.016.988a1.007 1.007 0 00-.871.469c-.188.3-.2.676-.04.988l4 8.004a1 1 0 001.766.043l3.75-6.625c.004-.004.004-.008.004-.015 0 .003.484-.852 1.375-.852h.016s.289.008.543.133c.254.129.441.18.441.867v6c-.004.36.184.695.496.879.313.18.695.18 1.008 0 .312-.184.5-.52.496-.879V4.5a1.5 1.5 0 013 0V10c-.008.523.395.965.918 1.012.031 0 .062.004.098.004.55-.012.992-.465.984-1.016V4.5a1.5 1.5 0 013 0V10c-.004.36.184.695.496.879.313.18.695.18 1.008 0 .312-.184.5-.52.496-.879V4.5c0-1.793-1.395-3.238-3.14-3.43A1.015 1.015 0 0021.5 1 3.49 3.49 0 0019 2.063 3.49 3.49 0 0016.5 1a1.018 1.018 0 00-.36.074 3.555 3.555 0 00-1.937.856 2.642 2.642 0 00-.762-.586C12.7.977 12 1 11.992 1c-2.105.008-3.117 1.898-3.117 1.898l.004-.015-2.824 4.992-3.16-6.32a1 1 0 00-.88-.567h.001z"
+  })));
+};
+
+EsxiOS_EsxiOS.propTypes = {
+  size: prop_types_default.a.number,
+  viewBox: prop_types_default.a.string,
+  enableBackground: prop_types_default.a.string
+};
+/* harmony default export */ var OperatingSystems_EsxiOS = (EsxiOS_EsxiOS);
 // CONCATENATED MODULE: ./src/OperatingSystems/index.js
+
+
+
+
 
 // CONCATENATED MODULE: ./src/index.js
 
