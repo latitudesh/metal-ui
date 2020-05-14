@@ -47,9 +47,8 @@ Menu.Item = ({
   );
 
   const classes = cx(
-    "flex text-left min-w-full px-4 py-2 text-sm leading-5 focus:outline-none",
+    "flex text-left min-w-full px-4 py-2 text-sm leading-5 focus:outline-none focus:bg-gray-100 hover:bg-gray-100",
     {
-      "focus:bg-gray-100 hover:bg-gray-100": !component,
       iconAfter: iconAfter,
       disabled: disabled && onSelect,
       default: !type,
