@@ -19,7 +19,10 @@ storiesOf("Menu", module)
   .add("component props", () => (
     <Menu>
       <Menu.Group>
-        <Menu.Item component={<a href="javascript:void()">Product Docs</a>} />
+        <Menu.Item
+          type="danger"
+          component={<a href="javascript:void()">Product Docs</a>}
+        />
         <Menu.Item component={<a href="javascript:void()">API Docs</a>} />
       </Menu.Group>
       <Menu.Divider />
