@@ -9,7 +9,7 @@ const buttonTypes = {
   secondary:
     "border-gray-300 text-gray-700 bg-white hover:text-gray-500 focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700",
   dark:
-    "border-transparent text-white bg-gray-900 hover:bg-gray-700 focus:border-gray-700 focus:shadow-outline-gray active:bg-gray-700",
+    "border-transparent text-white bg-gray-900 hover:bg-gray-700 focus:shadow-outline-gray active:bg-gray-900",
   default:
     "border-transparent text-white bg-indigo-600 hover:bg-indigo-500 focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700",
 };
