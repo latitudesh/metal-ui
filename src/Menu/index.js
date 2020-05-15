@@ -6,6 +6,8 @@ const itemType = {
   disabled: "opacity-50",
   danger: "text-red-600 hover:text-red-600 focus:text-red-600",
   default: "text-gray-700 hover:text-gray-900 focus:text-gray-900",
+  dark:
+    "bg-gray-900 focus:text-white text-white focus:bg-gray-700 hover:bg-gray-700",
 };
 
 const Menu = ({ children, className }) => (
