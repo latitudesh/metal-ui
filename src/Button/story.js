@@ -9,6 +9,7 @@ storiesOf("Button", module)
   .add("type='danger' props", () => (
     <Button type="danger" label="Create server" />
   ))
+  .add("type='dark' props", () => <Button type="dark" label="Create server" />)
   .add("type='secondary' props", () => (
     <Button type="secondary" label="Create server" />
   ))

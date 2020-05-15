@@ -3,13 +3,6 @@ import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 
-const positionType = {
-  bottomLeft: "mt-2 left-0",
-  bottomRight: "mt-2 right-0",
-  topRight: "mb-2 bottom-full right-0",
-  topLeft: "mb-2 bottom-full left-0",
-};
-
 const DropdownContent = ({ id, children }) => {
   if (typeof window === "undefined") return null;
 

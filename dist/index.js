@@ -552,12 +552,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var positionType = {
-  bottomLeft: "mt-2 left-0",
-  bottomRight: "mt-2 right-0",
-  topRight: "mb-2 bottom-full right-0",
-  topLeft: "mb-2 bottom-full left-0"
-};
 
 var Dropdown_DropdownContent = function DropdownContent(_ref) {
   var id = _ref.id,
@@ -678,6 +672,7 @@ var buttonTypes = {
   disabled: "opacity-50",
   danger: "border-transparent text-white bg-red-600 hover:bg-red-500 focus:border-red-700 focus:shadow-outline-red active:bg-red-700",
   secondary: "border-gray-300 text-gray-700 bg-white hover:text-gray-500 focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700",
+  dark: "border-transparent text-white bg-gray-900 hover:bg-gray-700 focus:shadow-outline-gray active:bg-gray-900",
   default: "border-transparent text-white bg-indigo-600 hover:bg-indigo-500 focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
 };
 var minimalTypes = {
@@ -794,7 +789,8 @@ var itemType = {
   iconAfter: "justify-between",
   disabled: "opacity-50",
   danger: "text-red-600 hover:text-red-600 focus:text-red-600",
-  default: "text-gray-700 hover:text-gray-900 focus:text-gray-900"
+  default: "text-gray-700 hover:text-gray-900 focus:text-gray-900",
+  dark: "bg-gray-900 focus:text-white text-white focus:bg-gray-900 hover:bg-gray-700"
 };
 
 var Menu_Menu = function Menu(_ref) {
@@ -834,8 +830,7 @@ Menu_Menu.Item = function (_ref3) {
   }), children, iconAfter && Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter, {
     className: "mr-2 transition ease-in-out duration-150"
   }));
-  var classes = cx("flex text-left min-w-full px-4 py-2 text-sm leading-5 focus:outline-none", Menu_defineProperty({
-    "focus:bg-gray-100 hover:bg-gray-100": !component,
+  var classes = cx("flex text-left min-w-full px-4 py-2 text-sm leading-5 focus:outline-none focus:bg-gray-100 hover:bg-gray-100", Menu_defineProperty({
     iconAfter: iconAfter,
     disabled: disabled && onSelect,
     default: !type

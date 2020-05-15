@@ -56,6 +56,13 @@ storiesOf("Menu", module)
       </Menu.Group>
     </Menu>
   ))
+  .add("type='dark' props", () => (
+    <Menu>
+      <Menu.Group>
+        <Menu.Item type="dark">Settings</Menu.Item>
+      </Menu.Group>
+    </Menu>
+  ))
   .add("type='disabled' props", () => (
     <Menu>
       <Menu.Group>
@@ -65,7 +72,7 @@ storiesOf("Menu", module)
   ))
   .add("with Dropdown", () => (
     <Dropdown
-      position="bottomLeft"
+      position="LeftBottom"
       content={
         <Menu>
           <Menu.Group>
