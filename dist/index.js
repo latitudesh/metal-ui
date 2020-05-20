@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -327,6 +327,418 @@ module.exports = ReactPropTypesSecret;
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(8);
+            var content = __webpack_require__(9);
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isOldIE = function isOldIE() {
+  var memo;
+  return function memorize() {
+    if (typeof memo === 'undefined') {
+      // Test for IE <= 9 as proposed by Browserhacks
+      // @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+      // Tests for existence of standard globals is to allow style-loader
+      // to operate correctly into non-standard environments
+      // @see https://github.com/webpack-contrib/style-loader/issues/177
+      memo = Boolean(window && document && document.all && !window.atob);
+    }
+
+    return memo;
+  };
+}();
+
+var getTarget = function getTarget() {
+  var memo = {};
+  return function memorize(target) {
+    if (typeof memo[target] === 'undefined') {
+      var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
+
+      if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+        try {
+          // This will throw an exception if access to iframe is blocked
+          // due to cross-origin restrictions
+          styleTarget = styleTarget.contentDocument.head;
+        } catch (e) {
+          // istanbul ignore next
+          styleTarget = null;
+        }
+      }
+
+      memo[target] = styleTarget;
+    }
+
+    return memo[target];
+  };
+}();
+
+var stylesInDom = [];
+
+function getIndexByIdentifier(identifier) {
+  var result = -1;
+
+  for (var i = 0; i < stylesInDom.length; i++) {
+    if (stylesInDom[i].identifier === identifier) {
+      result = i;
+      break;
+    }
+  }
+
+  return result;
+}
+
+function modulesToDom(list, options) {
+  var idCountMap = {};
+  var identifiers = [];
+
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i];
+    var id = options.base ? item[0] + options.base : item[0];
+    var count = idCountMap[id] || 0;
+    var identifier = "".concat(id, " ").concat(count);
+    idCountMap[id] = count + 1;
+    var index = getIndexByIdentifier(identifier);
+    var obj = {
+      css: item[1],
+      media: item[2],
+      sourceMap: item[3]
+    };
+
+    if (index !== -1) {
+      stylesInDom[index].references++;
+      stylesInDom[index].updater(obj);
+    } else {
+      stylesInDom.push({
+        identifier: identifier,
+        updater: addStyle(obj, options),
+        references: 1
+      });
+    }
+
+    identifiers.push(identifier);
+  }
+
+  return identifiers;
+}
+
+function insertStyleElement(options) {
+  var style = document.createElement('style');
+  var attributes = options.attributes || {};
+
+  if (typeof attributes.nonce === 'undefined') {
+    var nonce =  true ? __webpack_require__.nc : undefined;
+
+    if (nonce) {
+      attributes.nonce = nonce;
+    }
+  }
+
+  Object.keys(attributes).forEach(function (key) {
+    style.setAttribute(key, attributes[key]);
+  });
+
+  if (typeof options.insert === 'function') {
+    options.insert(style);
+  } else {
+    var target = getTarget(options.insert || 'head');
+
+    if (!target) {
+      throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
+    }
+
+    target.appendChild(style);
+  }
+
+  return style;
+}
+
+function removeStyleElement(style) {
+  // istanbul ignore if
+  if (style.parentNode === null) {
+    return false;
+  }
+
+  style.parentNode.removeChild(style);
+}
+/* istanbul ignore next  */
+
+
+var replaceText = function replaceText() {
+  var textStore = [];
+  return function replace(index, replacement) {
+    textStore[index] = replacement;
+    return textStore.filter(Boolean).join('\n');
+  };
+}();
+
+function applyToSingletonTag(style, index, remove, obj) {
+  var css = remove ? '' : obj.media ? "@media ".concat(obj.media, " {").concat(obj.css, "}") : obj.css; // For old IE
+
+  /* istanbul ignore if  */
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = replaceText(index, css);
+  } else {
+    var cssNode = document.createTextNode(css);
+    var childNodes = style.childNodes;
+
+    if (childNodes[index]) {
+      style.removeChild(childNodes[index]);
+    }
+
+    if (childNodes.length) {
+      style.insertBefore(cssNode, childNodes[index]);
+    } else {
+      style.appendChild(cssNode);
+    }
+  }
+}
+
+function applyToTag(style, options, obj) {
+  var css = obj.css;
+  var media = obj.media;
+  var sourceMap = obj.sourceMap;
+
+  if (media) {
+    style.setAttribute('media', media);
+  } else {
+    style.removeAttribute('media');
+  }
+
+  if (sourceMap && btoa) {
+    css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
+  } // For old IE
+
+  /* istanbul ignore if  */
+
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    while (style.firstChild) {
+      style.removeChild(style.firstChild);
+    }
+
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var singleton = null;
+var singletonCounter = 0;
+
+function addStyle(obj, options) {
+  var style;
+  var update;
+  var remove;
+
+  if (options.singleton) {
+    var styleIndex = singletonCounter++;
+    style = singleton || (singleton = insertStyleElement(options));
+    update = applyToSingletonTag.bind(null, style, styleIndex, false);
+    remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+  } else {
+    style = insertStyleElement(options);
+    update = applyToTag.bind(null, style, options);
+
+    remove = function remove() {
+      removeStyleElement(style);
+    };
+  }
+
+  update(obj);
+  return function updateStyle(newObj) {
+    if (newObj) {
+      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap) {
+        return;
+      }
+
+      update(obj = newObj);
+    } else {
+      remove();
+    }
+  };
+}
+
+module.exports = function (list, options) {
+  options = options || {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+  // tags it will allow on a page
+
+  if (!options.singleton && typeof options.singleton !== 'boolean') {
+    options.singleton = isOldIE();
+  }
+
+  list = list || [];
+  var lastIdentifiers = modulesToDom(list, options);
+  return function update(newList) {
+    newList = newList || [];
+
+    if (Object.prototype.toString.call(newList) !== '[object Array]') {
+      return;
+    }
+
+    for (var i = 0; i < lastIdentifiers.length; i++) {
+      var identifier = lastIdentifiers[i];
+      var index = getIndexByIdentifier(identifier);
+      stylesInDom[index].references--;
+    }
+
+    var newLastIdentifiers = modulesToDom(newList, options);
+
+    for (var _i = 0; _i < lastIdentifiers.length; _i++) {
+      var _identifier = lastIdentifiers[_i];
+
+      var _index = getIndexByIdentifier(_identifier);
+
+      if (stylesInDom[_index].references === 0) {
+        stylesInDom[_index].updater();
+
+        stylesInDom.splice(_index, 1);
+      }
+    }
+
+    lastIdentifiers = newLastIdentifiers;
+  };
+};
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(10);
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, "@keyframes skeleton {\n    0% {\n        background-position:200% 0\n    }\n    to {\n        background-position:-200% 0\n    }\n}\n\n.skeleton {\n    display: block;\n    border-radius: 5px;\n    background-image: linear-gradient(270deg,#fafafa,#eaeaea,#eaeaea,#fafafa);\n    background-size: 400% 100%;\n    animation: skeleton 8s ease-in-out infinite;\n}", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+// eslint-disable-next-line func-names
+module.exports = function (useSourceMap) {
+  var list = []; // return the list of modules as css string
+
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = cssWithMappingToString(item, useSourceMap);
+
+      if (item[2]) {
+        return "@media ".concat(item[2], " {").concat(content, "}");
+      }
+
+      return content;
+    }).join('');
+  }; // import a list of modules into the list
+  // eslint-disable-next-line func-names
+
+
+  list.i = function (modules, mediaQuery, dedupe) {
+    if (typeof modules === 'string') {
+      // eslint-disable-next-line no-param-reassign
+      modules = [[null, modules, '']];
+    }
+
+    var alreadyImportedModules = {};
+
+    if (dedupe) {
+      for (var i = 0; i < this.length; i++) {
+        // eslint-disable-next-line prefer-destructuring
+        var id = this[i][0];
+
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+
+    for (var _i = 0; _i < modules.length; _i++) {
+      var item = [].concat(modules[_i]);
+
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        // eslint-disable-next-line no-continue
+        continue;
+      }
+
+      if (mediaQuery) {
+        if (!item[2]) {
+          item[2] = mediaQuery;
+        } else {
+          item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
+        }
+      }
+
+      list.push(item);
+    }
+  };
+
+  return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+  var content = item[1] || ''; // eslint-disable-next-line prefer-destructuring
+
+  var cssMapping = item[3];
+
+  if (!cssMapping) {
+    return content;
+  }
+
+  if (useSourceMap && typeof btoa === 'function') {
+    var sourceMapping = toComment(cssMapping);
+    var sourceURLs = cssMapping.sources.map(function (source) {
+      return "/*# sourceURL=".concat(cssMapping.sourceRoot || '').concat(source, " */");
+    });
+    return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+  }
+
+  return [content].join('\n');
+} // Adapted from convert-source-map (MIT)
+
+
+function toComment(sourceMap) {
+  // eslint-disable-next-line no-undef
+  var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+  var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
+  return "/*# ".concat(data, " */");
+}
+
+/***/ }),
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -341,17 +753,7 @@ __webpack_require__.d(__webpack_exports__, "Dropdown", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "Button", function() { return /* reexport */ src_Button; });
 __webpack_require__.d(__webpack_exports__, "Box", function() { return /* reexport */ src_Box; });
 __webpack_require__.d(__webpack_exports__, "Menu", function() { return /* reexport */ src_Menu; });
-__webpack_require__.d(__webpack_exports__, "ActivityIcon", function() { return /* reexport */ Icon_ActivityIcon; });
-__webpack_require__.d(__webpack_exports__, "BellIcon", function() { return /* reexport */ Icon_BellIcon; });
-__webpack_require__.d(__webpack_exports__, "CheveronDownIcon", function() { return /* reexport */ Icon_CheveronDownIcon; });
-__webpack_require__.d(__webpack_exports__, "HelpIcon", function() { return /* reexport */ Icon_HelpIcon; });
-__webpack_require__.d(__webpack_exports__, "HomeIcon", function() { return /* reexport */ Icon_HomeIcon; });
-__webpack_require__.d(__webpack_exports__, "MenuIcon", function() { return /* reexport */ Icon_MenuIcon; });
-__webpack_require__.d(__webpack_exports__, "OkIcon", function() { return /* reexport */ Icon_OkIcon; });
-__webpack_require__.d(__webpack_exports__, "ServersIcon", function() { return /* reexport */ Icon_ServersIcon; });
-__webpack_require__.d(__webpack_exports__, "SettingsIcon", function() { return /* reexport */ Icon_SettingsIcon; });
-__webpack_require__.d(__webpack_exports__, "SortingIcon", function() { return /* reexport */ Icon_SortingIcon; });
-__webpack_require__.d(__webpack_exports__, "TeamIcon", function() { return /* reexport */ TeamIcon; });
+__webpack_require__.d(__webpack_exports__, "Skeleton", function() { return /* reexport */ src_Skeleton; });
 __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
 __webpack_require__.d(__webpack_exports__, "USFlag", function() { return /* reexport */ Flags_USFlag; });
@@ -858,419 +1260,37 @@ Menu_Menu.Item = function (_ref3) {
 };
 
 /* harmony default export */ var src_Menu = (Menu_Menu);
-// CONCATENATED MODULE: ./src/Icon/Icon.js
+// EXTERNAL MODULE: ./src/Skeleton/Skeleton.css
+var Skeleton_Skeleton = __webpack_require__(7);
+
+// CONCATENATED MODULE: ./src/Skeleton/index.js
 
 
 
-var Icon_Icon = function Icon(_ref) {
-  var onClick = _ref.onClick,
-      _ref$color = _ref.color,
-      color = _ref$color === void 0 ? "#9fa6b2" : _ref$color,
-      _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 24 : _ref$size,
-      _ref$fill = _ref.fill,
-      fill = _ref$fill === void 0 ? true : _ref$fill,
-      children = _ref.children,
-      className = _ref.className,
-      strokeWidth = _ref.strokeWidth,
-      strokeLinecap = _ref.strokeLinecap,
-      strokeLinejoin = _ref.strokeLinejoin;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
-    width: "".concat(size, "px"),
-    height: "".concat(size, "px"),
-    onClick: onClick,
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 24 24",
-    className: className,
-    fill: fill ? color : "none",
-    color: !fill ? color : "none",
-    stroke: strokeWidth ? color : "none",
-    strokeWidth: strokeWidth,
-    strokeLinecap: strokeLinecap,
-    strokeLinejoin: strokeLinejoin
-  }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(children, {
-    color: color
+
+
+var src_Skeleton_Skeleton = function Skeleton(_ref) {
+  var width = _ref.width,
+      height = _ref.height,
+      className = _ref.className;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
+    style: {
+      width: width,
+      minHeight: height
+    },
+    className: classnames_default()("skeleton", className)
   }));
 };
 
-Icon_Icon.propTypes = {
-  onClick: prop_types_default.a.func,
-  color: prop_types_default.a.string,
-  size: prop_types_default.a.number,
-  fill: prop_types_default.a.bool,
-  children: prop_types_default.a.node,
-  className: prop_types_default.a.string,
-  strokeWidth: prop_types_default.a.string,
-  strokeLinecap: prop_types_default.a.string,
-  strokeLinejoin: prop_types_default.a.string
+src_Skeleton_Skeleton.propTypes = {
+  width: prop_types_default.a.number,
+  height: prop_types_default.a.number
 };
-/* harmony default export */ var src_Icon_Icon = (Icon_Icon);
-// CONCATENATED MODULE: ./src/Icon/ActivityIcon.js
-
-
-
-
-var ActivityIcon_ActivityIcon = function ActivityIcon(_ref) {
-  var className = _ref.className,
-      onClick = _ref.onClick,
-      color = _ref.color,
-      _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 24 : _ref$size;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Icon_Icon, {
-    className: className,
-    onClick: onClick,
-    size: size,
-    color: color
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
-    id: "icon-status_svg__a",
-    d: "M7.32296704,13 L5,13 C4.44771525,13 4,12.5522847 4,12 C4,11.4477153 4.44771525,11 5,11 L8,11 C8.40890459,11 8.77661334,11.2489509 8.92847669,11.6286093 L10,14.3074176 L13.0715233,6.62860932 C13.4067816,5.79046356 14.5932184,5.79046356 14.9284767,6.62860932 L16.677033,11 L19,11 C19.5522847,11 20,11.4477153 20,12 C20,12.5522847 19.5522847,13 19,13 L16,13 C15.5910954,13 15.2233867,12.7510491 15.0715233,12.3713907 L14,9.6925824 L10.9284767,17.3713907 C10.5932184,18.2095364 9.40678162,18.2095364 9.07152331,17.3713907 L7.32296704,13 Z"
-  }));
+src_Skeleton_Skeleton.defaultProps = {
+  width: 160,
+  height: 24
 };
-
-ActivityIcon_ActivityIcon.propTypes = {
-  onClick: prop_types_default.a.func,
-  size: prop_types_default.a.number,
-  color: prop_types_default.a.string,
-  className: prop_types_default.a.string
-};
-/* harmony default export */ var Icon_ActivityIcon = (ActivityIcon_ActivityIcon);
-// CONCATENATED MODULE: ./src/Icon/BellIcon.js
-
-
-
-
-var BellIcon_BellIcon = function BellIcon(_ref) {
-  var className = _ref.className,
-      onClick = _ref.onClick,
-      color = _ref.color,
-      _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 24 : _ref$size;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Icon_Icon, {
-    className: className,
-    onClick: onClick,
-    size: size,
-    color: color
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
-    id: "icon-notifications-default_svg__a",
-    d: "M9,11 L9,15 L15,15 L15,11 C15,9.34314575 13.6568542,8 12,8 C10.3431458,8 9,9.34314575 9,11 Z M17,15 C17.5522847,15 18,15.4477153 18,16 C18,16.5522847 17.5522847,17 17,17 L7,17 C6.44771525,17 6,16.5522847 6,16 C6,15.4477153 6.44771525,15 7,15 L7,11 C7,8.70163744 8.55075381,6.76547284 10.6630137,6.18075397 C10.5587807,5.97645065 10.5,5.74508981 10.5,5.5 C10.5,4.67157288 11.1715729,4 12,4 C12.8284271,4 13.5,4.67157288 13.5,5.5 C13.5,5.74508981 13.4412193,5.97645065 13.3369863,6.18075396 C15.4492462,6.76547284 17,8.70163744 17,11 L17,15 Z M10,18 L14,18 C14,19.1045695 13.1045695,20 12,20 C10.8954305,20 10,19.1045695 10,18 Z"
-  }));
-};
-
-BellIcon_BellIcon.propTypes = {
-  onClick: prop_types_default.a.func,
-  size: prop_types_default.a.number,
-  color: prop_types_default.a.string,
-  className: prop_types_default.a.string
-};
-/* harmony default export */ var Icon_BellIcon = (BellIcon_BellIcon);
-// CONCATENATED MODULE: ./src/Icon/CheveronDownIcon.js
-
-
-
-
-var CheveronDownIcon_CheveronDownIcon = function CheveronDownIcon(_ref) {
-  var className = _ref.className,
-      onClick = _ref.onClick,
-      color = _ref.color,
-      _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 24 : _ref$size;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Icon_Icon, {
-    className: className,
-    onClick: onClick,
-    size: size,
-    color: color
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
-    className: "secondary",
-    fillRule: "evenodd",
-    d: "M15.3 10.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"
-  }));
-};
-
-CheveronDownIcon_CheveronDownIcon.propTypes = {
-  onClick: prop_types_default.a.func,
-  size: prop_types_default.a.number,
-  color: prop_types_default.a.string,
-  className: prop_types_default.a.string
-};
-/* harmony default export */ var Icon_CheveronDownIcon = (CheveronDownIcon_CheveronDownIcon);
-// CONCATENATED MODULE: ./src/Icon/HelpIcon.js
-
-
-
-
-var HelpIcon_HelpIcon = function HelpIcon(_ref) {
-  var className = _ref.className,
-      onClick = _ref.onClick,
-      color = _ref.color,
-      _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 24 : _ref$size;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Icon_Icon, {
-    className: className,
-    onClick: onClick,
-    size: size,
-    fill: false,
-    color: color,
-    strokeWidth: "2",
-    strokeLinecap: "square",
-    strokeLinejoin: "miter"
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
-    d: "M12 14C12 12 13.576002 11.6652983 14.1186858 11.1239516 14.663127 10.5808518 15 9.82976635 15 9 15 7.34314575 13.6568542 6 12 6 11.1040834 6 10.2998929 6.39272604 9.75018919 7.01541737 9.49601109 7.30334431 9.29624369 7.64043912 9.16697781 8.01061095"
-  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("line", {
-    x1: "12",
-    y1: "17",
-    x2: "12",
-    y2: "17"
-  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("circle", {
-    cx: "12",
-    cy: "12",
-    r: "10"
-  })));
-};
-
-HelpIcon_HelpIcon.propTypes = {
-  onClick: prop_types_default.a.func,
-  size: prop_types_default.a.number,
-  color: prop_types_default.a.string,
-  className: prop_types_default.a.string
-};
-/* harmony default export */ var Icon_HelpIcon = (HelpIcon_HelpIcon);
-// CONCATENATED MODULE: ./src/Icon/HomeIcon.js
-
-
-
-
-var HomeIcon_HomeIcon = function HomeIcon(_ref) {
-  var className = _ref.className,
-      onClick = _ref.onClick,
-      color = _ref.color,
-      _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 24 : _ref$size;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Icon_Icon, {
-    className: className,
-    onClick: onClick,
-    size: size,
-    color: color
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
-    d: "M11,16 L11,12.990778 C11,12.4435864 11.4438648,12 12,12 C12.5522847,12 13,12.4509752 13,12.990778 L13,16 L15,16 L15,10.1065684 L12,7.35656838 L9,10.1065684 L9,16 L11,16 Z M17,16 L17.5,16 C18.0522847,16 18.5,16.4477153 18.5,17 C18.5,17.5522847 18.0522847,18 17.5,18 L6.5,18 C5.94771525,18 5.5,17.5522847 5.5,17 C5.5,16.4477153 5.94771525,16 6.5,16 L7,16 L7,11.9399017 L6.67572463,12.2371541 C6.26860564,12.6103465 5.63603827,12.5828436 5.26284586,12.1757246 C4.88965345,11.7686056 4.91715638,11.1360383 5.32427537,10.7628459 L11.3242754,5.26284586 C11.7065966,4.91238471 12.2934034,4.91238471 12.6757246,5.26284586 L18.6757246,10.7628459 C19.0828436,11.1360383 19.1103465,11.7686056 18.7371541,12.1757246 C18.3639617,12.5828436 17.7313944,12.6103465 17.3242754,12.2371541 L17,11.9399017 L17,16 Z"
-  }));
-};
-
-HomeIcon_HomeIcon.propTypes = {
-  onClick: prop_types_default.a.func,
-  size: prop_types_default.a.number,
-  color: prop_types_default.a.string,
-  className: prop_types_default.a.string
-};
-/* harmony default export */ var Icon_HomeIcon = (HomeIcon_HomeIcon);
-// CONCATENATED MODULE: ./src/Icon/MenuIcon.js
-
-
-
-
-var MenuIcon_MenuIcon = function MenuIcon(_ref) {
-  var className = _ref.className,
-      onClick = _ref.onClick,
-      color = _ref.color,
-      _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 24 : _ref$size;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Icon_Icon, {
-    className: className,
-    onClick: onClick,
-    size: size,
-    color: color,
-    withStroke: true
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
-    className: "h-6 w-6",
-    stroke: color,
-    fill: "none",
-    viewBox: "0 0 ".concat(size, " ").concat(size)
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
-    className: "inline-flex",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    strokeWidth: 2,
-    d: "M4 6h16M4 12h16M4 18h16"
-  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
-    className: "hidden",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    strokeWidth: 2,
-    d: "M6 18L18 6M6 6l12 12"
-  })));
-};
-
-MenuIcon_MenuIcon.propTypes = {
-  onClick: prop_types_default.a.func,
-  size: prop_types_default.a.number,
-  color: prop_types_default.a.string,
-  className: prop_types_default.a.string
-};
-/* harmony default export */ var Icon_MenuIcon = (MenuIcon_MenuIcon);
-// CONCATENATED MODULE: ./src/Icon/OkIcon.js
-
-
-
-
-var OkIcon_OkIcon = function OkIcon(_ref) {
-  var className = _ref.className,
-      onClick = _ref.onClick,
-      color = _ref.color,
-      _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 24 : _ref$size;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Icon_Icon, {
-    className: className,
-    onClick: onClick,
-    size: size,
-    color: color,
-    fill: false,
-    strokeWidth: "2",
-    strokeLinecap: "square",
-    strokeLinejoin: "miter"
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("polyline", {
-    points: "4 13 9 18 20 7"
-  }));
-};
-
-OkIcon_OkIcon.propTypes = {
-  onClick: prop_types_default.a.func,
-  size: prop_types_default.a.number,
-  color: prop_types_default.a.string,
-  className: prop_types_default.a.string
-};
-/* harmony default export */ var Icon_OkIcon = (OkIcon_OkIcon);
-// CONCATENATED MODULE: ./src/Icon/ServersIcon.js
-
-
-
-
-var ServersIcon_ServersIcon = function ServersIcon(_ref) {
-  var className = _ref.className,
-      onClick = _ref.onClick,
-      color = _ref.color,
-      _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 24 : _ref$size;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Icon_Icon, {
-    className: className,
-    onClick: onClick,
-    size: size,
-    color: color
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
-    id: "icon-collection_svg__a",
-    d: "M6,18.0046024 C5.99955961,18.0013018 8.66776042,17.9997677 14.0046024,18 C14.0013018,18.0004404 13.9997677,15.3322396 14,9.99539757 C14.0004404,9.9986982 11.3322396,10.0002323 5.99539757,10 C5.9986982,9.99955961 6.00023234,12.6677604 6,18.0046024 Z M4,9.99539757 C4,8.89524768 4.90146618,8 5.99539757,8 L14.0046024,8 C15.1047523,8 16,8.90146618 16,9.99539757 L16,18.0046024 C16,19.1047523 15.0985338,20 14.0046024,20 L5.99539757,20 C4.89524768,20 4,19.0985338 4,18.0046024 L4,9.99539757 Z M9.99539757,6 C9.99698987,6 9.99852401,6.33333333 10,7 L8,7 L8,6 C8,4.89836205 8.90043881,4 9.99539757,4 L18.0046024,4 C19.1047523,4 20,4.90146618 20,5.99539757 L20,14.0046024 C20,15.1083943 19.1066541,16 18,16 L17,16 L17,14 L18,14 L18,5.99539757 C18.0004404,5.9986982 15.3322396,6.00023234 9.99539757,6 Z"
-  }));
-};
-
-ServersIcon_ServersIcon.propTypes = {
-  onClick: prop_types_default.a.func,
-  size: prop_types_default.a.number,
-  color: prop_types_default.a.string,
-  className: prop_types_default.a.string
-};
-/* harmony default export */ var Icon_ServersIcon = (ServersIcon_ServersIcon);
-// CONCATENATED MODULE: ./src/Icon/SettingsIcon.js
-
-
-
-
-var SettingsIcon_SettingsIcon = function SettingsIcon(_ref) {
-  var className = _ref.className,
-      onClick = _ref.onClick,
-      color = _ref.color,
-      _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 24 : _ref$size;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Icon_Icon, {
-    className: className,
-    onClick: onClick,
-    size: size,
-    color: color
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
-    id: "icon-slider_svg__a",
-    d: "M11.1710628,14 C11.5836671,12.8348076 12.6964391,12 14,12 C15.3057213,12 16.4166114,12.8362657 16.8288234,14 L17.9906311,14 C18.5480902,14 19,14.4438648 19,15 C19,15.5522847 18.5566468,16 17.9906311,16 L16.8289372,16 C16.4163329,17.1651924 15.3035609,18 14,18 C12.6942787,18 11.5833886,17.1637343 11.1711766,16 L5.99703014,16 C5.4463856,16 5,15.5561352 5,15 C5,14.4477153 5.45303631,14 5.99703014,14 L11.1710628,14 Z M13,15 C13,15.550425 13.4492263,16 14,16 C14.550425,16 15,15.5507737 15,15 C15,14.449575 14.5507737,14 14,14 C13.449575,14 13,14.4492263 13,15 Z M12.8288234,8 L18.0029699,8 C18.5536144,8 19,8.44386482 19,9 C19,9.55228475 18.5469637,10 18.0029699,10 L12.8289372,10 C12.4163329,11.1651924 11.3035609,12 10,12 C8.69427867,12 7.58338862,11.1637343 7.17117658,10 L6.0093689,10 C5.45190985,10 5,9.55613518 5,9 C5,8.44771525 5.44335318,8 6.0093689,8 L7.17106282,8 C7.58366708,6.83480763 8.69643907,6 10,6 C11.3057213,6 12.4166114,6.83626566 12.8288234,8 Z M9,9 C9,9.55042501 9.44922627,10 10,10 C10.550425,10 11,9.55077373 11,9 C11,8.44957499 10.5507737,8 10,8 C9.44957499,8 9,8.44922627 9,9 Z"
-  }));
-};
-
-SettingsIcon_SettingsIcon.propTypes = {
-  onClick: prop_types_default.a.func,
-  size: prop_types_default.a.number,
-  color: prop_types_default.a.string,
-  className: prop_types_default.a.string
-};
-/* harmony default export */ var Icon_SettingsIcon = (SettingsIcon_SettingsIcon);
-// CONCATENATED MODULE: ./src/Icon/SortingIcon.js
-
-
-
-
-var SortingIcon_SortingIcon = function SortingIcon(_ref) {
-  var className = _ref.className,
-      onClick = _ref.onClick,
-      color = _ref.color,
-      _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 24 : _ref$size;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Icon_Icon, {
-    className: className,
-    onClick: onClick,
-    size: size,
-    color: color,
-    fill: false,
-    strokeWidth: "2",
-    strokeLinecap: "square",
-    strokeLinejoin: "miter"
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("polyline", {
-    points: "8 8.333 12 4.333 16 8.333 16 8.333"
-  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("polyline", {
-    points: "16 15.667 12 19.667 8 15.667 8 15.667"
-  })));
-};
-
-SortingIcon_SortingIcon.propTypes = {
-  onClick: prop_types_default.a.func,
-  size: prop_types_default.a.number,
-  color: prop_types_default.a.string,
-  className: prop_types_default.a.string
-};
-/* harmony default export */ var Icon_SortingIcon = (SortingIcon_SortingIcon);
-// CONCATENATED MODULE: ./src/Icon/TeamIcon.js
-
-
-
-
-var TeamIcon_ServersIcon = function ServersIcon(_ref) {
-  var className = _ref.className,
-      onClick = _ref.onClick,
-      color = _ref.color,
-      _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 24 : _ref$size;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Icon_Icon, {
-    className: className,
-    onClick: onClick,
-    size: size,
-    color: color
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
-    id: "icon-user_svg__a",
-    d: "M8.66245729,12.7230724 C7.64198532,11.8076578 7,10.4788007 7,9 C7,6.23857625 9.23857625,4 12,4 C14.7614237,4 17,6.23857625 17,9 C17,10.4788007 16.3580147,11.8076578 15.3375427,12.7230724 C17.5093449,13.731343 19,15.6972696 19,18 C19,18.5522847 18.5522847,19 18,19 C17.4477153,19 17,18.5522847 17,18 C17,15.8352984 14.7976419,14 12,14 C9.20235808,14 7,15.8352984 7,18 C7,18.5522847 6.55228475,19 6,19 C5.44771525,19 5,18.5522847 5,18 C5,15.6972696 6.49065506,13.731343 8.66245729,12.7230724 Z M12,12 C13.6568542,12 15,10.6568542 15,9 C15,7.34314575 13.6568542,6 12,6 C10.3431458,6 9,7.34314575 9,9 C9,10.6568542 10.3431458,12 12,12 Z"
-  }));
-};
-
-TeamIcon_ServersIcon.propTypes = {
-  onClick: prop_types_default.a.func,
-  size: prop_types_default.a.number,
-  color: prop_types_default.a.string,
-  className: prop_types_default.a.string
-};
-/* harmony default export */ var TeamIcon = (TeamIcon_ServersIcon);
-// CONCATENATED MODULE: ./src/Icon/index.js
-
-
-
-
-
-
-
-
-
-
-
+/* harmony default export */ var src_Skeleton = (src_Skeleton_Skeleton);
 // CONCATENATED MODULE: ./src/Flags/Flag.js
 
 
