@@ -1,10 +1,24 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { SettingsIcon } from "../Icon";
 import Dropdown from "../Dropdown";
 import Button from "../Button";
 import Menu from "./index";
+
+function Icon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M13 16v5a1 1 0 01-1 1H9l-3-6a2 2 0 01-2-2 2 2 0 01-2-2v-2c0-1.1.9-2 2-2 0-1.1.9-2 2-2h7.59l4-4H20a2 2 0 012 2v14a2 2 0 01-2 2h-2.41l-4-4H13zm0-2h1.41l4 4H20V4h-1.59l-4 4H13v6zm-2 0V8H6v2H4v2h2v2h5zm0 2H8.24l2 4H11v-4z"
+      ></path>
+    </svg>
+  );
+}
 
 storiesOf("Menu", module)
   .add("default", () => (
@@ -31,42 +45,42 @@ storiesOf("Menu", module)
   .add("iconBefore props", () => (
     <Menu>
       <Menu.Group>
-        <Menu.Item iconBefore={<SettingsIcon />}>Settings</Menu.Item>
+        <Menu.Item iconBefore={<Icon />}>Announcement</Menu.Item>
       </Menu.Group>
     </Menu>
   ))
   .add("iconAfter props", () => (
     <Menu>
       <Menu.Group>
-        <Menu.Item iconAfter={<SettingsIcon />}>Settings</Menu.Item>
+        <Menu.Item iconAfter={<Icon />}>Announcement</Menu.Item>
       </Menu.Group>
     </Menu>
   ))
   .add("onSelect props", () => (
     <Menu>
       <Menu.Group>
-        <Menu.Item onSelect={action("clicked")}>Settings</Menu.Item>
+        <Menu.Item onSelect={action("clicked")}>Announcement</Menu.Item>
       </Menu.Group>
     </Menu>
   ))
   .add("type='danger' props", () => (
     <Menu>
       <Menu.Group>
-        <Menu.Item type="danger">Settings</Menu.Item>
+        <Menu.Item type="danger">Announcement</Menu.Item>
       </Menu.Group>
     </Menu>
   ))
   .add("type='dark' props", () => (
     <Menu>
       <Menu.Group>
-        <Menu.Item type="dark">Settings</Menu.Item>
+        <Menu.Item type="dark">Announcement</Menu.Item>
       </Menu.Group>
     </Menu>
   ))
   .add("type='disabled' props", () => (
     <Menu>
       <Menu.Group>
-        <Menu.Item type="disabled">Settings</Menu.Item>
+        <Menu.Item type="disabled">Announcement</Menu.Item>
       </Menu.Group>
     </Menu>
   ))
@@ -76,7 +90,7 @@ storiesOf("Menu", module)
       content={
         <Menu>
           <Menu.Group>
-            <Menu.Item iconAfter={<SettingsIcon />}>Settings</Menu.Item>
+            <Menu.Item iconAfter={<Icon />}>Announcement</Menu.Item>
           </Menu.Group>
         </Menu>
       }
