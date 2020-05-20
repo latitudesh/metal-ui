@@ -1,17 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import './Skeleton.css';
+import "./Skeleton.module.css";
 
 const Skeleton = ({ width, height, className }) => {
   return (
     <div>
       <span
         style={{ width: width, minHeight: height }}
-        className={classNames(
-          "skeleton",
-          className
-        )}
+        className={classNames("skeleton", className)}
       ></span>
     </div>
   );
@@ -24,7 +21,7 @@ Skeleton.propTypes = {
 
 Skeleton.defaultProps = {
   width: 160,
-  height: 24
-}
+  height: 24,
+};
 
 export default Skeleton;

@@ -632,7 +632,7 @@ module.exports = function (list, options) {
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@keyframes skeleton {\n    0% {\n        background-position:200% 0\n    }\n    to {\n        background-position:-200% 0\n    }\n}\n\n.skeleton {\n    display: block;\n    border-radius: 5px;\n    background-image: linear-gradient(270deg,#fafafa,#eaeaea,#eaeaea,#fafafa);\n    background-size: 400% 100%;\n    animation: skeleton 8s ease-in-out infinite;\n}", ""]);
+exports.push([module.i, "@keyframes skeleton {\n  0% {\n    background-position: 200% 0;\n  }\n  to {\n    background-position: -200% 0;\n  }\n}\n\n.skeleton {\n  display: block;\n  border-radius: 5px;\n  background-image: linear-gradient(270deg, #fafafa, #eaeaea, #eaeaea, #fafafa);\n  background-size: 400% 100%;\n  animation: skeleton 8s ease-in-out infinite;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -1260,8 +1260,8 @@ Menu_Menu.Item = function (_ref3) {
 };
 
 /* harmony default export */ var src_Menu = (Menu_Menu);
-// EXTERNAL MODULE: ./src/Skeleton/Skeleton.css
-var Skeleton_Skeleton = __webpack_require__(7);
+// EXTERNAL MODULE: ./src/Skeleton/Skeleton.module.css
+var Skeleton_module = __webpack_require__(7);
 
 // CONCATENATED MODULE: ./src/Skeleton/index.js
 
@@ -1269,7 +1269,7 @@ var Skeleton_Skeleton = __webpack_require__(7);
 
 
 
-var src_Skeleton_Skeleton = function Skeleton(_ref) {
+var Skeleton_Skeleton = function Skeleton(_ref) {
   var width = _ref.width,
       height = _ref.height,
       className = _ref.className;
@@ -1282,15 +1282,15 @@ var src_Skeleton_Skeleton = function Skeleton(_ref) {
   }));
 };
 
-src_Skeleton_Skeleton.propTypes = {
+Skeleton_Skeleton.propTypes = {
   width: prop_types_default.a.number,
   height: prop_types_default.a.number
 };
-src_Skeleton_Skeleton.defaultProps = {
+Skeleton_Skeleton.defaultProps = {
   width: 160,
   height: 24
 };
-/* harmony default export */ var src_Skeleton = (src_Skeleton_Skeleton);
+/* harmony default export */ var src_Skeleton = (Skeleton_Skeleton);
 // CONCATENATED MODULE: ./src/Flags/Flag.js
 
 
