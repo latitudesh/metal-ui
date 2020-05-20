@@ -1097,9 +1097,9 @@ var Button_Button = function Button(_ref) {
   var minimal = appearance === "minimal";
   var cx = bind_default.a.bind(minimal ? minimalTypes : buttonTypes);
   var ButtonContent = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, iconBefore && Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore, {
-    className: "mr-2 transition ease-in-out duration-150"
+    className: "mr-3 transition ease-in-out duration-150"
   }), label, iconAfter && Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter, {
-    className: "mr-2 transition ease-in-out duration-150"
+    className: "ml-3 transition ease-in-out duration-150"
   }));
   var ButtonClasses = cx("inline-flex items-center px-3 py-1.5 border text-sm leading-5 font-medium rounded focus:outline-none transition ease-in-out duration-150", Button_defineProperty({
     disabled: disabled,

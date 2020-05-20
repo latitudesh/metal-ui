@@ -42,12 +42,12 @@ const Button = ({
     <>
       {iconBefore &&
         cloneElement(iconBefore, {
-          className: "mr-2 transition ease-in-out duration-150",
+          className: "mr-3 transition ease-in-out duration-150",
         })}
       {label}
       {iconAfter &&
         cloneElement(iconAfter, {
-          className: "mr-2 transition ease-in-out duration-150",
+          className: "ml-3 transition ease-in-out duration-150",
         })}
     </>
   );
