@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import "./Skeleton.module.css";
+import styles from "./styles";
 
 const Skeleton = ({ width, height, className }) => {
   return (
@@ -9,7 +9,9 @@ const Skeleton = ({ width, height, className }) => {
       <span
         style={{ width: width, minHeight: height }}
         className={classNames("skeleton", className)}
-      ></span>
+      >
+        <style jsx>{styles}</style>
+      </span>
     </div>
   );
 };
