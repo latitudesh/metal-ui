@@ -23,7 +23,7 @@ const Box = ({
         [`bg-${backgroundColor}`]: Boolean(backgroundColor),
         [`flex-${flexDirection}`]: Boolean(flexDirection),
         [`mb-4 shadow rounded-sm`]: Boolean(rootCard),
-        [`px-4 py-5 sm:px-6 sm:py-4`]: !Boolean(noPadding),
+        [`px-6 py-4`]: !Boolean(noPadding),
       })}
     >
       {children}
