@@ -7,9 +7,11 @@ Metal UI is a set of UI Components using React, CSS Modules and Tailwindcss buil
 - Heavily opinionated
 - Built for desktop applications
 
+Metal UI uses the [8-Point Grid](https://spec.fm/specifics/8-pt-grid) but sticks to TailwindCSS' [default spacing scale](https://tailwindcss.com/docs/customizing-spacing/#default-spacing-scale) instead of implementing its own, mainly to keep things simple.
+
 ## Component documentation
 
-[Storybook](https://maxihost.github.io/metal-ui/)
+- [Storybook](https://maxihost.github.io/metal-ui/)
 
 ## Install and use components
 
