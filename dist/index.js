@@ -1200,6 +1200,7 @@ __webpack_require__.d(__webpack_exports__, "Button", function() { return /* reex
 __webpack_require__.d(__webpack_exports__, "Box", function() { return /* reexport */ src_Box; });
 __webpack_require__.d(__webpack_exports__, "Menu", function() { return /* reexport */ src_Menu; });
 __webpack_require__.d(__webpack_exports__, "Skeleton", function() { return /* reexport */ src_Skeleton; });
+__webpack_require__.d(__webpack_exports__, "Modal", function() { return /* reexport */ Modal; });
 __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
 __webpack_require__.d(__webpack_exports__, "USFlag", function() { return /* reexport */ Flags_USFlag; });
@@ -1746,6 +1747,87 @@ Skeleton_Skeleton.defaultProps = {
   height: 24
 };
 /* harmony default export */ var src_Skeleton = (Skeleton_Skeleton);
+// CONCATENATED MODULE: ./src/Modal/index.js
+function Modal_slicedToArray(arr, i) { return Modal_arrayWithHoles(arr) || Modal_iterableToArrayLimit(arr, i) || Modal_unsupportedIterableToArray(arr, i) || Modal_nonIterableRest(); }
+
+function Modal_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function Modal_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return Modal_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Modal_arrayLikeToArray(o, minLen); }
+
+function Modal_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function Modal_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function Modal_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+function Modal() {
+  var _React$useState = external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.useState(false),
+      _React$useState2 = Modal_slicedToArray(_React$useState, 2),
+      showModal = _React$useState2[0],
+      setShowModal = _React$useState2[1];
+
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Button, {
+    onClick: function onClick() {
+      return setShowModal(true);
+    }
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("button", {
+    className: "bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1",
+    type: "button",
+    style: {
+      transition: "all .15s ease"
+    },
+    onClick: function onClick() {
+      return setShowModal(true);
+    }
+  }, "Open regular modal"), showModal ? /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: "justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none",
+    onClick: function onClick() {
+      return setShowModal(false);
+    }
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: "relative w-auto my-6 mx-auto max-w-3xl"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: "border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: "flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("h3", {
+    className: "text-3xl font-semibold"
+  }, "Modal Title"), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("button", {
+    className: "p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none",
+    onClick: function onClick() {
+      return setShowModal(false);
+    }
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
+    className: "bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none"
+  }, "\xD7"))), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: "relative p-6 flex-auto"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("p", {
+    className: "my-4 text-gray-600 text-lg leading-relaxed"
+  }, "I always felt like I could do anything. That\u2019s the main thing people are controlled by! Thoughts- their perception of themselves! They're slowed down by their perception of themselves. If you're taught you can\u2019t do anything, you won\u2019t do anything. I was taught I could do everything.")), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: "flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("button", {
+    className: "text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1",
+    type: "button",
+    style: {
+      transition: "all .15s ease"
+    },
+    onClick: function onClick() {
+      return setShowModal(false);
+    }
+  }, "Close"), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("button", {
+    className: "bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1",
+    type: "button",
+    style: {
+      transition: "all .15s ease"
+    },
+    onClick: function onClick() {
+      return setShowModal(false);
+    }
+  }, "Save Changes"))))), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: "opacity-25 fixed inset-0 z-40 bg-black"
+  })) : null);
+}
 // CONCATENATED MODULE: ./src/Flags/Flag.js
 
 
@@ -2048,6 +2130,7 @@ EsxiOS_EsxiOS.propTypes = {
 
 
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
