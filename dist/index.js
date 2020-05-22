@@ -1346,6 +1346,7 @@ var Content_Content = function Content(_ref) {
   var base = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: classnames_default()("mx-auto px-4 sm:px-6 md:px-8", {
       "max-w-lg": size === "small",
+      "max-w-4xl": size === "regular",
       "max-w-full": size === "full",
       "max-w-7xl": size === "default" || !size,
       "flex-auto": centered
