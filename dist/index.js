@@ -1547,7 +1547,7 @@ var Button_Button = function Button(_ref) {
   }), label, iconAfter && Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter, {
     className: "ml-2 transition ease-in-out duration-150"
   }));
-  var ButtonClasses = cx("inline-flex items-center px-6 h-10 border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150", Button_defineProperty({
+  var ButtonClasses = cx("inline-flex items-center px-8 h-10 leading-10 border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150", Button_defineProperty({
     disabled: disabled,
     default: !type
   }, type, Boolean(type)));

@@ -35,6 +35,10 @@ If you want to develop a new component or make changes to one, you might want to
 
 `npm link`
 
+You'll need to link React too to avoid conflicts
+
+`npm link path-to-your-project/node_modules/react` 
+
 Then go to the project where you want to use Metal UI and run:
 
 `npm link @maxihost/metal-ui`
