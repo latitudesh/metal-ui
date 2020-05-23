@@ -1491,8 +1491,9 @@ var Dropdown_Dropdown = function Dropdown(_ref2) {
     ref: dropdown,
     className: bind_default()("relative inline-block text-left z-50", className)
   }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(children, {
-    onClick: function onClick() {
-      return setOpen(!open);
+    onClick: function onClick(e) {
+      e.stopPropagation();
+      setOpen(!open);
     }
   }), open && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Dropdown_DropdownContent, {
     id: "dropdown-content"
