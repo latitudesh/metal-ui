@@ -1254,7 +1254,7 @@ Table_Table.HeaderCell = function (_ref4) {
   var children = _ref4.children,
       className = _ref4.className;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("th", {
-    className: classnames_default()("px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider", className)
+    className: classnames_default()("px-6 py-2 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider", className)
   }, children);
 };
 
@@ -1456,7 +1456,7 @@ var Dropdown_Dropdown = function Dropdown(_ref2) {
 
       var _content = portal.current.getBoundingClientRect();
 
-      var paddingTop = 10;
+      var paddingTop = 8;
 
       if (position === "LeftTop") {
         setDropdownPosition({
@@ -1544,11 +1544,11 @@ var Button_Button = function Button(_ref) {
   var minimal = appearance === "minimal";
   var cx = bind_default.a.bind(minimal ? minimalTypes : buttonTypes);
   var ButtonContent = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, iconBefore && Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore, {
-    className: "mr-3 transition ease-in-out duration-150"
+    className: "mr-2 transition ease-in-out duration-150"
   }), label, iconAfter && Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter, {
-    className: "ml-3 transition ease-in-out duration-150"
+    className: "ml-2 transition ease-in-out duration-150"
   }));
-  var ButtonClasses = cx("inline-flex items-center px-3 py-1.5 border text-sm leading-5 font-medium rounded focus:outline-none transition ease-in-out duration-150", Button_defineProperty({
+  var ButtonClasses = cx("inline-flex items-center px-8 h-10 leading-10 border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150", Button_defineProperty({
     disabled: disabled,
     default: !type
   }, type, Boolean(type)));
@@ -1613,7 +1613,7 @@ var Box_Box = function Box(_ref) {
     className: classnames_default()("overflow-hidden", className, (_classNames = {
       flex: Boolean(flex),
       "bg-white": !Boolean(backgroundColor)
-    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 shadow rounded-sm", Boolean(rootCard)), Box_defineProperty(_classNames, "px-4 py-5 sm:px-6 sm:py-4", !Boolean(noPadding)), _classNames))
+    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 shadow rounded-sm", Boolean(rootCard)), Box_defineProperty(_classNames, "px-6 py-4", !Boolean(noPadding)), _classNames))
   }, children);
 };
 
@@ -1677,7 +1677,7 @@ Menu_Menu.Item = function (_ref3) {
   var content = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, iconBefore && Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore, {
     className: "mr-2 transition ease-in-out duration-150"
   }), children, iconAfter && Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter, {
-    className: "mr-2 transition ease-in-out duration-150"
+    className: "ml-2 transition ease-in-out duration-150"
   }));
   var classes = cx("flex text-left min-w-full px-4 py-2 text-sm leading-5 focus:outline-none focus:bg-gray-100 hover:bg-gray-100", Menu_defineProperty({
     iconAfter: iconAfter,
@@ -1753,7 +1753,7 @@ Skeleton_Skeleton.defaultProps = {
 
 var Flag_Flag = function Flag(_ref) {
   var _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 256 : _ref$size,
+      size = _ref$size === void 0 ? 40 : _ref$size,
       children = _ref.children;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
     width: "".concat(size, "px"),

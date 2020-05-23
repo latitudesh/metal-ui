@@ -46,7 +46,7 @@ const Dropdown = ({ content, position, children, className }) => {
     if (open) {
       const button = dropdown.current.getBoundingClientRect();
       const content = portal.current.getBoundingClientRect();
-      const paddingTop = 10;
+      const paddingTop = 8;
 
       if (position === "LeftTop") {
         setDropdownPosition({

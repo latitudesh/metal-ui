@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Flag = ({
-  size = 256,
+  size = 40,
   children
 }) => {
   return (

@@ -43,7 +43,7 @@ Menu.Item = ({
       {children}
       {iconAfter &&
         cloneElement(iconAfter, {
-          className: "mr-2 transition ease-in-out duration-150",
+          className: "ml-2 transition ease-in-out duration-150",
         })}
     </>
   );

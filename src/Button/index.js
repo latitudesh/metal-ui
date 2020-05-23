@@ -42,18 +42,18 @@ const Button = ({
     <>
       {iconBefore &&
         cloneElement(iconBefore, {
-          className: "mr-3 transition ease-in-out duration-150",
+          className: "mr-2 transition ease-in-out duration-150",
         })}
       {label}
       {iconAfter &&
         cloneElement(iconAfter, {
-          className: "ml-3 transition ease-in-out duration-150",
+          className: "ml-2 transition ease-in-out duration-150",
         })}
     </>
   );
 
   const ButtonClasses = cx(
-    "inline-flex items-center px-3 py-1.5 border text-sm leading-5 font-medium rounded focus:outline-none transition ease-in-out duration-150",
+    "inline-flex items-center px-8 h-10 leading-10 border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150",
     {
       disabled: disabled,
       default: !type,
