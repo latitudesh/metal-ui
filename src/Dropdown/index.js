@@ -85,7 +85,12 @@ const Dropdown = ({ content, position, children, className }) => {
       ref={dropdown}
       className={classNames("relative inline-block text-left z-50", className)}
     >
-      {cloneElement(children, { onClick: () => setOpen(!open) })}
+      {cloneElement(children, {
+        onClick: (e) => {
+          e.stopPropagation();
+          setOpen(!open);
+        },
+      })}
       {open && (
         <DropdownContent id="dropdown-content">
           <div
