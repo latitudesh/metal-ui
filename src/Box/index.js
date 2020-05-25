@@ -8,6 +8,7 @@ const Box = ({
   justifyContent,
   backgroundColor,
   flexDirection,
+  flexWrap,
   children,
   className,
   rootCard,
@@ -24,6 +25,7 @@ const Box = ({
         [`flex-${flexDirection}`]: Boolean(flexDirection),
         [`mb-4 shadow rounded-sm`]: Boolean(rootCard),
         [`px-6 py-4`]: !Boolean(noPadding),
+        [`flex-${flexWrap}`]: Boolean(flexWrap)
       })}
     >
       {children}
@@ -41,6 +43,7 @@ Box.propTypes = {
   className: PropTypes.string,
   rootCard: PropTypes.bool,
   noPadding: PropTypes.bool,
+  flexWrap: PropTypes.string
 };
 
 export default Box;
