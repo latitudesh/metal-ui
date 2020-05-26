@@ -1346,6 +1346,7 @@ var Content_Content = function Content(_ref) {
   var base = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: classnames_default()("mx-auto px-4 sm:px-6 md:px-8", {
       "max-w-lg": size === "small",
+      "max-w-4xl": size === "regular",
       "max-w-full": size === "full",
       "max-w-7xl": size === "default" || !size,
       "flex-auto": centered
@@ -1605,6 +1606,7 @@ var Box_Box = function Box(_ref) {
       justifyContent = _ref.justifyContent,
       backgroundColor = _ref.backgroundColor,
       flexDirection = _ref.flexDirection,
+      flexWrap = _ref.flexWrap,
       children = _ref.children,
       className = _ref.className,
       rootCard = _ref.rootCard,
@@ -1613,7 +1615,7 @@ var Box_Box = function Box(_ref) {
     className: classnames_default()("overflow-hidden", className, (_classNames = {
       flex: Boolean(flex),
       "bg-white": !Boolean(backgroundColor)
-    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 shadow rounded-sm", Boolean(rootCard)), Box_defineProperty(_classNames, "px-6 py-4", !Boolean(noPadding)), _classNames))
+    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 shadow rounded-sm", Boolean(rootCard)), Box_defineProperty(_classNames, "px-6 py-4", !Boolean(noPadding)), Box_defineProperty(_classNames, "flex-".concat(flexWrap), Boolean(flexWrap)), _classNames))
   }, children);
 };
 
@@ -1626,7 +1628,8 @@ Box_Box.propTypes = {
   children: prop_types_default.a.node,
   className: prop_types_default.a.string,
   rootCard: prop_types_default.a.bool,
-  noPadding: prop_types_default.a.bool
+  noPadding: prop_types_default.a.bool,
+  flexWrap: prop_types_default.a.string
 };
 /* harmony default export */ var src_Box = (Box_Box);
 // CONCATENATED MODULE: ./src/Menu/index.js

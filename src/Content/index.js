@@ -9,6 +9,7 @@ const Content = ({ children, size, centered, className }) => {
         "mx-auto px-4 sm:px-6 md:px-8",
         {
           "max-w-lg": size === "small",
+          "max-w-4xl": size === "regular",
           "max-w-full": size === "full",
           "max-w-7xl": size === "default" || !size,
           "flex-auto": centered,
