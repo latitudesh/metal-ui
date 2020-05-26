@@ -1199,6 +1199,7 @@ __webpack_require__.d(__webpack_exports__, "Dropdown", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "Button", function() { return /* reexport */ src_Button; });
 __webpack_require__.d(__webpack_exports__, "Box", function() { return /* reexport */ src_Box; });
 __webpack_require__.d(__webpack_exports__, "Menu", function() { return /* reexport */ src_Menu; });
+__webpack_require__.d(__webpack_exports__, "SideSheet", function() { return /* reexport */ src_SideSheet; });
 __webpack_require__.d(__webpack_exports__, "Skeleton", function() { return /* reexport */ src_Skeleton; });
 __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
@@ -1707,6 +1708,164 @@ Menu_Menu.Item = function (_ref3) {
 };
 
 /* harmony default export */ var src_Menu = (Menu_Menu);
+// CONCATENATED MODULE: ./src/SideSheet/index.js
+function SideSheet_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function SideSheet_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { SideSheet_ownKeys(Object(source), true).forEach(function (key) { SideSheet_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { SideSheet_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function SideSheet_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function SideSheet_slicedToArray(arr, i) { return SideSheet_arrayWithHoles(arr) || SideSheet_iterableToArrayLimit(arr, i) || SideSheet_unsupportedIterableToArray(arr, i) || SideSheet_nonIterableRest(); }
+
+function SideSheet_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function SideSheet_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return SideSheet_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return SideSheet_arrayLikeToArray(o, minLen); }
+
+function SideSheet_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function SideSheet_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function SideSheet_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var SideSheet_SideSheetContent = function SideSheetContent(_ref) {
+  var id = _ref.id,
+      children = _ref.children;
+  if (typeof window === "undefined") return null;
+  var element = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(document.getElementById(id) || document.createElement("div"));
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (!document.getElementById(id)) {
+      element.current.id = id;
+      document.body.appendChild(element.current);
+    }
+
+    return function () {
+      if (element.current.parentElement) {
+        element.current.parentElement.removeChild(element.current);
+      }
+    };
+  }, [id]);
+  return Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
+};
+
+var SideSheet_SideSheet = function SideSheet(_ref2) {
+  var content = _ref2.content,
+      _ref2$position = _ref2.position,
+      position = _ref2$position === void 0 ? "right" : _ref2$position,
+      children = _ref2.children,
+      className = _ref2.className,
+      _ref2$width = _ref2.width,
+      width = _ref2$width === void 0 ? 200 : _ref2$width,
+      _ref2$height = _ref2.height,
+      height = _ref2$height === void 0 ? 200 : _ref2$height;
+  var sideSheet = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
+  var portal = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
+
+  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+      _useState2 = SideSheet_slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+      _useState4 = SideSheet_slicedToArray(_useState3, 2),
+      transitionIn = _useState4[0],
+      setTransitionIn = _useState4[1];
+
+  var _useState5 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
+      _useState6 = SideSheet_slicedToArray(_useState5, 2),
+      sideSheetPosition = _useState6[0],
+      setSideSheetPosition = _useState6[1];
+
+  var onOutSideClick = function onOutSideClick(event) {
+    if (sideSheet.current.contains(event.target) || portal.current && portal.current.contains(event.target)) {
+      return;
+    } else {
+      setTransitionIn(false);
+      setTimeout(function () {
+        return setOpen(false);
+      }, 500);
+    }
+  };
+
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (position === "left") {
+      setSideSheetPosition({
+        left: transitionIn ? 0 : width * -1,
+        top: 0,
+        bottom: 0,
+        width: width
+      });
+    } else if (position === "top") {
+      setSideSheetPosition({
+        left: 0,
+        top: transitionIn ? 0 : height * -1,
+        width: "100vw",
+        height: height
+      });
+    } else if (position === "bottom") {
+      setSideSheetPosition({
+        left: 0,
+        bottom: transitionIn ? 0 : height * -1,
+        width: "100vw",
+        height: height
+      });
+    } else {
+      setSideSheetPosition({
+        right: transitionIn ? 0 : width * -1,
+        top: 0,
+        bottom: 0,
+        width: width
+      });
+    }
+  }, [open, transitionIn]);
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    document.addEventListener("mousedown", onOutSideClick);
+    return function () {
+      document.removeEventListener("mousedown", onOutSideClick);
+    };
+  }, []);
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    ref: sideSheet,
+    className: bind_default()("relative inline-block text-left", className)
+  }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(children, {
+    onClick: function onClick(e) {
+      e.stopPropagation();
+      setTransitionIn(false);
+
+      if (!open) {
+        setOpen(true);
+        setTimeout(function () {
+          return setTransitionIn(true);
+        }, 0);
+      }
+    }
+  }), open && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(SideSheet_SideSheetContent, {
+    id: "sidesheet-content"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: bind_default()("fixed inset-0 opacity-25 duration-300 delay-200 transition", {
+      "bg-black": transitionIn,
+      "bg-transparent": !transitionIn
+    })
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    ref: portal,
+    style: SideSheet_objectSpread({}, sideSheetPosition),
+    className: "fixed z-200 min-w-0 bg-white duration-300 delay-200 transition-all"
+  }, content)));
+};
+
+SideSheet_SideSheet.propTypes = {
+  content: prop_types_default.a.element,
+  position: prop_types_default.a.string,
+  children: prop_types_default.a.element,
+  className: prop_types_default.a.string,
+  width: prop_types_default.a.string,
+  height: prop_types_default.a.string
+};
+/* harmony default export */ var src_SideSheet = (SideSheet_SideSheet);
 // EXTERNAL MODULE: ./node_modules/styled-jsx/style.js
 var style = __webpack_require__(5);
 var style_default = /*#__PURE__*/__webpack_require__.n(style);
@@ -2049,6 +2208,7 @@ EsxiOS_EsxiOS.propTypes = {
 
 
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
