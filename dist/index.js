@@ -1781,6 +1781,8 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
       setSideSheetPosition = _useState6[1];
 
   var onOutSideClick = function onOutSideClick(event) {
+    event.stopPropagation();
+
     if (sideSheet.current.contains(event.target) || portal.current && portal.current.contains(event.target)) {
       return;
     } else {
@@ -1834,6 +1836,7 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
   }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(children, {
     onClick: function onClick(e) {
       e.stopPropagation();
+      e.preventDefault();
       setTransitionIn(false);
 
       if (!open) {
@@ -1846,14 +1849,14 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
   }), open && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(SideSheet_SideSheetContent, {
     id: "sidesheet-content"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    className: bind_default()("fixed inset-0 opacity-25 duration-300 delay-200 transition", {
+    className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
       "bg-black": transitionIn,
       "bg-transparent": !transitionIn
     })
   }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     ref: portal,
     style: SideSheet_objectSpread({}, sideSheetPosition),
-    className: "fixed z-200 min-w-0 bg-white duration-300 delay-200 transition-all"
+    className: "fixed z-50 min-w-0 bg-white duration-300 delay-200 transition-all"
   }, content)));
 };
 

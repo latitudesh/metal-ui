@@ -36,17 +36,18 @@ const SideSheet = ({
   const sideSheet = useRef();
   const portal = useRef();
   const [open, setOpen] = useState(false);
-  const [transitionIn, setTransitionIn] = useState(false);
+  const [transition, setTransition] = useState(false);
   const [sideSheetPosition, setSideSheetPosition] = useState(null);
 
   const onOutSideClick = (event) => {
+    event.stopPropagation();
     if (
       sideSheet.current.contains(event.target) ||
       (portal.current && portal.current.contains(event.target))
     ) {
       return;
     } else {
-      setTransitionIn(false);
+      setTransition(false);
       setTimeout(() => setOpen(false), 500);
     }
   };
@@ -54,7 +55,7 @@ const SideSheet = ({
   useEffect(() => {
     if (position === "left") {
       setSideSheetPosition({
-        left: transitionIn ? 0 : width * -1,
+        left: transition ? 0 : width * -1,
         top: 0,
         bottom: 0,
         width: width,
@@ -62,26 +63,26 @@ const SideSheet = ({
     } else if (position === "top") {
       setSideSheetPosition({
         left: 0,
-        top: transitionIn ? 0 : height * -1,
+        top: transition ? 0 : height * -1,
         width: "100vw",
         height: height,
       });
     } else if (position === "bottom") {
       setSideSheetPosition({
         left: 0,
-        bottom: transitionIn ? 0 : height * -1,
+        bottom: transition ? 0 : height * -1,
         width: "100vw",
         height: height,
       });
     } else {
       setSideSheetPosition({
-        right: transitionIn ? 0 : width * -1,
+        right: transition ? 0 : width * -1,
         top: 0,
         bottom: 0,
         width: width,
       });
     }
-  }, [open, transitionIn]);
+  }, [open, transition]);
 
   useEffect(() => {
     document.addEventListener("mousedown", onOutSideClick);
@@ -99,10 +100,10 @@ const SideSheet = ({
       {cloneElement(children, {
         onClick: (e) => {
           e.stopPropagation();
-          setTransitionIn(false);
+          setTransition(false);
           if (!open) {
             setOpen(true);
-            setTimeout(() => setTransitionIn(true), 0);
+            setTimeout(() => setTransition(true), 0);
           }
         },
       })}
@@ -110,10 +111,10 @@ const SideSheet = ({
         <SideSheetContent id="sidesheet-content">
           <div
             className={classNames(
-              "fixed inset-0 opacity-25 duration-300 delay-200 transition",
+              "fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition",
               {
-                "bg-black": transitionIn,
-                "bg-transparent": !transitionIn,
+                "bg-black": transition,
+                "bg-transparent": !transition,
               }
             )}
           />
@@ -123,7 +124,7 @@ const SideSheet = ({
               ...sideSheetPosition,
             }}
             className={
-              "fixed z-200 min-w-0 bg-white duration-300 delay-200 transition-all"
+              "fixed z-50 min-w-0 bg-white duration-300 delay-200 transition-all"
             }
           >
             {content}
