@@ -1772,8 +1772,8 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
 
   var _useState3 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
       _useState4 = SideSheet_slicedToArray(_useState3, 2),
-      transitionIn = _useState4[0],
-      setTransitionIn = _useState4[1];
+      transition = _useState4[0],
+      setTransition = _useState4[1];
 
   var _useState5 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
       _useState6 = SideSheet_slicedToArray(_useState5, 2),
@@ -1786,7 +1786,7 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
     if (sideSheet.current.contains(event.target) || portal.current && portal.current.contains(event.target)) {
       return;
     } else {
-      setTransitionIn(false);
+      setTransition(false);
       setTimeout(function () {
         return setOpen(false);
       }, 500);
@@ -1796,7 +1796,7 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     if (position === "left") {
       setSideSheetPosition({
-        left: transitionIn ? 0 : width * -1,
+        left: transition ? 0 : width * -1,
         top: 0,
         bottom: 0,
         width: width
@@ -1804,26 +1804,26 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
     } else if (position === "top") {
       setSideSheetPosition({
         left: 0,
-        top: transitionIn ? 0 : height * -1,
+        top: transition ? 0 : height * -1,
         width: "100vw",
         height: height
       });
     } else if (position === "bottom") {
       setSideSheetPosition({
         left: 0,
-        bottom: transitionIn ? 0 : height * -1,
+        bottom: transition ? 0 : height * -1,
         width: "100vw",
         height: height
       });
     } else {
       setSideSheetPosition({
-        right: transitionIn ? 0 : width * -1,
+        right: transition ? 0 : width * -1,
         top: 0,
         bottom: 0,
         width: width
       });
     }
-  }, [open, transitionIn]);
+  }, [open, transition]);
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     document.addEventListener("mousedown", onOutSideClick);
     return function () {
@@ -1836,13 +1836,12 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
   }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(children, {
     onClick: function onClick(e) {
       e.stopPropagation();
-      e.preventDefault();
-      setTransitionIn(false);
+      setTransition(false);
 
       if (!open) {
         setOpen(true);
         setTimeout(function () {
-          return setTransitionIn(true);
+          return setTransition(true);
         }, 0);
       }
     }
@@ -1850,8 +1849,8 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
     id: "sidesheet-content"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
-      "bg-black": transitionIn,
-      "bg-transparent": !transitionIn
+      "bg-black": transition,
+      "bg-transparent": !transition
     })
   }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     ref: portal,
