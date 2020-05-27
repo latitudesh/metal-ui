@@ -2,6 +2,28 @@ import React, { useState, useEffect, useRef, cloneElement } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
+import Box from "../Box";
+import Button from "../Button";
+
+function XIcon() {
+  return (
+    <svg
+      fill="none"
+      className="text-gray-600"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      width="16px"
+      height="16px"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M6 18L18 6M6 6l12 12"
+      ></path>
+    </svg>
+  );
+}
 
 const SideSheetContent = ({ id, children }) => {
   if (typeof window === "undefined") return null;
@@ -30,8 +52,7 @@ const SideSheet = ({
   position = "right",
   children,
   className,
-  width = 200,
-  height = 200,
+  width = 400,
 }) => {
   const sideSheet = useRef();
   const portal = useRef();
@@ -80,6 +101,7 @@ const SideSheet = ({
         top: 0,
         bottom: 0,
         width: width,
+        height: "calc(100% - 20px)"
       });
     }
   }, [open, transition]);
@@ -108,12 +130,12 @@ const SideSheet = ({
         },
       })}
       {open && (
-        <SideSheetContent id="sidesheet-content">
+        <SideSheetContent id="sidesheet">
           <div
             className={classNames(
               "fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition",
               {
-                "bg-black": transition,
+                "bg-gray-300": transition,
                 "bg-transparent": !transition,
               }
             )}
@@ -124,10 +146,43 @@ const SideSheet = ({
               ...sideSheetPosition,
             }}
             className={
-              "fixed z-50 min-w-0 bg-white duration-300 delay-200 transition-all"
+              "fixed z-50 min-w-0 bg-white duration-300 delay-200 transition-all h-full flex flex-col shadow-xl m-2 rounded"
             }
           >
-            {content}
+            <Box
+              flex
+              alignItems="center"
+              className="relative border-b border-gray-200 rounded rounded-b-none"
+            >
+              <div className="text-gray-600 flex-auto truncate leading-6">
+                Title
+              </div>
+              <Box
+                flex
+                backgroundColor="transparent"
+                className="cursor-pointer"
+                noPadding
+              >
+                <XIcon />
+              </Box>
+            </Box>
+            <Box
+              flex
+              flexDirection="col"
+              className="sidesheet-content relative overflow-y-auto flex-1"
+            >
+              <Box noPadding flex flexDirection="col" className="h-full">
+                {content}
+              </Box>
+            </Box>
+            <Box
+              flex
+              justifyContent="center"
+              alignItems="center"
+              className="sidesheet-action h-16 border-t border-gray-200 relative flex-initial rounded rounded-t-none"
+            >
+              <Button label="Action" />
+            </Box>
           </div>
         </SideSheetContent>
       )}
