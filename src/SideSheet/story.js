@@ -10,7 +10,7 @@ storiesOf("SideSheet", module)
     </div>
   ))
   .add("default", () => (
-    <SideSheet content={<p>DEFAULT</p>}>
+    <SideSheet content={<span className="text-gray-600">Content</span>}>
       <Button type="secondary" label="click here" />
     </SideSheet>
   ))
