@@ -1,5 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 import SideSheet from "./index";
 import Button from "../Button";
 
@@ -10,7 +11,12 @@ storiesOf("SideSheet", module)
     </div>
   ))
   .add("default", () => (
-    <SideSheet content={<span className="text-gray-600">Content</span>}>
+    <SideSheet
+      title={"Title here"}
+      buttonText={"Action"}
+      onButtonClick={action("clicked")}
+      content={<span className="text-gray-600">Content</span>}
+    >
       <Button type="secondary" label="click here" />
     </SideSheet>
   ));

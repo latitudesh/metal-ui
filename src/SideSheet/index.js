@@ -47,7 +47,15 @@ const SideSheetContent = ({ id, children }) => {
   return createPortal(children, element.current);
 };
 
-const SideSheet = ({ content, children, className, width = 400 }) => {
+const SideSheet = ({
+  content,
+  onButtonClick,
+  buttonText,
+  title,
+  children,
+  className,
+  width = 400,
+}) => {
   const sideSheet = useRef();
   const portal = useRef();
   const [open, setOpen] = useState(false);
@@ -62,16 +70,20 @@ const SideSheet = ({ content, children, className, width = 400 }) => {
     ) {
       return;
     } else {
-      setTransition(false);
-      setTimeout(() => setOpen(false), 500);
+      closeTransition();
     }
+  };
+
+  const closeTransition = () => {
+    setTransition(false);
+    setTimeout(() => setOpen(false), 500);
   };
 
   useEffect(() => {
     setSideSheetPosition({
       transition: `transform .4s cubic-bezier(.3,0,0,1)`,
       transform: transition
-        ? `translateX(calc(98vw - ${width}px))`
+        ? `translateX(calc(100vw - ${width}px - 20px))`
         : `translateX(100vw)`,
       top: 0,
       bottom: 0,
@@ -129,7 +141,7 @@ const SideSheet = ({ content, children, className, width = 400 }) => {
               className="relative border-b border-gray-200 rounded rounded-b-none"
             >
               <div className="text-gray-600 flex-auto truncate leading-6">
-                Title
+                {title}
               </div>
               <Box
                 flex
@@ -137,7 +149,9 @@ const SideSheet = ({ content, children, className, width = 400 }) => {
                 className="cursor-pointer"
                 noPadding
               >
-                <XIcon />
+                <div onClick={() => closeTransition()}>
+                  <XIcon />
+                </div>
               </Box>
             </Box>
             <Box
@@ -155,7 +169,7 @@ const SideSheet = ({ content, children, className, width = 400 }) => {
               alignItems="center"
               className="sidesheet-action h-16 border-t border-gray-200 relative flex-initial rounded rounded-t-none"
             >
-              <Button label="Action" />
+              <Button onClick={() => onButtonClick()} label={buttonText} />
             </Box>
           </div>
         </SideSheetContent>
