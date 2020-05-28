@@ -47,13 +47,7 @@ const SideSheetContent = ({ id, children }) => {
   return createPortal(children, element.current);
 };
 
-const SideSheet = ({
-  content,
-  position = "right",
-  children,
-  className,
-  width = 400,
-}) => {
+const SideSheet = ({ content, children, className, width = 400 }) => {
   const sideSheet = useRef();
   const portal = useRef();
   const [open, setOpen] = useState(false);
@@ -74,36 +68,16 @@ const SideSheet = ({
   };
 
   useEffect(() => {
-    if (position === "left") {
-      setSideSheetPosition({
-        left: transition ? 0 : width * -1,
-        top: 0,
-        bottom: 0,
-        width: width,
-      });
-    } else if (position === "top") {
-      setSideSheetPosition({
-        left: 0,
-        top: transition ? 0 : height * -1,
-        width: "100vw",
-        height: height,
-      });
-    } else if (position === "bottom") {
-      setSideSheetPosition({
-        left: 0,
-        bottom: transition ? 0 : height * -1,
-        width: "100vw",
-        height: height,
-      });
-    } else {
-      setSideSheetPosition({
-        right: transition ? 0 : width * -1,
-        top: 0,
-        bottom: 0,
-        width: width,
-        height: "calc(100% - 20px)"
-      });
-    }
+    setSideSheetPosition({
+      transition: `transform .4s cubic-bezier(.3,0,0,1)`,
+      transform: transition
+        ? `translateX(calc(98vw - ${width}px))`
+        : `translateX(100vw)`,
+      top: 0,
+      bottom: 0,
+      width: width,
+      height: "calc(100% - 20px)",
+    });
   }, [open, transition]);
 
   useEffect(() => {
@@ -146,7 +120,7 @@ const SideSheet = ({
               ...sideSheetPosition,
             }}
             className={
-              "fixed z-50 min-w-0 bg-white duration-300 delay-200 transition-all h-full flex flex-col shadow-xl m-2 rounded"
+              "fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
             }
           >
             <Box
@@ -192,11 +166,9 @@ const SideSheet = ({
 
 SideSheet.propTypes = {
   content: PropTypes.element,
-  position: PropTypes.string,
   children: PropTypes.element,
   className: PropTypes.string,
   width: PropTypes.string,
-  height: PropTypes.string,
 };
 
 export default SideSheet;
