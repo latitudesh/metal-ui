@@ -156,7 +156,7 @@ const SideSheet = ({
             <Box
               flex
               flexDirection="col"
-              className="sidesheet-content relative overflow-y-auto flex-1"
+              className="sidesheet-content relative overflow-y-auto flex-1 rounded"
             >
               <Box noPadding flex flexDirection="col" className="h-full">
                 {content}

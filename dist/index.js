@@ -1732,6 +1732,24 @@ function SideSheet_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+function XIcon() {
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
+    fill: "none",
+    className: "text-gray-600",
+    stroke: "currentColor",
+    viewBox: "0 0 24 24",
+    width: "16px",
+    height: "16px"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "2",
+    d: "M6 18L18 6M6 6l12 12"
+  }));
+}
+
 var SideSheet_SideSheetContent = function SideSheetContent(_ref) {
   var id = _ref.id,
       children = _ref.children;
@@ -1754,14 +1772,12 @@ var SideSheet_SideSheetContent = function SideSheetContent(_ref) {
 
 var SideSheet_SideSheet = function SideSheet(_ref2) {
   var content = _ref2.content,
-      _ref2$position = _ref2.position,
-      position = _ref2$position === void 0 ? "right" : _ref2$position,
+      action = _ref2.action,
+      title = _ref2.title,
       children = _ref2.children,
       className = _ref2.className,
       _ref2$width = _ref2.width,
-      width = _ref2$width === void 0 ? 200 : _ref2$width,
-      _ref2$height = _ref2.height,
-      height = _ref2$height === void 0 ? 200 : _ref2$height;
+      width = _ref2$width === void 0 ? 400 : _ref2$width;
   var sideSheet = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
   var portal = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
 
@@ -1786,43 +1802,26 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
     if (sideSheet.current.contains(event.target) || portal.current && portal.current.contains(event.target)) {
       return;
     } else {
-      setTransition(false);
-      setTimeout(function () {
-        return setOpen(false);
-      }, 500);
+      closeTransition();
     }
   };
 
+  var closeTransition = function closeTransition() {
+    setTransition(false);
+    setTimeout(function () {
+      return setOpen(false);
+    }, 500);
+  };
+
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
-    if (position === "left") {
-      setSideSheetPosition({
-        left: transition ? 0 : width * -1,
-        top: 0,
-        bottom: 0,
-        width: width
-      });
-    } else if (position === "top") {
-      setSideSheetPosition({
-        left: 0,
-        top: transition ? 0 : height * -1,
-        width: "100vw",
-        height: height
-      });
-    } else if (position === "bottom") {
-      setSideSheetPosition({
-        left: 0,
-        bottom: transition ? 0 : height * -1,
-        width: "100vw",
-        height: height
-      });
-    } else {
-      setSideSheetPosition({
-        right: transition ? 0 : width * -1,
-        top: 0,
-        bottom: 0,
-        width: width
-      });
-    }
+    setSideSheetPosition({
+      transition: "transform .4s cubic-bezier(.3,0,0,1)",
+      transform: transition ? "translateX(calc(100vw - ".concat(width, "px - 20px))") : "translateX(100vw)",
+      top: 0,
+      bottom: 0,
+      width: width,
+      height: "calc(100% - 20px)"
+    });
   }, [open, transition]);
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     document.addEventListener("mousedown", onOutSideClick);
@@ -1846,26 +1845,53 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
       }
     }
   }), open && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(SideSheet_SideSheetContent, {
-    id: "sidesheet-content"
+    id: "sidesheet"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
-      "bg-black": transition,
+      "bg-gray-300": transition,
       "bg-transparent": !transition
     })
   }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     ref: portal,
     style: SideSheet_objectSpread({}, sideSheetPosition),
-    className: "fixed z-50 min-w-0 bg-white duration-300 delay-200 transition-all"
-  }, content)));
+    className: "fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Box, {
+    flex: true,
+    alignItems: "center",
+    className: "relative border-b border-gray-200 rounded rounded-b-none"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: "text-gray-600 flex-auto truncate leading-6"
+  }, title), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Box, {
+    flex: true,
+    backgroundColor: "transparent",
+    className: "cursor-pointer",
+    noPadding: true
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    onClick: function onClick() {
+      return closeTransition();
+    }
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(XIcon, null)))), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Box, {
+    flex: true,
+    flexDirection: "col",
+    className: "sidesheet-content relative overflow-y-auto flex-1 rounded"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Box, {
+    noPadding: true,
+    flex: true,
+    flexDirection: "col",
+    className: "h-full"
+  }, content)), action && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Box, {
+    flex: true,
+    justifyContent: "center",
+    alignItems: "center",
+    className: "sidesheet-action h-16 border-t border-gray-200 relative flex-initial rounded rounded-t-none"
+  }, action))));
 };
 
 SideSheet_SideSheet.propTypes = {
   content: prop_types_default.a.element,
-  position: prop_types_default.a.string,
   children: prop_types_default.a.element,
   className: prop_types_default.a.string,
-  width: prop_types_default.a.string,
-  height: prop_types_default.a.string
+  width: prop_types_default.a.string
 };
 /* harmony default export */ var src_SideSheet = (SideSheet_SideSheet);
 // EXTERNAL MODULE: ./node_modules/styled-jsx/style.js
