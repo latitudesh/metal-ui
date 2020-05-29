@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 import Box from "../Box";
-import Button from "../Button";
 
 function XIcon() {
   return (
@@ -25,7 +24,7 @@ function XIcon() {
   );
 }
 
-const SideSheetContent = ({ id, children }) => {
+const SidesheetContent = ({ id, children }) => {
   if (typeof window === "undefined") return null;
 
   let element = useRef(
@@ -47,7 +46,7 @@ const SideSheetContent = ({ id, children }) => {
   return createPortal(children, element.current);
 };
 
-const SideSheet = ({
+const Sidesheet = ({
   content,
   action,
   title,
@@ -59,7 +58,7 @@ const SideSheet = ({
   const portal = useRef();
   const [open, setOpen] = useState(false);
   const [transition, setTransition] = useState(false);
-  const [sideSheetPosition, setSideSheetPosition] = useState(null);
+  const [sideSheetPosition, setSidesheetPosition] = useState(null);
 
   const onOutSideClick = (event) => {
     event.stopPropagation();
@@ -79,7 +78,7 @@ const SideSheet = ({
   };
 
   useEffect(() => {
-    setSideSheetPosition({
+    setSidesheetPosition({
       transition: `transform .4s cubic-bezier(.3,0,0,1)`,
       transform: transition
         ? `translateX(calc(100vw - ${width}px - 20px))`
@@ -115,7 +114,7 @@ const SideSheet = ({
         },
       })}
       {open && (
-        <SideSheetContent id="sidesheet">
+        <SidesheetContent id="sidesheet">
           <div
             className={classNames(
               "fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition",
@@ -173,17 +172,17 @@ const SideSheet = ({
               </Box>
             )}
           </div>
-        </SideSheetContent>
+        </SidesheetContent>
       )}
     </div>
   );
 };
 
-SideSheet.propTypes = {
+Sidesheet.propTypes = {
   content: PropTypes.element,
   children: PropTypes.element,
   className: PropTypes.string,
   width: PropTypes.string,
 };
 
-export default SideSheet;
+export default Sidesheet;

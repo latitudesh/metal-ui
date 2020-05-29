@@ -1199,7 +1199,7 @@ __webpack_require__.d(__webpack_exports__, "Dropdown", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "Button", function() { return /* reexport */ src_Button; });
 __webpack_require__.d(__webpack_exports__, "Box", function() { return /* reexport */ src_Box; });
 __webpack_require__.d(__webpack_exports__, "Menu", function() { return /* reexport */ src_Menu; });
-__webpack_require__.d(__webpack_exports__, "SideSheet", function() { return /* reexport */ src_SideSheet; });
+__webpack_require__.d(__webpack_exports__, "SideSheet", function() { return /* reexport */ SideSheet; });
 __webpack_require__.d(__webpack_exports__, "Skeleton", function() { return /* reexport */ src_Skeleton; });
 __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
@@ -1733,7 +1733,6 @@ function SideSheet_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function XIcon() {
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
     fill: "none",
@@ -1750,7 +1749,7 @@ function XIcon() {
   }));
 }
 
-var SideSheet_SideSheetContent = function SideSheetContent(_ref) {
+var SideSheet_SidesheetContent = function SidesheetContent(_ref) {
   var id = _ref.id,
       children = _ref.children;
   if (typeof window === "undefined") return null;
@@ -1770,7 +1769,7 @@ var SideSheet_SideSheetContent = function SideSheetContent(_ref) {
   return Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
 };
 
-var SideSheet_SideSheet = function SideSheet(_ref2) {
+var SideSheet_Sidesheet = function Sidesheet(_ref2) {
   var content = _ref2.content,
       action = _ref2.action,
       title = _ref2.title,
@@ -1794,7 +1793,7 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
   var _useState5 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
       _useState6 = SideSheet_slicedToArray(_useState5, 2),
       sideSheetPosition = _useState6[0],
-      setSideSheetPosition = _useState6[1];
+      setSidesheetPosition = _useState6[1];
 
   var onOutSideClick = function onOutSideClick(event) {
     event.stopPropagation();
@@ -1814,7 +1813,7 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
   };
 
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
-    setSideSheetPosition({
+    setSidesheetPosition({
       transition: "transform .4s cubic-bezier(.3,0,0,1)",
       transform: transition ? "translateX(calc(100vw - ".concat(width, "px - 20px))") : "translateX(100vw)",
       top: 0,
@@ -1844,7 +1843,7 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
         }, 0);
       }
     }
-  }), open && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(SideSheet_SideSheetContent, {
+  }), open && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(SideSheet_SidesheetContent, {
     id: "sidesheet"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
@@ -1887,13 +1886,13 @@ var SideSheet_SideSheet = function SideSheet(_ref2) {
   }, action))));
 };
 
-SideSheet_SideSheet.propTypes = {
+SideSheet_Sidesheet.propTypes = {
   content: prop_types_default.a.element,
   children: prop_types_default.a.element,
   className: prop_types_default.a.string,
   width: prop_types_default.a.string
 };
-/* harmony default export */ var src_SideSheet = (SideSheet_SideSheet);
+/* harmony default export */ var SideSheet = (SideSheet_Sidesheet);
 // EXTERNAL MODULE: ./node_modules/styled-jsx/style.js
 var style = __webpack_require__(5);
 var style_default = /*#__PURE__*/__webpack_require__.n(style);
