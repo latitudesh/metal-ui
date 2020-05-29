@@ -1199,6 +1199,7 @@ __webpack_require__.d(__webpack_exports__, "Dropdown", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "Button", function() { return /* reexport */ src_Button; });
 __webpack_require__.d(__webpack_exports__, "Box", function() { return /* reexport */ src_Box; });
 __webpack_require__.d(__webpack_exports__, "Menu", function() { return /* reexport */ src_Menu; });
+__webpack_require__.d(__webpack_exports__, "SideSheet", function() { return /* reexport */ SideSheet; });
 __webpack_require__.d(__webpack_exports__, "Skeleton", function() { return /* reexport */ src_Skeleton; });
 __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
@@ -1710,6 +1711,191 @@ Menu_Menu.Item = function (_ref3) {
 };
 
 /* harmony default export */ var src_Menu = (Menu_Menu);
+// CONCATENATED MODULE: ./src/SideSheet/index.js
+function SideSheet_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function SideSheet_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { SideSheet_ownKeys(Object(source), true).forEach(function (key) { SideSheet_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { SideSheet_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function SideSheet_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function SideSheet_slicedToArray(arr, i) { return SideSheet_arrayWithHoles(arr) || SideSheet_iterableToArrayLimit(arr, i) || SideSheet_unsupportedIterableToArray(arr, i) || SideSheet_nonIterableRest(); }
+
+function SideSheet_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function SideSheet_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return SideSheet_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return SideSheet_arrayLikeToArray(o, minLen); }
+
+function SideSheet_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function SideSheet_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function SideSheet_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+function XIcon() {
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
+    fill: "none",
+    className: "text-gray-600",
+    stroke: "currentColor",
+    viewBox: "0 0 24 24",
+    width: "16px",
+    height: "16px"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "2",
+    d: "M6 18L18 6M6 6l12 12"
+  }));
+}
+
+var SideSheet_SidesheetContent = function SidesheetContent(_ref) {
+  var id = _ref.id,
+      children = _ref.children;
+  if (typeof window === "undefined") return null;
+  var element = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(document.getElementById(id) || document.createElement("div"));
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (!document.getElementById(id)) {
+      element.current.id = id;
+      document.body.appendChild(element.current);
+    }
+
+    return function () {
+      if (element.current.parentElement) {
+        element.current.parentElement.removeChild(element.current);
+      }
+    };
+  }, [id]);
+  return Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
+};
+
+var SideSheet_Sidesheet = function Sidesheet(_ref2) {
+  var content = _ref2.content,
+      action = _ref2.action,
+      title = _ref2.title,
+      children = _ref2.children,
+      className = _ref2.className,
+      _ref2$width = _ref2.width,
+      width = _ref2$width === void 0 ? 400 : _ref2$width;
+  var sideSheet = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
+  var portal = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
+
+  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+      _useState2 = SideSheet_slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+      _useState4 = SideSheet_slicedToArray(_useState3, 2),
+      transition = _useState4[0],
+      setTransition = _useState4[1];
+
+  var _useState5 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
+      _useState6 = SideSheet_slicedToArray(_useState5, 2),
+      sideSheetPosition = _useState6[0],
+      setSidesheetPosition = _useState6[1];
+
+  var onOutSideClick = function onOutSideClick(event) {
+    event.stopPropagation();
+
+    if (sideSheet.current.contains(event.target) || portal.current && portal.current.contains(event.target)) {
+      return;
+    } else {
+      closeTransition();
+    }
+  };
+
+  var closeTransition = function closeTransition() {
+    setTransition(false);
+    setTimeout(function () {
+      return setOpen(false);
+    }, 500);
+  };
+
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    setSidesheetPosition({
+      transition: "transform .4s cubic-bezier(.3,0,0,1)",
+      transform: transition ? "translateX(calc(100vw - ".concat(width, "px - 20px))") : "translateX(100vw)",
+      top: 0,
+      bottom: 0,
+      width: width,
+      height: "calc(100% - 20px)"
+    });
+  }, [open, transition]);
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    document.addEventListener("mousedown", onOutSideClick);
+    return function () {
+      document.removeEventListener("mousedown", onOutSideClick);
+    };
+  }, []);
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    ref: sideSheet,
+    className: bind_default()("relative inline-block text-left", className)
+  }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(children, {
+    onClick: function onClick(e) {
+      e.stopPropagation();
+      setTransition(false);
+
+      if (!open) {
+        setOpen(true);
+        setTimeout(function () {
+          return setTransition(true);
+        }, 0);
+      }
+    }
+  }), open && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(SideSheet_SidesheetContent, {
+    id: "sidesheet"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
+      "bg-gray-300": transition,
+      "bg-transparent": !transition
+    })
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    ref: portal,
+    style: SideSheet_objectSpread({}, sideSheetPosition),
+    className: "fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Box, {
+    flex: true,
+    alignItems: "center",
+    className: "relative border-b border-gray-200 rounded rounded-b-none"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: "text-gray-600 flex-auto truncate leading-6"
+  }, title), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Box, {
+    flex: true,
+    backgroundColor: "transparent",
+    className: "cursor-pointer",
+    noPadding: true
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    onClick: function onClick() {
+      return closeTransition();
+    }
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(XIcon, null)))), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Box, {
+    flex: true,
+    flexDirection: "col",
+    className: "sidesheet-content relative overflow-y-auto flex-1 rounded"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Box, {
+    noPadding: true,
+    flex: true,
+    flexDirection: "col",
+    className: "h-full"
+  }, content)), action && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Box, {
+    flex: true,
+    justifyContent: "center",
+    alignItems: "center",
+    className: "sidesheet-action h-16 border-t border-gray-200 relative flex-initial rounded rounded-t-none"
+  }, action))));
+};
+
+SideSheet_Sidesheet.propTypes = {
+  content: prop_types_default.a.element,
+  children: prop_types_default.a.element,
+  className: prop_types_default.a.string,
+  width: prop_types_default.a.string
+};
+/* harmony default export */ var SideSheet = (SideSheet_Sidesheet);
 // EXTERNAL MODULE: ./node_modules/styled-jsx/style.js
 var style = __webpack_require__(5);
 var style_default = /*#__PURE__*/__webpack_require__.n(style);
@@ -2052,6 +2238,7 @@ EsxiOS_EsxiOS.propTypes = {
 
 
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
