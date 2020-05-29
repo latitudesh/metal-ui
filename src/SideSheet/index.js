@@ -49,8 +49,7 @@ const SideSheetContent = ({ id, children }) => {
 
 const SideSheet = ({
   content,
-  onButtonClick,
-  buttonText,
+  action,
   title,
   children,
   className,
@@ -163,14 +162,16 @@ const SideSheet = ({
                 {content}
               </Box>
             </Box>
-            <Box
-              flex
-              justifyContent="center"
-              alignItems="center"
-              className="sidesheet-action h-16 border-t border-gray-200 relative flex-initial rounded rounded-t-none"
-            >
-              <Button onClick={() => onButtonClick()} label={buttonText} />
-            </Box>
+            {action && (
+              <Box
+                flex
+                justifyContent="center"
+                alignItems="center"
+                className="sidesheet-action h-16 border-t border-gray-200 relative flex-initial rounded rounded-t-none"
+              >
+                {action}
+              </Box>
+            )}
           </div>
         </SideSheetContent>
       )}
