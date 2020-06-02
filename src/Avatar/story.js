@@ -1,0 +1,108 @@
+import { storiesOf } from "@storybook/react";
+import React from "react";
+import Box from "../Box";
+import { Avatar } from "..";
+
+const names = [
+  "Cheryl Carter",
+  "Heather Morales",
+  "Sean Jackson",
+  "Catherine Anderson",
+  "Jack Phillips",
+  "Julia Williamson",
+  "Jonathan Martin",
+  "Kevin Niparko",
+];
+
+const anonymousIds = [1591, 13184, 1055, 4199, 4824, 11394, 1965, 13023];
+const colors = [
+  "neutral",
+  "blue",
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "teal",
+  "purple",
+];
+
+const StoryHeader = (props) => <Box marginBottom={16} {...props} />;
+
+storiesOf("Avatar", module).add("Avatar", () => (
+  <Box padding={40}>
+    {(() => {
+      document.body.style.margin = "0";
+      document.body.style.height = "100vh";
+    })()}
+    <Box marginBottom={40}>
+      {names.map((name) => (
+        <Avatar key={name} name={name} size={40} />
+      ))}
+      <Avatar
+        key="Chris Child"
+        src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAQXAAAAJDQyNDFiNDI0LTVjZWQtNGQ2NS05MmI0LTZhMmE4NDNmNDkzMw.jpg"
+        name="Chris Child"
+        size={40}
+      />
+      <Avatar
+        key="Cat"
+        src="http://lorempixel.com/output/cats-q-c-640-480-7.jpg"
+        name="Cat"
+        size={40}
+      />
+      <Avatar
+        key="Alan Turing"
+        src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16.jpg"
+        name="Alan Turing"
+        size={40}
+      />
+      <Avatar
+        key="Matt Shwery"
+        src="https://avatars1.githubusercontent.com/u/710752?s=460&v=4"
+        name="Matt Shwery"
+        size={40}
+      />
+      <Avatar
+        key="transparent"
+        forceShowInitials
+        src="http://www.cityrider.com/fixed/43aspect.png"
+        name="transparent"
+        size={40}
+      />
+    </Box>
+    <Box marginBottom={40}>
+      {names.map((name) => (
+        <Avatar key={name} isSolid name={name} size={40} />
+      ))}
+    </Box>
+    <Box marginBottom={40}>
+      {anonymousIds.map((id) => (
+        <Avatar key={id} hashValue={id} name="Anonymous User" size={40} />
+      ))}
+    </Box>
+    <Box marginBottom={40}>
+      <Avatar isSolid marginRight={16} name={names[0]} size={16} />
+      <Avatar marginRight={16} name={names[1]} size={24} />
+      <Avatar marginRight={16} name={names[2]} size={32} />
+      <Avatar marginRight={16} name={names[3]} size={40} />
+      <Avatar marginRight={16} name={names[4]} size={96} />
+      <Avatar marginRight={16} name={names[5]} size={128} />
+    </Box>
+    <Box marginBottom={40}>
+      {colors.map((color, index) => (
+        <Avatar key={color} color={color} name={names[index]} size={40} />
+      ))}
+    </Box>
+    <Box marginBottom={40}>
+      {colors.map((color, index) => (
+        <Avatar
+          key={color}
+          isSolid
+          color={color}
+          name={names[index]}
+          size={40}
+        />
+      ))}
+    </Box>
+  </Box>
+));
