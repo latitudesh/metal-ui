@@ -127,7 +127,7 @@ storiesOf("Avatar", module)
       </Box>
     </Box>
   ))
-  .add("Annonymous users", () => (
+  .add("Anonymous users", () => (
     <Box>
       <Box rootCard className="mb-5">
         <div className="mb-4 text-gray-600">
