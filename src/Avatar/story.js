@@ -26,74 +26,80 @@ const colors = [
   "purple",
 ];
 
-const StoryHeader = (props) => <Box marginBottom={16} {...props} />;
-
 storiesOf("Avatar", module).add("Avatar", () => (
-  <Box padding={40}>
+  <Box>
     {(() => {
       document.body.style.margin = "0";
       document.body.style.height = "100vh";
     })()}
-    <Box marginBottom={40}>
+    <Box rootCard className="mb-5">
+      <div className="mb-4 text-gray-600">
+        <div className="text-2xl">Basic</div>
+        <div className="text">
+          Avatar with the <code>name</code> and <code>size</code> properties.
+        </div>
+      </div>
       {names.map((name) => (
-        <Avatar key={name} name={name} size={40} />
+        <Avatar key={name} name={name} size={40} className="mr-2" />
       ))}
-      <Avatar
-        key="Chris Child"
-        src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAQXAAAAJDQyNDFiNDI0LTVjZWQtNGQ2NS05MmI0LTZhMmE4NDNmNDkzMw.jpg"
-        name="Chris Child"
-        size={40}
-      />
-      <Avatar
-        key="Cat"
-        src="http://lorempixel.com/output/cats-q-c-640-480-7.jpg"
-        name="Cat"
-        size={40}
-      />
-      <Avatar
-        key="Alan Turing"
-        src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16.jpg"
-        name="Alan Turing"
-        size={40}
-      />
-      <Avatar
-        key="Matt Shwery"
-        src="https://avatars1.githubusercontent.com/u/710752?s=460&v=4"
-        name="Matt Shwery"
-        size={40}
-      />
-      <Avatar
-        key="transparent"
-        forceShowInitials
-        src="http://www.cityrider.com/fixed/43aspect.png"
-        name="transparent"
-        size={40}
-      />
     </Box>
-    <Box marginBottom={40}>
+    <Box rootCard className="mb-5">
+      <div className="mb-4 text-gray-600">
+        <div className="text-2xl">Solid</div>
+        <div className="text">
+          Use the <code>isSolid</code> property to create a solid avatar.
+        </div>
+      </div>
       {names.map((name) => (
-        <Avatar key={name} isSolid name={name} size={40} />
+        <Avatar key={name} isSolid name={name} size={40} className="mr-2" />
       ))}
     </Box>
-    <Box marginBottom={40}>
-      {anonymousIds.map((id) => (
-        <Avatar key={id} hashValue={id} name="Anonymous User" size={40} />
-      ))}
+    <Box rootCard>
+      <div className="mb-4 text-gray-600">
+        <div className="text-2xl">Sizes</div>
+        <div className="text">
+          Use the <code>size</code> property to change sizes. The initials will
+          size automatically.
+        </div>
+      </div>
+      <Avatar
+        isSolid
+        marginRight={16}
+        name={names[0]}
+        size={16}
+        className="mr-2"
+      />
+      <Avatar marginRight={16} name={names[1]} size={24} className="mr-2" />
+      <Avatar marginRight={16} name={names[2]} size={32} className="mr-2" />
+      <Avatar marginRight={16} name={names[3]} size={40} className="mr-2" />
+      <Avatar marginRight={16} name={names[4]} size={96} className="mr-2" />
+      <Avatar marginRight={16} name={names[5]} size={128} className="mr-2" />
     </Box>
-    <Box marginBottom={40}>
-      <Avatar isSolid marginRight={16} name={names[0]} size={16} />
-      <Avatar marginRight={16} name={names[1]} size={24} />
-      <Avatar marginRight={16} name={names[2]} size={32} />
-      <Avatar marginRight={16} name={names[3]} size={40} />
-      <Avatar marginRight={16} name={names[4]} size={96} />
-      <Avatar marginRight={16} name={names[5]} size={128} />
-    </Box>
-    <Box marginBottom={40}>
+    <Box rootCard>
+      <div className="mb-4 text-gray-600">
+        <div className="text-2xl">Override color</div>
+        <div className="text">
+          Manually override the color using the <code>color</code> property. Eg.{" "}
+          <code>color="green"</code>.
+        </div>
+      </div>
       {colors.map((color, index) => (
-        <Avatar key={color} color={color} name={names[index]} size={40} />
+        <Avatar
+          key={color}
+          color={color}
+          name={names[index]}
+          size={40}
+          className="mr-2"
+        />
       ))}
     </Box>
-    <Box marginBottom={40}>
+    <Box rootCard>
+      <div className="mb-4 text-gray-600">
+        <div className="text-2xl">Solid with colors</div>
+        <div className="text">
+          You can use the <code>color</code> and <code>isSolid</code> properties in conjunction.
+        </div>
+      </div>
       {colors.map((color, index) => (
         <Avatar
           key={color}
@@ -101,6 +107,26 @@ storiesOf("Avatar", module).add("Avatar", () => (
           color={color}
           name={names[index]}
           size={40}
+          className="mr-2"
+        />
+      ))}
+    </Box>
+    <Box rootCard className="mb-5">
+      <div className="mb-4 text-gray-600">
+        <div className="text-2xl">Anonymous users</div>
+        <div className="text">
+          In cases where it's not possible to determine the name of the user,
+          use the <code>hashValue</code> property to automatically determine the
+          color.
+        </div>
+      </div>
+      {anonymousIds.map((id) => (
+        <Avatar
+          key={id}
+          hashValue={id}
+          name="Anonymous User"
+          size={40}
+          className="mr-2"
         />
       ))}
     </Box>

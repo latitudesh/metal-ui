@@ -2319,7 +2319,7 @@ function Avatar_defineProperty(obj, key, value) { if (key in obj) { Object.defin
 
 
 
-var isObjectFitSupported = typeof document !== "undefined" && "objectFit" in document.documentElement.style;
+
 
 var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
   _inherits(Avatar, _PureComponent);
@@ -2332,12 +2332,6 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
     _classCallCheck(this, Avatar);
 
     _this = _super.call(this, props, context);
-
-    Avatar_defineProperty(_assertThisInitialized(_this), "handleError", function () {
-      _this.setState({
-        imageHasFailedLoading: true
-      });
-    });
 
     Avatar_defineProperty(_assertThisInitialized(_this), "getColorProps", function () {
       var _this$props = _this.props,
@@ -2361,9 +2355,6 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
       });
     });
 
-    _this.state = {
-      imageHasFailedLoading: false
-    };
     return _this;
   }
 
@@ -2371,20 +2362,16 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
     key: "render",
     value: function render() {
       var _this$props2 = this.props,
-          theme = _this$props2.theme,
-          src = _this$props2.src,
+          className = _this$props2.className,
           size = _this$props2.size,
           name = _this$props2.name,
           isSolid = _this$props2.isSolid,
           propsHashValue = _this$props2.hashValue,
           getInitials = _this$props2.getInitials,
           propsColor = _this$props2.color,
-          forceShowInitials = _this$props2.forceShowInitials,
           sizeLimitOneCharacter = _this$props2.sizeLimitOneCharacter,
-          props = _objectWithoutProperties(_this$props2, ["theme", "src", "size", "name", "isSolid", "hashValue", "getInitials", "color", "forceShowInitials", "sizeLimitOneCharacter"]);
+          props = _objectWithoutProperties(_this$props2, ["className", "size", "name", "isSolid", "hashValue", "getInitials", "color", "sizeLimitOneCharacter"]);
 
-      var imageHasFailedLoading = this.state.imageHasFailedLoading;
-      var imageUnavailable = !src || imageHasFailedLoading;
       var initialsFontSize = "".concat(getInitialsFontSize(size, sizeLimitOneCharacter), "px");
       var initials = getInitials(name);
 
@@ -2394,14 +2381,14 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
 
       var colorProps = this.getColorProps();
       return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", _extends({
-        className: "rounded-full overflow-hidden relative inline-flex flex-shrink-0 justify-center",
+        className: classnames_default()("rounded-full overflow-hidden relative inline-flex flex-shrink-0 justify-center", className, {}),
         style: {
           backgroundColor: colorProps.backgroundColor,
           width: size,
           height: size
         },
         title: name
-      }, props), (imageUnavailable || forceShowInitials) && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
+      }, props), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
         className: "relative flex justify-center items-center",
         style: {
           color: colorProps.color,
@@ -2410,17 +2397,7 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
           width: size,
           height: size
         }
-      }, initials), !imageUnavailable && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
-        style: {
-          objectFit: "cover"
-        } // Unsupported by ui-box directly
-        ,
-        width: isObjectFitSupported ? "100%" : "auto" // Fallback to old behaviour on IE
-        ,
-        height: "100%",
-        src: src,
-        onError: this.handleError
-      }));
+      }, initials));
     }
   }]);
 
@@ -2428,12 +2405,6 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
 }(external_root_React_commonjs2_react_commonjs_react_amd_react_["PureComponent"]);
 
 Avatar_defineProperty(Avatar_Avatar, "propTypes", {
-  /**
-   * The src attribute of the image.
-   * When it's not available, render initials instead.
-   */
-  src: prop_types_default.a.string,
-
   /**
    * The size of the avatar.
    */
@@ -2468,20 +2439,9 @@ Avatar_defineProperty(Avatar_Avatar, "propTypes", {
   getInitials: prop_types_default.a.func,
 
   /**
-   * When true, force show the initials.
-   * This is useful in some cases when using Gravatar and transparent pngs.
-   */
-  forceShowInitials: prop_types_default.a.bool,
-
-  /**
    * When the size is smaller than this number, use a single initial for the avatar.
    */
-  sizeLimitOneCharacter: prop_types_default.a.number,
-
-  /**
-   * Theme provided by ThemeProvider.
-   */
-  theme: prop_types_default.a.object.isRequired
+  sizeLimitOneCharacter: prop_types_default.a.number
 });
 
 Avatar_defineProperty(Avatar_Avatar, "defaultProps", {
@@ -2489,7 +2449,6 @@ Avatar_defineProperty(Avatar_Avatar, "defaultProps", {
   size: 24,
   isSolid: false,
   getInitials: getInitials_getInitials,
-  forceShowInitials: false,
   sizeLimitOneCharacter: 20
 });
 
