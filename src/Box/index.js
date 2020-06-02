@@ -23,7 +23,7 @@ const Box = ({
         [`justify-${justifyContent}`]: Boolean(justifyContent),
         [`bg-${backgroundColor}`]: Boolean(backgroundColor),
         [`flex-${flexDirection}`]: Boolean(flexDirection),
-        [`mb-4 shadow rounded-sm`]: Boolean(rootCard),
+        [`mb-4 shadow rounded`]: Boolean(rootCard),
         [`px-6 py-4`]: !Boolean(noPadding),
         [`flex-${flexWrap}`]: Boolean(flexWrap)
       })}
