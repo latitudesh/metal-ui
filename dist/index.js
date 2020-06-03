@@ -2366,11 +2366,12 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
           size = _this$props2.size,
           name = _this$props2.name,
           isSolid = _this$props2.isSolid,
+          isDashed = _this$props2.isDashed,
           propsHashValue = _this$props2.hashValue,
           getInitials = _this$props2.getInitials,
           propsColor = _this$props2.color,
           sizeLimitOneCharacter = _this$props2.sizeLimitOneCharacter,
-          props = _objectWithoutProperties(_this$props2, ["className", "size", "name", "isSolid", "hashValue", "getInitials", "color", "sizeLimitOneCharacter"]);
+          props = _objectWithoutProperties(_this$props2, ["className", "size", "name", "isSolid", "isDashed", "hashValue", "getInitials", "color", "sizeLimitOneCharacter"]);
 
       var initialsFontSize = "".concat(getInitialsFontSize(size, sizeLimitOneCharacter), "px");
       var initials = getInitials(name);
@@ -2381,21 +2382,26 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
 
       var colorProps = this.getColorProps();
       return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", _extends({
-        className: classnames_default()("rounded-full overflow-hidden relative inline-flex flex-shrink-0 justify-center", className, {}),
+        className: classnames_default()("overflow-hidden relative inline-flex flex-shrink-0 justify-center", className, {
+          "rounded-full": !Boolean(isDashed),
+          "rounded border-2 border-dashed border-gray-300": Boolean(isDashed)
+        }),
         style: {
-          backgroundColor: colorProps.backgroundColor,
+          backgroundColor: isDashed ? '#ffffff' : colorProps.backgroundColor,
           width: size,
           height: size
         },
         title: name
       }, props), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
-        className: "relative flex justify-center items-center",
+        className: classnames_default()("relative flex justify-center items-center", {
+          "text-gray-300": Boolean(isDashed)
+        }),
         style: {
-          color: colorProps.color,
+          color: !isDashed && colorProps.color,
           fontSize: initialsFontSize,
           lineHeight: initialsFontSize,
           width: size,
-          height: size
+          height: isDashed ? size - 4 : size
         }
       }, initials));
     }
@@ -2428,6 +2434,12 @@ Avatar_defineProperty(Avatar_Avatar, "propTypes", {
   isSolid: prop_types_default.a.bool,
 
   /**
+   * When true, renders a square avatar with dashed borders.
+   * This property overrides isSolid.
+   */
+  isDashed: prop_types_default.a.bool,
+
+  /**
    * The color used for the avatar.
    * When the value is `automatic`, use the hash function to determine the color.
    */
@@ -2448,6 +2460,7 @@ Avatar_defineProperty(Avatar_Avatar, "defaultProps", {
   color: "automatic",
   size: 24,
   isSolid: false,
+  isDashed: false,
   getInitials: getInitials_getInitials,
   sizeLimitOneCharacter: 20
 });
