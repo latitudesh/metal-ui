@@ -32,7 +32,7 @@ class Avatar extends PureComponent {
 
     /**
      * When true, renders a square avatar with dashed borders.
-     * This property overrides isSolid.
+     * Overrides isSolid and color.
      */
     isDashed: PropTypes.bool,
 
