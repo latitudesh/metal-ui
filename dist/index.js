@@ -1778,6 +1778,7 @@ var SideSheet_Sidesheet = function Sidesheet(_ref2) {
       title = _ref2.title,
       children = _ref2.children,
       className = _ref2.className,
+      closeSidesheet = _ref2.closeSidesheet,
       _ref2$width = _ref2.width,
       width = _ref2$width === void 0 ? 400 : _ref2$width;
   var sideSheet = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
@@ -1798,6 +1799,8 @@ var SideSheet_Sidesheet = function Sidesheet(_ref2) {
       sideSheetPosition = _useState6[0],
       setSidesheetPosition = _useState6[1];
 
+  console.log(closeSidesheet);
+
   var onOutSideClick = function onOutSideClick(event) {
     event.stopPropagation();
 
@@ -1815,6 +1818,11 @@ var SideSheet_Sidesheet = function Sidesheet(_ref2) {
     }, 500);
   };
 
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (closeSidesheet) {
+      closeTransition();
+    }
+  }, [closeSidesheet]);
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     setSidesheetPosition({
       transition: "transform .4s cubic-bezier(.3,0,0,1)",
