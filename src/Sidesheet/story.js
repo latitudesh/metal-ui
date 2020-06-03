@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 import Sidesheet from "./index";
 import Button from "../Button";
 
@@ -10,20 +9,36 @@ storiesOf("Sidesheet", module)
       {getStory()}
     </div>
   ))
-  .add("default", () => (
-    <Sidesheet
-      title={"Title"}
-      content={<span className="text-gray-600">Content</span>}
-    >
-      <Button type="secondary" label="Open Sidesheet" />
-    </Sidesheet>
-  ))
-  .add("with action", () => (
-    <Sidesheet
-      title={"Title"}
-      action={<Button onClick={() => action("clicked")} label={"Action"} />}
-      content={<span className="text-gray-600">Content</span>}
-    >
-      <Button type="secondary" label="Open Sidesheet" />
-    </Sidesheet>
-  ));
+  .add("default", () => {
+    const [isShown, setIsShown] = useState(false);
+    return (
+      <Sidesheet
+        title={"Title"}
+        onClose={() => setIsShown(false)}
+        isShown={isShown}
+        content={<span className="text-gray-600">Content</span>}
+      >
+        <Button
+          type="secondary"
+          onClick={() => setIsShown(true)}
+          label="Open Sidesheet"
+        />
+      </Sidesheet>
+    );
+  })
+  .add("with action", () => {
+    const [isShown, setIsShown] = useState(false);
+    return (
+      <div>
+        <Sidesheet
+          onClose={() => setIsShown(false)}
+          title={"Title"}
+          isShown={isShown}
+          content={<span className="text-gray-600">Content</span>}
+          action={<Button onClick={() => setIsShown(false)} label={"Action"} />}
+        >
+          <Button onClick={() => setIsShown(true)} label={"Action"} />
+        </Sidesheet>
+      </div>
+    );
+  });

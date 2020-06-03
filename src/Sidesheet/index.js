@@ -47,75 +47,48 @@ const SidesheetContent = ({ id, children }) => {
 };
 
 const Sidesheet = ({
-  content,
-  action,
   title,
   children,
   className,
+  action,
+  content,
   width = 400,
+  onClose,
+  isShown = false,
 }) => {
   const sideSheet = useRef();
   const portal = useRef();
-  const [open, setOpen] = useState(false);
+  const [isOpened, setIsOpened] = useState(false);
   const [transition, setTransition] = useState(false);
-  const [sideSheetPosition, setSidesheetPosition] = useState(null);
 
-  const onOutSideClick = (event) => {
-    event.stopPropagation();
-    if (
-      sideSheet.current.contains(event.target) ||
-      (portal.current && portal.current.contains(event.target))
-    ) {
-      return;
+  useEffect(() => {
+    if (!isShown) {
+      setTransition(false);
+      setTimeout(() => setIsOpened(false), 500);
     } else {
-      closeTransition();
+      setIsOpened(true);
+      setTimeout(() => setTransition(true), 100);
     }
-  };
+  }, [isShown]);
 
   const closeTransition = () => {
-    setTransition(false);
-    setTimeout(() => setOpen(false), 500);
+    if (isOpened) {
+      onClose();
+      setTransition(false);
+      setTimeout(() => setIsOpened(false), 500);
+    }
   };
-
-  useEffect(() => {
-    setSidesheetPosition({
-      transition: `transform .4s cubic-bezier(.3,0,0,1)`,
-      transform: transition
-        ? `translateX(calc(100vw - ${width}px - 20px))`
-        : `translateX(100vw)`,
-      top: 0,
-      bottom: 0,
-      width: width,
-      height: "calc(100% - 20px)",
-    });
-  }, [open, transition]);
-
-  useEffect(() => {
-    document.addEventListener("mousedown", onOutSideClick);
-
-    return () => {
-      document.removeEventListener("mousedown", onOutSideClick);
-    };
-  }, []);
 
   return (
     <div
       ref={sideSheet}
       className={classNames("relative inline-block text-left", className)}
     >
-      {cloneElement(children, {
-        onClick: (e) => {
-          e.stopPropagation();
-          setTransition(false);
-          if (!open) {
-            setOpen(true);
-            setTimeout(() => setTransition(true), 0);
-          }
-        },
-      })}
-      {open && (
+      {children}
+      {isOpened && (
         <SidesheetContent id="sidesheet">
           <div
+            onClick={() => closeTransition()}
             className={classNames(
               "fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition",
               {
@@ -127,7 +100,14 @@ const Sidesheet = ({
           <div
             ref={portal}
             style={{
-              ...sideSheetPosition,
+              transition: `transform .4s cubic-bezier(.3,0,0,1)`,
+              transform: transition
+                ? `translateX(calc(100vw - ${width}px - 20px))`
+                : `translateX(100vw)`,
+              top: 0,
+              bottom: 0,
+              width: width,
+              height: "calc(100% - 20px)",
             }}
             className={
               "fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
@@ -183,6 +163,10 @@ Sidesheet.propTypes = {
   children: PropTypes.element,
   className: PropTypes.string,
   width: PropTypes.string,
+  action: PropTypes.element,
+  onClose: PropTypes.func,
+  isShown: PropTypes.bool,
+  title: PropTypes.string,
 };
 
 export default Sidesheet;
