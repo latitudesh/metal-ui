@@ -32,7 +32,7 @@ class Avatar extends PureComponent {
 
     /**
      * When true, renders a square avatar with dashed borders.
-     * This property overrides isSolid and color
+     * This property overrides isSolid.
      */
     isDashed: PropTypes.bool,
 
@@ -67,7 +67,7 @@ class Avatar extends PureComponent {
   }
 
   getColorProps = () => {
-    const { isSolid, isDashed, color, hashValue: propsHashValue, name } = this.props;
+    const { isSolid, color, hashValue: propsHashValue, name } = this.props;
 
     if (color === "automatic") {
       const hashValue = globalHash(propsHashValue || name);
@@ -83,6 +83,7 @@ class Avatar extends PureComponent {
       size,
       name,
       isSolid,
+      isDashed,
       hashValue: propsHashValue,
       getInitials,
       color: propsColor,
@@ -105,12 +106,15 @@ class Avatar extends PureComponent {
     return (
       <div
         className={classNames(
-          "rounded-full overflow-hidden relative inline-flex flex-shrink-0 justify-center",
+          "overflow-hidden relative inline-flex flex-shrink-0 justify-center",
           className,
-          {}
+          {
+            "rounded-full": !Boolean(isDashed),
+            "rounded border-2 border-dashed border-gray-300": Boolean(isDashed),
+          }
         )}
         style={{
-          backgroundColor: colorProps.backgroundColor,
+          backgroundColor: isDashed ? '#ffffff' : colorProps.backgroundColor,
           width: size,
           height: size,
         }}
@@ -118,13 +122,18 @@ class Avatar extends PureComponent {
         {...props}
       >
         <span
-          className={`relative flex justify-center items-center`}
+        className={classNames(
+          "relative flex justify-center items-center",
+          {
+            "text-gray-300": Boolean(isDashed),
+          }
+        )}
           style={{
-            color: colorProps.color,
+            color: !isDashed && colorProps.color,
             fontSize: initialsFontSize,
             lineHeight: initialsFontSize,
             width: size,
-            height: size,
+            height: isDashed ? size - 4 : size,
           }}
         >
           {initials}

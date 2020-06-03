@@ -127,6 +127,26 @@ storiesOf("Avatar", module)
       </Box>
     </Box>
   ))
+  .add("Dashed", () => (
+    <Box>
+      <Box rootCard>
+        <div className="mb-4 text-gray-600">
+          <div className="text-2xl">Dashed</div>
+          <div className="text">
+            The <code>isDashed</code> property creates a square avatar with a
+            white background and dashed borders. Overrides{" "}
+            <code>isSolid</code> and <code>color</code>.
+          </div>
+        </div>
+        <Avatar
+          isDashed
+          name="Company Name"
+          size={40}
+          className="mr-2"
+        />
+      </Box>
+    </Box>
+  ))
   .add("Anonymous users", () => (
     <Box>
       <Box rootCard className="mb-5">
