@@ -31,6 +31,12 @@ class Avatar extends PureComponent {
     isSolid: PropTypes.bool,
 
     /**
+     * When true, renders a square avatar with dashed borders.
+     * This property overrides isSolid and color
+     */
+    isDashed: PropTypes.bool,
+
+    /**
      * The color used for the avatar.
      * When the value is `automatic`, use the hash function to determine the color.
      */
@@ -51,6 +57,7 @@ class Avatar extends PureComponent {
     color: "automatic",
     size: 24,
     isSolid: false,
+    isDashed: false,
     getInitials: globalGetInitials,
     sizeLimitOneCharacter: 20,
   };
@@ -60,7 +67,7 @@ class Avatar extends PureComponent {
   }
 
   getColorProps = () => {
-    const { isSolid, color, hashValue: propsHashValue, name } = this.props;
+    const { isSolid, isDashed, color, hashValue: propsHashValue, name } = this.props;
 
     if (color === "automatic") {
       const hashValue = globalHash(propsHashValue || name);
