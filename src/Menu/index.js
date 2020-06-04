@@ -11,7 +11,7 @@ const itemType = {
 };
 
 const Menu = ({ children, className }) => (
-  <div className={classNames("rounded-sm bg-white shadow-xs", className)}>
+  <div className={classNames("rounded bg-white shadow-xs overflow-hidden", className)}>
     {children}
   </div>
 );

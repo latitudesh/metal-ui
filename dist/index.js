@@ -1201,6 +1201,7 @@ __webpack_require__.d(__webpack_exports__, "Box", function() { return /* reexpor
 __webpack_require__.d(__webpack_exports__, "Menu", function() { return /* reexport */ src_Menu; });
 __webpack_require__.d(__webpack_exports__, "Sidesheet", function() { return /* reexport */ src_Sidesheet; });
 __webpack_require__.d(__webpack_exports__, "Skeleton", function() { return /* reexport */ src_Skeleton; });
+__webpack_require__.d(__webpack_exports__, "Avatar", function() { return /* reexport */ src_Avatar; });
 __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
 __webpack_require__.d(__webpack_exports__, "USFlag", function() { return /* reexport */ Flags_USFlag; });
@@ -1616,7 +1617,7 @@ var Box_Box = function Box(_ref) {
     className: classnames_default()("overflow-hidden", className, (_classNames = {
       flex: Boolean(flex),
       "bg-white": !Boolean(backgroundColor)
-    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 shadow rounded-sm", Boolean(rootCard)), Box_defineProperty(_classNames, "px-6 py-4", !Boolean(noPadding)), Box_defineProperty(_classNames, "flex-".concat(flexWrap), Boolean(flexWrap)), _classNames))
+    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 shadow rounded", Boolean(rootCard)), Box_defineProperty(_classNames, "px-6 py-4", !Boolean(noPadding)), Box_defineProperty(_classNames, "flex-".concat(flexWrap), Boolean(flexWrap)), _classNames))
   }, children);
 };
 
@@ -1650,7 +1651,7 @@ var Menu_Menu = function Menu(_ref) {
   var children = _ref.children,
       className = _ref.className;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    className: bind_default()("rounded-sm bg-white shadow-xs", className)
+    className: bind_default()("rounded bg-white shadow-xs overflow-hidden", className)
   }, children);
 };
 
@@ -1921,6 +1922,535 @@ Skeleton_Skeleton.defaultProps = {
   height: 24
 };
 /* harmony default export */ var src_Skeleton = (Skeleton_Skeleton);
+// CONCATENATED MODULE: ./src/Avatar/src/utils/getInitials.js
+function getInitials_getInitials(name) {
+  var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '?';
+  if (!name || typeof name !== 'string') return fallback;
+  return name.replace(/\s+/, ' ').split(' ') // Repeated spaces results in empty strings
+  .slice(0, 2).map(function (v) {
+    return v && v[0].toUpperCase();
+  }) // Watch out for empty strings
+  .join('');
+}
+// CONCATENATED MODULE: ./src/Avatar/src/utils/hash.js
+// http://erlycoder.com/49/javascript-hash-functions-to-convert-string-into-integer-hash-
+function hashCode(s) {
+  var str = String(s);
+  var hash = 0;
+  var char;
+  if (str.trim().length === 0) return hash;
+
+  for (var i = 0; i < str.length; i++) {
+    char = str.charCodeAt(i);
+    hash = (hash << 5) - hash + char; // Convert to 32bit integer
+
+    hash &= hash;
+  }
+
+  return Math.abs(hash);
+}
+// CONCATENATED MODULE: ./src/Avatar/src/styles/scales.js
+/**
+ * Neutrals and Blue are special.
+ * They need more variations to properly express all of our UI.
+ */
+/* harmony default export */ var scales = ({
+  neutral: {
+    N1: '#F9F9FB',
+    N2: '#F5F6F7',
+    N3: '#EDF0F2',
+    N4: '#E4E7EB',
+    N5: '#C7CED4',
+    N6: '#A6B1BB',
+    N7: '#7B8B9A',
+    // Large Text AA
+    N8: '#66788A',
+    // Normal Text AA
+    N9: '#425A70',
+    // Normal Text AAA
+    N10: '#234361',
+    // Normal Text AAA
+    // Transparent variants.
+    N1A: 'rgba(67, 90, 111, 0.04)',
+    N2A: 'rgba(67, 90, 111, 0.06)',
+    N3A: 'rgba(67, 90, 111, 0.09)',
+    N4A: 'rgba(67, 90, 111, 0.14)',
+    N5A: 'rgba(67, 90, 111, 0.3)',
+    N6A: 'rgba(67, 90, 111, 0.47)',
+    N7A: 'rgba(67, 90, 111, 0.7)',
+    N8A: 'rgba(67, 90, 111, 0.81)'
+  },
+  blue: {
+    B1: '#f7f9fd',
+    B2: '#f1f7fc',
+    B3: '#e9f2fa',
+    B4: '#ddebf7',
+    B5: '#b7d4ef',
+    B6: '#8fbce6',
+    B7: '#579ad9',
+    // Large Text AA
+    B8: '#3d8bd4',
+    // Normal Text AA
+    B9: '#1070ca',
+    // Normal Text AAA
+    B10: '#084b8a',
+    // Normal Text AAA
+    // Transparent variants.
+    B1A: 'rgba(16, 112, 202, 0.04)',
+    B2A: 'rgba(16, 112, 202, 0.06)',
+    B3A: 'rgba(16, 112, 202, 0.09)',
+    B4A: 'rgba(16, 112, 202, 0.14)',
+    B5A: 'rgba(16, 112, 202, 0.3)',
+    B6A: 'rgba(16, 112, 202, 0.47)',
+    B7A: 'rgba(16, 112, 202, 0.7)',
+    B8A: 'rgba(16, 112, 202, 0.81)'
+  }
+});
+// CONCATENATED MODULE: ./src/Avatar/src/styles/palette.js
+
+/* harmony default export */ var palette = ({
+  neutral: {
+    lightest: scales.neutral.N1,
+    light: scales.neutral.N4,
+    base: scales.neutral.N9,
+    dark: scales.neutral.N10
+  },
+  blue: {
+    lightest: scales.blue.B1,
+    light: scales.blue.B4,
+    base: scales.blue.B9,
+    dark: scales.blue.B10
+  },
+  red: {
+    lightest: '#fef6f6',
+    light: '#fae2e2',
+    base: '#ec4c47',
+    dark: '#bf0e08'
+  },
+  orange: {
+    lightest: '#fdf8f3',
+    light: '#fae3cd',
+    base: '#d9822b',
+    dark: '#95591e'
+  },
+  yellow: {
+    lightest: '#fef8e7',
+    light: '#fbe6a2',
+    base: '#f7d154',
+    dark: '#7e6514'
+  },
+  green: {
+    lightest: '#f1faf5',
+    light: '#d4eee2',
+    base: '#47b881',
+    dark: '#00783e'
+  },
+  teal: {
+    lightest: '#f1fbfc',
+    light: '#d2eef3',
+    base: '#14b5d0',
+    dark: '#007489'
+  },
+  purple: {
+    lightest: '#f8f7fc',
+    light: '#eae7f8',
+    base: '#735dd0',
+    dark: '#37248f'
+  }
+});
+// CONCATENATED MODULE: ./src/Avatar/src/styles/colors.js
+
+
+/**
+ * This object are functional colors being used the default theme.
+ * A required property is required by the default theme NOT by Evergreen itself.
+ */
+
+/* harmony default export */ var colors = ({
+  /**
+   * Available on Pane as `<Pane background="tint1" />`
+   * @property {string} background.tint1 - Lightest tinted background color. Required property.
+   * @property {string} background.tint2 - Slightly darker tinted background color. Required property.
+   * @property {string} background.overlay - color used for the overlay
+   */
+  background: {
+    tint1: scales.neutral.N1,
+    tint2: scales.neutral.N2,
+    overlay: scales.neutral.N7A,
+    // Non required.
+    yellowTint: palette.yellow.lightest,
+    greenTint: palette.green.lightest,
+    orangeTint: palette.orange.lightest,
+    redTint: palette.red.lightest,
+    blueTint: palette.blue.lightest,
+    purpleTint: palette.purple.lightest,
+    tealTint: palette.teal.lightest
+  },
+
+  /**
+   * Available on Pane as `<Pane borderBottom borderRight="muted" />`
+   * @property {string} text.default - Required property.
+   * @property {string} text.muted - Slightly lighter color than default. Required property.
+   */
+  border: {
+    default: scales.neutral.N4,
+    // Was BorderColors.muted in v3 and under.
+    muted: scales.neutral.N3 // Was BorderColors.extraMuted in v3 and under
+
+  },
+
+  /**
+   * Text colors available on Text as `<Text color="muted" />`.
+   * @property {string} text.muted - Required property.
+   * @property {string} text.default - Required property. Default for text.
+   * @property {string} text.dark - Required property. Default for headings.
+   */
+  text: {
+    muted: scales.neutral.N8,
+    default: scales.neutral.N9,
+    dark: scales.neutral.N10,
+    selected: palette.blue.base,
+    // Intent.
+    success: palette.green.dark,
+    info: palette.blue.dark,
+    danger: palette.red.dark,
+    warning: palette.orange.dark
+  },
+
+  /**
+   * Icon colors available on Icon.
+   * @property {string} icon.default - Required property.
+   * @property {string} icon.muted - Required property.
+   * @property {string} icon.selected - Required property.
+   */
+  icon: {
+    default: scales.neutral.N8,
+    muted: scales.neutral.N7,
+    disabled: scales.neutral.N5A,
+    selected: palette.blue.base,
+    // Intent.
+    success: palette.green.base,
+    info: palette.blue.base,
+    danger: palette.red.base,
+    warning: palette.orange.base
+  },
+
+  /**
+   * Used for Alerts and other (future) componentes that express intent.
+   * @property {string} intent.none - Required property.
+   * @property {string} intent.success - Required property.
+   * @property {string} intent.danger - Required property.
+   * @property {string} intent.warning - Required property.
+   */
+  intent: {
+    none: palette.blue.base,
+    success: palette.green.base,
+    danger: palette.red.base,
+    warning: palette.orange.base
+  }
+});
+// CONCATENATED MODULE: ./src/Avatar/src/styles/fills.js
+
+
+/**
+ * Fills are used in Avatars and Badges.
+ */
+
+var fills = {};
+fills.solid = {
+  neutral: {
+    color: 'white',
+    backgroundColor: palette.neutral.base
+  },
+  blue: {
+    color: 'white',
+    backgroundColor: palette.blue.base
+  },
+  red: {
+    color: 'white',
+    backgroundColor: palette.red.base
+  },
+  orange: {
+    color: 'white',
+    backgroundColor: palette.orange.base
+  },
+  yellow: {
+    color: palette.yellow.dark,
+    backgroundColor: palette.yellow.base
+  },
+  green: {
+    color: 'white',
+    backgroundColor: palette.green.base
+  },
+  teal: {
+    color: 'white',
+    backgroundColor: palette.teal.base
+  },
+  purple: {
+    color: 'white',
+    backgroundColor: palette.purple.base
+  }
+};
+fills.subtle = {
+  neutral: {
+    color: colors.text.default,
+    backgroundColor: palette.neutral.light
+  },
+  blue: {
+    color: palette.blue.dark,
+    backgroundColor: palette.blue.light
+  },
+  red: {
+    color: palette.red.dark,
+    backgroundColor: palette.red.light
+  },
+  orange: {
+    color: palette.orange.dark,
+    backgroundColor: palette.orange.light
+  },
+  yellow: {
+    color: palette.yellow.dark,
+    backgroundColor: palette.yellow.light
+  },
+  green: {
+    color: palette.green.dark,
+    backgroundColor: palette.green.light
+  },
+  teal: {
+    color: palette.teal.dark,
+    backgroundColor: palette.teal.light
+  },
+  purple: {
+    color: palette.purple.dark,
+    backgroundColor: palette.purple.light
+  }
+};
+fills.options = Object.keys(fills.solid);
+/* harmony default export */ var styles_fills = (fills);
+// CONCATENATED MODULE: ./src/Avatar/src/utils/getAvatarProps.js
+
+/**
+ * @param {boolean} isSolid
+ * @param {string} color — automatic or actual color
+ * @param {number} hashValue
+ * @return {Object} { color, backgroundColor }
+ */
+
+var getAvatarProps_getAvatarProps = function getAvatarProps(_ref) {
+  var isSolid = _ref.isSolid,
+      color = _ref.color,
+      hashValue = _ref.hashValue;
+  var appearances = styles_fills[isSolid ? 'solid' : 'subtle'];
+
+  if (color === 'automatic') {
+    var keys = Object.keys(appearances);
+    var key = keys[hashValue % keys.length];
+    return appearances[key];
+  }
+
+  return appearances[color];
+};
+
+/* harmony default export */ var utils_getAvatarProps = (getAvatarProps_getAvatarProps);
+// CONCATENATED MODULE: ./src/Avatar/src/utils/getInitialsFontSize.js
+/**
+ * @param {number} size
+ * @param {number} sizeLimitOneCharacter
+ * @return {number} font size
+ */
+var getAvatarInitialsFontSize = function getAvatarInitialsFontSize(size, sizeLimitOneCharacter) {
+  if (size <= sizeLimitOneCharacter) {
+    return Math.ceil(size / 2.2);
+  }
+
+  return Math.ceil(size / 2.6);
+};
+
+/* harmony default export */ var getInitialsFontSize = (getAvatarInitialsFontSize);
+// CONCATENATED MODULE: ./src/Avatar/src/Avatar.js
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function Avatar_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
+  _inherits(Avatar, _PureComponent);
+
+  var _super = _createSuper(Avatar);
+
+  function Avatar(props, context) {
+    var _this;
+
+    _classCallCheck(this, Avatar);
+
+    _this = _super.call(this, props, context);
+
+    Avatar_defineProperty(_assertThisInitialized(_this), "getColorProps", function () {
+      var _this$props = _this.props,
+          isSolid = _this$props.isSolid,
+          color = _this$props.color,
+          propsHashValue = _this$props.hashValue,
+          name = _this$props.name;
+
+      if (color === "automatic") {
+        var hashValue = hashCode(propsHashValue || name);
+        return utils_getAvatarProps({
+          isSolid: isSolid,
+          color: color,
+          hashValue: hashValue
+        });
+      }
+
+      return utils_getAvatarProps({
+        isSolid: isSolid,
+        color: color
+      });
+    });
+
+    return _this;
+  }
+
+  _createClass(Avatar, [{
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          className = _this$props2.className,
+          size = _this$props2.size,
+          name = _this$props2.name,
+          isSolid = _this$props2.isSolid,
+          isDashed = _this$props2.isDashed,
+          propsHashValue = _this$props2.hashValue,
+          getInitials = _this$props2.getInitials,
+          propsColor = _this$props2.color,
+          sizeLimitOneCharacter = _this$props2.sizeLimitOneCharacter,
+          props = _objectWithoutProperties(_this$props2, ["className", "size", "name", "isSolid", "isDashed", "hashValue", "getInitials", "color", "sizeLimitOneCharacter"]);
+
+      var initialsFontSize = "".concat(getInitialsFontSize(size, sizeLimitOneCharacter), "px");
+      var initials = getInitials(name);
+
+      if (size <= sizeLimitOneCharacter) {
+        initials = initials.slice(0, 1);
+      }
+
+      var colorProps = this.getColorProps();
+      return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", _extends({
+        className: classnames_default()("overflow-hidden relative inline-flex flex-shrink-0 justify-center", className, {
+          "rounded-full": !Boolean(isDashed),
+          "rounded border-2 border-dashed border-gray-300": Boolean(isDashed)
+        }),
+        style: {
+          backgroundColor: isDashed ? '#ffffff' : colorProps.backgroundColor,
+          width: size,
+          height: size
+        },
+        title: name
+      }, props), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
+        className: classnames_default()("relative flex justify-center items-center", {
+          "text-gray-300": Boolean(isDashed)
+        }),
+        style: {
+          color: !isDashed && colorProps.color,
+          fontSize: initialsFontSize,
+          lineHeight: initialsFontSize,
+          width: size,
+          height: isDashed ? size - 4 : size
+        }
+      }, initials));
+    }
+  }]);
+
+  return Avatar;
+}(external_root_React_commonjs2_react_commonjs_react_amd_react_["PureComponent"]);
+
+Avatar_defineProperty(Avatar_Avatar, "propTypes", {
+  /**
+   * The size of the avatar.
+   */
+  size: prop_types_default.a.number,
+
+  /**
+   * The name used for the initials and title attribute.
+   */
+  name: prop_types_default.a.string,
+
+  /**
+   * The value used for the hash function.
+   * The name is used as the hashValue by default.
+   * When dealing with anonymous users you should use the id instead.
+   */
+  hashValue: prop_types_default.a.string,
+
+  /**
+   * When true, render a solid avatar.
+   */
+  isSolid: prop_types_default.a.bool,
+
+  /**
+   * When true, renders a square avatar with dashed borders.
+   * Overrides isSolid and color.
+   */
+  isDashed: prop_types_default.a.bool,
+
+  /**
+   * The color used for the avatar.
+   * When the value is `automatic`, use the hash function to determine the color.
+   */
+  color: prop_types_default.a.string.isRequired,
+
+  /**
+   * Function to get the initials based on the name.
+   */
+  getInitials: prop_types_default.a.func,
+
+  /**
+   * When the size is smaller than this number, use a single initial for the avatar.
+   */
+  sizeLimitOneCharacter: prop_types_default.a.number
+});
+
+Avatar_defineProperty(Avatar_Avatar, "defaultProps", {
+  color: "automatic",
+  size: 24,
+  isSolid: false,
+  isDashed: false,
+  getInitials: getInitials_getInitials,
+  sizeLimitOneCharacter: 20
+});
+
+/* harmony default export */ var src_Avatar = (Avatar_Avatar);
 // CONCATENATED MODULE: ./src/Flags/Flag.js
 
 
@@ -2223,6 +2753,7 @@ EsxiOS_EsxiOS.propTypes = {
 
 
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
