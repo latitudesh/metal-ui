@@ -2435,7 +2435,7 @@ Avatar_defineProperty(Avatar_Avatar, "propTypes", {
 
   /**
    * When true, renders a square avatar with dashed borders.
-   * This property overrides isSolid.
+   * Overrides isSolid and color.
    */
   isDashed: prop_types_default.a.bool,
 
