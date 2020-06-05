@@ -114,7 +114,7 @@ class Avatar extends PureComponent {
           }
         )}
         style={{
-          backgroundColor: isDashed ? '#ffffff' : colorProps.backgroundColor,
+          backgroundColor: isDashed ? 'transparent' : colorProps.backgroundColor,
           width: size,
           height: size,
         }}
