@@ -2372,7 +2372,7 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
           "rounded border-2 border-dashed border-gray-300": Boolean(isDashed)
         }),
         style: {
-          backgroundColor: isDashed ? '#ffffff' : colorProps.backgroundColor,
+          backgroundColor: isDashed ? 'transparent' : colorProps.backgroundColor,
           width: size,
           height: size
         },
