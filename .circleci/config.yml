@@ -10,7 +10,7 @@ jobs:
       - node/with-cache:
           steps:
             - run: yarn install
-            - run: yarn test --ci --forceExit
+            - run: yarn test --watchAll --ci --forceExit
 workflows:
   build-and-test:
     jobs:
