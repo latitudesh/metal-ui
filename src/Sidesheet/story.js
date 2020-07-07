@@ -37,7 +37,11 @@ storiesOf("Sidesheet", module)
           content={<span className="text-gray-600">Content</span>}
           action={<Button onClick={() => setIsShown(false)} label={"Action"} />}
         >
-          <Button onClick={() => setIsShown(true)} label={"Action"} />
+          <Button
+            onClick={() => setIsShown(true)}
+            type="secondary"
+            label={"Open Sidesheet"}
+          />
         </Sidesheet>
       </div>
     );
