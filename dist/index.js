@@ -1825,7 +1825,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
       return closeTransition();
     },
     className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
-      "bg-gray-300": transition,
+      "bg-gray-800": transition,
       "bg-transparent": !transition
     })
   }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
