@@ -2045,10 +2045,12 @@ var Toast_Toast = function Toast(_ref2) {
 };
 
 Toast_Toast.propTypes = {
-  content: prop_types_default.a.element,
-  position: prop_types_default.a.string,
+  success: prop_types_default.a.bool,
+  showCloseIcon: prop_types_default.a.bool,
+  hide: prop_types_default.a.bool,
+  error: prop_types_default.a.bool,
   children: prop_types_default.a.element,
-  className: prop_types_default.a.string
+  dismissTime: prop_types_default.a.number
 };
 /* harmony default export */ var src_Toast = (Toast_Toast);
 // CONCATENATED MODULE: ./src/Avatar/src/utils/getInitials.js
