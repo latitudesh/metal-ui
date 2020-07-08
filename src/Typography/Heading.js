@@ -24,7 +24,7 @@ class Heading extends PureComponent {
 
     return (
       <span
-        className={classNames("leading-normal", color, {
+        className={classNames("block leading-normal", color, {
           "text-5xl font-bold tracking-tighter": (size == 1),
           "text-4xl font-semibold tracking-tighter": (size == 2),
           "text-2xl font-semibold tracking-tight": (size == 3),

@@ -9,26 +9,14 @@ storiesOf("Typography", module)
     <Box>
       <Text>Headings</Text>
       <Box rootCard className="mt-2 mb-5">
-        <div>
-          <Heading size={1}>The quick brown fox jumps.</Heading>
-        </div>
-        <div>
-          <Heading size={2}>The quick brown fox jumps.</Heading>
-        </div>
-        <div>
-          <Heading size={3} color="danger">
-            The quick brown fox jumps.
-          </Heading>
-        </div>
-        <div>
-          <Heading size={4}>The quick brown fox jumps.</Heading>
-        </div>
-        <div>
-          <Heading size={5}>The quick brown fox jumps.</Heading>
-        </div>
-        <div>
-          <Heading size={6}>The quick brown fox jumps.</Heading>
-        </div>
+        <Heading size={1}>The quick brown fox jumps.</Heading>
+        <Heading size={2}>The quick brown fox jumps.</Heading>
+        <Heading size={3} color="danger">
+          The quick brown fox jumps.
+        </Heading>
+        <Heading size={4}>The quick brown fox jumps.</Heading>
+        <Heading size={5}>The quick brown fox jumps.</Heading>
+        <Heading size={6}>The quick brown fox jumps.</Heading>
       </Box>
     </Box>
   ))
