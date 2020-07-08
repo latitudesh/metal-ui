@@ -2885,7 +2885,7 @@ var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
 
       var HTag = "h".concat(this.props.size);
       return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(HTag, Heading_extends({
-        className: classnames_default()("leading-normal", {
+        className: classnames_default()("leading-normal", className, {
           "text-5xl font-bold tracking-tighter": size == 1,
           "text-4xl font-semibold tracking-tighter": size == 2,
           "text-2xl font-semibold tracking-tight": size == 3,
