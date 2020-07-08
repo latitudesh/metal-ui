@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import Toast from "./index";
+import Button from "../Button";
 
 storiesOf("Toast", module)
   .addDecorator((getStory) => (
@@ -32,4 +33,21 @@ storiesOf("Toast", module)
     <Toast showCloseIcon dismissTime={200000}>
       <p>The five boxing wizards jump quickly. The five boxing wizards jump very quickly.</p>
     </Toast>
-  ));
+  ))
+  .add("Triggered by onClick", () => {
+    const [showToast, setShowToast] = useState(false);
+    return (
+      <>
+        <Button
+          type="secondary"
+          onClick={() => setShowToast(true)}
+          label="Show Toast"
+        />
+        {showToast && (
+          <Toast onCloseToast={() => setShowToast(false)}>
+            <p>Text</p>
+          </Toast>
+        )}
+      </>
+    );
+  });

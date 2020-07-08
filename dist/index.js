@@ -1985,7 +1985,8 @@ var Toast_Toast = function Toast(_ref2) {
       showCloseIcon = _ref2.showCloseIcon,
       hide = _ref2.hide,
       _ref2$dismissTime = _ref2.dismissTime,
-      dismissTime = _ref2$dismissTime === void 0 ? 6000 : _ref2$dismissTime;
+      dismissTime = _ref2$dismissTime === void 0 ? 6000 : _ref2$dismissTime,
+      onCloseToast = _ref2.onCloseToast;
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(true),
       _useState2 = Toast_slicedToArray(_useState, 2),
@@ -1997,15 +1998,16 @@ var Toast_Toast = function Toast(_ref2) {
       showToast = _useState4[0],
       setShowToast = _useState4[1];
 
-  var onCloseToast = function onCloseToast() {
+  var closeToast = function closeToast() {
     setShowToast(false);
     setOpen(false);
+    onCloseToast();
   };
 
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     if (dismissTime) {
       var interval = setInterval(function () {
-        onCloseToast();
+        closeToast();
       }, dismissTime);
       return function () {
         clearInterval(interval);
@@ -2038,7 +2040,7 @@ var Toast_Toast = function Toast(_ref2) {
       className: "w-11/12"
     }, children), showCloseIcon && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
       onClick: function onClick() {
-        return onCloseToast();
+        return closeToast();
       }
     }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Toast_XIcon, null)))));
   } else {

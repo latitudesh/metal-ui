@@ -54,19 +54,21 @@ const Toast = ({
   showCloseIcon,
   hide,
   dismissTime = 6000,
+  onCloseToast,
 }) => {
   const [open, setOpen] = useState(true);
   const [showToast, setShowToast] = useState(hide);
 
-  const onCloseToast = () => {
+  const closeToast = () => {
     setShowToast(false);
     setOpen(false);
+    onCloseToast();
   };
 
   useEffect(() => {
     if (dismissTime) {
       const interval = setInterval(() => {
-        onCloseToast();
+        closeToast();
       }, dismissTime);
 
       return () => {
@@ -102,7 +104,7 @@ const Toast = ({
           <div className="flex justify-between items-center">
             <div className="w-11/12">{children}</div>
             {showCloseIcon && (
-              <div onClick={() => onCloseToast()}>
+              <div onClick={() => closeToast()}>
                 <XIcon />
               </div>
             )}
