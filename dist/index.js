@@ -2022,9 +2022,9 @@ var Toast_Toast = function Toast(_ref2) {
     return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Toast_ToastContent, {
       id: "toast-content"
     }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-      className: bind_default()("fixed z-50 w-1/3 p-5 bg-white bottom-0 rounded-md shadow-lg opacity-0", {
-        "text-red-500": error,
-        "text-green-500": success,
+      className: bind_default()("fixed z-50 w-1/4 max-w-full p-5 bg-white bottom-0 rounded-md shadow-xl opacity-0", {
+        "text-white bg-red-600": error,
+        "text-white bg-indigo-600": success,
         "opacity-100": showToast
       }),
       style: {
@@ -2033,8 +2033,10 @@ var Toast_Toast = function Toast(_ref2) {
         transform: showToast && "translate(0, -20px)"
       }
     }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-      className: "flex justify-between"
-    }, children, showCloseIcon && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+      className: "flex justify-between items-center"
+    }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+      className: "w-11/12"
+    }, children), showCloseIcon && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
       onClick: function onClick() {
         return onCloseToast();
       }

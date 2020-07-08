@@ -86,10 +86,10 @@ const Toast = ({
       <ToastContent id="toast-content">
         <div
           className={classNames(
-            "fixed z-50 w-1/3 p-5 bg-white bottom-0 rounded-md shadow-lg opacity-0",
+            "fixed z-50 w-1/4 max-w-full p-5 bg-white bottom-0 rounded-md shadow-xl opacity-0",
             {
-              "text-red-500": error,
-              "text-green-500": success,
+              "text-white bg-red-600": error,
+              "text-white bg-indigo-600": success,
               "opacity-100": showToast,
             }
           )}
@@ -99,8 +99,8 @@ const Toast = ({
             transform: showToast && `translate(0, -20px)`,
           }}
         >
-          <div className="flex justify-between">
-            {children}
+          <div className="flex justify-between items-center">
+            <div className="w-11/12">{children}</div>
             {showCloseIcon && (
               <div onClick={() => onCloseToast()}>
                 <XIcon />

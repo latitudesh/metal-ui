@@ -10,26 +10,26 @@ storiesOf("Toast", module)
   ))
   .add("Default", () => (
     <Toast>
-      <p>Text</p>
+      <p>The five boxing wizards jump quickly.</p>
     </Toast>
   ))
   .add("Success", () => (
     <Toast success>
-      <p>Text</p>
+      <p>The five boxing wizards jump quickly. The five boxing wizards jump very quickly.</p>
     </Toast>
   ))
   .add("Error", () => (
     <Toast error>
-      <p>Text</p>
+      <p>The five boxing wizards jump quickly. The five boxing wizards jump very quickly.</p>
     </Toast>
   ))
   .add("Close Icon", () => (
     <Toast showCloseIcon>
-      <p>Text</p>
+      <p>The five boxing wizards jump quickly. The five boxing wizards jump very quickly.</p>
     </Toast>
   ))
   .add("Custom dismiss time", () => (
-    <Toast showCloseIcon dismissTime={2000}>
-      <p>Text</p>
+    <Toast showCloseIcon dismissTime={200000}>
+      <p>The five boxing wizards jump quickly. The five boxing wizards jump very quickly.</p>
     </Toast>
   ));
