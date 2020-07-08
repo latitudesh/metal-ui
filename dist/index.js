@@ -2795,14 +2795,14 @@ var Text_Text = /*#__PURE__*/function (_PureComponent) {
     value: function render() {
       var _this$props = this.props,
           className = _this$props.className,
-          strong = _this$props.strong,
+          bold = _this$props.bold,
           color = _this$props.color,
           small = _this$props.small,
-          props = Text_objectWithoutProperties(_this$props, ["className", "strong", "color", "small"]);
+          props = Text_objectWithoutProperties(_this$props, ["className", "bold", "color", "small"]);
 
       return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", Text_extends({
         className: classnames_default()(color, {
-          "font-semibold": Boolean(strong),
+          "font-semibold": Boolean(bold),
           "text-base": !Boolean(small),
           "text-sm": Boolean(small)
         })
@@ -2817,7 +2817,7 @@ Text_defineProperty(Text_Text, "propTypes", {
   /**
    * When true, makes Text semi-bold.
    */
-  strong: prop_types_default.a.bool,
+  bold: prop_types_default.a.bool,
   color: prop_types_default.a.string
 });
 
