@@ -116,10 +116,12 @@ const Toast = ({
 };
 
 Toast.propTypes = {
-  content: PropTypes.element,
-  position: PropTypes.string,
+  success: PropTypes.bool,
+  showCloseIcon: PropTypes.bool,
+  hide: PropTypes.bool,
+  error: PropTypes.bool,
   children: PropTypes.element,
-  className: PropTypes.string,
+  dismissTime: PropTypes.number,
 };
 
 export default Toast;
