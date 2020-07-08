@@ -11,5 +11,6 @@ export { default as Avatar } from "./Avatar/src/Avatar";
 export * from "./Flags";
 export * from "./OperatingSystems";
 export { default as Text } from "./Typography/Text";
-export { default as Heading } from "./Typography/Heading"
-export { default as UnorderedList } from "./Typography/UnorderedList"
+export { default as Heading } from "./Typography/Heading";
+export { default as UnorderedList } from "./Typography/UnorderedList";
+export { default as ListItem } from "./Typography/ListItem";
