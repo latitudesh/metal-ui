@@ -7,6 +7,8 @@ export { default as Box } from "./Box";
 export { default as Menu } from "./Menu";
 export { default as Sidesheet } from "./Sidesheet";
 export { default as Skeleton } from "./Skeleton";
+export { default as Toast } from "./Toast";
 export { default as Avatar } from "./Avatar/src/Avatar";
+
 export * from "./Flags";
 export * from "./OperatingSystems";
