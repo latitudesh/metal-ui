@@ -10,3 +10,4 @@ export { default as Skeleton } from "./Skeleton";
 export { default as Avatar } from "./Avatar/src/Avatar";
 export * from "./Flags";
 export * from "./OperatingSystems";
+export { default as Text } from "./Typography/Text";
