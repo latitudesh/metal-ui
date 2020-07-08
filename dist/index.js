@@ -1344,33 +1344,22 @@ Heading_Heading.propTypes = {
 var Content_Content = function Content(_ref) {
   var children = _ref.children,
       size = _ref.size,
-      centered = _ref.centered,
       className = _ref.className;
   var base = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: classnames_default()("mx-auto px-4 sm:px-6 md:px-8", {
-      "max-w-lg": size === "small",
-      "max-w-4xl": size === "regular",
-      "max-w-full": size === "full",
-      "max-w-7xl": size === "default" || !size,
-      "flex-auto": centered
+      "max-w-xl": size === "small",
+      "max-w-5xl": size === "default" || !size,
+      "max-w-full": size === "full"
     }, className)
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: "py-8"
   }, children));
-
-  if (centered) {
-    return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-      class: "flex h-full items-center justify-center w-full"
-    }, base);
-  } else {
-    return base;
-  }
+  return base;
 };
 
 Content_Content.propTypes = {
   children: prop_types_default.a.node,
   size: prop_types_default.a.string,
-  centered: prop_types_default.a.bool,
   className: prop_types_default.a.string
 };
 /* harmony default export */ var src_Content = (Content_Content);
@@ -1526,13 +1515,13 @@ var buttonTypes = {
   danger: "border-transparent text-white bg-red-600 hover:bg-red-500 focus:border-red-700 focus:shadow-outline-red active:bg-red-700",
   secondary: "border-gray-300 text-gray-700 bg-white hover:text-gray-500 focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700",
   dark: "border-transparent text-white bg-gray-900 hover:bg-gray-700 focus:shadow-outline-gray active:bg-gray-900",
-  default: "border-transparent text-white bg-indigo-600 hover:bg-indigo-500 focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+  "default": "border-transparent text-white bg-indigo-600 hover:bg-indigo-500 focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
 };
 var minimalTypes = {
   disabled: "opacity-50",
   danger: "border-transparent text-red-600 hover:text-red-500 active:text-red-700",
   secondary: "border-transparent text-gray-700 hover:text-gray-500 active:text-gray-700",
-  default: "border-transparent text-indigo-600 hover:text-indigo-500 active:text-indigo-700"
+  "default": "border-transparent text-indigo-600 hover:text-indigo-500 active:text-indigo-700"
 };
 
 var Button_Button = function Button(_ref) {
@@ -1554,7 +1543,7 @@ var Button_Button = function Button(_ref) {
   }));
   var ButtonClasses = cx("inline-flex items-center px-8 h-10 leading-10 border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150", Button_defineProperty({
     disabled: disabled,
-    default: !type
+    "default": !type
   }, type, Boolean(type)));
 
   var RenderComponent = function RenderComponent() {
@@ -1644,7 +1633,7 @@ var itemType = {
   iconAfter: "justify-between",
   disabled: "opacity-50",
   danger: "text-red-600 hover:text-red-600 focus:text-red-600",
-  default: "text-gray-700 hover:text-gray-900 focus:text-gray-900",
+  "default": "text-gray-700 hover:text-gray-900 focus:text-gray-900",
   dark: "bg-gray-900 focus:text-white text-white focus:bg-gray-900 hover:bg-gray-700"
 };
 
@@ -1688,7 +1677,7 @@ Menu_Menu.Item = function (_ref3) {
   var classes = cx("flex text-left min-w-full px-4 py-2 text-sm leading-5 focus:outline-none focus:bg-gray-100 hover:bg-gray-100", Menu_defineProperty({
     iconAfter: iconAfter,
     disabled: disabled && onSelect,
-    default: !type
+    "default": !type
   }, type, Boolean(type)), className);
 
   if (component) {
@@ -1938,12 +1927,14 @@ function getInitials_getInitials(name) {
 function hashCode(s) {
   var str = String(s);
   var hash = 0;
-  var char;
+
+  var _char;
+
   if (str.trim().length === 0) return hash;
 
   for (var i = 0; i < str.length; i++) {
-    char = str.charCodeAt(i);
-    hash = (hash << 5) - hash + char; // Convert to 32bit integer
+    _char = str.charCodeAt(i);
+    hash = (hash << 5) - hash + _char; // Convert to 32bit integer
 
     hash &= hash;
   }
@@ -2094,7 +2085,7 @@ function hashCode(s) {
    * @property {string} text.muted - Slightly lighter color than default. Required property.
    */
   border: {
-    default: scales.neutral.N4,
+    "default": scales.neutral.N4,
     // Was BorderColors.muted in v3 and under.
     muted: scales.neutral.N3 // Was BorderColors.extraMuted in v3 and under
 
@@ -2108,7 +2099,7 @@ function hashCode(s) {
    */
   text: {
     muted: scales.neutral.N8,
-    default: scales.neutral.N9,
+    "default": scales.neutral.N9,
     dark: scales.neutral.N10,
     selected: palette.blue.base,
     // Intent.
@@ -2125,7 +2116,7 @@ function hashCode(s) {
    * @property {string} icon.selected - Required property.
    */
   icon: {
-    default: scales.neutral.N8,
+    "default": scales.neutral.N8,
     muted: scales.neutral.N7,
     disabled: scales.neutral.N5A,
     selected: palette.blue.base,
@@ -2194,7 +2185,7 @@ fills.solid = {
 };
 fills.subtle = {
   neutral: {
-    color: colors.text.default,
+    color: colors.text["default"],
     backgroundColor: palette.neutral.light
   },
   blue: {
@@ -2287,7 +2278,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
