@@ -90,7 +90,7 @@ const Sidesheet = ({
           <div
             onClick={() => closeTransition()}
             className={classNames(
-              "fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition",
+              "fixed z-40 inset-0 opacity-25 duration-300 delay-200 transition",
               {
                 "bg-gray-800": transition,
                 "bg-transparent": !transition,
@@ -110,7 +110,7 @@ const Sidesheet = ({
               height: "calc(100% - 20px)",
             }}
             className={
-              "fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
+              "fixed z-40 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
             }
           >
             <Box

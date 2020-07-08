@@ -53,7 +53,7 @@ const Toast = ({
   success,
   showCloseIcon,
   hide,
-  dismissTime = 4000,
+  dismissTime = 6000,
 }) => {
   const [open, setOpen] = useState(true);
   const [showToast, setShowToast] = useState(hide);
@@ -86,7 +86,7 @@ const Toast = ({
       <ToastContent id="toast-content">
         <div
           className={classNames(
-            "fixed z-50 w-1/3 p-5 bottom-0 rounded-md shadow-lg opacity-0",
+            "fixed z-50 w-1/3 p-5 bg-white bottom-0 rounded-md shadow-lg opacity-0",
             {
               "text-red-500": error,
               "text-green-500": success,

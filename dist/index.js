@@ -1201,6 +1201,7 @@ __webpack_require__.d(__webpack_exports__, "Box", function() { return /* reexpor
 __webpack_require__.d(__webpack_exports__, "Menu", function() { return /* reexport */ src_Menu; });
 __webpack_require__.d(__webpack_exports__, "Sidesheet", function() { return /* reexport */ src_Sidesheet; });
 __webpack_require__.d(__webpack_exports__, "Skeleton", function() { return /* reexport */ src_Skeleton; });
+__webpack_require__.d(__webpack_exports__, "Toast", function() { return /* reexport */ src_Toast; });
 __webpack_require__.d(__webpack_exports__, "Avatar", function() { return /* reexport */ src_Avatar; });
 __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
@@ -1359,7 +1360,7 @@ var Content_Content = function Content(_ref) {
 
   if (centered) {
     return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-      class: "flex h-full items-center justify-center w-full"
+      "class": "flex h-full items-center justify-center w-full"
     }, base);
   } else {
     return base;
@@ -1525,13 +1526,13 @@ var buttonTypes = {
   danger: "border-transparent text-white bg-red-600 hover:bg-red-500 focus:border-red-700 focus:shadow-outline-red active:bg-red-700",
   secondary: "border-gray-300 text-gray-700 bg-white hover:text-gray-500 focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700",
   dark: "border-transparent text-white bg-gray-900 hover:bg-gray-700 focus:shadow-outline-gray active:bg-gray-900",
-  default: "border-transparent text-white bg-indigo-600 hover:bg-indigo-500 focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+  "default": "border-transparent text-white bg-indigo-600 hover:bg-indigo-500 focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
 };
 var minimalTypes = {
   disabled: "opacity-50",
   danger: "border-transparent text-red-600 hover:text-red-500 active:text-red-700",
   secondary: "border-transparent text-gray-700 hover:text-gray-500 active:text-gray-700",
-  default: "border-transparent text-indigo-600 hover:text-indigo-500 active:text-indigo-700"
+  "default": "border-transparent text-indigo-600 hover:text-indigo-500 active:text-indigo-700"
 };
 
 var Button_Button = function Button(_ref) {
@@ -1553,7 +1554,7 @@ var Button_Button = function Button(_ref) {
   }));
   var ButtonClasses = cx("inline-flex items-center px-8 h-10 leading-10 border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150", Button_defineProperty({
     disabled: disabled,
-    default: !type
+    "default": !type
   }, type, Boolean(type)));
 
   var RenderComponent = function RenderComponent() {
@@ -1643,7 +1644,7 @@ var itemType = {
   iconAfter: "justify-between",
   disabled: "opacity-50",
   danger: "text-red-600 hover:text-red-600 focus:text-red-600",
-  default: "text-gray-700 hover:text-gray-900 focus:text-gray-900",
+  "default": "text-gray-700 hover:text-gray-900 focus:text-gray-900",
   dark: "bg-gray-900 focus:text-white text-white focus:bg-gray-900 hover:bg-gray-700"
 };
 
@@ -1687,7 +1688,7 @@ Menu_Menu.Item = function (_ref3) {
   var classes = cx("flex text-left min-w-full px-4 py-2 text-sm leading-5 focus:outline-none focus:bg-gray-100 hover:bg-gray-100", Menu_defineProperty({
     iconAfter: iconAfter,
     disabled: disabled && onSelect,
-    default: !type
+    "default": !type
   }, type, Boolean(type)), className);
 
   if (component) {
@@ -1824,7 +1825,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
     onClick: function onClick() {
       return closeTransition();
     },
-    className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
+    className: bind_default()("fixed z-40 inset-0 opacity-25 duration-300 delay-200 transition", {
       "bg-gray-800": transition,
       "bg-transparent": !transition
     })
@@ -1838,7 +1839,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
       width: width,
       height: "calc(100% - 20px)"
     },
-    className: "fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
+    className: "fixed z-40 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Box, {
     flex: true,
     alignItems: "center",
@@ -1922,6 +1923,134 @@ Skeleton_Skeleton.defaultProps = {
   height: 24
 };
 /* harmony default export */ var src_Skeleton = (Skeleton_Skeleton);
+// CONCATENATED MODULE: ./src/Toast/index.js
+function Toast_slicedToArray(arr, i) { return Toast_arrayWithHoles(arr) || Toast_iterableToArrayLimit(arr, i) || Toast_unsupportedIterableToArray(arr, i) || Toast_nonIterableRest(); }
+
+function Toast_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function Toast_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return Toast_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Toast_arrayLikeToArray(o, minLen); }
+
+function Toast_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function Toast_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function Toast_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function Toast_XIcon() {
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
+    fill: "none",
+    className: "text-gray-600",
+    stroke: "currentColor",
+    viewBox: "0 0 24 24",
+    role: "button",
+    width: "16px",
+    height: "16px"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "2",
+    d: "M6 18L18 6M6 6l12 12"
+  }));
+}
+
+var Toast_ToastContent = function ToastContent(_ref) {
+  var id = _ref.id,
+      children = _ref.children;
+  if (typeof window === "undefined") return null;
+  var element = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(document.getElementById(id) || document.createElement("div"));
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (!document.getElementById(id)) {
+      element.current.id = id;
+      document.body.appendChild(element.current);
+    }
+
+    return function () {
+      if (element.current.parentElement) {
+        element.current.parentElement.removeChild(element.current);
+      }
+    };
+  }, [id]);
+  return Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
+};
+
+var Toast_Toast = function Toast(_ref2) {
+  var children = _ref2.children,
+      error = _ref2.error,
+      success = _ref2.success,
+      showCloseIcon = _ref2.showCloseIcon,
+      hide = _ref2.hide,
+      _ref2$dismissTime = _ref2.dismissTime,
+      dismissTime = _ref2$dismissTime === void 0 ? 6000 : _ref2$dismissTime;
+
+  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(true),
+      _useState2 = Toast_slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(hide),
+      _useState4 = Toast_slicedToArray(_useState3, 2),
+      showToast = _useState4[0],
+      setShowToast = _useState4[1];
+
+  var onCloseToast = function onCloseToast() {
+    setShowToast(false);
+    setOpen(false);
+  };
+
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (dismissTime) {
+      var interval = setInterval(function () {
+        onCloseToast();
+      }, dismissTime);
+      return function () {
+        clearInterval(interval);
+      };
+    }
+  }, [dismissTime]);
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    setTimeout(function () {
+      setShowToast(true);
+    }, 10);
+  }, []);
+
+  if (open) {
+    return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Toast_ToastContent, {
+      id: "toast-content"
+    }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+      className: bind_default()("fixed z-50 w-1/3 p-5 bg-white bottom-0 rounded-md shadow-lg opacity-0", {
+        "text-red-500": error,
+        "text-green-500": success,
+        "opacity-100": showToast
+      }),
+      style: {
+        right: 20,
+        transition: "all .4s cubic-bezier(.3,0,0,1)",
+        transform: showToast && "translate(0, -20px)"
+      }
+    }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+      className: "flex justify-between"
+    }, children, showCloseIcon && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+      onClick: function onClick() {
+        return onCloseToast();
+      }
+    }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Toast_XIcon, null)))));
+  } else {
+    return null;
+  }
+};
+
+Toast_Toast.propTypes = {
+  content: prop_types_default.a.element,
+  position: prop_types_default.a.string,
+  children: prop_types_default.a.element,
+  className: prop_types_default.a.string
+};
+/* harmony default export */ var src_Toast = (Toast_Toast);
 // CONCATENATED MODULE: ./src/Avatar/src/utils/getInitials.js
 function getInitials_getInitials(name) {
   var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '?';
@@ -1937,12 +2066,14 @@ function getInitials_getInitials(name) {
 function hashCode(s) {
   var str = String(s);
   var hash = 0;
-  var char;
+
+  var _char;
+
   if (str.trim().length === 0) return hash;
 
   for (var i = 0; i < str.length; i++) {
-    char = str.charCodeAt(i);
-    hash = (hash << 5) - hash + char; // Convert to 32bit integer
+    _char = str.charCodeAt(i);
+    hash = (hash << 5) - hash + _char; // Convert to 32bit integer
 
     hash &= hash;
   }
@@ -2093,7 +2224,7 @@ function hashCode(s) {
    * @property {string} text.muted - Slightly lighter color than default. Required property.
    */
   border: {
-    default: scales.neutral.N4,
+    "default": scales.neutral.N4,
     // Was BorderColors.muted in v3 and under.
     muted: scales.neutral.N3 // Was BorderColors.extraMuted in v3 and under
 
@@ -2107,7 +2238,7 @@ function hashCode(s) {
    */
   text: {
     muted: scales.neutral.N8,
-    default: scales.neutral.N9,
+    "default": scales.neutral.N9,
     dark: scales.neutral.N10,
     selected: palette.blue.base,
     // Intent.
@@ -2124,7 +2255,7 @@ function hashCode(s) {
    * @property {string} icon.selected - Required property.
    */
   icon: {
-    default: scales.neutral.N8,
+    "default": scales.neutral.N8,
     muted: scales.neutral.N7,
     disabled: scales.neutral.N5A,
     selected: palette.blue.base,
@@ -2193,7 +2324,7 @@ fills.solid = {
 };
 fills.subtle = {
   neutral: {
-    color: colors.text.default,
+    color: colors.text["default"],
     backgroundColor: palette.neutral.light
   },
   blue: {
@@ -2286,7 +2417,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
@@ -2753,6 +2884,7 @@ EsxiOS_EsxiOS.propTypes = {
 
 
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
