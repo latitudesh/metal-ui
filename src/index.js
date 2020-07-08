@@ -12,3 +12,4 @@ export * from "./Flags";
 export * from "./OperatingSystems";
 export { default as Text } from "./Typography/Text";
 export { default as Heading } from "./Typography/Heading"
+export { default as UnorderedList } from "./Typography/UnorderedList"

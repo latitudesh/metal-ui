@@ -20,7 +20,7 @@ class Heading extends PureComponent {
   };
 
   render() {
-    const { className, color, size, h, ...props } = this.props;
+    const { className, color, size, ...props } = this.props;
     const HTag = `h${this.props.size}`;
 
     return (

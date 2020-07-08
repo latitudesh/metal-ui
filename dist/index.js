@@ -1212,6 +1212,7 @@ __webpack_require__.d(__webpack_exports__, "DebianOS", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "EsxiOS", function() { return /* reexport */ OperatingSystems_EsxiOS; });
 __webpack_require__.d(__webpack_exports__, "Text", function() { return /* reexport */ Typography_Text; });
 __webpack_require__.d(__webpack_exports__, "Heading", function() { return /* reexport */ Typography_Heading; });
+__webpack_require__.d(__webpack_exports__, "UnorderedList", function() { return /* reexport */ UnorderedList_UnorderedList; });
 
 // EXTERNAL MODULE: external {"root":"React","commonjs2":"react","commonjs":"react","amd":"react"}
 var external_root_React_commonjs2_react_commonjs_react_amd_react_ = __webpack_require__(0);
@@ -2799,11 +2800,14 @@ var Text_Text = /*#__PURE__*/function (_PureComponent) {
           bold = _this$props.bold,
           color = _this$props.color,
           small = _this$props.small,
-          props = Text_objectWithoutProperties(_this$props, ["className", "bold", "color", "small"]);
+          is = _this$props.is,
+          props = Text_objectWithoutProperties(_this$props, ["className", "bold", "color", "small", "is"]);
 
-      return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", Text_extends({
-        className: classnames_default()(color, {
+      var Tag = is;
+      return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Tag, Text_extends({
+        className: classnames_default()("leading-normal", color, {
           "font-semibold": Boolean(bold),
+          "font-normal": !Boolean(bold),
           "text-base": !Boolean(small),
           "text-sm": Boolean(small)
         })
@@ -2819,11 +2823,13 @@ Text_defineProperty(Text_Text, "propTypes", {
    * When true, makes Text semi-bold.
    */
   bold: prop_types_default.a.bool,
-  color: prop_types_default.a.string
+  color: prop_types_default.a.string,
+  is: prop_types_default.a.oneOf(['span', 'p', 'li']).isRequired
 });
 
 Text_defineProperty(Text_Text, "defaultProps", {
-  color: "text-gray-800"
+  color: "text-gray-800",
+  is: "span"
 });
 
 /* harmony default export */ var Typography_Text = (Text_Text);
@@ -2880,8 +2886,7 @@ var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
           className = _this$props.className,
           color = _this$props.color,
           size = _this$props.size,
-          h = _this$props.h,
-          props = Heading_objectWithoutProperties(_this$props, ["className", "color", "size", "h"]);
+          props = Heading_objectWithoutProperties(_this$props, ["className", "color", "size"]);
 
       var HTag = "h".concat(this.props.size);
       return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(HTag, Heading_extends({
@@ -2920,7 +2925,81 @@ Heading_defineProperty(Heading_Heading, "defaultProps", {
 });
 
 /* harmony default export */ var Typography_Heading = (Heading_Heading);
+// CONCATENATED MODULE: ./src/Typography/UnorderedList.js
+function UnorderedList_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { UnorderedList_typeof = function _typeof(obj) { return typeof obj; }; } else { UnorderedList_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return UnorderedList_typeof(obj); }
+
+function UnorderedList_extends() { UnorderedList_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return UnorderedList_extends.apply(this, arguments); }
+
+function UnorderedList_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function UnorderedList_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { UnorderedList_ownKeys(Object(source), true).forEach(function (key) { UnorderedList_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { UnorderedList_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function UnorderedList_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function UnorderedList_objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = UnorderedList_objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function UnorderedList_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function UnorderedList_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function UnorderedList_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function UnorderedList_createClass(Constructor, protoProps, staticProps) { if (protoProps) UnorderedList_defineProperties(Constructor.prototype, protoProps); if (staticProps) UnorderedList_defineProperties(Constructor, staticProps); return Constructor; }
+
+function UnorderedList_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) UnorderedList_setPrototypeOf(subClass, superClass); }
+
+function UnorderedList_setPrototypeOf(o, p) { UnorderedList_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return UnorderedList_setPrototypeOf(o, p); }
+
+function UnorderedList_createSuper(Derived) { var hasNativeReflectConstruct = UnorderedList_isNativeReflectConstruct(); return function _createSuperInternal() { var Super = UnorderedList_getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = UnorderedList_getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return UnorderedList_possibleConstructorReturn(this, result); }; }
+
+function UnorderedList_possibleConstructorReturn(self, call) { if (call && (UnorderedList_typeof(call) === "object" || typeof call === "function")) { return call; } return UnorderedList_assertThisInitialized(self); }
+
+function UnorderedList_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function UnorderedList_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function UnorderedList_getPrototypeOf(o) { UnorderedList_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return UnorderedList_getPrototypeOf(o); }
+
+
+
+
+var UnorderedList_UnorderedList = /*#__PURE__*/function (_PureComponent) {
+  UnorderedList_inherits(UnorderedList, _PureComponent);
+
+  var _super = UnorderedList_createSuper(UnorderedList);
+
+  function UnorderedList() {
+    UnorderedList_classCallCheck(this, UnorderedList);
+
+    return _super.apply(this, arguments);
+  }
+
+  UnorderedList_createClass(UnorderedList, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          children = _this$props.children,
+          props = UnorderedList_objectWithoutProperties(_this$props, ["children"]);
+
+      var finalChildren = external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Children.map(children, function (child) {
+        if (!external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.isValidElement(child)) {
+          return child;
+        }
+
+        return external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.cloneElement(child, UnorderedList_objectSpread({}, child.props));
+      });
+      return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("ul", UnorderedList_extends({
+        className: classnames_default()("leading-normal list-disc p-0 m-0 ml-4", {})
+      }, props), finalChildren);
+    }
+  }]);
+
+  return UnorderedList;
+}(external_root_React_commonjs2_react_commonjs_react_amd_react_["PureComponent"]);
+
+
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
