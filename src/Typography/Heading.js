@@ -25,13 +25,13 @@ class Heading extends PureComponent {
 
     return (
       <HTag
-        className={classNames("leading-normal", className, {
-          "text-5xl font-bold tracking-tighter": size == 1,
-          "text-4xl font-semibold tracking-tighter": size == 2,
-          "text-2xl font-semibold tracking-tight": size == 3,
-          "text-xl font-medium": size == 4,
-          "text-base font-medium": size == 5,
-          "text-sm font-medium": size == 6,
+        className={classNames("font-medium leading-normal", className, {
+          "text-4xl tracking-tighter": size == 1,
+          "text-3xl tracking-tighter": size == 2,
+          "text-xl tracking-tight": size == 3,
+          "text-lg": size == 4,
+          "text-base": size == 5,
+          "text-sm": size == 6,
           "text-gray-800": color == "default",
           "text-red-700": color == "danger",
         })}

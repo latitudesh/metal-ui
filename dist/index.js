@@ -2885,13 +2885,13 @@ var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
 
       var HTag = "h".concat(this.props.size);
       return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(HTag, Heading_extends({
-        className: classnames_default()("leading-normal", className, {
-          "text-5xl font-bold tracking-tighter": size == 1,
-          "text-4xl font-semibold tracking-tighter": size == 2,
-          "text-2xl font-semibold tracking-tight": size == 3,
-          "text-xl font-medium": size == 4,
-          "text-base font-medium": size == 5,
-          "text-sm font-medium": size == 6,
+        className: classnames_default()("font-medium leading-normal", className, {
+          "text-4xl tracking-tighter": size == 1,
+          "text-3xl tracking-tighter": size == 2,
+          "text-xl tracking-tight": size == 3,
+          "text-lg": size == 4,
+          "text-base": size == 5,
+          "text-sm": size == 6,
           "text-gray-800": color == "default",
           "text-red-700": color == "danger"
         })
