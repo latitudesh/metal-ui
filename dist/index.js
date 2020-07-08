@@ -1193,7 +1193,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, "Table", function() { return /* reexport */ src_Table; });
-__webpack_require__.d(__webpack_exports__, "Heading", function() { return /* reexport */ src_Heading; });
+__webpack_require__.d(__webpack_exports__, "Header", function() { return /* reexport */ src_Header; });
 __webpack_require__.d(__webpack_exports__, "Content", function() { return /* reexport */ src_Content; });
 __webpack_require__.d(__webpack_exports__, "Dropdown", function() { return /* reexport */ src_Dropdown; });
 __webpack_require__.d(__webpack_exports__, "Button", function() { return /* reexport */ src_Button; });
@@ -1211,6 +1211,7 @@ __webpack_require__.d(__webpack_exports__, "WindowsOS", function() { return /* r
 __webpack_require__.d(__webpack_exports__, "DebianOS", function() { return /* reexport */ OperatingSystems_DebianOS; });
 __webpack_require__.d(__webpack_exports__, "EsxiOS", function() { return /* reexport */ OperatingSystems_EsxiOS; });
 __webpack_require__.d(__webpack_exports__, "Text", function() { return /* reexport */ Typography_Text; });
+__webpack_require__.d(__webpack_exports__, "Heading", function() { return /* reexport */ Typography_Heading; });
 
 // EXTERNAL MODULE: external {"root":"React","commonjs2":"react","commonjs":"react","amd":"react"}
 var external_root_React_commonjs2_react_commonjs_react_amd_react_ = __webpack_require__(0);
@@ -1305,11 +1306,11 @@ Table_Table.Cell.propTypes = {
   className: prop_types_default.a.string
 };
 /* harmony default export */ var src_Table = (Table_Table);
-// CONCATENATED MODULE: ./src/Heading/index.js
+// CONCATENATED MODULE: ./src/Header/index.js
 
 
 
-var Heading_Heading = function Heading(_ref) {
+var Header_Header = function Header(_ref) {
   var leftContent = _ref.leftContent,
       centerContent = _ref.centerContent,
       rightContent = _ref.rightContent;
@@ -1330,12 +1331,12 @@ var Heading_Heading = function Heading(_ref) {
   }, rightContent))));
 };
 
-Heading_Heading.propTypes = {
+Header_Header.propTypes = {
   leftContent: prop_types_default.a.node,
   centerContent: prop_types_default.a.node,
   rightContent: prop_types_default.a.node
 };
-/* harmony default export */ var src_Heading = (Heading_Heading);
+/* harmony default export */ var src_Header = (Header_Header);
 // CONCATENATED MODULE: ./src/Content/index.js
 
 
@@ -2826,7 +2827,99 @@ Text_defineProperty(Text_Text, "defaultProps", {
 });
 
 /* harmony default export */ var Typography_Text = (Text_Text);
+// CONCATENATED MODULE: ./src/Typography/Heading.js
+function Heading_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Heading_typeof = function _typeof(obj) { return typeof obj; }; } else { Heading_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Heading_typeof(obj); }
+
+function Heading_extends() { Heading_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Heading_extends.apply(this, arguments); }
+
+function Heading_objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = Heading_objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function Heading_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function Heading_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function Heading_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function Heading_createClass(Constructor, protoProps, staticProps) { if (protoProps) Heading_defineProperties(Constructor.prototype, protoProps); if (staticProps) Heading_defineProperties(Constructor, staticProps); return Constructor; }
+
+function Heading_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) Heading_setPrototypeOf(subClass, superClass); }
+
+function Heading_setPrototypeOf(o, p) { Heading_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return Heading_setPrototypeOf(o, p); }
+
+function Heading_createSuper(Derived) { var hasNativeReflectConstruct = Heading_isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Heading_getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Heading_getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Heading_possibleConstructorReturn(this, result); }; }
+
+function Heading_possibleConstructorReturn(self, call) { if (call && (Heading_typeof(call) === "object" || typeof call === "function")) { return call; } return Heading_assertThisInitialized(self); }
+
+function Heading_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function Heading_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function Heading_getPrototypeOf(o) { Heading_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return Heading_getPrototypeOf(o); }
+
+function Heading_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
+  Heading_inherits(Heading, _PureComponent);
+
+  var _super = Heading_createSuper(Heading);
+
+  function Heading() {
+    Heading_classCallCheck(this, Heading);
+
+    return _super.apply(this, arguments);
+  }
+
+  Heading_createClass(Heading, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          className = _this$props.className,
+          color = _this$props.color,
+          size = _this$props.size,
+          props = Heading_objectWithoutProperties(_this$props, ["className", "color", "size"]);
+
+      return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", Heading_extends({
+        className: classnames_default()("block leading-normal", color, {
+          "text-5xl font-bold tracking-tighter": size == 1,
+          "text-4xl font-semibold tracking-tighter": size == 2,
+          "text-2xl font-semibold tracking-tight": size == 3,
+          "text-xl font-semibold tracking-tight": size == 4,
+          "text-base font-semibold": size == 5,
+          "text-sm font-semibold": size == 6,
+          "text-gray-800": color == "default",
+          "text-red-700": color == "danger"
+        })
+      }, props));
+    }
+  }]);
+
+  return Heading;
+}(external_root_React_commonjs2_react_commonjs_react_amd_react_["PureComponent"]);
+
+Heading_defineProperty(Heading_Heading, "propTypes", {
+  /**
+   * Can be: 1, 2, 3, 4, 5, 6
+   */
+  size: prop_types_default.a.oneOf([1, 2, 3, 4, 5, 6]).isRequired,
+
+  /**
+   * The only options are default and danger.
+   */
+  color: prop_types_default.a.oneOf(['default', 'danger']).isRequired
+});
+
+Heading_defineProperty(Heading_Heading, "defaultProps", {
+  size: 1,
+  color: "default"
+});
+
+/* harmony default export */ var Typography_Heading = (Heading_Heading);
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
