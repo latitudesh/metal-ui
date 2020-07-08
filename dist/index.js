@@ -2880,16 +2880,18 @@ var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
           className = _this$props.className,
           color = _this$props.color,
           size = _this$props.size,
-          props = Heading_objectWithoutProperties(_this$props, ["className", "color", "size"]);
+          h = _this$props.h,
+          props = Heading_objectWithoutProperties(_this$props, ["className", "color", "size", "h"]);
 
-      return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", Heading_extends({
-        className: classnames_default()("block leading-normal", color, {
+      var HTag = "h".concat(this.props.size);
+      return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(HTag, Heading_extends({
+        className: classnames_default()("leading-normal", {
           "text-5xl font-bold tracking-tighter": size == 1,
           "text-4xl font-semibold tracking-tighter": size == 2,
           "text-2xl font-semibold tracking-tight": size == 3,
-          "text-xl font-semibold tracking-tight": size == 4,
-          "text-base font-semibold": size == 5,
-          "text-sm font-semibold": size == 6,
+          "text-xl font-medium": size == 4,
+          "text-base font-medium": size == 5,
+          "text-sm font-medium": size == 6,
           "text-gray-800": color == "default",
           "text-red-700": color == "danger"
         })
@@ -2909,7 +2911,7 @@ Heading_defineProperty(Heading_Heading, "propTypes", {
   /**
    * The only options are default and danger.
    */
-  color: prop_types_default.a.oneOf(['default', 'danger']).isRequired
+  color: prop_types_default.a.oneOf(["default", "danger"]).isRequired
 });
 
 Heading_defineProperty(Heading_Heading, "defaultProps", {
