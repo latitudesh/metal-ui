@@ -1201,6 +1201,7 @@ __webpack_require__.d(__webpack_exports__, "Box", function() { return /* reexpor
 __webpack_require__.d(__webpack_exports__, "Menu", function() { return /* reexport */ src_Menu; });
 __webpack_require__.d(__webpack_exports__, "Sidesheet", function() { return /* reexport */ src_Sidesheet; });
 __webpack_require__.d(__webpack_exports__, "Skeleton", function() { return /* reexport */ src_Skeleton; });
+__webpack_require__.d(__webpack_exports__, "Toast", function() { return /* reexport */ src_Toast; });
 __webpack_require__.d(__webpack_exports__, "Avatar", function() { return /* reexport */ src_Avatar; });
 __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
@@ -1817,7 +1818,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
     onClick: function onClick() {
       return closeTransition();
     },
-    className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
+    className: bind_default()("fixed z-40 inset-0 opacity-25 duration-300 delay-200 transition", {
       "bg-gray-800": transition,
       "bg-transparent": !transition
     })
@@ -1831,7 +1832,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
       width: width,
       height: "calc(100% - 20px)"
     },
-    className: "fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
+    className: "fixed z-40 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Box, {
     flex: true,
     alignItems: "center",
@@ -1915,6 +1916,140 @@ Skeleton_Skeleton.defaultProps = {
   height: 24
 };
 /* harmony default export */ var src_Skeleton = (Skeleton_Skeleton);
+// CONCATENATED MODULE: ./src/Toast/index.js
+function Toast_slicedToArray(arr, i) { return Toast_arrayWithHoles(arr) || Toast_iterableToArrayLimit(arr, i) || Toast_unsupportedIterableToArray(arr, i) || Toast_nonIterableRest(); }
+
+function Toast_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function Toast_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return Toast_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Toast_arrayLikeToArray(o, minLen); }
+
+function Toast_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function Toast_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function Toast_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function Toast_XIcon() {
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
+    fill: "none",
+    className: "text-gray-600",
+    stroke: "currentColor",
+    viewBox: "0 0 24 24",
+    role: "button",
+    width: "16px",
+    height: "16px"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "2",
+    d: "M6 18L18 6M6 6l12 12"
+  }));
+}
+
+var Toast_ToastContent = function ToastContent(_ref) {
+  var id = _ref.id,
+      children = _ref.children;
+  if (typeof window === "undefined") return null;
+  var element = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(document.getElementById(id) || document.createElement("div"));
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (!document.getElementById(id)) {
+      element.current.id = id;
+      document.body.appendChild(element.current);
+    }
+
+    return function () {
+      if (element.current.parentElement) {
+        element.current.parentElement.removeChild(element.current);
+      }
+    };
+  }, [id]);
+  return Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
+};
+
+var Toast_Toast = function Toast(_ref2) {
+  var children = _ref2.children,
+      error = _ref2.error,
+      success = _ref2.success,
+      showCloseIcon = _ref2.showCloseIcon,
+      hide = _ref2.hide,
+      _ref2$dismissTime = _ref2.dismissTime,
+      dismissTime = _ref2$dismissTime === void 0 ? 6000 : _ref2$dismissTime,
+      onCloseToast = _ref2.onCloseToast;
+
+  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(true),
+      _useState2 = Toast_slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(hide),
+      _useState4 = Toast_slicedToArray(_useState3, 2),
+      showToast = _useState4[0],
+      setShowToast = _useState4[1];
+
+  var closeToast = function closeToast() {
+    setShowToast(false);
+    setOpen(false);
+    onCloseToast();
+  };
+
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (dismissTime) {
+      var interval = setInterval(function () {
+        closeToast();
+      }, dismissTime);
+      return function () {
+        clearInterval(interval);
+      };
+    }
+  }, [dismissTime]);
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    setTimeout(function () {
+      setShowToast(true);
+    }, 10);
+  }, []);
+
+  if (open) {
+    return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Toast_ToastContent, {
+      id: "toast-content"
+    }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+      className: bind_default()("fixed z-50 w-1/4 max-w-full p-5 bg-white bottom-0 rounded-md shadow-xl opacity-0", {
+        "text-white bg-red-600": error,
+        "text-white bg-indigo-600": success,
+        "opacity-100": showToast
+      }),
+      style: {
+        right: 20,
+        transition: "all .4s cubic-bezier(.3,0,0,1)",
+        transform: showToast && "translate(0, -20px)"
+      }
+    }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+      className: "flex justify-between items-center"
+    }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+      className: "w-11/12"
+    }, children), showCloseIcon && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+      onClick: function onClick() {
+        return closeToast();
+      }
+    }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Toast_XIcon, null)))));
+  } else {
+    return null;
+  }
+};
+
+Toast_Toast.propTypes = {
+  success: prop_types_default.a.bool,
+  showCloseIcon: prop_types_default.a.bool,
+  hide: prop_types_default.a.bool,
+  error: prop_types_default.a.bool,
+  children: prop_types_default.a.element,
+  dismissTime: prop_types_default.a.number
+};
+/* harmony default export */ var src_Toast = (Toast_Toast);
 // CONCATENATED MODULE: ./src/Avatar/src/utils/getInitials.js
 function getInitials_getInitials(name) {
   var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '?';
@@ -3069,6 +3204,7 @@ ListItem_defineProperty(ListItem_ListItem, "propTypes", ListItem_objectSpread({}
 
 
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
