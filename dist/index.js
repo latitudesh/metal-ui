@@ -2082,7 +2082,10 @@ var Toast_Toast = function Toast(_ref2) {
   var closeToast = function closeToast() {
     setShowToast(false);
     setOpen(false);
-    onCloseToast();
+
+    if (onCloseToast) {
+      onCloseToast();
+    }
   };
 
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
