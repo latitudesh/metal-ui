@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
+import Text from "../Typography/Text";
 
 function XIcon() {
   return (
@@ -48,7 +49,7 @@ const ToastContent = ({ id, children }) => {
 };
 
 const Toast = ({
-  children,
+  text,
   error,
   success,
   showCloseIcon,
@@ -102,7 +103,11 @@ const Toast = ({
           }}
         >
           <div className="flex justify-between items-center">
-            <div className="w-11/12">{children}</div>
+            <div className="w-11/12">
+              <Text small color={(success || error) && "text-white"}>
+                {text}
+              </Text>
+            </div>
             {showCloseIcon && (
               <div onClick={() => closeToast()}>
                 <XIcon />
@@ -122,7 +127,7 @@ Toast.propTypes = {
   showCloseIcon: PropTypes.bool,
   hide: PropTypes.bool,
   error: PropTypes.bool,
-  children: PropTypes.element,
+  text: PropTypes.string,
   dismissTime: PropTypes.number,
 };
 

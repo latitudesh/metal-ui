@@ -9,30 +9,34 @@ storiesOf("Toast", module)
       {getStory()}
     </div>
   ))
-  .add("Default", () => (
-    <Toast>
-      <p>The five boxing wizards jump quickly.</p>
-    </Toast>
-  ))
+  .add("Default", () => <Toast text="The five boxing wizards jump quickly." />)
   .add("Success", () => (
-    <Toast success>
-      <p>The five boxing wizards jump quickly. The five boxing wizards jump very quickly.</p>
-    </Toast>
+    <Toast
+      success
+      text="The five boxing wizards jump quickly. The five boxing wizards jump very quickly."
+    />
   ))
   .add("Error", () => (
-    <Toast error>
-      <p>The five boxing wizards jump quickly. The five boxing wizards jump very quickly.</p>
-    </Toast>
+    <Toast
+      error
+      text="The five boxing wizards jump quickly. The five boxing wizards jump very
+        quickly."
+    />
   ))
   .add("Close Icon", () => (
-    <Toast showCloseIcon>
-      <p>The five boxing wizards jump quickly. The five boxing wizards jump very quickly.</p>
-    </Toast>
+    <Toast
+      showCloseIcon
+      text="The five boxing wizards jump quickly. The five boxing wizards jump very
+        quickly."
+    />
   ))
   .add("Custom dismiss time", () => (
-    <Toast showCloseIcon dismissTime={200000}>
-      <p>The five boxing wizards jump quickly. The five boxing wizards jump very quickly.</p>
-    </Toast>
+    <Toast
+      showCloseIcon
+      dismissTime={200000}
+      text="The five boxing wizards jump quickly. The five boxing wizards jump very
+        quickly."
+    />
   ))
   .add("Triggered by onClick", () => {
     const [showToast, setShowToast] = useState(false);
@@ -44,9 +48,11 @@ storiesOf("Toast", module)
           label="Show Toast"
         />
         {showToast && (
-          <Toast onCloseToast={() => setShowToast(false)}>
-            <p>Text</p>
-          </Toast>
+          <Toast
+            onCloseToast={() => setShowToast(false)}
+            text="The five boxing wizards jump quickly. The five boxing wizards jump very
+        quickly."
+          />
         )}
       </>
     );
