@@ -63,7 +63,9 @@ const Toast = ({
   const closeToast = () => {
     setShowToast(false);
     setOpen(false);
-    onCloseToast();
+    if(onCloseToast) {
+      onCloseToast();
+    }
   };
 
   useEffect(() => {
