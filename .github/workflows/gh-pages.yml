@@ -13,4 +13,8 @@ jobs:
         run: |
           npm install
           npm run build
-          npm run deploy-storybook
+
+      - name: Deploy storybook to Github Pages
+        run: npm run deploy-storybook -- --ci
+        env:
+            GH_TOKEN: Maxihost:${{ secrets.GITHUB_TOKEN }}
