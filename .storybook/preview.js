@@ -1,3 +1,5 @@
+import React from 'react';
+import { addDecorator } from '@storybook/react';
 import { configure } from "@storybook/react";
 import "../styles/index.css";
 
