@@ -1,3 +1,14 @@
 module.exports = {
-  addons: ["@storybook/addon-actions/register"],
+  stories: ["../src/**/*.stories.(js|mdx)"],
+  addons: [
+    {
+      name: "@storybook/addon-docs",
+      options: {
+        configureJSX: true,
+        babelOptions: {},
+        sourceLoaderOptions: null,
+      },
+    },
+    "@storybook/addon-actions/register",
+  ],
 };
