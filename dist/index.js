@@ -1528,6 +1528,8 @@ var minimalTypes = {
 };
 
 var Button_Button = function Button(_ref) {
+  var _cx;
+
   var appearance = _ref.appearance,
       disabled = _ref.disabled,
       className = _ref.className,
@@ -1536,7 +1538,9 @@ var Button_Button = function Button(_ref) {
       onClick = _ref.onClick,
       label = _ref.label,
       type = _ref.type,
-      component = _ref.component;
+      component = _ref.component,
+      block = _ref.block,
+      large = _ref.large;
   var minimal = appearance === "minimal";
   var cx = bind_default.a.bind(minimal ? minimalTypes : buttonTypes);
   var ButtonContent = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, iconBefore && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
@@ -1544,10 +1548,10 @@ var Button_Button = function Button(_ref) {
   }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore)), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", null, label), iconAfter && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
     className: "ml-2"
   }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
-  var ButtonClasses = cx("Button inline-flex items-center px-6 h-10 leading-10 border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150", Button_defineProperty({
+  var ButtonClasses = cx("Button items-center border text-sm shadow font-medium rounded focus:outline-none transition ease-in-out duration-150", (_cx = {
     disabled: disabled,
     "default": !type
-  }, type, Boolean(type)));
+  }, Button_defineProperty(_cx, type, Boolean(type)), Button_defineProperty(_cx, 'px-5 h-9 leading-9 inline-flex', !Boolean(block)), Button_defineProperty(_cx, 'w-full h-11 leading-11 block', Boolean(block)), Button_defineProperty(_cx, 'px-10 h-10 leading-10 inline-flex', Boolean(large)), _cx));
 
   var RenderComponent = function RenderComponent() {
     if (component.props.children && typeof component.props.children !== "string") {
