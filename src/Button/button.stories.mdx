@@ -8,19 +8,56 @@ import Icon from "../../util/Icon";
 
 <Preview>
   <Story name="Default">
-      <div>
     <div>
-      <Button label="Primary" />
-      <Button label="Secondary" type="secondary" />
-      <Button label="Dark" type="dark" />
-      <Button label="Danger" type="danger" />
-      <Button label="Disabled" disabled />
+      <div>
+        <Button label="Primary" />
+      </div>
+      <div className="mt-2">
+        <Button label="Secondary" type="secondary" />
+      </div>
+      <div className="mt-2">
+        <Button label="Danger" type="danger" />
+      </div>
+      <div className="mt-2">
+        <Button label="Disabled" disabled />
+      </div>
     </div>
-    <div className="mt-4">
-      <Button component={<a href="javascript:void()">With component</a>} />
-      <Button iconBefore={<Icon />} type="dark" label="Icon before" />
-      <Button iconAfter={<Icon />} type="secondary" label="Icon after" />
+  </Story>
+</Preview>
+
+# With Icon
+The component does not handle icon sizing. You should manage that from your project. `20px` is usually the recommended size.
+
+<Preview>
+  <Story name="With Icon">
+    <div>
+      <div>
+        <Button iconBefore={<Icon />} label="Icon before" />
+      </div>
+      <div className="mt-2">
+        <Button iconAfter={<Icon />} type="secondary" label="Icon after" />
+      </div>
     </div>
+  </Story>
+</Preview>
+
+# With Component 
+Buttons with components don't currently support icons
+
+<Preview>
+  <Story name="With Component">
+    <Button component={<a href="javascript:void()">With component</a>} />
+  </Story>
+</Preview>
+
+# Minimal
+
+<Preview>
+  <Story name="Minimal">
+    <div>
+      <Button appearance="minimal" label="Primary" />
+      <Button appearance="minimal" type="secondary" label="Secondary" />
+      <Button appearance="minimal" type="danger" label="Danger" />
     </div>
   </Story>
 </Preview>

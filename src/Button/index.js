@@ -8,8 +8,6 @@ const buttonTypes = {
     "border-transparent text-white bg-red-600 hover:bg-red-500 focus:border-red-700 focus:shadow-outline-red active:bg-red-700",
   secondary:
     "border-gray-300 text-gray-700 bg-white hover:text-gray-500 focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700",
-  dark:
-    "border-transparent text-white bg-gray-900 hover:bg-gray-700 focus:shadow-outline-gray active:bg-gray-900",
   default:
     "border-transparent text-white bg-indigo-600 hover:bg-indigo-500 focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700",
 };
@@ -40,20 +38,22 @@ const Button = ({
 
   const ButtonContent = (
     <>
-      {iconBefore &&
-        cloneElement(iconBefore, {
-          className: "mr-2 transition ease-in-out duration-150",
-        })}
-      {label}
-      {iconAfter &&
-        cloneElement(iconAfter, {
-          className: "ml-2 transition ease-in-out duration-150",
-        })}
+      {iconBefore && (
+        <span className="mr-2">
+          {cloneElement(iconBefore)}
+        </span>
+      )}
+      <span>{label}</span>
+      {iconAfter && (
+        <span className="ml-2">
+          {cloneElement(iconAfter)}
+        </span>
+      )}
     </>
   );
 
   const ButtonClasses = cx(
-    "inline-flex items-center px-6 h-10 leading-10 border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150",
+    "Button inline-flex items-center px-6 h-10 leading-10 border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150",
     {
       disabled: disabled,
       default: !type,
@@ -76,11 +76,7 @@ const Button = ({
   };
 
   return (
-    <span
-      className={classNames("inline-flex rounded-sm", className, {
-        "shadow-sm": !minimal,
-      })}
-    >
+    <>
       {component ? (
         <RenderComponent />
       ) : (
@@ -93,7 +89,7 @@ const Button = ({
           {ButtonContent}
         </button>
       )}
-    </span>
+    </>
   );
 };
 
