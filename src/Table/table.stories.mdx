@@ -1,0 +1,29 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import Table from "./index";
+
+<Meta title="Table" component={Table} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    <Table>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>IP</Table.HeaderCell>
+          <Table.HeaderCell>Type</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>10.54.157.26</Table.Cell>
+          <Table.Cell>Private IPMI</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>192.168.0.2</Table.Cell>
+          <Table.Cell>Public IPv4</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  </Story>
+</Preview>

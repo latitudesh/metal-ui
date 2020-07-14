@@ -1,0 +1,82 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import Text from "./Text";
+import Heading from "./Heading";
+import UnorderedList from "./UnorderedList";
+import ListItem from "./ListItem";
+
+<Meta title="Typography" component={Heading} />
+
+# Headings
+
+<Preview>
+  <Story name="Headings">
+    <div>
+      <Heading size={1}>The quick brown fox jumps over the lazy dog.</Heading>
+      <Heading size={2}>The quick brown fox jumps over the lazy dog.</Heading>
+      <Heading size={3} color="danger">
+        The quick brown fox jumps over the lazy dog.
+      </Heading>
+      <Heading size={4}>The quick brown fox jumps over the lazy dog.</Heading>
+      <Heading size={5}>The quick brown fox jumps over the lazy dog.</Heading>
+      <Heading size={6}>The quick brown fox jumps over the lazy dog.</Heading>
+    </div>
+  </Story>
+</Preview>
+
+# Paragraph
+
+<Preview>
+  <Story name="Paragraph">
+    <div>
+      <Text is="p" small>
+        The quick brown fox jumps over the lazy dog
+      </Text>
+      <Text is="p">The quick brown fox jumps over the lazy dog</Text>
+      <Text is="p" color="text-blue-700">
+        The quick brown fox jumps over the lazy dog
+      </Text>
+      <Text is="p" bold>
+        The quick brown fox jumps over the lazy dog
+      </Text>
+    </div>
+  </Story>
+</Preview>
+
+# Span
+
+The are no style differences between `span` and `p`. The differences in how they are rendered are up to the user agent.
+
+<Preview>
+  <Story name="Span">
+    <div>
+      <div>
+        <Text>The quick brown fox jumps over the lazy dog</Text>
+      </div>
+      <div>
+        <Text color="text-blue-700">
+          The quick brown fox jumps over the lazy dog
+        </Text>
+      </div>
+      <div>
+        <Text bold>The quick brown fox jumps over the lazy dog</Text>
+      </div>
+      <div>
+        <Text small>The quick brown fox jumps over the lazy dog</Text>
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+# Unordered List
+
+Takes the same props as `Text`
+
+<Preview>
+  <Story name="Unordered List">
+    <UnorderedList>
+      <ListItem bold>The quick brown fox jumps over the lazy dog.</ListItem>
+      <ListItem color="text-red-500">The quick brown fox jumps over the lazy dog.</ListItem>
+      <ListItem small>The quick brown fox jumps over the lazy dog.</ListItem>
+    </UnorderedList>
+  </Story>
+</Preview>
