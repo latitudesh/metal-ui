@@ -53,7 +53,7 @@ const Button = ({
   );
 
   const ButtonClasses = cx(
-    "inline-flex items-center px-8 h-10 leading-10 border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150",
+    "inline-flex items-center px-6 h-10 leading-10 border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150",
     {
       disabled: disabled,
       default: !type,
