@@ -32,6 +32,8 @@ const Button = ({
   label,
   type,
   component,
+  block,
+  large
 }) => {
   const minimal = appearance === "minimal";
   const cx = classNames.bind(minimal ? minimalTypes : buttonTypes);
@@ -53,11 +55,14 @@ const Button = ({
   );
 
   const ButtonClasses = cx(
-    "Button inline-flex items-center px-6 h-10 leading-10 border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150",
+    "Button items-center border text-sm shadow font-medium rounded focus:outline-none transition ease-in-out duration-150",
     {
       disabled: disabled,
       default: !type,
       [type]: Boolean(type),
+      'px-5 h-9 leading-9 inline-flex': !Boolean(block),
+      'w-full h-11 leading-11 block': Boolean(block),
+      'px-10 h-10 leading-10 inline-flex': Boolean(large),
     }
   );
 
