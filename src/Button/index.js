@@ -55,7 +55,7 @@ const Button = ({
   );
 
   const ButtonClasses = cx(
-    "Button items-center border text-sm shadow font-medium rounded focus:outline-none transition ease-in-out duration-150",
+    "Button items-center border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150",
     {
       disabled: disabled,
       default: !type,
@@ -63,6 +63,7 @@ const Button = ({
       'px-5 h-9 leading-9 inline-flex': !Boolean(block),
       'w-full h-11 leading-11 block': Boolean(block),
       'px-10 h-10 leading-10 inline-flex': Boolean(large),
+      'shadow': !Boolean(appearance)
     }
   );
 
