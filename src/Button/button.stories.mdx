@@ -10,15 +10,15 @@ import Icon from "../../util/Icon";
   <Story name="Default">
       <div>
     <div>
-      <Button label="Action" />
-      <Button label="Danger" type="secondary" />
-      <Button label="Danger" type="dark" />
+      <Button label="Primary" />
+      <Button label="Secondary" type="secondary" />
+      <Button label="Dark" type="dark" />
       <Button label="Danger" type="danger" />
       <Button label="Disabled" disabled />
     </div>
     <div className="mt-4">
       <Button component={<a href="javascript:void()">With component</a>} />
-      <Button iconBefore={<Icon />} type="secondary" label="Icon before" />
+      <Button iconBefore={<Icon />} type="dark" label="Icon before" />
       <Button iconAfter={<Icon />} type="secondary" label="Icon after" />
     </div>
     </div>
