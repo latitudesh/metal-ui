@@ -1,5 +1,11 @@
 import React from "react";
 
+{
+  /* This component is not part of the build.
+  * It's used to support some storybook stories.
+  */
+}
+
 const Icon = ({ props }) => {
   return (
     <svg
