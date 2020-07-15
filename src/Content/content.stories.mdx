@@ -1,0 +1,28 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import Content from "./index";
+
+<Meta title="Content" component={Content} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    <Content className="bg-indigo-600" />
+  </Story>
+</Preview>
+
+# Small
+
+<Preview>
+  <Story name="Small">
+    <Content size="small" className="bg-indigo-600" />
+  </Story>
+</Preview>
+
+# Full width
+
+<Preview>
+  <Story name="full">
+    <Content size="full" className="bg-indigo-600" />
+  </Story>
+</Preview>

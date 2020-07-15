@@ -8,7 +8,7 @@ const Content = ({ children, size, className }) => {
       className={classNames(
         "mx-auto px-4 sm:px-6 md:px-8",
         {
-          "max-w-xl": size === "small",
+          "max-w-3xl": size === "small",
           "max-w-5xl": size === "default" || !size,
           "max-w-full": size === "full",
         },
