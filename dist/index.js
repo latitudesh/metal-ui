@@ -1351,7 +1351,7 @@ var Content_Content = function Content(_ref) {
       className = _ref.className;
   var base = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: classnames_default()("mx-auto px-4 sm:px-6 md:px-8", {
-      "max-w-xl": size === "small",
+      "max-w-3xl": size === "small",
       "max-w-5xl": size === "default" || !size,
       "max-w-full": size === "full"
     }, className)
