@@ -42,9 +42,8 @@ const Button = ({
       default: !type,
       [type]: Boolean(type),
       "px-5 h-9 leading-9 inline-flex text-sm": !Boolean(block),
-      "text-sm": !Boolean(large),
       "w-full h-12 leading-12 text-base block": Boolean(block),
-      "px-10 h-10 leading-10 inline-flex text-base": Boolean(large),
+      "px-10 h-10 leading-10 inline-flex": Boolean(large),
     }
   );
 

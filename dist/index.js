@@ -1543,7 +1543,7 @@ var Button_Button = function Button(_ref) {
   var ButtonClasses = cx("Button items-center border font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center", (_cx = {
     disabled: disabled,
     "default": !type
-  }, Button_defineProperty(_cx, type, Boolean(type)), Button_defineProperty(_cx, "px-5 h-9 leading-9 inline-flex text-sm", !Boolean(block)), Button_defineProperty(_cx, "text-sm", !Boolean(large)), Button_defineProperty(_cx, "w-full h-12 leading-12 text-base block", Boolean(block)), Button_defineProperty(_cx, "px-10 h-10 leading-10 inline-flex text-base", Boolean(large)), _cx));
+  }, Button_defineProperty(_cx, type, Boolean(type)), Button_defineProperty(_cx, "px-5 h-9 leading-9 inline-flex text-sm", !Boolean(block)), Button_defineProperty(_cx, "w-full h-12 leading-12 text-base block", Boolean(block)), Button_defineProperty(_cx, "px-10 h-10 leading-10 inline-flex", Boolean(large)), _cx));
 
   var RenderComponent = function RenderComponent() {
     if (component.props.children && typeof component.props.children !== "string") {
