@@ -9,14 +9,17 @@ import Icon from "../../util/Icon";
 <Preview>
   <Story name="Default">
     <div>
-      <div>
+      <div className="inline-flex">
         <Button label="Primary" />
       </div>
-      <div className="mt-2">
+      <div className="inline-flex ml-2">
         <Button label="Secondary" type="secondary" />
       </div>
-      <div className="mt-2">
+      <div className="inline-flex ml-2">
         <Button label="Danger" type="danger" />
+      </div>
+      <div className="inline-flex ml-2">
+        <Button label="Minimal" type="minimal" />
       </div>
     </div>
   </Story>
@@ -27,19 +30,21 @@ import Icon from "../../util/Icon";
 <Preview>
   <Story name="Disabled">
     <div>
-      <div className="mt-2">
+      <div className="inline-flex">
         <Button label="Disabled" disabled />
       </div>
-      <div className="mt-2">
+      <div className="inline-flex ml-2">
         <Button label="Disabled" type="secondary" disabled />
       </div>
-      <div className="mt-2">
+      <div className="inline-flex ml-2">
         <Button label="Disabled" type="danger" disabled />
+      </div>
+      <div className="inline-flex ml-2">
+        <Button label="Disabled" type="minimal" disabled />
       </div>
     </div>
   </Story>
 </Preview>
-
 
 # Sizes
 
@@ -78,17 +83,5 @@ Buttons with components don't currently support icons
 <Preview>
   <Story name="With Component">
     <Button component={<a href="javascript:void()">With component</a>} />
-  </Story>
-</Preview>
-
-# Minimal
-
-<Preview>
-  <Story name="Minimal">
-    <div>
-      <Button appearance="minimal" label="Primary" />
-      <Button appearance="minimal" type="secondary" label="Secondary" />
-      <Button appearance="minimal" type="danger" label="Danger" />
-    </div>
   </Story>
 </Preview>
