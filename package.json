@@ -1,7 +1,7 @@
 {
   "name": "@maxihost/metal-ui",
-  "version": "1.0.21",
-  "description": "Maxihost UI Components",
+  "version": "1.0.3",
+  "description": "Metal UI Design System",
   "main": "dist/index.js",
   "files": [
     "./dist"
