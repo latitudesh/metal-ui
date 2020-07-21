@@ -1,0 +1,40 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import Box from "./index";
+
+<Meta title="Box" component={Box} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    <Box>Content</Box>
+  </Story>
+</Preview>
+
+# Color
+
+<Preview>
+  <Story name="Color">
+    <Box backgroundColor="gray-100">Content</Box>
+  </Story> 
+</Preview>
+
+# Root card
+
+Use the `rootCard` prop when the `Box` component is the first component in the section.
+
+<Preview>
+  <Story name="Root">
+    <Box rootCard>Content</Box>
+  </Story>
+</Preview>
+
+# No padding
+
+<Preview>
+  <Story name="No padding">
+    <Box noPadding rootCard>
+      Content
+    </Box>
+  </Story>
+</Preview>
