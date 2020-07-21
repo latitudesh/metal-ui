@@ -1515,10 +1515,10 @@ function Button_defineProperty(obj, key, value) { if (key in obj) { Object.defin
 
 
 var buttonTypes = {
-  disabled: "opacity-50",
-  danger: "border-transparent text-white bg-red-600 hover:bg-red-500 focus:border-red-700 focus:shadow-outline-red active:bg-red-700",
-  secondary: "border-gray-300 text-gray-700 bg-white hover:text-gray-500 focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700",
-  "default": "border-transparent text-white bg-indigo-600 hover:bg-indigo-500 focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+  "default": "border-transparent text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-700 focus:shadow-outline-indigo",
+  secondary: "border-gray-300 text-gray-800 bg-white hover:bg-gray-50 active:bg-gray-50 focus:shadow-outline-blue",
+  danger: "border-transparent text-white bg-red-600 hover:bg-red-700 active:bg-red-700 focus:shadow-outline-red",
+  disabled: "opacity-50 hover:opacity-50"
 };
 var minimalTypes = {
   disabled: "opacity-50",
@@ -1548,10 +1548,10 @@ var Button_Button = function Button(_ref) {
   }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore)), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", null, label), iconAfter && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
     className: "ml-2"
   }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
-  var ButtonClasses = cx("Button items-center border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150", (_cx = {
+  var ButtonClasses = cx("Button items-center border text-sm font-medium rounded-lg focus:outline-none transition ease-in-out duration-150", (_cx = {
     disabled: disabled,
     "default": !type
-  }, Button_defineProperty(_cx, type, Boolean(type)), Button_defineProperty(_cx, 'px-5 h-9 leading-9 inline-flex', !Boolean(block)), Button_defineProperty(_cx, 'w-full h-11 leading-11 block', Boolean(block)), Button_defineProperty(_cx, 'px-10 h-10 leading-10 inline-flex', Boolean(large)), Button_defineProperty(_cx, 'shadow', !Boolean(appearance)), _cx));
+  }, Button_defineProperty(_cx, type, Boolean(type)), Button_defineProperty(_cx, "px-5 h-9 leading-9 inline-flex", !Boolean(block)), Button_defineProperty(_cx, "w-full h-11 leading-11 block", Boolean(block)), Button_defineProperty(_cx, "px-10 h-10 leading-10 inline-flex", Boolean(large)), _cx));
 
   var RenderComponent = function RenderComponent() {
     if (component.props.children && typeof component.props.children !== "string") {

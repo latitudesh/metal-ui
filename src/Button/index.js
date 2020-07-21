@@ -3,13 +3,13 @@ import classNames from "classnames/bind";
 import PropTypes from "prop-types";
 
 const buttonTypes = {
-  disabled: "opacity-50",
-  danger:
-    "border-transparent text-white bg-red-600 hover:bg-red-500 focus:border-red-700 focus:shadow-outline-red active:bg-red-700",
-  secondary:
-    "border-gray-300 text-gray-700 bg-white hover:text-gray-500 focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700",
   default:
-    "border-transparent text-white bg-indigo-600 hover:bg-indigo-500 focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700",
+    "border-transparent text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-700 focus:shadow-outline-indigo",
+  secondary:
+    "border-gray-300 text-gray-800 bg-white hover:bg-gray-50 active:bg-gray-50 focus:shadow-outline-blue",
+  danger:
+    "border-transparent text-white bg-red-600 hover:bg-red-700 active:bg-red-700 focus:shadow-outline-red",
+  disabled: "opacity-50 cursor-default hover:bg-transparent",
 };
 
 const minimalTypes = {
@@ -33,37 +33,28 @@ const Button = ({
   type,
   component,
   block,
-  large
+  large,
 }) => {
   const minimal = appearance === "minimal";
   const cx = classNames.bind(minimal ? minimalTypes : buttonTypes);
 
   const ButtonContent = (
     <>
-      {iconBefore && (
-        <span className="mr-2">
-          {cloneElement(iconBefore)}
-        </span>
-      )}
+      {iconBefore && <span className="mr-2">{cloneElement(iconBefore)}</span>}
       <span>{label}</span>
-      {iconAfter && (
-        <span className="ml-2">
-          {cloneElement(iconAfter)}
-        </span>
-      )}
+      {iconAfter && <span className="ml-2">{cloneElement(iconAfter)}</span>}
     </>
   );
 
   const ButtonClasses = cx(
-    "Button items-center border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150",
+    "Button items-center border text-sm font-medium rounded-lg focus:outline-none transition ease-in-out duration-150",
     {
       disabled: disabled,
       default: !type,
       [type]: Boolean(type),
-      'px-5 h-9 leading-9 inline-flex': !Boolean(block),
-      'w-full h-11 leading-11 block': Boolean(block),
-      'px-10 h-10 leading-10 inline-flex': Boolean(large),
-      'shadow': !Boolean(appearance)
+      "px-5 h-9 leading-9 inline-flex": !Boolean(block),
+      "w-full h-11 leading-11 block": Boolean(block),
+      "px-10 h-10 leading-10 inline-flex": Boolean(large),
     }
   );
 
