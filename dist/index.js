@@ -1202,7 +1202,7 @@ __webpack_require__.d(__webpack_exports__, "Menu", function() { return /* reexpo
 __webpack_require__.d(__webpack_exports__, "Sidesheet", function() { return /* reexport */ src_Sidesheet; });
 __webpack_require__.d(__webpack_exports__, "Skeleton", function() { return /* reexport */ src_Skeleton; });
 __webpack_require__.d(__webpack_exports__, "Toast", function() { return /* reexport */ src_Toast; });
-__webpack_require__.d(__webpack_exports__, "Avatar", function() { return /* reexport */ src_Avatar; });
+__webpack_require__.d(__webpack_exports__, "Avatar", function() { return /* reexport */ src_Avatar_Avatar; });
 __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
 __webpack_require__.d(__webpack_exports__, "USFlag", function() { return /* reexport */ Flags_USFlag; });
@@ -2134,7 +2134,7 @@ Toast_Toast.propTypes = {
   dismissTime: prop_types_default.a.number
 };
 /* harmony default export */ var src_Toast = (Toast_Toast);
-// CONCATENATED MODULE: ./src/Avatar/src/utils/getInitials.js
+// CONCATENATED MODULE: ./src/Avatar/utils/getInitials.js
 function getInitials_getInitials(name) {
   var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '?';
   if (!name || typeof name !== 'string') return fallback;
@@ -2144,7 +2144,7 @@ function getInitials_getInitials(name) {
   }) // Watch out for empty strings
   .join('');
 }
-// CONCATENATED MODULE: ./src/Avatar/src/utils/hash.js
+// CONCATENATED MODULE: ./src/Avatar/utils/hash.js
 // http://erlycoder.com/49/javascript-hash-functions-to-convert-string-into-integer-hash-
 function hashCode(s) {
   var str = String(s);
@@ -2163,7 +2163,7 @@ function hashCode(s) {
 
   return Math.abs(hash);
 }
-// CONCATENATED MODULE: ./src/Avatar/src/styles/scales.js
+// CONCATENATED MODULE: ./src/Avatar/styles/scales.js
 /**
  * Neutrals and Blue are special.
  * They need more variations to properly express all of our UI.
@@ -2220,7 +2220,7 @@ function hashCode(s) {
     B8A: 'rgba(16, 112, 202, 0.81)'
   }
 });
-// CONCATENATED MODULE: ./src/Avatar/src/styles/palette.js
+// CONCATENATED MODULE: ./src/Avatar/styles/palette.js
 
 /* harmony default export */ var palette = ({
   neutral: {
@@ -2272,7 +2272,7 @@ function hashCode(s) {
     dark: '#37248f'
   }
 });
-// CONCATENATED MODULE: ./src/Avatar/src/styles/colors.js
+// CONCATENATED MODULE: ./src/Avatar/styles/colors.js
 
 
 /**
@@ -2363,7 +2363,7 @@ function hashCode(s) {
     warning: palette.orange.base
   }
 });
-// CONCATENATED MODULE: ./src/Avatar/src/styles/fills.js
+// CONCATENATED MODULE: ./src/Avatar/styles/fills.js
 
 
 /**
@@ -2441,7 +2441,7 @@ fills.subtle = {
 };
 fills.options = Object.keys(fills.solid);
 /* harmony default export */ var styles_fills = (fills);
-// CONCATENATED MODULE: ./src/Avatar/src/utils/getAvatarProps.js
+// CONCATENATED MODULE: ./src/Avatar/utils/getAvatarProps.js
 
 /**
  * @param {boolean} isSolid
@@ -2466,7 +2466,7 @@ var getAvatarProps_getAvatarProps = function getAvatarProps(_ref) {
 };
 
 /* harmony default export */ var utils_getAvatarProps = (getAvatarProps_getAvatarProps);
-// CONCATENATED MODULE: ./src/Avatar/src/utils/getInitialsFontSize.js
+// CONCATENATED MODULE: ./src/Avatar/utils/getInitialsFontSize.js
 /**
  * @param {number} size
  * @param {number} sizeLimitOneCharacter
@@ -2481,7 +2481,7 @@ var getAvatarInitialsFontSize = function getAvatarInitialsFontSize(size, sizeLim
 };
 
 /* harmony default export */ var getInitialsFontSize = (getAvatarInitialsFontSize);
-// CONCATENATED MODULE: ./src/Avatar/src/Avatar.js
+// CONCATENATED MODULE: ./src/Avatar/Avatar.js
 function Avatar_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Avatar_typeof = function _typeof(obj) { return typeof obj; }; } else { Avatar_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Avatar_typeof(obj); }
 
 function Avatar_extends() { Avatar_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Avatar_extends.apply(this, arguments); }
@@ -2664,7 +2664,7 @@ Avatar_defineProperty(Avatar_Avatar, "defaultProps", {
   sizeLimitOneCharacter: 20
 });
 
-/* harmony default export */ var src_Avatar = (Avatar_Avatar);
+/* harmony default export */ var src_Avatar_Avatar = (Avatar_Avatar);
 // CONCATENATED MODULE: ./src/Flags/Flag.js
 
 
