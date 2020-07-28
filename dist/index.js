@@ -1964,11 +1964,12 @@ var Text_Text = /*#__PURE__*/function (_PureComponent) {
           color = _this$props.color,
           small = _this$props.small,
           is = _this$props.is,
-          props = _objectWithoutProperties(_this$props, ["className", "bold", "color", "small", "is"]);
+          margin = _this$props.margin,
+          props = _objectWithoutProperties(_this$props, ["className", "bold", "color", "small", "is", "margin"]);
 
       var Tag = is;
       return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Tag, _extends({
-        className: classnames_default()("leading-normal", color, {
+        className: classnames_default()("leading-normal", margin, color, {
           "font-semibold": Boolean(bold),
           "font-normal": !Boolean(bold),
           "text-base": !Boolean(small),
@@ -1987,12 +1988,14 @@ Text_defineProperty(Text_Text, "propTypes", {
    */
   bold: prop_types_default.a.bool,
   color: prop_types_default.a.string,
-  is: prop_types_default.a.oneOf(['span', 'p', 'li']).isRequired
+  is: prop_types_default.a.oneOf(['span', 'p', 'li']).isRequired,
+  margin: prop_types_default.a.string
 });
 
 Text_defineProperty(Text_Text, "defaultProps", {
-  color: "text-gray-800",
-  is: "span"
+  color: "text-gray-700",
+  is: "span",
+  margin: "mb-4"
 });
 
 /* harmony default export */ var Typography_Text = (Text_Text);
