@@ -11,6 +11,7 @@ const Textarea = React.forwardRef(
       label,
       id,
       error,
+      disabled,
       ...rest
     },
     ref
@@ -35,7 +36,7 @@ const Textarea = React.forwardRef(
       <div className={className}>
         {label && (
           <label
-            className="leading-normal text-gray-800 font-normal text-sm"
+            className="block text-sm leading-5 font-medium text-gray-700"
             htmlFor={id}
           >
             {label}
@@ -50,11 +51,13 @@ const Textarea = React.forwardRef(
           aria-label={label}
           aria-required={label ? true : false}
           aria-invalid={error ? true : false}
+          disabled
           className={classNames(
-            "form-input appearance-none w-full border rounded py-2 px-3 text-gray-700 leading-tight",
+            "form-textarea mt-1 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5",
             textareaClassName,
             {
-              "bg-red-100 border border-red-400": error,
+              "bg-red-100 border border-red-400 focus:border-red-300 focus:shadow-outline-red": error,
+              "bg-gray-100 cursor-not-allowed": disabled,
             }
           )}
           {...rest}

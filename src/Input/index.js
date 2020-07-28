@@ -26,7 +26,7 @@ const Input = React.forwardRef(
       <div className={className}>
         {label && (
           <label
-            className="block text-sm font-medium leading-5 text-gray-700"
+            className="block text-sm leading-5 font-medium text-gray-700"
             htmlFor={id}
           >
             {label}
