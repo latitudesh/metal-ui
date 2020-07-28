@@ -20,7 +20,7 @@ class Text extends PureComponent {
   static defaultProps = {
     color: "text-gray-700",
     is: "span",
-    margin: "mb-4"
+    margin: ""
   };
 
   render() {
