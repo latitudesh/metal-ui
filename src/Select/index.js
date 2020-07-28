@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 const Select = React.forwardRef(
@@ -60,6 +61,9 @@ const Select = React.forwardRef(
             )}
             {...rest}
           >
+            <option value="" disabled selected>
+              Choose one
+            </option>
             {options.map((item, index) => (
               <option key={`${item.value}-${index}`} value={item.value}>
                 {item.name}
@@ -71,5 +75,21 @@ const Select = React.forwardRef(
     );
   }
 );
+
+Select.defaultProps = {
+  options: [],
+};
+
+Select.propTypes = {
+  onChange: PropTypes.func,
+  selectClassName: PropTypes.string,
+  options: PropTypes.array,
+  className: PropTypes.string,
+  value: PropTypes.string,
+  label: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  error: PropTypes.bool,
+  disabled: PropTypes.bool,
+};
 
 export default Select;

@@ -2161,6 +2161,7 @@ function Input_objectWithoutPropertiesLoose(source, excluded) { if (source == nu
 
 
 
+
 var Input = external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
   var onChange = _ref.onChange,
       inputClassName = _ref.inputClassName,
@@ -2190,7 +2191,7 @@ var Input = external_root_React_commonjs2_react_commonjs_react_amd_react_default
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: className
   }, label && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("label", {
-    className: "block text-sm font-medium leading-5 text-gray-700",
+    className: "block text-sm leading-5 font-medium text-gray-700",
     htmlFor: id
   }, label), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: "mt-1 relative rounded-md shadow-sm"
@@ -2202,12 +2203,23 @@ var Input = external_root_React_commonjs2_react_commonjs_react_amd_react_default
     "aria-label": label,
     "aria-required": label ? true : false,
     "aria-invalid": error ? true : false,
+    disabled: disabled,
     className: classnames_default()("form-input block w-full sm:text-sm sm:leading-5", inputClassName, {
       "bg-red-100 border border-red-400 focus:border-red-300 focus:shadow-outline-red": error,
       "bg-gray-100 cursor-not-allowed": disabled
     })
   }, rest))));
 });
+Input.propTypes = {
+  onChange: prop_types_default.a.func,
+  inputClassName: prop_types_default.a.string,
+  className: prop_types_default.a.string,
+  value: prop_types_default.a.string,
+  label: prop_types_default.a.string,
+  id: prop_types_default.a.string.isRequired,
+  error: prop_types_default.a.bool,
+  disabled: prop_types_default.a.bool
+};
 /* harmony default export */ var src_Input = (Input);
 // CONCATENATED MODULE: ./src/Textarea/index.js
 function Textarea_extends() { Textarea_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Textarea_extends.apply(this, arguments); }
@@ -2230,6 +2242,7 @@ function Textarea_objectWithoutPropertiesLoose(source, excluded) { if (source ==
 
 
 
+
 var Textarea = external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
   var onChange = _ref.onChange,
       textareaClassName = _ref.textareaClassName,
@@ -2238,7 +2251,9 @@ var Textarea = external_root_React_commonjs2_react_commonjs_react_amd_react_defa
       label = _ref.label,
       id = _ref.id,
       error = _ref.error,
-      rest = Textarea_objectWithoutProperties(_ref, ["onChange", "textareaClassName", "className", "value", "label", "id", "error"]);
+      disabled = _ref.disabled,
+      rows = _ref.rows,
+      rest = Textarea_objectWithoutProperties(_ref, ["onChange", "textareaClassName", "className", "value", "label", "id", "error", "disabled", "rows"]);
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(),
       _useState2 = Textarea_slicedToArray(_useState, 2),
@@ -2258,21 +2273,38 @@ var Textarea = external_root_React_commonjs2_react_commonjs_react_amd_react_defa
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: className
   }, label && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("label", {
-    className: "leading-normal text-gray-800 font-normal text-sm",
+    className: "block text-sm leading-5 font-medium text-gray-700",
     htmlFor: id
   }, label), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("textarea", Textarea_extends({
     id: id,
     ref: ref,
+    rows: rows,
     onChange: handleChange,
     defaultValue: internalValue,
     "aria-label": label,
     "aria-required": label ? true : false,
     "aria-invalid": error ? true : false,
-    className: classnames_default()("form-input appearance-none w-full border rounded py-2 px-3 text-gray-700 leading-tight", textareaClassName, {
-      "bg-red-100 border border-red-400": error
+    disabled: disabled,
+    className: classnames_default()("form-textarea mt-1 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", textareaClassName, {
+      "bg-red-100 border border-red-400 focus:border-red-300 focus:shadow-outline-red": error,
+      "bg-gray-100 cursor-not-allowed": disabled
     })
   }, rest)));
 });
+Textarea.defaultProps = {
+  rows: 3
+};
+Textarea.propTypes = {
+  onChange: prop_types_default.a.func,
+  textareaClassName: prop_types_default.a.string,
+  className: prop_types_default.a.string,
+  value: prop_types_default.a.string,
+  label: prop_types_default.a.string,
+  id: prop_types_default.a.string.isRequired,
+  error: prop_types_default.a.bool,
+  disabled: prop_types_default.a.bool,
+  rows: prop_types_default.a.number
+};
 /* harmony default export */ var src_Textarea = (Textarea);
 // CONCATENATED MODULE: ./src/Select/index.js
 function Select_extends() { Select_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Select_extends.apply(this, arguments); }
@@ -2295,6 +2327,7 @@ function Select_objectWithoutPropertiesLoose(source, excluded) { if (source == n
 
 
 
+
 var Select = external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
   var onChange = _ref.onChange,
       selectClassName = _ref.selectClassName,
@@ -2303,8 +2336,9 @@ var Select = external_root_React_commonjs2_react_commonjs_react_amd_react_defaul
       value = _ref.value,
       label = _ref.label,
       id = _ref.id,
+      disabled = _ref.disabled,
       error = _ref.error,
-      rest = Select_objectWithoutProperties(_ref, ["onChange", "selectClassName", "options", "className", "value", "label", "id", "error"]);
+      rest = Select_objectWithoutProperties(_ref, ["onChange", "selectClassName", "options", "className", "value", "label", "id", "disabled", "error"]);
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(),
       _useState2 = Select_slicedToArray(_useState, 2),
@@ -2333,16 +2367,36 @@ var Select = external_root_React_commonjs2_react_commonjs_react_amd_react_defaul
     ref: ref,
     onChange: handleChange,
     value: internalValue,
+    disabled: disabled,
     className: classnames_default()("mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5", selectClassName, {
-      "bg-red-100 border border-red-400 focus:border-red-300 focus:shadow-outline-red": error
+      "bg-red-100 border border-red-400 focus:border-red-300 focus:shadow-outline-red": error,
+      "bg-gray-100 cursor-not-allowed": disabled
     })
-  }, rest), options.map(function (item, index) {
+  }, rest), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("option", {
+    value: "",
+    disabled: true,
+    selected: true
+  }, "Choose one"), options.map(function (item, index) {
     return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("option", {
       key: "".concat(item.value, "-").concat(index),
       value: item.value
     }, item.name);
   }))));
 });
+Select.defaultProps = {
+  options: []
+};
+Select.propTypes = {
+  onChange: prop_types_default.a.func,
+  selectClassName: prop_types_default.a.string,
+  options: prop_types_default.a.array,
+  className: prop_types_default.a.string,
+  value: prop_types_default.a.string,
+  label: prop_types_default.a.string,
+  id: prop_types_default.a.string.isRequired,
+  error: prop_types_default.a.bool,
+  disabled: prop_types_default.a.bool
+};
 /* harmony default export */ var src_Select = (Select);
 // CONCATENATED MODULE: ./src/Avatar/utils/getInitials.js
 function getInitials_getInitials(name) {

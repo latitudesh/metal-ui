@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 const Textarea = React.forwardRef(
@@ -12,6 +13,7 @@ const Textarea = React.forwardRef(
       id,
       error,
       disabled,
+      rows,
       ...rest
     },
     ref
@@ -46,6 +48,7 @@ const Textarea = React.forwardRef(
         <textarea
           id={id}
           ref={ref}
+          rows={rows}
           onChange={handleChange}
           defaultValue={internalValue}
           aria-label={label}
@@ -66,5 +69,21 @@ const Textarea = React.forwardRef(
     );
   }
 );
+
+Textarea.defaultProps = {
+  rows: 3,
+};
+
+Textarea.propTypes = {
+  onChange: PropTypes.func,
+  textareaClassName: PropTypes.string,
+  className: PropTypes.string,
+  value: PropTypes.string,
+  label: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  error: PropTypes.bool,
+  disabled: PropTypes.bool,
+  rows: PropTypes.number,
+};
 
 export default Textarea;

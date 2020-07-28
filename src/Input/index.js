@@ -1,9 +1,20 @@
 import React, { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 const Input = React.forwardRef(
   (
-    { onChange, inputClassName, className, value, label, id, error, disabled, ...rest },
+    {
+      onChange,
+      inputClassName,
+      className,
+      value,
+      label,
+      id,
+      error,
+      disabled,
+      ...rest
+    },
     ref
   ) => {
     const [internalValue, setInternalValue] = useState();
@@ -57,5 +68,16 @@ const Input = React.forwardRef(
     );
   }
 );
+
+Input.propTypes = {
+  onChange: PropTypes.func,
+  inputClassName: PropTypes.string,
+  className: PropTypes.string,
+  value: PropTypes.string,
+  label: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  error: PropTypes.bool,
+  disabled: PropTypes.bool,
+};
 
 export default Input;
