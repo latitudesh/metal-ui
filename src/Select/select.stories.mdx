@@ -1,0 +1,67 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import Select from ".";
+
+export const options = [{value: 'server1', name: 'server1'}, {value: 'server2', name: 'server2'}, {value: 'server3', name: 'server3'}]
+
+<Meta title="Select" component={Select} />
+
+# Select
+
+## Options props: [{value: 'server1', name: 'server1'}])
+
+default
+
+<Preview>
+  <Story name="default">
+    <Select id="select-default" options={options} />
+  </Story>
+</Preview>
+
+with selected value
+
+<Preview>
+  <Story name="with value">
+    <Select id="select-with-value" value="server3" options={options} />
+  </Story>
+</Preview>
+
+with label
+
+<Preview>
+  <Story name="with label">
+    <Select id="select-with-label" label="Server list" options={options} />
+  </Story>
+</Preview>
+
+className props
+
+<Preview>
+  <Story name="className props">
+    <Select id="select-with-classname" label="Server list" className="w-1/3 border-2 p-2" options={options} />
+  </Story>
+</Preview>
+
+selectClassName props
+
+<Preview>
+  <Story name="selectClassName props">
+    <Select id="select-with-selectClassName" selectClassName="h-20" options={options} />
+  </Story>
+</Preview>
+
+with error
+
+<Preview>
+  <Story name="error props">
+    <Select id="select-with-error" error options={options} />
+  </Story>
+</Preview>
+
+disabled
+
+<Preview>
+  <Story name="disabled props">
+    <Select id="select-disabled" disabled options={options} />
+  </Story>
+</Preview>
+

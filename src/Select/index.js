@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 import classNames from "classnames";
 
-const Textarea = React.forwardRef(
+const Select = React.forwardRef(
   (
     {
       onChange,
-      textareaClassName,
+      selectClassName,
+      options,
       className,
       value,
       label,
@@ -42,26 +43,29 @@ const Textarea = React.forwardRef(
           </label>
         )}
 
-        <textarea
+        <select
           id={id}
           ref={ref}
           onChange={handleChange}
-          defaultValue={internalValue}
-          aria-label={label}
-          aria-required={label ? true : false}
-          aria-invalid={error ? true : false}
+          value={internalValue}
           className={classNames(
-            "form-input appearance-none w-full border rounded py-2 px-3 text-gray-700 leading-tight",
-            textareaClassName,
+            "form-select appearance-none w-full border rounded py-2 px-3 text-gray-700 leading-tight",
+            selectClassName,
             {
               "bg-red-100 border border-red-400": error,
             }
           )}
           {...rest}
-        />
+        >
+          {options.map((item, index) => (
+            <option key={`${item.value}-${index}`} value={item.value}>
+              {item.name}
+            </option>
+          ))}
+        </select>
       </div>
     );
   }
 );
 
-export default Textarea;
+export default Select;

@@ -1204,6 +1204,7 @@ __webpack_require__.d(__webpack_exports__, "Skeleton", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "Toast", function() { return /* reexport */ src_Toast; });
 __webpack_require__.d(__webpack_exports__, "Input", function() { return /* reexport */ src_Input; });
 __webpack_require__.d(__webpack_exports__, "Textarea", function() { return /* reexport */ src_Textarea; });
+__webpack_require__.d(__webpack_exports__, "Select", function() { return /* reexport */ src_Select; });
 __webpack_require__.d(__webpack_exports__, "Avatar", function() { return /* reexport */ src_Avatar_Avatar; });
 __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
@@ -2260,12 +2261,80 @@ var Textarea = external_root_React_commonjs2_react_commonjs_react_amd_react_defa
     "aria-label": label,
     "aria-required": label ? true : false,
     "aria-invalid": error ? true : false,
-    className: classnames_default()("form-input appearance-none h-56 w-full border rounded py-2 px-3 text-gray-700 leading-tight", textareaClassName, {
+    className: classnames_default()("form-input appearance-none w-full border rounded py-2 px-3 text-gray-700 leading-tight", textareaClassName, {
       "bg-red-100 border border-red-400": error
     })
   }, rest)));
 });
 /* harmony default export */ var src_Textarea = (Textarea);
+// CONCATENATED MODULE: ./src/Select/index.js
+function Select_extends() { Select_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Select_extends.apply(this, arguments); }
+
+function Select_slicedToArray(arr, i) { return Select_arrayWithHoles(arr) || Select_iterableToArrayLimit(arr, i) || Select_unsupportedIterableToArray(arr, i) || Select_nonIterableRest(); }
+
+function Select_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function Select_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return Select_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Select_arrayLikeToArray(o, minLen); }
+
+function Select_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function Select_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function Select_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function Select_objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = Select_objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function Select_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+var Select = external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
+  var onChange = _ref.onChange,
+      selectClassName = _ref.selectClassName,
+      options = _ref.options,
+      className = _ref.className,
+      value = _ref.value,
+      label = _ref.label,
+      id = _ref.id,
+      error = _ref.error,
+      rest = Select_objectWithoutProperties(_ref, ["onChange", "selectClassName", "options", "className", "value", "label", "id", "error"]);
+
+  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(),
+      _useState2 = Select_slicedToArray(_useState, 2),
+      internalValue = _useState2[0],
+      setInternalValue = _useState2[1];
+
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    setInternalValue(value);
+  }, [value]);
+  var handleChange = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function (event) {
+    setInternalValue(event.target.value);
+
+    if (onChange) {
+      onChange(event.target.value);
+    }
+  }, [setInternalValue, onChange]);
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: className
+  }, label && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("label", {
+    className: "leading-normal text-gray-800 font-normal text-sm",
+    htmlFor: id
+  }, label), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("select", Select_extends({
+    id: id,
+    ref: ref,
+    onChange: handleChange,
+    value: internalValue,
+    className: classnames_default()("form-select appearance-none w-full border rounded py-2 px-3 text-gray-700 leading-tight", selectClassName, {
+      "bg-red-100 border border-red-400": error
+    })
+  }, rest), options.map(function (item, index) {
+    return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("option", {
+      key: "".concat(item.value, "-").concat(index),
+      value: item.value
+    }, item.name);
+  })));
+});
+/* harmony default export */ var src_Select = (Select);
 // CONCATENATED MODULE: ./src/Avatar/utils/getInitials.js
 function getInitials_getInitials(name) {
   var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '?';
@@ -3333,6 +3402,7 @@ ListItem_defineProperty(ListItem_ListItem, "propTypes", ListItem_objectSpread({}
 
 
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 

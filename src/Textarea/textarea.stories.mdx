@@ -1,0 +1,59 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import Textarea from ".";
+
+<Meta title="Textarea" component={Textarea} />
+
+# Textarea
+
+default
+
+<Preview>
+  <Story name="default">
+    <Textarea id="textarea-default" placeholder="Text here..." />
+  </Story>
+</Preview>
+
+with label
+
+<Preview>
+  <Story name="with label">
+    <Textarea
+      id="textarea-with-label"
+      label="Name:"
+      placeholder="Text here..."
+    />
+  </Story>
+</Preview>
+
+className props
+
+<Preview>
+  <Story name="className props">
+    <Textarea className="w-1/3" placeholder="Text here..." />
+  </Story>
+</Preview>
+
+textareaClassName props
+
+<Preview>
+  <Story name="textareaClassName props">
+    <Textarea textareaClassName="h-56" className="w-1/3" placeholder="Text here..." />
+  </Story>
+</Preview>
+
+error props
+
+<Preview>
+  <Story name="error props">
+    <Textarea error className="w-1/3" placeholder="Text here..." />
+  </Story>
+</Preview>
+
+disabled props
+
+<Preview>
+  <Story name="disabled">
+    <Textarea disabled className="w-1/3" placeholder="Text here..." />
+  </Story>
+</Preview>
+
