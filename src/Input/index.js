@@ -41,6 +41,7 @@ const Input = React.forwardRef(
             aria-label={label}
             aria-required={label ? true : false}
             aria-invalid={error ? true : false}
+            disabled={disabled}
             className={classNames(
               "form-input block w-full sm:text-sm sm:leading-5",
               inputClassName,

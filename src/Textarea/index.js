@@ -51,7 +51,7 @@ const Textarea = React.forwardRef(
           aria-label={label}
           aria-required={label ? true : false}
           aria-invalid={error ? true : false}
-          disabled
+          disabled={disabled}
           className={classNames(
             "form-textarea mt-1 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5",
             textareaClassName,
