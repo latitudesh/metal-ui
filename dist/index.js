@@ -1995,7 +1995,7 @@ Text_defineProperty(Text_Text, "propTypes", {
 Text_defineProperty(Text_Text, "defaultProps", {
   color: "text-gray-700",
   is: "span",
-  margin: "mb-4"
+  margin: ""
 });
 
 /* harmony default export */ var Typography_Text = (Text_Text);
@@ -2169,7 +2169,8 @@ var Input = external_root_React_commonjs2_react_commonjs_react_amd_react_default
       label = _ref.label,
       id = _ref.id,
       error = _ref.error,
-      rest = Input_objectWithoutProperties(_ref, ["onChange", "inputClassName", "className", "value", "label", "id", "error"]);
+      disabled = _ref.disabled,
+      rest = Input_objectWithoutProperties(_ref, ["onChange", "inputClassName", "className", "value", "label", "id", "error", "disabled"]);
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(),
       _useState2 = Input_slicedToArray(_useState, 2),
@@ -2189,9 +2190,11 @@ var Input = external_root_React_commonjs2_react_commonjs_react_amd_react_default
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: className
   }, label && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("label", {
-    className: "leading-normal text-gray-800 font-normal text-sm",
+    className: "block text-sm font-medium leading-5 text-gray-700",
     htmlFor: id
-  }, label), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("input", Input_extends({
+  }, label), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: "mt-1 relative rounded-md shadow-sm"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("input", Input_extends({
     id: id,
     ref: ref,
     onChange: handleChange,
@@ -2199,10 +2202,11 @@ var Input = external_root_React_commonjs2_react_commonjs_react_amd_react_default
     "aria-label": label,
     "aria-required": label ? true : false,
     "aria-invalid": error ? true : false,
-    className: classnames_default()("form-input appearance-none w-full border rounded py-2 px-3 text-gray-700 leading-tight", inputClassName, {
-      "bg-red-100 border border-red-400": error
+    className: classnames_default()("form-input block w-full sm:text-sm sm:leading-5", inputClassName, {
+      "bg-red-100 border border-red-400 focus:border-red-300 focus:shadow-outline-red": error,
+      "bg-gray-100 cursor-not-allowed": disabled
     })
-  }, rest)));
+  }, rest))));
 });
 /* harmony default export */ var src_Input = (Input);
 // CONCATENATED MODULE: ./src/Textarea/index.js
