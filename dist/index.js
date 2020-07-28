@@ -1202,6 +1202,8 @@ __webpack_require__.d(__webpack_exports__, "Menu", function() { return /* reexpo
 __webpack_require__.d(__webpack_exports__, "Sidesheet", function() { return /* reexport */ src_Sidesheet; });
 __webpack_require__.d(__webpack_exports__, "Skeleton", function() { return /* reexport */ src_Skeleton; });
 __webpack_require__.d(__webpack_exports__, "Toast", function() { return /* reexport */ src_Toast; });
+__webpack_require__.d(__webpack_exports__, "Input", function() { return /* reexport */ src_Input; });
+__webpack_require__.d(__webpack_exports__, "Textarea", function() { return /* reexport */ src_Textarea; });
 __webpack_require__.d(__webpack_exports__, "Avatar", function() { return /* reexport */ src_Avatar_Avatar; });
 __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
@@ -2134,6 +2136,136 @@ Toast_Toast.propTypes = {
   dismissTime: prop_types_default.a.number
 };
 /* harmony default export */ var src_Toast = (Toast_Toast);
+// CONCATENATED MODULE: ./src/Input/index.js
+function Input_extends() { Input_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Input_extends.apply(this, arguments); }
+
+function Input_slicedToArray(arr, i) { return Input_arrayWithHoles(arr) || Input_iterableToArrayLimit(arr, i) || Input_unsupportedIterableToArray(arr, i) || Input_nonIterableRest(); }
+
+function Input_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function Input_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return Input_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Input_arrayLikeToArray(o, minLen); }
+
+function Input_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function Input_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function Input_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function Input_objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = Input_objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function Input_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+var Input = external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
+  var onChange = _ref.onChange,
+      inputClassName = _ref.inputClassName,
+      className = _ref.className,
+      value = _ref.value,
+      label = _ref.label,
+      id = _ref.id,
+      error = _ref.error,
+      rest = Input_objectWithoutProperties(_ref, ["onChange", "inputClassName", "className", "value", "label", "id", "error"]);
+
+  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(),
+      _useState2 = Input_slicedToArray(_useState, 2),
+      internalValue = _useState2[0],
+      setInternalValue = _useState2[1];
+
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    setInternalValue(value);
+  }, [value]);
+  var handleChange = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function (event) {
+    setInternalValue(event.target.value);
+
+    if (onChange) {
+      onChange(event.target.value);
+    }
+  }, [setInternalValue, onChange]);
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: className
+  }, label && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("label", {
+    className: "leading-normal text-gray-800 font-normal text-sm",
+    htmlFor: id
+  }, label), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("input", Input_extends({
+    id: id,
+    ref: ref,
+    onChange: handleChange,
+    defaultValue: internalValue,
+    "aria-label": label,
+    "aria-required": label ? true : false,
+    "aria-invalid": error ? true : false,
+    className: classnames_default()("form-input appearance-none w-full border rounded py-2 px-3 text-gray-700 leading-tight", inputClassName, {
+      "bg-red-100 border border-red-400": error
+    })
+  }, rest)));
+});
+/* harmony default export */ var src_Input = (Input);
+// CONCATENATED MODULE: ./src/Textarea/index.js
+function Textarea_extends() { Textarea_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Textarea_extends.apply(this, arguments); }
+
+function Textarea_slicedToArray(arr, i) { return Textarea_arrayWithHoles(arr) || Textarea_iterableToArrayLimit(arr, i) || Textarea_unsupportedIterableToArray(arr, i) || Textarea_nonIterableRest(); }
+
+function Textarea_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function Textarea_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return Textarea_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Textarea_arrayLikeToArray(o, minLen); }
+
+function Textarea_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function Textarea_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function Textarea_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function Textarea_objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = Textarea_objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function Textarea_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+var Textarea = external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
+  var onChange = _ref.onChange,
+      textareaClassName = _ref.textareaClassName,
+      className = _ref.className,
+      value = _ref.value,
+      label = _ref.label,
+      id = _ref.id,
+      error = _ref.error,
+      rest = Textarea_objectWithoutProperties(_ref, ["onChange", "textareaClassName", "className", "value", "label", "id", "error"]);
+
+  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(),
+      _useState2 = Textarea_slicedToArray(_useState, 2),
+      internalValue = _useState2[0],
+      setInternalValue = _useState2[1];
+
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    setInternalValue(value);
+  }, [value]);
+  var handleChange = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function (event) {
+    setInternalValue(event.target.value);
+
+    if (onChange) {
+      onChange(event.target.value);
+    }
+  }, [setInternalValue, onChange]);
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: className
+  }, label && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("label", {
+    className: "leading-normal text-gray-800 font-normal text-sm",
+    htmlFor: id
+  }, label), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("textarea", Textarea_extends({
+    id: id,
+    ref: ref,
+    onChange: handleChange,
+    defaultValue: internalValue,
+    "aria-label": label,
+    "aria-required": label ? true : false,
+    "aria-invalid": error ? true : false,
+    className: classnames_default()("form-input appearance-none h-56 w-full border rounded py-2 px-3 text-gray-700 leading-tight", textareaClassName, {
+      "bg-red-100 border border-red-400": error
+    })
+  }, rest)));
+});
+/* harmony default export */ var src_Textarea = (Textarea);
 // CONCATENATED MODULE: ./src/Avatar/utils/getInitials.js
 function getInitials_getInitials(name) {
   var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '?';
@@ -3201,6 +3333,8 @@ ListItem_defineProperty(ListItem_ListItem, "propTypes", ListItem_objectSpread({}
 
 
 // CONCATENATED MODULE: ./src/index.js
+
+
 
 
 

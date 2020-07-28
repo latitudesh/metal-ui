@@ -8,6 +8,8 @@ export { default as Menu } from "./Menu";
 export { default as Sidesheet } from "./Sidesheet";
 export { default as Skeleton } from "./Skeleton";
 export { default as Toast } from "./Toast";
+export { default as Input } from "./Input";
+export { default as Textarea } from "./Textarea";
 export { default as Avatar } from "./Avatar/Avatar";
 
 export * from "./Flags";
@@ -16,4 +18,3 @@ export { default as Text } from "./Typography/Text";
 export { default as Heading } from "./Typography/Heading";
 export { default as UnorderedList } from "./Typography/UnorderedList";
 export { default as ListItem } from "./Typography/ListItem";
-export { default as Input } from "./Form/Input";
