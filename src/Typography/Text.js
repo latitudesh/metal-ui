@@ -13,21 +13,24 @@ class Text extends PureComponent {
 
     is: PropTypes.oneOf(['span', 'p', 'li']).isRequired,
 
+    margin: PropTypes.string
+
   };
 
   static defaultProps = {
-    color: "text-gray-800",
+    color: "text-gray-700",
     is: "span",
+    margin: ""
   };
 
   render() {
-    const { className, bold, color, small, is, ...props } = this.props;
+    const { className, bold, color, small, is, margin, ...props } = this.props;
 
     const Tag = is;
 
     return (
       <Tag
-        className={classNames("leading-normal", color, {
+        className={classNames("leading-normal", margin, color, {
           "font-semibold": Boolean(bold),
           "font-normal": !Boolean(bold),
           "text-base": !Boolean(small),

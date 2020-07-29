@@ -1,0 +1,57 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import Input from ".";
+
+<Meta title="Input" component={Input} />
+
+# Input
+
+<Preview>
+  <Story name="Default">
+    <Input id="input-default" placeholder="Text here..." />
+  </Story>
+</Preview>
+
+# With label
+
+<Preview>
+  <Story name="With label">
+    <Input
+      id="input-with-label"
+      label="Name"
+      placeholder="Text here..."
+    />
+  </Story>
+</Preview>
+
+# With `className`
+
+<Preview>
+  <Story name="With className">
+    <Input className="w-1/3" placeholder="Text here..." />
+  </Story>
+</Preview>
+
+# With `inputClassName`
+
+<Preview>
+  <Story name="With inputClassName">
+    <Input inputClassName="h-20" className="w-1/3" placeholder="Text here..." />
+  </Story>
+</Preview>
+
+# With validation error
+
+<Preview>
+  <Story name="With validation error">
+    <Input error className="w-1/3" placeholder="Text here..." />
+  </Story>
+</Preview>
+
+# Disabled
+
+<Preview>
+  <Story name="Disabled">
+    <Input disabled className="w-1/3" placeholder="Text here..." />
+  </Story>
+</Preview>
+
