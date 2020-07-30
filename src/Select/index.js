@@ -18,7 +18,7 @@ const Select = React.forwardRef(
     },
     ref
   ) => {
-    const [internalValue, setInternalValue] = useState();
+    const [internalValue, setInternalValue] = useState("");
 
     useEffect(() => {
       setInternalValue(value);
@@ -61,7 +61,7 @@ const Select = React.forwardRef(
             )}
             {...rest}
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               Choose one
             </option>
             {options.map((item, index) => (

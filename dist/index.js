@@ -2340,7 +2340,7 @@ var Select = external_root_React_commonjs2_react_commonjs_react_amd_react_defaul
       error = _ref.error,
       rest = Select_objectWithoutProperties(_ref, ["onChange", "selectClassName", "options", "className", "value", "label", "id", "disabled", "error"]);
 
-  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(),
+  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(""),
       _useState2 = Select_slicedToArray(_useState, 2),
       internalValue = _useState2[0],
       setInternalValue = _useState2[1];
@@ -2374,8 +2374,7 @@ var Select = external_root_React_commonjs2_react_commonjs_react_amd_react_defaul
     })
   }, rest), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("option", {
     value: "",
-    disabled: true,
-    selected: true
+    disabled: true
   }, "Choose one"), options.map(function (item, index) {
     return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("option", {
       key: "".concat(item.value, "-").concat(index),
