@@ -1,0 +1,25 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import PowerSearch from "./index";
+
+<Meta title="PowerSearch" component={PowerSearch} />
+
+# Default
+
+<Story name="Default">
+  <PowerSearch
+    ALGOLIA_APP_ID=""
+    ALGOLIA_API_SEARCH_KEY=""
+    indices={[{
+      indexName: 'devices',
+      displayName: 'Devices',
+      renderCardInfo: (data) => <p>{data.description}</p>,
+      searchRestrictions: 'clientid:1021',
+    }, {
+      indexName: 'zendesk_maxihost_articles',
+      displayName: 'Documentation',
+      renderCardInfo: (data) => <p>{data.title}</p>,
+    }]}
+    conditions={['<', '=', '>', '>=', '<=']}
+    specialChar=":"
+  />
+</Story>
