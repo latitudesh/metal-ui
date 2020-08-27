@@ -36,7 +36,11 @@ const ResultPill = (props) => {
     // TODO: Allow for onClick if it is active
 
     if (isCurrentElement && enterKeyWasPressed) {
-      clickableLink.current.click();
+      if (formatHitURL) {
+        clickableLink.current.click();
+      } else {
+        alert('The formatHitURL prop was not found, it is used to format the url for the pill! Without it, we dont know where to send you :)')
+      }
       setEnterKeyWasPressed(false);
     }
 
