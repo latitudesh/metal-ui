@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, Index, Configure } from 'react-instantsearch-dom';
 
-import { useTabController } from '../../context';
+import { useTabController, navigationKeyTypes } from '../../context';
 import SearchBox from '../SearchBox';
 import ResultsList from '../ResultsList';
 import Controls from '../Controls';
@@ -13,13 +13,12 @@ const SearchWrapper = (props) => {
     ALGOLIA_APP_ID,
     ALGOLIA_API_SEARCH_KEY,
     indices,
-    conditions,
+    searchOperators,
     specialChar,
+    scrollWindowHeight,
   } = props;
 
   const {
-    incrementActiveElementIndex,
-    decrementActiveElementIndex,
     scrollableWindowHeight,
     setScrollableWindowTopOffset,
     scrollDistance,
@@ -27,7 +26,9 @@ const SearchWrapper = (props) => {
     setScrollWindowRef,
     shouldBypassSearch,
     setShouldBypassSearch,
-    setEnterKeyWasPressed,
+    setScrollableWindowHeight,
+    isScrollDisabled,
+    handleKeyNavigation,
   } = useTabController();
 
   const algoliaClient = algoliasearch(
@@ -52,10 +53,16 @@ const SearchWrapper = (props) => {
   }, [setScrollWindowRef]);
 
   useEffect(() => {
-    const sortedConditions = conditions.sort((a, b) => a.length - b.length);
-    const adjustedConditions = sortedConditions.map((condition) => `${specialChar}${condition}`);
-    setConditionalOperands(adjustedConditions);
-  }, [specialChar, conditions]);
+    setScrollableWindowHeight(scrollWindowHeight);
+  }, [scrollWindowHeight])
+
+  useEffect(() => {
+    if (Array.isArray(searchOperators) && searchOperators.length > 0) {
+      const sortedSearchOperators = searchOperators.sort((a, b) => a.length - b.length);
+      const adjustedSearchOperators = sortedSearchOperators.map((condition) => `${specialChar}${condition}`);
+      setConditionalOperands(adjustedSearchOperators);
+    }
+  }, [specialChar, searchOperators]);
 
   useEffect(() => {
     const scrollableResultsBoundingRect = scrollWindowRef.current.getBoundingClientRect();
@@ -63,10 +70,10 @@ const SearchWrapper = (props) => {
   }, [setScrollableWindowTopOffset]);
 
   useEffect(() => {
-    if (typeof scrollDistance === 'number' && searchHasText) {
+    if (typeof scrollDistance === 'number' && searchHasText && !isScrollDisabled) {
       scrollWindowRef.current.scrollTo(0, scrollDistance);
     }
-  }, [scrollDistance, searchHasText]);
+  }, [scrollDistance, searchHasText, isScrollDisabled]);
 
   const handleOnSearchStateChange = ({ query }) => {
     let filter = '';
@@ -96,9 +103,20 @@ const SearchWrapper = (props) => {
     }
   };
 
-  const configureFilterState = (searchRestrictions = null) => {
-    if (searchRestrictions) {
-      return `${filterState ? `${filterState} AND` : searchRestrictions}`;
+  const configureFilterState = (searchConditions = null) => {
+    if (Array.isArray(searchConditions) && searchConditions.length > 0) {
+      const conditionalFilterState = searchConditions.reduce((acc, condition, index) => {
+        const { conditionType, conditionString } = condition;
+
+        if (index === 0) {
+          if (filterState) return `${filterState} ${conditionType || 'AND'} ${conditionString}`;
+          return `${conditionString}`;
+        }
+
+        return `${acc} ${conditionType || 'AND'} ${conditionString}`;
+      }, '');
+
+      return conditionalFilterState;
     }
 
     return filterState;
@@ -107,22 +125,15 @@ const SearchWrapper = (props) => {
   const handleOnKeyDown = (e) => {
     switch (e.keyCode) {
       case 40:
-        // down arrow
-        setShouldBypassSearch(true);
-        incrementActiveElementIndex();
+        handleKeyNavigation(navigationKeyTypes.ARROW_DOWN);
         break;
 
       case 38:
-        // up arrow
-        setShouldBypassSearch(true);
-        decrementActiveElementIndex();
+        handleKeyNavigation(navigationKeyTypes.ARROW_UP);
         break;
 
       case 13:
-        // enter key
-        setShouldBypassSearch(true);
-        setEnterKeyWasPressed(true);
-        e.preventDefault();
+        handleKeyNavigation(navigationKeyTypes.ENTER);
         break;
 
       default:
@@ -153,7 +164,7 @@ const SearchWrapper = (props) => {
               ref={scrollWindowRef}
             >
               {indices.map((algoliaIndice, sectionIndex) => {
-                const { indexName, displayName, renderCardInfo, formatHitURL, searchRestrictions } = algoliaIndice;
+                const { indexName, displayName, renderCardInfo, formatHitURL, searchConditions } = algoliaIndice;
 
                 return (
                   <Index
@@ -162,7 +173,7 @@ const SearchWrapper = (props) => {
                     limit={4}
                   >
                     <Configure
-                      filters={configureFilterState(searchRestrictions)}
+                      filters={configureFilterState(searchConditions)}
                       hitsPerPage={5}
                     />
                     <ResultsList
@@ -183,5 +194,28 @@ const SearchWrapper = (props) => {
   );
 };
 
+SearchWrapper.defaultProps = {
+  scrollWindowHeight: 400,
+}
+
+SearchWrapper.propTypes = {
+  ALGOLIA_APP_ID: PropTypes.string.isRequired,
+  ALGOLIA_API_SEARCH_KEY: PropTypes.string.isRequired,
+  specialChar: PropTypes.string.isRequired,
+  searchOperators: PropTypes.arrayOf(PropTypes.string).isRequired,
+  indices: PropTypes.arrayOf(PropTypes.shape({
+    indexName: PropTypes.string,
+    displayName: PropTypes.string,
+    renderCardInfo: PropTypes.func,
+    formatHitURL: PropTypes.func,
+    searchConditions: PropTypes.arrayOf(
+      PropTypes.shape({
+        conditionType: PropTypes.oneOf(['OR', 'AND']),
+        conditionString: PropTypes.string,
+      }),
+    )
+  })).isRequired,
+  scrollWindowHeight: PropTypes.number,
+}
 
 export default SearchWrapper;
