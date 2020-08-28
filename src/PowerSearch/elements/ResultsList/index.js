@@ -36,7 +36,7 @@ const ResultsList = (props) => {
                 key={index}
                 elementIndex={index}
                 sectionIndex={sectionIndex}
-                formatHitURL={formatHitURL}
+                formatHitURL={() => formatHitURL(hit)}
               >
                 {renderCardInfo(hit)}
               </ResultPill>
