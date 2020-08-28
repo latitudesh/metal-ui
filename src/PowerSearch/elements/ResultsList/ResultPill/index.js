@@ -24,6 +24,7 @@ const ResultPill = (props) => {
     setScrollDistance,
     enterKeyWasPressed,
     setEnterKeyWasPressed,
+    manuallySetActiveIndex,
   } = useTabController();
 
   const resultPillRef = useRef(null);
@@ -56,6 +57,10 @@ const ResultPill = (props) => {
       setScrollDistance(distToScroll);
     }
   }, [isCurrentElement, scrollableWindowHeight, scrollableWindowTopOffset, scrollWindowRef, setScrollDistance, setEnterKeyWasPressed, enterKeyWasPressed]);
+  
+  const handleHoverSelection = (e) => {
+    manuallySetActiveIndex(elementIndex);
+  }
 
   if (noResults) {
     return (
@@ -66,6 +71,7 @@ const ResultPill = (props) => {
         tabIndex={0}
         role="option"
         aria-selected={isCurrentElement}
+        onMouseEnter={handleHoverSelection}
       >
         <div
           ref={clickableLink}
@@ -86,6 +92,7 @@ const ResultPill = (props) => {
       role="option"
       aria-selected={isCurrentElement}
       ref={resultPillRef}
+      onMouseEnter={handleHoverSelection}
     >
       <a
         ref={clickableLink}

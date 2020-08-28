@@ -9,10 +9,11 @@ const PowerSearch = (props) => {
     ALGOLIA_APP_ID,
     ALGOLIA_API_SEARCH_KEY,
     indices,
-    conditions,
+    searchOperators,
     specialChar,
+    scrollWindowHeight,
   } = props;
-  
+
   if (!ALGOLIA_APP_ID || !ALGOLIA_API_SEARCH_KEY) {
     return (
       <>
@@ -28,24 +29,32 @@ const PowerSearch = (props) => {
         ALGOLIA_APP_ID={ALGOLIA_APP_ID}
         ALGOLIA_API_SEARCH_KEY={ALGOLIA_API_SEARCH_KEY}
         indices={indices}
-        conditions={conditions}
+        searchOperators={searchOperators}
         specialChar={specialChar}
+        scrollWindowHeight={scrollWindowHeight}
       />
     </TabController>
   );
 }
 
 PowerSearch.propTypes = {
+  ALGOLIA_APP_ID: PropTypes.string.isRequired,
+  ALGOLIA_API_SEARCH_KEY: PropTypes.string.isRequired,
+  specialChar: PropTypes.string.isRequired,
+  searchOperators: PropTypes.arrayOf(PropTypes.string).isRequired,
   indices: PropTypes.arrayOf(PropTypes.shape({
     indexName: PropTypes.string,
     displayName: PropTypes.string,
     renderCardInfo: PropTypes.func,
     formatHitURL: PropTypes.func,
+    searchConditions: PropTypes.arrayOf(
+      PropTypes.shape({
+        conditionType: PropTypes.oneOf(['OR', 'AND']),
+        conditionString: PropTypes.string,
+      }),
+    )
   })).isRequired,
-  conditions: PropTypes.arrayOf(PropTypes.string).isRequired,
-  specialChar: PropTypes.string.isRequired,
-  ALGOLIA_APP_ID: PropTypes.string.isRequired,
-  ALGOLIA_API_SEARCH_KEY: PropTypes.string.isRequired,
+  scrollWindowHeight: PropTypes.number,
 }
 
 export default PowerSearch;

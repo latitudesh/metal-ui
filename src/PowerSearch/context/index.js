@@ -1,8 +1,15 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const TabControllerContext = createContext({});
 export const useTabController = () => useContext(TabControllerContext);
+
+export const navigationKeyTypes = {
+  CURSOR: 'cursor',
+  ARROW_DOWN: 'arrowDown',
+  ARROW_UP: 'arrowUp',
+  ENTER: 'enter',
+};
 
 const TabController = (props) => {
   const { children } = props;
@@ -33,6 +40,36 @@ const TabController = (props) => {
   const [shouldBypassSearch, setShouldBypassSearch] = useState(true);
 
   const [enterKeyWasPressed, setEnterKeyWasPressed] = useState(false);
+  
+  // allows for manual scroll disabling
+  const [isScrollDisabled, setIsScrollDisabled] = useState(false);
+  
+  const handleKeyNavigation = (key) => {
+    switch (key) {
+      case navigationKeyTypes.ARROW_UP:
+        decrementActiveElementIndex();
+        setShouldBypassSearch(true);
+        break;
+
+      case navigationKeyTypes.ARROW_DOWN:
+        incrementActiveElementIndex();
+        setShouldBypassSearch(true);
+        break;
+        
+      case navigationKeyTypes.ENTER:
+        setEnterKeyWasPressed(true);
+        setShouldBypassSearch(true);
+        break;
+
+      default:
+        break;
+    }
+  };
+  
+  const manuallySetActiveIndex = (index) => {
+    setIsScrollDisabled(true);
+    setActiveElementIndex(index);
+  }
 
   // resets the active element to the first one
   const resetActiveElementIndex = () => {
@@ -51,6 +88,7 @@ const TabController = (props) => {
   const incrementActiveElementIndex = () => {
     let nextIndex = activeElementIndex + 1;
     if (nextIndex >= totalElementsCount) nextIndex = 0;
+    setIsScrollDisabled(false);
     setActiveElementIndex(nextIndex);
   };
 
@@ -58,6 +96,7 @@ const TabController = (props) => {
   const decrementActiveElementIndex = () => {
     let prevIndex = activeElementIndex - 1;
     if (prevIndex < 0) prevIndex = totalElementsCount - 1;
+    setIsScrollDisabled(false);
     setActiveElementIndex(prevIndex);
   };
 
@@ -66,10 +105,9 @@ const TabController = (props) => {
       value={{
         activeElementIndex,
         resetActiveElementIndex,
-        incrementActiveElementIndex,
-        decrementActiveElementIndex,
         appendNewSectionLength,
         sectionLengthsArray,
+        manuallySetActiveIndex,
         setActiveElementIndex,
 
         scrollableWindowHeight,
@@ -88,6 +126,9 @@ const TabController = (props) => {
 
         setEnterKeyWasPressed,
         enterKeyWasPressed,
+        
+        isScrollDisabled,
+        handleKeyNavigation,
       }}
     >
       {children}
@@ -95,8 +136,5 @@ const TabController = (props) => {
   );
 };
 
-TabController.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default TabController;
