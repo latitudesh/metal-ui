@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import TabController from './context';
 import SearchWrapper from './elements/SearchWrapper';
 
-const PowerSearch = (props) => {
+const AlgoliaSearch = (props) => {
   const {
     ALGOLIA_APP_ID,
     ALGOLIA_API_SEARCH_KEY,
@@ -37,7 +37,12 @@ const PowerSearch = (props) => {
   );
 }
 
-PowerSearch.propTypes = {
+AlgoliaSearch.defaultProps = {
+  customLoader: null,
+  customNoResults: null,
+};
+
+AlgoliaSearch.propTypes = {
   ALGOLIA_APP_ID: PropTypes.string.isRequired,
   ALGOLIA_API_SEARCH_KEY: PropTypes.string.isRequired,
   specialChar: PropTypes.string.isRequired,
@@ -55,6 +60,8 @@ PowerSearch.propTypes = {
     )
   })).isRequired,
   scrollWindowHeight: PropTypes.number,
-}
+  customLoader: PropTypes.node,
+  customNoResults: PropTypes.node,
+};
 
-export default PowerSearch;
+export default AlgoliaSearch;

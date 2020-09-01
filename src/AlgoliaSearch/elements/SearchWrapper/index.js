@@ -7,6 +7,8 @@ import { useTabController, navigationKeyTypes } from '../../context';
 import SearchBox from '../SearchBox';
 import ResultsList from '../ResultsList';
 import Controls from '../Controls';
+import Loader from '../Loader';
+import NoResults from '../NoResults';
 
 const SearchWrapper = (props) => {
   const {
@@ -16,6 +18,8 @@ const SearchWrapper = (props) => {
     searchOperators,
     specialChar,
     scrollWindowHeight,
+    customLoader,
+    customNoResults,
   } = props;
 
   const {
@@ -29,6 +33,7 @@ const SearchWrapper = (props) => {
     setScrollableWindowHeight,
     isScrollDisabled,
     handleKeyNavigation,
+    totalElementsCount,
   } = useTabController();
 
   const algoliaClient = algoliasearch(
@@ -47,6 +52,7 @@ const SearchWrapper = (props) => {
   const scrollWindowRef = useRef(null);
   const [filterState, setFilterState] = useState('');
   const [conditionalOperands, setConditionalOperands] = useState(null);
+  const [isSearchEmpty, setIsSearchEmpty] = useState(false);
 
   useEffect(() => {
     setScrollWindowRef(scrollWindowRef);
@@ -74,13 +80,27 @@ const SearchWrapper = (props) => {
       scrollWindowRef.current.scrollTo(0, scrollDistance);
     }
   }, [scrollDistance, searchHasText, isScrollDisabled]);
+  
+  useEffect(() => {
+    let interval = null;
+    if (totalElementsCount === 0) {
+      setTimeout(() => {
+        if (totalElementsCount === 0) {
+          setIsSearchEmpty(true);
+        }
+      }, 800);  
+    } else {
+      setIsSearchEmpty(false);
+    }
+    
+    return clearInterval(interval);
+  }, [totalElementsCount]);
 
   const handleOnSearchStateChange = ({ query }) => {
     let filter = '';
     let operandFound = false;
 
     if (query) {
-      // sets the filter for the Configure component
       conditionalOperands.forEach((operand) => {
         const operandIndex = query.indexOf(operand);
 
@@ -141,6 +161,9 @@ const SearchWrapper = (props) => {
         break;
     }
   };
+  
+  const LoaderToRender = customLoader ? customLoader : Loader;
+  const NoResultsToRender = customNoResults ? customNoResults : NoResults;
 
   return (
     <div className="p-4 bg-white">
@@ -185,6 +208,11 @@ const SearchWrapper = (props) => {
                   </Index>
                 );
               })}
+
+              {(totalElementsCount === 0 && isSearchEmpty) && <NoResultsToRender />}
+
+              {(totalElementsCount === 0 && !isSearchEmpty) && <LoaderToRender />}
+
             </div>
             <Controls />
           </div>
@@ -196,6 +224,8 @@ const SearchWrapper = (props) => {
 
 SearchWrapper.defaultProps = {
   scrollWindowHeight: 400,
+  customLoader: null,
+  customNoResults: null,
 }
 
 SearchWrapper.propTypes = {
@@ -216,6 +246,8 @@ SearchWrapper.propTypes = {
     )
   })).isRequired,
   scrollWindowHeight: PropTypes.number,
+  customLoader: PropTypes.node,
+  customNoResults: PropTypes.node,
 }
 
 export default SearchWrapper;
