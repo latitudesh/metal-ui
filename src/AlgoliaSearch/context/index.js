@@ -109,6 +109,7 @@ const TabController = (props) => {
         sectionLengthsArray,
         manuallySetActiveIndex,
         setActiveElementIndex,
+        totalElementsCount,
 
         scrollableWindowHeight,
         setScrollableWindowHeight,

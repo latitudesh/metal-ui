@@ -58,7 +58,7 @@ const ResultPill = (props) => {
     }
   }, [isCurrentElement, scrollableWindowHeight, scrollableWindowTopOffset, scrollWindowRef, setScrollDistance, setEnterKeyWasPressed, enterKeyWasPressed]);
   
-  const handleHoverSelection = (e) => {
+  const handleHoverSelection = () => {
     manuallySetActiveIndex(elementIndex);
   }
 
