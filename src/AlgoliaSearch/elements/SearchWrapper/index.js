@@ -175,10 +175,12 @@ const SearchWrapper = (props) => {
         <div
           onKeyDown={handleOnKeyDown}
           role="listbox"
+          className="relative"
         >
           <SearchBox />
+
           <div
-            className="shadow-xl rounded"
+            className="shadow-xl rounded absolute w-full bg-white"
             style={{ visibility: `${searchHasText ? 'visible' : 'hidden'}` }}
           >
             <div

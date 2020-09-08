@@ -34,8 +34,6 @@ const ResultPill = (props) => {
   const isCurrentElement = ((activeElementIndex === currentElementIndex) && searchHasText) && !noResults;
 
   useEffect(() => {
-    // TODO: Allow for onClick if it is active
-
     if (isCurrentElement && enterKeyWasPressed) {
       if (formatHitURL) {
         clickableLink.current.click();

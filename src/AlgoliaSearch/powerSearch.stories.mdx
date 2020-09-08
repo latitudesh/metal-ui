@@ -13,11 +13,13 @@ import AlgoliaSearch from "./index";
       indexName: 'devices',
       displayName: 'Devices',
       renderCardInfo: (data) => <p>{data.description}</p>,
+      formatHitURL: (data) => `/${data.title}`,
       searchConditions: [{ conditionType: 'AND', conditionString: 'clientid:1021'}],
     }, {
       indexName: 'zendesk_maxihost_articles',
       displayName: 'Documentation',
       renderCardInfo: (data) => <p>{data.title}</p>,
+      formatHitURL: (data) => `/${data.title}`,
     }]}
     searchOperators={['<', '=', '>', '>=', '<=']}
     specialChar=":"
