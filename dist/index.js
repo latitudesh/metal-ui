@@ -11236,7 +11236,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
       onMouseEnter: handleHoverSelection
     }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
       ref: clickableLink,
-      className: "p-2 border shadow-sm rounded text-gray-800",
+      className: "px-2 border rounded text-gray-800",
       style: ResultPill_objectSpread({}, ResultPill_style.resultPillLink)
     }, children));
   }
@@ -11252,7 +11252,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("a", {
     ref: clickableLink,
     href: formatHitURL,
-    className: "p-2 border shadow-sm rounded ".concat(isCurrentElement ? 'bg-purple-800 text-white' : 'text-gray-800 shadow-sm'),
+    className: "px-2 border border-white rounded outline-none ".concat(isCurrentElement ? 'bg-indigo-600 text-white' : 'text-gray-800'),
     style: ResultPill_objectSpread({}, ResultPill_style.resultPillLink)
   }, children));
 };

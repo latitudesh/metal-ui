@@ -73,7 +73,7 @@ const ResultPill = (props) => {
       >
         <div
           ref={clickableLink}
-          className="p-2 border shadow-sm rounded text-gray-800"
+          className="px-2 border rounded text-gray-800"
           style={{...styles.resultPillLink}}
         >
           {children}
@@ -95,7 +95,7 @@ const ResultPill = (props) => {
       <a
         ref={clickableLink}
         href={formatHitURL}
-        className={`p-2 border shadow-sm rounded ${isCurrentElement ? 'bg-purple-800 text-white' : 'text-gray-800 shadow-sm'}`}
+        className={`px-2 border border-white rounded outline-none ${isCurrentElement ? 'bg-indigo-600 text-white' : 'text-gray-800'}`}
         style={{...styles.resultPillLink}}
       >
         {children}
