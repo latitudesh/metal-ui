@@ -46,13 +46,13 @@ const SearchBox = (props) => {
         role="search"
       >
         <Input
-          inputClassName={`${searchHasText ? 'focused' : ''} ais-SearchBox-input p-3 border rounded w-full`}
+          inputClassName={`${searchHasText ? 'focused' : ''} -mt-1 ais-SearchBox-input w-full`}
           value={currentRefinement}
           onChange={handleOnChange}
           onFocus={checkIfSearchHasText}
           type="search"
           aria-label="Search for a resource by typing here"
-          placeholder="Search here..."
+          placeholder="Search..."
         />
       </form>
     </div>

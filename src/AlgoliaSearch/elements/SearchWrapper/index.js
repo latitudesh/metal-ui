@@ -166,7 +166,7 @@ const SearchWrapper = (props) => {
   const NoResultsToRender = customNoResults ? customNoResults : NoResults;
 
   return (
-    <div className="p-4 bg-white">
+    <div>
       <InstantSearch
         searchClient={searchClient}
         indexName="devices"

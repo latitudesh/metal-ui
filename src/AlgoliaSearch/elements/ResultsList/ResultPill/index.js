@@ -64,7 +64,7 @@ const ResultPill = (props) => {
     return (
       <li
         ref={resultPillRef}
-        className="pb-1"
+        className="mb-1"
         style={{...styles.resultPill}}
         tabIndex={0}
         role="option"
@@ -73,7 +73,7 @@ const ResultPill = (props) => {
       >
         <div
           ref={clickableLink}
-          className="p-3 border shadow-sm rounded text-gray-800"
+          className="p-2 border shadow-sm rounded text-gray-800"
           style={{...styles.resultPillLink}}
         >
           {children}
