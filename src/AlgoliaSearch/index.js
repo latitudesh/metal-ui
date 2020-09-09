@@ -33,7 +33,6 @@ const AlgoliaSearch = (props) => {
         specialChar={specialChar}
         scrollWindowHeight={scrollWindowHeight}
       />
-      <h2>content below</h2>
     </TabController>
   );
 }

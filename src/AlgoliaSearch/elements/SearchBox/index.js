@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
 import { useTabController } from '../../context';
+import Input from '../../../Input';
 
 const valHasLength = (value) => {
   if (value.length >= 1) return true;
@@ -21,8 +22,7 @@ const SearchBox = (props) => {
     searchHasText,
   } = useTabController();
 
-  const handleOnChange = (e) => {
-    const { value } = e.target;
+  const handleOnChange = (value, e) => {
     if (e.keyCode !== 40 && e.keyCode !== 38) {
       resetActiveElementIndex();
       refine(value);
@@ -45,17 +45,14 @@ const SearchBox = (props) => {
         noValidate
         role="search"
       >
-        <input
-          className={`${searchHasText ? 'focused' : ''} ais-SearchBox-input p-3 border rounded w-full`}
-          type="search"
-          autoComplete="off"
-          autoCapitalize="off"
-          spellCheck="false"
-          placeholder="Search here..."
+        <Input
+          inputClassName={`${searchHasText ? 'focused' : ''} ais-SearchBox-input p-3 border rounded w-full`}
           value={currentRefinement}
-          aria-label="Search for a resource by typing here"
           onChange={handleOnChange}
           onFocus={checkIfSearchHasText}
+          type="search"
+          aria-label="Search for a resource by typing here"
+          placeholder="Search here..."
         />
       </form>
     </div>
