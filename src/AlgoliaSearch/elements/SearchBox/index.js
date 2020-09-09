@@ -46,7 +46,7 @@ const SearchBox = (props) => {
         role="search"
       >
         <Input
-          inputClassName={`${searchHasText ? 'focused' : ''} -mt-1 ais-SearchBox-input w-full`}
+          inputClassName={`${searchHasText ? 'focused' : ''} -mt-1 ais-SearchBox-input w-full border-gray-200 shadow-none`}
           value={currentRefinement}
           onChange={handleOnChange}
           onFocus={checkIfSearchHasText}

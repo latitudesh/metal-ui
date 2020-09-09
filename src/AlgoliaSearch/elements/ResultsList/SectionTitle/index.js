@@ -1,9 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import Text from "../../../../Typography/Text";
 
 const SectionTitle = ({ title }) => (
-  <div className="pb-2 pt-3 sticky top-0 bg-white">
-    <p className="font-bold text-gray-800 text-sm">{title}</p>
+  <div className="py-2 mb-2 top-0 bg-white border-b border-gray-200">
+    <Text is="p">{title}</Text>
   </div>
 );
 

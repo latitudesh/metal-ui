@@ -180,7 +180,7 @@ const SearchWrapper = (props) => {
           <SearchBox />
 
           <div
-            className="shadow-xl rounded absolute w-full bg-white"
+            className="shadow-xl rounded absolute w-full bg-white border border-gray-200 mt-2"
             style={{ visibility: `${searchHasText ? 'visible' : 'hidden'}` }}
           >
             <div

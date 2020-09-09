@@ -11053,7 +11053,7 @@ var SearchBox_SearchBox = function SearchBox(props) {
     noValidate: true,
     role: "search"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Input, {
-    inputClassName: "".concat(searchHasText ? 'focused' : '', " -mt-1 ais-SearchBox-input w-full"),
+    inputClassName: "".concat(searchHasText ? 'focused' : '', " -mt-1 ais-SearchBox-input w-full border-gray-200 shadow-none"),
     value: currentRefinement,
     onChange: handleOnChange,
     onFocus: checkIfSearchHasText,
@@ -11242,7 +11242,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
   }
 
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("li", {
-    className: "pb-1",
+    className: "mb-1",
     style: ResultPill_objectSpread({}, ResultPill_style.resultPill),
     tabIndex: 0,
     role: "option",
@@ -11252,7 +11252,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("a", {
     ref: clickableLink,
     href: formatHitURL,
-    className: "p-3 border shadow-sm rounded ".concat(isCurrentElement ? 'bg-purple-800 text-white shadow-l' : 'text-gray-800 shadow-sm'),
+    className: "p-2 border shadow-sm rounded ".concat(isCurrentElement ? 'bg-purple-800 text-white' : 'text-gray-800 shadow-sm'),
     style: ResultPill_objectSpread({}, ResultPill_style.resultPillLink)
   }, children));
 };
@@ -11274,12 +11274,13 @@ ResultPill_ResultPill.propTypes = {
 
 
 
+
 var SectionTitle_SectionTitle = function SectionTitle(_ref) {
   var title = _ref.title;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    className: "pb-2 pt-3 sticky top-0 bg-white"
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("p", {
-    className: "font-bold text-gray-800 text-sm"
+    className: "py-2 mb-2 top-0 bg-white border-b border-gray-200"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Typography_Text, {
+    is: "p"
   }, title));
 };
 
@@ -11455,7 +11456,7 @@ var NoResults_NoResults = function NoResults() {
       display: 'block'
     }
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("p", {
-    className: "p-3 border shadow-sm rounded border-red-600 text-red-700"
+    className: "p-2 border shadow-sm rounded border-red-600 text-red-700"
   }, "No results were found..."));
 };
 
@@ -11659,7 +11660,7 @@ var SearchWrapper_SearchWrapper = function SearchWrapper(props) {
     role: "listbox",
     className: "relative"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(elements_SearchBox, null), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    className: "shadow-xl rounded absolute w-full bg-white",
+    className: "shadow-xl rounded absolute w-full bg-white border border-gray-200 mt-2",
     style: {
       visibility: "".concat(searchHasText ? 'visible' : 'hidden')
     }
