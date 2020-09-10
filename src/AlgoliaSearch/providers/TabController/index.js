@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 
 const TabControllerContext = createContext({});
 export const useTabController = () => useContext(TabControllerContext);
@@ -33,7 +32,7 @@ const TabController = (props) => {
   const [scrollDistance, setScrollDistance] = useState(0);
 
   // boolean to set whether or not the search box has text
-  const [searchHasText, setSearchHasText] = useState(false);
+  const [isResultsWindowOpen, setIsResultsWindowOpen] = useState(false);
 
   const [scrollWindowRef, setScrollWindowRef] = useState(null);
 
@@ -117,8 +116,8 @@ const TabController = (props) => {
         setScrollableWindowTopOffset,
         scrollDistance,
         setScrollDistance,
-        searchHasText,
-        setSearchHasText,
+        isResultsWindowOpen,
+        setIsResultsWindowOpen,
         setScrollWindowRef,
         scrollWindowRef,
 

@@ -8725,8 +8725,8 @@ var context_TabController = function TabController(props) {
 
   var _useState13 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
       _useState14 = context_slicedToArray(_useState13, 2),
-      searchHasText = _useState14[0],
-      setSearchHasText = _useState14[1];
+      isResultsWindowOpen = _useState14[0],
+      setIsResultsWindowOpen = _useState14[1];
 
   var _useState15 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
       _useState16 = context_slicedToArray(_useState15, 2),
@@ -8823,8 +8823,8 @@ var context_TabController = function TabController(props) {
       setScrollableWindowTopOffset: setScrollableWindowTopOffset,
       scrollDistance: scrollDistance,
       setScrollDistance: setScrollDistance,
-      searchHasText: searchHasText,
-      setSearchHasText: setSearchHasText,
+      isResultsWindowOpen: isResultsWindowOpen,
+      setIsResultsWindowOpen: setIsResultsWindowOpen,
       setScrollWindowRef: setScrollWindowRef,
       scrollWindowRef: scrollWindowRef,
       shouldBypassSearch: shouldBypassSearch,
@@ -11027,8 +11027,8 @@ var SearchBox_SearchBox = function SearchBox(props) {
 
   var _useTabController = context_useTabController(),
       resetActiveElementIndex = _useTabController.resetActiveElementIndex,
-      setSearchHasText = _useTabController.setSearchHasText,
-      searchHasText = _useTabController.searchHasText;
+      setIsResultsWindowOpen = _useTabController.setIsResultsWindowOpen,
+      isResultsWindowOpen = _useTabController.isResultsWindowOpen;
 
   var handleOnChange = function handleOnChange(value, e) {
     if (e.keyCode !== 40 && e.keyCode !== 38) {
@@ -11038,12 +11038,12 @@ var SearchBox_SearchBox = function SearchBox(props) {
       e.preventDefault();
     }
 
-    setSearchHasText(valHasLength(value));
+    setIsResultsWindowOpen(valHasLength(value));
   };
 
-  var checkIfSearchHasText = function checkIfSearchHasText(e) {
+  var checkIfIsResultsWindowOpen = function checkIfIsResultsWindowOpen(e) {
     var value = e.target.value;
-    setSearchHasText(valHasLength(value));
+    setIsResultsWindowOpen(valHasLength(value));
   };
 
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
@@ -11053,10 +11053,10 @@ var SearchBox_SearchBox = function SearchBox(props) {
     noValidate: true,
     role: "search"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Input, {
-    inputClassName: "".concat(searchHasText ? 'focused' : '', " -mt-1 ais-SearchBox-input w-full border-gray-200 shadow-none"),
+    inputClassName: "".concat(isResultsWindowOpen ? 'focused' : '', " -mt-1 ais-SearchBox-input w-full border-gray-200 shadow-none"),
     value: currentRefinement,
     onChange: handleOnChange,
-    onFocus: checkIfSearchHasText,
+    onFocus: checkIfIsResultsWindowOpen,
     type: "search",
     "aria-label": "Search for a resource by typing here",
     placeholder: "Search..."
@@ -11184,7 +11184,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
   var _useTabController = context_useTabController(),
       activeElementIndex = _useTabController.activeElementIndex,
       sectionLengthsArray = _useTabController.sectionLengthsArray,
-      searchHasText = _useTabController.searchHasText,
+      isResultsWindowOpen = _useTabController.isResultsWindowOpen,
       scrollWindowRef = _useTabController.scrollWindowRef,
       scrollableWindowHeight = _useTabController.scrollableWindowHeight,
       scrollableWindowTopOffset = _useTabController.scrollableWindowTopOffset,
@@ -11196,7 +11196,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
   var resultPillRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(null);
   var clickableLink = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(null);
   var currentElementIndex = (sectionLengthsArray[sectionIndex - 1] || 0) + elementIndex;
-  var isCurrentElement = activeElementIndex === currentElementIndex && searchHasText && !noResults;
+  var isCurrentElement = activeElementIndex === currentElementIndex && isResultsWindowOpen && !noResults;
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     if (isCurrentElement && enterKeyWasPressed) {
       if (formatHitURL) {
@@ -11499,7 +11499,7 @@ var SearchWrapper_SearchWrapper = function SearchWrapper(props) {
       scrollableWindowHeight = _useTabController.scrollableWindowHeight,
       setScrollableWindowTopOffset = _useTabController.setScrollableWindowTopOffset,
       scrollDistance = _useTabController.scrollDistance,
-      searchHasText = _useTabController.searchHasText,
+      isResultsWindowOpen = _useTabController.isResultsWindowOpen,
       setScrollWindowRef = _useTabController.setScrollWindowRef,
       shouldBypassSearch = _useTabController.shouldBypassSearch,
       setShouldBypassSearch = _useTabController.setShouldBypassSearch,
@@ -11554,10 +11554,10 @@ var SearchWrapper_SearchWrapper = function SearchWrapper(props) {
     setScrollableWindowTopOffset(scrollableResultsBoundingRect.top);
   }, [setScrollableWindowTopOffset]);
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
-    if (typeof scrollDistance === 'number' && searchHasText && !isScrollDisabled) {
+    if (typeof scrollDistance === 'number' && isResultsWindowOpen && !isScrollDisabled) {
       scrollWindowRef.current.scrollTo(0, scrollDistance);
     }
-  }, [scrollDistance, searchHasText, isScrollDisabled]);
+  }, [scrollDistance, isResultsWindowOpen, isScrollDisabled]);
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     var interval = null;
 
@@ -11662,7 +11662,7 @@ var SearchWrapper_SearchWrapper = function SearchWrapper(props) {
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(elements_SearchBox, null), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: "shadow-xl rounded absolute w-full bg-white border border-gray-200 mt-2",
     style: {
-      visibility: "".concat(searchHasText ? 'visible' : 'hidden')
+      visibility: "".concat(isResultsWindowOpen ? 'visible' : 'hidden')
     }
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: "overflow-y-auto pl-2 pr-2",

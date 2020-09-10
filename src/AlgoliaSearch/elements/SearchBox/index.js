@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
-import { useTabController } from '../../context';
+import { useTabController } from '../../providers/TabController';
 import Input from '../../../Input';
 
 const valHasLength = (value) => {
@@ -18,8 +18,8 @@ const SearchBox = (props) => {
 
   const {
     resetActiveElementIndex,
-    setSearchHasText,
-    searchHasText,
+    isResultsWindowOpen,
+    setIsResultsWindowOpen,
   } = useTabController();
 
   const handleOnChange = (value, e) => {
@@ -30,12 +30,12 @@ const SearchBox = (props) => {
       e.preventDefault();
     }
 
-    setSearchHasText(valHasLength(value));
+    setIsResultsWindowOpen(valHasLength(value));
   };
 
-  const checkIfSearchHasText = (e) => {
+  const checkIfResultsWindowShouldOpen = (e) => {
     const { value } = e.target;
-    setSearchHasText(valHasLength(value));
+    setIsResultsWindowOpen(valHasLength(value));
   };
 
   return (
@@ -46,10 +46,10 @@ const SearchBox = (props) => {
         role="search"
       >
         <Input
-          inputClassName={`${searchHasText ? 'focused' : ''} -mt-1 ais-SearchBox-input w-full border-gray-200 shadow-none`}
+          inputClassName={`${isResultsWindowOpen ? 'focused' : ''} -mt-1 ais-SearchBox-input w-full border-gray-200 shadow-none`}
           value={currentRefinement}
           onChange={handleOnChange}
-          onFocus={checkIfSearchHasText}
+          onFocus={checkIfResultsWindowShouldOpen}
           type="search"
           aria-label="Search for a resource by typing here"
           placeholder="Search..."

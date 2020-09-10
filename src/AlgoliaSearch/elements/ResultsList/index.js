@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connectHits } from 'react-instantsearch-dom';
 
-import { useTabController } from '../../context';
+import { useTabController } from '../../providers/TabController';
 import ResultPill from './ResultPill';
 import SectionTitle from './SectionTitle';
 
@@ -15,7 +15,7 @@ const ResultsList = (props) => {
     formatHitURL,
   } = props;
 
-  const { appendNewSectionLength } = useTabController();
+  const { appendNewSectionLength, shouldHideResults } = useTabController();
 
   useEffect(() => {
     if (hits.length > 0) {
@@ -25,7 +25,7 @@ const ResultsList = (props) => {
     }
   }, [hits.length]); // eslint-disable-line
 
-  if (Array.isArray(hits) && hits.length > 0) {
+  if ((Array.isArray(hits) && hits.length > 0) && !shouldHideResults) {
     return (
       <React.Fragment>
         <SectionTitle title={sectionTitle} />

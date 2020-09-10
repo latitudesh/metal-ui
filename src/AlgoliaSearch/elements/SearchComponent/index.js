@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, Index, Configure } from 'react-instantsearch-dom';
 
-import { useTabController, navigationKeyTypes } from '../../context';
+import { useTabController, navigationKeyTypes } from '../../providers/TabController';
 import SearchBox from '../SearchBox';
 import ResultsList from '../ResultsList';
 import Controls from '../Controls';
 import Loader from '../Loader';
 import NoResults from '../NoResults';
 
-const SearchWrapper = (props) => {
+const SearchComponent = React.forwardRef((props, ref) => {
   const {
     ALGOLIA_APP_ID,
     ALGOLIA_API_SEARCH_KEY,
@@ -26,7 +26,6 @@ const SearchWrapper = (props) => {
     scrollableWindowHeight,
     setScrollableWindowTopOffset,
     scrollDistance,
-    searchHasText,
     setScrollWindowRef,
     shouldBypassSearch,
     setShouldBypassSearch,
@@ -34,6 +33,8 @@ const SearchWrapper = (props) => {
     isScrollDisabled,
     handleKeyNavigation,
     totalElementsCount,
+    isResultsWindowOpen,
+    setIsResultsWindowOpen,
   } = useTabController();
 
   const algoliaClient = algoliasearch(
@@ -50,9 +51,18 @@ const SearchWrapper = (props) => {
   };
 
   const scrollWindowRef = useRef(null);
+  const searchComponentRef = useRef(null);
   const [filterState, setFilterState] = useState('');
   const [conditionalOperands, setConditionalOperands] = useState(null);
   const [isSearchEmpty, setIsSearchEmpty] = useState(false);
+  
+  const handleClickOutside = (e) => {
+    if (searchComponentRef.current.contains(e.target)) {
+      return;
+    }
+
+    setIsResultsWindowOpen(false);
+  };
 
   useEffect(() => {
     setScrollWindowRef(scrollWindowRef);
@@ -76,10 +86,10 @@ const SearchWrapper = (props) => {
   }, [setScrollableWindowTopOffset]);
 
   useEffect(() => {
-    if (typeof scrollDistance === 'number' && searchHasText && !isScrollDisabled) {
+    if (typeof scrollDistance === 'number' && isResultsWindowOpen && !isScrollDisabled) {
       scrollWindowRef.current.scrollTo(0, scrollDistance);
     }
-  }, [scrollDistance, searchHasText, isScrollDisabled]);
+  }, [scrollDistance, isResultsWindowOpen, isScrollDisabled]);
   
   useEffect(() => {
     let interval = null;
@@ -95,6 +105,18 @@ const SearchWrapper = (props) => {
     
     return clearInterval(interval);
   }, [totalElementsCount]);
+  
+  useEffect(() => {
+    if (isResultsWindowOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isResultsWindowOpen]);
 
   const handleOnSearchStateChange = ({ query }) => {
     let filter = '';
@@ -166,7 +188,7 @@ const SearchWrapper = (props) => {
   const NoResultsToRender = customNoResults ? customNoResults : NoResults;
 
   return (
-    <div>
+    <div ref={searchComponentRef}>
       <InstantSearch
         searchClient={searchClient}
         indexName="devices"
@@ -181,7 +203,7 @@ const SearchWrapper = (props) => {
 
           <div
             className="shadow-xl rounded absolute w-full bg-white border border-gray-200 mt-2"
-            style={{ visibility: `${searchHasText ? 'visible' : 'hidden'}` }}
+            style={{ visibility: `${isResultsWindowOpen ? 'visible' : 'hidden'}` }}
           >
             <div
               className="overflow-y-auto pl-2 pr-2"
@@ -222,15 +244,15 @@ const SearchWrapper = (props) => {
       </InstantSearch>
     </div>
   );
-};
+});
 
-SearchWrapper.defaultProps = {
+SearchComponent.defaultProps = {
   scrollWindowHeight: 400,
   customLoader: null,
   customNoResults: null,
 }
 
-SearchWrapper.propTypes = {
+SearchComponent.propTypes = {
   ALGOLIA_APP_ID: PropTypes.string.isRequired,
   ALGOLIA_API_SEARCH_KEY: PropTypes.string.isRequired,
   specialChar: PropTypes.string.isRequired,
@@ -252,4 +274,4 @@ SearchWrapper.propTypes = {
   customNoResults: PropTypes.node,
 }
 
-export default SearchWrapper;
+export default SearchComponent;

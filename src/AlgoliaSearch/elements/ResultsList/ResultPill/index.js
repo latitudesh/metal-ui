@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { useTabController } from '../../../context';
+import { useTabController } from '../../../providers/TabController';
 
 import styles from './style';
 
@@ -17,7 +17,7 @@ const ResultPill = (props) => {
   const {
     activeElementIndex,
     sectionLengthsArray,
-    searchHasText,
+    isResultsWindowOpen,
     scrollWindowRef,
     scrollableWindowHeight,
     scrollableWindowTopOffset,
@@ -31,7 +31,7 @@ const ResultPill = (props) => {
   const clickableLink = useRef(null);
 
   const currentElementIndex = (sectionLengthsArray[sectionIndex - 1] || 0) + elementIndex;
-  const isCurrentElement = ((activeElementIndex === currentElementIndex) && searchHasText) && !noResults;
+  const isCurrentElement = ((activeElementIndex === currentElementIndex) && isResultsWindowOpen) && !noResults;
 
   useEffect(() => {
     if (isCurrentElement && enterKeyWasPressed) {
