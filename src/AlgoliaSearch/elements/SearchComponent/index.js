@@ -212,7 +212,6 @@ const SearchComponent = React.forwardRef((props, ref) => {
             >
               {indices.map((algoliaIndice, sectionIndex) => {
                 const { indexName, displayName, renderCardInfo, formatHitURL, searchConditions } = algoliaIndice;
-                console.log(indexName)
 
                 return (
                   <Index
