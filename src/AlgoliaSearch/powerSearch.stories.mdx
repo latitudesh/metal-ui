@@ -7,22 +7,16 @@ import AlgoliaSearch from "./index";
 
 <Story name="Default">
   <AlgoliaSearch
-    ALGOLIA_APP_ID=""
-    ALGOLIA_API_SEARCH_KEY=""
+    ALGOLIA_APP_ID="latency"
+    ALGOLIA_API_SEARCH_KEY="6be0576ff61c053d5f9a3225e2a90f76"
     indices={[{
-      indexName: 'devices',
-      displayName: 'Devices',
-      renderCardInfo: (data) => <p>{data.description}</p>,
-      formatHitURL: (data) => `/${data.title}`,
-      searchConditions: [{ conditionType: 'AND', conditionString: 'clientid:1021'}],
-    }, {
-      indexName: 'zendesk_maxihost_articles',
-      displayName: 'Documentation',
-      renderCardInfo: (data) => <p>{data.title}</p>,
-      formatHitURL: (data) => `/${data.title}`,
+      indexName: 'instant_search',
+      displayName: 'Movies',
+      renderCardInfo: (hit) => <p>{hit.name}</p>,
+      formatHitURL: (hit) => `${hit.url}`,
     }]}
     searchOperators={['<', '=', '>', '>=', '<=']}
     specialChar=":"
-    scrollWindowHeight={200}
+    scrollWindowHeight={400}
   />
 </Story>

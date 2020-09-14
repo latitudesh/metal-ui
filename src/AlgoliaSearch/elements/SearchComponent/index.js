@@ -191,7 +191,7 @@ const SearchComponent = React.forwardRef((props, ref) => {
     <div ref={searchComponentRef}>
       <InstantSearch
         searchClient={searchClient}
-        indexName="devices"
+        indexName={indices[0].indexName}
         onSearchStateChange={handleOnSearchStateChange}
       >
         <div
@@ -212,6 +212,7 @@ const SearchComponent = React.forwardRef((props, ref) => {
             >
               {indices.map((algoliaIndice, sectionIndex) => {
                 const { indexName, displayName, renderCardInfo, formatHitURL, searchConditions } = algoliaIndice;
+                console.log(indexName)
 
                 return (
                   <Index

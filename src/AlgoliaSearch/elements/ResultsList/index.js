@@ -31,16 +31,18 @@ const ResultsList = (props) => {
         <SectionTitle title={sectionTitle} />
         <ul role="listbox">
           {(typeof renderCardInfo === 'function')
-            && (hits.map((hit, index) => (
-              <ResultPill
-                key={index}
-                elementIndex={index}
-                sectionIndex={sectionIndex}
-                formatHitURL={() => formatHitURL(hit)}
-              >
-                {renderCardInfo(hit)}
-              </ResultPill>
-            )))}
+            && (hits.map((hit, index) => {
+              return (
+                <ResultPill
+                  key={index}
+                  elementIndex={index}
+                  sectionIndex={sectionIndex}
+                  formatHitURL={() => formatHitURL(hit)}
+                >
+                  {renderCardInfo(hit)}
+                </ResultPill>
+              )}
+            ))}
         </ul>
       </React.Fragment>
     );
