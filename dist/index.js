@@ -8650,31 +8650,30 @@ Avatar_defineProperty(Avatar_Avatar, "defaultProps", {
 });
 
 /* harmony default export */ var src_Avatar_Avatar = (Avatar_Avatar);
-// CONCATENATED MODULE: ./src/AlgoliaSearch/context/index.js
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || context_unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+// CONCATENATED MODULE: ./src/AlgoliaSearch/providers/TabController/index.js
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || TabController_unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
 
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return context_arrayLikeToArray(arr); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return TabController_arrayLikeToArray(arr); }
 
-function context_slicedToArray(arr, i) { return context_arrayWithHoles(arr) || context_iterableToArrayLimit(arr, i) || context_unsupportedIterableToArray(arr, i) || context_nonIterableRest(); }
+function TabController_slicedToArray(arr, i) { return TabController_arrayWithHoles(arr) || TabController_iterableToArrayLimit(arr, i) || TabController_unsupportedIterableToArray(arr, i) || TabController_nonIterableRest(); }
 
-function context_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function TabController_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function context_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return context_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return context_arrayLikeToArray(o, minLen); }
+function TabController_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return TabController_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return TabController_arrayLikeToArray(o, minLen); }
 
-function context_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function TabController_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function context_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function TabController_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function context_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
+function TabController_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var TabControllerContext = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createContext"])({});
-var context_useTabController = function useTabController() {
+var TabController_useTabController = function useTabController() {
   return Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"])(TabControllerContext);
 };
 var navigationKeyTypes = {
@@ -8684,68 +8683,68 @@ var navigationKeyTypes = {
   ENTER: 'enter'
 };
 
-var context_TabController = function TabController(props) {
+var TabController_TabController = function TabController(props) {
   var children = props.children; // keeps track of the currently focused element in the results panel
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(0),
-      _useState2 = context_slicedToArray(_useState, 2),
+      _useState2 = TabController_slicedToArray(_useState, 2),
       activeElementIndex = _useState2[0],
       setActiveElementIndex = _useState2[1]; // keeps track of the total number of elements that have been rendered
 
 
   var _useState3 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(0),
-      _useState4 = context_slicedToArray(_useState3, 2),
+      _useState4 = TabController_slicedToArray(_useState3, 2),
       totalElementsCount = _useState4[0],
       setTotalElementsCount = _useState4[1]; // an array of integers, the number of results per section
 
 
   var _useState5 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])([0]),
-      _useState6 = context_slicedToArray(_useState5, 2),
+      _useState6 = TabController_slicedToArray(_useState5, 2),
       sectionLengthsArray = _useState6[0],
       setSectionLengthsArray = _useState6[1]; // height of the scrollable container
 
 
   var _useState7 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(300),
-      _useState8 = context_slicedToArray(_useState7, 2),
+      _useState8 = TabController_slicedToArray(_useState7, 2),
       scrollableWindowHeight = _useState8[0],
       setScrollableWindowHeight = _useState8[1]; // distance to top of the page from the scrollable container
 
 
   var _useState9 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(0),
-      _useState10 = context_slicedToArray(_useState9, 2),
+      _useState10 = TabController_slicedToArray(_useState9, 2),
       scrollableWindowTopOffset = _useState10[0],
       setScrollableWindowTopOffset = _useState10[1]; // scroll distance to be set and read from
 
 
   var _useState11 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(0),
-      _useState12 = context_slicedToArray(_useState11, 2),
+      _useState12 = TabController_slicedToArray(_useState11, 2),
       scrollDistance = _useState12[0],
       setScrollDistance = _useState12[1]; // boolean to set whether or not the search box has text
 
 
   var _useState13 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
-      _useState14 = context_slicedToArray(_useState13, 2),
+      _useState14 = TabController_slicedToArray(_useState13, 2),
       isResultsWindowOpen = _useState14[0],
       setIsResultsWindowOpen = _useState14[1];
 
   var _useState15 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
-      _useState16 = context_slicedToArray(_useState15, 2),
+      _useState16 = TabController_slicedToArray(_useState15, 2),
       scrollWindowRef = _useState16[0],
       setScrollWindowRef = _useState16[1];
 
   var _useState17 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(true),
-      _useState18 = context_slicedToArray(_useState17, 2),
+      _useState18 = TabController_slicedToArray(_useState17, 2),
       shouldBypassSearch = _useState18[0],
       setShouldBypassSearch = _useState18[1];
 
   var _useState19 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
-      _useState20 = context_slicedToArray(_useState19, 2),
+      _useState20 = TabController_slicedToArray(_useState19, 2),
       enterKeyWasPressed = _useState20[0],
       setEnterKeyWasPressed = _useState20[1]; // allows for manual scroll disabling
 
 
   var _useState21 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
-      _useState22 = context_slicedToArray(_useState21, 2),
+      _useState22 = TabController_slicedToArray(_useState21, 2),
       isScrollDisabled = _useState22[0],
       setIsScrollDisabled = _useState22[1];
 
@@ -8837,7 +8836,7 @@ var context_TabController = function TabController(props) {
   }, children);
 };
 
-/* harmony default export */ var AlgoliaSearch_context = (context_TabController);
+/* harmony default export */ var providers_TabController = (TabController_TabController);
 // EXTERNAL MODULE: ./node_modules/algoliasearch/dist/algoliasearch-lite.umd.js
 var algoliasearch_lite_umd = __webpack_require__(21);
 var algoliasearch_lite_umd_default = /*#__PURE__*/__webpack_require__.n(algoliasearch_lite_umd);
@@ -11025,10 +11024,10 @@ var SearchBox_SearchBox = function SearchBox(props) {
   var currentRefinement = props.currentRefinement,
       refine = props.refine;
 
-  var _useTabController = context_useTabController(),
+  var _useTabController = TabController_useTabController(),
       resetActiveElementIndex = _useTabController.resetActiveElementIndex,
-      setIsResultsWindowOpen = _useTabController.setIsResultsWindowOpen,
-      isResultsWindowOpen = _useTabController.isResultsWindowOpen;
+      isResultsWindowOpen = _useTabController.isResultsWindowOpen,
+      setIsResultsWindowOpen = _useTabController.setIsResultsWindowOpen;
 
   var handleOnChange = function handleOnChange(value, e) {
     if (e.keyCode !== 40 && e.keyCode !== 38) {
@@ -11041,7 +11040,7 @@ var SearchBox_SearchBox = function SearchBox(props) {
     setIsResultsWindowOpen(valHasLength(value));
   };
 
-  var checkIfIsResultsWindowOpen = function checkIfIsResultsWindowOpen(e) {
+  var checkIfResultsWindowShouldOpen = function checkIfResultsWindowShouldOpen(e) {
     var value = e.target.value;
     setIsResultsWindowOpen(valHasLength(value));
   };
@@ -11056,7 +11055,7 @@ var SearchBox_SearchBox = function SearchBox(props) {
     inputClassName: "".concat(isResultsWindowOpen ? 'focused' : '', " -mt-1 ais-SearchBox-input w-full border-gray-200 shadow-none"),
     value: currentRefinement,
     onChange: handleOnChange,
-    onFocus: checkIfIsResultsWindowOpen,
+    onFocus: checkIfResultsWindowShouldOpen,
     type: "search",
     "aria-label": "Search for a resource by typing here",
     placeholder: "Search..."
@@ -11181,7 +11180,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
       formatHitURL = props.formatHitURL,
       noResults = props.noResults;
 
-  var _useTabController = context_useTabController(),
+  var _useTabController = TabController_useTabController(),
       activeElementIndex = _useTabController.activeElementIndex,
       sectionLengthsArray = _useTabController.sectionLengthsArray,
       isResultsWindowOpen = _useTabController.isResultsWindowOpen,
@@ -11222,7 +11221,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
   }, [isCurrentElement, scrollableWindowHeight, scrollableWindowTopOffset, scrollWindowRef, setScrollDistance, setEnterKeyWasPressed, enterKeyWasPressed]);
 
   var handleHoverSelection = function handleHoverSelection() {
-    manuallySetActiveIndex(elementIndex);
+    manuallySetActiveIndex((sectionLengthsArray[sectionIndex - 1] || 0) + elementIndex);
   };
 
   if (noResults) {
@@ -11303,8 +11302,9 @@ var ResultsList_ResultsList = function ResultsList(props) {
       renderCardInfo = props.renderCardInfo,
       _formatHitURL = props.formatHitURL;
 
-  var _useTabController = context_useTabController(),
-      appendNewSectionLength = _useTabController.appendNewSectionLength;
+  var _useTabController = TabController_useTabController(),
+      appendNewSectionLength = _useTabController.appendNewSectionLength,
+      shouldHideResults = _useTabController.shouldHideResults;
 
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     if (hits.length > 0) {
@@ -11314,7 +11314,7 @@ var ResultsList_ResultsList = function ResultsList(props) {
     }
   }, [hits.length]); // eslint-disable-line
 
-  if (Array.isArray(hits) && hits.length > 0) {
+  if (Array.isArray(hits) && hits.length > 0 && !shouldHideResults) {
     return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(ResultsList_SectionTitle, {
       title: sectionTitle
     }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("ul", {
@@ -11461,20 +11461,18 @@ var NoResults_NoResults = function NoResults() {
 };
 
 /* harmony default export */ var elements_NoResults = (NoResults_NoResults);
-// CONCATENATED MODULE: ./src/AlgoliaSearch/elements/SearchWrapper/index.js
-function SearchWrapper_slicedToArray(arr, i) { return SearchWrapper_arrayWithHoles(arr) || SearchWrapper_iterableToArrayLimit(arr, i) || SearchWrapper_unsupportedIterableToArray(arr, i) || SearchWrapper_nonIterableRest(); }
+// CONCATENATED MODULE: ./src/AlgoliaSearch/elements/SearchComponent/index.js
+function SearchComponent_slicedToArray(arr, i) { return SearchComponent_arrayWithHoles(arr) || SearchComponent_iterableToArrayLimit(arr, i) || SearchComponent_unsupportedIterableToArray(arr, i) || SearchComponent_nonIterableRest(); }
 
-function SearchWrapper_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function SearchComponent_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function SearchWrapper_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return SearchWrapper_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return SearchWrapper_arrayLikeToArray(o, minLen); }
+function SearchComponent_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return SearchComponent_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return SearchComponent_arrayLikeToArray(o, minLen); }
 
-function SearchWrapper_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function SearchComponent_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function SearchWrapper_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function SearchComponent_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function SearchWrapper_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
+function SearchComponent_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -11485,7 +11483,8 @@ function SearchWrapper_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr;
 
 
 
-var SearchWrapper_SearchWrapper = function SearchWrapper(props) {
+
+var SearchComponent = external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (props, ref) {
   var ALGOLIA_APP_ID = props.ALGOLIA_APP_ID,
       ALGOLIA_API_SEARCH_KEY = props.ALGOLIA_API_SEARCH_KEY,
       indices = props.indices,
@@ -11495,18 +11494,19 @@ var SearchWrapper_SearchWrapper = function SearchWrapper(props) {
       customLoader = props.customLoader,
       customNoResults = props.customNoResults;
 
-  var _useTabController = context_useTabController(),
+  var _useTabController = TabController_useTabController(),
       scrollableWindowHeight = _useTabController.scrollableWindowHeight,
       setScrollableWindowTopOffset = _useTabController.setScrollableWindowTopOffset,
       scrollDistance = _useTabController.scrollDistance,
-      isResultsWindowOpen = _useTabController.isResultsWindowOpen,
       setScrollWindowRef = _useTabController.setScrollWindowRef,
       shouldBypassSearch = _useTabController.shouldBypassSearch,
       setShouldBypassSearch = _useTabController.setShouldBypassSearch,
       setScrollableWindowHeight = _useTabController.setScrollableWindowHeight,
       isScrollDisabled = _useTabController.isScrollDisabled,
       handleKeyNavigation = _useTabController.handleKeyNavigation,
-      totalElementsCount = _useTabController.totalElementsCount;
+      totalElementsCount = _useTabController.totalElementsCount,
+      isResultsWindowOpen = _useTabController.isResultsWindowOpen,
+      setIsResultsWindowOpen = _useTabController.setIsResultsWindowOpen;
 
   var algoliaClient = algoliasearch_lite_umd_default()(ALGOLIA_APP_ID, ALGOLIA_API_SEARCH_KEY);
   var searchClient = {
@@ -11516,21 +11516,30 @@ var SearchWrapper_SearchWrapper = function SearchWrapper(props) {
     }
   };
   var scrollWindowRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(null);
+  var searchComponentRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(null);
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(''),
-      _useState2 = SearchWrapper_slicedToArray(_useState, 2),
+      _useState2 = SearchComponent_slicedToArray(_useState, 2),
       filterState = _useState2[0],
       setFilterState = _useState2[1];
 
   var _useState3 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
-      _useState4 = SearchWrapper_slicedToArray(_useState3, 2),
+      _useState4 = SearchComponent_slicedToArray(_useState3, 2),
       conditionalOperands = _useState4[0],
       setConditionalOperands = _useState4[1];
 
   var _useState5 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
-      _useState6 = SearchWrapper_slicedToArray(_useState5, 2),
+      _useState6 = SearchComponent_slicedToArray(_useState5, 2),
       isSearchEmpty = _useState6[0],
       setIsSearchEmpty = _useState6[1];
+
+  var handleClickOutside = function handleClickOutside(e) {
+    if (searchComponentRef.current.contains(e.target)) {
+      return;
+    }
+
+    setIsResultsWindowOpen(false);
+  };
 
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     setScrollWindowRef(scrollWindowRef);
@@ -11573,6 +11582,17 @@ var SearchWrapper_SearchWrapper = function SearchWrapper(props) {
 
     return clearInterval(interval);
   }, [totalElementsCount]);
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (isResultsWindowOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return function () {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isResultsWindowOpen]);
 
   var handleOnSearchStateChange = function handleOnSearchStateChange(_ref) {
     var query = _ref.query;
@@ -11585,7 +11605,7 @@ var SearchWrapper_SearchWrapper = function SearchWrapper(props) {
 
         if (operandIndex !== -1) {
           var _query$split = query.split(operand),
-              _query$split2 = SearchWrapper_slicedToArray(_query$split, 2),
+              _query$split2 = SearchComponent_slicedToArray(_query$split, 2),
               fieldName = _query$split2[0],
               compareValue = _query$split2[1];
 
@@ -11596,7 +11616,7 @@ var SearchWrapper_SearchWrapper = function SearchWrapper(props) {
 
       if (!operandFound && query.indexOf(specialChar) !== -1) {
         var _query$split3 = query.split(specialChar),
-            _query$split4 = SearchWrapper_slicedToArray(_query$split3, 2),
+            _query$split4 = SearchComponent_slicedToArray(_query$split3, 2),
             fieldName = _query$split4[0],
             compareValue = _query$split4[1];
 
@@ -11651,7 +11671,9 @@ var SearchWrapper_SearchWrapper = function SearchWrapper(props) {
 
   var LoaderToRender = customLoader ? customLoader : elements_Loader;
   var NoResultsToRender = customNoResults ? customNoResults : elements_NoResults;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(widgets_InstantSearch, {
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    ref: searchComponentRef
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(widgets_InstantSearch, {
     searchClient: searchClient,
     indexName: "devices",
     onSearchStateChange: handleOnSearchStateChange
@@ -11690,14 +11712,13 @@ var SearchWrapper_SearchWrapper = function SearchWrapper(props) {
       formatHitURL: formatHitURL
     }));
   }), totalElementsCount === 0 && isSearchEmpty && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(NoResultsToRender, null), totalElementsCount === 0 && !isSearchEmpty && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(LoaderToRender, null)), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(elements_Controls, null)))));
-};
-
-SearchWrapper_SearchWrapper.defaultProps = {
+});
+SearchComponent.defaultProps = {
   scrollWindowHeight: 400,
   customLoader: null,
   customNoResults: null
 };
-SearchWrapper_SearchWrapper.propTypes = {
+SearchComponent.propTypes = {
   ALGOLIA_APP_ID: prop_types_default.a.string.isRequired,
   ALGOLIA_API_SEARCH_KEY: prop_types_default.a.string.isRequired,
   specialChar: prop_types_default.a.string.isRequired,
@@ -11716,7 +11737,7 @@ SearchWrapper_SearchWrapper.propTypes = {
   customLoader: prop_types_default.a.node,
   customNoResults: prop_types_default.a.node
 };
-/* harmony default export */ var elements_SearchWrapper = (SearchWrapper_SearchWrapper);
+/* harmony default export */ var elements_SearchComponent = (SearchComponent);
 // CONCATENATED MODULE: ./src/AlgoliaSearch/index.js
 
 
@@ -11725,48 +11746,18 @@ SearchWrapper_SearchWrapper.propTypes = {
 
 var AlgoliaSearch_AlgoliaSearch = function AlgoliaSearch(props) {
   var ALGOLIA_APP_ID = props.ALGOLIA_APP_ID,
-      ALGOLIA_API_SEARCH_KEY = props.ALGOLIA_API_SEARCH_KEY,
-      indices = props.indices,
-      searchOperators = props.searchOperators,
-      specialChar = props.specialChar,
-      scrollWindowHeight = props.scrollWindowHeight;
+      ALGOLIA_API_SEARCH_KEY = props.ALGOLIA_API_SEARCH_KEY;
 
   if (!ALGOLIA_APP_ID || !ALGOLIA_API_SEARCH_KEY) {
     return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, !ALGOLIA_APP_ID && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("h1", null, "ALGOLIA_APP_ID prop was not found and is required."), !ALGOLIA_API_SEARCH_KEY && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("h1", null, "ALGOLIA_API_SEARCH_KEY prop was not found and is required."));
   }
 
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(AlgoliaSearch_context, null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(elements_SearchWrapper, {
-    ALGOLIA_APP_ID: ALGOLIA_APP_ID,
-    ALGOLIA_API_SEARCH_KEY: ALGOLIA_API_SEARCH_KEY,
-    indices: indices,
-    searchOperators: searchOperators,
-    specialChar: specialChar,
-    scrollWindowHeight: scrollWindowHeight
-  }));
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(providers_TabController, null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(elements_SearchComponent, props));
 };
 
-AlgoliaSearch_AlgoliaSearch.defaultProps = {
-  customLoader: null,
-  customNoResults: null
-};
 AlgoliaSearch_AlgoliaSearch.propTypes = {
   ALGOLIA_APP_ID: prop_types_default.a.string.isRequired,
-  ALGOLIA_API_SEARCH_KEY: prop_types_default.a.string.isRequired,
-  specialChar: prop_types_default.a.string.isRequired,
-  searchOperators: prop_types_default.a.arrayOf(prop_types_default.a.string).isRequired,
-  indices: prop_types_default.a.arrayOf(prop_types_default.a.shape({
-    indexName: prop_types_default.a.string,
-    displayName: prop_types_default.a.string,
-    renderCardInfo: prop_types_default.a.func,
-    formatHitURL: prop_types_default.a.func,
-    searchConditions: prop_types_default.a.arrayOf(prop_types_default.a.shape({
-      conditionType: prop_types_default.a.oneOf(['OR', 'AND']),
-      conditionString: prop_types_default.a.string
-    }))
-  })).isRequired,
-  scrollWindowHeight: prop_types_default.a.number,
-  customLoader: prop_types_default.a.node,
-  customNoResults: prop_types_default.a.node
+  ALGOLIA_API_SEARCH_KEY: prop_types_default.a.string.isRequired
 };
 /* harmony default export */ var src_AlgoliaSearch = (AlgoliaSearch_AlgoliaSearch);
 // CONCATENATED MODULE: ./src/Flags/Flag.js
