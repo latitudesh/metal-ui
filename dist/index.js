@@ -1825,7 +1825,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
       width: width,
       height: "calc(100% - 20px)"
     },
-    className: "fixed z-40 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
+    className: "fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Box, {
     flex: true,
     alignItems: "center",
