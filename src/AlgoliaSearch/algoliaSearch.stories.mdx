@@ -1,5 +1,6 @@
 import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
 import AlgoliaSearch from "./index";
+import Text from "../Typography/Text"
 
 <Meta title="AlgoliaSearch" component={AlgoliaSearch} />
 
@@ -16,13 +17,12 @@ Try searching for a movie title like `The Shawshank Redemption`
           {
             indexName: "movies",
             displayName: "Movies",
-            renderCardInfo: (data) => <p>{data.title}</p>,
+            renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
             formatHitURL: (data) => `/${data.title}`,
           }
         ]}
         searchOperators={["<", "=", ">", ">=", "<="]}
         specialChar=":"
-        scrollWindowHeight={400}
       />
     </div>
   </Story>
@@ -41,13 +41,13 @@ Use multiple indexes to search for different data.
           {
             indexName: "movies",
             displayName: "Movies",
-            renderCardInfo: (data) => <p>{data.title}</p>,
+            renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
             formatHitURL: (data) => `/${data.title}`,
           },
           {
             indexName: "actors",
             displayName: "Actors",
-            renderCardInfo: (data) => <p>{data.title}</p>,
+            renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
             formatHitURL: (data) => `/${data.title}`,
           }
         ]}
@@ -58,3 +58,33 @@ Use multiple indexes to search for different data.
   </Story>
 </Preview>
 
+# Custom render
+
+<Preview>
+  <Story name="Custom render">
+    <div style={{ height: '300px' }}>
+      <AlgoliaSearch
+        ALGOLIA_APP_ID="XWSX3ZKORI"
+        ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
+        indices={[
+          {
+            indexName: "movies",
+            displayName: "Movies",
+            renderCardInfo: (data) => (
+              <>
+              <Text is="p" color="white">{data.title}</Text>
+              <Text small bold color="white">Genres: </Text> 
+              {data.genre.map((genre) => (
+                <Text small color="white">{genre}&nbsp;</Text>
+              ))} 
+              </>
+            ),
+            formatHitURL: (data) => `/${data.title}`,
+          }
+        ]}
+        searchOperators={["<", "=", ">", ">=", "<="]}
+        specialChar=":"
+      />
+    </div>
+  </Story>
+</Preview>
