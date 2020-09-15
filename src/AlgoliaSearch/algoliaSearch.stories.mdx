@@ -29,25 +29,27 @@ Try searching for a movie title like `The Shawshank Redemption`
 </Preview>
 
 # Multiple indexes
+Use multiple indexes to search for different data.
 
 <Preview>
   <Story name="Multiple indexes">
     <div style={{ height: '300px' }}>
       <AlgoliaSearch
-        ALGOLIA_APP_ID="62STYGLZOF"
-        ALGOLIA_API_SEARCH_KEY="37b26ab5c38bc1512f846d6a355b8116"
+        ALGOLIA_APP_ID="XWSX3ZKORI"
+        ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
         indices={[
           {
-            indexName: "devices",
-            displayName: "Servers",
-            renderCardInfo: (data) => <p>{data.description}</p>,
+            indexName: "movies",
+            displayName: "Movies",
+            renderCardInfo: (data) => <p>{data.title}</p>,
+            formatHitURL: (data) => `/${data.title}`,
           },
           {
-          indexName: "zendesk_maxihost_articles",
-          displayName: "Documentation",
-          renderCardInfo: (data) => <p>{data.title}</p>,
-          formatHitURL: (data) => `/${data.title}`,
-        },
+            indexName: "actors",
+            displayName: "Actors",
+            renderCardInfo: (data) => <p>{data.title}</p>,
+            formatHitURL: (data) => `/${data.title}`,
+          }
         ]}
         searchOperators={["<", "=", ">", ">=", "<="]}
         specialChar=":"

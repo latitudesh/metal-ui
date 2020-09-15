@@ -11675,7 +11675,7 @@ var SearchComponent = external_root_React_commonjs2_react_commonjs_react_amd_rea
     ref: searchComponentRef
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(widgets_InstantSearch, {
     searchClient: searchClient,
-    indexName: "devices",
+    indexName: indices[0].indexName,
     onSearchStateChange: handleOnSearchStateChange
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     onKeyDown: handleOnKeyDown,
