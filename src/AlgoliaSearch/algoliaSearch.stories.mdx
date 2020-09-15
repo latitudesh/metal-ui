@@ -92,3 +92,52 @@ Use multiple indexes to search for different data.
     </div>
   </Story>
 </Preview>
+
+# Custom height
+Use `scrollWindowHeight` to control the height of the results window
+
+<Preview>
+  <Story name="Custom height">
+    <div style={{ height: '200px' }}>
+      <AlgoliaSearch
+        ALGOLIA_APP_ID="XWSX3ZKORI"
+        ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
+        indices={[
+          {
+            indexName: "movies",
+            displayName: "Movies",
+            renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
+            formatHitURL: (data) => `/${data.title}`,
+          }
+        ]}
+        searchOperators={["<", "=", ">", ">=", "<="]}
+        specialChar=":"
+        scrollWindowHeight={100}
+      />
+    </div>
+  </Story>
+</Preview>
+
+# Custom no results
+
+<Preview>
+  <Story name="Custom no results">
+    <div style={{ height: '200px' }}>
+      <AlgoliaSearch
+        ALGOLIA_APP_ID="XWSX3ZKORI"
+        ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
+        indices={[
+          {
+            indexName: "movies",
+            displayName: "Movies",
+            renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
+            formatHitURL: (data) => `/${data.title}`,
+          }
+        ]}
+        searchOperators={["<", "=", ">", ">=", "<="]}
+        specialChar=":"
+        customNoResults={ <Text>ac</Text> }
+      />
+    </div>
+  </Story>
+</Preview>
