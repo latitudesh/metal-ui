@@ -10,7 +10,7 @@ import Controls from '../Controls';
 import Loader from '../Loader';
 import NoResults from '../NoResults';
 
-const SearchComponent = React.forwardRef((props, ref) => {
+const SearchComponent = (props) => {
   const {
     ALGOLIA_APP_ID,
     ALGOLIA_API_SEARCH_KEY,
@@ -184,8 +184,8 @@ const SearchComponent = React.forwardRef((props, ref) => {
     }
   };
   
-  const LoaderToRender = customLoader ? customLoader : Loader;
-  const NoResultsToRender = customNoResults ? customNoResults : NoResults;
+  const LoaderToRender = customLoader ? customLoader : <Loader />;
+  const NoResultsToRender = customNoResults ? customNoResults : <NoResults />;
 
   return (
     <div ref={searchComponentRef}>
@@ -233,9 +233,9 @@ const SearchComponent = React.forwardRef((props, ref) => {
                 );
               })}
 
-              {(totalElementsCount === 0 && isSearchEmpty) && <NoResultsToRender />}
+              {(totalElementsCount === 0 && isSearchEmpty) && NoResultsToRender}
 
-              {(totalElementsCount === 0 && !isSearchEmpty) && <LoaderToRender />}
+              {(totalElementsCount === 0 && !isSearchEmpty) && LoaderToRender}
 
             </div>
             <Controls />
@@ -244,7 +244,7 @@ const SearchComponent = React.forwardRef((props, ref) => {
       </InstantSearch>
     </div>
   );
-});
+};
 
 SearchComponent.defaultProps = {
   scrollWindowHeight: 400,
