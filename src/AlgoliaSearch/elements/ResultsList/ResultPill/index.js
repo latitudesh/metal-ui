@@ -10,7 +10,7 @@ const ResultPill = (props) => {
     children,
     elementIndex,
     sectionIndex,
-    formatHitURL,
+    formattedHitURL,
     noResults,
   } = props;
 
@@ -35,10 +35,10 @@ const ResultPill = (props) => {
 
   useEffect(() => {
     if (isCurrentElement && enterKeyWasPressed) {
-      if (formatHitURL) {
+      if (formattedHitURL) {
         clickableLink.current.click();
       } else {
-        alert('The formatHitURL prop was not found, it is used to format the url for the pill! Without it, we dont know where to send you :)')
+        alert('The formattedHitURL prop was not found, it is used to format the url for the pill! Without it, we dont know where to send you :)')
       }
       setEnterKeyWasPressed(false);
     }
@@ -94,7 +94,7 @@ const ResultPill = (props) => {
     >
       <a
         ref={clickableLink}
-        href={formatHitURL}
+        href={formattedHitURL}
         className={`px-2 border border-white rounded outline-none ${isCurrentElement ? 'bg-indigo-600 text-white' : 'text-gray-800'}`}
         style={{...styles.resultPillLink}}
       >
@@ -114,7 +114,7 @@ ResultPill.propTypes = {
   children: PropTypes.node.isRequired,
   elementIndex: PropTypes.number,
   sectionIndex: PropTypes.number,
-  formatHitURL: PropTypes.func.isRequired,
+  formattedHitURL: PropTypes.string.isRequired,
   noResults: PropTypes.bool,
 };
 
