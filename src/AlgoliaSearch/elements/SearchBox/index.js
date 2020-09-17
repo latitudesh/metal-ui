@@ -14,6 +14,7 @@ const SearchBox = (props) => {
   const {
     currentRefinement,
     refine,
+    id,
   } = props;
 
   const {
@@ -53,6 +54,7 @@ const SearchBox = (props) => {
           type="search"
           aria-label="Search for a resource by typing here"
           placeholder="Search..."
+          id={`search-box-${id}`}
         />
       </form>
     </div>
@@ -62,6 +64,7 @@ const SearchBox = (props) => {
 SearchBox.propTypes = {
   currentRefinement: PropTypes.string.isRequired,
   refine: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default connectSearchBox(SearchBox);

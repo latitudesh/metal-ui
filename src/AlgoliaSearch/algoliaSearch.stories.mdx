@@ -51,8 +51,8 @@ Use multiple indexes to search for different data.
           {
             indexName: "actors",
             displayName: "Actors",
-            renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
-            formatHitURL: (data) => `/${data.title}`,
+            renderCardInfo: (data) => <Text color="white">{data.name}</Text>,
+            formatHitURL: (data) => `/${data.name}`,
           }
         ]}
         searchOperators={["<", "=", ">", ">=", "<="]}

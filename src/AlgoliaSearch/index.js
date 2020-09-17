@@ -26,6 +26,11 @@ const AlgoliaSearch = (props) => {
   );
 };
 
+AlgoliaSearch.defaultProps = {
+  indexResultsLimit: 8,
+  scrollWindowHeight: 400,
+}
+  
 AlgoliaSearch.propTypes = {
   ALGOLIA_APP_ID: PropTypes.string.isRequired,
   ALGOLIA_API_SEARCH_KEY: PropTypes.string.isRequired,
@@ -43,6 +48,7 @@ AlgoliaSearch.propTypes = {
       }),
     )
   })).isRequired,
+  indexResultsLimit: PropTypes.number,
   scrollWindowHeight: PropTypes.number,
   customLoader: PropTypes.node,
   customNoResults: PropTypes.node,

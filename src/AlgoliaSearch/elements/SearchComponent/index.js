@@ -20,6 +20,7 @@ const SearchComponent = (props) => {
     scrollWindowHeight,
     customLoader,
     customNoResults,
+    indexResultsLimit,
   } = props;
 
   const {
@@ -199,7 +200,7 @@ const SearchComponent = (props) => {
           role="listbox"
           className="relative"
         >
-          <SearchBox />
+          <SearchBox id={ALGOLIA_APP_ID} />
 
           <div
             className="shadow-xl rounded absolute w-full bg-white border border-gray-200 mt-2"
@@ -221,7 +222,7 @@ const SearchComponent = (props) => {
                   >
                     <Configure
                       filters={configureFilterState(searchConditions)}
-                      hitsPerPage={5}
+                      hitsPerPage={indexResultsLimit}
                     />
                     <ResultsList
                       sectionTitle={displayName}
@@ -237,8 +238,8 @@ const SearchComponent = (props) => {
 
               {(totalElementsCount === 0 && !isSearchEmpty) && LoaderToRender}
 
-            </div>
             <Controls />
+            </div>
           </div>
         </div>
       </InstantSearch>
@@ -272,6 +273,7 @@ SearchComponent.propTypes = {
   scrollWindowHeight: PropTypes.number,
   customLoader: PropTypes.node,
   customNoResults: PropTypes.node,
+  indexResultsLimit: PropTypes.number.isRequired,
 }
 
 export default SearchComponent;

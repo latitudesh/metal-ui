@@ -7,7 +7,7 @@ import styles from './style';
 
 const Controls = () => (
   <div
-    className="sticky bottom-0 p-3 bg-white rounded-b-md"
+    className="sticky bottom-0 p-3 -ml-2 -mr-2 bg-white rounded-b-md"
     style={{ ...styles.controlBar }}
     >
       <span className="mr-2 rounded-sm text-gray-400" style={{...styles.controlKey}}>

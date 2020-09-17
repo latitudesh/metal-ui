@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connectHits } from 'react-instantsearch-dom';
 
@@ -24,6 +24,10 @@ const ResultsList = (props) => {
       appendNewSectionLength(sectionIndex, 0);
     }
   }, [hits.length]); // eslint-disable-line
+  
+  const formattedHitURL = useCallback((hit) => {
+    return formatHitURL(hit)
+  }, []);
 
   if ((Array.isArray(hits) && hits.length > 0) && !shouldHideResults) {
     return (
@@ -37,7 +41,7 @@ const ResultsList = (props) => {
                   key={index}
                   elementIndex={index}
                   sectionIndex={sectionIndex}
-                  formatHitURL={() => formatHitURL(hit)}
+                  formatHitURL={formattedHitURL(hit)}
                 >
                   {renderCardInfo(hit)}
                 </ResultPill>
