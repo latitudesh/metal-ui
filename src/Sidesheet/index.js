@@ -110,7 +110,7 @@ const Sidesheet = ({
               height: "calc(100% - 20px)",
             }}
             className={
-              "fixed z-40 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
+              "fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
             }
           >
             <Box
