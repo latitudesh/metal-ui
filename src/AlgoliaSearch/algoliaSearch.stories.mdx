@@ -1,0 +1,143 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import AlgoliaSearch from "./index";
+import Text from "../Typography/Text"
+
+<Meta title="AlgoliaSearch" component={AlgoliaSearch} />
+
+## Props
+
+<Props of={AlgoliaSearch} />
+
+# Default
+Try searching for a movie title like `The Shawshank Redemption`
+
+<Preview>
+  <Story name="Default">
+    <div style={{ height: '300px' }}>
+      <AlgoliaSearch
+        ALGOLIA_APP_ID="XWSX3ZKORI"
+        ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
+        indices={[
+          {
+            indexName: "movies",
+            displayName: "Movies",
+            renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
+            formatHitURL: (data) => `/${data.title}`,
+          }
+        ]}
+        searchOperators={["<", "=", ">", ">=", "<="]}
+        specialChar=":"
+      />
+    </div>
+  </Story>
+</Preview>
+
+# Multiple indexes
+Use multiple indexes to search for different data.
+
+<Preview>
+  <Story name="Multiple indexes">
+    <div style={{ height: '300px' }}>
+      <AlgoliaSearch
+        ALGOLIA_APP_ID="XWSX3ZKORI"
+        ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
+        indices={[
+          {
+            indexName: "movies",
+            displayName: "Movies",
+            renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
+            formatHitURL: (data) => `/${data.title}`,
+          },
+          {
+            indexName: "actors",
+            displayName: "Actors",
+            renderCardInfo: (data) => <Text color="white">{data.name}</Text>,
+            formatHitURL: (data) => `/${data.name}`,
+          }
+        ]}
+        searchOperators={["<", "=", ">", ">=", "<="]}
+        specialChar=":"
+      />
+    </div>
+  </Story>
+</Preview>
+
+# Custom render
+
+<Preview>
+  <Story name="Custom render">
+    <div style={{ height: '300px' }}>
+      <AlgoliaSearch
+        ALGOLIA_APP_ID="XWSX3ZKORI"
+        ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
+        indices={[
+          {
+            indexName: "movies",
+            displayName: "Movies",
+            renderCardInfo: (data) => (
+              <>
+              <Text is="p" color="white">{data.title}</Text>
+              <Text small bold color="white">Genres: </Text> 
+              {data.genre.map((genre) => (
+                <Text small color="white">{genre}&nbsp;</Text>
+              ))} 
+              </>
+            ),
+            formatHitURL: (data) => `/${data.title}`,
+          }
+        ]}
+        searchOperators={["<", "=", ">", ">=", "<="]}
+        specialChar=":"
+      />
+    </div>
+  </Story>
+</Preview>
+
+# Custom height
+Use `scrollWindowHeight` to control the height of the results window
+
+<Preview>
+  <Story name="Custom height">
+    <div style={{ height: '200px' }}>
+      <AlgoliaSearch
+        ALGOLIA_APP_ID="XWSX3ZKORI"
+        ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
+        indices={[
+          {
+            indexName: "movies",
+            displayName: "Movies",
+            renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
+            formatHitURL: (data) => `/${data.title}`,
+          }
+        ]}
+        searchOperators={["<", "=", ">", ">=", "<="]}
+        specialChar=":"
+        scrollWindowHeight={100}
+      />
+    </div>
+  </Story>
+</Preview>
+
+# Custom no results
+
+<Preview>
+  <Story name="Custom no results">
+    <div style={{ height: '200px' }}>
+      <AlgoliaSearch
+        ALGOLIA_APP_ID="XWSX3ZKORI"
+        ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
+        indices={[
+          {
+            indexName: "movies",
+            displayName: "Movies",
+            renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
+            formatHitURL: (data) => `/${data.title}`,
+          }
+        ]}
+        searchOperators={["<", "=", ">", ">=", "<="]}
+        specialChar=":"
+        customNoResults={ <Text>No movies found</Text> }
+      />
+    </div>
+  </Story>
+</Preview>

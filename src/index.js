@@ -12,6 +12,7 @@ export { default as Input } from "./Input";
 export { default as Textarea } from "./Textarea";
 export { default as Select } from "./Select";
 export { default as Avatar } from "./Avatar/Avatar";
+export { default as AlgoliaSearch } from "./AlgoliaSearch";
 
 export * from "./Flags";
 export * from "./OperatingSystems";
