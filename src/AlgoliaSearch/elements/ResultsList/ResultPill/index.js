@@ -46,10 +46,12 @@ const ResultPill = (props) => {
     if (isCurrentElement) {
       const activePillBoundingRect = resultPillRef.current.getBoundingClientRect();
       const resultPillOffset = activePillBoundingRect.top + activePillBoundingRect.height;
+      const activePillTopOffset = resultPillOffset - scrollableWindowTopOffset + scrollWindowRef.current.scrollTop;
       let distToScroll = 0;
+      console.log(resultPillOffset, scrollableWindowTopOffset, activePillTopOffset, scrollableWindowHeight)
 
-      if ((resultPillOffset - scrollableWindowTopOffset + scrollWindowRef.current.scrollTop) > scrollableWindowHeight) {
-        distToScroll = (resultPillOffset - scrollableWindowTopOffset + scrollWindowRef.current.scrollTop) - scrollableWindowHeight;
+      if ((activePillTopOffset) > scrollableWindowHeight) {
+        distToScroll = (activePillTopOffset) - scrollableWindowHeight;
       }
 
       setScrollDistance(distToScroll);
@@ -84,7 +86,7 @@ const ResultPill = (props) => {
 
   return (
     <li
-      className="mb-1"
+      className="pb-1"
       style={{...styles.resultPill}}
       tabIndex={0}
       role="option"
@@ -95,7 +97,7 @@ const ResultPill = (props) => {
       <a
         ref={clickableLink}
         href={formattedHitURL}
-        className={`px-2 border border-white rounded outline-none ${isCurrentElement ? 'bg-indigo-600 text-white' : 'text-gray-800'}`}
+        className={`px-2 rounded outline-none ${isCurrentElement ? 'bg-indigo-600 text-white' : 'text-gray-800'}`}
         style={{...styles.resultPillLink}}
       >
         {children}

@@ -24,6 +24,8 @@ const TabController = (props) => {
 
   // height of the scrollable container
   const [scrollableWindowHeight, setScrollableWindowHeight] = useState(300);
+  const [searchInputHeight, setSearchInputHeight] = useState(null);
+  const [controlsHeight, setControlsHeight] = useState(null);
 
   // distance to top of the page from the scrollable container
   const [scrollableWindowTopOffset, setScrollableWindowTopOffset] = useState(0);
@@ -129,6 +131,11 @@ const TabController = (props) => {
         
         isScrollDisabled,
         handleKeyNavigation,
+        
+        searchInputHeight,
+        setSearchInputHeight,
+        controlsHeight,
+        setControlsHeight,
       }}
     >
       {children}

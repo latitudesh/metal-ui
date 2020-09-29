@@ -4,7 +4,7 @@ import { configure } from "@storybook/react";
 import "../styles/index.css";
 
 // automatically import all story.js files
-const req = require.context("../", true, /story\.js$/);
+const req = require.context("../src", true, /story\.js$/);
 
 function loadStories() {
   req.keys().forEach(req);
