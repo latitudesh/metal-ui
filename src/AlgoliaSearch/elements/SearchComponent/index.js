@@ -21,7 +21,6 @@ const SearchComponent = (props) => {
     customLoader,
     customNoResults,
     indexResultsLimit,
-    parentWindowHeight,
     className,
   } = props;
 
@@ -76,12 +75,12 @@ const SearchComponent = (props) => {
   }, [setScrollWindowRef]);
 
   useEffect(() => {
-    if (parentWindowHeight) {
-      setScrollableWindowHeight(parentWindowHeight - controlsHeight - searchInputHeight);
+    if (controlsHeight && searchInputHeight) {
+      setScrollableWindowHeight(scrollWindowHeight - controlsHeight - searchInputHeight);
     } else {
       setScrollableWindowHeight(scrollWindowHeight);
     }
-  }, [scrollWindowHeight, parentWindowHeight, controlsHeight, searchInputHeight]);
+  }, [scrollWindowHeight, controlsHeight, searchInputHeight]);
 
   useEffect(() => {
     if (Array.isArray(searchOperators) && searchOperators.length > 0) {

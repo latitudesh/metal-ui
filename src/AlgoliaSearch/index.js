@@ -55,7 +55,6 @@ AlgoliaSearch.propTypes = {
   customLoader: PropTypes.node,
   customNoResults: PropTypes.node,
   className: PropTypes.string,
-  parentWindowHeight: PropTypes.string,
 };
 
 export default AlgoliaSearch;
