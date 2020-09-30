@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
@@ -21,7 +21,10 @@ const SearchBox = (props) => {
     resetActiveElementIndex,
     isResultsWindowOpen,
     setIsResultsWindowOpen,
+    setSearchInputHeight,
   } = useTabController();
+  
+  const searchInputRef = useRef(null);
 
   const handleOnChange = (value, e) => {
     if (e.keyCode !== 40 && e.keyCode !== 38) {
@@ -38,9 +41,15 @@ const SearchBox = (props) => {
     const { value } = e.target;
     setIsResultsWindowOpen(valHasLength(value));
   };
+  
+  useEffect(() => {
+    if (searchInputRef?.current) {
+      setSearchInputHeight(searchInputRef.current.offsetHeight);
+    }
+  }, []);
 
   return (
-    <div className="ais-SearchBox">
+    <div className="ais-SearchBox pb-2" ref={searchInputRef}>
       <form
         className="ais-SearchBox-form m-0"
         noValidate
@@ -55,6 +64,8 @@ const SearchBox = (props) => {
           aria-label="Search for a resource by typing here"
           placeholder="Search..."
           id={`search-box-${id}`}
+          autoComplete="off"
+          type="search"
         />
       </form>
     </div>

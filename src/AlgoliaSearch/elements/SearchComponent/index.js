@@ -21,11 +21,14 @@ const SearchComponent = (props) => {
     customLoader,
     customNoResults,
     indexResultsLimit,
+    className,
   } = props;
 
   const {
+    activeElementIndex,
     scrollableWindowHeight,
     setScrollableWindowTopOffset,
+    scrollableWindowTopOffset,
     scrollDistance,
     setScrollWindowRef,
     shouldBypassSearch,
@@ -36,6 +39,8 @@ const SearchComponent = (props) => {
     totalElementsCount,
     isResultsWindowOpen,
     setIsResultsWindowOpen,
+    controlsHeight,
+    searchInputHeight,
   } = useTabController();
 
   const algoliaClient = algoliasearch(
@@ -70,8 +75,12 @@ const SearchComponent = (props) => {
   }, [setScrollWindowRef]);
 
   useEffect(() => {
-    setScrollableWindowHeight(scrollWindowHeight);
-  }, [scrollWindowHeight])
+    if (controlsHeight && searchInputHeight) {
+      setScrollableWindowHeight(scrollWindowHeight - controlsHeight - searchInputHeight);
+    } else {
+      setScrollableWindowHeight(scrollWindowHeight);
+    }
+  }, [scrollWindowHeight, controlsHeight, searchInputHeight]);
 
   useEffect(() => {
     if (Array.isArray(searchOperators) && searchOperators.length > 0) {
@@ -83,8 +92,10 @@ const SearchComponent = (props) => {
 
   useEffect(() => {
     const scrollableResultsBoundingRect = scrollWindowRef.current.getBoundingClientRect();
-    setScrollableWindowTopOffset(scrollableResultsBoundingRect.top);
-  }, [setScrollableWindowTopOffset]);
+    if (scrollableResultsBoundingRect !== scrollableWindowTopOffset) {
+      setScrollableWindowTopOffset(scrollableResultsBoundingRect.top);
+    }
+  }, [setScrollableWindowTopOffset, activeElementIndex]);
 
   useEffect(() => {
     if (typeof scrollDistance === 'number' && isResultsWindowOpen && !isScrollDisabled) {
@@ -189,7 +200,7 @@ const SearchComponent = (props) => {
   const NoResultsToRender = customNoResults ? customNoResults : <NoResults />;
 
   return (
-    <div ref={searchComponentRef}>
+    <div ref={searchComponentRef} className={className}>
       <InstantSearch
         searchClient={searchClient}
         indexName={indices[0].indexName}
@@ -203,7 +214,7 @@ const SearchComponent = (props) => {
           <SearchBox id={ALGOLIA_APP_ID} />
 
           <div
-            className="shadow-xl rounded absolute w-full bg-white border border-gray-200 mt-2"
+            className="shadow-xl rounded absolute w-full bg-white border border-gray-200"
             style={{ visibility: `${isResultsWindowOpen ? 'visible' : 'hidden'}` }}
           >
             <div
@@ -238,8 +249,8 @@ const SearchComponent = (props) => {
 
               {(totalElementsCount === 0 && !isSearchEmpty) && LoaderToRender}
 
-            <Controls />
             </div>
+            <Controls />
           </div>
         </div>
       </InstantSearch>
