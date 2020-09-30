@@ -48,7 +48,6 @@ const ResultPill = (props) => {
       const resultPillOffset = activePillBoundingRect.top + activePillBoundingRect.height;
       const activePillTopOffset = resultPillOffset - scrollableWindowTopOffset + scrollWindowRef.current.scrollTop;
       let distToScroll = 0;
-      console.log(resultPillOffset, scrollableWindowTopOffset, activePillTopOffset, scrollableWindowHeight)
 
       if ((activePillTopOffset) > scrollableWindowHeight) {
         distToScroll = (activePillTopOffset) - scrollableWindowHeight;
