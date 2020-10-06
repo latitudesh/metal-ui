@@ -61,6 +61,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
+    "isomorphic-unfetch": "^3.1.0",
     "react-instantsearch-dom": "^6.7.0"
   }
 }
