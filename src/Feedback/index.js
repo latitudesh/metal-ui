@@ -317,13 +317,13 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
           onClick={onFocus}
           tabIndex={0}
           className={cn(
-            "geist-feedback-input hover:placeholder-black focus:placeholder-black active:placeholder-black p-0 w-24 h-12 relative mr-4 inline-block antialiased",
+            "geist-feedback-input hover:placeholder-black focus:placeholder-black active:placeholder-black p-0 w-24 h-12 relative mr-4 inline-block antialiased focus:outline-0 active:outline-0",
             {
               focused: focused || open,
               error: errorMessage,
               loading: loading,
               success: success,
-              email: email,
+              'email h-16': email,
             },
             className
           )}
@@ -421,7 +421,11 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
             )}
 
             {success && (
-              <div className={"success-message"}>
+              <div
+                className={
+                  "success-message z-50 absolute left-0 top-0 w-24 text-sm h-full flex items-center justify-center text-center p-16 flex-col"
+                }
+              >
                 <p>Your feedback has been received!</p>
                 <p>Thank you for your help.</p>
               </div>
@@ -429,11 +433,12 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
 
             {!success && !errorMessage && (
               <div
-                className={cn("controls ", {
+                className={cn("controls", {
+                  "focused opacity-1": focused,
                   hidden: blur,
                 })}
               >
-                <span className={"emojis"}>
+                <span className={"emojis w-3/5"}>
                   <EmojiSelector
                     onShow={onEmojiShown}
                     onHide={onEmojiHidden}
@@ -442,13 +447,14 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                   />
                 </span>
                 <span
-                  className={cn("buttons", {
-                    hidden: emojiShown,
-                  })}
+                  className={cn(
+                    "buttons flex-1 text-right transition-opacity duration-200 ease ml-auto",
+                    {
+                      hidden: emojiShown,
+                    }
+                  )}
                 >
-                  <Button medium loading={loading} width={60}>
-                    Send
-                  </Button>
+                  <Button loading={loading} width={60} label="Send" />
                 </span>
               </div>
             )}
