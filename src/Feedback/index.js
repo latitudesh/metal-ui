@@ -317,13 +317,13 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
           onClick={onFocus}
           tabIndex={0}
           className={cn(
-            styles['geist-feedback-input'],
+            "geist-feedback-input",
             {
-              [styles.focused]: focused || open,
-              [styles.error]: errorMessage,
-              [styles.loading]: loading,
-              [styles.success]: success,
-              [styles.email]: email
+              "focused": focused || open,
+              "error": errorMessage,
+              "loading": loading,
+              "success": success,
+              "email": email
             },
             className
           )}
@@ -331,16 +331,16 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
         >
           <form
             className={cn(
-              styles['feedback-wrapper'],
-              focused ? '' : styles.blur
+              'feedback-wrapper',
+              'focused' ? '' : 'blur'
             )}
             onSubmit={onSubmit}
           >
-            <div className={styles['placeholder']}>Feedback</div>
+            <div className={'placeholder'}>Feedback</div>
             {!errorMessage && !success && (
-              <div className={styles['input-wrapper']}>
+              <div className={'input-wrapper'}>
                 {email && (
-                  <div className={styles['input']}>
+                  <div className={'input'}>
                     <label>Email</label>
                     <Input
                       innerRef={ref => (emailInputRef.current = ref)}
@@ -354,7 +354,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                   </div>
                 )}
 
-                <div className={styles['input']}>
+                <div className={'input'}>
                   <label>Feedback</label>
                   <Textarea
                     innerRef={ref => (textAreaRef.current = ref)}
@@ -372,7 +372,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
             )}
 
             {errorMessage != null && (
-              <div className={styles['error-message']}>
+              <div className={'error-message'}>
                 <span>{errorMessage}</span>
                 <Button
                   medium
@@ -388,15 +388,15 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
             )}
 
             {success && (
-              <div className={styles['success-message']}>
+              <div className={'success-message'}>
                 <p>Your feedback has been received!</p>
                 <p>Thank you for your help.</p>
               </div>
             )}
 
             {!success && !errorMessage && (
-              <div className={styles['controls']}>
-                <span className={styles['emojis']}>
+              <div className={'controls'}>
+                <span className={'emojis'}>
                   <EmojiSelector
                     onShow={onEmojiShown}
                     onHide={onEmojiHidden}
@@ -405,8 +405,8 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                   />
                 </span>
                 <span
-                  className={cn(styles['buttons'], {
-                    [styles.hidden]: emojiShown
+                  className={cn('buttons', {
+                    'hidden': emojiShown
                   })}
                 >
                   <Button medium loading={loading} width={60}>
@@ -446,20 +446,20 @@ const EmojiSelector = ({ onEmojiSelect, loading }) => {
 
   return (
     <div
-      className={cn(styles['geist-emoji-selector'], {
+      className={cn('geist-emoji-selector', {
         loading
       })}
     >
       {Array.from(EMOJIS.values()).map(emoji => (
         <button
           type="button"
-          className={cn(styles['option'], {
-            [styles.active]: emoji === current
+          className={cn('option', {
+            'active': emoji === current
           })}
           key={emoji}
           onClick={() => onSelect(emoji)}
         >
-          <span className={cn(styles['inner'])}>
+          <span className={cn('inner')}>
             <Emoji code={emoji} />
           </span>
         </button>
