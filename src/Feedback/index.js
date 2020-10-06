@@ -341,22 +341,30 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
             onSubmit={onSubmit}
           >
             <div
-              className={
-                "placeholder flex absolute -top-1 -left-1 items-center justify-center w-24 h-12 border border-transparent flex-shrink-0 bg-white text-gray-600 transition-opacity duration-100 ease-out cursor-text"
-              }
+              className={cn(
+                "placeholder flex absolute -top-1 -left-1 items-center justify-center w-24 h-12 border border-transparent flex-shrink-0 bg-white text-gray-600 transition-opacity duration-100 ease-out cursor-text",
+                {
+                  "opacity-0 pointer-events-none top-0 left-0 text-gray-300 transition-opacity duration-75 ease-linear": focused,
+                }
+              )}
             >
               Feedback
             </div>
             {!errorMessage && !success && (
               <div
-                className={cn("input-wrapper", {
-                  hidden: blur,
-                })}
+                className={cn(
+                  "input-wrapper p-12 opacity-0 transition-opacity duration-100 ease relative h-32",
+                  {
+                    'opacity-1': focused,
+                    hidden: blur,
+                  }
+                )}
               >
                 {email && (
-                  <div className={"input"}>
+                  <div className={"input mb-12"}>
                     <label>Email</label>
                     <Input
+                      id="feedback-input"
                       innerRef={(ref) => (emailInputRef.current = ref)}
                       onFocus={() => setInputFocused(emailInputRef)}
                       type="email"
@@ -371,6 +379,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                 <div className={"input"}>
                   <label>Feedback</label>
                   <Textarea
+                    id="feedback-text"
                     innerRef={(ref) => (textAreaRef.current = ref)}
                     placeholder="Your feedback..."
                     width="100%"
