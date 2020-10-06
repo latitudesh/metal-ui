@@ -330,13 +330,23 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
           {...props}
         >
           <form
-            className={cn("feedback-wrapper", {
-              "focused w-42 h-32": focused || open,
-              blur: blur,
-            })}
+            className={cn(
+              "feedback-wrapper appearance-none border-0 bg-white border border-gray-300 flex leading-6 text-sm rounded w-24 h-12 resize-none z-50 outline-none text-black flex-col justify-start overflow-hidden relative transition-all ease-in-out",
+              {
+                "focused w-42 h-32 border-none border-white shadow-lg bg-white transition-all ease-in-out":
+                  focused || open,
+                blur: blur,
+              }
+            )}
             onSubmit={onSubmit}
           >
-            <div className={"placeholder"}>Feedback</div>
+            <div
+              className={
+                "placeholder flex absolute -top-1 -left-1 items-center justify-center w-24 h-12 border border-transparent flex-shrink-0 bg-white text-gray-600 transition-opacity duration-100 ease-out cursor-text"
+              }
+            >
+              Feedback
+            </div>
             {!errorMessage && !success && (
               <div
                 className={cn("input-wrapper", {
