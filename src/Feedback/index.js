@@ -3,10 +3,10 @@ import fetch from 'isomorphic-unfetch'
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 
-import Button from '~/src/Button/index'
-import ClickOutside from '~/src/ClickOutside/index'
-import Input from '~/src/Input/index'
-import Textarea from '~/src/Textarea/index'
+import Button from '../Button'
+import ClickOutside from '../ClickOutside'
+import Input from '../Input'
+import Textarea from '../Textarea'
 
 const EMOJIS = new Map([
   ['🤩', 'f929'],
