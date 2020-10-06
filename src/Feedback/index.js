@@ -317,7 +317,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
           onClick={onFocus}
           tabIndex={0}
           className={cn(
-            "geist-feedback-input p-0 w-24 h-12 relative mr-4 inline-block antialiased",
+            "geist-feedback-input hover:placeholder-black focus:placeholder-black active:placeholder-black p-0 w-24 h-12 relative mr-4 inline-block antialiased",
             {
               focused: focused || open,
               error: errorMessage,
@@ -331,7 +331,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
         >
           <form
             className={cn(
-              "feedback-wrapper appearance-none border-0 bg-white border border-gray-300 flex leading-6 text-sm rounded w-24 h-12 resize-none z-50 outline-none text-black flex-col justify-start overflow-hidden relative transition-all ease-in-out",
+              "feedback-wrapper appearance-none border-0 bg-white border border-gray-300 flex leading-6 text-sm rounded w-24 h-12 resize-none z-50 outline-none text-black flex-col justify-start overflow-hidden relative transition-all ease-in-out hover:border-black focus:border-black active:border-black",
               {
                 "focused w-42 h-32 border-none border-white shadow-lg bg-white transition-all ease-in-out":
                   focused || open,
@@ -355,14 +355,20 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                 className={cn(
                   "input-wrapper p-12 opacity-0 transition-opacity duration-100 ease relative h-32",
                   {
-                    'opacity-1': focused,
+                    "opacity-1": focused,
                     hidden: blur,
                   }
                 )}
               >
                 {email && (
-                  <div className={"input mb-12"}>
-                    <label>Email</label>
+                  <div
+                    className={
+                      "input mb-12 placeholder-gray-300 transition duration-100 ease-in-out"
+                    }
+                  >
+                    <label className="m-0 block font-medium text-sm uppercase mt-0 mb-4 text-gray-300">
+                      Email
+                    </label>
                     <Input
                       id="feedback-input"
                       innerRef={(ref) => (emailInputRef.current = ref)}
@@ -395,7 +401,11 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
             )}
 
             {errorMessage != null && (
-              <div className={"error-message"}>
+              <div
+                className={
+                  "error-message z-50 absolute left-0 top-0 w-24 text-sm h-full flex items-center justify-center text-center p-16 flex-col"
+                }
+              >
                 <span>{errorMessage}</span>
                 <Button
                   medium
