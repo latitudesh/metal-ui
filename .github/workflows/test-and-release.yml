@@ -2,10 +2,10 @@ name: Test and Release
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, develop ]
 
   pull_request:
-    branches: [ master ]
+    branches: [ master, develop ]
 
 jobs:
   build:
@@ -39,7 +39,7 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
 
     runs-on: ubuntu-latest
-    needs: [test]
+    needs: [build]
 
     steps:
     - name: Checkout
