@@ -323,7 +323,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
               error: errorMessage,
               loading: loading,
               success: success,
-              'email h-16': email,
+              "email h-16": email,
             },
             className
           )}
@@ -333,9 +333,8 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
             className={cn(
               "feedback-wrapper appearance-none border-0 bg-white border border-gray-300 flex leading-6 text-sm rounded w-24 h-12 resize-none z-50 outline-none text-black flex-col justify-start overflow-hidden relative transition-all ease-in-out hover:border-black focus:border-black active:border-black",
               {
-                "focused w-42 h-32 border-none border-white shadow-lg bg-white transition-all ease-in-out":
+                "focused w-64 h-64 p-4 border-none border-white shadow-lg bg-white transition-all ease-in-out":
                   focused || open,
-                blur: blur,
               }
             )}
             onSubmit={onSubmit}
@@ -353,17 +352,16 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
             {!errorMessage && !success && (
               <div
                 className={cn(
-                  "input-wrapper p-12 opacity-0 transition-opacity duration-100 ease relative h-32",
+                  "input-wrapper opacity-0 transition-opacity duration-100 ease relative h-32",
                   {
-                    "opacity-1": focused,
-                    hidden: blur,
+                    "opacity-100": focused,
                   }
                 )}
               >
                 {email && (
                   <div
                     className={
-                      "input mb-12 placeholder-gray-300 transition duration-100 ease-in-out"
+                      "input mb-2 placeholder-gray-300 transition duration-100 ease-in-out"
                     }
                   >
                     <label className="m-0 block font-medium text-sm uppercase mt-0 mb-4 text-gray-300">
@@ -371,7 +369,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                     </label>
                     <Input
                       id="feedback-input"
-                      innerRef={(ref) => (emailInputRef.current = ref)}
+                      ref={(ref) => (emailInputRef.current = ref)}
                       onFocus={() => setInputFocused(emailInputRef)}
                       type="email"
                       placeholder="Your email address..."
@@ -386,7 +384,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                   <label>Feedback</label>
                   <Textarea
                     id="feedback-text"
-                    innerRef={(ref) => (textAreaRef.current = ref)}
+                    ref={(ref) => (textAreaRef.current = ref)}
                     placeholder="Your feedback..."
                     width="100%"
                     onFocus={() => setInputFocused(textAreaRef)}
@@ -434,8 +432,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
             {!success && !errorMessage && (
               <div
                 className={cn("controls", {
-                  "focused opacity-1": focused,
-                  hidden: blur,
+                  "focused opacity-100": focused,
                 })}
               >
                 <span className={"emojis w-3/5"}>
