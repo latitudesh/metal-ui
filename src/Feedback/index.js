@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 
 import Button from "../Button";
-import ClickOutside from "../ClickOutside";
+import ClickOutside from "../../util/ClickOutside";
 import Input from "../Input";
 import Textarea from "../Textarea";
 
@@ -87,13 +87,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
           url: window.location.toString(),
           note: textAreaRef.current.value,
           email: emailValue || "",
-          emotion: getEmoji(emoji),
-          label: window.location.pathname.includes("guides")
-            ? "guides"
-            : "docs",
-          ua: `docs ${process.env.NEXT_PUBLIC_VERSION} + ${
-            navigator.userAgent
-          } (${navigator.language || "unknown language"})`,
+          emotion: getEmoji(emoji)
         }),
         throwOnHTTPError: true,
       })
@@ -173,26 +167,6 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
     onKeyDown,
   ]);
 
-  useEffect(() => {
-    let clearSuccessTimer;
-    if (success) {
-      // collapse in 5s
-      clearSuccessTimer = setTimeout(() => {
-        if (!document.hidden) {
-          setSuccess(false);
-          handleClickOutside();
-        }
-      }, 5000);
-    }
-
-    return () => {
-      if (clearSuccessTimer !== null) {
-        clearTimeout(clearSuccessTimer);
-        clearSuccessTimer = null;
-      }
-    };
-  }, [success, handleClickOutside]);
-
   const focusEmailInput = useCallback(() => {
     if (inputFocused !== emailInputRef) {
       setInputFocused(emailInputRef);
@@ -257,7 +231,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
   const eventListeners = useRef();
   eventListeners.current = {
     focus: onFocus,
-    blur: handleClickOutside,
+    blur:handleClickOutside
   };
 
   useEffect(() => {
@@ -305,7 +279,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
 
   return (
     <ClickOutside
-      active={focused}
+      active={!focused}
       onClick={handleClickOutside}
       render={({ innerRef }) => (
         <div
@@ -432,7 +406,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
             {!success && !errorMessage && (
               <div
                 className={cn("controls", {
-                  "focused opacity-100": focused,
+                  "focused opacity-100 flex mt-20": focused,
                 })}
               >
                 <span className={"emojis w-3/5"}>
@@ -451,7 +425,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                     }
                   )}
                 >
-                  <Button loading={loading} width={60} label="Send" />
+                  <Button loading={loading} width={60} label="Send" onClick={onSubmit} />
                 </span>
               </div>
             )}
