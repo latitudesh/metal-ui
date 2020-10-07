@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "test": "jest --watch -u",
+    "test-ci": "jest -o",
     "dev": "start-storybook -s ./public 9001",
     "deploy-storybook": "storybook-to-ghpages",
     "build": "webpack --config config/umd.js"
