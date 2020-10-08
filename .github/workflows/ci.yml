@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [ master, develop ]
+
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: NPM install
+      run: npm ci
+
+    - name: NPM Build
+      run: npm run build --if-present
+
+    - name: Run Tests
+      run: npm run test--ci
+
+  release:
+    
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+
+    runs-on: ubuntu-latest
+    needs: [build]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+
+    - name: NPM Install ci
+      run: npm ci
+
+    - name: Publish with Semantic Release
+      run: npx semantic-release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # for npm publishing to work, remove: "private: true" in the package.json file and add a "NPM_TOKEN" key to your github secrets
+        # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
