@@ -7,6 +7,7 @@ import Button from "../Button";
 import ClickOutside from "../../util/ClickOutside";
 import Input from "../Input";
 import Textarea from "../Textarea";
+import Text from "../Typography/Text";
 
 const EMOJIS = new Map([
   ["🤩", "f929"],
@@ -87,7 +88,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
           url: window.location.toString(),
           note: textAreaRef.current.value,
           email: emailValue || "",
-          emotion: getEmoji(emoji)
+          emotion: getEmoji(emoji),
         }),
         throwOnHTTPError: true,
       })
@@ -231,7 +232,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
   const eventListeners = useRef();
   eventListeners.current = {
     focus: onFocus,
-    blur:handleClickOutside
+    blur: handleClickOutside,
   };
 
   useEffect(() => {
@@ -291,13 +292,14 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
           onClick={onFocus}
           tabIndex={0}
           className={cn(
-            "geist-feedback-input hover:placeholder-black focus:placeholder-black active:placeholder-black p-0 w-24 h-12 relative mr-4 inline-block antialiased focus:outline-0 active:outline-0",
+            "geist-feedback-input p-0 w-24 relative inline-block antialiased focus:outline-0 active:outline-0",
             {
+              "h-8": !focused || !open,
               focused: focused || open,
-              error: errorMessage,
+              "error text-transparent select-none": errorMessage,
               loading: loading,
-              success: success,
-              "email h-16": email,
+              "success text-transparent select-none h-32": success,
+              email: email,
             },
             className
           )}
@@ -305,9 +307,9 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
         >
           <form
             className={cn(
-              "feedback-wrapper appearance-none border-0 bg-white border border-gray-300 flex leading-6 text-sm rounded w-24 h-12 resize-none z-50 outline-none text-black flex-col justify-start overflow-hidden relative transition-all ease-in-out hover:border-black focus:border-black active:border-black",
+              "feedback-wrapper appearance-none border-0 bg-white border border-gray-300 flex leading-6 text-sm rounded w-24 h-8 resize-none z-50 outline-none text-black flex-col justify-start overflow-hidden relative transition-all ease-in-out hover:border-black focus:border-black active:border-black",
               {
-                "focused w-64 h-64 p-4 border-none border-white shadow-lg bg-white transition-all ease-in-out":
+                "focused w-72 h-auto min-h-full border-none border-white shadow-lg bg-white transition-all ease-in-out":
                   focused || open,
               }
             )}
@@ -315,20 +317,22 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
           >
             <div
               className={cn(
-                "placeholder flex absolute -top-1 -left-1 items-center justify-center w-24 h-12 border border-transparent flex-shrink-0 bg-white text-gray-600 transition-opacity duration-100 ease-out cursor-text",
+                "placeholder flex absolute -top-1 -left-1 items-center justify-center w-24 h-8 border border-transparent flex-shrink-0 bg-white text-gray-600 transition-opacity duration-50 ease-out cursor-text",
                 {
                   "opacity-0 pointer-events-none top-0 left-0 text-gray-300 transition-opacity duration-75 ease-linear": focused,
                 }
               )}
+              style={{ marginTop: "-1px", marginLeft: "-1px" }}
             >
               Feedback
             </div>
             {!errorMessage && !success && (
               <div
                 className={cn(
-                  "input-wrapper opacity-0 transition-opacity duration-100 ease relative h-32",
+                  "input-wrapper p-4 opacity-0 transition-opacity duration-50 ease relative h-32",
                   {
                     "opacity-100": focused,
+                    hidden: !focused,
                   }
                 )}
               >
@@ -338,10 +342,8 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                       "input mb-2 placeholder-gray-300 transition duration-100 ease-in-out"
                     }
                   >
-                    <label className="m-0 block font-medium text-sm uppercase mt-0 mb-4 text-gray-300">
-                      Email
-                    </label>
                     <Input
+                      label="Email"
                       id="feedback-input"
                       ref={(ref) => (emailInputRef.current = ref)}
                       onFocus={() => setInputFocused(emailInputRef)}
@@ -355,9 +357,9 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                 )}
 
                 <div className={"input"}>
-                  <label>Feedback</label>
                   <Textarea
                     id="feedback-text"
+                    label="Feedback"
                     ref={(ref) => (textAreaRef.current = ref)}
                     placeholder="Your feedback..."
                     width="100%"
@@ -367,6 +369,9 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                     disabled={loading === true || errorMessage != null}
                     // Disable the Grammarly extension on this textarea
                     data-gramm-editor="false"
+                    textareaClassName={cn("feedback-input", {
+                      "text-gray-900": loading,
+                    })}
                   />
                 </div>
               </div>
@@ -375,39 +380,53 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
             {errorMessage != null && (
               <div
                 className={
-                  "error-message z-50 absolute left-0 top-0 w-24 text-sm h-full flex items-center justify-center text-center p-16 flex-col"
+                  "flex flex-col items-center justify-center p-4 success-message text-center z-50"
                 }
               >
-                <span>{errorMessage}</span>
+                <Text
+                  is="p"
+                  small
+                  color="text-red-600"
+                  style={{ marginBottom: "8px" }}
+                >
+                  {errorMessage}
+                </Text>
                 <Button
-                  medium
+                  type="minimal"
                   onClick={(e) => {
                     e.preventDefault();
                     onErrorDismiss();
                   }}
                   autoFocus
-                >
-                  GO BACK
-                </Button>
+                  label="Go back"
+                />
               </div>
             )}
 
             {success && (
               <div
                 className={
-                  "success-message z-50 absolute left-0 top-0 w-24 text-sm h-full flex items-center justify-center text-center p-16 flex-col"
+                  "flex flex-col items-center justify-center p-4 success-message text-center z-50"
                 }
               >
-                <p>Your feedback has been received!</p>
-                <p>Thank you for your help.</p>
+                <Text small is="p">
+                  Your feedback has been received!
+                </Text>
+                <Text small is="p">
+                  Thank you for your help.
+                </Text>
               </div>
             )}
 
             {!success && !errorMessage && (
               <div
-                className={cn("controls", {
-                  "focused opacity-100 flex mt-20": focused,
-                })}
+                className={cn(
+                  "controls pointer-events-none w-full h-16 p-4 flex items-center bg-gray-100 border-t border-gray-200 opacity-0 transition-opacity duration-200 ease",
+                  {
+                    "focused opacity-100 mt-20": focused,
+                    hidden: !focused,
+                  }
+                )}
               >
                 <span className={"emojis w-3/5"}>
                   <EmojiSelector
@@ -425,7 +444,12 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                     }
                   )}
                 >
-                  <Button loading={loading} width={60} label="Send" onClick={onSubmit} />
+                  <Button
+                    loading={loading}
+                    width={60}
+                    label="Send"
+                    onClick={onSubmit}
+                  />
                 </span>
               </div>
             )}
