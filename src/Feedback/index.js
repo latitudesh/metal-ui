@@ -484,8 +484,9 @@ const EmojiSelector = ({ onEmojiSelect, loading }) => {
 
   return (
     <div
-      className={cn("geist-emoji-selector", {
-        loading,
+      className={cn("geist-emoji-selector flex w-24 pointer-events-none", {
+        'loading cursor-default': loading,
+        'pointer-events-all': focused,
       })}
     >
       {Array.from(EMOJIS.values()).map((emoji) => (
