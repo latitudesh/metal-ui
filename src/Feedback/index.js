@@ -292,7 +292,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
           onClick={onFocus}
           tabIndex={0}
           className={cn(
-            "geist-feedback-input p-0 w-24 relative inline-block antialiased focus:outline-0 active:outline-0",
+            "feedback-input p-0 w-24 relative inline-block antialiased focus:outline-0 active:outline-0",
             {
               "h-8": !focused || !open,
               focused: focused || open,
@@ -484,7 +484,7 @@ const EmojiSelector = ({ onEmojiSelect, loading }) => {
 
   return (
     <div
-      className={cn("geist-emoji-selector flex space-x-2", {
+      className={cn("emoji-selector flex space-x-2", {
         "loading cursor-default": loading,
       })}
     >
