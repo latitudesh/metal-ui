@@ -519,7 +519,7 @@ const Emoji = React.memo(({ code }) => (
     decoding="async"
     width={20}
     height={20}
-    src={`https://assets.vercel.com/twemoji/1${code}.svg`}
+    src={`https://maxihost-assets.s3.sa-east-1.amazonaws.com/metal-ui/1${code}.svg`}
     alt="emoji"
   />
 ));
