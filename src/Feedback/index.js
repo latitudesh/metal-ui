@@ -307,7 +307,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
         >
           <form
             className={cn(
-              "feedback-wrapper appearance-none border-0 bg-white border border-gray-300 flex leading-6 text-sm rounded w-24 h-8 resize-none z-50 outline-none text-black flex-col justify-start overflow-hidden relative transition-all ease-in-out hover:border-black focus:border-black active:border-black",
+              "feedback-wrapper appearance-none border-0 bg-white border border-gray-300 flex leading-6 text-sm rounded w-24 h-8 resize-none z-50 outline-none text-black flex-col justify-start overflow-hidden relative transition-all ease-in-out hover:border-black focus:border-black active:border-black focus:outline-none active:outline-none",
               {
                 "focused w-72 h-auto min-h-full border-none border-white shadow-lg bg-white transition-all ease-in-out":
                   focused || open,
@@ -428,7 +428,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                   }
                 )}
               >
-                <span className={"emojis w-3/5"}>
+                <span className={"emojis"} style={{ width: '160px' }}>
                   <EmojiSelector
                     onShow={onEmojiShown}
                     onHide={onEmojiHidden}
@@ -484,7 +484,7 @@ const EmojiSelector = ({ onEmojiSelect, loading }) => {
 
   return (
     <div
-      className={cn("geist-emoji-selector flex w-24", {
+      className={cn("geist-emoji-selector flex space-x-2", {
         "loading cursor-default": loading,
       })}
     >
@@ -492,9 +492,9 @@ const EmojiSelector = ({ onEmojiSelect, loading }) => {
         <button
           type="button"
           className={cn(
-            "option inline-flex outline-none bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-gray-200 focus:outline-none active:outline-none transform hover:scale-105 active:scale-105 hover:bg-white active:bg-white cursor-pointer text-center space-x-8",
+            "option inline-flex outline-none bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-gray-200 focus:outline-none active:outline-none transform hover:scale-105 active:scale-105 hover:bg-white active:bg-white cursor-pointer text-center",
             {
-              "active scale-110 border border-orange-400": emoji === current,
+              "active scale-110 border bg-white border-orange-400": emoji === current,
               "cursor-default": loading,
             }
           )}
@@ -502,7 +502,10 @@ const EmojiSelector = ({ onEmojiSelect, loading }) => {
           onClick={() => onSelect(emoji)}
           style={{ borderRadius: "50%" }}
         >
-          <span className={cn("inner inline-flex")}>
+          <span
+            className={cn("inner flex justify-center items-center")}
+            style={{ width: 32, height: 32, borderRadius: '50%' }}
+          >
             <Emoji code={emoji} />
           </span>
         </button>
