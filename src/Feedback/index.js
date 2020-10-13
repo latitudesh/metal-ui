@@ -1,167 +1,162 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
-import fetch from 'isomorphic-unfetch'
-import PropTypes from 'prop-types'
-import cn from 'classnames'
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import fetch from "isomorphic-unfetch";
+import PropTypes from "prop-types";
+import cn from "classnames";
 
-import Button from '~/src/Button/index'
-import ClickOutside from '~/src/ClickOutside/index'
-import Input from '~/src/Input/index'
-import Textarea from '~/src/Textarea/index'
+import Button from "../Button";
+import ClickOutside from "../../util/ClickOutside";
+import Input from "../Input";
+import Textarea from "../Textarea";
+import Text from "../Typography/Text";
 
 const EMOJIS = new Map([
-  ['🤩', 'f929'],
-  ['🙂', 'f600'],
-  ['😕', 'f615'],
-  ['😭', 'f62d']
-])
+  ["🤩", "f929"],
+  ["🙂", "f600"],
+  ["😕", "f615"],
+  ["😭", "f62d"],
+]);
 
 // gets the emoji from the code
-let EMOJI_CODES = null
+let EMOJI_CODES = null;
 function getEmoji(code) {
-  if (code === null) return code
+  if (code === null) return code;
 
   if (EMOJI_CODES === null) {
-    EMOJI_CODES = new Map([...EMOJIS].map(([k, v]) => [v, k]))
+    EMOJI_CODES = new Map([...EMOJIS].map(([k, v]) => [v, k]));
   }
-  return EMOJI_CODES.get(code)
+  return EMOJI_CODES.get(code);
 }
 
 const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
-  const [emoji, setEmoji] = useState(null)
-  const [loading, setLoading] = useState(false)
-  const [focused, setFocused] = useState(false)
-  const [success, setSuccess] = useState(false)
-  const [emojiShown, setEmojiShown] = useState(false)
-  const [errorMessage, setErrorMessage] = useState(null)
-  const [emailValue, setEmailValue] = useState(null)
-  const [inputFocused, setInputFocused] = useState(null)
-  const [value, setValue] = useState(null)
-  const textAreaRef = useRef()
-  const emailInputRef = useRef()
-  const containerRef = useRef()
+  const [emoji, setEmoji] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [emojiShown, setEmojiShown] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [emailValue, setEmailValue] = useState(null);
+  const [inputFocused, setInputFocused] = useState(null);
+  const [value, setValue] = useState(null);
+  const textAreaRef = useRef();
+  const emailInputRef = useRef();
+  const containerRef = useRef();
 
   const onErrorDismiss = useCallback(() => {
-    setErrorMessage(null)
-  }, [])
+    setErrorMessage(null);
+  }, []);
 
   const onSuccessDismiss = useCallback(() => {
-    setSuccess(false)
-  }, [])
+    setSuccess(false);
+  }, []);
 
   const handleClickOutside = useCallback(() => {
-    setFocused(false)
-    onErrorDismiss()
-    onSuccessDismiss()
+    setFocused(false);
+    onErrorDismiss();
+    onSuccessDismiss();
 
     if (textAreaRef.current) {
-      textAreaRef.current.value = ''
+      textAreaRef.current.value = "";
     }
 
     if (emailInputRef.current) {
-      emailInputRef.current.value = ''
+      emailInputRef.current.value = "";
     }
-  }, [onErrorDismiss, onSuccessDismiss])
+  }, [onErrorDismiss, onSuccessDismiss]);
 
   const onSubmit = useCallback(
-    event => {
-      event.preventDefault()
-      containerRef.current.focus()
+    (event) => {
+      event.preventDefault();
+      containerRef.current.focus();
 
-      if (value.trim() === '') {
-        setErrorMessage("Your feedback can't be empty")
-        return
+      if (value.trim() === "") {
+        setErrorMessage("Your feedback can't be empty");
+        return;
       }
 
-      setLoading(true)
+      setLoading(true);
 
       if (dryRun) {
-        setLoading(false)
-        setSuccess(true)
-        setValue('')
-        return
+        setLoading(false);
+        setSuccess(true);
+        setValue("");
+        return;
       }
 
       fetch(url, {
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify({
           url: window.location.toString(),
           note: textAreaRef.current.value,
-          email: emailValue || '',
+          email: emailValue || "",
           emotion: getEmoji(emoji),
-          label: window.location.pathname.includes('guides')
-            ? 'guides'
-            : 'docs',
-          ua: `docs ${process.env.NEXT_PUBLIC_VERSION} + ${
-            navigator.userAgent
-          } (${navigator.language || 'unknown language'})`
         }),
-        throwOnHTTPError: true
+        throwOnHTTPError: true,
       })
         .then(() => {
           // Reset the textarea value on success
-          setLoading(false)
-          setSuccess(true)
-          setValue('')
+          setLoading(false);
+          setSuccess(true);
+          setValue("");
         })
-        .catch(err => {
-          setLoading(false)
-          setErrorMessage(err.message)
-        })
+        .catch((err) => {
+          setLoading(false);
+          setErrorMessage(err.message);
+        });
     },
     [dryRun, emoji, value, emailValue]
-  )
+  );
 
   const onKeyDown = useCallback(
-    e => {
+    (e) => {
       if (e.keyCode === 27) {
-        handleClickOutside()
+        handleClickOutside();
         // we still need to make the container's DOM focused programmatically
         // to keep the current tab position
         if (containerRef.current) {
-          containerRef.current.focus()
+          containerRef.current.focus();
         }
-      } else if (e.key === 'Enter' && e.metaKey) {
-        onSubmit(e)
+      } else if (e.key === "Enter" && e.metaKey) {
+        onSubmit(e);
       }
     },
     [handleClickOutside, onSubmit]
-  )
+  );
 
   useEffect(() => {
     // Inputs were hidden if we were showing an error message and
     // now we hide it
     if (focused && inputFocused.current && errorMessage === null) {
-      inputFocused.current.focus({ preventScroll: true })
+      inputFocused.current.focus({ preventScroll: true });
     }
-  }, [errorMessage, focused, inputFocused])
+  }, [errorMessage, focused, inputFocused]);
 
   useEffect(() => {
     if (focused) {
       if (textAreaRef && textAreaRef.current) {
-        textAreaRef.current.value = value
+        textAreaRef.current.value = value;
       }
 
       if (emailInputRef && emailInputRef.current) {
-        emailInputRef.current.value = emailValue
+        emailInputRef.current.value = emailValue;
       }
 
-      window.addEventListener('keydown', onKeyDown)
+      window.addEventListener("keydown", onKeyDown);
     } else if (!focused && inputFocused && inputFocused.current) {
-      inputFocused.current.blur()
+      inputFocused.current.blur();
 
       // Remove value visibly from textarea while it's unfocused
-      textAreaRef.current.value = ''
+      textAreaRef.current.value = "";
 
       if (email) {
-        emailInputRef.current.value = ''
+        emailInputRef.current.value = "";
       }
 
-      window.removeEventListener('keydown', onKeyDown)
+      window.removeEventListener("keydown", onKeyDown);
     }
 
     return () => {
-      window.removeEventListener('keydown', onKeyDown)
-    }
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, [
     focused,
     inputFocused,
@@ -170,113 +165,93 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
     value,
     email,
     onSubmit,
-    onKeyDown
-  ])
-
-  useEffect(() => {
-    let clearSuccessTimer
-    if (success) {
-      // collapse in 5s
-      clearSuccessTimer = setTimeout(() => {
-        if (!document.hidden) {
-          setSuccess(false)
-          handleClickOutside()
-        }
-      }, 5000)
-    }
-
-    return () => {
-      if (clearSuccessTimer !== null) {
-        clearTimeout(clearSuccessTimer)
-        clearSuccessTimer = null
-      }
-    }
-  }, [success, handleClickOutside])
+    onKeyDown,
+  ]);
 
   const focusEmailInput = useCallback(() => {
     if (inputFocused !== emailInputRef) {
-      setInputFocused(emailInputRef)
-      emailInputRef.current.focus({ preventScroll: true })
+      setInputFocused(emailInputRef);
+      emailInputRef.current.focus({ preventScroll: true });
     }
-  }, [inputFocused])
+  }, [inputFocused]);
 
   const focusTextArea = useCallback(() => {
     if (inputFocused !== textAreaRef) {
-      setInputFocused(textAreaRef)
-      textAreaRef.current.focus({ preventScroll: true })
+      setInputFocused(textAreaRef);
+      textAreaRef.current.focus({ preventScroll: true });
     }
-  }, [inputFocused])
+  }, [inputFocused]);
 
   const onFocus = useCallback(() => {
     if (email && emailInputRef.current && !focused) {
-      focusEmailInput()
+      focusEmailInput();
     } else if (textAreaRef.current && !focused) {
-      focusTextArea()
+      focusTextArea();
     }
 
-    setFocused(true)
+    setFocused(true);
   }, [
     email,
     emailInputRef,
     textAreaRef,
     focused,
     focusEmailInput,
-    focusTextArea
-  ])
+    focusTextArea,
+  ]);
 
   const onEmojiShown = useCallback(() => {
-    setEmojiShown(true)
-  }, [])
+    setEmojiShown(true);
+  }, []);
 
   const onEmojiHidden = useCallback(() => {
-    setEmojiShown(false)
-  }, [])
+    setEmojiShown(false);
+  }, []);
 
-  const onEmojiSelect = useCallback(selectedEmoji => {
-    setEmoji(selectedEmoji)
-  }, [])
+  const onEmojiSelect = useCallback((selectedEmoji) => {
+    setEmoji(selectedEmoji);
+  }, []);
 
   const handleChange = useCallback(
-    e => {
+    (e) => {
       if (focused) {
-        setValue(e)
+        setValue(e);
       }
     },
     [focused]
-  )
+  );
 
   const handleEmailChange = useCallback(
-    e => {
+    (e) => {
       if (focused) {
-        setEmailValue(e)
+        setEmailValue(e);
       }
     },
     [focused]
-  )
+  );
 
-  const eventListeners = useRef()
+  const eventListeners = useRef();
   eventListeners.current = {
     focus: onFocus,
-    blur: handleClickOutside
-  }
+    blur: handleClickOutside,
+  };
 
   useEffect(() => {
-    if (!containerRef || !containerRef.current) return
+    if (!containerRef || !containerRef.current) return;
 
-    let isFocusedInside = false
-    let lastState = false
+    let isFocusedInside = false;
+    let lastState = false;
     const checkFinalState = () => {
       setTimeout(() => {
         if (isFocusedInside !== lastState) {
           if (isFocusedInside) {
-            eventListeners.current.focus()
+            eventListeners.current.focus();
           } else {
-            eventListeners.current.blur()
+            eventListeners.current.blur();
           }
-          lastState = isFocusedInside
+          lastState = isFocusedInside;
         }
-      }, 0)
-    }
+      }, 0);
+    };
 
     // when hitting tab, there might be 2 things happening:
     //   1. an element inside is focused
@@ -286,44 +261,45 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
     //   2 -> needs to be closed (inside -> outside)
     //   2 -> 1 needs to stay open (inside -> inside)
     const focusIn = () => {
-      isFocusedInside = true
-      checkFinalState()
-    }
+      isFocusedInside = true;
+      checkFinalState();
+    };
     const blurIn = () => {
-      isFocusedInside = false
-      checkFinalState()
-    }
+      isFocusedInside = false;
+      checkFinalState();
+    };
 
     // we add these 2 events manually because react doesn't yet support them as props
-    containerRef.current.addEventListener('focusout', blurIn)
-    containerRef.current.addEventListener('focusin', focusIn)
+    containerRef.current.addEventListener("focusout", blurIn);
+    containerRef.current.addEventListener("focusin", focusIn);
     return () => {
-      containerRef.current.addEventListener('focusout', blurIn)
-      containerRef.current.removeEventListener('focusin', focusIn)
-    }
-  }, [])
+      containerRef.current.addEventListener("focusout", blurIn);
+      containerRef.current.removeEventListener("focusin", focusIn);
+    };
+  }, []);
 
   return (
     <ClickOutside
-      active={focused}
+      active={!focused}
       onClick={handleClickOutside}
       render={({ innerRef }) => (
         <div
-          ref={node => {
-            containerRef.current = node
-            innerRef(node)
+          ref={(node) => {
+            containerRef.current = node;
+            innerRef(node);
           }}
           title="Share any feedback about our products and services"
           onClick={onFocus}
           tabIndex={0}
           className={cn(
-            styles['geist-feedback-input'],
+            "feedback-input p-0 w-24 relative inline-block antialiased focus:outline-0 active:outline-0",
             {
-              [styles.focused]: focused || open,
-              [styles.error]: errorMessage,
-              [styles.loading]: loading,
-              [styles.success]: success,
-              [styles.email]: email
+              "h-8": !focused || !open,
+              focused: focused || open,
+              "error text-transparent select-none": errorMessage,
+              loading: loading,
+              "success text-transparent select-none h-32": success,
+              email: email,
             },
             className
           )}
@@ -331,19 +307,45 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
         >
           <form
             className={cn(
-              styles['feedback-wrapper'],
-              focused ? '' : styles.blur
+              "feedback-wrapper appearance-none border-0 bg-white border border-gray-300 flex leading-6 text-sm rounded w-24 h-8 resize-none z-50 outline-none text-black flex-col justify-start overflow-hidden relative transition-all ease-in-out hover:border-black focus:border-black active:border-black focus:outline-none active:outline-none",
+              {
+                "focused w-72 h-auto min-h-full border-none border-white shadow-lg bg-white transition-all ease-in-out":
+                  focused || open,
+              }
             )}
             onSubmit={onSubmit}
           >
-            <div className={styles['placeholder']}>Feedback</div>
+            <div
+              className={cn(
+                "placeholder flex absolute -top-1 -left-1 items-center justify-center w-24 h-8 border border-transparent flex-shrink-0 bg-white text-gray-600 transition-opacity duration-50 ease-out cursor-text",
+                {
+                  "opacity-0 pointer-events-none top-0 left-0 text-gray-300 transition-opacity duration-75 ease-linear": focused,
+                }
+              )}
+              style={{ marginTop: "-1px", marginLeft: "-1px" }}
+            >
+              Feedback
+            </div>
             {!errorMessage && !success && (
-              <div className={styles['input-wrapper']}>
+              <div
+                className={cn(
+                  "input-wrapper p-4 opacity-0 transition-opacity duration-50 ease relative h-32",
+                  {
+                    "opacity-100": focused,
+                    hidden: !focused,
+                  }
+                )}
+              >
                 {email && (
-                  <div className={styles['input']}>
-                    <label>Email</label>
+                  <div
+                    className={
+                      "input mb-2 placeholder-gray-300 transition duration-100 ease-in-out"
+                    }
+                  >
                     <Input
-                      innerRef={ref => (emailInputRef.current = ref)}
+                      label="Email"
+                      id="feedback-input"
+                      ref={(ref) => (emailInputRef.current = ref)}
                       onFocus={() => setInputFocused(emailInputRef)}
                       type="email"
                       placeholder="Your email address..."
@@ -354,10 +356,11 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                   </div>
                 )}
 
-                <div className={styles['input']}>
-                  <label>Feedback</label>
+                <div className={"input"}>
                   <Textarea
-                    innerRef={ref => (textAreaRef.current = ref)}
+                    id="feedback-text"
+                    label="Feedback"
+                    ref={(ref) => (textAreaRef.current = ref)}
                     placeholder="Your feedback..."
                     width="100%"
                     onFocus={() => setInputFocused(textAreaRef)}
@@ -366,37 +369,66 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                     disabled={loading === true || errorMessage != null}
                     // Disable the Grammarly extension on this textarea
                     data-gramm-editor="false"
+                    textareaClassName={cn("feedback-input", {
+                      "text-gray-900": loading,
+                    })}
                   />
                 </div>
               </div>
             )}
 
             {errorMessage != null && (
-              <div className={styles['error-message']}>
-                <span>{errorMessage}</span>
+              <div
+                className={
+                  "flex flex-col items-center justify-center p-4 success-message text-center z-50"
+                }
+              >
+                <Text
+                  is="p"
+                  small
+                  color="text-red-600"
+                  style={{ marginBottom: "8px" }}
+                >
+                  {errorMessage}
+                </Text>
                 <Button
-                  medium
-                  onClick={e => {
-                    e.preventDefault()
-                    onErrorDismiss()
+                  type="minimal"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onErrorDismiss();
                   }}
                   autoFocus
-                >
-                  GO BACK
-                </Button>
+                  label="Go back"
+                />
               </div>
             )}
 
             {success && (
-              <div className={styles['success-message']}>
-                <p>Your feedback has been received!</p>
-                <p>Thank you for your help.</p>
+              <div
+                className={
+                  "flex flex-col items-center justify-center p-4 success-message text-center z-50"
+                }
+              >
+                <Text small is="p">
+                  Your feedback has been received!
+                </Text>
+                <Text small is="p">
+                  Thank you for your help.
+                </Text>
               </div>
             )}
 
             {!success && !errorMessage && (
-              <div className={styles['controls']}>
-                <span className={styles['emojis']}>
+              <div
+                className={cn(
+                  "controls w-full h-16 p-4 flex items-center bg-gray-100 border-t border-gray-200 opacity-0 transition-opacity duration-200 ease",
+                  {
+                    "focused opacity-100 mt-20 pointer-events-auto": focused,
+                    "hidden pointer-events-none": !focused,
+                  }
+                )}
+              >
+                <span className={"emojis"} style={{ width: '160px' }}>
                   <EmojiSelector
                     onShow={onEmojiShown}
                     onHide={onEmojiHidden}
@@ -405,13 +437,19 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                   />
                 </span>
                 <span
-                  className={cn(styles['buttons'], {
-                    [styles.hidden]: emojiShown
-                  })}
+                  className={cn(
+                    "buttons flex-1 text-right transition-opacity duration-200 ease ml-auto",
+                    {
+                      hidden: emojiShown,
+                    }
+                  )}
                 >
-                  <Button medium loading={loading} width={60}>
-                    Send
-                  </Button>
+                  <Button
+                    loading={loading}
+                    width={60}
+                    label="Send"
+                    onClick={onSubmit}
+                  />
                 </span>
               </div>
             )}
@@ -419,63 +457,71 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
         </div>
       )}
     />
-  )
-}
+  );
+};
 
 FeedbackInput.propTypes = {
   dryRun: PropTypes.bool,
   open: PropTypes.bool,
   className: PropTypes.string,
-  url: PropTypes.string
-}
+  url: PropTypes.string,
+};
 
 const EmojiSelector = ({ onEmojiSelect, loading }) => {
-  const [current, setCurrent] = useState(null)
+  const [current, setCurrent] = useState(null);
 
   useEffect(() => {
     if (onEmojiSelect) {
-      onEmojiSelect(current)
+      onEmojiSelect(current);
     }
-  }, [current, onEmojiSelect])
+  }, [current, onEmojiSelect]);
 
-  const onSelect = emoji => {
+  const onSelect = (emoji) => {
     if (emoji !== current) {
-      setCurrent(emoji)
+      setCurrent(emoji);
     }
-  }
+  };
 
   return (
     <div
-      className={cn(styles['geist-emoji-selector'], {
-        loading
+      className={cn("emoji-selector flex space-x-2", {
+        "loading cursor-default": loading,
       })}
     >
-      {Array.from(EMOJIS.values()).map(emoji => (
+      {Array.from(EMOJIS.values()).map((emoji) => (
         <button
           type="button"
-          className={cn(styles['option'], {
-            [styles.active]: emoji === current
-          })}
+          className={cn(
+            "option inline-flex outline-none bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-gray-200 focus:outline-none active:outline-none transform hover:scale-105 active:scale-105 hover:bg-white active:bg-white cursor-pointer text-center",
+            {
+              "active scale-110 border bg-white border-orange-400": emoji === current,
+              "cursor-default": loading,
+            }
+          )}
           key={emoji}
           onClick={() => onSelect(emoji)}
+          style={{ borderRadius: "50%" }}
         >
-          <span className={cn(styles['inner'])}>
+          <span
+            className={cn("inner flex justify-center items-center")}
+            style={{ width: 32, height: 32, borderRadius: '50%' }}
+          >
             <Emoji code={emoji} />
           </span>
         </button>
       ))}
     </div>
-  )
-}
+  );
+};
 
 const Emoji = React.memo(({ code }) => (
   <img
     decoding="async"
     width={20}
     height={20}
-    src={`https://assets.vercel.com/twemoji/1${code}.svg`}
+    src={`https://maxihost-assets.s3.sa-east-1.amazonaws.com/metal-ui/1${code}.svg`}
     alt="emoji"
   />
-))
+));
 
-export default FeedbackInput
+export default FeedbackInput;
