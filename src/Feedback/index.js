@@ -421,10 +421,10 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
             {!success && !errorMessage && (
               <div
                 className={cn(
-                  "controls pointer-events-none w-full h-16 p-4 flex items-center bg-gray-100 border-t border-gray-200 opacity-0 transition-opacity duration-200 ease",
+                  "controls w-full h-16 p-4 flex items-center bg-gray-100 border-t border-gray-200 opacity-0 transition-opacity duration-200 ease",
                   {
-                    "focused opacity-100 mt-20": focused,
-                    hidden: !focused,
+                    "focused opacity-100 mt-20 pointer-events-auto": focused,
+                    "hidden pointer-events-none": !focused,
                   }
                 )}
               >
@@ -484,21 +484,25 @@ const EmojiSelector = ({ onEmojiSelect, loading }) => {
 
   return (
     <div
-      className={cn("geist-emoji-selector flex w-24 pointer-events-none", {
-        'loading cursor-default': loading,
-        'pointer-events-all': focused,
+      className={cn("geist-emoji-selector flex w-24", {
+        "loading cursor-default": loading,
       })}
     >
       {Array.from(EMOJIS.values()).map((emoji) => (
         <button
           type="button"
-          className={cn("option", {
-            active: emoji === current,
-          })}
+          className={cn(
+            "option inline-flex outline-none bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-gray-200 focus:outline-none active:outline-none transform hover:scale-105 active:scale-105 hover:bg-white active:bg-white cursor-pointer text-center space-x-8",
+            {
+              "active scale-110 border border-orange-400": emoji === current,
+              "cursor-default": loading,
+            }
+          )}
           key={emoji}
           onClick={() => onSelect(emoji)}
+          style={{ borderRadius: "50%" }}
         >
-          <span className={cn("inner")}>
+          <span className={cn("inner inline-flex")}>
             <Emoji code={emoji} />
           </span>
         </button>
