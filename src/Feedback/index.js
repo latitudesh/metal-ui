@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import fetch from "isomorphic-unfetch";
 import PropTypes from "prop-types";
 import cn from "classnames";
 

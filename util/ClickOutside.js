@@ -8,16 +8,6 @@ function hasParent(element, root) {
 }
 
 export default class ClickOutside extends Component {
-    static propTypes = {
-        active: PropTypes.bool,
-        onClick: PropTypes.func,
-        render: PropTypes.func
-    }
-
-    static defaultProps = {
-        active: true
-    }
-
     constructor(props) {
         super(props)
         this.handleRef = this.handleRef.bind(this)
@@ -67,4 +57,14 @@ export default class ClickOutside extends Component {
             innerRef: this.handleRef
         })
     }
+}
+
+ClickOutside.propTypes = {
+    active: PropTypes.bool,
+    onClick: PropTypes.func,
+    render: PropTypes.func
+}
+
+ClickOutside.defaultProps = {
+    active: true
 }

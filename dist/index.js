@@ -6928,6 +6928,7 @@ __webpack_require__.d(__webpack_exports__, "Textarea", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "Select", function() { return /* reexport */ src_Select; });
 __webpack_require__.d(__webpack_exports__, "Avatar", function() { return /* reexport */ src_Avatar_Avatar; });
 __webpack_require__.d(__webpack_exports__, "AlgoliaSearch", function() { return /* reexport */ src_AlgoliaSearch; });
+__webpack_require__.d(__webpack_exports__, "Feedback", function() { return /* reexport */ Feedback; });
 __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
 __webpack_require__.d(__webpack_exports__, "USFlag", function() { return /* reexport */ Flags_USFlag; });
@@ -11846,6 +11847,584 @@ AlgoliaSearch_AlgoliaSearch.propTypes = {
   className: prop_types_default.a.string
 };
 /* harmony default export */ var src_AlgoliaSearch = (AlgoliaSearch_AlgoliaSearch);
+// CONCATENATED MODULE: ./util/ClickOutside.js
+
+
+
+function hasParent(element, root) {
+    root.contains(element) && Boolean(element.closest('body'))
+}
+
+class ClickOutside_ClickOutside extends external_root_React_commonjs2_react_commonjs_react_amd_react_["Component"] {
+    constructor(props) {
+        super(props)
+        this.handleRef = this.handleRef.bind(this)
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    componentDidMount() {
+        if (this.props.active) {
+            document.addEventListener('mousedown', this.handleClick)
+            document.addEventListener('touchstart', this.handleClick)
+        }
+    }
+
+    UNSAFE_componentWillReceiveProps(nextProps) {
+        if (!this.props.active && nextProps.active) {
+            document.addEventListener('mousedown', this.handleClick)
+            document.addEventListener('touchstart', this.handleClick)
+        }
+
+        if (this.props.active && !nextProps.active) {
+            document.removeEventListener('mousedown', this.handleClick)
+            document.removeEventListener('touchstart', this.handleClick)
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.props.active) {
+            document.removeEventListener('mousedown', this.handleClick)
+            document.removeEventListener('touchstart', this.handleClick)
+        }
+    }
+
+    handleRef(element) {
+        this.element = element
+    }
+
+    handleClick(event) {
+        if (!hasParent(event.target, this.element)) {
+            if (typeof this.props.onClick === 'function') {
+                this.props.onClick(event)
+            }
+        }
+    }
+
+    render() {
+        return this.props.render({
+            innerRef: this.handleRef
+        })
+    }
+}
+
+ClickOutside_ClickOutside.propTypes = {
+    active: prop_types_default.a.bool,
+    onClick: prop_types_default.a.func,
+    render: prop_types_default.a.func
+}
+
+ClickOutside_ClickOutside.defaultProps = {
+    active: true
+}
+// CONCATENATED MODULE: ./src/Feedback/index.js
+function Feedback_extends() { Feedback_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Feedback_extends.apply(this, arguments); }
+
+function Feedback_objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = Feedback_objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function Feedback_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function Feedback_slicedToArray(arr, i) { return Feedback_arrayWithHoles(arr) || Feedback_iterableToArrayLimit(arr, i) || Feedback_unsupportedIterableToArray(arr, i) || Feedback_nonIterableRest(); }
+
+function Feedback_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function Feedback_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function Feedback_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function Feedback_toConsumableArray(arr) { return Feedback_arrayWithoutHoles(arr) || Feedback_iterableToArray(arr) || Feedback_unsupportedIterableToArray(arr) || Feedback_nonIterableSpread(); }
+
+function Feedback_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function Feedback_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return Feedback_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Feedback_arrayLikeToArray(o, minLen); }
+
+function Feedback_iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function Feedback_arrayWithoutHoles(arr) { if (Array.isArray(arr)) return Feedback_arrayLikeToArray(arr); }
+
+function Feedback_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+
+
+
+
+
+
+var EMOJIS = new Map([["🤩", "f929"], ["🙂", "f600"], ["😕", "f615"], ["😭", "f62d"]]); // gets the emoji from the code
+
+var EMOJI_CODES = null;
+
+function getEmoji(code) {
+  console.log(code);
+  if (code === null) return code;
+
+  if (EMOJI_CODES === null) {
+    EMOJI_CODES = new Map(Feedback_toConsumableArray(EMOJIS).map(function (_ref) {
+      var _ref2 = Feedback_slicedToArray(_ref, 2),
+          k = _ref2[0],
+          v = _ref2[1];
+
+      return [v, k];
+    }));
+  }
+
+  return EMOJI_CODES.get(code);
+}
+
+var Feedback_FeedbackInput = function FeedbackInput(_ref3) {
+  var dryRun = _ref3.dryRun,
+      className = _ref3.className,
+      open = _ref3.open,
+      email = _ref3.email,
+      url = _ref3.url,
+      props = Feedback_objectWithoutProperties(_ref3, ["dryRun", "className", "open", "email", "url"]);
+
+  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
+      _useState2 = Feedback_slicedToArray(_useState, 2),
+      emoji = _useState2[0],
+      setEmoji = _useState2[1];
+
+  var _useState3 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+      _useState4 = Feedback_slicedToArray(_useState3, 2),
+      loading = _useState4[0],
+      setLoading = _useState4[1];
+
+  var _useState5 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+      _useState6 = Feedback_slicedToArray(_useState5, 2),
+      focused = _useState6[0],
+      setFocused = _useState6[1];
+
+  var _useState7 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+      _useState8 = Feedback_slicedToArray(_useState7, 2),
+      success = _useState8[0],
+      setSuccess = _useState8[1];
+
+  var _useState9 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+      _useState10 = Feedback_slicedToArray(_useState9, 2),
+      emojiShown = _useState10[0],
+      setEmojiShown = _useState10[1];
+
+  var _useState11 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
+      _useState12 = Feedback_slicedToArray(_useState11, 2),
+      errorMessage = _useState12[0],
+      setErrorMessage = _useState12[1];
+
+  var _useState13 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
+      _useState14 = Feedback_slicedToArray(_useState13, 2),
+      emailValue = _useState14[0],
+      setEmailValue = _useState14[1];
+
+  var _useState15 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
+      _useState16 = Feedback_slicedToArray(_useState15, 2),
+      inputFocused = _useState16[0],
+      setInputFocused = _useState16[1];
+
+  var _useState17 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
+      _useState18 = Feedback_slicedToArray(_useState17, 2),
+      value = _useState18[0],
+      setValue = _useState18[1];
+
+  var textAreaRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
+  var emailInputRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
+  var containerRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
+  var onErrorDismiss = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function () {
+    setErrorMessage(null);
+  }, []);
+  var onSuccessDismiss = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function () {
+    setSuccess(false);
+  }, []);
+  var handleClickOutside = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function () {
+    setFocused(false);
+    onErrorDismiss();
+    onSuccessDismiss();
+
+    if (textAreaRef.current) {
+      textAreaRef.current.value = "";
+    }
+
+    if (emailInputRef.current) {
+      emailInputRef.current.value = "";
+    }
+  }, [onErrorDismiss, onSuccessDismiss]);
+  var onSubmit = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function (event) {
+    event.preventDefault();
+    containerRef.current.focus();
+
+    if (value.trim() === "") {
+      setErrorMessage("Your feedback can't be empty");
+      return;
+    }
+
+    setLoading(true);
+
+    if (dryRun) {
+      setLoading(false);
+      setSuccess(true);
+      setValue("");
+      return;
+    }
+
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        url: window.location.toString(),
+        note: textAreaRef.current.value,
+        email: emailValue || "",
+        emotion: getEmoji(emoji)
+      }),
+      throwOnHTTPError: true
+    }).then(function () {
+      // Reset the textarea value on success
+      setLoading(false);
+      setSuccess(true);
+      setValue("");
+    })["catch"](function (err) {
+      setLoading(false);
+      setErrorMessage(err.message);
+    });
+  }, [dryRun, emoji, value, emailValue]);
+  var onKeyDown = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function (e) {
+    if (e.keyCode === 27) {
+      handleClickOutside(); // we still need to make the container's DOM focused programmatically
+      // to keep the current tab position
+
+      if (containerRef.current) {
+        containerRef.current.focus();
+      }
+    } else if (e.key === "Enter" && e.metaKey) {
+      onSubmit(e);
+    }
+  }, [handleClickOutside, onSubmit]);
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    // Inputs were hidden if we were showing an error message and
+    // now we hide it
+    if (focused && inputFocused.current && errorMessage === null) {
+      inputFocused.current.focus({
+        preventScroll: true
+      });
+    }
+  }, [errorMessage, focused, inputFocused]);
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (focused) {
+      if (textAreaRef && textAreaRef.current) {
+        textAreaRef.current.value = value;
+      }
+
+      if (emailInputRef && emailInputRef.current) {
+        emailInputRef.current.value = emailValue;
+      }
+
+      window.addEventListener("keydown", onKeyDown);
+    } else if (!focused && inputFocused && inputFocused.current) {
+      inputFocused.current.blur(); // Remove value visibly from textarea while it's unfocused
+
+      textAreaRef.current.value = "";
+
+      if (email) {
+        emailInputRef.current.value = "";
+      }
+
+      window.removeEventListener("keydown", onKeyDown);
+    }
+
+    return function () {
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [focused, inputFocused, handleClickOutside, emailValue, value, email, onSubmit, onKeyDown]);
+  var focusEmailInput = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function () {
+    if (inputFocused !== emailInputRef) {
+      setInputFocused(emailInputRef);
+      emailInputRef.current.focus({
+        preventScroll: true
+      });
+    }
+  }, [inputFocused]);
+  var focusTextArea = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function () {
+    if (inputFocused !== textAreaRef) {
+      setInputFocused(textAreaRef);
+      textAreaRef.current.focus({
+        preventScroll: true
+      });
+    }
+  }, [inputFocused]);
+  var onFocus = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function () {
+    if (email && emailInputRef.current && !focused) {
+      focusEmailInput();
+    } else if (textAreaRef.current && !focused) {
+      focusTextArea();
+    }
+
+    setFocused(true);
+  }, [email, emailInputRef, textAreaRef, focused, focusEmailInput, focusTextArea]);
+  var onEmojiShown = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function () {
+    setEmojiShown(true);
+  }, []);
+  var onEmojiHidden = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function () {
+    setEmojiShown(false);
+  }, []);
+  var onEmojiSelect = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function (selectedEmoji) {
+    console.log(selectedEmoji);
+    setEmoji(selectedEmoji);
+  }, []);
+  var handleChange = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function (e) {
+    if (focused) {
+      setValue(e);
+    }
+  }, [focused]);
+  var handleEmailChange = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function (e) {
+    if (focused) {
+      setEmailValue(e);
+    }
+  }, [focused]);
+  var eventListeners = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
+  eventListeners.current = {
+    focus: onFocus,
+    blur: handleClickOutside
+  };
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (!containerRef || !containerRef.current) return;
+    var isFocusedInside = false;
+    var lastState = false;
+
+    var checkFinalState = function checkFinalState() {
+      setTimeout(function () {
+        if (isFocusedInside !== lastState) {
+          if (isFocusedInside) {
+            eventListeners.current.focus();
+          } else {
+            eventListeners.current.blur();
+          }
+
+          lastState = isFocusedInside;
+        }
+      }, 0);
+    }; // when hitting tab, there might be 2 things happening:
+    //   1. an element inside is focused
+    //   2. an element inside is unfocused
+    // and they can happen in any order inside one tick:
+    //   1 -> needs to stay open (outside -> inside)
+    //   2 -> needs to be closed (inside -> outside)
+    //   2 -> 1 needs to stay open (inside -> inside)
+
+
+    var focusIn = function focusIn() {
+      isFocusedInside = true;
+      checkFinalState();
+    };
+
+    var blurIn = function blurIn() {
+      isFocusedInside = false;
+      checkFinalState();
+    }; // we add these 2 events manually because react doesn't yet support them as props
+
+
+    containerRef.current.addEventListener("focusout", blurIn);
+    containerRef.current.addEventListener("focusin", focusIn);
+    return function () {
+      containerRef.current.addEventListener("focusout", blurIn);
+      containerRef.current.removeEventListener("focusin", focusIn);
+    };
+  }, []);
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(ClickOutside_ClickOutside, {
+    active: !focused,
+    render: function render(_ref4) {
+      var innerRef = _ref4.innerRef;
+      return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", Feedback_extends({
+        ref: function ref(node) {
+          containerRef.current = node;
+          innerRef(node);
+        },
+        title: "Share any feedback about our products and services",
+        onClick: onFocus,
+        tabIndex: 0,
+        className: classnames_default()("feedback-input p-0 w-24 relative inline-block antialiased focus:outline-0 active:outline-0", {
+          "h-8": !focused || !open,
+          focused: focused || open,
+          "error text-transparent select-none": errorMessage,
+          loading: loading,
+          "success text-transparent select-none h-32": success,
+          email: email
+        }, className)
+      }, props), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("form", {
+        className: classnames_default()("feedback-wrapper appearance-none border-0 bg-white border border-gray-300 flex leading-6 text-sm rounded w-24 h-8 resize-none z-50 outline-none text-black flex-col justify-start overflow-hidden relative transition-all ease-in-out hover:border-black focus:border-black active:border-black focus:outline-none active:outline-none", {
+          "focused w-72 h-auto min-h-full border-none border-white shadow-lg bg-white transition-all ease-in-out": focused || open
+        }),
+        onSubmit: onSubmit
+      }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+        className: classnames_default()("placeholder flex absolute -top-1 -left-1 items-center justify-center w-24 h-8 border border-transparent flex-shrink-0 bg-white text-gray-600 transition-opacity duration-50 ease-out cursor-text", {
+          "opacity-0 pointer-events-none top-0 left-0 text-gray-300 transition-opacity duration-75 ease-linear": focused
+        }),
+        style: {
+          marginTop: "-1px",
+          marginLeft: "-1px"
+        }
+      }, "Feedback"), !errorMessage && !success && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+        className: classnames_default()("input-wrapper p-4 opacity-0 transition-opacity duration-50 ease relative h-32", {
+          "opacity-100": focused,
+          hidden: !focused
+        })
+      }, email && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+        className: "input mb-2 placeholder-gray-300 transition duration-100 ease-in-out"
+      }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Input, {
+        label: "Email",
+        id: "feedback-input",
+        ref: function ref(_ref5) {
+          return emailInputRef.current = _ref5;
+        },
+        onFocus: function onFocus() {
+          return setInputFocused(emailInputRef);
+        },
+        type: "email",
+        placeholder: "Your email address...",
+        width: "100%",
+        disabled: loading === true || errorMessage != null,
+        onChange: handleEmailChange
+      })), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+        className: "input"
+      }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Textarea, {
+        id: "feedback-text",
+        label: "Feedback",
+        ref: function ref(_ref6) {
+          return textAreaRef.current = _ref6;
+        },
+        placeholder: "Your feedback...",
+        width: "100%",
+        onFocus: function onFocus() {
+          return setInputFocused(textAreaRef);
+        },
+        onChange: handleChange,
+        "aria-label": "Feedback input",
+        disabled: loading === true || errorMessage != null // Disable the Grammarly extension on this textarea
+        ,
+        "data-gramm-editor": "false",
+        textareaClassName: classnames_default()("feedback-input", {
+          "text-gray-900": loading
+        })
+      }))), errorMessage != null && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+        className: "flex flex-col items-center justify-center p-4 success-message text-center z-50"
+      }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Typography_Text, {
+        is: "p",
+        small: true,
+        color: "text-red-600",
+        style: {
+          marginBottom: "8px"
+        }
+      }, errorMessage), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Button, {
+        type: "minimal",
+        onClick: function onClick(e) {
+          e.preventDefault();
+          onErrorDismiss();
+        },
+        autoFocus: true,
+        label: "Go back"
+      })), success && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+        className: "flex flex-col items-center justify-center p-4 success-message text-center z-50"
+      }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Typography_Text, {
+        small: true,
+        is: "p"
+      }, "Your feedback has been received!"), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Typography_Text, {
+        small: true,
+        is: "p"
+      }, "Thank you for your help.")), !success && !errorMessage && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+        className: classnames_default()("controls w-full h-16 p-4 flex items-center bg-gray-100 border-t border-gray-200 opacity-0 transition-opacity duration-200 ease", {
+          "focused opacity-100 mt-20 pointer-events-auto": focused,
+          "hidden pointer-events-none": !focused
+        })
+      }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
+        className: "emojis",
+        style: {
+          width: '160px'
+        }
+      }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Feedback_EmojiSelector, {
+        onShow: onEmojiShown,
+        onHide: onEmojiHidden,
+        onEmojiSelect: onEmojiSelect,
+        loading: loading
+      })), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
+        className: classnames_default()("buttons flex-1 text-right transition-opacity duration-200 ease ml-auto", {
+          hidden: emojiShown
+        })
+      }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Button, {
+        loading: loading,
+        width: 60,
+        label: "Send",
+        onClick: onSubmit
+      })))));
+    }
+  });
+};
+
+Feedback_FeedbackInput.propTypes = {
+  dryRun: prop_types_default.a.bool,
+  open: prop_types_default.a.bool,
+  className: prop_types_default.a.string,
+  url: prop_types_default.a.string
+};
+
+var Feedback_EmojiSelector = function EmojiSelector(_ref7) {
+  var onEmojiSelect = _ref7.onEmojiSelect,
+      loading = _ref7.loading;
+
+  var _useState19 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
+      _useState20 = Feedback_slicedToArray(_useState19, 2),
+      current = _useState20[0],
+      setCurrent = _useState20[1];
+
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (onEmojiSelect) {
+      onEmojiSelect(current);
+    }
+  }, [current, onEmojiSelect]);
+
+  var onSelect = function onSelect(emoji) {
+    if (emoji !== current) {
+      setCurrent(emoji);
+    }
+  };
+
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: classnames_default()("emoji-selector flex space-x-2", {
+      "loading cursor-default": loading
+    })
+  }, Array.from(EMOJIS.values()).map(function (emoji) {
+    return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("button", {
+      type: "button",
+      className: classnames_default()("option inline-flex outline-none bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-gray-200 focus:outline-none active:outline-none transform hover:scale-105 active:scale-105 hover:bg-white active:bg-white cursor-pointer text-center", {
+        "active scale-110 border bg-white border-orange-400": emoji === current,
+        "cursor-default": loading
+      }),
+      key: emoji,
+      onClick: function onClick() {
+        return onSelect(emoji);
+      },
+      style: {
+        borderRadius: "50%"
+      }
+    }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
+      className: classnames_default()("inner flex justify-center items-center"),
+      style: {
+        width: 32,
+        height: 32,
+        borderRadius: '50%'
+      }
+    }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Emoji, {
+      code: emoji
+    })));
+  }));
+};
+
+var Emoji = external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.memo(function (_ref8) {
+  var code = _ref8.code;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("img", {
+    decoding: "async",
+    width: 20,
+    height: 20,
+    src: "https://maxihost-assets.s3.sa-east-1.amazonaws.com/metal-ui/1".concat(code, ".svg"),
+    alt: "emoji"
+  });
+});
+/* harmony default export */ var Feedback = (Feedback_FeedbackInput);
 // CONCATENATED MODULE: ./src/Flags/Flag.js
 
 
@@ -12382,6 +12961,7 @@ ListItem_defineProperty(ListItem_ListItem, "propTypes", ListItem_objectSpread({}
 
 
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
