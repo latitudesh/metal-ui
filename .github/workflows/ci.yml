@@ -57,5 +57,4 @@ jobs:
       run: npx semantic-release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # for npm publishing to work, remove: "private: true" in the package.json file and add a "NPM_TOKEN" key to your github secrets
-        # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
