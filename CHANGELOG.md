@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Maxihost/metal-ui/compare/v1.0.0...v1.0.1) (2020-10-31)
+
+
+### Bug Fixes
+
+* Updates package version to the one currently published ([91bb840](https://github.com/Maxihost/metal-ui/commit/91bb84062a6c1350e73d81992a24430af94f5841))
+
 # 1.0.0 (2020-10-31)
 
 
