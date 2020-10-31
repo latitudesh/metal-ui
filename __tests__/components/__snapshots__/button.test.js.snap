@@ -1,12 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Snapshots/Components/Button Render button 1`] = `
-<span
-  className="inline-flex rounded-sm shadow-sm"
+<button
+  className="Button items-center border font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center border-transparent text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-700 focus:shadow-outline-indigo px-5 h-9 leading-9 inline-flex text-sm"
+  type="button"
 >
-  <button
-    className="inline-flex items-center px-8 h-10 leading-10 border text-sm font-medium rounded focus:outline-none transition ease-in-out duration-150 border-transparent text-white bg-indigo-600 hover:bg-indigo-500 focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
-    type="button"
-  />
-</span>
+  <span />
+</button>
 `;

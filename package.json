@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "test": "jest --watch -u",
+    "test--ci": "jest --ci",
     "dev": "start-storybook -s ./public 9001",
     "deploy-storybook": "storybook-to-ghpages",
     "build": "webpack --config config/umd.js"
@@ -31,10 +32,10 @@
     "@semantic-release/github": "^7.1.1",
     "@semantic-release/npm": "^7.0.6",
     "@semantic-release/release-notes-generator": "^9.0.1",
-    "@storybook/addon-actions": "^6.0.21",
-    "@storybook/addon-docs": "^5.3.19",
-    "@storybook/react": "^6.0.21",
-    "@storybook/storybook-deployer": "^2.8.5",
+    "@storybook/addon-actions": "^6.0.26",
+    "@storybook/addon-docs": "^6.0.26",
+    "@storybook/react": "^6.0.26",
+    "@storybook/storybook-deployer": "^2.8.7",
     "algoliasearch": "^4.4.0",
     "@tailwindcss/ui": "^0.5.0",
     "babel-loader": "8.1.0",
@@ -53,8 +54,8 @@
     "webpack-cli": "^3.3.11"
   },
   "peerDependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.18"
   },
   "publishConfig": {
