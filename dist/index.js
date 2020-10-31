@@ -8707,46 +8707,56 @@ var TabController_TabController = function TabController(props) {
   var _useState7 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(300),
       _useState8 = TabController_slicedToArray(_useState7, 2),
       scrollableWindowHeight = _useState8[0],
-      setScrollableWindowHeight = _useState8[1]; // distance to top of the page from the scrollable container
+      setScrollableWindowHeight = _useState8[1];
 
-
-  var _useState9 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(0),
+  var _useState9 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
       _useState10 = TabController_slicedToArray(_useState9, 2),
-      scrollableWindowTopOffset = _useState10[0],
-      setScrollableWindowTopOffset = _useState10[1]; // scroll distance to be set and read from
+      searchInputHeight = _useState10[0],
+      setSearchInputHeight = _useState10[1];
 
-
-  var _useState11 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(0),
+  var _useState11 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
       _useState12 = TabController_slicedToArray(_useState11, 2),
-      scrollDistance = _useState12[0],
-      setScrollDistance = _useState12[1]; // boolean to set whether or not the search box has text
+      controlsHeight = _useState12[0],
+      setControlsHeight = _useState12[1]; // distance to top of the page from the scrollable container
 
 
-  var _useState13 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+  var _useState13 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(0),
       _useState14 = TabController_slicedToArray(_useState13, 2),
-      isResultsWindowOpen = _useState14[0],
-      setIsResultsWindowOpen = _useState14[1];
+      scrollableWindowTopOffset = _useState14[0],
+      setScrollableWindowTopOffset = _useState14[1]; // scroll distance to be set and read from
 
-  var _useState15 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
+
+  var _useState15 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(0),
       _useState16 = TabController_slicedToArray(_useState15, 2),
-      scrollWindowRef = _useState16[0],
-      setScrollWindowRef = _useState16[1];
+      scrollDistance = _useState16[0],
+      setScrollDistance = _useState16[1]; // boolean to set whether or not the search box has text
 
-  var _useState17 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(true),
+
+  var _useState17 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
       _useState18 = TabController_slicedToArray(_useState17, 2),
-      shouldBypassSearch = _useState18[0],
-      setShouldBypassSearch = _useState18[1];
+      isResultsWindowOpen = _useState18[0],
+      setIsResultsWindowOpen = _useState18[1];
 
-  var _useState19 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+  var _useState19 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null),
       _useState20 = TabController_slicedToArray(_useState19, 2),
-      enterKeyWasPressed = _useState20[0],
-      setEnterKeyWasPressed = _useState20[1]; // allows for manual scroll disabling
+      scrollWindowRef = _useState20[0],
+      setScrollWindowRef = _useState20[1];
 
-
-  var _useState21 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+  var _useState21 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(true),
       _useState22 = TabController_slicedToArray(_useState21, 2),
-      isScrollDisabled = _useState22[0],
-      setIsScrollDisabled = _useState22[1];
+      shouldBypassSearch = _useState22[0],
+      setShouldBypassSearch = _useState22[1];
+
+  var _useState23 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+      _useState24 = TabController_slicedToArray(_useState23, 2),
+      enterKeyWasPressed = _useState24[0],
+      setEnterKeyWasPressed = _useState24[1]; // allows for manual scroll disabling
+
+
+  var _useState25 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+      _useState26 = TabController_slicedToArray(_useState25, 2),
+      isScrollDisabled = _useState26[0],
+      setIsScrollDisabled = _useState26[1];
 
   var handleKeyNavigation = function handleKeyNavigation(key) {
     switch (key) {
@@ -8831,7 +8841,11 @@ var TabController_TabController = function TabController(props) {
       setEnterKeyWasPressed: setEnterKeyWasPressed,
       enterKeyWasPressed: enterKeyWasPressed,
       isScrollDisabled: isScrollDisabled,
-      handleKeyNavigation: handleKeyNavigation
+      handleKeyNavigation: handleKeyNavigation,
+      searchInputHeight: searchInputHeight,
+      setSearchInputHeight: setSearchInputHeight,
+      controlsHeight: controlsHeight,
+      setControlsHeight: setControlsHeight
     }
   }, children);
 };
@@ -11009,6 +11023,8 @@ function _cleanUp(props, searchState, context) {
   }
 }));
 // CONCATENATED MODULE: ./src/AlgoliaSearch/elements/SearchBox/index.js
+function SearchBox_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -11028,7 +11044,10 @@ var SearchBox_SearchBox = function SearchBox(props) {
   var _useTabController = TabController_useTabController(),
       resetActiveElementIndex = _useTabController.resetActiveElementIndex,
       isResultsWindowOpen = _useTabController.isResultsWindowOpen,
-      setIsResultsWindowOpen = _useTabController.setIsResultsWindowOpen;
+      setIsResultsWindowOpen = _useTabController.setIsResultsWindowOpen,
+      setSearchInputHeight = _useTabController.setSearchInputHeight;
+
+  var searchInputRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(null);
 
   var handleOnChange = function handleOnChange(value, e) {
     if (e.keyCode !== 40 && e.keyCode !== 38) {
@@ -11046,13 +11065,19 @@ var SearchBox_SearchBox = function SearchBox(props) {
     setIsResultsWindowOpen(valHasLength(value));
   };
 
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (searchInputRef === null || searchInputRef === void 0 ? void 0 : searchInputRef.current) {
+      setSearchInputHeight(searchInputRef.current.offsetHeight);
+    }
+  }, []);
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    className: "ais-SearchBox"
+    className: "ais-SearchBox pb-2",
+    ref: searchInputRef
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("form", {
     className: "ais-SearchBox-form m-0",
     noValidate: true,
     role: "search"
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Input, {
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Input, SearchBox_defineProperty({
     inputClassName: "".concat(isResultsWindowOpen ? 'focused' : '', " -mt-1 ais-SearchBox-input w-full border-gray-200 shadow-none"),
     value: currentRefinement,
     onChange: handleOnChange,
@@ -11060,8 +11085,9 @@ var SearchBox_SearchBox = function SearchBox(props) {
     type: "search",
     "aria-label": "Search for a resource by typing here",
     placeholder: "Search...",
-    id: "search-box-".concat(id)
-  })));
+    id: "search-box-".concat(id),
+    autoComplete: "off"
+  }, "type", "search"))));
 };
 
 SearchBox_SearchBox.propTypes = {
@@ -11213,10 +11239,11 @@ var ResultPill_ResultPill = function ResultPill(props) {
     if (isCurrentElement) {
       var activePillBoundingRect = resultPillRef.current.getBoundingClientRect();
       var resultPillOffset = activePillBoundingRect.top + activePillBoundingRect.height;
+      var activePillTopOffset = resultPillOffset - scrollableWindowTopOffset + scrollWindowRef.current.scrollTop;
       var distToScroll = 0;
 
-      if (resultPillOffset - scrollableWindowTopOffset + scrollWindowRef.current.scrollTop > scrollableWindowHeight) {
-        distToScroll = resultPillOffset - scrollableWindowTopOffset + scrollWindowRef.current.scrollTop - scrollableWindowHeight;
+      if (activePillTopOffset > scrollableWindowHeight) {
+        distToScroll = activePillTopOffset - scrollableWindowHeight;
       }
 
       setScrollDistance(distToScroll);
@@ -11244,7 +11271,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
   }
 
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("li", {
-    className: "mb-1",
+    className: "pb-1",
     style: ResultPill_objectSpread({}, ResultPill_style.resultPill),
     tabIndex: 0,
     role: "option",
@@ -11254,7 +11281,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("a", {
     ref: clickableLink,
     href: formattedHitURL,
-    className: "px-2 border border-white rounded outline-none ".concat(isCurrentElement ? 'bg-indigo-600 text-white' : 'text-gray-800'),
+    className: "px-2 rounded outline-none ".concat(isCurrentElement ? 'bg-indigo-600 text-white' : 'text-gray-800'),
     style: ResultPill_objectSpread({}, ResultPill_style.resultPillLink)
   }, children));
 };
@@ -11411,10 +11438,22 @@ function Controls_defineProperty(obj, key, value) { if (key in obj) { Object.def
 
 
 
+
 var Controls_Controls = function Controls() {
+  var controlsRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(null);
+
+  var _useTabController = TabController_useTabController(),
+      setControlsHeight = _useTabController.setControlsHeight;
+
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (controlsRef === null || controlsRef === void 0 ? void 0 : controlsRef.current) {
+      setControlsHeight(controlsRef.current.offsetHeight);
+    }
+  }, []);
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    className: "sticky bottom-0 p-3 -ml-2 -mr-2 bg-white rounded-b-md",
-    style: Controls_objectSpread({}, Controls_style.controlBar)
+    className: "p-3 bg-white rounded-b-md",
+    style: Controls_objectSpread({}, Controls_style.controlBar),
+    ref: controlsRef
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
     className: "mr-2 rounded-sm text-gray-400",
     style: Controls_objectSpread({}, Controls_style.controlKey)
@@ -11499,11 +11538,14 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
       scrollWindowHeight = props.scrollWindowHeight,
       customLoader = props.customLoader,
       customNoResults = props.customNoResults,
-      indexResultsLimit = props.indexResultsLimit;
+      indexResultsLimit = props.indexResultsLimit,
+      className = props.className;
 
   var _useTabController = TabController_useTabController(),
+      activeElementIndex = _useTabController.activeElementIndex,
       scrollableWindowHeight = _useTabController.scrollableWindowHeight,
       setScrollableWindowTopOffset = _useTabController.setScrollableWindowTopOffset,
+      scrollableWindowTopOffset = _useTabController.scrollableWindowTopOffset,
       scrollDistance = _useTabController.scrollDistance,
       setScrollWindowRef = _useTabController.setScrollWindowRef,
       shouldBypassSearch = _useTabController.shouldBypassSearch,
@@ -11513,7 +11555,9 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
       handleKeyNavigation = _useTabController.handleKeyNavigation,
       totalElementsCount = _useTabController.totalElementsCount,
       isResultsWindowOpen = _useTabController.isResultsWindowOpen,
-      setIsResultsWindowOpen = _useTabController.setIsResultsWindowOpen;
+      setIsResultsWindowOpen = _useTabController.setIsResultsWindowOpen,
+      controlsHeight = _useTabController.controlsHeight,
+      searchInputHeight = _useTabController.searchInputHeight;
 
   var algoliaClient = algoliasearch_lite_umd_default()(ALGOLIA_APP_ID, ALGOLIA_API_SEARCH_KEY);
   var searchClient = {
@@ -11552,8 +11596,12 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
     setScrollWindowRef(scrollWindowRef);
   }, [setScrollWindowRef]);
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
-    setScrollableWindowHeight(scrollWindowHeight);
-  }, [scrollWindowHeight]);
+    if (controlsHeight && searchInputHeight) {
+      setScrollableWindowHeight(scrollWindowHeight - controlsHeight - searchInputHeight);
+    } else {
+      setScrollableWindowHeight(scrollWindowHeight);
+    }
+  }, [scrollWindowHeight, controlsHeight, searchInputHeight]);
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     if (Array.isArray(searchOperators) && searchOperators.length > 0) {
       var sortedSearchOperators = searchOperators.sort(function (a, b) {
@@ -11567,8 +11615,11 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
   }, [specialChar, searchOperators]);
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     var scrollableResultsBoundingRect = scrollWindowRef.current.getBoundingClientRect();
-    setScrollableWindowTopOffset(scrollableResultsBoundingRect.top);
-  }, [setScrollableWindowTopOffset]);
+
+    if (scrollableResultsBoundingRect !== scrollableWindowTopOffset) {
+      setScrollableWindowTopOffset(scrollableResultsBoundingRect.top);
+    }
+  }, [setScrollableWindowTopOffset, activeElementIndex]);
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     if (typeof scrollDistance === 'number' && isResultsWindowOpen && !isScrollDisabled) {
       scrollWindowRef.current.scrollTo(0, scrollDistance);
@@ -11679,7 +11730,8 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
   var LoaderToRender = customLoader ? customLoader : /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(elements_Loader, null);
   var NoResultsToRender = customNoResults ? customNoResults : /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(elements_NoResults, null);
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    ref: searchComponentRef
+    ref: searchComponentRef,
+    className: className
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(widgets_InstantSearch, {
     searchClient: searchClient,
     indexName: indices[0].indexName,
@@ -11691,7 +11743,7 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(elements_SearchBox, {
     id: ALGOLIA_APP_ID
   }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    className: "shadow-xl rounded absolute w-full bg-white border border-gray-200 mt-2",
+    className: "shadow-xl rounded absolute w-full bg-white border border-gray-200",
     style: {
       visibility: "".concat(isResultsWindowOpen ? 'visible' : 'hidden')
     }
@@ -11720,7 +11772,7 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
       sectionIndex: sectionIndex,
       formatHitURL: formatHitURL
     }));
-  }), totalElementsCount === 0 && isSearchEmpty && NoResultsToRender, totalElementsCount === 0 && !isSearchEmpty && LoaderToRender, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(elements_Controls, null))))));
+  }), totalElementsCount === 0 && isSearchEmpty && NoResultsToRender, totalElementsCount === 0 && !isSearchEmpty && LoaderToRender), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(elements_Controls, null)))));
 };
 
 SearchComponent_SearchComponent.defaultProps = {
@@ -11768,7 +11820,9 @@ var AlgoliaSearch_AlgoliaSearch = function AlgoliaSearch(props) {
 
 AlgoliaSearch_AlgoliaSearch.defaultProps = {
   indexResultsLimit: 8,
-  scrollWindowHeight: 400
+  scrollWindowHeight: 400,
+  className: '',
+  parentWindowHeight: null
 };
 AlgoliaSearch_AlgoliaSearch.propTypes = {
   ALGOLIA_APP_ID: prop_types_default.a.string.isRequired,
@@ -11788,7 +11842,8 @@ AlgoliaSearch_AlgoliaSearch.propTypes = {
   indexResultsLimit: prop_types_default.a.number,
   scrollWindowHeight: prop_types_default.a.number,
   customLoader: prop_types_default.a.node,
-  customNoResults: prop_types_default.a.node
+  customNoResults: prop_types_default.a.node,
+  className: prop_types_default.a.string
 };
 /* harmony default export */ var src_AlgoliaSearch = (AlgoliaSearch_AlgoliaSearch);
 // CONCATENATED MODULE: ./src/Flags/Flag.js
