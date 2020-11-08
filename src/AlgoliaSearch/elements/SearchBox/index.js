@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import { connectSearchBox } from 'react-instantsearch-dom';
+import React, { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+import { connectSearchBox } from "react-instantsearch-dom";
 
-import { useTabController } from '../../providers/TabController';
-import Input from '../../../Input';
+import { useTabController } from "../../providers/TabController";
+import Input from "../../../Input";
 
 const valHasLength = (value) => {
   if (value.length >= 1) return true;
@@ -11,11 +11,7 @@ const valHasLength = (value) => {
 };
 
 const SearchBox = (props) => {
-  const {
-    currentRefinement,
-    refine,
-    id,
-  } = props;
+  const { currentRefinement, refine, id, dark, placeholder } = props;
 
   const {
     resetActiveElementIndex,
@@ -23,7 +19,7 @@ const SearchBox = (props) => {
     setIsResultsWindowOpen,
     setSearchInputHeight,
   } = useTabController();
-  
+
   const searchInputRef = useRef(null);
 
   const handleOnChange = (value, e) => {
@@ -41,7 +37,7 @@ const SearchBox = (props) => {
     const { value } = e.target;
     setIsResultsWindowOpen(valHasLength(value));
   };
-  
+
   useEffect(() => {
     if (searchInputRef?.current) {
       setSearchInputHeight(searchInputRef.current.offsetHeight);
@@ -50,19 +46,20 @@ const SearchBox = (props) => {
 
   return (
     <div className="ais-SearchBox pb-2" ref={searchInputRef}>
-      <form
-        className="ais-SearchBox-form m-0"
-        noValidate
-        role="search"
-      >
+      <form className="ais-SearchBox-form m-0" noValidate role="search">
         <Input
-          inputClassName={`${isResultsWindowOpen ? 'focused' : ''} -mt-1 ais-SearchBox-input w-full border-gray-200 shadow-none`}
+          inputClassName={`${
+            (isResultsWindowOpen ? "focused" : "",
+            dark
+              ? "bg-gray-800 border-gray-600 text-white focus:border-gray-500 hover:border-gray-500"
+              : "bg-white border-gray-200 text-gray-900 focus:border-gray-300 hover:border-gray-300")
+          } -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none`}
           value={currentRefinement}
           onChange={handleOnChange}
           onFocus={checkIfResultsWindowShouldOpen}
           type="search"
           aria-label="Search for a resource by typing here"
-          placeholder="Search..."
+          placeholder={`${placeholder ? placeholder : "Search..."}`}
           id={`search-box-${id}`}
           autoComplete="off"
           type="search"
