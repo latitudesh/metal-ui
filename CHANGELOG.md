@@ -1,6 +1,5 @@
 # [1.2.0](https://github.com/Maxihost/metal-ui/compare/v1.1.3...v1.2.0) (2020-11-08)
 
-
 ### Features
 
 * **release:** Bumps to 1.2 ([1803dc0](https://github.com/Maxihost/metal-ui/commit/1803dc02cabefc32649cfc135a91002fec272d47))

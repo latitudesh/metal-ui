@@ -5,18 +5,21 @@ import PropTypes from "prop-types";
 class Heading extends PureComponent {
   static propTypes = {
     /**
-     * Can be: 1, 2, 3, 4, 5, 6
+     * Each size represents its corresponding Heading element.
      */
     size: PropTypes.oneOf([1, 2, 3, 4, 5, 6]).isRequired,
     /**
      * The only options are default and danger.
      */
     color: PropTypes.oneOf(["default", "danger"]).isRequired,
+
+    className: PropTypes.string,
   };
 
   static defaultProps = {
     size: 1,
     color: "default",
+    className: "",
   };
 
   render() {
