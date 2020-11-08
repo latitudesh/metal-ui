@@ -1,3 +1,21 @@
+# [2.0.0](https://github.com/Maxihost/metal-ui/compare/v1.2.0...v2.0.0) (2020-11-08)
+
+
+### chore
+
+* **props:** Deprecates margin in favor of className ([a249d63](https://github.com/Maxihost/metal-ui/commit/a249d63a983c91e413bdd597d3962fe7297f756a))
+
+
+### Features
+
+* Allows for the use of classNames in Typography components. ([169e59d](https://github.com/Maxihost/metal-ui/commit/169e59d3d1593565ec93405c267923508482ccbc))
+
+
+### BREAKING CHANGES
+
+* **props:** *Components*
+- Typography: `margin` prop was deprecated in favor of `className`.
+
 # [1.2.0](https://github.com/Maxihost/metal-ui/compare/v1.1.3...v1.2.0) (2020-11-08)
 
 ### Features
