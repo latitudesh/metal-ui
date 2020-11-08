@@ -11,7 +11,7 @@ const valHasLength = (value) => {
 };
 
 const SearchBox = (props) => {
-  const { currentRefinement, refine, id, dark } = props;
+  const { currentRefinement, refine, id, dark, placeholder } = props;
 
   const {
     resetActiveElementIndex,
@@ -59,7 +59,7 @@ const SearchBox = (props) => {
           onFocus={checkIfResultsWindowShouldOpen}
           type="search"
           aria-label="Search for a resource by typing here"
-          placeholder="Search..."
+          placeholder={`${placeholder ? placeholder : "Search..."}`}
           id={`search-box-${id}`}
           autoComplete="off"
           type="search"
