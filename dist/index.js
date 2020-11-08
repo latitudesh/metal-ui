@@ -9560,7 +9560,7 @@ function cleanUpValueWithMultiIndex(_ref4) {
   return searchState;
 }
 // CONCATENATED MODULE: ./node_modules/react-instantsearch-core/dist/es/core/version.js
-/* harmony default export */ var version = ('6.7.0');
+/* harmony default export */ var version = ('6.8.2');
 // CONCATENATED MODULE: ./node_modules/react-instantsearch-core/dist/es/core/createInstantSearchManager.js
 
 
@@ -9669,7 +9669,7 @@ function createInstantSearchManager(_ref) {
   hydrateSearchClient(searchClient, resultsState);
   var store = createStore({
     widgets: initialState,
-    metadata: [],
+    metadata: hydrateMetadata(resultsState),
     results: hydrateResultsState(resultsState),
     error: null,
     searching: false,
@@ -9902,8 +9902,8 @@ function createInstantSearchManager(_ref) {
       };
     }
 
-    if (Array.isArray(results)) {
-      hydrateSearchClientWithMultiIndexRequest(client, results);
+    if (Array.isArray(results.results)) {
+      hydrateSearchClientWithMultiIndexRequest(client, results.results);
       return;
     }
 
@@ -9997,8 +9997,8 @@ function createInstantSearchManager(_ref) {
       return null;
     }
 
-    if (Array.isArray(results)) {
-      return results.reduce(function (acc, result) {
+    if (Array.isArray(results.results)) {
+      return results.results.reduce(function (acc, result) {
         return objectSpread_objectSpread({}, acc, defineProperty_defineProperty({}, result._internalIndexId, new algoliasearch_helper_default.a.SearchResults(new algoliasearch_helper_default.a.SearchParameters(result.state), result.rawResults)));
       }, {});
     }
@@ -10095,6 +10095,31 @@ function createInstantSearchManager(_ref) {
     clearCache: clearCache,
     skipSearch: skipSearch
   };
+}
+
+function hydrateMetadata(resultsState) {
+  if (!resultsState) {
+    return [];
+  } // add a value noop, which gets replaced once the widgets are mounted
+
+
+  return resultsState.metadata.map(function (datum) {
+    return objectSpread_objectSpread({
+      value: function value() {}
+    }, datum, {
+      items: datum.items && datum.items.map(function (item) {
+        return objectSpread_objectSpread({
+          value: function value() {}
+        }, item, {
+          items: item.items && item.items.map(function (nestedItem) {
+            return objectSpread_objectSpread({
+              value: function value() {}
+            }, nestedItem);
+          })
+        });
+      })
+    });
+  });
 }
 // CONCATENATED MODULE: ./node_modules/react-instantsearch-core/dist/es/core/context.js
 
@@ -10302,11 +10327,23 @@ function (_Component) {
     }
   }, {
     key: "onSearchParameters",
-    value: function onSearchParameters(getSearchParameters, context, props) {
+    value: function onSearchParameters(getSearchParameters, context, props, getMetadata) {
       if (this.props.onSearchParameters) {
         var _searchState = this.props.searchState ? this.props.searchState : {};
 
         this.props.onSearchParameters(getSearchParameters, context, props, _searchState);
+      }
+
+      if (this.props.widgetsCollector) {
+        var _searchState2 = this.props.searchState ? this.props.searchState : {};
+
+        this.props.widgetsCollector({
+          getSearchParameters: getSearchParameters,
+          getMetadata: getMetadata,
+          context: context,
+          props: props,
+          searchState: _searchState2
+        });
       }
     }
   }, {
@@ -10354,6 +10391,7 @@ defineProperty_defineProperty(InstantSearch_InstantSearch, "propTypes", {
   searchState: prop_types_default.a.object,
   onSearchStateChange: prop_types_default.a.func,
   onSearchParameters: prop_types_default.a.func,
+  widgetsCollector: prop_types_default.a.func,
   resultsState: prop_types_default.a.oneOfType([prop_types_default.a.object, prop_types_default.a.array]),
   children: prop_types_default.a.node,
   stalledSearchDelay: prop_types_default.a.number
@@ -10457,7 +10495,7 @@ function (_Component) {
     _this.props.contextValue.onSearchParameters(_this.getSearchParameters.bind(assertThisInitialized_assertThisInitialized(_this)), {
       ais: _this.props.contextValue,
       multiIndexContext: _this.state.indexContext
-    }, _this.props);
+    }, _this.props, undefined);
 
     return _this;
   }
@@ -10618,7 +10656,7 @@ function createConnectorWithoutContext(connectorDesc) {
           _this.props.contextValue.onSearchParameters(connectorDesc.getSearchParameters.bind(assertThisInitialized_assertThisInitialized(_this)), {
             ais: _this.props.contextValue,
             multiIndexContext: _this.props.indexContextValue
-          }, _this.props);
+          }, _this.props, connectorDesc.getMetadata && connectorDesc.getMetadata.bind(assertThisInitialized_assertThisInitialized(_this)));
         }
 
         return _this;
