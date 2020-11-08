@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/Maxihost/metal-ui/compare/v2.1.0...v2.1.1) (2020-11-08)
+
+
+### Bug Fixes
+
+* build ([d809708](https://github.com/Maxihost/metal-ui/commit/d8097089f4f27c104945257861913f8f272e0cc8))
+
 # [2.1.0](https://github.com/Maxihost/metal-ui/compare/v2.0.0...v2.1.0) (2020-11-08)
 
 
