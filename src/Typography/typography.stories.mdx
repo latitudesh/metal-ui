@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Preview, ArgsTable } from "@storybook/addon-docs/blocks";
 import Text from "./Text";
 import Heading from "./Heading";
 import UnorderedList from "./UnorderedList";
@@ -23,6 +23,8 @@ import ListItem from "./ListItem";
   </Story>
 </Preview>
 
+<ArgsTable of={Heading} />
+
 # Paragraph
 
 <Preview>
@@ -41,6 +43,8 @@ import ListItem from "./ListItem";
     </div>
   </Story>
 </Preview>
+
+<ArgsTable of={Text} />
 
 # Span
 
@@ -67,6 +71,8 @@ The are no style differences between `span` and `p`. The differences in how they
   </Story>
 </Preview>
 
+<ArgsTable of={Text} />
+
 # Unordered List
 
 Takes the same props as `Text`
@@ -80,3 +86,5 @@ Takes the same props as `Text`
     </UnorderedList>
   </Story>
 </Preview>
+
+<ArgsTable of={Text} />
