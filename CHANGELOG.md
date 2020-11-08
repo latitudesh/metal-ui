@@ -1,5 +1,4 @@
-# [1.2.0](https://github.com/Maxihost/metal-ui/compare/v1.1.3...v1.2.0) (2020-11-01)
-
+# [1.2.0](https://github.com/Maxihost/metal-ui/compare/v1.1.3...v1.2.0) (2020-11-08)
 
 ### Features
 
