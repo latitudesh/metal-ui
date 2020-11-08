@@ -22,6 +22,7 @@ const SearchComponent = (props) => {
     customNoResults,
     indexResultsLimit,
     className,
+    dark,
   } = props;
 
   const {
@@ -211,7 +212,7 @@ const SearchComponent = (props) => {
           role="listbox"
           className="relative"
         >
-          <SearchBox id={ALGOLIA_APP_ID} />
+          <SearchBox id={ALGOLIA_APP_ID} dark={dark} />
 
           <div
             className="shadow-xl rounded absolute w-full bg-white border border-gray-200"
