@@ -4,23 +4,24 @@ import PropTypes from "prop-types";
 
 class Text extends PureComponent {
   static propTypes = {
-    /**
-     * When true, makes Text semi-bold.
-     */
     bold: PropTypes.bool,
-
+    /**
+     * Any Tailwind [Text Color](https://tailwindcss.com/docs/text-color) class. 
+     */
     color: PropTypes.string,
 
-    is: PropTypes.oneOf(['span', 'p', 'li']).isRequired,
+    is: PropTypes.oneOf(["span", "p", "li"]).isRequired,
 
-    margin: PropTypes.string
+    className: PropTypes.string,
 
+    margin: PropTypes.string,
   };
 
   static defaultProps = {
+    className: null,
     color: "text-gray-700",
     is: "span",
-    margin: ""
+    margin: null,
   };
 
   render() {
@@ -30,7 +31,7 @@ class Text extends PureComponent {
 
     return (
       <Tag
-        className={classNames("leading-normal", margin, color, {
+        className={classNames("leading-normal", className, margin, color, {
           "font-semibold": Boolean(bold),
           "font-normal": !Boolean(bold),
           "text-base": !Boolean(small),
