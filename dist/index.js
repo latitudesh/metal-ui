@@ -7140,7 +7140,7 @@ var Dropdown_DropdownContent = function DropdownContent(_ref) {
       }
     };
   }, [id]);
-  return Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
+  return /*#__PURE__*/Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
 };
 
 var Dropdown_Dropdown = function Dropdown(_ref2) {
@@ -7212,7 +7212,7 @@ var Dropdown_Dropdown = function Dropdown(_ref2) {
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     ref: dropdown,
     className: bind_default()("relative inline-block text-left z-50", className)
-  }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(children, {
+  }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(children, {
     onClick: function onClick(e) {
       e.stopPropagation();
       setOpen(!open);
@@ -7262,9 +7262,9 @@ var Button_Button = function Button(_ref) {
   var cx = bind_default.a.bind(buttonTypes);
   var ButtonContent = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, iconBefore && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
     className: "mr-2"
-  }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore)), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", null, label), iconAfter && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
+  }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore)), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", null, label), iconAfter && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
     className: "ml-2"
-  }, Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
+  }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
   var ButtonClasses = cx("Button items-center border font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center", (_cx = {
     disabled: disabled,
     "default": !type
@@ -7272,12 +7272,12 @@ var Button_Button = function Button(_ref) {
 
   var RenderComponent = function RenderComponent() {
     if (component.props.children && typeof component.props.children !== "string") {
-      var children = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component.props.children, {
+      var children = /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component.props.children, {
         className: ButtonClasses
       });
-      return Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {}, children);
+      return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {}, children);
     } else {
-      return Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {
+      return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {
         className: ButtonClasses
       });
     }
@@ -7388,9 +7388,9 @@ Menu_Menu.Item = function (_ref3) {
       children = _ref3.children,
       component = _ref3.component;
   var cx = bind_default.a.bind(itemType);
-  var content = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, iconBefore && Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore, {
+  var content = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, iconBefore && /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore, {
     className: "mr-2 transition ease-in-out duration-150"
-  }), children, iconAfter && Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter, {
+  }), children, iconAfter && /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter, {
     className: "ml-2 transition ease-in-out duration-150"
   }));
   var classes = cx("flex text-left min-w-full px-4 py-2 text-sm leading-5 focus:outline-none focus:bg-gray-100 hover:bg-gray-100", Menu_defineProperty({
@@ -7401,13 +7401,13 @@ Menu_Menu.Item = function (_ref3) {
 
   if (component) {
     if (component.props.children && typeof component.props.children !== "string") {
-      var _children = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component.props.children, {
+      var _children = /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component.props.children, {
         className: classes
       });
 
-      return Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {}, _children);
+      return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {}, _children);
     } else {
-      return Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {
+      return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {
         className: classes
       });
     }
@@ -7473,7 +7473,7 @@ var Sidesheet_SidesheetContent = function SidesheetContent(_ref) {
       }
     };
   }, [id]);
-  return Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
+  return /*#__PURE__*/Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
 };
 
 var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
@@ -7686,12 +7686,11 @@ var Text_Text = /*#__PURE__*/function (_PureComponent) {
           color = _this$props.color,
           small = _this$props.small,
           is = _this$props.is,
-          margin = _this$props.margin,
-          props = _objectWithoutProperties(_this$props, ["className", "bold", "color", "small", "is", "margin"]);
+          props = _objectWithoutProperties(_this$props, ["className", "bold", "color", "small", "is"]);
 
       var Tag = is;
       return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Tag, _extends({
-        className: classnames_default()("leading-normal", margin, color, {
+        className: classnames_default()("leading-normal", className, color, {
           "font-semibold": Boolean(bold),
           "font-normal": !Boolean(bold),
           "text-base": !Boolean(small),
@@ -7705,19 +7704,20 @@ var Text_Text = /*#__PURE__*/function (_PureComponent) {
 }(external_root_React_commonjs2_react_commonjs_react_amd_react_["PureComponent"]);
 
 Text_defineProperty(Text_Text, "propTypes", {
-  /**
-   * When true, makes Text semi-bold.
-   */
   bold: prop_types_default.a.bool,
+
+  /**
+   * Any TailwindCSS [Text Color](https://tailwindcss.com/docs/text-color) class.
+   */
   color: prop_types_default.a.string,
-  is: prop_types_default.a.oneOf(['span', 'p', 'li']).isRequired,
-  margin: prop_types_default.a.string
+  is: prop_types_default.a.oneOf(["span", "p", "li"]).isRequired,
+  className: prop_types_default.a.string
 });
 
 Text_defineProperty(Text_Text, "defaultProps", {
+  className: null,
   color: "text-gray-700",
-  is: "span",
-  margin: ""
+  is: "span"
 });
 
 /* harmony default export */ var Typography_Text = (Text_Text);
@@ -7774,7 +7774,7 @@ var Toast_ToastContent = function ToastContent(_ref) {
       }
     };
   }, [id]);
-  return Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
+  return /*#__PURE__*/Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
 };
 
 var Toast_Toast = function Toast(_ref2) {
@@ -7884,7 +7884,7 @@ function Input_objectWithoutPropertiesLoose(source, excluded) { if (source == nu
 
 
 
-var Input = external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
+var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
   var onChange = _ref.onChange,
       inputClassName = _ref.inputClassName,
       className = _ref.className,
@@ -7965,7 +7965,7 @@ function Textarea_objectWithoutPropertiesLoose(source, excluded) { if (source ==
 
 
 
-var Textarea = external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
+var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
   var onChange = _ref.onChange,
       textareaClassName = _ref.textareaClassName,
       className = _ref.className,
@@ -8050,7 +8050,7 @@ function Select_objectWithoutPropertiesLoose(source, excluded) { if (source == n
 
 
 
-var Select = external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
+var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
   var onChange = _ref.onChange,
       selectClassName = _ref.selectClassName,
       options = _ref.options,
@@ -8672,7 +8672,7 @@ function TabController_iterableToArrayLimit(arr, i) { if (typeof Symbol === "und
 function TabController_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
-var TabControllerContext = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createContext"])({});
+var TabControllerContext = /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createContext"])({});
 var TabController_useTabController = function useTabController() {
   return Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"])(TabControllerContext);
 };
@@ -11077,7 +11077,9 @@ var valHasLength = function valHasLength(value) {
 var SearchBox_SearchBox = function SearchBox(props) {
   var currentRefinement = props.currentRefinement,
       refine = props.refine,
-      id = props.id;
+      id = props.id,
+      dark = props.dark,
+      placeholder = props.placeholder;
 
   var _useTabController = TabController_useTabController(),
       resetActiveElementIndex = _useTabController.resetActiveElementIndex,
@@ -11116,13 +11118,13 @@ var SearchBox_SearchBox = function SearchBox(props) {
     noValidate: true,
     role: "search"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_Input, SearchBox_defineProperty({
-    inputClassName: "".concat(isResultsWindowOpen ? 'focused' : '', " -mt-1 ais-SearchBox-input w-full border-gray-200 shadow-none"),
+    inputClassName: "".concat((isResultsWindowOpen ? "focused" : "", dark ? "bg-gray-800 border-gray-600 text-white focus:border-gray-500 hover:border-gray-500" : "bg-white border-gray-200 text-gray-900 focus:border-gray-300 hover:border-gray-300"), " -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none"),
     value: currentRefinement,
     onChange: handleOnChange,
     onFocus: checkIfResultsWindowShouldOpen,
     type: "search",
     "aria-label": "Search for a resource by typing here",
-    placeholder: "Search...",
+    placeholder: "".concat(placeholder ? placeholder : "Search..."),
     id: "search-box-".concat(id),
     autoComplete: "off"
   }, "type", "search"))));
@@ -11577,7 +11579,9 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
       customLoader = props.customLoader,
       customNoResults = props.customNoResults,
       indexResultsLimit = props.indexResultsLimit,
-      className = props.className;
+      className = props.className,
+      dark = props.dark,
+      placeholder = props.placeholder;
 
   var _useTabController = TabController_useTabController(),
       activeElementIndex = _useTabController.activeElementIndex,
@@ -11607,7 +11611,7 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
   var scrollWindowRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(null);
   var searchComponentRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(null);
 
-  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(''),
+  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(""),
       _useState2 = SearchComponent_slicedToArray(_useState, 2),
       filterState = _useState2[0],
       setFilterState = _useState2[1];
@@ -11659,7 +11663,7 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
     }
   }, [setScrollableWindowTopOffset, activeElementIndex]);
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
-    if (typeof scrollDistance === 'number' && isResultsWindowOpen && !isScrollDisabled) {
+    if (typeof scrollDistance === "number" && isResultsWindowOpen && !isScrollDisabled) {
       scrollWindowRef.current.scrollTo(0, scrollDistance);
     }
   }, [scrollDistance, isResultsWindowOpen, isScrollDisabled]);
@@ -11680,19 +11684,19 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
   }, [totalElementsCount]);
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     if (isResultsWindowOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     } else {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     }
 
     return function () {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isResultsWindowOpen]);
 
   var handleOnSearchStateChange = function handleOnSearchStateChange(_ref) {
     var query = _ref.query;
-    var filter = '';
+    var filter = "";
     var operandFound = false;
 
     if (query) {
@@ -11720,7 +11724,7 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
         operandFound = true;
       }
 
-      setFilterState(operandFound ? filter : '');
+      setFilterState(operandFound ? filter : "");
     }
   };
 
@@ -11733,12 +11737,12 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
             conditionString = condition.conditionString;
 
         if (index === 0) {
-          if (filterState) return "".concat(filterState, " ").concat(conditionType || 'AND', " ").concat(conditionString);
+          if (filterState) return "".concat(filterState, " ").concat(conditionType || "AND", " ").concat(conditionString);
           return "".concat(conditionString);
         }
 
-        return "".concat(acc, " ").concat(conditionType || 'AND', " ").concat(conditionString);
-      }, '');
+        return "".concat(acc, " ").concat(conditionType || "AND", " ").concat(conditionString);
+      }, "");
       return conditionalFilterState;
     }
 
@@ -11779,11 +11783,13 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
     role: "listbox",
     className: "relative"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(elements_SearchBox, {
-    id: ALGOLIA_APP_ID
+    id: ALGOLIA_APP_ID,
+    dark: dark,
+    placeholder: placeholder
   }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: "shadow-xl rounded absolute w-full bg-white border border-gray-200",
     style: {
-      visibility: "".concat(isResultsWindowOpen ? 'visible' : 'hidden')
+      visibility: "".concat(isResultsWindowOpen ? "visible" : "hidden")
     }
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: "overflow-y-auto pl-2 pr-2",
@@ -11829,7 +11835,7 @@ SearchComponent_SearchComponent.propTypes = {
     renderCardInfo: prop_types_default.a.func,
     formatHitURL: prop_types_default.a.func,
     searchConditions: prop_types_default.a.arrayOf(prop_types_default.a.shape({
-      conditionType: prop_types_default.a.oneOf(['OR', 'AND']),
+      conditionType: prop_types_default.a.oneOf(["OR", "AND"]),
       conditionString: prop_types_default.a.string
     }))
   })).isRequired,
@@ -11859,8 +11865,9 @@ var AlgoliaSearch_AlgoliaSearch = function AlgoliaSearch(props) {
 AlgoliaSearch_AlgoliaSearch.defaultProps = {
   indexResultsLimit: 8,
   scrollWindowHeight: 400,
-  className: '',
-  parentWindowHeight: null
+  className: null,
+  parentWindowHeight: null,
+  dark: false
 };
 AlgoliaSearch_AlgoliaSearch.propTypes = {
   ALGOLIA_APP_ID: prop_types_default.a.string.isRequired,
@@ -11873,7 +11880,7 @@ AlgoliaSearch_AlgoliaSearch.propTypes = {
     renderCardInfo: prop_types_default.a.func,
     formatHitURL: prop_types_default.a.func,
     searchConditions: prop_types_default.a.arrayOf(prop_types_default.a.shape({
-      conditionType: prop_types_default.a.oneOf(['OR', 'AND']),
+      conditionType: prop_types_default.a.oneOf(["OR", "AND"]),
       conditionString: prop_types_default.a.string
     }))
   })).isRequired,
@@ -11881,7 +11888,8 @@ AlgoliaSearch_AlgoliaSearch.propTypes = {
   scrollWindowHeight: prop_types_default.a.number,
   customLoader: prop_types_default.a.node,
   customNoResults: prop_types_default.a.node,
-  className: prop_types_default.a.string
+  className: prop_types_default.a.string,
+  dark: prop_types_default.a.bool
 };
 /* harmony default export */ var src_AlgoliaSearch = (AlgoliaSearch_AlgoliaSearch);
 // CONCATENATED MODULE: ./src/Flags/Flag.js
@@ -12261,19 +12269,21 @@ var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
 
 Heading_defineProperty(Heading_Heading, "propTypes", {
   /**
-   * Can be: 1, 2, 3, 4, 5, 6
+   * Each size represents its corresponding Heading element.
    */
   size: prop_types_default.a.oneOf([1, 2, 3, 4, 5, 6]).isRequired,
 
   /**
    * The only options are default and danger.
    */
-  color: prop_types_default.a.oneOf(["default", "danger"]).isRequired
+  color: prop_types_default.a.oneOf(["default", "danger"]).isRequired,
+  className: prop_types_default.a.string
 });
 
 Heading_defineProperty(Heading_Heading, "defaultProps", {
   size: 1,
-  color: "default"
+  color: "default",
+  className: ""
 });
 
 /* harmony default export */ var Typography_Heading = (Heading_Heading);
@@ -12334,11 +12344,11 @@ var UnorderedList_UnorderedList = /*#__PURE__*/function (_PureComponent) {
           props = UnorderedList_objectWithoutProperties(_this$props, ["children"]);
 
       var finalChildren = external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Children.map(children, function (child) {
-        if (!external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.isValidElement(child)) {
+        if (! /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.isValidElement(child)) {
           return child;
         }
 
-        return external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.cloneElement(child, UnorderedList_objectSpread({}, child.props));
+        return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.cloneElement(child, UnorderedList_objectSpread({}, child.props));
       });
       return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("ul", UnorderedList_extends({
         className: classnames_default()("leading-normal list-disc p-0 m-0 ml-4", {})
