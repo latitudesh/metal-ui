@@ -6993,10 +6993,14 @@ Table_Table.HeaderCell = function (_ref4) {
 Table_Table.Row = function (_ref5) {
   var children = _ref5.children,
       className = _ref5.className,
-      onSelect = _ref5.onSelect;
+      onClick = _ref5.onClick,
+      isSelectable = _ref5.isSelectable;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("tr", {
-    onSelect: onSelect,
-    className: classnames_default()(className)
+    onClick: onClick,
+    className: classnames_default()({
+      "hover:bg-gray-50 focus:outline-none focus:bg-gray-50 cursor-pointer": onClick || isSelectable,
+      className: className
+    })
   }, children);
 };
 
@@ -7004,7 +7008,7 @@ Table_Table.Cell = function (_ref6) {
   var children = _ref6.children,
       className = _ref6.className;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("td", {
-    className: classnames_default()("px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500", className)
+    className: classnames_default()("px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500", className)
   }, children);
 };
 
@@ -7027,7 +7031,7 @@ Table_Table.HeaderCell.propTypes = {
 Table_Table.Row.propTypes = {
   children: prop_types_default.a.node.isRequired,
   className: prop_types_default.a.string,
-  onSelect: prop_types_default.a.func
+  onClick: prop_types_default.a.func
 };
 Table_Table.Cell.propTypes = {
   children: prop_types_default.a.node.isRequired,
