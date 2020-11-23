@@ -25,8 +25,14 @@ Table.HeaderCell = ({ children, className }) => (
   </th>
 );
 
-Table.Row = ({ children, className, onSelect }) => (
-  <tr onSelect={onSelect} className={classNames(className)}>
+Table.Row = ({ children, className, onClick, isSelectable }) => (
+  <tr
+    onClick={onClick}
+    className={classNames({
+      "hover:bg-gray-50 focus:outline-none focus:bg-gray-50 cursor-pointer": onClick || isSelectable,
+      className,
+    })}
+  >
     {children}
   </tr>
 );
@@ -34,7 +40,7 @@ Table.Row = ({ children, className, onSelect }) => (
 Table.Cell = ({ children, className }) => (
   <td
     className={classNames(
-      "px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500",
+      "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500",
       className
     )}
   >
@@ -65,7 +71,7 @@ Table.HeaderCell.propTypes = {
 Table.Row.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  onSelect: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 Table.Cell.propTypes = {
