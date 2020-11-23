@@ -7237,8 +7237,38 @@ Dropdown_Dropdown.propTypes = {
   className: prop_types_default.a.string
 };
 /* harmony default export */ var src_Dropdown = (Dropdown_Dropdown);
+// CONCATENATED MODULE: ./src/SpinningDots/index.js
+
+
+
+var SpinningDots_SpinningDots = function SpinningDots(_ref) {
+  var className = _ref.className;
+  var i = "animate-pulse w-1.5 h-1.5 rounded-full bg-gray-300";
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: classnames_default()("spinner absolute inline p-0 h-auto w-full text-center", className)
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
+    className: "inline-flex relative align-middle h-2 text-center opacity-50 w-10"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: "flex w-full justify-around"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("i", {
+    className: i,
+    style: {
+      animationDelay: "-.2s"
+    }
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("i", {
+    className: i,
+    style: {
+      animationDelay: "-.1s"
+    }
+  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("i", {
+    className: i
+  }))));
+};
+
+/* harmony default export */ var src_SpinningDots = (SpinningDots_SpinningDots);
 // CONCATENATED MODULE: ./src/Button/index.js
 function Button_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -7260,19 +7290,25 @@ var Button_Button = function Button(_ref) {
       onClick = _ref.onClick,
       label = _ref.label,
       type = _ref.type,
+      variant = _ref.variant,
       component = _ref.component,
       block = _ref.block,
-      large = _ref.large;
+      large = _ref.large,
+      isLoading = _ref.isLoading;
   var cx = bind_default.a.bind(buttonTypes);
-  var ButtonContent = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, iconBefore && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
+  var ButtonContent = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: bind_default()("inline-flex items-center", {
+      "opacity-0": isLoading,
+      "opacity-100": !isLoading
+    })
+  }, iconBefore && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
     className: "mr-2"
   }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore)), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", null, label), iconAfter && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
     className: "ml-2"
   }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
-  var ButtonClasses = cx("Button items-center border font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center", (_cx = {
-    disabled: disabled,
-    "default": !type
-  }, Button_defineProperty(_cx, type, Boolean(type)), Button_defineProperty(_cx, "px-5 h-9 leading-9 inline-flex text-sm", !Boolean(block)), Button_defineProperty(_cx, "w-full h-12 leading-12 text-base block", Boolean(block)), Button_defineProperty(_cx, "px-10 h-10 leading-10 inline-flex", Boolean(large)), _cx));
+  var ButtonClasses = cx("Button border items-center inline-flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center", (_cx = {
+    disabled: disabled
+  }, Button_defineProperty(_cx, variant, Boolean(variant)), Button_defineProperty(_cx, "px-5 h-9 leading-9 text-sm", !Boolean(block)), Button_defineProperty(_cx, "w-full h-12 leading-12", Boolean(block)), Button_defineProperty(_cx, "px-10 h-10 leading-10", Boolean(large)), _cx));
 
   var RenderComponent = function RenderComponent() {
     if (component.props.children && typeof component.props.children !== "string") {
@@ -7288,11 +7324,11 @@ var Button_Button = function Button(_ref) {
   };
 
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, component ? /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(RenderComponent, null) : /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("button", {
-    type: "button",
+    type: type,
     onClick: onClick,
-    disabled: disabled,
+    disabled: disabled || isLoading,
     className: ButtonClasses
-  }, ButtonContent));
+  }, isLoading && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_SpinningDots, null), ButtonContent));
 };
 
 Button_Button.propTypes = {
@@ -7303,7 +7339,14 @@ Button_Button.propTypes = {
   label: prop_types_default.a.string,
   onClick: prop_types_default.a.func,
   type: prop_types_default.a.string,
+  variant: prop_types_default.a.oneOf(["default", "secondary", "danger", "disabled", "minimal"]),
+  isLoading: prop_types_default.a.bool,
   component: prop_types_default.a.element
+};
+Button_Button.defaultProps = {
+  variant: "default",
+  type: "button",
+  isLoading: false
 };
 /* harmony default export */ var src_Button = (Button_Button);
 // CONCATENATED MODULE: ./src/Box/index.js

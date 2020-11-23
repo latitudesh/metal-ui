@@ -13,13 +13,13 @@ import Icon from "../../util/Icon";
         <Button label="Primary" />
       </div>
       <div className="inline-flex ml-2">
-        <Button label="Secondary" type="secondary" />
+        <Button label="Secondary" variant="secondary" />
       </div>
       <div className="inline-flex ml-2">
-        <Button label="Danger" type="danger" />
+        <Button label="Danger" variant="danger" />
       </div>
       <div className="inline-flex ml-2">
-        <Button label="Minimal" type="minimal" />
+        <Button label="Minimal" variant="minimal" />
       </div>
     </div>
   </Story>
@@ -34,13 +34,13 @@ import Icon from "../../util/Icon";
         <Button label="Disabled" disabled />
       </div>
       <div className="inline-flex ml-2">
-        <Button label="Disabled" type="secondary" disabled />
+        <Button label="Disabled" variant="secondary" disabled />
       </div>
       <div className="inline-flex ml-2">
-        <Button label="Disabled" type="danger" disabled />
+        <Button label="Disabled" variant="danger" disabled />
       </div>
       <div className="inline-flex ml-2">
-        <Button label="Disabled" type="minimal" disabled />
+        <Button label="Disabled" variant="minimal" disabled />
       </div>
     </div>
   </Story>
@@ -61,7 +61,29 @@ import Icon from "../../util/Icon";
   </Story>
 </Preview>
 
+# Loading
+
+<Preview>
+  <Story name="Loading">
+    <div>
+      <div className="inline-flex">
+        <Button label="Loading" isLoading={true} />
+      </div>
+      <div className="inline-flex ml-2">
+        <Button label="Loading" variant="secondary" isLoading={true} />
+      </div>
+      <div className="inline-flex ml-2">
+        <Button label="Loading" variant="danger" isLoading={true} />
+      </div>
+      <div className="inline-flex ml-2">
+        <Button label="Loading" variant="minimal" isLoading={false} />
+      </div>
+    </div>
+  </Story>
+</Preview>
+
 # With Icon
+
 The component does not handle icon sizing. You should manage that from your project. `20px` is usually the recommended size.
 
 <Preview>
@@ -71,13 +93,14 @@ The component does not handle icon sizing. You should manage that from your proj
         <Button iconBefore={<Icon />} label="Icon before" />
       </div>
       <div className="mt-2">
-        <Button iconAfter={<Icon />} type="secondary" label="Icon after" />
+        <Button iconAfter={<Icon />} variant="secondary" label="Icon after" />
       </div>
     </div>
   </Story>
 </Preview>
 
-# With Component 
+# With Component
+
 Buttons with components don't currently support icons
 
 <Preview>
