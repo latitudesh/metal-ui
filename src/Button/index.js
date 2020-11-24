@@ -1,6 +1,7 @@
 import React, { cloneElement } from "react";
 import classNames from "classnames/bind";
 import PropTypes from "prop-types";
+import SpinningDots from "../SpinningDots";
 
 const buttonTypes = {
   default:
@@ -21,29 +22,35 @@ const Button = ({
   onClick,
   label,
   type,
+  variant,
   component,
   block,
   large,
+  isLoading,
 }) => {
   const cx = classNames.bind(buttonTypes);
 
   const ButtonContent = (
-    <>
+    <div
+      className={classNames("inline-flex items-center", {
+        "opacity-0": isLoading,
+        "opacity-100": !isLoading,
+      })}
+    >
       {iconBefore && <span className="mr-2">{cloneElement(iconBefore)}</span>}
       <span>{label}</span>
       {iconAfter && <span className="ml-2">{cloneElement(iconAfter)}</span>}
-    </>
+    </div>
   );
 
   const ButtonClasses = cx(
-    "Button items-center border font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center",
+    "Button border items-center inline-flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center",
     {
       disabled: disabled,
-      default: !type,
-      [type]: Boolean(type),
-      "px-5 h-9 leading-9 inline-flex text-sm": !Boolean(block),
-      "w-full h-12 leading-12 text-base block": Boolean(block),
-      "px-10 h-10 leading-10 inline-flex": Boolean(large),
+      [variant]: Boolean(variant),
+      "px-5 h-9 leading-9 text-sm": !Boolean(block),
+      "w-full h-12 leading-12": Boolean(block),
+      "px-10 h-10 leading-10": Boolean(large),
     }
   );
 
@@ -67,11 +74,12 @@ const Button = ({
         <RenderComponent />
       ) : (
         <button
-          type={"button"}
+          type={type}
           onClick={onClick}
-          disabled={disabled}
+          disabled={disabled || isLoading}
           className={ButtonClasses}
         >
+          {isLoading && <SpinningDots />}
           {ButtonContent}
         </button>
       )}
@@ -87,7 +95,21 @@ Button.propTypes = {
   label: PropTypes.string,
   onClick: PropTypes.func,
   type: PropTypes.string,
+  variant: PropTypes.oneOf([
+    "default",
+    "secondary",
+    "danger",
+    "disabled",
+    "minimal",
+  ]),
+  isLoading: PropTypes.bool,
   component: PropTypes.element,
+};
+
+Button.defaultProps = {
+  variant: "default",
+  type: "button",
+  isLoading: false,
 };
 
 export default Button;
