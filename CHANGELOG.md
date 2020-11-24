@@ -1,3 +1,16 @@
+## [2.1.2](https://github.com/Maxihost/metal-ui/compare/v2.1.1...v2.1.2) (2020-11-24)
+
+
+### Bug Fixes
+
+* add loading on btns and change type to variant ([d1839af](https://github.com/Maxihost/metal-ui/commit/d1839af60c619599692f482572c7a9965aff26a9))
+* packagejson merge master ([d692f0d](https://github.com/Maxihost/metal-ui/commit/d692f0d24c18ad063e1194aaf69961202c2af404))
+* revert merge master ([a472703](https://github.com/Maxihost/metal-ui/commit/a472703489c6ec6f7820bb9ca04139b6d2041b0a))
+* revert merge master and merges develop ([bddb958](https://github.com/Maxihost/metal-ui/commit/bddb958a0d31e598c903fe9459f55f3ce9cf6876))
+* Revert package-lock ([e2da964](https://github.com/Maxihost/metal-ui/commit/e2da96400cb1edacd3651ea9bfd1d4bda5669791))
+* tests ([44e9c95](https://github.com/Maxihost/metal-ui/commit/44e9c9597f083c7e75c7fc3c4c544e419a38f68f))
+* unlink react ([1afe0a2](https://github.com/Maxihost/metal-ui/commit/1afe0a25b1f8d74329c4783954e864ced54794d7))
+
 ## [2.1.1](https://github.com/Maxihost/metal-ui/compare/v2.1.0...v2.1.1) (2020-11-08)
 
 
