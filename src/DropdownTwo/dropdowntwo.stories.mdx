@@ -1,0 +1,62 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  Props,
+  ArgsTable,
+} from "@storybook/addon-docs/blocks";
+import Dropdown from "./index";
+
+<Meta title="DropdownTwo" component={Dropdown} />
+
+### Available components
+
+Metal exports the following components for tables:
+
+- `Dropdown`
+- `Table.Head`
+- `Table.Body`
+- `Table.Row`
+- `Table.Cell`
+- `Table.HeaderCell`
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    <Dropdown>
+      <Dropdown.Trigger>Trigger</Dropdown.Trigger>
+      <Dropdown.Content>
+        <Dropdown.Item onSelect={() => console.log("cut")}>Cut</Dropdown.Item>
+        <Dropdown.Item onSelect={() => console.log("copy")}>Copy</Dropdown.Item>
+        <Dropdown.Item onSelect={() => console.log("paste")}>
+          Paste
+        </Dropdown.Item>
+        <Dropdown.Arrow />
+      </Dropdown.Content>
+    </Dropdown>
+  </Story>
+</Preview>
+
+# With disabled items
+
+<Preview>
+  <Story name="With disabled items">
+    <Dropdown>
+      <Dropdown.Trigger>Trigger</Dropdown.Trigger>
+      <Dropdown.Content>
+        <Dropdown.Item disabled onSelect={() => console.log("cut")}>Cut</Dropdown.Item>
+        <Dropdown.Item onSelect={() => console.log("copy")}>Copy</Dropdown.Item>
+        <Dropdown.Item onSelect={() => console.log("paste")}>
+          Paste
+        </Dropdown.Item>
+        <Dropdown.Arrow />
+      </Dropdown.Content>
+    </Dropdown>
+  </Story>
+</Preview>
+
+
+# Table Props
+
+<ArgsTable of={Dropdown} />
