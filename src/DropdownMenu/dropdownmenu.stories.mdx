@@ -1,0 +1,72 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownContent,
+  DropdownLabel,
+  DropdownItem,
+  DropdownGroup,
+  DropdownCheckboxItem,
+  DropdownItemIndicator,
+  DropdownRadioGroup,
+  DropdownRadioItem,
+  DropdownSeparator,
+  DropdownArrow,
+} from "./index";
+
+<Meta title="DropdownThree" component={Dropdown} />
+
+# Available components
+
+Metal exports the following components for Dropdowns:
+
+- Dropdown
+- DropdownTrigger
+- DropdownContent
+- DropdownLabel
+- DropdownItem
+- DropdownGroup
+- DropdownCheckboxItem
+- DropdownItemIndicator
+- DropdownRadioGroup
+- DropdownRadioItem
+- DropdownSeparator
+- DropdownArrow
+
+# API Reference
+
+This component uses the Radix UI `DropdownMenu` primitive. Refer to [this page](https://radix-ui.com/primitives/docs/components/dropdown-menu#api-reference) for the API reference, but note components in Metal UI do not use dot-notation.
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    <Dropdown>
+      <DropdownTrigger>Trigger</DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem onSelect={() => console.log("cut")}>Cut</DropdownItem>
+        <DropdownItem onSelect={() => console.log("copy")}>Copy</DropdownItem>
+        <DropdownItem onSelect={() => console.log("paste")}>Paste</DropdownItem>
+        <DropdownArrow />
+      </DropdownContent>
+    </Dropdown>
+  </Story>
+</Preview>
+
+# With disabled items
+
+<Preview>
+  <Story name="With disabled items">
+    <Dropdown>
+      <DropdownTrigger>Trigger</DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem disabled onSelect={() => console.log("cut")}>
+          Cut
+        </DropdownItem>
+        <DropdownItem onSelect={() => console.log("copy")}>Copy</DropdownItem>
+        <DropdownItem onSelect={() => console.log("paste")}>Paste</DropdownItem>
+        <DropdownArrow />
+      </DropdownContent>
+    </Dropdown>
+  </Story>
+</Preview>
