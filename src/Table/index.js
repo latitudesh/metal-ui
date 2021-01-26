@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import Text from "../Typography/Text";
 
 const Table = ({ children, className }) => (
-  <table className={classNames("min-w-full", className)}>{children}</table>
+  <table className={classNames("w-full max-w-full", className)}>
+    {children}
+  </table>
 );
 
 Table.Head = ({ children, className }) => (
@@ -39,14 +42,7 @@ Table.Row = ({ children, className, onClick, isSelectable }) => (
 );
 
 Table.Cell = ({ children, className }) => (
-  <td
-    className={classNames(
-      "px-6 py-4 text-sm leading-5 text-gray-500",
-      className
-    )}
-  >
-    {children}
-  </td>
+  <td className={classNames("px-6 py-4", className)}>{children}</td>
 );
 
 Table.TextCell = ({
@@ -55,29 +51,24 @@ Table.TextCell = ({
   secondary,
   secondaryClassname,
 }) => (
-  <div className="flex-col">
+  <>
     {primary && (
-      <div
-        className={classNames({
-          "text-sm font-medium leading-4 text-black truncate": !primaryClassname,
-          [primaryClassname]: primaryClassname,
-        })}
-      >
+      <Text small bold className={primaryClassname}>
         {primary}
-      </div>
+      </Text>
     )}
     {secondary && (
-      <div
-        className={classNames({
-          "flex text-sm leading-4 text-gray-500": !secondaryClassname,
+      <Text
+        small
+        className={classNames("block", {
           [secondaryClassname]: secondaryClassname,
           "mt-1": primary,
         })}
       >
         {secondary}
-      </div>
+      </Text>
     )}
-  </div>
+  </>
 );
 
 Table.propTypes = {

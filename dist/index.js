@@ -6953,8 +6953,99 @@ var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 var classnames = __webpack_require__(2);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
-// CONCATENATED MODULE: ./src/Table/index.js
+// CONCATENATED MODULE: ./src/Typography/Text.js
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+var Text_Text = /*#__PURE__*/function (_PureComponent) {
+  _inherits(Text, _PureComponent);
+
+  var _super = _createSuper(Text);
+
+  function Text() {
+    _classCallCheck(this, Text);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Text, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          className = _this$props.className,
+          bold = _this$props.bold,
+          color = _this$props.color,
+          small = _this$props.small,
+          is = _this$props.is,
+          props = _objectWithoutProperties(_this$props, ["className", "bold", "color", "small", "is"]);
+
+      var Tag = is;
+      return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Tag, _extends({
+        className: classnames_default()("leading-normal", className, color, {
+          "font-semibold": Boolean(bold),
+          "font-normal": !Boolean(bold),
+          "text-base": !Boolean(small),
+          "text-sm": Boolean(small)
+        })
+      }, props));
+    }
+  }]);
+
+  return Text;
+}(external_root_React_commonjs2_react_commonjs_react_amd_react_["PureComponent"]);
+
+_defineProperty(Text_Text, "propTypes", {
+  bold: prop_types_default.a.bool,
+
+  /**
+   * Any TailwindCSS [Text Color](https://tailwindcss.com/docs/text-color) class.
+   */
+  color: prop_types_default.a.string,
+  is: prop_types_default.a.oneOf(["span", "p", "li"]).isRequired,
+  className: prop_types_default.a.string
+});
+
+_defineProperty(Text_Text, "defaultProps", {
+  className: null,
+  color: "text-gray-700",
+  is: "span"
+});
+
+/* harmony default export */ var Typography_Text = (Text_Text);
+// CONCATENATED MODULE: ./src/Table/index.js
+function Table_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -6964,7 +7055,7 @@ var Table_Table = function Table(_ref) {
   var children = _ref.children,
       className = _ref.className;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("table", {
-    className: classnames_default()("min-w-full", className)
+    className: classnames_default()("w-full max-w-full", className)
   }, children);
 };
 
@@ -7010,27 +7101,24 @@ Table_Table.Cell = function (_ref6) {
   var children = _ref6.children,
       className = _ref6.className;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("td", {
-    className: classnames_default()("px-6 py-4 text-sm leading-5 text-gray-500", className)
+    className: classnames_default()("px-6 py-4", className)
   }, children);
 };
 
 Table_Table.TextCell = function (_ref7) {
-  var _classNames2;
+  var _classNames;
 
   var primary = _ref7.primary,
       primaryClassname = _ref7.primaryClassname,
       secondary = _ref7.secondary,
       secondaryClassname = _ref7.secondaryClassname;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    className: "flex-col"
-  }, primary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    className: classnames_default()(_defineProperty({
-      "text-sm font-medium leading-4 text-black truncate": !primaryClassname
-    }, primaryClassname, primaryClassname))
-  }, primary), secondary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    className: classnames_default()((_classNames2 = {
-      "flex text-sm leading-4 text-gray-500": !secondaryClassname
-    }, _defineProperty(_classNames2, secondaryClassname, secondaryClassname), _defineProperty(_classNames2, "mt-1", primary), _classNames2))
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, primary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Typography_Text, {
+    small: true,
+    bold: true,
+    className: primaryClassname
+  }, primary), secondary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Typography_Text, {
+    small: true,
+    className: classnames_default()("block", (_classNames = {}, Table_defineProperty(_classNames, secondaryClassname, secondaryClassname), Table_defineProperty(_classNames, "mt-1", primary), _classNames))
   }, secondary));
 };
 
@@ -7706,96 +7794,6 @@ Skeleton_Skeleton.defaultProps = {
   height: 24
 };
 /* harmony default export */ var src_Skeleton = (Skeleton_Skeleton);
-// CONCATENATED MODULE: ./src/Typography/Text.js
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function Text_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-var Text_Text = /*#__PURE__*/function (_PureComponent) {
-  _inherits(Text, _PureComponent);
-
-  var _super = _createSuper(Text);
-
-  function Text() {
-    _classCallCheck(this, Text);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(Text, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          className = _this$props.className,
-          bold = _this$props.bold,
-          color = _this$props.color,
-          small = _this$props.small,
-          is = _this$props.is,
-          props = _objectWithoutProperties(_this$props, ["className", "bold", "color", "small", "is"]);
-
-      var Tag = is;
-      return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Tag, _extends({
-        className: classnames_default()("leading-normal", className, color, {
-          "font-semibold": Boolean(bold),
-          "font-normal": !Boolean(bold),
-          "text-base": !Boolean(small),
-          "text-sm": Boolean(small)
-        })
-      }, props));
-    }
-  }]);
-
-  return Text;
-}(external_root_React_commonjs2_react_commonjs_react_amd_react_["PureComponent"]);
-
-Text_defineProperty(Text_Text, "propTypes", {
-  bold: prop_types_default.a.bool,
-
-  /**
-   * Any TailwindCSS [Text Color](https://tailwindcss.com/docs/text-color) class.
-   */
-  color: prop_types_default.a.string,
-  is: prop_types_default.a.oneOf(["span", "p", "li"]).isRequired,
-  className: prop_types_default.a.string
-});
-
-Text_defineProperty(Text_Text, "defaultProps", {
-  className: null,
-  color: "text-gray-700",
-  is: "span"
-});
-
-/* harmony default export */ var Typography_Text = (Text_Text);
 // CONCATENATED MODULE: ./src/Toast/index.js
 function Toast_slicedToArray(arr, i) { return Toast_arrayWithHoles(arr) || Toast_iterableToArrayLimit(arr, i) || Toast_unsupportedIterableToArray(arr, i) || Toast_nonIterableRest(); }
 
