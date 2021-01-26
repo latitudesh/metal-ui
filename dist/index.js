@@ -7106,8 +7106,6 @@ Table_Table.Cell = function (_ref6) {
 };
 
 Table_Table.TextCell = function (_ref7) {
-  var _classNames;
-
   var primary = _ref7.primary,
       primaryClassname = _ref7.primaryClassname,
       secondary = _ref7.secondary,
@@ -7118,7 +7116,7 @@ Table_Table.TextCell = function (_ref7) {
     className: primaryClassname
   }, primary), secondary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Typography_Text, {
     small: true,
-    className: classnames_default()("block", (_classNames = {}, Table_defineProperty(_classNames, secondaryClassname, secondaryClassname), Table_defineProperty(_classNames, "mt-1", primary), _classNames))
+    className: classnames_default()("block", Table_defineProperty({}, secondaryClassname, secondaryClassname))
   }, secondary));
 };
 

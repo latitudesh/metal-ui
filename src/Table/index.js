@@ -62,7 +62,6 @@ Table.TextCell = ({
         small
         className={classNames("block", {
           [secondaryClassname]: secondaryClassname,
-          "mt-1": primary,
         })}
       >
         {secondary}
