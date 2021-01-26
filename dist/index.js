@@ -6954,6 +6954,8 @@ var classnames = __webpack_require__(2);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
 // CONCATENATED MODULE: ./src/Table/index.js
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -7008,8 +7010,28 @@ Table_Table.Cell = function (_ref6) {
   var children = _ref6.children,
       className = _ref6.className;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("td", {
-    className: classnames_default()("px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500", className)
+    className: classnames_default()("px-6 py-4 text-sm leading-5 text-gray-500", className)
   }, children);
+};
+
+Table_Table.TextCell = function (_ref7) {
+  var _classNames2;
+
+  var primary = _ref7.primary,
+      primaryClassname = _ref7.primaryClassname,
+      secondary = _ref7.secondary,
+      secondaryClassname = _ref7.secondaryClassname;
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: "flex-col"
+  }, primary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: classnames_default()(_defineProperty({
+      "text-sm font-medium leading-4 text-black truncate": !primaryClassname
+    }, primaryClassname, primaryClassname))
+  }, primary), secondary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: classnames_default()((_classNames2 = {
+      "flex text-sm leading-4 text-gray-500": !secondaryClassname
+    }, _defineProperty(_classNames2, secondaryClassname, secondaryClassname), _defineProperty(_classNames2, "mt-1", primary), _classNames2))
+  }, secondary));
 };
 
 Table_Table.propTypes = {
@@ -7036,6 +7058,12 @@ Table_Table.Row.propTypes = {
 Table_Table.Cell.propTypes = {
   children: prop_types_default.a.node.isRequired,
   className: prop_types_default.a.string
+};
+Table_Table.TextCell.propTypes = {
+  primary: prop_types_default.a.node,
+  primaryClassname: prop_types_default.a.string,
+  secondary: prop_types_default.a.node,
+  secondaryClassname: prop_types_default.a.string
 };
 /* harmony default export */ var src_Table = (Table_Table);
 // CONCATENATED MODULE: ./src/Header/index.js
@@ -7106,9 +7134,9 @@ var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
 // CONCATENATED MODULE: ./src/Dropdown/index.js
 function Dropdown_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { Dropdown_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { Dropdown_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { Dropdown_ownKeys(Object(source), true).forEach(function (key) { Dropdown_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { Dropdown_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function Dropdown_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 

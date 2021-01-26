@@ -29,7 +29,8 @@ Table.Row = ({ children, className, onClick, isSelectable }) => (
   <tr
     onClick={onClick}
     className={classNames({
-      "hover:bg-gray-50 focus:outline-none focus:bg-gray-50 cursor-pointer": onClick || isSelectable,
+      "hover:bg-gray-50 focus:outline-none focus:bg-gray-50 cursor-pointer":
+        onClick || isSelectable,
       className,
     })}
   >
@@ -40,12 +41,43 @@ Table.Row = ({ children, className, onClick, isSelectable }) => (
 Table.Cell = ({ children, className }) => (
   <td
     className={classNames(
-      "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500",
+      "px-6 py-4 text-sm leading-5 text-gray-500",
       className
     )}
   >
     {children}
   </td>
+);
+
+Table.TextCell = ({
+  primary,
+  primaryClassname,
+  secondary,
+  secondaryClassname,
+}) => (
+  <div className="flex-col">
+    {primary && (
+      <div
+        className={classNames({
+          "text-sm font-medium leading-4 text-black truncate": !primaryClassname,
+          [primaryClassname]: primaryClassname,
+        })}
+      >
+        {primary}
+      </div>
+    )}
+    {secondary && (
+      <div
+        className={classNames({
+          "flex text-sm leading-4 text-gray-500": !secondaryClassname,
+          [secondaryClassname]: secondaryClassname,
+          "mt-1": primary,
+        })}
+      >
+        {secondary}
+      </div>
+    )}
+  </div>
 );
 
 Table.propTypes = {
@@ -77,6 +109,13 @@ Table.Row.propTypes = {
 Table.Cell.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+};
+
+Table.TextCell.propTypes = {
+  primary: PropTypes.node,
+  primaryClassname: PropTypes.string,
+  secondary: PropTypes.node,
+  secondaryClassname: PropTypes.string,
 };
 
 export default Table;
