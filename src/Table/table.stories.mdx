@@ -15,10 +15,11 @@ Metal exports the following components for tables:
 
 - `Table`
 - `Table.Head`
+- `Table.HeaderCell`
 - `Table.Body`
 - `Table.Row`
 - `Table.Cell`
-- `Table.HeaderCell`
+- `Table.TextCell`
 
 # Default
 
@@ -45,10 +46,10 @@ Metal exports the following components for tables:
   </Story>
 </Preview>
 
-# Clickable
+# Clickable row
 
 <Preview>
-  <Story name="Clickable">
+  <Story name="Clickable row">
     <Table>
       <Table.Head>
         <Table.Row>
@@ -70,6 +71,38 @@ Metal exports the following components for tables:
   </Story>
 </Preview>
 
+# Multi-line content
+
+Use `Table.TextCell` to add multi-line content to a table.
+
+<Preview>
+  <Story name="Multi-line content">
+    <Table>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>IP</Table.HeaderCell>
+          <Table.HeaderCell>Device</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>
+            <Table.TextCell primary="10.54.157.26" secondary="Private IPMI" />
+          </Table.Cell>
+          <Table.Cell>master-db-prod.maxihost.com</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>
+            <Table.TextCell primary="192.168.0.2" secondary="Public IPv4" />
+          </Table.Cell>
+          <Table.Cell>slave-db-prod.maxihost.com</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  </Story>
+</Preview>
+
 # Table Props
 
 <ArgsTable of={Table} />
+<ArgsTable of={Table.Head} />

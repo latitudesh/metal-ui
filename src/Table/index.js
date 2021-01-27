@@ -42,7 +42,9 @@ Table.Row = ({ children, className, onClick, isSelectable }) => (
 );
 
 Table.Cell = ({ children, className }) => (
-  <td className={classNames("px-6 py-4", className)}>{children}</td>
+  <td className={classNames("px-6 py-4", className)}>
+    <Text small>{children}</Text>
+  </td>
 );
 
 Table.TextCell = ({
@@ -53,19 +55,22 @@ Table.TextCell = ({
 }) => (
   <>
     {primary && (
-      <Text small bold className={primaryClassname}>
+      <span
+        className={classNames("font-semibold", {
+          [primaryClassname]: primaryClassname,
+        })}
+      >
         {primary}
-      </Text>
+      </span>
     )}
     {secondary && (
-      <Text
-        small
+      <span
         className={classNames("block", {
           [secondaryClassname]: secondaryClassname,
         })}
       >
         {secondary}
-      </Text>
+      </span>
     )}
   </>
 );
