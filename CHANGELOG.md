@@ -1,3 +1,11 @@
+# [2.2.0](https://github.com/Maxihost/metal-ui/compare/v2.1.2...v2.2.0) (2021-01-27)
+
+
+### Features
+
+* Introduces Table.TextCell and fixes small bug ([3e2107e](https://github.com/Maxihost/metal-ui/commit/3e2107e7f40259041a25e26955fc410668c8ec49))
+* Uses Text component on TextCell ([2ddb120](https://github.com/Maxihost/metal-ui/commit/2ddb120b3224c834f3dc899a7b36a30a570aff33))
+
 ## [2.1.2](https://github.com/Maxihost/metal-ui/compare/v2.1.1...v2.1.2) (2020-11-24)
 
 
