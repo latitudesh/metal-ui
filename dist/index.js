@@ -7102,9 +7102,7 @@ Table_Table.Cell = function (_ref6) {
       className = _ref6.className;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("td", {
     className: classnames_default()("px-6 py-4", className)
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Typography_Text, {
-    small: true
-  }, children));
+  }, children);
 };
 
 Table_Table.TextCell = function (_ref7) {
@@ -7112,9 +7110,12 @@ Table_Table.TextCell = function (_ref7) {
       primaryClassname = _ref7.primaryClassname,
       secondary = _ref7.secondary,
       secondaryClassname = _ref7.secondaryClassname;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, primary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
-    className: classnames_default()("font-semibold", Table_defineProperty({}, primaryClassname, primaryClassname))
-  }, primary), secondary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, primary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Typography_Text, {
+    small: true,
+    bold: true,
+    className: primaryClassname
+  }, primary), secondary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Typography_Text, {
+    small: true,
     className: classnames_default()("block", Table_defineProperty({}, secondaryClassname, secondaryClassname))
   }, secondary));
 };
