@@ -8168,7 +8168,7 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
   }, rest), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("option", {
     value: "",
     disabled: true
-  }, placeholder || 'Choose one'), options.map(function (item, index) {
+  }, placeholder), options.map(function (item, index) {
     return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("option", {
       key: "".concat(item.value, "-").concat(index),
       value: item.value,
@@ -8177,7 +8177,8 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
   }))));
 });
 Select.defaultProps = {
-  options: []
+  options: [],
+  placeholder: 'Chose one'
 };
 Select.propTypes = {
   onChange: prop_types_default.a.func,
