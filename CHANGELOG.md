@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/Maxihost/metal-ui/compare/v2.2.1...v2.2.2) (2021-01-29)
+
+
+### Bug Fixes
+
+* Ads custom placeholder and ability to disable specific items in select. ([f64f27f](https://github.com/Maxihost/metal-ui/commit/f64f27f91c7c1ff7d005e99cde4c6d02cebcad79))
+
 ## [2.2.1](https://github.com/Maxihost/metal-ui/compare/v2.2.0...v2.2.1) (2021-01-27)
 
 
