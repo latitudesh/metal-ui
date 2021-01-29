@@ -7102,7 +7102,9 @@ Table_Table.Cell = function (_ref6) {
       className = _ref6.className;
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("td", {
     className: classnames_default()("px-6 py-4", className)
-  }, children);
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Typography_Text, {
+    small: true
+  }, children));
 };
 
 Table_Table.TextCell = function (_ref7) {
@@ -7110,12 +7112,9 @@ Table_Table.TextCell = function (_ref7) {
       primaryClassname = _ref7.primaryClassname,
       secondary = _ref7.secondary,
       secondaryClassname = _ref7.secondaryClassname;
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, primary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Typography_Text, {
-    small: true,
-    bold: true,
-    className: primaryClassname
-  }, primary), secondary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Typography_Text, {
-    small: true,
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, primary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
+    className: classnames_default()("font-semibold", Table_defineProperty({}, primaryClassname, primaryClassname))
+  }, primary), secondary && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
     className: classnames_default()("block", Table_defineProperty({}, secondaryClassname, secondaryClassname))
   }, secondary));
 };
@@ -8130,8 +8129,9 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
       label = _ref.label,
       id = _ref.id,
       disabled = _ref.disabled,
+      placeholder = _ref.placeholder,
       error = _ref.error,
-      rest = Select_objectWithoutProperties(_ref, ["onChange", "selectClassName", "options", "className", "value", "label", "id", "disabled", "error"]);
+      rest = Select_objectWithoutProperties(_ref, ["onChange", "selectClassName", "options", "className", "value", "label", "id", "disabled", "placeholder", "error"]);
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(""),
       _useState2 = Select_slicedToArray(_useState, 2),
@@ -8168,10 +8168,11 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
   }, rest), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("option", {
     value: "",
     disabled: true
-  }, "Choose one"), options.map(function (item, index) {
+  }, placeholder || 'Choose one'), options.map(function (item, index) {
     return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("option", {
       key: "".concat(item.value, "-").concat(index),
-      value: item.value
+      value: item.value,
+      disabled: item.disabled
     }, item.name);
   }))));
 });
