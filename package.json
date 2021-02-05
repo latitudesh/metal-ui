@@ -63,6 +63,8 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "react-instantsearch-dom": "^6.7.0"
+    "@stitches/react": "0.0.2",
+    "react-instantsearch-dom": "^6.7.0",
+    "twin.macro": "^2.2.0"
   }
 }
