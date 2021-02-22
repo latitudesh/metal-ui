@@ -2,11 +2,11 @@ import React from "react";
 import classNames from "classnames";
 
 const SpinningDots = ({ className }) => {
-  const i = "animate-pulse w-1.5 h-1.5 rounded-full bg-gray-300";
+  const i = "animate-pulse w-1.5 h-1.5 rounded-full bg-gray-600";
   return (
     <div
       className={classNames(
-        "spinner absolute inline p-0 h-auto w-full text-center",
+        "spinner inline p-0 h-auto w-full text-center",
         className
       )}
     >
