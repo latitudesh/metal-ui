@@ -24,10 +24,10 @@ const ResultsList = (props) => {
       appendNewSectionLength(sectionIndex, 0);
     }
   }, [hits.length]); // eslint-disable-line
-  
+
   const formattedHitURL = useCallback((hit) => {
     return formatHitURL(hit)
-  }, []);
+  }, [formatHitURL]);
 
   if ((Array.isArray(hits) && hits.length > 0) && !shouldHideResults) {
     return (
