@@ -5,16 +5,10 @@ import {
   DropdownContent,
   DropdownLabel,
   DropdownItem,
-  DropdownGroup,
-  DropdownCheckboxItem,
-  DropdownItemIndicator,
-  DropdownRadioGroup,
-  DropdownRadioItem,
   DropdownSeparator,
-  DropdownArrow,
 } from "./index";
 
-<Meta title="DropdownThree" component={Dropdown} />
+<Meta title="DropdownMenu" component={Dropdown} />
 
 # Available components
 
@@ -26,12 +20,7 @@ Metal exports the following components for Dropdowns:
 - DropdownLabel
 - DropdownItem
 - DropdownGroup
-- DropdownCheckboxItem
-- DropdownItemIndicator
-- DropdownRadioGroup
-- DropdownRadioItem
 - DropdownSeparator
-- DropdownArrow
 
 # API Reference
 
@@ -47,7 +36,6 @@ This component uses the Radix UI `DropdownMenu` primitive. Refer to [this page](
         <DropdownItem onSelect={() => console.log("cut")}>Cut</DropdownItem>
         <DropdownItem onSelect={() => console.log("copy")}>Copy</DropdownItem>
         <DropdownItem onSelect={() => console.log("paste")}>Paste</DropdownItem>
-        <DropdownArrow />
       </DropdownContent>
     </Dropdown>
   </Story>
@@ -65,7 +53,44 @@ This component uses the Radix UI `DropdownMenu` primitive. Refer to [this page](
         </DropdownItem>
         <DropdownItem onSelect={() => console.log("copy")}>Copy</DropdownItem>
         <DropdownItem onSelect={() => console.log("paste")}>Paste</DropdownItem>
-        <DropdownArrow />
+      </DropdownContent>
+    </Dropdown>
+  </Story>
+</Preview>
+
+# With Separators
+
+<Preview>
+  <Story name="With Separators">
+    <Dropdown>
+      <DropdownTrigger>Trigger</DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem disabled onSelect={() => console.log("cut")}>
+          Cut
+        </DropdownItem>
+        <DropdownSeparator />
+        <DropdownItem onSelect={() => console.log("copy")}>Copy</DropdownItem>
+        <DropdownSeparator />
+        <DropdownItem onSelect={() => console.log("paste")}>Paste</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+  </Story>
+</Preview>
+
+# With Labels
+
+<Preview>
+  <Story name="With Labels">
+    <Dropdown>
+      <DropdownTrigger>Trigger</DropdownTrigger>
+      <DropdownContent>
+        <DropdownLabel>Text actions</DropdownLabel>
+        <DropdownItem onSelect={() => console.log("cut")}>Cut</DropdownItem>
+        <DropdownItem onSelect={() => console.log("copy")}>Copy</DropdownItem>
+        <DropdownItem onSelect={() => console.log("paste")}>Paste</DropdownItem>
+        <DropdownLabel>File actions</DropdownLabel>
+        <DropdownItem onSelect={() => console.log("save")}>Save</DropdownItem>
+        <DropdownItem onSelect={() => console.log("trash")}>Trash</DropdownItem>
       </DropdownContent>
     </Dropdown>
   </Story>
