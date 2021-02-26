@@ -1,3 +1,37 @@
+# [2.3.0](https://github.com/Maxihost/metal-ui/compare/v2.2.2...v2.3.0) (2021-02-26)
+
+
+### Bug Fixes
+
+* Listens for formatHitURL changes ([a5607f7](https://github.com/Maxihost/metal-ui/commit/a5607f7d3953ce146abba599ebda7aa097f7b1c8))
+
+
+### Features
+
+* Ads SpinningDots ([0315b11](https://github.com/Maxihost/metal-ui/commit/0315b11264658ef079afa15f34865b7c33ab1315))
+
+## [2.2.2](https://github.com/Maxihost/metal-ui/compare/v2.2.1...v2.2.2) (2021-01-29)
+
+
+### Bug Fixes
+
+* Ads custom placeholder and ability to disable specific items in select. ([f64f27f](https://github.com/Maxihost/metal-ui/commit/f64f27f91c7c1ff7d005e99cde4c6d02cebcad79))
+
+## [2.2.1](https://github.com/Maxihost/metal-ui/compare/v2.2.0...v2.2.1) (2021-01-27)
+
+
+### Bug Fixes
+
+* build ([77fdd44](https://github.com/Maxihost/metal-ui/commit/77fdd44b28661e9bc7bd0c0704828d89df39c04a))
+
+# [2.2.0](https://github.com/Maxihost/metal-ui/compare/v2.1.2...v2.2.0) (2021-01-27)
+
+
+### Features
+
+* Introduces Table.TextCell and fixes small bug ([3e2107e](https://github.com/Maxihost/metal-ui/commit/3e2107e7f40259041a25e26955fc410668c8ec49))
+* Uses Text component on TextCell ([2ddb120](https://github.com/Maxihost/metal-ui/commit/2ddb120b3224c834f3dc899a7b36a30a570aff33))
+
 ## [2.1.2](https://github.com/Maxihost/metal-ui/compare/v2.1.1...v2.1.2) (2020-11-24)
 
 

@@ -6928,6 +6928,7 @@ __webpack_require__.d(__webpack_exports__, "Textarea", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "Select", function() { return /* reexport */ src_Select; });
 __webpack_require__.d(__webpack_exports__, "Avatar", function() { return /* reexport */ src_Avatar_Avatar; });
 __webpack_require__.d(__webpack_exports__, "AlgoliaSearch", function() { return /* reexport */ src_AlgoliaSearch; });
+__webpack_require__.d(__webpack_exports__, "SpinningDots", function() { return /* reexport */ src_SpinningDots; });
 __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
 __webpack_require__.d(__webpack_exports__, "USFlag", function() { return /* reexport */ Flags_USFlag; });
@@ -7356,9 +7357,9 @@ Dropdown_Dropdown.propTypes = {
 
 var SpinningDots_SpinningDots = function SpinningDots(_ref) {
   var className = _ref.className;
-  var i = "animate-pulse w-1.5 h-1.5 rounded-full bg-gray-300";
+  var i = "animate-pulse w-1.5 h-1.5 rounded-full bg-gray-600";
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
-    className: classnames_default()("spinner absolute inline p-0 h-auto w-full text-center", className)
+    className: classnames_default()("spinner inline p-0 h-auto w-full text-center", className)
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
     className: "inline-flex relative align-middle h-2 text-center opacity-50 w-10"
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
@@ -11459,7 +11460,7 @@ var ResultsList_ResultsList = function ResultsList(props) {
 
   var formattedHitURL = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function (hit) {
     return formatHitURL(hit);
-  }, []);
+  }, [formatHitURL]);
 
   if (Array.isArray(hits) && hits.length > 0 && !shouldHideResults) {
     return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(ResultsList_SectionTitle, {
@@ -12503,6 +12504,7 @@ ListItem_defineProperty(ListItem_ListItem, "propTypes", ListItem_objectSpread({}
 
 
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
