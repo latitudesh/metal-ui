@@ -1,4 +1,4 @@
-import tw, { styled, css, theme } from "twin.macro";
+import tw, { styled, css } from "twin.macro";
 import * as DropdownPrimitive from "@radix-ui/react-dropdown-menu";
 
 export const Dropdown = DropdownPrimitive.Root;

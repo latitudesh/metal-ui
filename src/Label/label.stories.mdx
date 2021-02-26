@@ -1,0 +1,15 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import Label from "./index";
+import Input from '../Input'
+
+<Meta title="Label" component={Label} />
+
+# Default
+Focus on input when clicking on label using the `htmlFor` attribute.
+
+<Preview>
+  <Story name="Default">
+    <Label htmlFor="name">Name</Label>
+    <Input id="name" placeholder="Insert your name" className="w-1/3" />
+  </Story>
+</Preview>
