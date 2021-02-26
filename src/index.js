@@ -13,6 +13,7 @@ export { default as Textarea } from "./Textarea";
 export { default as Select } from "./Select";
 export { default as Avatar } from "./Avatar/Avatar";
 export { default as AlgoliaSearch } from "./AlgoliaSearch";
+export { default as SpinningDots } from "./SpinningDots";
 
 export * from "./Flags";
 export * from "./OperatingSystems";

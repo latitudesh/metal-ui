@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import Text from "../Typography/Text";
 
 const Table = ({ children, className }) => (
-  <table className={classNames("min-w-full", className)}>{children}</table>
+  <table className={classNames("w-full max-w-full", className)}>
+    {children}
+  </table>
 );
 
 Table.Head = ({ children, className }) => (
@@ -29,7 +32,8 @@ Table.Row = ({ children, className, onClick, isSelectable }) => (
   <tr
     onClick={onClick}
     className={classNames({
-      "hover:bg-gray-50 focus:outline-none focus:bg-gray-50 cursor-pointer": onClick || isSelectable,
+      "hover:bg-gray-50 focus:outline-none focus:bg-gray-50 cursor-pointer":
+        onClick || isSelectable,
       className,
     })}
   >
@@ -38,14 +42,37 @@ Table.Row = ({ children, className, onClick, isSelectable }) => (
 );
 
 Table.Cell = ({ children, className }) => (
-  <td
-    className={classNames(
-      "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500",
-      className
-    )}
-  >
-    {children}
+  <td className={classNames("px-6 py-4", className)}>
+    <Text small>{children}</Text>
   </td>
+);
+
+Table.TextCell = ({
+  primary,
+  primaryClassname,
+  secondary,
+  secondaryClassname,
+}) => (
+  <>
+    {primary && (
+      <span
+        className={classNames("font-semibold", {
+          [primaryClassname]: primaryClassname,
+        })}
+      >
+        {primary}
+      </span>
+    )}
+    {secondary && (
+      <span
+        className={classNames("block", {
+          [secondaryClassname]: secondaryClassname,
+        })}
+      >
+        {secondary}
+      </span>
+    )}
+  </>
 );
 
 Table.propTypes = {
@@ -77,6 +104,13 @@ Table.Row.propTypes = {
 Table.Cell.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+};
+
+Table.TextCell.propTypes = {
+  primary: PropTypes.node,
+  primaryClassname: PropTypes.string,
+  secondary: PropTypes.node,
+  secondaryClassname: PropTypes.string,
 };
 
 export default Table;
