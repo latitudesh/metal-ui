@@ -1,6 +1,3 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
 import tw, { styled, css, theme } from "twin.macro";
 import * as DropdownPrimitive from "@radix-ui/react-dropdown-menu";
 
