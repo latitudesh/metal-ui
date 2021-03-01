@@ -1,3 +1,16 @@
+
+# [2.3.0](https://github.com/Maxihost/metal-ui/compare/v2.2.2...v2.3.0) (2021-02-26)
+
+
+### Bug Fixes
+
+* Listens for formatHitURL changes ([a5607f7](https://github.com/Maxihost/metal-ui/commit/a5607f7d3953ce146abba599ebda7aa097f7b1c8))
+
+
+### Features
+
+* Ads SpinningDots ([0315b11](https://github.com/Maxihost/metal-ui/commit/0315b11264658ef079afa15f34865b7c33ab1315))
+
 ## [2.2.2](https://github.com/Maxihost/metal-ui/compare/v2.2.1...v2.2.2) (2021-01-29)
 
 
