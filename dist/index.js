@@ -7694,7 +7694,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
     onClick: function onClick() {
       return closeTransition();
     },
-    className: bind_default()("fixed z-40 inset-0 opacity-25 duration-300 delay-200 transition", {
+    className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
       "bg-gray-800": transition,
       "bg-transparent": !transition
     })
