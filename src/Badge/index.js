@@ -28,9 +28,7 @@ const Badge = ({ style, children, minimal, className }) => {
           <circle cx="4" cy="4" r="3" />
         </svg>
       )}
-      <Text small className="inline-flex">
-        {children}
-      </Text>
+      {children}
     </div>
   )
 }
