@@ -7676,7 +7676,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
   }, [isShown]);
 
   var closeTransition = function closeTransition() {
-    if (isOpened) {
+    if (isOpened && transition) {
       onClose();
       setTransition(false);
       setTimeout(function () {

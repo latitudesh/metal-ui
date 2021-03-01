@@ -72,7 +72,7 @@ const Sidesheet = ({
   }, [isShown]);
 
   const closeTransition = () => {
-    if (isOpened) {
+    if (isOpened && transition) {
       onClose();
       setTransition(false);
       setTimeout(() => setIsOpened(false), 500);
