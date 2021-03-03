@@ -1,0 +1,40 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import Badge from "./index";
+
+<Meta title="Badge" component={Badge} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    <Badge>Default</Badge>
+    <Badge style="positive" className="ml-2">Positive</Badge>
+    <Badge style="warning" className="ml-2">Warning</Badge>
+    <Badge style="attention" className="ml-2">Attention</Badge>
+    <Badge style="danger" className="ml-2">Danger</Badge>
+    <Badge style="neutral" className="ml-2">Neutral</Badge>
+  </Story>
+</Preview>
+
+# Minimal
+
+<Preview>
+  <Story name="Minimal">
+    <Badge minimal className="ml-2">Default</Badge>
+    <Badge minimal style="positive" className="ml-2">
+      Positive
+    </Badge>
+    <Badge minimal style="warning" className="ml-2">
+      Warning
+    </Badge>
+    <Badge minimal style="attention" className="ml-2">
+      Attention
+    </Badge>
+    <Badge minimal style="danger" className="ml-2">
+      Danger
+    </Badge>
+    <Badge minimal style="neutral" className="ml-2">
+      Neutral
+    </Badge>
+  </Story>
+</Preview>
