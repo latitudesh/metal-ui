@@ -1,3 +1,16 @@
+# [2.4.0](https://github.com/Maxihost/metal-ui/compare/v2.3.1...v2.4.0) (2021-03-03)
+
+
+### Bug Fixes
+
+* Fixes Sidesheet stuck in closed state ([a15aa60](https://github.com/Maxihost/metal-ui/commit/a15aa60a1ea8e41ef8b9ca0371c3777826d25ca5))
+* Sidesheet z-index fix ([11eccb0](https://github.com/Maxihost/metal-ui/commit/11eccb0f80f42b290252890362c0b8a30bfffae8))
+
+
+### Features
+
+* Ads Badge component ([7f9f277](https://github.com/Maxihost/metal-ui/commit/7f9f2779fb503e261d13dc3c05c9c5c4f96148f0))
+
 ## [2.3.1](https://github.com/Maxihost/metal-ui/compare/v2.3.0...v2.3.1) (2021-02-26)
 
 
