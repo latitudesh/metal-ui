@@ -79,7 +79,7 @@ const Button = ({
           disabled={disabled || isLoading}
           className={ButtonClasses}
         >
-          {isLoading && <SpinningDots />}
+          {isLoading && <SpinningDots variant="light" className="absolute" />}
           {ButtonContent}
         </button>
       )}
