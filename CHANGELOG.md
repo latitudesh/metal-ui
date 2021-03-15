@@ -1,3 +1,11 @@
+## [2.4.1](https://github.com/Maxihost/metal-ui/compare/v2.4.0...v2.4.1) (2021-03-15)
+
+
+### Bug Fixes
+
+* Increases version ([5933782](https://github.com/Maxihost/metal-ui/commit/593378252e8c3f7e69170d5eba72ea558df0f0b4))
+* Package version ([af45a1b](https://github.com/Maxihost/metal-ui/commit/af45a1b366a6dbc9e6bf73450db3d0348b7aed3a))
+
 # [2.4.0](https://github.com/Maxihost/metal-ui/compare/v2.3.1...v2.4.0) (2021-03-03)
 
 
