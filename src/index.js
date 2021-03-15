@@ -1,10 +1,8 @@
 export { default as Table } from "./Table";
 export { default as Header } from "./Header";
 export { default as Content } from "./Content";
-export { default as Dropdown } from "./Dropdown";
 export { default as Button } from "./Button";
 export { default as Box } from "./Box";
-export { default as Menu } from "./Menu";
 export { default as Sidesheet } from "./Sidesheet";
 export { default as Skeleton } from "./Skeleton";
 export { default as Toast } from "./Toast";
