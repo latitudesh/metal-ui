@@ -16,19 +16,16 @@ export const DropdownLabel = styled(DropdownPrimitive.Label)(() => [
 ]);
 
 export const DropdownItem = styled(DropdownPrimitive.Item)(() => [
-  tw`rounded block px-4 py-2 text-gray-600 text-sm cursor-default`,
+  tw`rounded block px-4 py-2 text-gray-600 text-sm cursor-pointer`,
   tw`focus:(bg-gray-100 text-gray-900 outline-none)`,
 
   css`
     &[data-disabled] {
-      ${tw`text-gray-300`}
+      ${tw`text-gray-300 cursor-default`}
     }
   `,
 ]);
 
 export const DropdownSeparator = styled(DropdownPrimitive.Separator)(() => [
-  tw`bg-gray-100`,
-  css`
-    height: 1px;
-  `,
+  tw`bg-gray-100 border-b border-gray-100`,
 ]);
