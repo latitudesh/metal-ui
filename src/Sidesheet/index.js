@@ -72,7 +72,7 @@ const Sidesheet = ({
   }, [isShown]);
 
   const closeTransition = () => {
-    if (isOpened && transition) {
+    if (isOpened) {
       onClose();
       setTransition(false);
       setTimeout(() => setIsOpened(false), 500);
@@ -90,7 +90,7 @@ const Sidesheet = ({
           <div
             onClick={() => closeTransition()}
             className={classNames(
-              "fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition",
+              "fixed z-40 inset-0 opacity-25 duration-300 delay-200 transition",
               {
                 "bg-gray-800": transition,
                 "bg-transparent": !transition,

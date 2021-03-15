@@ -12,7 +12,6 @@ export { default as Textarea } from "./Textarea";
 export { default as Select } from "./Select";
 export { default as Avatar } from "./Avatar/Avatar";
 export { default as AlgoliaSearch } from "./AlgoliaSearch";
-export { default as Badge } from "./Badge";
 export { default as SpinningDots } from "./SpinningDots";
 
 export { default as Text } from "./Typography/Text";

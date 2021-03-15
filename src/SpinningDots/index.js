@@ -1,13 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const SpinningDots = ({ className, variant }) => {
-  const i = classNames("animate-pulse w-1.5 h-1.5 rounded-full", {
-    'bg-gray-300': variant === 'light',
-    'bg-gray-600': variant === 'default',
-  });
-
+const SpinningDots = ({ className }) => {
+  const i = "animate-pulse w-1.5 h-1.5 rounded-full bg-gray-600";
   return (
     <div
       className={classNames(
@@ -25,17 +20,4 @@ const SpinningDots = ({ className, variant }) => {
     </div>
   );
 };
-
-SpinningDots.propTypes = {
-  className: PropTypes.string,
-  variant: PropTypes.oneOf([
-    "default",
-    "light",
-  ]),
-};
-
-SpinningDots.defaultProps = {
-  variant: "default",
-};
-
 export default SpinningDots;
