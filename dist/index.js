@@ -6928,6 +6928,7 @@ __webpack_require__.d(__webpack_exports__, "Textarea", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "Select", function() { return /* reexport */ src_Select; });
 __webpack_require__.d(__webpack_exports__, "Avatar", function() { return /* reexport */ src_Avatar_Avatar; });
 __webpack_require__.d(__webpack_exports__, "AlgoliaSearch", function() { return /* reexport */ src_AlgoliaSearch; });
+__webpack_require__.d(__webpack_exports__, "Badge", function() { return /* reexport */ src_Badge; });
 __webpack_require__.d(__webpack_exports__, "SpinningDots", function() { return /* reexport */ src_SpinningDots; });
 __webpack_require__.d(__webpack_exports__, "BRFlag", function() { return /* reexport */ Flags_BRFlag; });
 __webpack_require__.d(__webpack_exports__, "AUFlag", function() { return /* reexport */ Flags_AUFlag; });
@@ -7355,9 +7356,14 @@ Dropdown_Dropdown.propTypes = {
 
 
 
+
 var SpinningDots_SpinningDots = function SpinningDots(_ref) {
-  var className = _ref.className;
-  var i = "animate-pulse w-1.5 h-1.5 rounded-full bg-gray-600";
+  var className = _ref.className,
+      variant = _ref.variant;
+  var i = classnames_default()("animate-pulse w-1.5 h-1.5 rounded-full", {
+    'bg-gray-300': variant === 'light',
+    'bg-gray-600': variant === 'default'
+  });
   return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
     className: classnames_default()("spinner inline p-0 h-auto w-full text-center", className)
   }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("span", {
@@ -7379,6 +7385,13 @@ var SpinningDots_SpinningDots = function SpinningDots(_ref) {
   }))));
 };
 
+SpinningDots_SpinningDots.propTypes = {
+  className: prop_types_default.a.string,
+  variant: prop_types_default.a.oneOf(["default", "light"])
+};
+SpinningDots_SpinningDots.defaultProps = {
+  variant: "default"
+};
 /* harmony default export */ var src_SpinningDots = (SpinningDots_SpinningDots);
 // CONCATENATED MODULE: ./src/Button/index.js
 function Button_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -7442,7 +7455,10 @@ var Button_Button = function Button(_ref) {
     onClick: onClick,
     disabled: disabled || isLoading,
     className: ButtonClasses
-  }, isLoading && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_SpinningDots, null), ButtonContent));
+  }, isLoading && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(src_SpinningDots, {
+    variant: "light",
+    className: "absolute"
+  }), ButtonContent));
 };
 
 Button_Button.propTypes = {
@@ -7753,8 +7769,8 @@ Sidesheet_Sidesheet.propTypes = {
 };
 /* harmony default export */ var src_Sidesheet = (Sidesheet_Sidesheet);
 // EXTERNAL MODULE: ./node_modules/styled-jsx/style.js
-var style = __webpack_require__(20);
-var style_default = /*#__PURE__*/__webpack_require__.n(style);
+var styled_jsx_style = __webpack_require__(20);
+var style_default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style);
 
 // CONCATENATED MODULE: ./src/Skeleton/styles.js
 var _defaultExport = new String("@-webkit-keyframes skeleton-jsx-309491756{0%{background-position:200% 0;}to{background-position:-200% 0;}}@keyframes skeleton-jsx-309491756{0%{background-position:200% 0;}to{background-position:-200% 0;}}.skeleton.jsx-309491756{display:block;border-radius:5px;background-image:linear-gradient( 270deg, #fafafa, #eaeaea, #eaeaea, #fafafa );background-size:400% 100%;-webkit-animation:skeleton-jsx-309491756 8s ease-in-out infinite;animation:skeleton-jsx-309491756 8s ease-in-out infinite;}");
@@ -11966,6 +11982,37 @@ AlgoliaSearch_AlgoliaSearch.propTypes = {
   dark: prop_types_default.a.bool
 };
 /* harmony default export */ var src_AlgoliaSearch = (AlgoliaSearch_AlgoliaSearch);
+// CONCATENATED MODULE: ./src/Badge/index.js
+
+
+
+
+var Badge_Badge = function Badge(_ref) {
+  var style = _ref.style,
+      children = _ref.children,
+      minimal = _ref.minimal,
+      className = _ref.className;
+  var badgeStyle = [{
+    'bg-green-100 text-green-800': style === 'positive',
+    'bg-yellow-100 text-yellow-800': style === 'warning',
+    'bg-blue-100 text-blue-800': style === 'attention',
+    'bg-red-100 text-red-800': style === 'danger',
+    'bg-gray-100 text-gray-800': style === 'neutral'
+  }];
+  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("div", {
+    className: classnames_default()('inline-flex items-center px-2.5 rounded-md text-sm font-medium h-6 leading-6', badgeStyle, className)
+  }, !minimal && /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("svg", {
+    className: classnames_default()('-ml-0.5 mr-1.5 h-2 w-2', badgeStyle),
+    fill: "currentColor",
+    viewBox: "0 0 8 8"
+  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement("circle", {
+    cx: "4",
+    cy: "4",
+    r: "3"
+  })), children);
+};
+
+/* harmony default export */ var src_Badge = (Badge_Badge);
 // CONCATENATED MODULE: ./src/Flags/Flag.js
 
 
@@ -12504,6 +12551,7 @@ ListItem_defineProperty(ListItem_ListItem, "propTypes", ListItem_objectSpread({}
 
 
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
