@@ -16,8 +16,6 @@ export { default as AlgoliaSearch } from "./AlgoliaSearch";
 export { default as Badge } from "./Badge";
 export { default as SpinningDots } from "./SpinningDots";
 
-export * from "./Flags";
-export * from "./OperatingSystems";
 export { default as Text } from "./Typography/Text";
 export { default as Heading } from "./Typography/Heading";
 export { default as UnorderedList } from "./Typography/UnorderedList";
