@@ -15162,7 +15162,8 @@ var DropdownSeparator = emotion_styled_browser_esm(index_module_Separator)(funct
 DropdownContent.defaultProps = {
   onCloseAutoFocus: function onCloseAutoFocus(e) {
     return e.preventDefault();
-  }
+  },
+  disableOutsidePointerEvents: false
 };
 
 // CONCATENATED MODULE: ./src/Typography/Heading.js
