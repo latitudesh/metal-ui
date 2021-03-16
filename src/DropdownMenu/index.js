@@ -7,7 +7,7 @@ export const DropdownTrigger = DropdownPrimitive.Trigger;
 export const DropdownContent = styled(DropdownPrimitive.Content)(() => [
   tw`mt-2 shadow-lg bg-white rounded`,
   css`
-    min-width: 130px;
+    min-width: 150px;
   `,
 ]);
 
