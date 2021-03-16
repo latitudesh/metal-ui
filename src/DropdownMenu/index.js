@@ -31,7 +31,8 @@ const DropdownSeparator = styled(DropdownPrimitive.Separator)(() => [
 ]);
 
 DropdownContent.defaultProps = {
-  onCloseAutoFocus: e => e.preventDefault()
+  onCloseAutoFocus: (e) => e.preventDefault(),
+  disableOutsidePointerEvents: false,
 };
 
 export {
