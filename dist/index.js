@@ -15094,6 +15094,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var Dropdown = react_dropdown_menu_dist_index_module_Root;
 var DropdownTrigger = Trigger;
+
 var DropdownContent = emotion_styled_browser_esm(index_module_Content)(function () {
   return [{
     "marginTop": "0.5rem",
@@ -15104,6 +15105,7 @@ var DropdownContent = emotion_styled_browser_esm(index_module_Content)(function 
     "borderRadius": "0.25rem"
   }, emotion_react_browser_esm_css(_templateObject())];
 });
+
 var DropdownLabel = emotion_styled_browser_esm(index_module_Label)(function () {
   return [{
     "paddingLeft": "1rem",
@@ -15117,6 +15119,7 @@ var DropdownLabel = emotion_styled_browser_esm(index_module_Label)(function () {
     "textTransform": "uppercase"
   }];
 });
+
 var DropdownItem = emotion_styled_browser_esm(index_module_Item)(function () {
   return [{
     "borderRadius": "0.25rem",
@@ -15145,6 +15148,7 @@ var DropdownItem = emotion_styled_browser_esm(index_module_Item)(function () {
     "cursor": "default"
   })];
 });
+
 var DropdownSeparator = emotion_styled_browser_esm(index_module_Separator)(function () {
   return [{
     "--tw-bg-opacity": "1",
@@ -15154,6 +15158,13 @@ var DropdownSeparator = emotion_styled_browser_esm(index_module_Separator)(funct
     "borderColor": "rgba(244, 245, 247, var(--tw-border-opacity))"
   }];
 });
+
+DropdownContent.defaultProps = {
+  onCloseAutoFocus: function onCloseAutoFocus(e) {
+    return e.preventDefault();
+  }
+};
+
 // CONCATENATED MODULE: ./src/Typography/Heading.js
 function Heading_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Heading_typeof = function _typeof(obj) { return typeof obj; }; } else { Heading_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Heading_typeof(obj); }
 
