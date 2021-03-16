@@ -1,3 +1,25 @@
+# [2.5.0](https://github.com/Maxihost/metal-ui/compare/v2.4.1...v2.5.0) (2021-03-16)
+
+
+### Bug Fixes
+
+* babel ([3faf068](https://github.com/Maxihost/metal-ui/commit/3faf0687dff524989f9046e767f3fd63e330355d))
+* import ([bd2cec9](https://github.com/Maxihost/metal-ui/commit/bd2cec9871ce8b7c96e98b4406e338d7afd65695))
+* Increases min width of Dropdown ([2c1b369](https://github.com/Maxihost/metal-ui/commit/2c1b369060ad5d149cc0ca9db070d7e45136bbef))
+
+
+### Features
+
+* Introduces DropdownMenu ([0669c3e](https://github.com/Maxihost/metal-ui/commit/0669c3e0b3f5f845986cb8e30a7c553fc8f3d445))
+
+## [2.4.1](https://github.com/Maxihost/metal-ui/compare/v2.4.0...v2.4.1) (2021-03-15)
+
+
+### Bug Fixes
+
+* Increases version ([5933782](https://github.com/Maxihost/metal-ui/commit/593378252e8c3f7e69170d5eba72ea558df0f0b4))
+* Package version ([af45a1b](https://github.com/Maxihost/metal-ui/commit/af45a1b366a6dbc9e6bf73450db3d0348b7aed3a))
+
 # [2.4.0](https://github.com/Maxihost/metal-ui/compare/v2.3.1...v2.4.0) (2021-03-03)
 
 
