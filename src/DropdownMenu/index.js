@@ -29,3 +29,5 @@ export const DropdownItem = styled(DropdownPrimitive.Item)(() => [
 export const DropdownSeparator = styled(DropdownPrimitive.Separator)(() => [
   tw`bg-gray-100 border-b border-gray-100`,
 ]);
+
+export default DropdownMenu;
