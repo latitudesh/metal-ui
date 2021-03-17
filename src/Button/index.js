@@ -5,11 +5,11 @@ import SpinningDots from "../SpinningDots";
 
 const buttonTypes = {
   default:
-    "border-transparent text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-700 focus:shadow-outline-indigo",
+    "border-transparent text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-700 focus:ring focus:ring-1 focus:ring-indigo",
   secondary:
-    "border-gray-300 text-gray-800 bg-white hover:bg-gray-100 active:bg-gray-100 focus:shadow-outline-blue",
+    "border-gray-300 text-gray-800 bg-white hover:bg-gray-100 active:bg-gray-100 focus:ring focus:ring-1 focus:ring-blue",
   danger:
-    "border-none text-white bg-red-600 hover:bg-red-700 active:bg-red-700 focus:shadow-outline-red",
+    "border-none text-white bg-red-600 hover:bg-red-700 active:bg-red-700 focus:ring focus:ring-1 focus:ring-red",
   disabled: "opacity-50 cursor-default hover:bg-transparent",
   minimal:
     "border-transparent text-gray-700 bg-white hover:bg-gray-100 active:bg-gray-100",

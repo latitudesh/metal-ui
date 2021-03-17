@@ -57,7 +57,7 @@ const Input = React.forwardRef(
               "form-input block w-full sm:text-sm sm:leading-5",
               inputClassName,
               {
-                "bg-red-100 border border-red-400 focus:border-red-300 focus:shadow-outline-red": error,
+                "bg-red-100 border border-red-400 focus:border-red-300 focus:ring focus:ring-1 focus:ring-red": error,
                 "bg-gray-100 cursor-not-allowed": disabled,
               }
             )}

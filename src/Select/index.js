@@ -53,10 +53,10 @@ const Select = React.forwardRef(
             value={internalValue}
             disabled={disabled}
             className={classNames(
-              "mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5",
+              "mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:ring focus:ring-1 focus:ring-blue focus:border-blue-300 sm:text-sm sm:leading-5",
               selectClassName,
               {
-                "bg-red-100 border border-red-400 focus:border-red-300 focus:shadow-outline-red": error,
+                "bg-red-100 border border-red-400 focus:border-red-300 focus:ring focus:ring-1 focus:ring-red": error,
                 "bg-gray-100 cursor-not-allowed": disabled,
               }
             )}
@@ -83,7 +83,7 @@ const Select = React.forwardRef(
 
 Select.defaultProps = {
   options: [],
-  placeholder: 'Chose one',
+  placeholder: "Chose one",
 };
 
 Select.propTypes = {
