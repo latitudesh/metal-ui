@@ -206,3 +206,32 @@ Use `scrollWindowHeight` to control the height of the results window
     </div>
   </Story>
 </Preview>
+
+# Selectable
+
+Pass the `onSelect` and `formatSelected` props so the AlgoliaSearch will become selectable.
+When setting AlgoliaSearch as selectable, it will ignore the `formatHitURL` prop.
+
+Disclaimer: AlgoliaSearch selectable mode is not yet tested with multiple indices.
+
+<Preview>
+  <Story name="Selectable">
+    <div style={{ height: "200px" }}>
+      <AlgoliaSearch
+        ALGOLIA_APP_ID="XWSX3ZKORI"
+        ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
+        indices={[
+          {
+            indexName: "movies",
+            displayName: "Movies",
+            renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
+          },
+        ]}
+        searchOperators={["<", "=", ">", ">=", "<="]}
+        specialChar=":"
+        formatSelected={(data) => data.title}
+        onSelect={(data) => console.log('SELECTED', data)}
+      />
+    </div>
+  </Story>
+</Preview>

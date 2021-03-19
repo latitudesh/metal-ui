@@ -11,7 +11,7 @@ const valHasLength = (value) => {
 };
 
 const SearchBox = (props) => {
-  const { currentRefinement, refine, id, dark, placeholder } = props;
+  const { currentRefinement, refine, id, dark, placeholder, selectedText } = props;
 
   const {
     resetActiveElementIndex,
@@ -20,7 +20,13 @@ const SearchBox = (props) => {
     setSearchInputHeight,
   } = useTabController();
 
+  const inputRef = useRef()
   const searchInputRef = useRef(null);
+
+  useEffect(() => {
+    refine(selectedText)
+    inputRef.current.value = selectedText || ''
+  }, [selectedText])
 
   const handleOnChange = (value, e) => {
     if (e.keyCode !== 40 && e.keyCode !== 38) {
@@ -48,6 +54,7 @@ const SearchBox = (props) => {
     <div className="ais-SearchBox pb-2" ref={searchInputRef}>
       <form className="ais-SearchBox-form m-0" noValidate role="search">
         <Input
+          ref={inputRef}
           inputClassName={`${
             (isResultsWindowOpen ? "focused" : "",
             dark
@@ -73,6 +80,7 @@ SearchBox.propTypes = {
   currentRefinement: PropTypes.string.isRequired,
   refine: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
+  selectedText: PropTypes.string,
 };
 
 export default connectSearchBox(SearchBox);

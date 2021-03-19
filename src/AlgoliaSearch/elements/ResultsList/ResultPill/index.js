@@ -12,6 +12,7 @@ const ResultPill = (props) => {
     sectionIndex,
     formattedHitURL,
     noResults,
+    onSelect,
   } = props;
 
   const {
@@ -37,8 +38,10 @@ const ResultPill = (props) => {
     if (isCurrentElement && enterKeyWasPressed) {
       if (formattedHitURL) {
         clickableLink.current.click();
+      } else if (onSelect) {
+        onSelect()
       } else {
-        alert('The formattedHitURL prop was not found, it is used to format the url for the pill! Without it, we dont know where to send you :)')
+        alert('The formattedHitURL or onSelect props were not found, it is used to format the url for the pill! Without it, we dont know where to send you :)')
       }
       setEnterKeyWasPressed(false);
     }
@@ -56,7 +59,7 @@ const ResultPill = (props) => {
       setScrollDistance(distToScroll);
     }
   }, [isCurrentElement, scrollableWindowHeight, scrollableWindowTopOffset, scrollWindowRef, setScrollDistance, setEnterKeyWasPressed, enterKeyWasPressed]);
-  
+
   const handleHoverSelection = () => {
     manuallySetActiveIndex((sectionLengthsArray[sectionIndex - 1] || 0) + elementIndex);
   }
@@ -95,7 +98,8 @@ const ResultPill = (props) => {
     >
       <a
         ref={clickableLink}
-        href={formattedHitURL}
+        href={!onSelect && formattedHitURL}
+        onClick={onSelect}
         className={`px-2 rounded outline-none ${isCurrentElement ? 'bg-indigo-600 text-white' : 'text-gray-800'}`}
         style={{...styles.resultPillLink}}
       >
@@ -109,6 +113,7 @@ ResultPill.defaultProps = {
   elementIndex: null,
   sectionIndex: null,
   noResults: false,
+  onSelect: null,
 };
 
 ResultPill.propTypes = {
@@ -117,6 +122,7 @@ ResultPill.propTypes = {
   sectionIndex: PropTypes.number,
   formattedHitURL: PropTypes.string.isRequired,
   noResults: PropTypes.bool,
+  onSelect: PropTypes.func,
 };
 
 export default ResultPill;
