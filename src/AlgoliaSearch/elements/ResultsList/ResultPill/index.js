@@ -98,7 +98,7 @@ const ResultPill = (props) => {
     >
       <a
         ref={clickableLink}
-        href={!onSelect && formattedHitURL}
+        href={!onSelect ? formattedHitURL : null}
         onClick={onSelect}
         className={`px-2 rounded outline-none ${isCurrentElement ? 'bg-indigo-600 text-white' : 'text-gray-800'}`}
         style={{...styles.resultPillLink}}
