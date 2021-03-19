@@ -12941,6 +12941,8 @@ function _cleanUp(props, searchState, context) {
 // CONCATENATED MODULE: ./src/AlgoliaSearch/elements/SearchBox/index.js
 function SearchBox_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function SearchBox_extends() { SearchBox_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return SearchBox_extends.apply(this, arguments); }
+
 
 
 
@@ -12959,7 +12961,8 @@ var SearchBox_SearchBox = function SearchBox(props) {
       id = props.id,
       dark = props.dark,
       placeholder = props.placeholder,
-      selectedText = props.selectedText;
+      selectedText = props.selectedText,
+      inputProps = props.inputProps;
 
   var _useTabController = TabController_useTabController(),
       resetActiveElementIndex = _useTabController.resetActiveElementIndex,
@@ -13002,7 +13005,7 @@ var SearchBox_SearchBox = function SearchBox(props) {
     className: "ais-SearchBox-form m-0",
     noValidate: true,
     role: "search"
-  }, emotion_react_browser_esm_jsx(src_Input, SearchBox_defineProperty({
+  }, emotion_react_browser_esm_jsx(src_Input, SearchBox_extends(SearchBox_defineProperty({
     ref: inputRef,
     inputClassName: "".concat((isResultsWindowOpen ? "focused" : "", dark ? "bg-gray-800 border-gray-600 text-white focus:border-gray-500 hover:border-gray-500" : "bg-white border-gray-200 text-gray-900 focus:border-gray-300 hover:border-gray-300"), " -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none"),
     value: currentRefinement,
@@ -13013,7 +13016,7 @@ var SearchBox_SearchBox = function SearchBox(props) {
     placeholder: "".concat(placeholder ? placeholder : "Search..."),
     id: "search-box-".concat(id),
     autoComplete: "off"
-  }, "type", "search"))));
+  }, "type", "search"), inputProps))));
 };
 
 SearchBox_SearchBox.propTypes = {
@@ -13211,7 +13214,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
     onMouseEnter: handleHoverSelection
   }, emotion_react_browser_esm_jsx("a", {
     ref: clickableLink,
-    href: !onSelect && formattedHitURL,
+    href: !onSelect ? formattedHitURL : null,
     onClick: onSelect,
     className: "px-2 rounded outline-none ".concat(isCurrentElement ? 'bg-indigo-600 text-white' : 'text-gray-800'),
     style: ResultPill_objectSpread({}, ResultPill_style.resultPillLink)
@@ -13313,7 +13316,8 @@ ResultsList_ResultsList.propTypes = {
   sectionTitle: prop_types_default.a.string.isRequired,
   sectionIndex: prop_types_default.a.number.isRequired,
   renderCardInfo: prop_types_default.a.func.isRequired,
-  formatHitURL: prop_types_default.a.func
+  formatHitURL: prop_types_default.a.func,
+  onSelect: prop_types_default.a.func
 };
 /* harmony default export */ var elements_ResultsList = (connectHits(ResultsList_ResultsList));
 // CONCATENATED MODULE: ./src/AlgoliaSearch/assets/ArrowDown/index.js
@@ -13491,7 +13495,8 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
       dark = props.dark,
       placeholder = props.placeholder,
       formatSelected = props.formatSelected,
-      _onSelect = props.onSelect;
+      _onSelect = props.onSelect,
+      inputProps = props.inputProps;
 
   var _useTabController = TabController_useTabController(),
       activeElementIndex = _useTabController.activeElementIndex,
@@ -13703,6 +13708,7 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
     id: ALGOLIA_APP_ID,
     dark: dark,
     selectedText: selectedItem ? formatSelected(selectedItem) : '',
+    inputProps: inputProps,
     placeholder: placeholder
   }), emotion_react_browser_esm_jsx("div", {
     className: "shadow-xl rounded absolute w-full bg-white border border-gray-200",

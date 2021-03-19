@@ -29,6 +29,7 @@ const SearchComponent = (props) => {
     placeholder,
     formatSelected,
     onSelect,
+    inputProps,
   } = props;
 
   const {
@@ -236,6 +237,7 @@ const SearchComponent = (props) => {
             id={ALGOLIA_APP_ID}
             dark={dark}
             selectedText={selectedItem ? formatSelected(selectedItem) : ''}
+            inputProps={inputProps}
             placeholder={placeholder}
           />
 

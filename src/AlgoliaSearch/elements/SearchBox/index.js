@@ -11,7 +11,7 @@ const valHasLength = (value) => {
 };
 
 const SearchBox = (props) => {
-  const { currentRefinement, refine, id, dark, placeholder, selectedText } = props;
+  const { currentRefinement, refine, id, dark, placeholder, selectedText, inputProps } = props;
 
   const {
     resetActiveElementIndex,
@@ -70,6 +70,7 @@ const SearchBox = (props) => {
           id={`search-box-${id}`}
           autoComplete="off"
           type="search"
+          {...inputProps}
         />
       </form>
     </div>
