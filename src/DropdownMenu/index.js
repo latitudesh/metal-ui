@@ -12,22 +12,22 @@ const DropdownContent = styled(DropdownPrimitive.Content)(() => [
 ]);
 
 const DropdownLabel = styled(DropdownPrimitive.Label)(() => [
-  tw`px-4 py-2 text-xs text-gray-600 uppercase`,
+  tw`px-4 py-2 text-xs text-accents-six uppercase`,
 ]);
 
 const DropdownItem = styled(DropdownPrimitive.Item)(() => [
-  tw`rounded block px-4 py-2 text-gray-600 text-sm cursor-pointer`,
-  tw`focus:(bg-gray-100 text-gray-900 outline-none)`,
+  tw`rounded block px-4 py-2 text-accents-six text-sm cursor-pointer`,
+  tw`focus:(bg-accents-two text-accents-eight outline-none)`,
 
   css`
     &[data-disabled] {
-      ${tw`text-gray-300 cursor-default`}
+      ${tw`text-accents-three cursor-default`}
     }
   `,
 ]);
 
 const DropdownSeparator = styled(DropdownPrimitive.Separator)(() => [
-  tw`bg-gray-100 border-b border-gray-100`,
+  tw`bg-accents-two border-b border-border`
 ]);
 
 DropdownContent.defaultProps = {
