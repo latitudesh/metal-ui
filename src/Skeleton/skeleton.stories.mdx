@@ -1,0 +1,44 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import Skeleton from "./index";
+
+<Meta title="Skeleton" component={Skeleton} />
+
+# Props
+<Props of={Skeleton} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    <Skeleton />
+  </Story>
+</Preview>
+
+# Width
+
+<Preview>
+  <Story name="Width">
+    <Skeleton width={240} />
+  </Story>
+</Preview>
+
+# Height
+
+<Preview>
+  <Story name="Height">
+    <Skeleton height={64} />
+  </Story>
+</Preview>
+
+# Example
+
+<Preview>
+  <Story name="Example">
+    <Skeleton width={240} className="mt-2" />
+    <Skeleton width={480} className="mt-2" />
+    <Skeleton width={480} height={64} className="mt-2" />
+    <Skeleton width={480} className="mt-2" />
+  </Story>
+</Preview>
+
+

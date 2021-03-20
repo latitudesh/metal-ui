@@ -28,11 +28,11 @@ const StyledSkeleton = styled.span(({ width, height }) => [
 `,
 ]);
 
-const Skeleton = ({ width, height }) => {
+const Skeleton = ({ width, height, className }) => {
   return (
     <div>
       <StyledSkeleton
-        className="skeleton"
+        className={className}
         width={width}
         height={height}
         css={css`
@@ -46,6 +46,7 @@ const Skeleton = ({ width, height }) => {
 Skeleton.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
+  className: PropTypes.string,
 };
 
 Skeleton.defaultProps = {
