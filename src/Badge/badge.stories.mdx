@@ -1,18 +1,32 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
 import Badge from "./index";
 
 <Meta title="Badge" component={Badge} />
+
+# Props
+
+<Props of={Badge} />
 
 # Default
 
 <Preview>
   <Story name="Default">
     <Badge>Default</Badge>
-    <Badge style="positive" className="ml-2">Positive</Badge>
-    <Badge style="warning" className="ml-2">Warning</Badge>
-    <Badge style="attention" className="ml-2">Attention</Badge>
-    <Badge style="danger" className="ml-2">Danger</Badge>
-    <Badge style="neutral" className="ml-2">Neutral</Badge>
+    <Badge style="positive" className="ml-2">
+      Positive
+    </Badge>
+    <Badge style="warning" className="ml-2">
+      Warning
+    </Badge>
+    <Badge style="attention" className="ml-2">
+      Attention
+    </Badge>
+    <Badge style="danger" className="ml-2">
+      Danger
+    </Badge>
+    <Badge style="neutral" className="ml-2">
+      Neutral
+    </Badge>
   </Story>
 </Preview>
 
@@ -20,7 +34,9 @@ import Badge from "./index";
 
 <Preview>
   <Story name="Minimal">
-    <Badge minimal className="ml-2">Default</Badge>
+    <Badge minimal className="ml-2">
+      Default
+    </Badge>
     <Badge minimal style="positive" className="ml-2">
       Positive
     </Badge>
@@ -35,6 +51,25 @@ import Badge from "./index";
     </Badge>
     <Badge minimal style="neutral" className="ml-2">
       Neutral
+    </Badge>
+  </Story>
+</Preview>
+
+# Rounded
+
+<Preview>
+  <Story name="Rounded">
+    <Badge rounded minimal>
+      5
+    </Badge>
+    <Badge rounded minimal className="ml-2">
+      10
+    </Badge>
+    <Badge rounded minimal className="ml-2">
+      100
+    </Badge>
+    <Badge rounded minimal className="ml-2">
+      2021
     </Badge>
   </Story>
 </Preview>
