@@ -1,13 +1,14 @@
-import React from 'react';
+import React from "react";
+import Text from "../../../Typography/Text";
 
 const NoResults = () => {
   return (
-    <li className="pb-2 pt-2" style={{ display: 'block' }}>
-      <p className="p-2 border shadow-sm rounded border-red-600 text-red-700">
+    <li className="pb-2 pt-2" style={{ display: "block" }}>
+      <Text is="p" className="p-2">
         No results were found...
-     </p>
+      </Text>
     </li>
-  )
+  );
 };
 
 export default NoResults;

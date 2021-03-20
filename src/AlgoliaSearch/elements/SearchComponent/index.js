@@ -230,7 +230,7 @@ const SearchComponent = (props) => {
           <SearchBox id={ALGOLIA_APP_ID} dark={dark} placeholder={placeholder} />
 
           <div
-            className="shadow-xl rounded absolute w-full bg-white border border-gray-200"
+            className="shadow-xl rounded absolute w-full bg-white border border-border"
             style={{
               visibility: `${isResultsWindowOpen ? "visible" : "hidden"}`,
             }}
