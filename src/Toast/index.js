@@ -8,7 +8,7 @@ function XIcon() {
   return (
     <svg
       fill="none"
-      className="text-gray-600"
+      className="text-accents-6"
       stroke="currentColor"
       viewBox="0 0 24 24"
       role="button"
@@ -93,8 +93,8 @@ const Toast = ({
           className={classNames(
             "fixed z-50 w-1/4 max-w-full p-5 bg-white bottom-0 rounded-md shadow-xl opacity-0",
             {
-              "text-white bg-red-600": error,
-              "text-white bg-indigo-600": success,
+              "text-white bg-error": error,
+              "text-white bg-success": success,
               "opacity-100": showToast,
             }
           )}
