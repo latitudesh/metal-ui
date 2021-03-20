@@ -1,6 +1,6 @@
-import css from "styled-jsx/css";
+import tw, { css } from "twin.macro";
 
-export default css`
+export default style = css`
   @keyframes skeleton {
     0% {
       background-position: 200% 0;
