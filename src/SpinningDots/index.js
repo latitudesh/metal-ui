@@ -4,8 +4,8 @@ import classNames from "classnames";
 
 const SpinningDots = ({ className, variant }) => {
   const i = classNames("animate-pulse w-1.5 h-1.5 rounded-full", {
-    'bg-gray-300': variant === 'light',
-    'bg-gray-600': variant === 'default',
+    'bg-accents-three': variant === 'light',
+    'bg-accents-six': variant === 'default',
   });
 
   return (
