@@ -56,7 +56,6 @@
     "react-svg": "^11.0.20",
     "react-test-renderer": "^16.13.1",
     "semantic-release": "^17.1.2",
-    "styled-jsx": "^3.3.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
     "twin.macro": "^2.3.0",
     "webpack": "^4.43.0",
