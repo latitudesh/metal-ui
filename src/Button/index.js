@@ -5,14 +5,14 @@ import SpinningDots from "../SpinningDots";
 
 const buttonTypes = {
   default:
-    "border-transparent text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-700 focus:ring focus:ring-1 focus:ring-indigo",
+    "border-transparent text-white bg-foreground hover:bg-accents-two hover:text-foreground hover:border hover:border-border active:bg-foreground active:text-white",
   secondary:
-    "border-gray-300 text-gray-800 bg-white hover:bg-gray-100 active:bg-gray-100 focus:ring focus:ring-1 focus:ring-blue",
+    "border-secondary text-foreground bg-white hover:bg-accents-two hover:text-foreground hover:border hover:border-border active:bg-foreground active:text-white",
   danger:
-    "border-none text-white bg-red-600 hover:bg-red-700 active:bg-red-700 focus:ring focus:ring-1 focus:ring-red",
+    "border text-white bg-error-dark hover:bg-accents-two hover:text-foreground hover:border hover:border-border active:bg-foreground active:text-white",
   disabled: "opacity-50 cursor-default hover:bg-transparent",
   minimal:
-    "border-transparent text-gray-700 bg-white hover:bg-gray-100 active:bg-gray-100",
+    "border-transparent text-foreground bg-white active:bg-accents-two hover:text-foreground hover:border hover:border-border active:bg-foreground active:text-white",
 };
 
 const Button = ({
@@ -32,10 +32,13 @@ const Button = ({
 
   const ButtonContent = (
     <div
-      className={classNames("inline-flex items-center", {
-        "opacity-0": isLoading,
-        "opacity-100": !isLoading,
-      })}
+      className={classNames(
+        "inline-flex items-center shadow-sm active:shadow-inner",
+        {
+          "opacity-0": isLoading,
+          "opacity-100": !isLoading,
+        }
+      )}
     >
       {iconBefore && <span className="mr-2">{cloneElement(iconBefore)}</span>}
       <span>{label}</span>
@@ -44,13 +47,13 @@ const Button = ({
   );
 
   const ButtonClasses = cx(
-    "Button border items-center inline-flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center",
+    "Button border items-center inline-flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-300 justify-center",
     {
       disabled: disabled,
       [variant]: Boolean(variant),
       "px-5 h-9 leading-9 text-sm": !Boolean(block),
-      "w-full h-12 leading-12": Boolean(block),
-      "px-10 h-10 leading-10": Boolean(large),
+      "w-full": Boolean(block),
+      "px-12 h-10 leading-10": Boolean(large),
     }
   );
 
