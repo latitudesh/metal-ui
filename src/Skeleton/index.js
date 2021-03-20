@@ -28,7 +28,7 @@ const StyledSkeleton = styled.span(({ width, height }) => [
 `,
 ]);
 
-const Skeleton = ({ width, height, className }) => {
+const Skeleton = ({ width, height }) => {
   return (
     <div>
       <StyledSkeleton
