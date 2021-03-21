@@ -8120,7 +8120,7 @@ var Box_Box = function Box(_ref) {
     className: classnames_default()("overflow-hidden", className, (_classNames = {
       flex: Boolean(flex),
       "bg-white": !Boolean(backgroundColor)
-    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 border border-border rounded", Boolean(rootCard)), Box_defineProperty(_classNames, "px-6 py-4", !Boolean(noPadding)), Box_defineProperty(_classNames, "flex-".concat(flexWrap), Boolean(flexWrap)), _classNames))
+    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 border border-border rounded shadow-sm", Boolean(rootCard)), Box_defineProperty(_classNames, "px-6 py-4", !Boolean(noPadding)), Box_defineProperty(_classNames, "flex-".concat(flexWrap), Boolean(flexWrap)), _classNames))
   }, children);
 };
 
@@ -8926,7 +8926,7 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
     value: internalValue,
     disabled: disabled,
     className: classnames_default()("border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 focus:outline-none sm:text-sm sm:leading-5", selectClassName, {
-      "border-border focus:border-accents-five": "!error",
+      "border-border focus:border-accents-five": !error,
       "border-error focus:border-error placeholder-error": error,
       "bg-background cursor-not-allowed cursor-not-allowed": disabled
     })
