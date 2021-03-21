@@ -9407,7 +9407,7 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
       return emotion_react_browser_esm_jsx("div", Avatar_extends({
         className: classnames_default()("overflow-hidden relative inline-flex flex-shrink-0 justify-center", className, {
           "rounded-full": !Boolean(isDashed),
-          "rounded border-2 border-dashed border-accents-three": Boolean(isDashed)
+          "rounded border-2 border-dashed border-accents-four": Boolean(isDashed)
         }),
         style: {
           backgroundColor: isDashed ? 'transparent' : colorProps.backgroundColor,
@@ -9417,7 +9417,7 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
         title: name
       }, props), emotion_react_browser_esm_jsx("span", {
         className: classnames_default()("relative flex justify-center items-center", {
-          "text-accents-three": Boolean(isDashed)
+          "text-accents-four": Boolean(isDashed)
         }),
         style: {
           color: !isDashed && colorProps.color,
