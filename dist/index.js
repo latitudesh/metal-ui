@@ -13871,7 +13871,7 @@ var DropdownItem = emotion_styled_browser_esm(index_module_Item)(function () {
   }, {
     ":focus": {
       "--tw-bg-opacity": "1",
-      "backgroundColor": "rgba(250, 250, 250, var(--tw-bg-opacity))",
+      "backgroundColor": "rgba(244, 245, 247, var(--tw-bg-opacity))",
       "--tw-text-opacity": "1",
       "color": "rgba(17, 17, 17, var(--tw-text-opacity))",
       "outline": "2px solid transparent",
@@ -13879,7 +13879,7 @@ var DropdownItem = emotion_styled_browser_esm(index_module_Item)(function () {
     }
   }, emotion_react_browser_esm_css(DropdownMenu_templateObject2 || (DropdownMenu_templateObject2 = DropdownMenu_taggedTemplateLiteral(["\n    &[data-disabled] {\n      ", "\n    }\n  "])), {
     "--tw-text-opacity": "1",
-    "color": "rgba(153, 153, 153, var(--tw-text-opacity))",
+    "color": "rgba(229, 231, 235, var(--tw-text-opacity))",
     "cursor": "default"
   })];
 });
@@ -13887,7 +13887,7 @@ var DropdownItem = emotion_styled_browser_esm(index_module_Item)(function () {
 var DropdownSeparator = emotion_styled_browser_esm(index_module_Separator)(function () {
   return [{
     "--tw-bg-opacity": "1",
-    "backgroundColor": "rgba(250, 250, 250, var(--tw-bg-opacity))",
+    "backgroundColor": "rgba(244, 245, 247, var(--tw-bg-opacity))",
     "borderBottomWidth": "1px",
     "--tw-border-opacity": "1",
     "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))"
