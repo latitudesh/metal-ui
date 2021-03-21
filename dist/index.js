@@ -8842,7 +8842,7 @@ var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
     className: classnames_default()("form-textarea block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border-border border shadow-sm focus:outline-none", textareaClassName, {
       "text-accents-six focus:border-accents-six": !error,
       "border border-error placeholder-error": error,
-      "bg-gray-100 cursor-not-allowed": disabled
+      "bg-accents-two cursor-not-allowed": disabled
     })
   }, rest)));
 });
@@ -11943,7 +11943,7 @@ var SearchBox_SearchBox = function SearchBox(props) {
     noValidate: true,
     role: "search"
   }, emotion_react_browser_esm_jsx(src_Input, SearchBox_defineProperty({
-    inputClassName: "".concat((isResultsWindowOpen ? "focused" : "", dark ? "bg-gray-800 border-border text-white focus:border-accents-three hover:border-accents-three" : "bg-white border-border text-foreground focus:border-accents-three hover:border-accents-three"), " -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none"),
+    inputClassName: "".concat((isResultsWindowOpen ? "focused" : "", dark ? "bg-accents-eight placeholder-accents-three text-white focus:text-accents-three focus:border-accents-three border border-border hover:border-accents-three" : "bg-white border-border text-foreground focus:border-accents-three hover:border-accents-three"), " -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none"),
     value: currentRefinement,
     onChange: handleOnChange,
     onFocus: checkIfResultsWindowShouldOpen,
