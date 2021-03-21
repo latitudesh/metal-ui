@@ -4,6 +4,7 @@ import classNames from "classnames";
 const Badge = ({ style, children, minimal, className, rounded }) => {
   let badgeStyle = [
     {
+      "text-foreground": style === "default",
       "text-success": style === "positive",
       "text-warning": style === "warning",
       "text-violet": style === "attention",
@@ -38,6 +39,10 @@ const Badge = ({ style, children, minimal, className, rounded }) => {
       {children}
     </div>
   );
+};
+
+Badge.defaultProps = {
+  style: 'default',
 };
 
 export default Badge;

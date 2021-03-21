@@ -8756,9 +8756,9 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
     "aria-required": label ? true : false,
     "aria-invalid": error ? true : false,
     disabled: disabled,
-    className: classnames_default()("form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border-border border shadow-sm focus:outline-none", inputClassName, {
-      "text-accents-six focus:border-accents-six": !error,
-      "border border-error placeholder-error": error,
+    className: classnames_default()("form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none", inputClassName, {
+      "border-border text-accents-six focus:border-accents-six": !error,
+      "border-error placeholder-error": error,
       "bg-background cursor-not-allowed cursor-not-allowed": disabled
     })
   }, rest))));
@@ -12741,6 +12741,7 @@ var Badge_Badge = function Badge(_ref) {
       className = _ref.className,
       rounded = _ref.rounded;
   var badgeStyle = [{
+    "text-foreground": style === "default",
     "text-success": style === "positive",
     "text-warning": style === "warning",
     "text-violet": style === "attention",
@@ -12762,6 +12763,9 @@ var Badge_Badge = function Badge(_ref) {
   })), children);
 };
 
+Badge_Badge.defaultProps = {
+  style: 'default'
+};
 /* harmony default export */ var src_Badge = (Badge_Badge);
 // CONCATENATED MODULE: ./node_modules/@radix-ui/react-id/dist/index.module.js
 function index_module_r(){return(index_module_r=Object.assign||function(e){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n])}return e}).apply(this,arguments)}const index_module_t={prefix:Math.round(1e10*Math.random()),current:0},index_module_n=external_root_React_commonjs2_react_commonjs_react_amd_react_["createContext"](index_module_t);const IdProvider=o=>{const a=external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"](index_module_n),i=a===index_module_t,c=external_root_React_commonjs2_react_commonjs_react_amd_react_["useMemo"]((()=>({prefix:i?0:++a.prefix,current:0})),[i,a]);return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](index_module_n.Provider,index_module_r({value:c},o))};function useId(r){const o=external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"](index_module_n);return Boolean(null===globalThis||void 0===globalThis?void 0:globalThis.document)||o!==index_module_t||console.warn("When server rendering, you must wrap your application in an <IdProvider> to ensure consistent ids are generated between the client and server."),external_root_React_commonjs2_react_commonjs_react_amd_react_["useMemo"]((()=>r||"radix-id-".concat(o.prefix,"-").concat(++o.current)),[r])}
