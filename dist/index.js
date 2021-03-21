@@ -8759,7 +8759,7 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
     className: classnames_default()("form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border-border border shadow-sm focus:outline-none", inputClassName, {
       "text-accents-six focus:border-accents-six": !error,
       "border border-error placeholder-error": error,
-      "bg-background cursor-not-allowed": disabled
+      "bg-background cursor-not-allowed cursor-not-allowed": disabled
     })
   }, rest))));
 });
@@ -8928,7 +8928,7 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
     className: classnames_default()("border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 focus:outline-none sm:text-sm sm:leading-5", selectClassName, {
       "border-border focus:border-accents-five": "!error",
       "border-error focus:border-error placeholder-error": error,
-      "bg-gray-100 cursor-not-allowed": disabled
+      "bg-background cursor-not-allowed cursor-not-allowed": disabled
     })
   }, rest), emotion_react_browser_esm_jsx("option", {
     value: "",

@@ -58,7 +58,7 @@ const Select = React.forwardRef(
               {
                 "border-border focus:border-accents-five" : "!error",
                 "border-error focus:border-error placeholder-error": error,
-                "bg-gray-100 cursor-not-allowed": disabled,
+                "bg-background cursor-not-allowed cursor-not-allowed": disabled,
               }
             )}
             {...rest}
