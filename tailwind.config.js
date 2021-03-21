@@ -10,6 +10,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
+      background: '#f4f5f7',
       foreground: '#000000',
       white: '#FFFFFF',
       selection: '#79FFE1',
@@ -23,7 +24,7 @@ module.exports = {
       violet: '#7928CA',
       accents: {
         DEFAULT: '#FAFAFA',
-        two: '#f4f5f7',
+        two: '#f9fafb',
         three: '#e5e7eb',
         four: '#888888',
         five: '#666666',

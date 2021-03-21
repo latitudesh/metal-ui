@@ -59,7 +59,7 @@ const Input = React.forwardRef(
               {
                 "text-accents-six focus:border-accents-six": !error,
                 "border border-error placeholder-error": error,
-                "bg-accents-two cursor-not-allowed": disabled,
+                "bg-background cursor-not-allowed": disabled,
               }
             )}
             {...rest}
