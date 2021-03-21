@@ -61,7 +61,7 @@ const Textarea = React.forwardRef(
             {
               "text-accents-six focus:border-accents-six": !error,
               "border border-error placeholder-error": error,
-              "bg-gray-100 cursor-not-allowed": disabled,
+              "bg-accents-two cursor-not-allowed": disabled,
             }
           )}
           {...rest}

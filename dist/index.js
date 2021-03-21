@@ -12744,7 +12744,6 @@ var Badge_Badge = function Badge(_ref) {
     "text-foreground": style === "default",
     "text-success": style === "positive",
     "text-warning": style === "warning",
-    "text-violet": style === "attention",
     "text-error": style === "danger"
   }];
   var isRounded = [{
