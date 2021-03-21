@@ -56,7 +56,7 @@ const Select = React.forwardRef(
               "border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 focus:outline-none sm:text-sm sm:leading-5",
               selectClassName,
               {
-                "border-border focus:border-accents-five" : "!error",
+                "border-border focus:border-accents-five" : !error,
                 "border-error focus:border-error placeholder-error": error,
                 "bg-background cursor-not-allowed cursor-not-allowed": disabled,
               }

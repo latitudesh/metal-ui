@@ -10,7 +10,7 @@ const Table = ({ children, className }) => (
 );
 
 Table.Head = ({ children, className }) => (
-  <thead className={classNames("border border-border rounded", className)}>
+  <thead className={classNames("border-b border-border rounded", className)}>
     {children}
   </thead>
 );

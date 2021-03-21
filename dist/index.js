@@ -7810,7 +7810,7 @@ Table_Table.Head = function (_ref2) {
   var children = _ref2.children,
       className = _ref2.className;
   return emotion_react_browser_esm_jsx("thead", {
-    className: classnames_default()("border border-border rounded", className)
+    className: classnames_default()("border-b border-border rounded", className)
   }, children);
 };
 
