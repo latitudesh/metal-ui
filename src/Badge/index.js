@@ -7,7 +7,6 @@ const Badge = ({ style, children, minimal, className, rounded }) => {
       "text-foreground": style === "default",
       "text-success": style === "positive",
       "text-warning": style === "warning",
-      "text-violet": style === "attention",
       "text-error": style === "danger",
     },
   ];
