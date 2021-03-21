@@ -8529,7 +8529,9 @@ var Skeleton_Skeleton = function Skeleton(_ref2) {
   var width = _ref2.width,
       height = _ref2.height,
       className = _ref2.className;
-  return emotion_react_browser_esm_jsx("div", null, emotion_react_browser_esm_jsx(StyledSkeleton, {
+  return emotion_react_browser_esm_jsx("div", {
+    className: "skeleton"
+  }, emotion_react_browser_esm_jsx(StyledSkeleton, {
     className: className,
     width: width,
     height: height,
