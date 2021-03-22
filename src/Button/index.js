@@ -33,19 +33,19 @@ const Button = ({
 
   const ButtonContent = (
     <div
-      className={classNames("inline-flex items-center", {
+      className={classNames("flex items-center justify-center", {
         "opacity-0": isLoading,
         "opacity-100": !isLoading,
       })}
     >
-      {iconBefore && <span className="mr-2">{cloneElement(iconBefore)}</span>}
-      <span>{label}</span>
-      {iconAfter && <span className="ml-2">{cloneElement(iconAfter)}</span>}
+      {iconBefore && <span className="flex mr-2">{cloneElement(iconBefore)}</span>}
+      <span className="truncate">{label}</span>
+      {iconAfter && <span className="flex ml-2">{cloneElement(iconAfter)}</span>}
     </div>
   );
 
   const ButtonClasses = cx(
-    "Button border items-center inline-flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center",
+    "Button border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer",
     {
       disabled: disabled,
       [variant]: Boolean(variant) && !disabled,
@@ -111,6 +111,7 @@ Button.defaultProps = {
   variant: "default",
   type: "button",
   isLoading: false,
+  disabled: false,
 };
 
 export default Button;

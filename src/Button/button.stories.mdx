@@ -1,6 +1,7 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
 import Button from "./index";
 import Icon from "../../util/Icon";
+import { ArrowUpOutline } from "heroicons-react";
 
 <Meta title="Button" component={Button} />
 
@@ -94,10 +95,22 @@ The component does not handle icon sizing. You should manage that from your proj
   <Story name="With Icon">
     <div>
       <div>
-        <Button iconBefore={<Icon />} label="Icon before" />
+        <Button iconBefore={<ArrowUpOutline size={20} />} label="Icon before" />
       </div>
       <div className="mt-2">
-        <Button iconAfter={<Icon />} variant="secondary" label="Icon after" />
+        <Button
+          iconAfter={<ArrowUpOutline size={20} />}
+          variant="secondary"
+          label="Icon after"
+        />
+      </div>
+      <div className="mt-2">
+        <Button
+          iconBefore={<ArrowUpOutline size={20} />}
+          iconAfter={<ArrowUpOutline size={20} />}
+          variant="secondary"
+          label="Icon before and after"
+        />
       </div>
     </div>
   </Story>
@@ -112,3 +125,7 @@ Buttons with components don't currently support icons
     <Button component={<a href="javascript:void()">With component</a>} />
   </Story>
 </Preview>
+
+# API
+
+<Props of={Button} />
