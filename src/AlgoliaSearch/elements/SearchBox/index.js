@@ -11,7 +11,7 @@ const valHasLength = (value) => {
 };
 
 const SearchBox = (props) => {
-  const { currentRefinement, refine, id, dark, placeholder, selectedText, inputProps } = props;
+  const { currentRefinement, refine, id, dark, placeholder, selectedText, inputProps, onSelect } = props;
 
   const {
     resetActiveElementIndex,
@@ -34,6 +34,11 @@ const SearchBox = (props) => {
       refine(value);
     } else {
       e.preventDefault();
+    }
+
+    if (!value?.length && onSelect) {
+      // Trigger on Select when field clears
+      onSelect()
     }
 
     setIsResultsWindowOpen(valHasLength(value));
@@ -64,7 +69,6 @@ const SearchBox = (props) => {
           value={currentRefinement}
           onChange={handleOnChange}
           onFocus={checkIfResultsWindowShouldOpen}
-          type="search"
           aria-label="Search for a resource by typing here"
           placeholder={`${placeholder ? placeholder : "Search..."}`}
           id={`search-box-${id}`}

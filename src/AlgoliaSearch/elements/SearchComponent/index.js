@@ -222,6 +222,11 @@ const SearchComponent = (props) => {
     }
   };
 
+  const handleOnSelect = (hit) => {
+    setSelectedItem(hit)
+    onSelect && onSelect(hit)
+  }
+
   const LoaderToRender = customLoader ? customLoader : <Loader />;
   const NoResultsToRender = customNoResults ? customNoResults : <NoResults />;
 
@@ -239,6 +244,7 @@ const SearchComponent = (props) => {
             selectedText={selectedItem ? formatSelected(selectedItem) : ''}
             inputProps={inputProps}
             placeholder={placeholder}
+            onSelect={handleOnSelect}
           />
 
           <div
@@ -272,10 +278,7 @@ const SearchComponent = (props) => {
                       renderCardInfo={renderCardInfo}
                       sectionIndex={sectionIndex}
                       formatHitURL={formatHitURL}
-                      onSelect={hit => {
-                        setSelectedItem(hit)
-                        onSelect && onSelect(hit)
-                      }}
+                      onSelect={handleOnSelect}
                     />
                   </Index>
                 );

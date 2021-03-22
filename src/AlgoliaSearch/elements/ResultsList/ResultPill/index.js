@@ -88,7 +88,7 @@ const ResultPill = (props) => {
 
   return (
     <li
-      className="pb-1"
+      className="mb-1"
       style={{...styles.resultPill}}
       tabIndex={0}
       role="option"
