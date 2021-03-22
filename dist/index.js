@@ -8015,11 +8015,11 @@ function Button_defineProperty(obj, key, value) { if (key in obj) { Object.defin
 
 
 var buttonTypes = {
-  "default": "border-transparent text-white bg-foreground hover:bg-accents-two hover:text-foreground hover:border hover:border-border active:bg-foreground active:text-white",
-  secondary: "border-secondary text-foreground bg-white hover:bg-accents-two hover:text-foreground hover:border hover:border-border active:bg-foreground active:text-white",
-  danger: "border text-white bg-error-dark hover:bg-accents-two hover:text-foreground hover:border hover:border-border active:bg-foreground active:text-white",
-  disabled: "opacity-50 cursor-default hover:bg-transparent",
-  minimal: "border-transparent text-foreground bg-white active:bg-accents-two hover:text-foreground hover:border hover:border-border active:bg-foreground active:text-white"
+  "default": "border-transparent hover:border-border text-white hover:text-foreground bg-foreground hover:bg-accents-two active:bg-foreground active:text-white",
+  secondary: "border-secondary hover:border-border text-foreground hover:text-foreground bg-white hover:bg-accents-two active:bg-foreground active:text-white",
+  danger: "border-error-dark hover:border-border text-white hover:text-foreground bg-error-dark hover:bg-accents-two active:bg-foreground active:text-white",
+  disabled: "border-border text-accents-four hover:text-accents-four active:text-accents-four bg-accents-two hover:bg-accents-two active:bg-accents-two cursor-not-allowed",
+  minimal: "bg-transparent border-transparent text-foreground active:bg-accents-two hover:text-foreground active:bg-foreground active:text-white"
 };
 
 var Button_Button = function Button(_ref) {
@@ -8051,7 +8051,7 @@ var Button_Button = function Button(_ref) {
 
   var ButtonClasses = cx("Button border items-center inline-flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-300 justify-center", (_cx = {
     disabled: disabled
-  }, Button_defineProperty(_cx, variant, Boolean(variant)), Button_defineProperty(_cx, "px-5 h-9 leading-9 text-sm", !Boolean(block)), Button_defineProperty(_cx, "w-full", Boolean(block)), Button_defineProperty(_cx, "px-12 h-10 leading-10", Boolean(large)), _cx));
+  }, Button_defineProperty(_cx, variant, disabled ? 'disabled' : Boolean(variant)), Button_defineProperty(_cx, "px-5 h-9 leading-9 text-sm", !Boolean(block)), Button_defineProperty(_cx, "w-full", Boolean(block)), Button_defineProperty(_cx, "px-12 h-10 leading-10", Boolean(large)), _cx));
 
   var RenderComponent = function RenderComponent() {
     if (component.props.children && typeof component.props.children !== "string") {

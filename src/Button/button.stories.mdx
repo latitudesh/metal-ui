@@ -4,10 +4,10 @@ import Icon from "../../util/Icon";
 
 <Meta title="Button" component={Button} />
 
-# Default
+# Variants
 
 <Preview>
-  <Story name="Default">
+  <Story name="Variants">
     <div>
       <div className="inline-flex">
         <Button label="Primary" />
@@ -27,20 +27,19 @@ import Icon from "../../util/Icon";
 
 # Disabled
 
+Disabled buttons do not inherit `variant` styling.
+
 <Preview>
   <Story name="Disabled">
     <div>
-      <div className="inline-flex">
+      <div className="block">
         <Button label="Disabled" disabled />
       </div>
-      <div className="inline-flex ml-2">
-        <Button label="Disabled" variant="secondary" disabled />
+      <div className="block mt-2">
+        <Button label="Disabled" disabled large />
       </div>
-      <div className="inline-flex ml-2">
-        <Button label="Disabled" variant="danger" disabled />
-      </div>
-      <div className="inline-flex ml-2">
-        <Button label="Disabled" variant="minimal" disabled />
+      <div className="block mt-2">
+        <Button label="Disabled" disabled block />
       </div>
     </div>
   </Story>
@@ -54,11 +53,13 @@ import Icon from "../../util/Icon";
       <div>
         <Button label="Default" />
       </div>
-      <div className="mt-2">
-        <Button label="Large" large />
+      <div className="block mt-2">
+        <div className="inline-flex">
+          <Button label="Large" large />
+        </div>
       </div>
       <div className="mt-2">
-        <Button label="Block large" block large />
+        <Button label="Block large" block />
       </div>
     </div>
   </Story>
