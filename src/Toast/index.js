@@ -8,7 +8,7 @@ function XIcon() {
   return (
     <svg
       fill="none"
-      className="text-accents-6"
+      className="text-accent-6"
       stroke="currentColor"
       viewBox="0 0 24 24"
       role="button"

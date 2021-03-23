@@ -35,7 +35,7 @@ class Heading extends PureComponent {
           "text-lg": size == 4,
           "text-base": size == 5,
           "text-sm": size == 6,
-          "text-accents-seven": color == "default",
+          "text-accent-seven": color == "default",
           "text-error": color == "danger",
         })}
         {...props}

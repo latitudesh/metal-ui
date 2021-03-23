@@ -51,8 +51,8 @@ const SearchBox = (props) => {
           inputClassName={`${
             (isResultsWindowOpen ? "focused" : "",
             dark
-              ? "bg-accents-eight placeholder-accents-three text-white focus:text-accents-three focus:border-accents-three border border-border hover:border-accents-three"
-              : "bg-white border-border text-foreground focus:border-accents-three hover:border-accents-three")
+              ? "bg-accent-eight placeholder-accent-three text-white focus:text-accent-three focus:border-accent-three border border-border hover:border-accent-three"
+              : "bg-white border-border text-foreground focus:border-accent-three hover:border-accent-three")
           } -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none`}
           value={currentRefinement}
           onChange={handleOnChange}

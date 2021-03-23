@@ -15,7 +15,7 @@ class Text extends PureComponent {
 
   static defaultProps = {
     className: null,
-    color: "text-accents-seven",
+    color: "text-accent-seven",
     is: "span",
   };
 

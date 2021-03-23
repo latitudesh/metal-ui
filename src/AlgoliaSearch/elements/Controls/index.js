@@ -22,14 +22,14 @@ const Controls = () => {
       style={{ ...styles.controlBar }}
       ref={controlsRef}
     >
-      <span className="mr-2 rounded-sm text-accents-four" style={{ ...styles.controlKey }}>
+      <span className="mr-2 rounded-sm text-accent-four" style={{ ...styles.controlKey }}>
         <ArrowDown />
       </span>
 
-      <span className="mr-2 rounded-sm text-accents-four" style={{ ...styles.controlKey }}>
+      <span className="mr-2 rounded-sm text-accent-four" style={{ ...styles.controlKey }}>
         <ArrowUp />
       </span>
-      <small className="text-accents-four">to navigate</small>
+      <small className="text-accent-four">to navigate</small>
     </div>
   )
 };

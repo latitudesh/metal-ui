@@ -8,7 +8,7 @@ function XIcon() {
   return (
     <svg
       fill="none"
-      className="text-accents-four"
+      className="text-accent-four"
       stroke="currentColor"
       viewBox="0 0 24 24"
       width="16px"
@@ -92,7 +92,7 @@ const Sidesheet = ({
             className={classNames(
               "fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition",
               {
-                "bg-accents-eight": transition,
+                "bg-accent-eight": transition,
                 "bg-transparent": !transition,
               }
             )}

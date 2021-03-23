@@ -22,7 +22,7 @@ module.exports = {
       purple: "#F81CE5",
       alert: "#FF0080",
       violet: "#7928CA",
-      accents: {
+      accent: {
         DEFAULT: "#FAFAFA",
         two: "#f9fafb",
         three: "#e5e7eb",

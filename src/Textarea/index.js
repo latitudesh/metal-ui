@@ -38,7 +38,7 @@ const Textarea = React.forwardRef(
       <div className={className}>
         {label && (
           <label
-            className="block text-sm leading-5 font-medium text-accents-six mb-1"
+            className="block text-sm leading-5 font-medium text-accent-six mb-1"
             htmlFor={id}
           >
             {label}
@@ -59,9 +59,9 @@ const Textarea = React.forwardRef(
             "form-textarea block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border-border border shadow-sm focus:outline-none",
             textareaClassName,
             {
-              "text-accents-six focus:border-accents-six": !error,
+              "text-accent-six focus:border-accent-six": !error,
               "border border-error placeholder-error": error,
-              "bg-accents-two cursor-not-allowed": disabled,
+              "bg-accent-two cursor-not-allowed": disabled,
             }
           )}
           {...rest}

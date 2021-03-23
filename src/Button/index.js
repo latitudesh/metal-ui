@@ -5,15 +5,15 @@ import SpinningDots from "../SpinningDots";
 
 const buttonTypes = {
   default:
-    "border-transparent hover:border-accents-five text-white hover:text-foreground bg-foreground hover:bg-accents-two active:bg-foreground active:text-white",
+    "border-transparent hover:border-accent-five text-white hover:text-foreground bg-foreground hover:bg-accent-two active:bg-foreground active:text-white",
   secondary:
-    "border-secondary hover:border-foreground text-secondary hover:text-foreground bg-white hover:bg-accents-two active:bg-foreground active:text-white",
+    "border-secondary hover:border-foreground text-secondary hover:text-foreground bg-white hover:bg-accent-two active:bg-foreground active:text-white",
   danger:
-    "border-error-dark hover:border-error-dark text-white hover:text-error-dark bg-error-dark hover:bg-accents-two active:bg-foreground active:text-white",
+    "border-error-dark hover:border-error-dark text-white hover:text-error-dark bg-error-dark hover:bg-accent-two active:bg-foreground active:text-white",
   disabled:
-    "border-border text-accents-four hover:text-accents-four active:text-accents-four bg-accents-two hover:bg-accents-two active:bg-accents-two cursor-not-allowed",
+    "border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed",
   minimal:
-    "border-transparent bg-transparent hover:bg-accents-three active:bg-accents-two text-foreground hover:text-accents-seven active:text-accents-five",
+    "border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five",
 };
 
 const Button = ({

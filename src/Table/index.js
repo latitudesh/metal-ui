@@ -22,7 +22,7 @@ Table.Body = ({ children, className }) => (
 Table.HeaderCell = ({ children, className }) => (
   <th
     className={classNames(
-      "px-6 py-2 bg-accents-two text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider",
+      "px-6 py-2 bg-accent-two text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider",
       className
     )}
   >
@@ -34,7 +34,7 @@ Table.Row = ({ children, className, onClick, isSelectable }) => (
   <tr
     onClick={onClick}
     className={classNames({
-      "hover:bg-accents-two focus:outline-none focus:bg-accents-two cursor-pointer":
+      "hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer":
         onClick || isSelectable,
       className,
     })}

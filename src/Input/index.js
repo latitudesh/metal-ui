@@ -37,7 +37,7 @@ const Input = React.forwardRef(
       <div className={className}>
         {label && (
           <label
-            className="block text-sm leading-5 font-medium text-accents-six"
+            className="block text-sm leading-5 font-medium text-accent-six"
             htmlFor={id}
           >
             {label}
@@ -57,7 +57,7 @@ const Input = React.forwardRef(
               "form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none",
               inputClassName,
               {
-                "border-border text-accents-six focus:border-accents-six": !error,
+                "border-border text-accent-six focus:border-accent-six": !error,
                 "border-error placeholder-error": error,
                 "bg-background cursor-not-allowed cursor-not-allowed": disabled,
               }

@@ -7784,7 +7784,7 @@ _defineProperty(Text_Text, "propTypes", {
 
 _defineProperty(Text_Text, "defaultProps", {
   className: null,
-  color: "text-accents-seven",
+  color: "text-accent-seven",
   is: "span"
 });
 
@@ -7826,7 +7826,7 @@ Table_Table.HeaderCell = function (_ref4) {
   var children = _ref4.children,
       className = _ref4.className;
   return emotion_react_browser_esm_jsx("th", {
-    className: classnames_default()("px-6 py-2 bg-accents-two text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider", className)
+    className: classnames_default()("px-6 py-2 bg-accent-two text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider", className)
   }, children);
 };
 
@@ -7838,7 +7838,7 @@ Table_Table.Row = function (_ref5) {
   return emotion_react_browser_esm_jsx("tr", {
     onClick: onClick,
     className: classnames_default()({
-      "hover:bg-accents-two focus:outline-none focus:bg-accents-two cursor-pointer": onClick || isSelectable,
+      "hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer": onClick || isSelectable,
       className: className
     })
   }, children);
@@ -7974,8 +7974,8 @@ var SpinningDots_SpinningDots = function SpinningDots(_ref) {
   var className = _ref.className,
       variant = _ref.variant;
   var i = classnames_default()("animate-pulse w-1.5 h-1.5 rounded-full", {
-    'bg-accents-three': variant === 'light',
-    'bg-accents-six': variant === 'default'
+    'bg-accent-three': variant === 'light',
+    'bg-accent-six': variant === 'default'
   });
   return emotion_react_browser_esm_jsx("div", {
     className: classnames_default()("spinner inline p-0 h-auto w-full text-center", className)
@@ -8015,11 +8015,11 @@ function Button_defineProperty(obj, key, value) { if (key in obj) { Object.defin
 
 
 var buttonTypes = {
-  "default": "border-transparent hover:border-border text-white hover:text-foreground bg-foreground hover:bg-accents-two active:bg-foreground active:text-white",
-  secondary: "border-secondary hover:border-border text-foreground hover:text-foreground bg-white hover:bg-accents-two active:bg-foreground active:text-white",
-  danger: "border-error-dark hover:border-border text-white hover:text-foreground bg-error-dark hover:bg-accents-two active:bg-foreground active:text-white",
-  disabled: "border-border text-accents-four hover:text-accents-four active:text-accents-four bg-accents-two hover:bg-accents-two active:bg-accents-two cursor-not-allowed",
-  minimal: "bg-transparent border-transparent text-foreground active:bg-accents-two hover:text-foreground active:bg-foreground active:text-white"
+  "default": "border-transparent hover:border-border text-white hover:text-foreground bg-foreground hover:bg-accent-two active:bg-foreground active:text-white",
+  secondary: "border-secondary hover:border-border text-foreground hover:text-foreground bg-white hover:bg-accent-two active:bg-foreground active:text-white",
+  danger: "border-error-dark hover:border-border text-white hover:text-foreground bg-error-dark hover:bg-accent-two active:bg-foreground active:text-white",
+  disabled: "border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed",
+  minimal: "bg-transparent border-transparent text-foreground active:bg-accent-two hover:text-foreground active:bg-foreground active:text-white"
 };
 
 var Button_Button = function Button(_ref) {
@@ -8164,7 +8164,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function XIcon() {
   return emotion_react_browser_esm_jsx("svg", {
     fill: "none",
-    className: "text-accents-four",
+    className: "text-accent-four",
     stroke: "currentColor",
     viewBox: "0 0 24 24",
     width: "16px",
@@ -8255,7 +8255,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
       return closeTransition();
     },
     className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
-      "bg-accents-eight": transition,
+      "bg-accent-eight": transition,
       "bg-transparent": !transition
     })
   }), emotion_react_browser_esm_jsx("div", {
@@ -8572,7 +8572,7 @@ function Toast_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function Toast_XIcon() {
   return emotion_react_browser_esm_jsx("svg", {
     fill: "none",
-    className: "text-accents-6",
+    className: "text-accent-6",
     stroke: "currentColor",
     viewBox: "0 0 24 24",
     role: "button",
@@ -8743,7 +8743,7 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
   return emotion_react_browser_esm_jsx("div", {
     className: className
   }, label && emotion_react_browser_esm_jsx("label", {
-    className: "block text-sm leading-5 font-medium text-accents-six",
+    className: "block text-sm leading-5 font-medium text-accent-six",
     htmlFor: id
   }, label), emotion_react_browser_esm_jsx("div", {
     className: "mt-1 relative"
@@ -8757,7 +8757,7 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
     "aria-invalid": error ? true : false,
     disabled: disabled,
     className: classnames_default()("form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none", inputClassName, {
-      "border-border text-accents-six focus:border-accents-six": !error,
+      "border-border text-accent-six focus:border-accent-six": !error,
       "border-error placeholder-error": error,
       "bg-background cursor-not-allowed cursor-not-allowed": disabled
     })
@@ -8827,7 +8827,7 @@ var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
   return emotion_react_browser_esm_jsx("div", {
     className: className
   }, label && emotion_react_browser_esm_jsx("label", {
-    className: "block text-sm leading-5 font-medium text-accents-six mb-1",
+    className: "block text-sm leading-5 font-medium text-accent-six mb-1",
     htmlFor: id
   }, label), emotion_react_browser_esm_jsx("textarea", Textarea_extends({
     id: id,
@@ -8840,9 +8840,9 @@ var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
     "aria-invalid": error ? true : false,
     disabled: disabled,
     className: classnames_default()("form-textarea block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border-border border shadow-sm focus:outline-none", textareaClassName, {
-      "text-accents-six focus:border-accents-six": !error,
+      "text-accent-six focus:border-accent-six": !error,
       "border border-error placeholder-error": error,
-      "bg-accents-two cursor-not-allowed": disabled
+      "bg-accent-two cursor-not-allowed": disabled
     })
   }, rest)));
 });
@@ -8915,7 +8915,7 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
   return emotion_react_browser_esm_jsx("div", {
     className: className
   }, label && emotion_react_browser_esm_jsx("label", {
-    className: "block text-sm font-medium leading-5 text-accents-seven",
+    className: "block text-sm font-medium leading-5 text-accent-seven",
     htmlFor: id
   }, label), emotion_react_browser_esm_jsx("div", {
     className: "mt-1 relative"
@@ -8926,7 +8926,7 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
     value: internalValue,
     disabled: disabled,
     className: classnames_default()("border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 focus:outline-none sm:text-sm sm:leading-5", selectClassName, {
-      "border-border focus:border-accents-five": !error,
+      "border-border focus:border-accent-five": !error,
       "border-error focus:border-error placeholder-error": error,
       "bg-background cursor-not-allowed cursor-not-allowed": disabled
     })
@@ -9407,7 +9407,7 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
       return emotion_react_browser_esm_jsx("div", Avatar_extends({
         className: classnames_default()("overflow-hidden relative inline-flex flex-shrink-0 justify-center", className, {
           "rounded-full": !Boolean(isDashed),
-          "rounded border-2 border-dashed border-accents-four": Boolean(isDashed)
+          "rounded border-2 border-dashed border-accent-four": Boolean(isDashed)
         }),
         style: {
           backgroundColor: isDashed ? 'transparent' : colorProps.backgroundColor,
@@ -9417,7 +9417,7 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
         title: name
       }, props), emotion_react_browser_esm_jsx("span", {
         className: classnames_default()("relative flex justify-center items-center", {
-          "text-accents-four": Boolean(isDashed)
+          "text-accent-four": Boolean(isDashed)
         }),
         style: {
           color: !isDashed && colorProps.color,
@@ -11943,7 +11943,7 @@ var SearchBox_SearchBox = function SearchBox(props) {
     noValidate: true,
     role: "search"
   }, emotion_react_browser_esm_jsx(src_Input, SearchBox_defineProperty({
-    inputClassName: "".concat((isResultsWindowOpen ? "focused" : "", dark ? "bg-accents-eight placeholder-accents-three text-white focus:text-accents-three focus:border-accents-three border border-border hover:border-accents-three" : "bg-white border-border text-foreground focus:border-accents-three hover:border-accents-three"), " -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none"),
+    inputClassName: "".concat((isResultsWindowOpen ? "focused" : "", dark ? "bg-accent-eight placeholder-accent-three text-white focus:text-accent-three focus:border-accent-three border border-border hover:border-accent-three" : "bg-white border-border text-foreground focus:border-accent-three hover:border-accent-three"), " -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none"),
     value: currentRefinement,
     onChange: handleOnChange,
     onFocus: checkIfResultsWindowShouldOpen,
@@ -12131,7 +12131,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
       onMouseEnter: handleHoverSelection
     }, emotion_react_browser_esm_jsx("div", {
       ref: clickableLink,
-      className: "px-2 border border-border rounded text-accents-eight",
+      className: "px-2 border border-border rounded text-accent-eight",
       style: ResultPill_objectSpread({}, ResultPill_style.resultPillLink)
     }, children));
   }
@@ -12147,7 +12147,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
   }, emotion_react_browser_esm_jsx("a", {
     ref: clickableLink,
     href: formattedHitURL,
-    className: "px-2 rounded outline-none ".concat(isCurrentElement ? 'bg-accents-two text-foreground' : 'text-accents-eight'),
+    className: "px-2 rounded outline-none ".concat(isCurrentElement ? 'bg-accent-two text-foreground' : 'text-accent-eight'),
     style: ResultPill_objectSpread({}, ResultPill_style.resultPillLink)
   }, children));
 };
@@ -12326,13 +12326,13 @@ var Controls_Controls = function Controls() {
     style: Controls_objectSpread({}, Controls_style.controlBar),
     ref: controlsRef
   }, emotion_react_browser_esm_jsx("span", {
-    className: "mr-2 rounded-sm text-accents-four",
+    className: "mr-2 rounded-sm text-accent-four",
     style: Controls_objectSpread({}, Controls_style.controlKey)
   }, emotion_react_browser_esm_jsx(assets_ArrowDown, null)), emotion_react_browser_esm_jsx("span", {
-    className: "mr-2 rounded-sm text-accents-four",
+    className: "mr-2 rounded-sm text-accent-four",
     style: Controls_objectSpread({}, Controls_style.controlKey)
   }, emotion_react_browser_esm_jsx(assets_ArrowUp, null)), emotion_react_browser_esm_jsx("small", {
-    className: "text-accents-four"
+    className: "text-accent-four"
   }, "to navigate"));
 };
 
@@ -12343,7 +12343,7 @@ var Controls_Controls = function Controls() {
 
 var Loader_Loader = function Loader() {
   return emotion_react_browser_esm_jsx("svg", {
-    className: "animate-spin mt-2 mb-2 ml-auto mr-auto h-8 w-8 text-accents-three",
+    className: "animate-spin mt-2 mb-2 ml-auto mr-auto h-8 w-8 text-accent-three",
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
     viewBox: "0 0 24 24"
@@ -13971,7 +13971,7 @@ var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
           "text-lg": size == 4,
           "text-base": size == 5,
           "text-sm": size == 6,
-          "text-accents-seven": color == "default",
+          "text-accent-seven": color == "default",
           "text-error": color == "danger"
         })
       }, props));
