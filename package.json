@@ -20,6 +20,11 @@
     "type": "git",
     "url": "git+https://github.com/Maxihost/metal-ui.git"
   },
+  "babelMacros": {
+    "twin": {
+      "preset": "emotion"
+    }
+  },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "7.12.3",
@@ -27,8 +32,7 @@
     "@babel/preset-env": "7.10.4",
     "@babel/preset-react": "7.12.1",
     "@emotion/babel-plugin-jsx-pragmatic": "^0.1.5",
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5",
+    "@emotion/babel-preset-css-prop": "^11.2.0",
     "@radix-ui/react-dropdown-menu": "0.0.10",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/commit-analyzer": "^8.0.1",
@@ -66,12 +70,16 @@
   },
   "peerDependencies": {
     "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "react-instantsearch-dom": "^6.7.0"
+    "react-instantsearch-dom": "^6.7.0",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5"
   }
 }

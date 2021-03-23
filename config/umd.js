@@ -29,6 +29,18 @@ module.exports = {
       commonjs: "react-dom",
       amd: "react-dom",
     },
+    "@emotion/react": {
+      root: "@emotion/react",
+      commonjs2: "@emotion/react",
+      commonjs: "@emotion/react",
+      amd: "@emotion/react"
+    },
+    "@emotion/styled": {
+      root: "@emotion/styled",
+      commonjs2: "@emotion/styled",
+      commonjs: "@emotion/styled",
+      amd: "@emotion/styled"
+    }
   },
 
   module: {
