@@ -39,13 +39,13 @@ const Select = React.forwardRef(
       <div className={className}>
         {label && (
           <label
-            className="block text-sm font-medium leading-5 text-gray-700"
+            className="block text-sm font-medium leading-5 text-accent-seven"
             htmlFor={id}
           >
             {label}
           </label>
         )}
-        <div className="mt-1 relative rounded-md shadow-sm">
+        <div className="mt-1 relative">
           <select
             id={id}
             ref={ref}
@@ -53,11 +53,12 @@ const Select = React.forwardRef(
             value={internalValue}
             disabled={disabled}
             className={classNames(
-              "mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:ring focus:ring-1 focus:ring-blue focus:border-blue-300 sm:text-sm sm:leading-5",
+              "border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 focus:outline-none sm:text-sm sm:leading-5",
               selectClassName,
               {
-                "bg-red-100 border border-red-400 focus:border-red-300 focus:ring focus:ring-1 focus:ring-red": error,
-                "bg-gray-100 cursor-not-allowed": disabled,
+                "border-border focus:border-accent-five" : !error,
+                "border-error focus:border-error placeholder-error": error,
+                "bg-background cursor-not-allowed cursor-not-allowed": disabled,
               }
             )}
             {...rest}

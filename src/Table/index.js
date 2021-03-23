@@ -10,7 +10,9 @@ const Table = ({ children, className }) => (
 );
 
 Table.Head = ({ children, className }) => (
-  <thead className={className}>{children}</thead>
+  <thead className={classNames("border-b border-border rounded", className)}>
+    {children}
+  </thead>
 );
 
 Table.Body = ({ children, className }) => (
@@ -20,7 +22,7 @@ Table.Body = ({ children, className }) => (
 Table.HeaderCell = ({ children, className }) => (
   <th
     className={classNames(
-      "px-6 py-2 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider",
+      "px-6 py-2 bg-accent-two text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider",
       className
     )}
   >
@@ -32,7 +34,7 @@ Table.Row = ({ children, className, onClick, isSelectable }) => (
   <tr
     onClick={onClick}
     className={classNames({
-      "hover:bg-gray-50 focus:outline-none focus:bg-gray-50 cursor-pointer":
+      "hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer":
         onClick || isSelectable,
       className,
     })}

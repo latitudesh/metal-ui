@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 45);
+/******/ 	return __webpack_require__(__webpack_require__.s = 39);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -242,7 +242,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__4__;
 "use strict";
 
 
-var AlgoliaSearchHelper = __webpack_require__(35);
+var AlgoliaSearchHelper = __webpack_require__(29);
 
 var SearchParameters = __webpack_require__(15);
 var SearchResults = __webpack_require__(16);
@@ -769,14 +769,14 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 var merge = __webpack_require__(6);
 var defaultsPure = __webpack_require__(9);
-var intersection = __webpack_require__(36);
+var intersection = __webpack_require__(30);
 var find = __webpack_require__(7);
-var valToNumber = __webpack_require__(37);
+var valToNumber = __webpack_require__(31);
 var omit = __webpack_require__(10);
 var objectHasKeys = __webpack_require__(11);
-var isValidUserToken = __webpack_require__(38);
+var isValidUserToken = __webpack_require__(32);
 
-var RefinementList = __webpack_require__(39);
+var RefinementList = __webpack_require__(33);
 
 /**
  * isEqual, but only for numeric refinement values, possible values:
@@ -2279,12 +2279,12 @@ module.exports = SearchParameters;
 var merge = __webpack_require__(6);
 var defaultsPure = __webpack_require__(9);
 var orderBy = __webpack_require__(17);
-var compact = __webpack_require__(40);
+var compact = __webpack_require__(34);
 var find = __webpack_require__(7);
-var findIndex = __webpack_require__(41);
+var findIndex = __webpack_require__(35);
 var formatSort = __webpack_require__(18);
 
-var generateHierarchicalTree = __webpack_require__(42);
+var generateHierarchicalTree = __webpack_require__(36);
 
 /**
  * @typedef SearchResults.Facet
@@ -4029,865 +4029,13 @@ exports.isValidElementType=function(a){return"string"===typeof a||"function"===t
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(30)
-
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.flush = flush;
-exports["default"] = void 0;
-
-var _react = __webpack_require__(0);
-
-var _stylesheetRegistry = _interopRequireDefault(__webpack_require__(31));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
-
-var styleSheetRegistry = new _stylesheetRegistry["default"]();
-
-var JSXStyle = /*#__PURE__*/function (_Component) {
-  _inheritsLoose(JSXStyle, _Component);
-
-  function JSXStyle(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-    _this.prevProps = {};
-    return _this;
-  }
-
-  JSXStyle.dynamic = function dynamic(info) {
-    return info.map(function (tagInfo) {
-      var baseId = tagInfo[0];
-      var props = tagInfo[1];
-      return styleSheetRegistry.computeId(baseId, props);
-    }).join(' ');
-  } // probably faster than PureComponent (shallowEqual)
-  ;
-
-  var _proto = JSXStyle.prototype;
-
-  _proto.shouldComponentUpdate = function shouldComponentUpdate(otherProps) {
-    return this.props.id !== otherProps.id || // We do this check because `dynamic` is an array of strings or undefined.
-    // These are the computed values for dynamic styles.
-    String(this.props.dynamic) !== String(otherProps.dynamic);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    styleSheetRegistry.remove(this.props);
-  };
-
-  _proto.render = function render() {
-    // This is a workaround to make the side effect async safe in the "render" phase.
-    // See https://github.com/zeit/styled-jsx/pull/484
-    if (this.shouldComponentUpdate(this.prevProps)) {
-      // Updates
-      if (this.prevProps.id) {
-        styleSheetRegistry.remove(this.prevProps);
-      }
-
-      styleSheetRegistry.add(this.props);
-      this.prevProps = this.props;
-    }
-
-    return null;
-  };
-
-  return JSXStyle;
-}(_react.Component);
-
-exports["default"] = JSXStyle;
-
-function flush() {
-  var cssRules = styleSheetRegistry.cssRules();
-  styleSheetRegistry.flush();
-  return cssRules;
-}
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports["default"] = void 0;
-
-var _stringHash = _interopRequireDefault(__webpack_require__(32));
-
-var _stylesheet = _interopRequireDefault(__webpack_require__(33));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-var sanitize = function sanitize(rule) {
-  return rule.replace(/\/style/gi, '\\/style');
-};
-
-var StyleSheetRegistry = /*#__PURE__*/function () {
-  function StyleSheetRegistry(_temp) {
-    var _ref = _temp === void 0 ? {} : _temp,
-        _ref$styleSheet = _ref.styleSheet,
-        styleSheet = _ref$styleSheet === void 0 ? null : _ref$styleSheet,
-        _ref$optimizeForSpeed = _ref.optimizeForSpeed,
-        optimizeForSpeed = _ref$optimizeForSpeed === void 0 ? false : _ref$optimizeForSpeed,
-        _ref$isBrowser = _ref.isBrowser,
-        isBrowser = _ref$isBrowser === void 0 ? typeof window !== 'undefined' : _ref$isBrowser;
-
-    this._sheet = styleSheet || new _stylesheet["default"]({
-      name: 'styled-jsx',
-      optimizeForSpeed: optimizeForSpeed
-    });
-
-    this._sheet.inject();
-
-    if (styleSheet && typeof optimizeForSpeed === 'boolean') {
-      this._sheet.setOptimizeForSpeed(optimizeForSpeed);
-
-      this._optimizeForSpeed = this._sheet.isOptimizeForSpeed();
-    }
-
-    this._isBrowser = isBrowser;
-    this._fromServer = undefined;
-    this._indices = {};
-    this._instancesCounts = {};
-    this.computeId = this.createComputeId();
-    this.computeSelector = this.createComputeSelector();
-  }
-
-  var _proto = StyleSheetRegistry.prototype;
-
-  _proto.add = function add(props) {
-    var _this = this;
-
-    if (undefined === this._optimizeForSpeed) {
-      this._optimizeForSpeed = Array.isArray(props.children);
-
-      this._sheet.setOptimizeForSpeed(this._optimizeForSpeed);
-
-      this._optimizeForSpeed = this._sheet.isOptimizeForSpeed();
-    }
-
-    if (this._isBrowser && !this._fromServer) {
-      this._fromServer = this.selectFromServer();
-      this._instancesCounts = Object.keys(this._fromServer).reduce(function (acc, tagName) {
-        acc[tagName] = 0;
-        return acc;
-      }, {});
-    }
-
-    var _this$getIdAndRules = this.getIdAndRules(props),
-        styleId = _this$getIdAndRules.styleId,
-        rules = _this$getIdAndRules.rules; // Deduping: just increase the instances count.
-
-
-    if (styleId in this._instancesCounts) {
-      this._instancesCounts[styleId] += 1;
-      return;
-    }
-
-    var indices = rules.map(function (rule) {
-      return _this._sheet.insertRule(rule);
-    }) // Filter out invalid rules
-    .filter(function (index) {
-      return index !== -1;
-    });
-    this._indices[styleId] = indices;
-    this._instancesCounts[styleId] = 1;
-  };
-
-  _proto.remove = function remove(props) {
-    var _this2 = this;
-
-    var _this$getIdAndRules2 = this.getIdAndRules(props),
-        styleId = _this$getIdAndRules2.styleId;
-
-    invariant(styleId in this._instancesCounts, "styleId: `" + styleId + "` not found");
-    this._instancesCounts[styleId] -= 1;
-
-    if (this._instancesCounts[styleId] < 1) {
-      var tagFromServer = this._fromServer && this._fromServer[styleId];
-
-      if (tagFromServer) {
-        tagFromServer.parentNode.removeChild(tagFromServer);
-        delete this._fromServer[styleId];
-      } else {
-        this._indices[styleId].forEach(function (index) {
-          return _this2._sheet.deleteRule(index);
-        });
-
-        delete this._indices[styleId];
-      }
-
-      delete this._instancesCounts[styleId];
-    }
-  };
-
-  _proto.update = function update(props, nextProps) {
-    this.add(nextProps);
-    this.remove(props);
-  };
-
-  _proto.flush = function flush() {
-    this._sheet.flush();
-
-    this._sheet.inject();
-
-    this._fromServer = undefined;
-    this._indices = {};
-    this._instancesCounts = {};
-    this.computeId = this.createComputeId();
-    this.computeSelector = this.createComputeSelector();
-  };
-
-  _proto.cssRules = function cssRules() {
-    var _this3 = this;
-
-    var fromServer = this._fromServer ? Object.keys(this._fromServer).map(function (styleId) {
-      return [styleId, _this3._fromServer[styleId]];
-    }) : [];
-
-    var cssRules = this._sheet.cssRules();
-
-    return fromServer.concat(Object.keys(this._indices).map(function (styleId) {
-      return [styleId, _this3._indices[styleId].map(function (index) {
-        return cssRules[index].cssText;
-      }).join(_this3._optimizeForSpeed ? '' : '\n')];
-    }) // filter out empty rules
-    .filter(function (rule) {
-      return Boolean(rule[1]);
-    }));
-  }
-  /**
-   * createComputeId
-   *
-   * Creates a function to compute and memoize a jsx id from a basedId and optionally props.
-   */
-  ;
-
-  _proto.createComputeId = function createComputeId() {
-    var cache = {};
-    return function (baseId, props) {
-      if (!props) {
-        return "jsx-" + baseId;
-      }
-
-      var propsToString = String(props);
-      var key = baseId + propsToString; // return `jsx-${hashString(`${baseId}-${propsToString}`)}`
-
-      if (!cache[key]) {
-        cache[key] = "jsx-" + (0, _stringHash["default"])(baseId + "-" + propsToString);
-      }
-
-      return cache[key];
-    };
-  }
-  /**
-   * createComputeSelector
-   *
-   * Creates a function to compute and memoize dynamic selectors.
-   */
-  ;
-
-  _proto.createComputeSelector = function createComputeSelector(selectoPlaceholderRegexp) {
-    if (selectoPlaceholderRegexp === void 0) {
-      selectoPlaceholderRegexp = /__jsx-style-dynamic-selector/g;
-    }
-
-    var cache = {};
-    return function (id, css) {
-      // Sanitize SSR-ed CSS.
-      // Client side code doesn't need to be sanitized since we use
-      // document.createTextNode (dev) and the CSSOM api sheet.insertRule (prod).
-      if (!this._isBrowser) {
-        css = sanitize(css);
-      }
-
-      var idcss = id + css;
-
-      if (!cache[idcss]) {
-        cache[idcss] = css.replace(selectoPlaceholderRegexp, id);
-      }
-
-      return cache[idcss];
-    };
-  };
-
-  _proto.getIdAndRules = function getIdAndRules(props) {
-    var _this4 = this;
-
-    var css = props.children,
-        dynamic = props.dynamic,
-        id = props.id;
-
-    if (dynamic) {
-      var styleId = this.computeId(id, dynamic);
-      return {
-        styleId: styleId,
-        rules: Array.isArray(css) ? css.map(function (rule) {
-          return _this4.computeSelector(styleId, rule);
-        }) : [this.computeSelector(styleId, css)]
-      };
-    }
-
-    return {
-      styleId: this.computeId(id),
-      rules: Array.isArray(css) ? css : [css]
-    };
-  }
-  /**
-   * selectFromServer
-   *
-   * Collects style tags from the document with id __jsx-XXX
-   */
-  ;
-
-  _proto.selectFromServer = function selectFromServer() {
-    var elements = Array.prototype.slice.call(document.querySelectorAll('[id^="__jsx-"]'));
-    return elements.reduce(function (acc, element) {
-      var id = element.id.slice(2);
-      acc[id] = element;
-      return acc;
-    }, {});
-  };
-
-  return StyleSheetRegistry;
-}();
-
-exports["default"] = StyleSheetRegistry;
-
-function invariant(condition, message) {
-  if (!condition) {
-    throw new Error("StyleSheetRegistry: " + message + ".");
-  }
-}
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function hash(str) {
-  var hash = 5381,
-      i    = str.length;
-
-  while(i) {
-    hash = (hash * 33) ^ str.charCodeAt(--i);
-  }
-
-  /* JavaScript does bitwise operations (like XOR, above) on 32-bit signed
-   * integers. Since we want the results to be always positive, convert the
-   * signed int to an unsigned by doing an unsigned bitshift. */
-  return hash >>> 0;
-}
-
-module.exports = hash;
-
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-exports.__esModule = true;
-exports["default"] = void 0;
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-/*
-Based on Glamor's sheet
-https://github.com/threepointone/glamor/blob/667b480d31b3721a905021b26e1290ce92ca2879/src/sheet.js
-*/
-var isProd = typeof process !== 'undefined' && process.env && "production" === 'production';
-
-var isString = function isString(o) {
-  return Object.prototype.toString.call(o) === '[object String]';
-};
-
-var StyleSheet = /*#__PURE__*/function () {
-  function StyleSheet(_temp) {
-    var _ref = _temp === void 0 ? {} : _temp,
-        _ref$name = _ref.name,
-        name = _ref$name === void 0 ? 'stylesheet' : _ref$name,
-        _ref$optimizeForSpeed = _ref.optimizeForSpeed,
-        optimizeForSpeed = _ref$optimizeForSpeed === void 0 ? isProd : _ref$optimizeForSpeed,
-        _ref$isBrowser = _ref.isBrowser,
-        isBrowser = _ref$isBrowser === void 0 ? typeof window !== 'undefined' : _ref$isBrowser;
-
-    invariant(isString(name), '`name` must be a string');
-    this._name = name;
-    this._deletedRulePlaceholder = "#" + name + "-deleted-rule____{}";
-    invariant(typeof optimizeForSpeed === 'boolean', '`optimizeForSpeed` must be a boolean');
-    this._optimizeForSpeed = optimizeForSpeed;
-    this._isBrowser = isBrowser;
-    this._serverSheet = undefined;
-    this._tags = [];
-    this._injected = false;
-    this._rulesCount = 0;
-    var node = this._isBrowser && document.querySelector('meta[property="csp-nonce"]');
-    this._nonce = node ? node.getAttribute('content') : null;
-  }
-
-  var _proto = StyleSheet.prototype;
-
-  _proto.setOptimizeForSpeed = function setOptimizeForSpeed(bool) {
-    invariant(typeof bool === 'boolean', '`setOptimizeForSpeed` accepts a boolean');
-    invariant(this._rulesCount === 0, 'optimizeForSpeed cannot be when rules have already been inserted');
-    this.flush();
-    this._optimizeForSpeed = bool;
-    this.inject();
-  };
-
-  _proto.isOptimizeForSpeed = function isOptimizeForSpeed() {
-    return this._optimizeForSpeed;
-  };
-
-  _proto.inject = function inject() {
-    var _this = this;
-
-    invariant(!this._injected, 'sheet already injected');
-    this._injected = true;
-
-    if (this._isBrowser && this._optimizeForSpeed) {
-      this._tags[0] = this.makeStyleTag(this._name);
-      this._optimizeForSpeed = 'insertRule' in this.getSheet();
-
-      if (!this._optimizeForSpeed) {
-        if (!isProd) {
-          console.warn('StyleSheet: optimizeForSpeed mode not supported falling back to standard mode.');
-        }
-
-        this.flush();
-        this._injected = true;
-      }
-
-      return;
-    }
-
-    this._serverSheet = {
-      cssRules: [],
-      insertRule: function insertRule(rule, index) {
-        if (typeof index === 'number') {
-          _this._serverSheet.cssRules[index] = {
-            cssText: rule
-          };
-        } else {
-          _this._serverSheet.cssRules.push({
-            cssText: rule
-          });
-        }
-
-        return index;
-      },
-      deleteRule: function deleteRule(index) {
-        _this._serverSheet.cssRules[index] = null;
-      }
-    };
-  };
-
-  _proto.getSheetForTag = function getSheetForTag(tag) {
-    if (tag.sheet) {
-      return tag.sheet;
-    } // this weirdness brought to you by firefox
-
-
-    for (var i = 0; i < document.styleSheets.length; i++) {
-      if (document.styleSheets[i].ownerNode === tag) {
-        return document.styleSheets[i];
-      }
-    }
-  };
-
-  _proto.getSheet = function getSheet() {
-    return this.getSheetForTag(this._tags[this._tags.length - 1]);
-  };
-
-  _proto.insertRule = function insertRule(rule, index) {
-    invariant(isString(rule), '`insertRule` accepts only strings');
-
-    if (!this._isBrowser) {
-      if (typeof index !== 'number') {
-        index = this._serverSheet.cssRules.length;
-      }
-
-      this._serverSheet.insertRule(rule, index);
-
-      return this._rulesCount++;
-    }
-
-    if (this._optimizeForSpeed) {
-      var sheet = this.getSheet();
-
-      if (typeof index !== 'number') {
-        index = sheet.cssRules.length;
-      } // this weirdness for perf, and chrome's weird bug
-      // https://stackoverflow.com/questions/20007992/chrome-suddenly-stopped-accepting-insertrule
-
-
-      try {
-        sheet.insertRule(rule, index);
-      } catch (error) {
-        if (!isProd) {
-          console.warn("StyleSheet: illegal rule: \n\n" + rule + "\n\nSee https://stackoverflow.com/q/20007992 for more info");
-        }
-
-        return -1;
-      }
-    } else {
-      var insertionPoint = this._tags[index];
-
-      this._tags.push(this.makeStyleTag(this._name, rule, insertionPoint));
-    }
-
-    return this._rulesCount++;
-  };
-
-  _proto.replaceRule = function replaceRule(index, rule) {
-    if (this._optimizeForSpeed || !this._isBrowser) {
-      var sheet = this._isBrowser ? this.getSheet() : this._serverSheet;
-
-      if (!rule.trim()) {
-        rule = this._deletedRulePlaceholder;
-      }
-
-      if (!sheet.cssRules[index]) {
-        // @TBD Should we throw an error?
-        return index;
-      }
-
-      sheet.deleteRule(index);
-
-      try {
-        sheet.insertRule(rule, index);
-      } catch (error) {
-        if (!isProd) {
-          console.warn("StyleSheet: illegal rule: \n\n" + rule + "\n\nSee https://stackoverflow.com/q/20007992 for more info");
-        } // In order to preserve the indices we insert a deleteRulePlaceholder
-
-
-        sheet.insertRule(this._deletedRulePlaceholder, index);
-      }
-    } else {
-      var tag = this._tags[index];
-      invariant(tag, "old rule at index `" + index + "` not found");
-      tag.textContent = rule;
-    }
-
-    return index;
-  };
-
-  _proto.deleteRule = function deleteRule(index) {
-    if (!this._isBrowser) {
-      this._serverSheet.deleteRule(index);
-
-      return;
-    }
-
-    if (this._optimizeForSpeed) {
-      this.replaceRule(index, '');
-    } else {
-      var tag = this._tags[index];
-      invariant(tag, "rule at index `" + index + "` not found");
-      tag.parentNode.removeChild(tag);
-      this._tags[index] = null;
-    }
-  };
-
-  _proto.flush = function flush() {
-    this._injected = false;
-    this._rulesCount = 0;
-
-    if (this._isBrowser) {
-      this._tags.forEach(function (tag) {
-        return tag && tag.parentNode.removeChild(tag);
-      });
-
-      this._tags = [];
-    } else {
-      // simpler on server
-      this._serverSheet.cssRules = [];
-    }
-  };
-
-  _proto.cssRules = function cssRules() {
-    var _this2 = this;
-
-    if (!this._isBrowser) {
-      return this._serverSheet.cssRules;
-    }
-
-    return this._tags.reduce(function (rules, tag) {
-      if (tag) {
-        rules = rules.concat(Array.prototype.map.call(_this2.getSheetForTag(tag).cssRules, function (rule) {
-          return rule.cssText === _this2._deletedRulePlaceholder ? null : rule;
-        }));
-      } else {
-        rules.push(null);
-      }
-
-      return rules;
-    }, []);
-  };
-
-  _proto.makeStyleTag = function makeStyleTag(name, cssString, relativeToTag) {
-    if (cssString) {
-      invariant(isString(cssString), 'makeStyleTag acceps only strings as second parameter');
-    }
-
-    var tag = document.createElement('style');
-    if (this._nonce) tag.setAttribute('nonce', this._nonce);
-    tag.type = 'text/css';
-    tag.setAttribute("data-" + name, '');
-
-    if (cssString) {
-      tag.appendChild(document.createTextNode(cssString));
-    }
-
-    var head = document.head || document.getElementsByTagName('head')[0];
-
-    if (relativeToTag) {
-      head.insertBefore(tag, relativeToTag);
-    } else {
-      head.appendChild(tag);
-    }
-
-    return tag;
-  };
-
-  _createClass(StyleSheet, [{
-    key: "length",
-    get: function get() {
-      return this._rulesCount;
-    }
-  }]);
-
-  return StyleSheet;
-}();
-
-exports["default"] = StyleSheet;
-
-function invariant(condition, message) {
-  if (!condition) {
-    throw new Error("StyleSheet: " + message + ".");
-  }
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(34)))
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
 var SearchParameters = __webpack_require__(15);
 var SearchResults = __webpack_require__(16);
-var DerivedHelper = __webpack_require__(43);
-var requestBuilder = __webpack_require__(44);
+var DerivedHelper = __webpack_require__(37);
+var requestBuilder = __webpack_require__(38);
 
 var events = __webpack_require__(19);
 var inherits = __webpack_require__(20);
@@ -6352,7 +5500,7 @@ module.exports = AlgoliaSearchHelper;
 
 
 /***/ }),
-/* 36 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6371,7 +5519,7 @@ module.exports = intersection;
 
 
 /***/ }),
-/* 37 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6393,7 +5541,7 @@ module.exports = valToNumber;
 
 
 /***/ }),
-/* 38 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6408,7 +5556,7 @@ module.exports = function isValidUserToken(userToken) {
 
 
 /***/ }),
-/* 39 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6562,7 +5710,7 @@ module.exports = lib;
 
 
 /***/ }),
-/* 40 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6578,7 +5726,7 @@ module.exports = function compact(array) {
 
 
 /***/ }),
-/* 41 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6600,7 +5748,7 @@ module.exports = function find(array, comparator) {
 
 
 /***/ }),
-/* 42 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6806,7 +5954,7 @@ function format(
 
 
 /***/ }),
-/* 43 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6851,7 +5999,7 @@ module.exports = DerivedHelper;
 
 
 /***/ }),
-/* 44 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7179,7 +6327,7 @@ module.exports = requestBuilder;
 
 
 /***/ }),
-/* 45 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8629,10 +7777,6 @@ var Text_Text = /*#__PURE__*/function (_PureComponent) {
 
 _defineProperty(Text_Text, "propTypes", {
   bold: prop_types_default.a.bool,
-
-  /**
-   * Any TailwindCSS [Text Color](https://tailwindcss.com/docs/text-color) class.
-   */
   color: prop_types_default.a.string,
   is: prop_types_default.a.oneOf(["span", "p", "li"]).isRequired,
   className: prop_types_default.a.string
@@ -8640,7 +7784,7 @@ _defineProperty(Text_Text, "propTypes", {
 
 _defineProperty(Text_Text, "defaultProps", {
   className: null,
-  color: "text-gray-700",
+  color: "text-accent-seven",
   is: "span"
 });
 
@@ -8666,7 +7810,7 @@ Table_Table.Head = function (_ref2) {
   var children = _ref2.children,
       className = _ref2.className;
   return emotion_react_browser_esm_jsx("thead", {
-    className: className
+    className: classnames_default()("border-b border-border rounded", className)
   }, children);
 };
 
@@ -8682,7 +7826,7 @@ Table_Table.HeaderCell = function (_ref4) {
   var children = _ref4.children,
       className = _ref4.className;
   return emotion_react_browser_esm_jsx("th", {
-    className: classnames_default()("px-6 py-2 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider", className)
+    className: classnames_default()("px-6 py-2 bg-accent-two text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider", className)
   }, children);
 };
 
@@ -8694,7 +7838,7 @@ Table_Table.Row = function (_ref5) {
   return emotion_react_browser_esm_jsx("tr", {
     onClick: onClick,
     className: classnames_default()({
-      "hover:bg-gray-50 focus:outline-none focus:bg-gray-50 cursor-pointer": onClick || isSelectable,
+      "hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer": onClick || isSelectable,
       className: className
     })
   }, children);
@@ -8830,8 +7974,8 @@ var SpinningDots_SpinningDots = function SpinningDots(_ref) {
   var className = _ref.className,
       variant = _ref.variant;
   var i = classnames_default()("animate-pulse w-1.5 h-1.5 rounded-full", {
-    'bg-gray-300': variant === 'light',
-    'bg-gray-600': variant === 'default'
+    'bg-accent-three': variant === 'light',
+    'bg-accent-six': variant === 'default'
   });
   return emotion_react_browser_esm_jsx("div", {
     className: classnames_default()("spinner inline p-0 h-auto w-full text-center", className)
@@ -8871,11 +8015,11 @@ function Button_defineProperty(obj, key, value) { if (key in obj) { Object.defin
 
 
 var buttonTypes = {
-  "default": "border-transparent text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-700 focus:ring focus:ring-1 focus:ring-indigo",
-  secondary: "border-gray-300 text-gray-800 bg-white hover:bg-gray-100 active:bg-gray-100 focus:ring focus:ring-1 focus:ring-blue",
-  danger: "border-none text-white bg-red-600 hover:bg-red-700 active:bg-red-700 focus:ring focus:ring-1 focus:ring-red",
-  disabled: "opacity-50 cursor-default hover:bg-transparent",
-  minimal: "border-transparent text-gray-700 bg-white hover:bg-gray-100 active:bg-gray-100"
+  "default": "border-transparent hover:border-border text-white hover:text-foreground bg-foreground hover:bg-accent-two active:bg-foreground active:text-white",
+  secondary: "border-secondary hover:border-border text-foreground hover:text-foreground bg-white hover:bg-accent-two active:bg-foreground active:text-white",
+  danger: "border-error-dark hover:border-border text-white hover:text-foreground bg-error-dark hover:bg-accent-two active:bg-foreground active:text-white",
+  disabled: "border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed",
+  minimal: "bg-transparent border-transparent text-foreground active:bg-accent-two hover:text-foreground active:bg-foreground active:text-white"
 };
 
 var Button_Button = function Button(_ref) {
@@ -8895,7 +8039,7 @@ var Button_Button = function Button(_ref) {
   var cx = bind_default.a.bind(buttonTypes);
 
   var ButtonContent = emotion_react_browser_esm_jsx("div", {
-    className: bind_default()("inline-flex items-center", {
+    className: bind_default()("inline-flex items-center shadow-sm active:shadow-inner", {
       "opacity-0": isLoading,
       "opacity-100": !isLoading
     })
@@ -8905,9 +8049,9 @@ var Button_Button = function Button(_ref) {
     className: "ml-2"
   }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
 
-  var ButtonClasses = cx("Button border items-center inline-flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center", (_cx = {
+  var ButtonClasses = cx("Button border items-center inline-flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-300 justify-center", (_cx = {
     disabled: disabled
-  }, Button_defineProperty(_cx, variant, Boolean(variant)), Button_defineProperty(_cx, "px-5 h-9 leading-9 text-sm", !Boolean(block)), Button_defineProperty(_cx, "w-full h-12 leading-12", Boolean(block)), Button_defineProperty(_cx, "px-10 h-10 leading-10", Boolean(large)), _cx));
+  }, Button_defineProperty(_cx, variant, disabled ? 'disabled' : Boolean(variant)), Button_defineProperty(_cx, "px-5 h-9 leading-9 text-sm", !Boolean(block)), Button_defineProperty(_cx, "w-full", Boolean(block)), Button_defineProperty(_cx, "px-12 h-10 leading-10", Boolean(large)), _cx));
 
   var RenderComponent = function RenderComponent() {
     if (component.props.children && typeof component.props.children !== "string") {
@@ -8976,7 +8120,7 @@ var Box_Box = function Box(_ref) {
     className: classnames_default()("overflow-hidden", className, (_classNames = {
       flex: Boolean(flex),
       "bg-white": !Boolean(backgroundColor)
-    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 shadow rounded", Boolean(rootCard)), Box_defineProperty(_classNames, "px-6 py-4", !Boolean(noPadding)), Box_defineProperty(_classNames, "flex-".concat(flexWrap), Boolean(flexWrap)), _classNames))
+    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 border border-border rounded shadow-sm", Boolean(rootCard)), Box_defineProperty(_classNames, "px-6 py-4", !Boolean(noPadding)), Box_defineProperty(_classNames, "flex-".concat(flexWrap), Boolean(flexWrap)), _classNames))
   }, children);
 };
 
@@ -9020,7 +8164,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function XIcon() {
   return emotion_react_browser_esm_jsx("svg", {
     fill: "none",
-    className: "text-gray-600",
+    className: "text-accent-four",
     stroke: "currentColor",
     viewBox: "0 0 24 24",
     width: "16px",
@@ -9111,7 +8255,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
       return closeTransition();
     },
     className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
-      "bg-gray-800": transition,
+      "bg-accent-eight": transition,
       "bg-transparent": !transition
     })
   }), emotion_react_browser_esm_jsx("div", {
@@ -9128,9 +8272,9 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
   }, emotion_react_browser_esm_jsx(src_Box, {
     flex: true,
     alignItems: "center",
-    className: "relative border-b border-gray-200 rounded rounded-b-none"
+    className: "relative border-b border-border rounded rounded-b-none"
   }, emotion_react_browser_esm_jsx("div", {
-    className: "text-gray-600 flex-auto truncate leading-6"
+    className: "text-foreground flex-auto truncate leading-6"
   }, title), emotion_react_browser_esm_jsx(src_Box, {
     flex: true,
     backgroundColor: "transparent",
@@ -9153,7 +8297,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
     flex: true,
     justifyContent: "center",
     alignItems: "center",
-    className: "sidesheet-action h-16 border-t border-gray-200 relative flex-initial rounded rounded-t-none"
+    className: "sidesheet-action h-16 border-t border-border relative flex-initial rounded rounded-t-none"
   }, action))));
 };
 
@@ -9168,15 +8312,204 @@ Sidesheet_Sidesheet.propTypes = {
   title: prop_types_default.a.string
 };
 /* harmony default export */ var src_Sidesheet = (Sidesheet_Sidesheet);
-// EXTERNAL MODULE: ./node_modules/styled-jsx/style.js
-var styled_jsx_style = __webpack_require__(29);
+// CONCATENATED MODULE: ./node_modules/@emotion/is-prop-valid/dist/emotion-is-prop-valid.browser.esm.js
 
-// CONCATENATED MODULE: ./src/Skeleton/styles.js
-var _defaultExport = new String("@-webkit-keyframes skeleton-jsx-309491756{0%{background-position:200% 0;}to{background-position:-200% 0;}}@keyframes skeleton-jsx-309491756{0%{background-position:200% 0;}to{background-position:-200% 0;}}.skeleton.jsx-309491756{display:block;border-radius:5px;background-image:linear-gradient( 270deg, #fafafa, #eaeaea, #eaeaea, #fafafa );background-size:400% 100%;-webkit-animation:skeleton-jsx-309491756 8s ease-in-out infinite;animation:skeleton-jsx-309491756 8s ease-in-out infinite;}");
 
-_defaultExport.__hash = "309491756";
-/* harmony default export */ var Skeleton_styles = (_defaultExport);
+var reactPropsRegex = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|download|draggable|encType|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|translate|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|fallback|inert|itemProp|itemScope|itemType|itemID|itemRef|on|option|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/; // https://esbench.com/bench/5bfee68a4cd7e6009ef61d23
+
+var isPropValid = /* #__PURE__ */emotion_memoize_browser_esm(function (prop) {
+  return reactPropsRegex.test(prop) || prop.charCodeAt(0) === 111
+  /* o */
+  && prop.charCodeAt(1) === 110
+  /* n */
+  && prop.charCodeAt(2) < 91;
+}
+/* Z+1 */
+);
+
+/* harmony default export */ var emotion_is_prop_valid_browser_esm = (isPropValid);
+
+// CONCATENATED MODULE: ./node_modules/@emotion/styled/base/dist/emotion-styled-base.browser.esm.js
+
+
+
+
+
+
+
+var testOmitPropsOnStringTag = emotion_is_prop_valid_browser_esm;
+
+var testOmitPropsOnComponent = function testOmitPropsOnComponent(key) {
+  return key !== 'theme';
+};
+
+var getDefaultShouldForwardProp = function getDefaultShouldForwardProp(tag) {
+  return typeof tag === 'string' && // 96 is one less than the char code
+  // for "a" so this is checking that
+  // it's a lowercase character
+  tag.charCodeAt(0) > 96 ? testOmitPropsOnStringTag : testOmitPropsOnComponent;
+};
+var composeShouldForwardProps = function composeShouldForwardProps(tag, options, isReal) {
+  var shouldForwardProp;
+
+  if (options) {
+    var optionsShouldForwardProp = options.shouldForwardProp;
+    shouldForwardProp = tag.__emotion_forwardProp && optionsShouldForwardProp ? function (propName) {
+      return tag.__emotion_forwardProp(propName) && optionsShouldForwardProp(propName);
+    } : optionsShouldForwardProp;
+  }
+
+  if (typeof shouldForwardProp !== 'function' && isReal) {
+    shouldForwardProp = tag.__emotion_forwardProp;
+  }
+
+  return shouldForwardProp;
+};
+
+var emotion_styled_base_browser_esm_ILLEGAL_ESCAPE_SEQUENCE_ERROR = "You have illegal escape sequence in your template literal, most likely inside content's property value.\nBecause you write your CSS inside a JavaScript string you actually have to do double escaping, so for example \"content: '\\00d7';\" should become \"content: '\\\\00d7';\".\nYou can read more about this here:\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#ES2018_revision_of_illegal_escape_sequences";
+
+var emotion_styled_base_browser_esm_createStyled = function createStyled(tag, options) {
+  if (false) {}
+
+  var isReal = tag.__emotion_real === tag;
+  var baseTag = isReal && tag.__emotion_base || tag;
+  var identifierName;
+  var targetClassName;
+
+  if (options !== undefined) {
+    identifierName = options.label;
+    targetClassName = options.target;
+  }
+
+  var shouldForwardProp = composeShouldForwardProps(tag, options, isReal);
+  var defaultShouldForwardProp = shouldForwardProp || getDefaultShouldForwardProp(baseTag);
+  var shouldUseAs = !defaultShouldForwardProp('as');
+  return function () {
+    var args = arguments;
+    var styles = isReal && tag.__emotion_styles !== undefined ? tag.__emotion_styles.slice(0) : [];
+
+    if (identifierName !== undefined) {
+      styles.push("label:" + identifierName + ";");
+    }
+
+    if (args[0] == null || args[0].raw === undefined) {
+      styles.push.apply(styles, args);
+    } else {
+      if (false) {}
+
+      styles.push(args[0][0]);
+      var len = args.length;
+      var i = 1;
+
+      for (; i < len; i++) {
+        if (false) {}
+
+        styles.push(args[i], args[0][i]);
+      }
+    } // $FlowFixMe: we need to cast StatelessFunctionalComponent to our PrivateStyledComponent class
+
+
+    var Styled = emotion_element_4fbd89c5_browser_esm_withEmotionCache(function (props, cache, ref) {
+      var finalTag = shouldUseAs && props.as || baseTag;
+      var className = '';
+      var classInterpolations = [];
+      var mergedProps = props;
+
+      if (props.theme == null) {
+        mergedProps = {};
+
+        for (var key in props) {
+          mergedProps[key] = props[key];
+        }
+
+        mergedProps.theme = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"])(ThemeContext);
+      }
+
+      if (typeof props.className === 'string') {
+        className = getRegisteredStyles(cache.registered, classInterpolations, props.className);
+      } else if (props.className != null) {
+        className = props.className + " ";
+      }
+
+      var serialized = emotion_serialize_browser_esm_serializeStyles(styles.concat(classInterpolations), cache.registered, mergedProps);
+      var rules = insertStyles(cache, serialized, typeof finalTag === 'string');
+      className += cache.key + "-" + serialized.name;
+
+      if (targetClassName !== undefined) {
+        className += " " + targetClassName;
+      }
+
+      var finalShouldForwardProp = shouldUseAs && shouldForwardProp === undefined ? getDefaultShouldForwardProp(finalTag) : defaultShouldForwardProp;
+      var newProps = {};
+
+      for (var _key in props) {
+        if (shouldUseAs && _key === 'as') continue;
+
+        if ( // $FlowFixMe
+        finalShouldForwardProp(_key)) {
+          newProps[_key] = props[_key];
+        }
+      }
+
+      newProps.className = className;
+      newProps.ref = ref;
+      var ele = /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"])(finalTag, newProps);
+
+      return ele;
+    });
+    Styled.displayName = identifierName !== undefined ? identifierName : "Styled(" + (typeof baseTag === 'string' ? baseTag : baseTag.displayName || baseTag.name || 'Component') + ")";
+    Styled.defaultProps = tag.defaultProps;
+    Styled.__emotion_real = Styled;
+    Styled.__emotion_base = baseTag;
+    Styled.__emotion_styles = styles;
+    Styled.__emotion_forwardProp = shouldForwardProp;
+    Object.defineProperty(Styled, 'toString', {
+      value: function value() {
+        if (targetClassName === undefined && "production" !== 'production') {
+          return 'NO_COMPONENT_SELECTOR';
+        } // $FlowFixMe: coerce undefined to string
+
+
+        return "." + targetClassName;
+      }
+    });
+
+    Styled.withComponent = function (nextTag, nextOptions) {
+      return createStyled(nextTag, _extends({}, options, {}, nextOptions, {
+        shouldForwardProp: composeShouldForwardProps(Styled, nextOptions, true)
+      })).apply(void 0, styles);
+    };
+
+    return Styled;
+  };
+};
+
+/* harmony default export */ var emotion_styled_base_browser_esm = (emotion_styled_base_browser_esm_createStyled);
+
+// CONCATENATED MODULE: ./node_modules/@emotion/styled/dist/emotion-styled.browser.esm.js
+
+
+
+
+
+
+
+
+var tags = ['a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base', 'bdi', 'bdo', 'big', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'cite', 'code', 'col', 'colgroup', 'data', 'datalist', 'dd', 'del', 'details', 'dfn', 'dialog', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'main', 'map', 'mark', 'marquee', 'menu', 'menuitem', 'meta', 'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', 'picture', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'script', 'section', 'select', 'small', 'source', 'span', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track', 'u', 'ul', 'var', 'video', 'wbr', // SVG
+'circle', 'clipPath', 'defs', 'ellipse', 'foreignObject', 'g', 'image', 'line', 'linearGradient', 'mask', 'path', 'pattern', 'polygon', 'polyline', 'radialGradient', 'rect', 'stop', 'svg', 'text', 'tspan'];
+
+var newStyled = emotion_styled_base_browser_esm.bind();
+tags.forEach(function (tagName) {
+  // $FlowFixMe: we can ignore this because its exposed type is defined by the CreateStyled type
+  newStyled[tagName] = newStyled(tagName);
+});
+
+/* harmony default export */ var emotion_styled_browser_esm = (newStyled);
+
 // CONCATENATED MODULE: ./src/Skeleton/index.js
+var _templateObject, _templateObject2;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 
@@ -9184,24 +8517,32 @@ _defaultExport.__hash = "309491756";
 
 
 
-var Skeleton_Skeleton = function Skeleton(_ref) {
+var animation = keyframes(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  0% {\n    background-position: 200% 0;\n  }\n  to {\n    background-position: -200% 0;\n  }"])));
+
+var StyledSkeleton = emotion_styled_browser_esm.span(function (_ref) {
   var width = _ref.width,
-      height = _ref.height,
-      className = _ref.className;
-  return emotion_react_browser_esm_jsx("div", null, emotion_react_browser_esm_jsx("span", {
-    style: {
-      width: width,
-      minHeight: height
-    },
-    className: "jsx-".concat(Skeleton_styles.__hash) + " " + (classnames_default()("skeleton", className) || "")
-  }, emotion_react_browser_esm_jsx(_JSXStyle, {
-    id: Skeleton_styles.__hash
-  }, Skeleton_styles)));
+      height = _ref.height;
+  return ["\n  display: block;\n  border-radius: 5px;\n  background-image: linear-gradient(\n    270deg,\n    #fafafa,\n    #eaeaea,\n    #eaeaea,\n    #fafafa\n  );\n  background-size: 400% 100%;\n  width: ".concat(width, "px;\n  min-height: ").concat(height, "px;\n")];
+});
+
+var Skeleton_Skeleton = function Skeleton(_ref2) {
+  var width = _ref2.width,
+      height = _ref2.height,
+      className = _ref2.className;
+  return emotion_react_browser_esm_jsx("div", {
+    className: "skeleton"
+  }, emotion_react_browser_esm_jsx(StyledSkeleton, {
+    className: className,
+    width: width,
+    height: height,
+    css: emotion_react_browser_esm_css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n          animation: ", " 8s ease-in-out infinite;\n        "])), animation)
+  }));
 };
 
 Skeleton_Skeleton.propTypes = {
   width: prop_types_default.a.number,
-  height: prop_types_default.a.number
+  height: prop_types_default.a.number,
+  className: prop_types_default.a.string
 };
 Skeleton_Skeleton.defaultProps = {
   width: 160,
@@ -9231,7 +8572,7 @@ function Toast_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function Toast_XIcon() {
   return emotion_react_browser_esm_jsx("svg", {
     fill: "none",
-    className: "text-gray-600",
+    className: "text-accent-6",
     stroke: "currentColor",
     viewBox: "0 0 24 24",
     role: "button",
@@ -9315,8 +8656,8 @@ var Toast_Toast = function Toast(_ref2) {
       id: "toast-content"
     }, emotion_react_browser_esm_jsx("div", {
       className: bind_default()("fixed z-50 w-1/4 max-w-full p-5 bg-white bottom-0 rounded-md shadow-xl opacity-0", {
-        "text-white bg-red-600": error,
-        "text-white bg-indigo-600": success,
+        "text-white bg-error": error,
+        "text-white bg-success": success,
         "opacity-100": showToast
       }),
       style: {
@@ -9402,10 +8743,10 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
   return emotion_react_browser_esm_jsx("div", {
     className: className
   }, label && emotion_react_browser_esm_jsx("label", {
-    className: "block text-sm leading-5 font-medium text-gray-700",
+    className: "block text-sm leading-5 font-medium text-accent-six",
     htmlFor: id
   }, label), emotion_react_browser_esm_jsx("div", {
-    className: "mt-1 relative rounded-md shadow-sm"
+    className: "mt-1 relative"
   }, emotion_react_browser_esm_jsx("input", Input_extends({
     id: id,
     ref: ref,
@@ -9415,9 +8756,10 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
     "aria-required": label ? true : false,
     "aria-invalid": error ? true : false,
     disabled: disabled,
-    className: classnames_default()("form-input block w-full sm:text-sm sm:leading-5", inputClassName, {
-      "bg-red-100 border border-red-400 focus:border-red-300 focus:ring focus:ring-1 focus:ring-red": error,
-      "bg-gray-100 cursor-not-allowed": disabled
+    className: classnames_default()("form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none", inputClassName, {
+      "border-border text-accent-six focus:border-accent-six": !error,
+      "border-error placeholder-error": error,
+      "bg-background cursor-not-allowed cursor-not-allowed": disabled
     })
   }, rest))));
 });
@@ -9485,7 +8827,7 @@ var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
   return emotion_react_browser_esm_jsx("div", {
     className: className
   }, label && emotion_react_browser_esm_jsx("label", {
-    className: "block text-sm leading-5 font-medium text-gray-700",
+    className: "block text-sm leading-5 font-medium text-accent-six mb-1",
     htmlFor: id
   }, label), emotion_react_browser_esm_jsx("textarea", Textarea_extends({
     id: id,
@@ -9497,9 +8839,10 @@ var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
     "aria-required": label ? true : false,
     "aria-invalid": error ? true : false,
     disabled: disabled,
-    className: classnames_default()("form-textarea mt-1 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", textareaClassName, {
-      "bg-red-100 border border-red-400 focus:border-red-300 focus:ring focus:ring-1 focus:ring-red": error,
-      "bg-gray-100 cursor-not-allowed": disabled
+    className: classnames_default()("form-textarea block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border-border border shadow-sm focus:outline-none", textareaClassName, {
+      "text-accent-six focus:border-accent-six": !error,
+      "border border-error placeholder-error": error,
+      "bg-accent-two cursor-not-allowed": disabled
     })
   }, rest)));
 });
@@ -9572,19 +8915,20 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
   return emotion_react_browser_esm_jsx("div", {
     className: className
   }, label && emotion_react_browser_esm_jsx("label", {
-    className: "block text-sm font-medium leading-5 text-gray-700",
+    className: "block text-sm font-medium leading-5 text-accent-seven",
     htmlFor: id
   }, label), emotion_react_browser_esm_jsx("div", {
-    className: "mt-1 relative rounded-md shadow-sm"
+    className: "mt-1 relative"
   }, emotion_react_browser_esm_jsx("select", Select_extends({
     id: id,
     ref: ref,
     onChange: handleChange,
     value: internalValue,
     disabled: disabled,
-    className: classnames_default()("mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:ring focus:ring-1 focus:ring-blue focus:border-blue-300 sm:text-sm sm:leading-5", selectClassName, {
-      "bg-red-100 border border-red-400 focus:border-red-300 focus:ring focus:ring-1 focus:ring-red": error,
-      "bg-gray-100 cursor-not-allowed": disabled
+    className: classnames_default()("border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 focus:outline-none sm:text-sm sm:leading-5", selectClassName, {
+      "border-border focus:border-accent-five": !error,
+      "border-error focus:border-error placeholder-error": error,
+      "bg-background cursor-not-allowed cursor-not-allowed": disabled
     })
   }, rest), emotion_react_browser_esm_jsx("option", {
     value: "",
@@ -10063,7 +9407,7 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
       return emotion_react_browser_esm_jsx("div", Avatar_extends({
         className: classnames_default()("overflow-hidden relative inline-flex flex-shrink-0 justify-center", className, {
           "rounded-full": !Boolean(isDashed),
-          "rounded border-2 border-dashed border-gray-300": Boolean(isDashed)
+          "rounded border-2 border-dashed border-accent-four": Boolean(isDashed)
         }),
         style: {
           backgroundColor: isDashed ? 'transparent' : colorProps.backgroundColor,
@@ -10073,7 +9417,7 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
         title: name
       }, props), emotion_react_browser_esm_jsx("span", {
         className: classnames_default()("relative flex justify-center items-center", {
-          "text-gray-300": Boolean(isDashed)
+          "text-accent-four": Boolean(isDashed)
         }),
         style: {
           color: !isDashed && colorProps.color,
@@ -12599,7 +11943,7 @@ var SearchBox_SearchBox = function SearchBox(props) {
     noValidate: true,
     role: "search"
   }, emotion_react_browser_esm_jsx(src_Input, SearchBox_defineProperty({
-    inputClassName: "".concat((isResultsWindowOpen ? "focused" : "", dark ? "bg-gray-800 border-gray-600 text-white focus:border-gray-500 hover:border-gray-500" : "bg-white border-gray-200 text-gray-900 focus:border-gray-300 hover:border-gray-300"), " -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none"),
+    inputClassName: "".concat((isResultsWindowOpen ? "focused" : "", dark ? "bg-accent-eight placeholder-accent-three text-white focus:text-accent-three focus:border-accent-three border border-border hover:border-accent-three" : "bg-white border-border text-foreground focus:border-accent-three hover:border-accent-three"), " -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none"),
     value: currentRefinement,
     onChange: handleOnChange,
     onFocus: checkIfResultsWindowShouldOpen,
@@ -12787,7 +12131,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
       onMouseEnter: handleHoverSelection
     }, emotion_react_browser_esm_jsx("div", {
       ref: clickableLink,
-      className: "px-2 border rounded text-gray-800",
+      className: "px-2 border border-border rounded text-accent-eight",
       style: ResultPill_objectSpread({}, ResultPill_style.resultPillLink)
     }, children));
   }
@@ -12803,7 +12147,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
   }, emotion_react_browser_esm_jsx("a", {
     ref: clickableLink,
     href: formattedHitURL,
-    className: "px-2 rounded outline-none ".concat(isCurrentElement ? 'bg-indigo-600 text-white' : 'text-gray-800'),
+    className: "px-2 rounded outline-none ".concat(isCurrentElement ? 'bg-accent-two text-foreground' : 'text-accent-eight'),
     style: ResultPill_objectSpread({}, ResultPill_style.resultPillLink)
   }, children));
 };
@@ -12830,7 +12174,7 @@ ResultPill_ResultPill.propTypes = {
 var SectionTitle_SectionTitle = function SectionTitle(_ref) {
   var title = _ref.title;
   return emotion_react_browser_esm_jsx("div", {
-    className: "py-2 mb-2 top-0 bg-white border-b border-gray-200"
+    className: "py-2 mb-2 top-0 bg-white border-b border-border"
   }, emotion_react_browser_esm_jsx(Typography_Text, {
     is: "p"
   }, title));
@@ -12982,13 +12326,13 @@ var Controls_Controls = function Controls() {
     style: Controls_objectSpread({}, Controls_style.controlBar),
     ref: controlsRef
   }, emotion_react_browser_esm_jsx("span", {
-    className: "mr-2 rounded-sm text-gray-400",
+    className: "mr-2 rounded-sm text-accent-four",
     style: Controls_objectSpread({}, Controls_style.controlKey)
   }, emotion_react_browser_esm_jsx(assets_ArrowDown, null)), emotion_react_browser_esm_jsx("span", {
-    className: "mr-2 rounded-sm text-gray-400",
+    className: "mr-2 rounded-sm text-accent-four",
     style: Controls_objectSpread({}, Controls_style.controlKey)
   }, emotion_react_browser_esm_jsx(assets_ArrowUp, null)), emotion_react_browser_esm_jsx("small", {
-    className: "text-gray-400"
+    className: "text-accent-four"
   }, "to navigate"));
 };
 
@@ -12999,7 +12343,7 @@ var Controls_Controls = function Controls() {
 
 var Loader_Loader = function Loader() {
   return emotion_react_browser_esm_jsx("svg", {
-    className: "animate-spin mt-2 mb-2 ml-auto mr-auto h-8 w-8 text-purple-600",
+    className: "animate-spin mt-2 mb-2 ml-auto mr-auto h-8 w-8 text-accent-three",
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
     viewBox: "0 0 24 24"
@@ -13022,14 +12366,16 @@ var Loader_Loader = function Loader() {
 
 
 
+
 var NoResults_NoResults = function NoResults() {
   return emotion_react_browser_esm_jsx("li", {
     className: "pb-2 pt-2",
     style: {
-      display: 'block'
+      display: "block"
     }
-  }, emotion_react_browser_esm_jsx("p", {
-    className: "p-2 border shadow-sm rounded border-red-600 text-red-700"
+  }, emotion_react_browser_esm_jsx(Typography_Text, {
+    is: "p",
+    className: "p-2"
   }, "No results were found..."));
 };
 
@@ -13277,7 +12623,7 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
     dark: dark,
     placeholder: placeholder
   }), emotion_react_browser_esm_jsx("div", {
-    className: "shadow-xl rounded absolute w-full bg-white border border-gray-200",
+    className: "shadow-xl rounded absolute w-full bg-white border border-border",
     style: {
       visibility: "".concat(isResultsWindowOpen ? "visible" : "hidden")
     }
@@ -13388,23 +12734,25 @@ AlgoliaSearch_AlgoliaSearch.propTypes = {
 
 
 
-
 var Badge_Badge = function Badge(_ref) {
   var style = _ref.style,
       children = _ref.children,
       minimal = _ref.minimal,
-      className = _ref.className;
+      className = _ref.className,
+      rounded = _ref.rounded;
   var badgeStyle = [{
-    'bg-green-100 text-green-800': style === 'positive',
-    'bg-yellow-100 text-yellow-800': style === 'warning',
-    'bg-blue-100 text-blue-800': style === 'attention',
-    'bg-red-100 text-red-800': style === 'danger',
-    'bg-gray-100 text-gray-800': style === 'neutral'
+    "text-foreground": style === "default",
+    "text-success": style === "positive",
+    "text-warning": style === "warning",
+    "text-error": style === "danger"
+  }];
+  var isRounded = [{
+    "rounded-full bg-foreground text-white": rounded
   }];
   return emotion_react_browser_esm_jsx("div", {
-    className: classnames_default()('inline-flex items-center px-2.5 rounded-md text-sm font-medium h-6 leading-6', badgeStyle, className)
+    className: classnames_default()("border border-border inline-flex items-center px-2.5 rounded-md text-sm font-medium h-6 leading-6", badgeStyle, isRounded, className)
   }, !minimal && emotion_react_browser_esm_jsx("svg", {
-    className: classnames_default()('-ml-0.5 mr-1.5 h-2 w-2', badgeStyle),
+    className: classnames_default()("-ml-0.5 mr-1.5 h-2 w-2", badgeStyle),
     fill: "currentColor",
     viewBox: "0 0 8 8"
   }, emotion_react_browser_esm_jsx("circle", {
@@ -13414,201 +12762,10 @@ var Badge_Badge = function Badge(_ref) {
   })), children);
 };
 
+Badge_Badge.defaultProps = {
+  style: 'default'
+};
 /* harmony default export */ var src_Badge = (Badge_Badge);
-// CONCATENATED MODULE: ./node_modules/@emotion/is-prop-valid/dist/emotion-is-prop-valid.browser.esm.js
-
-
-var reactPropsRegex = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|download|draggable|encType|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|translate|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|fallback|inert|itemProp|itemScope|itemType|itemID|itemRef|on|option|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/; // https://esbench.com/bench/5bfee68a4cd7e6009ef61d23
-
-var isPropValid = /* #__PURE__ */emotion_memoize_browser_esm(function (prop) {
-  return reactPropsRegex.test(prop) || prop.charCodeAt(0) === 111
-  /* o */
-  && prop.charCodeAt(1) === 110
-  /* n */
-  && prop.charCodeAt(2) < 91;
-}
-/* Z+1 */
-);
-
-/* harmony default export */ var emotion_is_prop_valid_browser_esm = (isPropValid);
-
-// CONCATENATED MODULE: ./node_modules/@emotion/styled/base/dist/emotion-styled-base.browser.esm.js
-
-
-
-
-
-
-
-var testOmitPropsOnStringTag = emotion_is_prop_valid_browser_esm;
-
-var testOmitPropsOnComponent = function testOmitPropsOnComponent(key) {
-  return key !== 'theme';
-};
-
-var getDefaultShouldForwardProp = function getDefaultShouldForwardProp(tag) {
-  return typeof tag === 'string' && // 96 is one less than the char code
-  // for "a" so this is checking that
-  // it's a lowercase character
-  tag.charCodeAt(0) > 96 ? testOmitPropsOnStringTag : testOmitPropsOnComponent;
-};
-var composeShouldForwardProps = function composeShouldForwardProps(tag, options, isReal) {
-  var shouldForwardProp;
-
-  if (options) {
-    var optionsShouldForwardProp = options.shouldForwardProp;
-    shouldForwardProp = tag.__emotion_forwardProp && optionsShouldForwardProp ? function (propName) {
-      return tag.__emotion_forwardProp(propName) && optionsShouldForwardProp(propName);
-    } : optionsShouldForwardProp;
-  }
-
-  if (typeof shouldForwardProp !== 'function' && isReal) {
-    shouldForwardProp = tag.__emotion_forwardProp;
-  }
-
-  return shouldForwardProp;
-};
-
-var emotion_styled_base_browser_esm_ILLEGAL_ESCAPE_SEQUENCE_ERROR = "You have illegal escape sequence in your template literal, most likely inside content's property value.\nBecause you write your CSS inside a JavaScript string you actually have to do double escaping, so for example \"content: '\\00d7';\" should become \"content: '\\\\00d7';\".\nYou can read more about this here:\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#ES2018_revision_of_illegal_escape_sequences";
-
-var emotion_styled_base_browser_esm_createStyled = function createStyled(tag, options) {
-  if (false) {}
-
-  var isReal = tag.__emotion_real === tag;
-  var baseTag = isReal && tag.__emotion_base || tag;
-  var identifierName;
-  var targetClassName;
-
-  if (options !== undefined) {
-    identifierName = options.label;
-    targetClassName = options.target;
-  }
-
-  var shouldForwardProp = composeShouldForwardProps(tag, options, isReal);
-  var defaultShouldForwardProp = shouldForwardProp || getDefaultShouldForwardProp(baseTag);
-  var shouldUseAs = !defaultShouldForwardProp('as');
-  return function () {
-    var args = arguments;
-    var styles = isReal && tag.__emotion_styles !== undefined ? tag.__emotion_styles.slice(0) : [];
-
-    if (identifierName !== undefined) {
-      styles.push("label:" + identifierName + ";");
-    }
-
-    if (args[0] == null || args[0].raw === undefined) {
-      styles.push.apply(styles, args);
-    } else {
-      if (false) {}
-
-      styles.push(args[0][0]);
-      var len = args.length;
-      var i = 1;
-
-      for (; i < len; i++) {
-        if (false) {}
-
-        styles.push(args[i], args[0][i]);
-      }
-    } // $FlowFixMe: we need to cast StatelessFunctionalComponent to our PrivateStyledComponent class
-
-
-    var Styled = emotion_element_4fbd89c5_browser_esm_withEmotionCache(function (props, cache, ref) {
-      var finalTag = shouldUseAs && props.as || baseTag;
-      var className = '';
-      var classInterpolations = [];
-      var mergedProps = props;
-
-      if (props.theme == null) {
-        mergedProps = {};
-
-        for (var key in props) {
-          mergedProps[key] = props[key];
-        }
-
-        mergedProps.theme = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"])(ThemeContext);
-      }
-
-      if (typeof props.className === 'string') {
-        className = getRegisteredStyles(cache.registered, classInterpolations, props.className);
-      } else if (props.className != null) {
-        className = props.className + " ";
-      }
-
-      var serialized = emotion_serialize_browser_esm_serializeStyles(styles.concat(classInterpolations), cache.registered, mergedProps);
-      var rules = insertStyles(cache, serialized, typeof finalTag === 'string');
-      className += cache.key + "-" + serialized.name;
-
-      if (targetClassName !== undefined) {
-        className += " " + targetClassName;
-      }
-
-      var finalShouldForwardProp = shouldUseAs && shouldForwardProp === undefined ? getDefaultShouldForwardProp(finalTag) : defaultShouldForwardProp;
-      var newProps = {};
-
-      for (var _key in props) {
-        if (shouldUseAs && _key === 'as') continue;
-
-        if ( // $FlowFixMe
-        finalShouldForwardProp(_key)) {
-          newProps[_key] = props[_key];
-        }
-      }
-
-      newProps.className = className;
-      newProps.ref = ref;
-      var ele = /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"])(finalTag, newProps);
-
-      return ele;
-    });
-    Styled.displayName = identifierName !== undefined ? identifierName : "Styled(" + (typeof baseTag === 'string' ? baseTag : baseTag.displayName || baseTag.name || 'Component') + ")";
-    Styled.defaultProps = tag.defaultProps;
-    Styled.__emotion_real = Styled;
-    Styled.__emotion_base = baseTag;
-    Styled.__emotion_styles = styles;
-    Styled.__emotion_forwardProp = shouldForwardProp;
-    Object.defineProperty(Styled, 'toString', {
-      value: function value() {
-        if (targetClassName === undefined && "production" !== 'production') {
-          return 'NO_COMPONENT_SELECTOR';
-        } // $FlowFixMe: coerce undefined to string
-
-
-        return "." + targetClassName;
-      }
-    });
-
-    Styled.withComponent = function (nextTag, nextOptions) {
-      return createStyled(nextTag, _extends({}, options, {}, nextOptions, {
-        shouldForwardProp: composeShouldForwardProps(Styled, nextOptions, true)
-      })).apply(void 0, styles);
-    };
-
-    return Styled;
-  };
-};
-
-/* harmony default export */ var emotion_styled_base_browser_esm = (emotion_styled_base_browser_esm_createStyled);
-
-// CONCATENATED MODULE: ./node_modules/@emotion/styled/dist/emotion-styled.browser.esm.js
-
-
-
-
-
-
-
-
-var tags = ['a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base', 'bdi', 'bdo', 'big', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'cite', 'code', 'col', 'colgroup', 'data', 'datalist', 'dd', 'del', 'details', 'dfn', 'dialog', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'main', 'map', 'mark', 'marquee', 'menu', 'menuitem', 'meta', 'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', 'picture', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'script', 'section', 'select', 'small', 'source', 'span', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track', 'u', 'ul', 'var', 'video', 'wbr', // SVG
-'circle', 'clipPath', 'defs', 'ellipse', 'foreignObject', 'g', 'image', 'line', 'linearGradient', 'mask', 'path', 'pattern', 'polygon', 'polyline', 'radialGradient', 'rect', 'stop', 'svg', 'text', 'tspan'];
-
-var newStyled = emotion_styled_base_browser_esm.bind();
-tags.forEach(function (tagName) {
-  // $FlowFixMe: we can ignore this because its exposed type is defined by the CreateStyled type
-  newStyled[tagName] = newStyled(tagName);
-});
-
-/* harmony default export */ var emotion_styled_browser_esm = (newStyled);
-
 // CONCATENATED MODULE: ./node_modules/@radix-ui/react-id/dist/index.module.js
 function index_module_r(){return(index_module_r=Object.assign||function(e){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n])}return e}).apply(this,arguments)}const index_module_t={prefix:Math.round(1e10*Math.random()),current:0},index_module_n=external_root_React_commonjs2_react_commonjs_react_amd_react_["createContext"](index_module_t);const IdProvider=o=>{const a=external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"](index_module_n),i=a===index_module_t,c=external_root_React_commonjs2_react_commonjs_react_amd_react_["useMemo"]((()=>({prefix:i?0:++a.prefix,current:0})),[i,a]);return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](index_module_n.Provider,index_module_r({value:c},o))};function useId(r){const o=external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"](index_module_n);return Boolean(null===globalThis||void 0===globalThis?void 0:globalThis.document)||o!==index_module_t||console.warn("When server rendering, you must wrap your application in an <IdProvider> to ensure consistent ids are generated between the client and server."),external_root_React_commonjs2_react_commonjs_react_amd_react_["useMemo"]((()=>r||"radix-id-".concat(o.prefix,"-").concat(++o.current)),[r])}
 //# sourceMappingURL=index.module.js.map
@@ -14668,9 +13825,9 @@ function react_dropdown_menu_dist_index_module_u(){return(react_dropdown_menu_di
 //# sourceMappingURL=index.module.js.map
 
 // CONCATENATED MODULE: ./src/DropdownMenu/index.js
-var _templateObject, _templateObject2;
+var DropdownMenu_templateObject, DropdownMenu_templateObject2;
 
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+function DropdownMenu_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 
@@ -14686,7 +13843,7 @@ var DropdownContent = emotion_styled_browser_esm(index_module_Content)(function 
     "--tw-bg-opacity": "1",
     "backgroundColor": "rgba(255, 255, 255, var(--tw-bg-opacity))",
     "borderRadius": "0.25rem"
-  }, emotion_react_browser_esm_css(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    min-width: 150px;\n  "])))];
+  }, emotion_react_browser_esm_css(DropdownMenu_templateObject || (DropdownMenu_templateObject = DropdownMenu_taggedTemplateLiteral(["\n    min-width: 150px;\n  "])))];
 });
 
 var DropdownLabel = emotion_styled_browser_esm(index_module_Label)(function () {
@@ -14698,7 +13855,7 @@ var DropdownLabel = emotion_styled_browser_esm(index_module_Label)(function () {
     "fontSize": "0.75rem",
     "lineHeight": "1rem",
     "--tw-text-opacity": "1",
-    "color": "rgba(75, 85, 99, var(--tw-text-opacity))",
+    "color": "rgba(68, 68, 68, var(--tw-text-opacity))",
     "textTransform": "uppercase"
   }];
 });
@@ -14712,22 +13869,22 @@ var DropdownItem = emotion_styled_browser_esm(index_module_Item)(function () {
     "paddingTop": "0.5rem",
     "paddingBottom": "0.5rem",
     "--tw-text-opacity": "1",
-    "color": "rgba(75, 85, 99, var(--tw-text-opacity))",
+    "color": "rgba(68, 68, 68, var(--tw-text-opacity))",
     "fontSize": "0.875rem",
     "lineHeight": "1.25rem",
     "cursor": "pointer"
   }, {
     ":focus": {
       "--tw-bg-opacity": "1",
-      "backgroundColor": "rgba(243, 244, 246, var(--tw-bg-opacity))",
+      "backgroundColor": "rgba(249, 250, 251, var(--tw-bg-opacity))",
       "--tw-text-opacity": "1",
-      "color": "rgba(17, 24, 39, var(--tw-text-opacity))",
+      "color": "rgba(17, 17, 17, var(--tw-text-opacity))",
       "outline": "2px solid transparent",
       "outlineOffset": "2px"
     }
-  }, emotion_react_browser_esm_css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n    &[data-disabled] {\n      ", "\n    }\n  "])), {
+  }, emotion_react_browser_esm_css(DropdownMenu_templateObject2 || (DropdownMenu_templateObject2 = DropdownMenu_taggedTemplateLiteral(["\n    &[data-disabled] {\n      ", "\n    }\n  "])), {
     "--tw-text-opacity": "1",
-    "color": "rgba(209, 213, 219, var(--tw-text-opacity))",
+    "color": "rgba(229, 231, 235, var(--tw-text-opacity))",
     "cursor": "default"
   })];
 });
@@ -14735,10 +13892,10 @@ var DropdownItem = emotion_styled_browser_esm(index_module_Item)(function () {
 var DropdownSeparator = emotion_styled_browser_esm(index_module_Separator)(function () {
   return [{
     "--tw-bg-opacity": "1",
-    "backgroundColor": "rgba(243, 244, 246, var(--tw-bg-opacity))",
+    "backgroundColor": "rgba(249, 250, 251, var(--tw-bg-opacity))",
     "borderBottomWidth": "1px",
     "--tw-border-opacity": "1",
-    "borderColor": "rgba(243, 244, 246, var(--tw-border-opacity))"
+    "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))"
   }];
 });
 
@@ -14814,8 +13971,8 @@ var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
           "text-lg": size == 4,
           "text-base": size == 5,
           "text-sm": size == 6,
-          "text-gray-800": color == "default",
-          "text-red-700": color == "danger"
+          "text-accent-seven": color == "default",
+          "text-error": color == "danger"
         })
       }, props));
     }
@@ -14831,7 +13988,7 @@ Heading_defineProperty(Heading_Heading, "propTypes", {
   size: prop_types_default.a.oneOf([1, 2, 3, 4, 5, 6]).isRequired,
 
   /**
-   * The only options are default and danger.
+   * You can set any other available color
    */
   color: prop_types_default.a.oneOf(["default", "danger"]).isRequired,
   className: prop_types_default.a.string
@@ -14952,7 +14109,6 @@ function ListItem_isNativeReflectConstruct() { if (typeof Reflect === "undefined
 function ListItem_getPrototypeOf(o) { ListItem_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return ListItem_getPrototypeOf(o); }
 
 function ListItem_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
