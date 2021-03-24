@@ -27,6 +27,9 @@ const SearchComponent = (props) => {
     className,
     dark,
     placeholder,
+    formatSelected,
+    onSelect,
+    inputProps,
   } = props;
 
   const {
@@ -63,6 +66,7 @@ const SearchComponent = (props) => {
   const [filterState, setFilterState] = useState("");
   const [conditionalOperands, setConditionalOperands] = useState(null);
   const [isSearchEmpty, setIsSearchEmpty] = useState(false);
+  const [selectedItem, setSelectedItem] = useState()
 
   const handleClickOutside = (e) => {
     if (searchComponentRef.current.contains(e.target)) {
@@ -208,6 +212,8 @@ const SearchComponent = (props) => {
 
       case 13:
         handleKeyNavigation(navigationKeyTypes.ENTER);
+        e.stopPropagation()
+        e.preventDefault()
         break;
 
       default:
@@ -215,6 +221,11 @@ const SearchComponent = (props) => {
         break;
     }
   };
+
+  const handleOnSelect = (hit) => {
+    setSelectedItem(hit)
+    onSelect && onSelect(hit)
+  }
 
   const LoaderToRender = customLoader ? customLoader : <Loader />;
   const NoResultsToRender = customNoResults ? customNoResults : <NoResults />;
@@ -227,7 +238,14 @@ const SearchComponent = (props) => {
         onSearchStateChange={handleOnSearchStateChange}
       >
         <div onKeyDown={handleOnKeyDown} role="listbox" className="relative">
-          <SearchBox id={ALGOLIA_APP_ID} dark={dark} placeholder={placeholder} />
+          <SearchBox
+            id={ALGOLIA_APP_ID}
+            dark={dark}
+            selectedText={selectedItem ? formatSelected(selectedItem) : ''}
+            inputProps={inputProps}
+            placeholder={placeholder}
+            onSelect={handleOnSelect}
+          />
 
           <div
             className="shadow-xl rounded absolute w-full bg-white border border-gray-200"
@@ -260,6 +278,7 @@ const SearchComponent = (props) => {
                       renderCardInfo={renderCardInfo}
                       sectionIndex={sectionIndex}
                       formatHitURL={formatHitURL}
+                      onSelect={handleOnSelect}
                     />
                   </Index>
                 );
@@ -306,6 +325,8 @@ SearchComponent.propTypes = {
   customLoader: PropTypes.node,
   customNoResults: PropTypes.node,
   indexResultsLimit: PropTypes.number.isRequired,
+  onSelect: PropTypes.func,
+  formatSelected: PropTypes.func,
 };
 
 export default SearchComponent;
