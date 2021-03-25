@@ -57,9 +57,9 @@
     "jest": "^26.0.1",
     "path": "^0.12.7",
     "postcss": "^7.0.35",
-    "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-hot-loader": "^4.12.18",
+    "react-instantsearch-dom": "^6.7.0",
     "react-svg": "^11.0.20",
     "react-test-renderer": "^16.13.1",
     "semantic-release": "^17.1.2",
@@ -69,16 +69,15 @@
     "webpack-cli": "^3.3.11"
   },
   "peerDependencies": {
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
     "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5"
+    "@emotion/styled": "^11.1.5",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "react-instantsearch-dom": "^6.7.0",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5"
   }

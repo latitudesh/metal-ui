@@ -15,7 +15,7 @@ module.exports = {
       white: "#FFFFFF",
       selection: "#79FFE1",
       secondary: "#666666",
-      link: "#0070F3",
+      link: "#6359f9",
       border: "#EAEAEA",
       code: "#F81CE5",
       cyan: "#50E3C2",
