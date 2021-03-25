@@ -1,3 +1,11 @@
+# [2.6.0](https://github.com/Maxihost/metal-ui/compare/v2.5.0...v2.6.0) (2021-03-24)
+
+
+### Features
+
+* AlgoliaSearch inputProps ([346a129](https://github.com/Maxihost/metal-ui/commit/346a1297bcbdb1b388912f36484d6485ed27adf0))
+* AlgoliaSearch selectable mode ([494e576](https://github.com/Maxihost/metal-ui/commit/494e57654e0bf7cc7796b1a875bc6873f9e7bedd))
+
 # [2.5.0](https://github.com/Maxihost/metal-ui/compare/v2.4.1...v2.5.0) (2021-03-16)
 
 

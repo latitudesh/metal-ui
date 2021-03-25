@@ -11156,7 +11156,8 @@ var ResultsList_ResultsList = function ResultsList(props) {
       sectionIndex = props.sectionIndex,
       renderCardInfo = props.renderCardInfo,
       formatHitURL = props.formatHitURL,
-      onSelect = props.onSelect;
+      onSelect = props.onSelect,
+      isSelectable = props.isSelectable;
 
   var _useTabController = TabController_useTabController(),
       appendNewSectionLength = _useTabController.appendNewSectionLength,
@@ -11186,7 +11187,7 @@ var ResultsList_ResultsList = function ResultsList(props) {
         elementIndex: index,
         sectionIndex: sectionIndex,
         formattedHitURL: formattedHitURL(hit),
-        onSelect: onSelect ? function () {
+        onSelect: isSelectable ? function () {
           onSelect(hit);
           setIsResultsWindowOpen(false);
         } : null
@@ -11405,6 +11406,7 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
       searchInputHeight = _useTabController.searchInputHeight;
 
   var algoliaClient = algoliasearch_lite_umd_default()(ALGOLIA_APP_ID, ALGOLIA_API_SEARCH_KEY);
+  var isSelectable = Boolean(onSelect);
   var searchClient = {
     search: function search(requests) {
       if (shouldBypassSearch === true) return null;
@@ -11580,8 +11582,10 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
   };
 
   var handleOnSelect = function handleOnSelect(hit) {
-    setSelectedItem(hit);
-    onSelect && onSelect(hit);
+    if (isSelectable) {
+      setSelectedItem(hit);
+      onSelect(hit);
+    }
   };
 
   var LoaderToRender = customLoader ? customLoader : Object(react_["jsx"])(elements_Loader, null);
@@ -11633,7 +11637,8 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
       renderCardInfo: renderCardInfo,
       sectionIndex: sectionIndex,
       formatHitURL: formatHitURL,
-      onSelect: handleOnSelect
+      onSelect: handleOnSelect,
+      isSelectable: isSelectable
     }));
   }), totalElementsCount === 0 && isSearchEmpty && NoResultsToRender, totalElementsCount === 0 && !isSearchEmpty && LoaderToRender), Object(react_["jsx"])(elements_Controls, null)))));
 };
