@@ -9,7 +9,7 @@ class Heading extends PureComponent {
      */
     size: PropTypes.oneOf([1, 2, 3, 4, 5, 6]).isRequired,
     /**
-     * The only options are default and danger.
+     * You can set any other available color
      */
     color: PropTypes.oneOf(["default", "danger"]).isRequired,
 
@@ -35,8 +35,8 @@ class Heading extends PureComponent {
           "text-lg": size == 4,
           "text-base": size == 5,
           "text-sm": size == 6,
-          "text-gray-800": color == "default",
-          "text-red-700": color == "danger",
+          "text-accent-seven": color == "default",
+          "text-error": color == "danger",
         })}
         {...props}
       />

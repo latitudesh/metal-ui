@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import Sidesheet from "./index";
 import Button from "../Button";
+import Text from "../Typography/Text";
 
 storiesOf("Sidesheet", module)
   .addDecorator((getStory) => (
@@ -16,7 +17,7 @@ storiesOf("Sidesheet", module)
         title={"Title"}
         onClose={() => setIsShown(false)}
         isShown={isShown}
-        content={<span className="text-gray-600">Content</span>}
+        content={<Text is="p">Content</Text>}
       >
         <Button
           type="secondary"
@@ -34,7 +35,7 @@ storiesOf("Sidesheet", module)
           onClose={() => setIsShown(false)}
           title={"Title"}
           isShown={isShown}
-          content={<span className="text-gray-600">Content</span>}
+          content={<Text is="p">Content</Text>}
           action={<Button onClick={() => setIsShown(false)} label={"Action"} />}
         >
           <Button

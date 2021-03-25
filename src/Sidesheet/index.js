@@ -8,7 +8,7 @@ function XIcon() {
   return (
     <svg
       fill="none"
-      className="text-gray-600"
+      className="text-accent-four"
       stroke="currentColor"
       viewBox="0 0 24 24"
       width="16px"
@@ -92,7 +92,7 @@ const Sidesheet = ({
             className={classNames(
               "fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition",
               {
-                "bg-gray-800": transition,
+                "bg-accent-eight": transition,
                 "bg-transparent": !transition,
               }
             )}
@@ -116,9 +116,9 @@ const Sidesheet = ({
             <Box
               flex
               alignItems="center"
-              className="relative border-b border-gray-200 rounded rounded-b-none"
+              className="relative border-b border-border rounded rounded-b-none"
             >
-              <div className="text-gray-600 flex-auto truncate leading-6">
+              <div className="text-foreground flex-auto truncate leading-6">
                 {title}
               </div>
               <Box
@@ -146,7 +146,7 @@ const Sidesheet = ({
                 flex
                 justifyContent="center"
                 alignItems="center"
-                className="sidesheet-action h-16 border-t border-gray-200 relative flex-initial rounded rounded-t-none"
+                className="sidesheet-action h-16 border-t border-border relative flex-initial rounded rounded-t-none"
               >
                 {action}
               </Box>

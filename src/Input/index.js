@@ -37,13 +37,13 @@ const Input = React.forwardRef(
       <div className={className}>
         {label && (
           <label
-            className="block text-sm leading-5 font-medium text-gray-700"
+            className="block text-sm leading-5 font-medium text-accent-six"
             htmlFor={id}
           >
             {label}
           </label>
         )}
-        <div className="mt-1 relative rounded-md shadow-sm">
+        <div className="mt-1 relative">
           <input
             id={id}
             ref={ref}
@@ -54,11 +54,12 @@ const Input = React.forwardRef(
             aria-invalid={error ? true : false}
             disabled={disabled}
             className={classNames(
-              "form-input block w-full sm:text-sm sm:leading-5",
+              "form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none",
               inputClassName,
               {
-                "bg-red-100 border border-red-400 focus:border-red-300 focus:shadow-outline-red": error,
-                "bg-gray-100 cursor-not-allowed": disabled,
+                "border-border text-accent-six focus:border-accent-six": !error,
+                "border-error placeholder-error": error,
+                "bg-background cursor-not-allowed cursor-not-allowed": disabled,
               }
             )}
             {...rest}

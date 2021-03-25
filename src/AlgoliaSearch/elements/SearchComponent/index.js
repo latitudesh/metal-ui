@@ -53,6 +53,8 @@ const SearchComponent = (props) => {
 
   const algoliaClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_SEARCH_KEY);
 
+  const isSelectable = Boolean(onSelect)
+
   const searchClient = {
     search(requests) {
       if (shouldBypassSearch === true) return null;
@@ -223,8 +225,10 @@ const SearchComponent = (props) => {
   };
 
   const handleOnSelect = (hit) => {
-    setSelectedItem(hit)
-    onSelect && onSelect(hit)
+    if (isSelectable) {
+      setSelectedItem(hit)
+      onSelect(hit)
+    }
   }
 
   const LoaderToRender = customLoader ? customLoader : <Loader />;
@@ -248,7 +252,7 @@ const SearchComponent = (props) => {
           />
 
           <div
-            className="shadow-xl rounded absolute w-full bg-white border border-gray-200"
+            className="shadow-xl rounded absolute w-full bg-white border border-border"
             style={{
               visibility: `${isResultsWindowOpen ? "visible" : "hidden"}`,
             }}
@@ -279,6 +283,7 @@ const SearchComponent = (props) => {
                       sectionIndex={sectionIndex}
                       formatHitURL={formatHitURL}
                       onSelect={handleOnSelect}
+                      isSelectable={isSelectable}
                     />
                   </Index>
                 );

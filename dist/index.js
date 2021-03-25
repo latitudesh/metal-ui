@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("react-dom"));
+		module.exports = factory(require("react"), require("@emotion/react"), require("react-dom"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react", "react-dom"], factory);
+		define(["react", "@emotion/react", "react-dom"], factory);
 	else if(typeof exports === 'object')
-		exports["metal-ui"] = factory(require("react"), require("react-dom"));
+		exports["metal-ui"] = factory(require("react"), require("@emotion/react"), require("react-dom"));
 	else
-		root["metal-ui"] = factory(root["React"], root["ReactDOM"]);
-})((typeof window !== 'undefined' ? window : this), function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__4__) {
+		root["metal-ui"] = factory(root["React"], root["@emotion/react"], root["ReactDOM"]);
+})((typeof window !== 'undefined' ? window : this), function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__5__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 43);
+/******/ 	return __webpack_require__(__webpack_require__.s = 36);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -114,12 +114,18 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
 if (false) { var throwOnDirectAccess, ReactIs; } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(25)();
+  module.exports = __webpack_require__(24)();
 }
 
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -176,7 +182,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -230,22 +236,22 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__4__;
+module.exports = __WEBPACK_EXTERNAL_MODULE__5__;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var AlgoliaSearchHelper = __webpack_require__(34);
+var AlgoliaSearchHelper = __webpack_require__(26);
 
 var SearchParameters = __webpack_require__(14);
-var SearchResults = __webpack_require__(16);
+var SearchResults = __webpack_require__(15);
 
 /**
  * The algoliasearchHelper module is the function that will let its
@@ -287,7 +293,7 @@ function algoliasearchHelper(client, index, opts) {
  * @member module:algoliasearchHelper.version
  * @type {number}
  */
-algoliasearchHelper.version = __webpack_require__(21);
+algoliasearchHelper.version = __webpack_require__(20);
 
 /**
  * Constructor for the Helper.
@@ -314,7 +320,89 @@ module.exports = algoliasearchHelper;
 
 
 /***/ }),
-/* 6 */
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function clone(value) {
+  if (typeof value === 'object' && value !== null) {
+    return _merge(Array.isArray(value) ? [] : {}, value);
+  }
+  return value;
+}
+
+function isObjectOrArrayOrFunction(value) {
+  return (
+    typeof value === 'function' ||
+    Array.isArray(value) ||
+    Object.prototype.toString.call(value) === '[object Object]'
+  );
+}
+
+function _merge(target, source) {
+  if (target === source) {
+    return target;
+  }
+
+  for (var key in source) {
+    if (!Object.prototype.hasOwnProperty.call(source, key)) {
+      continue;
+    }
+
+    var sourceVal = source[key];
+    var targetVal = target[key];
+
+    if (typeof targetVal !== 'undefined' && typeof sourceVal === 'undefined') {
+      continue;
+    }
+
+    if (isObjectOrArrayOrFunction(targetVal) && isObjectOrArrayOrFunction(sourceVal)) {
+      target[key] = _merge(targetVal, sourceVal);
+    } else {
+      target[key] = clone(sourceVal);
+    }
+  }
+  return target;
+}
+
+/**
+ * This method is like Object.assign, but recursively merges own and inherited
+ * enumerable keyed properties of source objects into the destination object.
+ *
+ * NOTE: this behaves like lodash/merge, but:
+ * - does mutate functions if they are a source
+ * - treats non-plain objects as plain
+ * - does not work for circular objects
+ * - treats sparse arrays as sparse
+ * - does not convert Array-like objects (Arguments, NodeLists, etc.) to arrays
+ *
+ * @param {Object} object The destination object.
+ * @param {...Object} [sources] The source objects.
+ * @returns {Object} Returns `object`.
+ */
+
+function merge(target) {
+  if (!isObjectOrArrayOrFunction(target)) {
+    target = {};
+  }
+
+  for (var i = 1, l = arguments.length; i < l; i++) {
+    var source = arguments[i];
+
+    if (isObjectOrArrayOrFunction(source)) {
+      _merge(target, source);
+    }
+  }
+  return target;
+}
+
+module.exports = merge;
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -335,7 +423,7 @@ module.exports = function find(array, comparator) {
 
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports) {
 
 /* global Map:readonly, Set:readonly, ArrayBuffer:readonly */
@@ -475,89 +563,7 @@ module.exports = function isEqual(a, b) {
 
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function clone(value) {
-  if (typeof value === 'object' && value !== null) {
-    return _merge(Array.isArray(value) ? [] : {}, value);
-  }
-  return value;
-}
-
-function isObjectOrArrayOrFunction(value) {
-  return (
-    typeof value === 'function' ||
-    Array.isArray(value) ||
-    Object.prototype.toString.call(value) === '[object Object]'
-  );
-}
-
-function _merge(target, source) {
-  if (target === source) {
-    return target;
-  }
-
-  for (var key in source) {
-    if (!Object.prototype.hasOwnProperty.call(source, key)) {
-      continue;
-    }
-
-    var sourceVal = source[key];
-    var targetVal = target[key];
-
-    if (typeof targetVal !== 'undefined' && typeof sourceVal === 'undefined') {
-      continue;
-    }
-
-    if (isObjectOrArrayOrFunction(targetVal) && isObjectOrArrayOrFunction(sourceVal)) {
-      target[key] = _merge(targetVal, sourceVal);
-    } else {
-      target[key] = clone(sourceVal);
-    }
-  }
-  return target;
-}
-
-/**
- * This method is like Object.assign, but recursively merges own and inherited
- * enumerable keyed properties of source objects into the destination object.
- *
- * NOTE: this behaves like lodash/merge, but:
- * - does mutate functions if they are a source
- * - treats non-plain objects as plain
- * - does not work for circular objects
- * - treats sparse arrays as sparse
- * - does not convert Array-like objects (Arguments, NodeLists, etc.) to arrays
- *
- * @param {Object} object The destination object.
- * @param {...Object} [sources] The source objects.
- * @returns {Object} Returns `object`.
- */
-
-function merge(target) {
-  if (!isObjectOrArrayOrFunction(target)) {
-    target = {};
-  }
-
-  for (var i = 1, l = arguments.length; i < l; i++) {
-    var source = arguments[i];
-
-    if (isObjectOrArrayOrFunction(source)) {
-      _merge(target, source);
-    }
-  }
-  return target;
-}
-
-module.exports = merge;
-
-
-/***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -585,7 +591,32 @@ module.exports = function defaultsPure() {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// https://github.com/babel/babel/blob/3aaafae053fa75febb3aa45d45b6f00646e30ba4/packages/babel-helpers/src/helpers.js#L604-L620
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source === null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key;
+  var i;
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+  return target;
+}
+
+module.exports = _objectWithoutPropertiesLoose;
+
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -599,156 +630,23 @@ module.exports = objectHasKeys;
 
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var reactIs = __webpack_require__(27);
-
-/**
- * Copyright 2015, Yahoo! Inc.
- * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
- */
-var REACT_STATICS = {
-  childContextTypes: true,
-  contextType: true,
-  contextTypes: true,
-  defaultProps: true,
-  displayName: true,
-  getDefaultProps: true,
-  getDerivedStateFromError: true,
-  getDerivedStateFromProps: true,
-  mixins: true,
-  propTypes: true,
-  type: true
-};
-var KNOWN_STATICS = {
-  name: true,
-  length: true,
-  prototype: true,
-  caller: true,
-  callee: true,
-  arguments: true,
-  arity: true
-};
-var FORWARD_REF_STATICS = {
-  '$$typeof': true,
-  render: true,
-  defaultProps: true,
-  displayName: true,
-  propTypes: true
-};
-var MEMO_STATICS = {
-  '$$typeof': true,
-  compare: true,
-  defaultProps: true,
-  displayName: true,
-  propTypes: true,
-  type: true
-};
-var TYPE_STATICS = {};
-TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
-TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
-
-function getStatics(component) {
-  // React v16.11 and below
-  if (reactIs.isMemo(component)) {
-    return MEMO_STATICS;
-  } // React v16.12 and above
-
-
-  return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
-}
-
-var defineProperty = Object.defineProperty;
-var getOwnPropertyNames = Object.getOwnPropertyNames;
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-var getPrototypeOf = Object.getPrototypeOf;
-var objectPrototype = Object.prototype;
-function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
-  if (typeof sourceComponent !== 'string') {
-    // don't hoist over string (html) components
-    if (objectPrototype) {
-      var inheritedComponent = getPrototypeOf(sourceComponent);
-
-      if (inheritedComponent && inheritedComponent !== objectPrototype) {
-        hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
-      }
-    }
-
-    var keys = getOwnPropertyNames(sourceComponent);
-
-    if (getOwnPropertySymbols) {
-      keys = keys.concat(getOwnPropertySymbols(sourceComponent));
-    }
-
-    var targetStatics = getStatics(targetComponent);
-    var sourceStatics = getStatics(sourceComponent);
-
-    for (var i = 0; i < keys.length; ++i) {
-      var key = keys[i];
-
-      if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
-        var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
-
-        try {
-          // Avoid failures from read-only properties
-          defineProperty(targetComponent, key, descriptor);
-        } catch (e) {}
-      }
-    }
-  }
-
-  return targetComponent;
-}
-
-module.exports = hoistNonReactStatics;
-
-
-/***/ }),
-/* 12 */,
-/* 13 */
-/***/ (function(module, exports) {
-
-function _extends() {
-  module.exports = _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-module.exports = _extends;
-
-/***/ }),
+/* 13 */,
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var merge = __webpack_require__(8);
-var defaultsPure = __webpack_require__(9);
-var intersection = __webpack_require__(35);
-var find = __webpack_require__(6);
-var valToNumber = __webpack_require__(36);
-var omit = __webpack_require__(15);
-var objectHasKeys = __webpack_require__(10);
+var merge = __webpack_require__(7);
+var defaultsPure = __webpack_require__(10);
+var intersection = __webpack_require__(27);
+var find = __webpack_require__(8);
+var valToNumber = __webpack_require__(28);
+var omit = __webpack_require__(11);
+var objectHasKeys = __webpack_require__(12);
+var isValidUserToken = __webpack_require__(29);
 
-var RefinementList = __webpack_require__(37);
+var RefinementList = __webpack_require__(30);
 
 /**
  * isEqual, but only for numeric refinement values, possible values:
@@ -833,6 +731,9 @@ function findArray(array, searchedValue) {
 function SearchParameters(newParameters) {
   var params = newParameters ? SearchParameters._parseNumbers(newParameters) : {};
 
+  if (params.userToken !== undefined && !isValidUserToken(params.userToken)) {
+    console.warn('[algoliasearch-helper] The `userToken` parameter is invalid. This can lead to wrong analytics.\n  - Format: [a-zA-Z0-9_-]{1,64}');
+  }
   /**
    * This attribute contains the list of all the conjunctive facets
    * used. This list will be added to requested facets in the
@@ -1374,7 +1275,7 @@ SearchParameters.prototype = {
   /**
    * Get the list of numeric refinements for a single facet
    * @param {string} facetName name of the attribute used for faceting
-   * @return {SearchParameters.OperatorList[]} list of refinements
+   * @return {SearchParameters.OperatorList} list of refinements
    */
   getNumericRefinements: function(facetName) {
     return this.numericRefinements[facetName] || {};
@@ -1405,9 +1306,6 @@ SearchParameters.prototype = {
       }
       return {};
     } else if (typeof attribute === 'string') {
-      if (!objectHasKeys(this.numericRefinements[attribute])) {
-        return this.numericRefinements;
-      }
       return omit(this.numericRefinements, [attribute]);
     } else if (typeof attribute === 'function') {
       var hasChanged = false;
@@ -2248,40 +2146,15 @@ module.exports = SearchParameters;
 "use strict";
 
 
-// https://github.com/babel/babel/blob/3aaafae053fa75febb3aa45d45b6f00646e30ba4/packages/babel-helpers/src/helpers.js#L604-L620
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source === null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key;
-  var i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-  return target;
-}
+var merge = __webpack_require__(7);
+var defaultsPure = __webpack_require__(10);
+var orderBy = __webpack_require__(16);
+var compact = __webpack_require__(31);
+var find = __webpack_require__(8);
+var findIndex = __webpack_require__(32);
+var formatSort = __webpack_require__(17);
 
-module.exports = _objectWithoutPropertiesLoose;
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var merge = __webpack_require__(8);
-var defaultsPure = __webpack_require__(9);
-var orderBy = __webpack_require__(17);
-var compact = __webpack_require__(38);
-var find = __webpack_require__(6);
-var findIndex = __webpack_require__(39);
-var formatSort = __webpack_require__(18);
-
-var generateHierarchicalTree = __webpack_require__(40);
+var generateHierarchicalTree = __webpack_require__(33);
 
 /**
  * @typedef SearchResults.Facet
@@ -3197,7 +3070,7 @@ module.exports = SearchResults;
 
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3283,13 +3156,13 @@ module.exports = orderBy;
 
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var find = __webpack_require__(6);
+var find = __webpack_require__(8);
 
 /**
  * Transform sort format from user friendly notation to lodash format
@@ -3328,7 +3201,7 @@ module.exports = function formatSort(sortBy, defaults) {
 
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3782,36 +3655,57 @@ function unwrapListeners(arr) {
 
 function once(emitter, name) {
   return new Promise(function (resolve, reject) {
-    function eventListener() {
-      if (errorListener !== undefined) {
+    function errorListener(err) {
+      emitter.removeListener(name, resolver);
+      reject(err);
+    }
+
+    function resolver() {
+      if (typeof emitter.removeListener === 'function') {
         emitter.removeListener('error', errorListener);
       }
       resolve([].slice.call(arguments));
     };
-    var errorListener;
 
-    // Adding an error listener is not optional because
-    // if an error is thrown on an event emitter we cannot
-    // guarantee that the actual event we are waiting will
-    // be fired. The result could be a silent way to create
-    // memory or file descriptor leaks, which is something
-    // we should avoid.
+    eventTargetAgnosticAddListener(emitter, name, resolver, { once: true });
     if (name !== 'error') {
-      errorListener = function errorListener(err) {
-        emitter.removeListener(name, eventListener);
-        reject(err);
-      };
-
-      emitter.once('error', errorListener);
+      addErrorHandlerIfEventEmitter(emitter, errorListener, { once: true });
     }
-
-    emitter.once(name, eventListener);
   });
+}
+
+function addErrorHandlerIfEventEmitter(emitter, handler, flags) {
+  if (typeof emitter.on === 'function') {
+    eventTargetAgnosticAddListener(emitter, 'error', handler, flags);
+  }
+}
+
+function eventTargetAgnosticAddListener(emitter, name, listener, flags) {
+  if (typeof emitter.on === 'function') {
+    if (flags.once) {
+      emitter.once(name, listener);
+    } else {
+      emitter.on(name, listener);
+    }
+  } else if (typeof emitter.addEventListener === 'function') {
+    // EventTarget does not have `error` event semantics like Node
+    // EventEmitters, we do not listen for `error` events here.
+    emitter.addEventListener(name, function wrapListener(arg) {
+      // IE does not have builtin `{ once: true }` support so we
+      // have to do it manually.
+      if (flags.once) {
+        emitter.removeEventListener(name, wrapListener);
+      }
+      listener(arg);
+    });
+  } else {
+    throw new TypeError('The "emitter" argument must be of type EventEmitter. Received type ' + typeof emitter);
+  }
 }
 
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3832,33 +3726,53 @@ module.exports = inherits;
 
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = '3.2.2';
+module.exports = '3.4.4';
 
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports) {
+
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+
+    module.exports["default"] = module.exports, module.exports.__esModule = true;
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+
+    module.exports["default"] = module.exports, module.exports.__esModule = true;
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(29)
+/*! algoliasearch-lite.umd.js | 4.8.6 | © Algolia, inc. | https://github.com/algolia/algoliasearch-client-javascript */
+!function(e,t){ true?module.exports=t():undefined}(this,(function(){"use strict";function e(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function t(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),r.push.apply(r,n)}return r}function r(r){for(var n=1;n<arguments.length;n++){var o=null!=arguments[n]?arguments[n]:{};n%2?t(Object(o),!0).forEach((function(t){e(r,t,o[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(r,Object.getOwnPropertyDescriptors(o)):t(Object(o)).forEach((function(e){Object.defineProperty(r,e,Object.getOwnPropertyDescriptor(o,e))}))}return r}function n(e,t){if(null==e)return{};var r,n,o=function(e,t){if(null==e)return{};var r,n,o={},a=Object.keys(e);for(n=0;n<a.length;n++)r=a[n],t.indexOf(r)>=0||(o[r]=e[r]);return o}(e,t);if(Object.getOwnPropertySymbols){var a=Object.getOwnPropertySymbols(e);for(n=0;n<a.length;n++)r=a[n],t.indexOf(r)>=0||Object.prototype.propertyIsEnumerable.call(e,r)&&(o[r]=e[r])}return o}function o(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if(!(Symbol.iterator in Object(e)||"[object Arguments]"===Object.prototype.toString.call(e)))return;var r=[],n=!0,o=!1,a=void 0;try{for(var u,i=e[Symbol.iterator]();!(n=(u=i.next()).done)&&(r.push(u.value),!t||r.length!==t);n=!0);}catch(e){o=!0,a=e}finally{try{n||null==i.return||i.return()}finally{if(o)throw a}}return r}(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance")}()}function a(e){return function(e){if(Array.isArray(e)){for(var t=0,r=new Array(e.length);t<e.length;t++)r[t]=e[t];return r}}(e)||function(e){if(Symbol.iterator in Object(e)||"[object Arguments]"===Object.prototype.toString.call(e))return Array.from(e)}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance")}()}function u(e){var t,r="algoliasearch-client-js-".concat(e.key),n=function(){return void 0===t&&(t=e.localStorage||window.localStorage),t},a=function(){return JSON.parse(n().getItem(r)||"{}")};return{get:function(e,t){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{miss:function(){return Promise.resolve()}};return Promise.resolve().then((function(){var r=JSON.stringify(e),n=a()[r];return Promise.all([n||t(),void 0!==n])})).then((function(e){var t=o(e,2),n=t[0],a=t[1];return Promise.all([n,a||r.miss(n)])})).then((function(e){return o(e,1)[0]}))},set:function(e,t){return Promise.resolve().then((function(){var o=a();return o[JSON.stringify(e)]=t,n().setItem(r,JSON.stringify(o)),t}))},delete:function(e){return Promise.resolve().then((function(){var t=a();delete t[JSON.stringify(e)],n().setItem(r,JSON.stringify(t))}))},clear:function(){return Promise.resolve().then((function(){n().removeItem(r)}))}}}function i(e){var t=a(e.caches),r=t.shift();return void 0===r?{get:function(e,t){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{miss:function(){return Promise.resolve()}},n=t();return n.then((function(e){return Promise.all([e,r.miss(e)])})).then((function(e){return o(e,1)[0]}))},set:function(e,t){return Promise.resolve(t)},delete:function(e){return Promise.resolve()},clear:function(){return Promise.resolve()}}:{get:function(e,n){var o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{miss:function(){return Promise.resolve()}};return r.get(e,n,o).catch((function(){return i({caches:t}).get(e,n,o)}))},set:function(e,n){return r.set(e,n).catch((function(){return i({caches:t}).set(e,n)}))},delete:function(e){return r.delete(e).catch((function(){return i({caches:t}).delete(e)}))},clear:function(){return r.clear().catch((function(){return i({caches:t}).clear()}))}}}function s(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{serializable:!0},t={};return{get:function(r,n){var o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{miss:function(){return Promise.resolve()}},a=JSON.stringify(r);if(a in t)return Promise.resolve(e.serializable?JSON.parse(t[a]):t[a]);var u=n(),i=o&&o.miss||function(){return Promise.resolve()};return u.then((function(e){return i(e)})).then((function(){return u}))},set:function(r,n){return t[JSON.stringify(r)]=e.serializable?JSON.stringify(n):n,Promise.resolve(n)},delete:function(e){return delete t[JSON.stringify(e)],Promise.resolve()},clear:function(){return t={},Promise.resolve()}}}function c(e){for(var t=e.length-1;t>0;t--){var r=Math.floor(Math.random()*(t+1)),n=e[t];e[t]=e[r],e[r]=n}return e}function l(e,t){return t?(Object.keys(t).forEach((function(r){e[r]=t[r](e)})),e):e}function f(e){for(var t=arguments.length,r=new Array(t>1?t-1:0),n=1;n<t;n++)r[n-1]=arguments[n];var o=0;return e.replace(/%s/g,(function(){return encodeURIComponent(r[o++])}))}var h={WithinQueryParameters:0,WithinHeaders:1};function d(e,t){var r=e||{},n=r.data||{};return Object.keys(r).forEach((function(e){-1===["timeout","headers","queryParameters","data","cacheable"].indexOf(e)&&(n[e]=r[e])})),{data:Object.entries(n).length>0?n:void 0,timeout:r.timeout||t,headers:r.headers||{},queryParameters:r.queryParameters||{},cacheable:r.cacheable}}var m={Read:1,Write:2,Any:3},p=1,v=2,y=3;function g(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:p;return r(r({},e),{},{status:t,lastUpdate:Date.now()})}function b(e){return"string"==typeof e?{protocol:"https",url:e,accept:m.Any}:{protocol:e.protocol||"https",url:e.url,accept:e.accept||m.Any}}var O="GET",P="POST";function q(e,t){return Promise.all(t.map((function(t){return e.get(t,(function(){return Promise.resolve(g(t))}))}))).then((function(e){var r=e.filter((function(e){return function(e){return e.status===p||Date.now()-e.lastUpdate>12e4}(e)})),n=e.filter((function(e){return function(e){return e.status===y&&Date.now()-e.lastUpdate<=12e4}(e)})),o=[].concat(a(r),a(n));return{getTimeout:function(e,t){return(0===n.length&&0===e?1:n.length+3+e)*t},statelessHosts:o.length>0?o.map((function(e){return b(e)})):t}}))}function j(e,t,n,o){var u=[],i=function(e,t){if(e.method===O||void 0===e.data&&void 0===t.data)return;var n=Array.isArray(e.data)?e.data:r(r({},e.data),t.data);return JSON.stringify(n)}(n,o),s=function(e,t){var n=r(r({},e.headers),t.headers),o={};return Object.keys(n).forEach((function(e){var t=n[e];o[e.toLowerCase()]=t})),o}(e,o),c=n.method,l=n.method!==O?{}:r(r({},n.data),o.data),f=r(r(r({"x-algolia-agent":e.userAgent.value},e.queryParameters),l),o.queryParameters),h=0,d=function t(r,a){var l=r.pop();if(void 0===l)throw{name:"RetryError",message:"Unreachable hosts - your application id may be incorrect. If the error persists, contact support@algolia.com.",transporterStackTrace:A(u)};var d={data:i,headers:s,method:c,url:S(l,n.path,f),connectTimeout:a(h,e.timeouts.connect),responseTimeout:a(h,o.timeout)},m=function(e){var t={request:d,response:e,host:l,triesLeft:r.length};return u.push(t),t},p={onSuccess:function(e){return function(e){try{return JSON.parse(e.content)}catch(t){throw function(e,t){return{name:"DeserializationError",message:e,response:t}}(t.message,e)}}(e)},onRetry:function(n){var o=m(n);return n.isTimedOut&&h++,Promise.all([e.logger.info("Retryable failure",x(o)),e.hostsCache.set(l,g(l,n.isTimedOut?y:v))]).then((function(){return t(r,a)}))},onFail:function(e){throw m(e),function(e,t){var r=e.content,n=e.status,o=r;try{o=JSON.parse(r).message}catch(e){}return function(e,t,r){return{name:"ApiError",message:e,status:t,transporterStackTrace:r}}(o,n,t)}(e,A(u))}};return e.requester.send(d).then((function(e){return function(e,t){return function(e){var t=e.status;return e.isTimedOut||function(e){var t=e.isTimedOut,r=e.status;return!t&&0==~~r}(e)||2!=~~(t/100)&&4!=~~(t/100)}(e)?t.onRetry(e):2==~~(e.status/100)?t.onSuccess(e):t.onFail(e)}(e,p)}))};return q(e.hostsCache,t).then((function(e){return d(a(e.statelessHosts).reverse(),e.getTimeout)}))}function w(e){var t={value:"Algolia for JavaScript (".concat(e,")"),add:function(e){var r="; ".concat(e.segment).concat(void 0!==e.version?" (".concat(e.version,")"):"");return-1===t.value.indexOf(r)&&(t.value="".concat(t.value).concat(r)),t}};return t}function S(e,t,r){var n=T(r),o="".concat(e.protocol,"://").concat(e.url,"/").concat("/"===t.charAt(0)?t.substr(1):t);return n.length&&(o+="?".concat(n)),o}function T(e){return Object.keys(e).map((function(t){return f("%s=%s",t,(r=e[t],"[object Object]"===Object.prototype.toString.call(r)||"[object Array]"===Object.prototype.toString.call(r)?JSON.stringify(e[t]):e[t]));var r})).join("&")}function A(e){return e.map((function(e){return x(e)}))}function x(e){var t=e.request.headers["x-algolia-api-key"]?{"x-algolia-api-key":"*****"}:{};return r(r({},e),{},{request:r(r({},e.request),{},{headers:r(r({},e.request.headers),t)})})}var N=function(e){var t=e.appId,n=function(e,t,r){var n={"x-algolia-api-key":r,"x-algolia-application-id":t};return{headers:function(){return e===h.WithinHeaders?n:{}},queryParameters:function(){return e===h.WithinQueryParameters?n:{}}}}(void 0!==e.authMode?e.authMode:h.WithinHeaders,t,e.apiKey),a=function(e){var t=e.hostsCache,r=e.logger,n=e.requester,a=e.requestsCache,u=e.responsesCache,i=e.timeouts,s=e.userAgent,c=e.hosts,l=e.queryParameters,f={hostsCache:t,logger:r,requester:n,requestsCache:a,responsesCache:u,timeouts:i,userAgent:s,headers:e.headers,queryParameters:l,hosts:c.map((function(e){return b(e)})),read:function(e,t){var r=d(t,f.timeouts.read),n=function(){return j(f,f.hosts.filter((function(e){return 0!=(e.accept&m.Read)})),e,r)};if(!0!==(void 0!==r.cacheable?r.cacheable:e.cacheable))return n();var a={request:e,mappedRequestOptions:r,transporter:{queryParameters:f.queryParameters,headers:f.headers}};return f.responsesCache.get(a,(function(){return f.requestsCache.get(a,(function(){return f.requestsCache.set(a,n()).then((function(e){return Promise.all([f.requestsCache.delete(a),e])}),(function(e){return Promise.all([f.requestsCache.delete(a),Promise.reject(e)])})).then((function(e){var t=o(e,2);t[0];return t[1]}))}))}),{miss:function(e){return f.responsesCache.set(a,e)}})},write:function(e,t){return j(f,f.hosts.filter((function(e){return 0!=(e.accept&m.Write)})),e,d(t,f.timeouts.write))}};return f}(r(r({hosts:[{url:"".concat(t,"-dsn.algolia.net"),accept:m.Read},{url:"".concat(t,".algolia.net"),accept:m.Write}].concat(c([{url:"".concat(t,"-1.algolianet.com")},{url:"".concat(t,"-2.algolianet.com")},{url:"".concat(t,"-3.algolianet.com")}]))},e),{},{headers:r(r(r({},n.headers()),{"content-type":"application/x-www-form-urlencoded"}),e.headers),queryParameters:r(r({},n.queryParameters()),e.queryParameters)}));return l({transporter:a,appId:t,addAlgoliaAgent:function(e,t){a.userAgent.add({segment:e,version:t})},clearCache:function(){return Promise.all([a.requestsCache.clear(),a.responsesCache.clear()]).then((function(){}))}},e.methods)},C=function(e){return function(t){var r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},n={transporter:e.transporter,appId:e.appId,indexName:t};return l(n,r.methods)}},k=function(e){return function(t,n){var o=t.map((function(e){return r(r({},e),{},{params:T(e.params||{})})}));return e.transporter.read({method:P,path:"1/indexes/*/queries",data:{requests:o},cacheable:!0},n)}},J=function(e){return function(t,o){return Promise.all(t.map((function(t){var a=t.params,u=a.facetName,i=a.facetQuery,s=n(a,["facetName","facetQuery"]);return C(e)(t.indexName,{methods:{searchForFacetValues:F}}).searchForFacetValues(u,i,r(r({},o),s))})))}},E=function(e){return function(t,r,n){return e.transporter.read({method:P,path:f("1/answers/%s/prediction",e.indexName),data:{query:t,queryLanguages:r},cacheable:!0},n)}},I=function(e){return function(t,r){return e.transporter.read({method:P,path:f("1/indexes/%s/query",e.indexName),data:{query:t},cacheable:!0},r)}},F=function(e){return function(t,r,n){return e.transporter.read({method:P,path:f("1/indexes/%s/facets/%s/query",e.indexName,t),data:{facetQuery:r},cacheable:!0},n)}},R=1,D=2,W=3;function H(e,t,n){var o,a={appId:e,apiKey:t,timeouts:{connect:1,read:2,write:30},requester:{send:function(e){return new Promise((function(t){var r=new XMLHttpRequest;r.open(e.method,e.url,!0),Object.keys(e.headers).forEach((function(t){return r.setRequestHeader(t,e.headers[t])}));var n,o=function(e,n){return setTimeout((function(){r.abort(),t({status:0,content:n,isTimedOut:!0})}),1e3*e)},a=o(e.connectTimeout,"Connection timeout");r.onreadystatechange=function(){r.readyState>r.OPENED&&void 0===n&&(clearTimeout(a),n=o(e.responseTimeout,"Socket timeout"))},r.onerror=function(){0===r.status&&(clearTimeout(a),clearTimeout(n),t({content:r.responseText||"Network request failed",status:r.status,isTimedOut:!1}))},r.onload=function(){clearTimeout(a),clearTimeout(n),t({content:r.responseText,status:r.status,isTimedOut:!1})},r.send(e.data)}))}},logger:(o=W,{debug:function(e,t){return R>=o&&console.debug(e,t),Promise.resolve()},info:function(e,t){return D>=o&&console.info(e,t),Promise.resolve()},error:function(e,t){return console.error(e,t),Promise.resolve()}}),responsesCache:s(),requestsCache:s({serializable:!1}),hostsCache:i({caches:[u({key:"".concat("4.8.6","-").concat(e)}),s()]}),userAgent:w("4.8.6").add({segment:"Browser",version:"lite"}),authMode:h.WithinQueryParameters};return N(r(r(r({},a),n),{},{methods:{search:k,searchForFacetValues:J,multipleQueries:k,multipleSearchForFacetValues:J,initIndex:function(e){return function(t){return C(e)(t,{methods:{search:I,searchForFacetValues:F,findAnswers:E}})}}}}))}return H.version="4.8.6",H}));
 
 
 /***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*! algoliasearch-lite.umd.js | 4.5.1 | © Algolia, inc. | https://github.com/algolia/algoliasearch-client-javascript */
-!function(e,t){ true?module.exports=t():undefined}(this,(function(){"use strict";function e(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function t(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),r.push.apply(r,n)}return r}function r(r){for(var n=1;n<arguments.length;n++){var o=null!=arguments[n]?arguments[n]:{};n%2?t(Object(o),!0).forEach((function(t){e(r,t,o[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(r,Object.getOwnPropertyDescriptors(o)):t(Object(o)).forEach((function(e){Object.defineProperty(r,e,Object.getOwnPropertyDescriptor(o,e))}))}return r}function n(e,t){if(null==e)return{};var r,n,o=function(e,t){if(null==e)return{};var r,n,o={},a=Object.keys(e);for(n=0;n<a.length;n++)r=a[n],t.indexOf(r)>=0||(o[r]=e[r]);return o}(e,t);if(Object.getOwnPropertySymbols){var a=Object.getOwnPropertySymbols(e);for(n=0;n<a.length;n++)r=a[n],t.indexOf(r)>=0||Object.prototype.propertyIsEnumerable.call(e,r)&&(o[r]=e[r])}return o}function o(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if(!(Symbol.iterator in Object(e)||"[object Arguments]"===Object.prototype.toString.call(e)))return;var r=[],n=!0,o=!1,a=void 0;try{for(var u,i=e[Symbol.iterator]();!(n=(u=i.next()).done)&&(r.push(u.value),!t||r.length!==t);n=!0);}catch(e){o=!0,a=e}finally{try{n||null==i.return||i.return()}finally{if(o)throw a}}return r}(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance")}()}function a(e){return function(e){if(Array.isArray(e)){for(var t=0,r=new Array(e.length);t<e.length;t++)r[t]=e[t];return r}}(e)||function(e){if(Symbol.iterator in Object(e)||"[object Arguments]"===Object.prototype.toString.call(e))return Array.from(e)}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance")}()}function u(e){var t,r="algoliasearch-client-js-".concat(e.key),n=function(){return void 0===t&&(t=e.localStorage||window.localStorage),t},a=function(){return JSON.parse(n().getItem(r)||"{}")};return{get:function(e,t){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{miss:function(){return Promise.resolve()}};return Promise.resolve().then((function(){var r=JSON.stringify(e),n=a()[r];return Promise.all([n||t(),void 0!==n])})).then((function(e){var t=o(e,2),n=t[0],a=t[1];return Promise.all([n,a||r.miss(n)])})).then((function(e){return o(e,1)[0]}))},set:function(e,t){return Promise.resolve().then((function(){var o=a();return o[JSON.stringify(e)]=t,n().setItem(r,JSON.stringify(o)),t}))},delete:function(e){return Promise.resolve().then((function(){var t=a();delete t[JSON.stringify(e)],n().setItem(r,JSON.stringify(t))}))},clear:function(){return Promise.resolve().then((function(){n().removeItem(r)}))}}}function i(e){var t=a(e.caches),r=t.shift();return void 0===r?{get:function(e,t){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{miss:function(){return Promise.resolve()}},n=t();return n.then((function(e){return Promise.all([e,r.miss(e)])})).then((function(e){return o(e,1)[0]}))},set:function(e,t){return Promise.resolve(t)},delete:function(e){return Promise.resolve()},clear:function(){return Promise.resolve()}}:{get:function(e,n){var o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{miss:function(){return Promise.resolve()}};return r.get(e,n,o).catch((function(){return i({caches:t}).get(e,n,o)}))},set:function(e,n){return r.set(e,n).catch((function(){return i({caches:t}).set(e,n)}))},delete:function(e){return r.delete(e).catch((function(){return i({caches:t}).delete(e)}))},clear:function(){return r.clear().catch((function(){return i({caches:t}).clear()}))}}}function s(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{serializable:!0},t={};return{get:function(r,n){var o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{miss:function(){return Promise.resolve()}},a=JSON.stringify(r);if(a in t)return Promise.resolve(e.serializable?JSON.parse(t[a]):t[a]);var u=n(),i=o&&o.miss||function(){return Promise.resolve()};return u.then((function(e){return i(e)})).then((function(){return u}))},set:function(r,n){return t[JSON.stringify(r)]=e.serializable?JSON.stringify(n):n,Promise.resolve(n)},delete:function(e){return delete t[JSON.stringify(e)],Promise.resolve()},clear:function(){return t={},Promise.resolve()}}}function c(e){for(var t=e.length-1;t>0;t--){var r=Math.floor(Math.random()*(t+1)),n=e[t];e[t]=e[r],e[r]=n}return e}function l(e,t){return Object.keys(void 0!==t?t:{}).forEach((function(r){e[r]=t[r](e)})),e}function f(e){for(var t=arguments.length,r=new Array(t>1?t-1:0),n=1;n<t;n++)r[n-1]=arguments[n];var o=0;return e.replace(/%s/g,(function(){return encodeURIComponent(r[o++])}))}var h={WithinQueryParameters:0,WithinHeaders:1};function d(e,t){var r=e||{},n=r.data||{};return Object.keys(r).forEach((function(e){-1===["timeout","headers","queryParameters","data","cacheable"].indexOf(e)&&(n[e]=r[e])})),{data:Object.entries(n).length>0?n:void 0,timeout:r.timeout||t,headers:r.headers||{},queryParameters:r.queryParameters||{},cacheable:r.cacheable}}var m={Read:1,Write:2,Any:3},p=1,v=2,y=3;function g(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:p;return r(r({},e),{},{status:t,lastUpdate:Date.now()})}function b(e){return"string"==typeof e?{protocol:"https",url:e,accept:m.Any}:{protocol:e.protocol||"https",url:e.url,accept:e.accept||m.Any}}var O="GET",P="POST";function q(e,t){return Promise.all(t.map((function(t){return e.get(t,(function(){return Promise.resolve(g(t))}))}))).then((function(e){var r=e.filter((function(e){return function(e){return e.status===p||Date.now()-e.lastUpdate>12e4}(e)})),n=e.filter((function(e){return function(e){return e.status===y&&Date.now()-e.lastUpdate<=12e4}(e)})),o=[].concat(a(r),a(n));return{getTimeout:function(e,t){return(0===n.length&&0===e?1:n.length+3+e)*t},statelessHosts:o.length>0?o.map((function(e){return b(e)})):t}}))}function j(e,t,n,o){var u=[],i=function(e,t){if(e.method===O||void 0===e.data&&void 0===t.data)return;var n=Array.isArray(e.data)?e.data:r(r({},e.data),t.data);return JSON.stringify(n)}(n,o),s=function(e,t){var n=r(r({},e.headers),t.headers),o={};return Object.keys(n).forEach((function(e){var t=n[e];o[e.toLowerCase()]=t})),o}(e,o),c=n.method,l=n.method!==O?{}:r(r({},n.data),o.data),f=r(r(r({"x-algolia-agent":e.userAgent.value},e.queryParameters),l),o.queryParameters),h=0,d=function t(r,a){var l=r.pop();if(void 0===l)throw{name:"RetryError",message:"Unreachable hosts - your application id may be incorrect. If the error persists, contact support@algolia.com.",transporterStackTrace:A(u)};var d={data:i,headers:s,method:c,url:w(l,n.path,f),connectTimeout:a(h,e.timeouts.connect),responseTimeout:a(h,o.timeout)},m=function(e){var t={request:d,response:e,host:l,triesLeft:r.length};return u.push(t),t},p={onSucess:function(e){return function(e){try{return JSON.parse(e.content)}catch(t){throw function(e,t){return{name:"DeserializationError",message:e,response:t}}(t.message,e)}}(e)},onRetry:function(n){var o=m(n);return n.isTimedOut&&h++,Promise.all([e.logger.info("Retryable failure",x(o)),e.hostsCache.set(l,g(l,n.isTimedOut?y:v))]).then((function(){return t(r,a)}))},onFail:function(e){throw m(e),function(e,t){var r=e.content,n=e.status,o=r;try{o=JSON.parse(r).message}catch(e){}return function(e,t,r){return{name:"ApiError",message:e,status:t,transporterStackTrace:r}}(o,n,t)}(e,A(u))}};return e.requester.send(d).then((function(e){return function(e,t){return function(e){var t=e.status;return e.isTimedOut||function(e){var t=e.isTimedOut,r=e.status;return!t&&0==~~r}(e)||2!=~~(t/100)&&4!=~~(t/100)}(e)?t.onRetry(e):2==~~(e.status/100)?t.onSucess(e):t.onFail(e)}(e,p)}))};return q(e.hostsCache,t).then((function(e){return d(a(e.statelessHosts).reverse(),e.getTimeout)}))}function S(e){var t={value:"Algolia for JavaScript (".concat(e,")"),add:function(e){var r="; ".concat(e.segment).concat(void 0!==e.version?" (".concat(e.version,")"):"");return-1===t.value.indexOf(r)&&(t.value="".concat(t.value).concat(r)),t}};return t}function w(e,t,r){var n=T(r),o="".concat(e.protocol,"://").concat(e.url,"/").concat("/"===t.charAt(0)?t.substr(1):t);return n.length&&(o+="?".concat(n)),o}function T(e){return Object.keys(e).map((function(t){return f("%s=%s",t,(r=e[t],"[object Object]"===Object.prototype.toString.call(r)||"[object Array]"===Object.prototype.toString.call(r)?JSON.stringify(e[t]):e[t]));var r})).join("&")}function A(e){return e.map((function(e){return x(e)}))}function x(e){var t=e.request.headers["x-algolia-api-key"]?{"x-algolia-api-key":"*****"}:{};return r(r({},e),{},{request:r(r({},e.request),{},{headers:r(r({},e.request.headers),t)})})}var C=function(e){var t=e.appId,n=function(e,t,r){var n={"x-algolia-api-key":r,"x-algolia-application-id":t};return{headers:function(){return e===h.WithinHeaders?n:{}},queryParameters:function(){return e===h.WithinQueryParameters?n:{}}}}(void 0!==e.authMode?e.authMode:h.WithinHeaders,t,e.apiKey),a=function(e){var t=e.hostsCache,r=e.logger,n=e.requester,a=e.requestsCache,u=e.responsesCache,i=e.timeouts,s=e.userAgent,c=e.hosts,l=e.queryParameters,f={hostsCache:t,logger:r,requester:n,requestsCache:a,responsesCache:u,timeouts:i,userAgent:s,headers:e.headers,queryParameters:l,hosts:c.map((function(e){return b(e)})),read:function(e,t){var r=d(t,f.timeouts.read),n=function(){return j(f,f.hosts.filter((function(e){return 0!=(e.accept&m.Read)})),e,r)};if(!0!==(void 0!==r.cacheable?r.cacheable:e.cacheable))return n();var a={request:e,mappedRequestOptions:r,transporter:{queryParameters:f.queryParameters,headers:f.headers}};return f.responsesCache.get(a,(function(){return f.requestsCache.get(a,(function(){return f.requestsCache.set(a,n()).then((function(e){return Promise.all([f.requestsCache.delete(a),e])}),(function(e){return Promise.all([f.requestsCache.delete(a),Promise.reject(e)])})).then((function(e){var t=o(e,2);t[0];return t[1]}))}))}),{miss:function(e){return f.responsesCache.set(a,e)}})},write:function(e,t){return j(f,f.hosts.filter((function(e){return 0!=(e.accept&m.Write)})),e,d(t,f.timeouts.write))}};return f}(r(r({hosts:[{url:"".concat(t,"-dsn.algolia.net"),accept:m.Read},{url:"".concat(t,".algolia.net"),accept:m.Write}].concat(c([{url:"".concat(t,"-1.algolianet.com")},{url:"".concat(t,"-2.algolianet.com")},{url:"".concat(t,"-3.algolianet.com")}]))},e),{},{headers:r(r(r({},n.headers()),{"content-type":"application/x-www-form-urlencoded"}),e.headers),queryParameters:r(r({},n.queryParameters()),e.queryParameters)}));return l({transporter:a,appId:t,addAlgoliaAgent:function(e,t){a.userAgent.add({segment:e,version:t})},clearCache:function(){return Promise.all([a.requestsCache.clear(),a.responsesCache.clear()]).then((function(){}))}},e.methods)},N=function(e){return function(t){var r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},n={transporter:e.transporter,appId:e.appId,indexName:t};return l(n,r.methods)}},k=function(e){return function(t,n){var o=t.map((function(e){return r(r({},e),{},{params:T(e.params||{})})}));return e.transporter.read({method:P,path:"1/indexes/*/queries",data:{requests:o},cacheable:!0},n)}},J=function(e){return function(t,o){return Promise.all(t.map((function(t){var a=t.params,u=a.facetName,i=a.facetQuery,s=n(a,["facetName","facetQuery"]);return N(e)(t.indexName,{methods:{searchForFacetValues:I}}).searchForFacetValues(u,i,r(r({},o),s))})))}},E=function(e){return function(t,r){return e.transporter.read({method:P,path:f("1/indexes/%s/query",e.indexName),data:{query:t},cacheable:!0},r)}},I=function(e){return function(t,r,n){return e.transporter.read({method:P,path:f("1/indexes/%s/facets/%s/query",e.indexName,t),data:{facetQuery:r},cacheable:!0},n)}},F=1,R=2,D=3;function W(e,t,n){var o,a={appId:e,apiKey:t,timeouts:{connect:1,read:2,write:30},requester:{send:function(e){return new Promise((function(t){var r=new XMLHttpRequest;r.open(e.method,e.url,!0),Object.keys(e.headers).forEach((function(t){return r.setRequestHeader(t,e.headers[t])}));var n,o=function(e,n){return setTimeout((function(){r.abort(),t({status:0,content:n,isTimedOut:!0})}),1e3*e)},a=o(e.connectTimeout,"Connection timeout");r.onreadystatechange=function(){r.readyState>r.OPENED&&void 0===n&&(clearTimeout(a),n=o(e.responseTimeout,"Socket timeout"))},r.onerror=function(){0===r.status&&(clearTimeout(a),clearTimeout(n),t({content:r.responseText||"Network request failed",status:r.status,isTimedOut:!1}))},r.onload=function(){clearTimeout(a),clearTimeout(n),t({content:r.responseText,status:r.status,isTimedOut:!1})},r.send(e.data)}))}},logger:(o=D,{debug:function(e,t){return F>=o&&console.debug(e,t),Promise.resolve()},info:function(e,t){return R>=o&&console.info(e,t),Promise.resolve()},error:function(e,t){return console.error(e,t),Promise.resolve()}}),responsesCache:s(),requestsCache:s({serializable:!1}),hostsCache:i({caches:[u({key:"".concat("4.5.1","-").concat(e)}),s()]}),userAgent:S("4.5.1").add({segment:"Browser",version:"lite"}),authMode:h.WithinQueryParameters};return C(r(r(r({},a),n),{},{methods:{search:k,searchForFacetValues:J,multipleQueries:k,multipleSearchForFacetValues:J,initIndex:function(e){return function(t){return N(e)(t,{methods:{search:E,searchForFacetValues:I}})}}}}))}return W.version="4.5.1",W}));
-
-
-/***/ }),
-/* 24 */,
-/* 25 */
+/* 23 */,
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3871,7 +3785,7 @@ module.exports = __webpack_require__(29)
 
 
 
-var ReactPropTypesSecret = __webpack_require__(26);
+var ReactPropTypesSecret = __webpack_require__(25);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -3929,7 +3843,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3948,907 +3862,24 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-if (true) {
-  module.exports = __webpack_require__(28);
-} else {}
-
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/** @license React v16.13.1
- * react-is.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?
-Symbol.for("react.suspense_list"):60120,r=b?Symbol.for("react.memo"):60115,t=b?Symbol.for("react.lazy"):60116,v=b?Symbol.for("react.block"):60121,w=b?Symbol.for("react.fundamental"):60117,x=b?Symbol.for("react.responder"):60118,y=b?Symbol.for("react.scope"):60119;
-function z(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case t:case r:case h:return a;default:return u}}case d:return u}}}function A(a){return z(a)===m}exports.AsyncMode=l;exports.ConcurrentMode=m;exports.ContextConsumer=k;exports.ContextProvider=h;exports.Element=c;exports.ForwardRef=n;exports.Fragment=e;exports.Lazy=t;exports.Memo=r;exports.Portal=d;
-exports.Profiler=g;exports.StrictMode=f;exports.Suspense=p;exports.isAsyncMode=function(a){return A(a)||z(a)===l};exports.isConcurrentMode=A;exports.isContextConsumer=function(a){return z(a)===k};exports.isContextProvider=function(a){return z(a)===h};exports.isElement=function(a){return"object"===typeof a&&null!==a&&a.$$typeof===c};exports.isForwardRef=function(a){return z(a)===n};exports.isFragment=function(a){return z(a)===e};exports.isLazy=function(a){return z(a)===t};
-exports.isMemo=function(a){return z(a)===r};exports.isPortal=function(a){return z(a)===d};exports.isProfiler=function(a){return z(a)===g};exports.isStrictMode=function(a){return z(a)===f};exports.isSuspense=function(a){return z(a)===p};
-exports.isValidElementType=function(a){return"string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===w||a.$$typeof===x||a.$$typeof===y||a.$$typeof===v)};exports.typeOf=z;
-
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.flush = flush;
-exports["default"] = void 0;
-
-var _react = __webpack_require__(0);
-
-var _stylesheetRegistry = _interopRequireDefault(__webpack_require__(30));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
-
-var styleSheetRegistry = new _stylesheetRegistry["default"]();
-
-var JSXStyle =
-/*#__PURE__*/
-function (_Component) {
-  _inheritsLoose(JSXStyle, _Component);
-
-  function JSXStyle(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-    _this.prevProps = {};
-    return _this;
-  }
-
-  JSXStyle.dynamic = function dynamic(info) {
-    return info.map(function (tagInfo) {
-      var baseId = tagInfo[0];
-      var props = tagInfo[1];
-      return styleSheetRegistry.computeId(baseId, props);
-    }).join(' ');
-  } // probably faster than PureComponent (shallowEqual)
-  ;
-
-  var _proto = JSXStyle.prototype;
-
-  _proto.shouldComponentUpdate = function shouldComponentUpdate(otherProps) {
-    return this.props.id !== otherProps.id || // We do this check because `dynamic` is an array of strings or undefined.
-    // These are the computed values for dynamic styles.
-    String(this.props.dynamic) !== String(otherProps.dynamic);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    styleSheetRegistry.remove(this.props);
-  };
-
-  _proto.render = function render() {
-    // This is a workaround to make the side effect async safe in the "render" phase.
-    // See https://github.com/zeit/styled-jsx/pull/484
-    if (this.shouldComponentUpdate(this.prevProps)) {
-      // Updates
-      if (this.prevProps.id) {
-        styleSheetRegistry.remove(this.prevProps);
-      }
-
-      styleSheetRegistry.add(this.props);
-      this.prevProps = this.props;
-    }
-
-    return null;
-  };
-
-  return JSXStyle;
-}(_react.Component);
-
-exports["default"] = JSXStyle;
-
-function flush() {
-  var cssRules = styleSheetRegistry.cssRules();
-  styleSheetRegistry.flush();
-  return cssRules;
-}
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports["default"] = void 0;
-
-var _stringHash = _interopRequireDefault(__webpack_require__(31));
-
-var _stylesheet = _interopRequireDefault(__webpack_require__(32));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-var sanitize = function sanitize(rule) {
-  return rule.replace(/\/style/gi, '\\/style');
-};
-
-var StyleSheetRegistry =
-/*#__PURE__*/
-function () {
-  function StyleSheetRegistry(_temp) {
-    var _ref = _temp === void 0 ? {} : _temp,
-        _ref$styleSheet = _ref.styleSheet,
-        styleSheet = _ref$styleSheet === void 0 ? null : _ref$styleSheet,
-        _ref$optimizeForSpeed = _ref.optimizeForSpeed,
-        optimizeForSpeed = _ref$optimizeForSpeed === void 0 ? false : _ref$optimizeForSpeed,
-        _ref$isBrowser = _ref.isBrowser,
-        isBrowser = _ref$isBrowser === void 0 ? typeof window !== 'undefined' : _ref$isBrowser;
-
-    this._sheet = styleSheet || new _stylesheet["default"]({
-      name: 'styled-jsx',
-      optimizeForSpeed: optimizeForSpeed
-    });
-
-    this._sheet.inject();
-
-    if (styleSheet && typeof optimizeForSpeed === 'boolean') {
-      this._sheet.setOptimizeForSpeed(optimizeForSpeed);
-
-      this._optimizeForSpeed = this._sheet.isOptimizeForSpeed();
-    }
-
-    this._isBrowser = isBrowser;
-    this._fromServer = undefined;
-    this._indices = {};
-    this._instancesCounts = {};
-    this.computeId = this.createComputeId();
-    this.computeSelector = this.createComputeSelector();
-  }
-
-  var _proto = StyleSheetRegistry.prototype;
-
-  _proto.add = function add(props) {
-    var _this = this;
-
-    if (undefined === this._optimizeForSpeed) {
-      this._optimizeForSpeed = Array.isArray(props.children);
-
-      this._sheet.setOptimizeForSpeed(this._optimizeForSpeed);
-
-      this._optimizeForSpeed = this._sheet.isOptimizeForSpeed();
-    }
-
-    if (this._isBrowser && !this._fromServer) {
-      this._fromServer = this.selectFromServer();
-      this._instancesCounts = Object.keys(this._fromServer).reduce(function (acc, tagName) {
-        acc[tagName] = 0;
-        return acc;
-      }, {});
-    }
-
-    var _this$getIdAndRules = this.getIdAndRules(props),
-        styleId = _this$getIdAndRules.styleId,
-        rules = _this$getIdAndRules.rules; // Deduping: just increase the instances count.
-
-
-    if (styleId in this._instancesCounts) {
-      this._instancesCounts[styleId] += 1;
-      return;
-    }
-
-    var indices = rules.map(function (rule) {
-      return _this._sheet.insertRule(rule);
-    }) // Filter out invalid rules
-    .filter(function (index) {
-      return index !== -1;
-    });
-    this._indices[styleId] = indices;
-    this._instancesCounts[styleId] = 1;
-  };
-
-  _proto.remove = function remove(props) {
-    var _this2 = this;
-
-    var _this$getIdAndRules2 = this.getIdAndRules(props),
-        styleId = _this$getIdAndRules2.styleId;
-
-    invariant(styleId in this._instancesCounts, "styleId: `" + styleId + "` not found");
-    this._instancesCounts[styleId] -= 1;
-
-    if (this._instancesCounts[styleId] < 1) {
-      var tagFromServer = this._fromServer && this._fromServer[styleId];
-
-      if (tagFromServer) {
-        tagFromServer.parentNode.removeChild(tagFromServer);
-        delete this._fromServer[styleId];
-      } else {
-        this._indices[styleId].forEach(function (index) {
-          return _this2._sheet.deleteRule(index);
-        });
-
-        delete this._indices[styleId];
-      }
-
-      delete this._instancesCounts[styleId];
-    }
-  };
-
-  _proto.update = function update(props, nextProps) {
-    this.add(nextProps);
-    this.remove(props);
-  };
-
-  _proto.flush = function flush() {
-    this._sheet.flush();
-
-    this._sheet.inject();
-
-    this._fromServer = undefined;
-    this._indices = {};
-    this._instancesCounts = {};
-    this.computeId = this.createComputeId();
-    this.computeSelector = this.createComputeSelector();
-  };
-
-  _proto.cssRules = function cssRules() {
-    var _this3 = this;
-
-    var fromServer = this._fromServer ? Object.keys(this._fromServer).map(function (styleId) {
-      return [styleId, _this3._fromServer[styleId]];
-    }) : [];
-
-    var cssRules = this._sheet.cssRules();
-
-    return fromServer.concat(Object.keys(this._indices).map(function (styleId) {
-      return [styleId, _this3._indices[styleId].map(function (index) {
-        return cssRules[index].cssText;
-      }).join(_this3._optimizeForSpeed ? '' : '\n')];
-    }) // filter out empty rules
-    .filter(function (rule) {
-      return Boolean(rule[1]);
-    }));
-  }
-  /**
-   * createComputeId
-   *
-   * Creates a function to compute and memoize a jsx id from a basedId and optionally props.
-   */
-  ;
-
-  _proto.createComputeId = function createComputeId() {
-    var cache = {};
-    return function (baseId, props) {
-      if (!props) {
-        return "jsx-" + baseId;
-      }
-
-      var propsToString = String(props);
-      var key = baseId + propsToString; // return `jsx-${hashString(`${baseId}-${propsToString}`)}`
-
-      if (!cache[key]) {
-        cache[key] = "jsx-" + (0, _stringHash["default"])(baseId + "-" + propsToString);
-      }
-
-      return cache[key];
-    };
-  }
-  /**
-   * createComputeSelector
-   *
-   * Creates a function to compute and memoize dynamic selectors.
-   */
-  ;
-
-  _proto.createComputeSelector = function createComputeSelector(selectoPlaceholderRegexp) {
-    if (selectoPlaceholderRegexp === void 0) {
-      selectoPlaceholderRegexp = /__jsx-style-dynamic-selector/g;
-    }
-
-    var cache = {};
-    return function (id, css) {
-      // Sanitize SSR-ed CSS.
-      // Client side code doesn't need to be sanitized since we use
-      // document.createTextNode (dev) and the CSSOM api sheet.insertRule (prod).
-      if (!this._isBrowser) {
-        css = sanitize(css);
-      }
-
-      var idcss = id + css;
-
-      if (!cache[idcss]) {
-        cache[idcss] = css.replace(selectoPlaceholderRegexp, id);
-      }
-
-      return cache[idcss];
-    };
-  };
-
-  _proto.getIdAndRules = function getIdAndRules(props) {
-    var _this4 = this;
-
-    var css = props.children,
-        dynamic = props.dynamic,
-        id = props.id;
-
-    if (dynamic) {
-      var styleId = this.computeId(id, dynamic);
-      return {
-        styleId: styleId,
-        rules: Array.isArray(css) ? css.map(function (rule) {
-          return _this4.computeSelector(styleId, rule);
-        }) : [this.computeSelector(styleId, css)]
-      };
-    }
-
-    return {
-      styleId: this.computeId(id),
-      rules: Array.isArray(css) ? css : [css]
-    };
-  }
-  /**
-   * selectFromServer
-   *
-   * Collects style tags from the document with id __jsx-XXX
-   */
-  ;
-
-  _proto.selectFromServer = function selectFromServer() {
-    var elements = Array.prototype.slice.call(document.querySelectorAll('[id^="__jsx-"]'));
-    return elements.reduce(function (acc, element) {
-      var id = element.id.slice(2);
-      acc[id] = element;
-      return acc;
-    }, {});
-  };
-
-  return StyleSheetRegistry;
-}();
-
-exports["default"] = StyleSheetRegistry;
-
-function invariant(condition, message) {
-  if (!condition) {
-    throw new Error("StyleSheetRegistry: " + message + ".");
-  }
-}
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function hash(str) {
-  var hash = 5381,
-      i    = str.length;
-
-  while(i) {
-    hash = (hash * 33) ^ str.charCodeAt(--i);
-  }
-
-  /* JavaScript does bitwise operations (like XOR, above) on 32-bit signed
-   * integers. Since we want the results to be always positive, convert the
-   * signed int to an unsigned by doing an unsigned bitshift. */
-  return hash >>> 0;
-}
-
-module.exports = hash;
-
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-exports.__esModule = true;
-exports["default"] = void 0;
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-/*
-Based on Glamor's sheet
-https://github.com/threepointone/glamor/blob/667b480d31b3721a905021b26e1290ce92ca2879/src/sheet.js
-*/
-var isProd = typeof process !== 'undefined' && process.env && "production" === 'production';
-
-var isString = function isString(o) {
-  return Object.prototype.toString.call(o) === '[object String]';
-};
-
-var StyleSheet =
-/*#__PURE__*/
-function () {
-  function StyleSheet(_temp) {
-    var _ref = _temp === void 0 ? {} : _temp,
-        _ref$name = _ref.name,
-        name = _ref$name === void 0 ? 'stylesheet' : _ref$name,
-        _ref$optimizeForSpeed = _ref.optimizeForSpeed,
-        optimizeForSpeed = _ref$optimizeForSpeed === void 0 ? isProd : _ref$optimizeForSpeed,
-        _ref$isBrowser = _ref.isBrowser,
-        isBrowser = _ref$isBrowser === void 0 ? typeof window !== 'undefined' : _ref$isBrowser;
-
-    invariant(isString(name), '`name` must be a string');
-    this._name = name;
-    this._deletedRulePlaceholder = "#" + name + "-deleted-rule____{}";
-    invariant(typeof optimizeForSpeed === 'boolean', '`optimizeForSpeed` must be a boolean');
-    this._optimizeForSpeed = optimizeForSpeed;
-    this._isBrowser = isBrowser;
-    this._serverSheet = undefined;
-    this._tags = [];
-    this._injected = false;
-    this._rulesCount = 0;
-    var node = this._isBrowser && document.querySelector('meta[property="csp-nonce"]');
-    this._nonce = node ? node.getAttribute('content') : null;
-  }
-
-  var _proto = StyleSheet.prototype;
-
-  _proto.setOptimizeForSpeed = function setOptimizeForSpeed(bool) {
-    invariant(typeof bool === 'boolean', '`setOptimizeForSpeed` accepts a boolean');
-    invariant(this._rulesCount === 0, 'optimizeForSpeed cannot be when rules have already been inserted');
-    this.flush();
-    this._optimizeForSpeed = bool;
-    this.inject();
-  };
-
-  _proto.isOptimizeForSpeed = function isOptimizeForSpeed() {
-    return this._optimizeForSpeed;
-  };
-
-  _proto.inject = function inject() {
-    var _this = this;
-
-    invariant(!this._injected, 'sheet already injected');
-    this._injected = true;
-
-    if (this._isBrowser && this._optimizeForSpeed) {
-      this._tags[0] = this.makeStyleTag(this._name);
-      this._optimizeForSpeed = 'insertRule' in this.getSheet();
-
-      if (!this._optimizeForSpeed) {
-        if (!isProd) {
-          console.warn('StyleSheet: optimizeForSpeed mode not supported falling back to standard mode.');
-        }
-
-        this.flush();
-        this._injected = true;
-      }
-
-      return;
-    }
-
-    this._serverSheet = {
-      cssRules: [],
-      insertRule: function insertRule(rule, index) {
-        if (typeof index === 'number') {
-          _this._serverSheet.cssRules[index] = {
-            cssText: rule
-          };
-        } else {
-          _this._serverSheet.cssRules.push({
-            cssText: rule
-          });
-        }
-
-        return index;
-      },
-      deleteRule: function deleteRule(index) {
-        _this._serverSheet.cssRules[index] = null;
-      }
-    };
-  };
-
-  _proto.getSheetForTag = function getSheetForTag(tag) {
-    if (tag.sheet) {
-      return tag.sheet;
-    } // this weirdness brought to you by firefox
-
-
-    for (var i = 0; i < document.styleSheets.length; i++) {
-      if (document.styleSheets[i].ownerNode === tag) {
-        return document.styleSheets[i];
-      }
-    }
-  };
-
-  _proto.getSheet = function getSheet() {
-    return this.getSheetForTag(this._tags[this._tags.length - 1]);
-  };
-
-  _proto.insertRule = function insertRule(rule, index) {
-    invariant(isString(rule), '`insertRule` accepts only strings');
-
-    if (!this._isBrowser) {
-      if (typeof index !== 'number') {
-        index = this._serverSheet.cssRules.length;
-      }
-
-      this._serverSheet.insertRule(rule, index);
-
-      return this._rulesCount++;
-    }
-
-    if (this._optimizeForSpeed) {
-      var sheet = this.getSheet();
-
-      if (typeof index !== 'number') {
-        index = sheet.cssRules.length;
-      } // this weirdness for perf, and chrome's weird bug
-      // https://stackoverflow.com/questions/20007992/chrome-suddenly-stopped-accepting-insertrule
-
-
-      try {
-        sheet.insertRule(rule, index);
-      } catch (error) {
-        if (!isProd) {
-          console.warn("StyleSheet: illegal rule: \n\n" + rule + "\n\nSee https://stackoverflow.com/q/20007992 for more info");
-        }
-
-        return -1;
-      }
-    } else {
-      var insertionPoint = this._tags[index];
-
-      this._tags.push(this.makeStyleTag(this._name, rule, insertionPoint));
-    }
-
-    return this._rulesCount++;
-  };
-
-  _proto.replaceRule = function replaceRule(index, rule) {
-    if (this._optimizeForSpeed || !this._isBrowser) {
-      var sheet = this._isBrowser ? this.getSheet() : this._serverSheet;
-
-      if (!rule.trim()) {
-        rule = this._deletedRulePlaceholder;
-      }
-
-      if (!sheet.cssRules[index]) {
-        // @TBD Should we throw an error?
-        return index;
-      }
-
-      sheet.deleteRule(index);
-
-      try {
-        sheet.insertRule(rule, index);
-      } catch (error) {
-        if (!isProd) {
-          console.warn("StyleSheet: illegal rule: \n\n" + rule + "\n\nSee https://stackoverflow.com/q/20007992 for more info");
-        } // In order to preserve the indices we insert a deleteRulePlaceholder
-
-
-        sheet.insertRule(this._deletedRulePlaceholder, index);
-      }
-    } else {
-      var tag = this._tags[index];
-      invariant(tag, "old rule at index `" + index + "` not found");
-      tag.textContent = rule;
-    }
-
-    return index;
-  };
-
-  _proto.deleteRule = function deleteRule(index) {
-    if (!this._isBrowser) {
-      this._serverSheet.deleteRule(index);
-
-      return;
-    }
-
-    if (this._optimizeForSpeed) {
-      this.replaceRule(index, '');
-    } else {
-      var tag = this._tags[index];
-      invariant(tag, "rule at index `" + index + "` not found");
-      tag.parentNode.removeChild(tag);
-      this._tags[index] = null;
-    }
-  };
-
-  _proto.flush = function flush() {
-    this._injected = false;
-    this._rulesCount = 0;
-
-    if (this._isBrowser) {
-      this._tags.forEach(function (tag) {
-        return tag && tag.parentNode.removeChild(tag);
-      });
-
-      this._tags = [];
-    } else {
-      // simpler on server
-      this._serverSheet.cssRules = [];
-    }
-  };
-
-  _proto.cssRules = function cssRules() {
-    var _this2 = this;
-
-    if (!this._isBrowser) {
-      return this._serverSheet.cssRules;
-    }
-
-    return this._tags.reduce(function (rules, tag) {
-      if (tag) {
-        rules = rules.concat(Array.prototype.map.call(_this2.getSheetForTag(tag).cssRules, function (rule) {
-          return rule.cssText === _this2._deletedRulePlaceholder ? null : rule;
-        }));
-      } else {
-        rules.push(null);
-      }
-
-      return rules;
-    }, []);
-  };
-
-  _proto.makeStyleTag = function makeStyleTag(name, cssString, relativeToTag) {
-    if (cssString) {
-      invariant(isString(cssString), 'makeStyleTag acceps only strings as second parameter');
-    }
-
-    var tag = document.createElement('style');
-    if (this._nonce) tag.setAttribute('nonce', this._nonce);
-    tag.type = 'text/css';
-    tag.setAttribute("data-" + name, '');
-
-    if (cssString) {
-      tag.appendChild(document.createTextNode(cssString));
-    }
-
-    var head = document.head || document.getElementsByTagName('head')[0];
-
-    if (relativeToTag) {
-      head.insertBefore(tag, relativeToTag);
-    } else {
-      head.appendChild(tag);
-    }
-
-    return tag;
-  };
-
-  _createClass(StyleSheet, [{
-    key: "length",
-    get: function get() {
-      return this._rulesCount;
-    }
-  }]);
-
-  return StyleSheet;
-}();
-
-exports["default"] = StyleSheet;
-
-function invariant(condition, message) {
-  if (!condition) {
-    throw new Error("StyleSheet: " + message + ".");
-  }
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(33)))
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-/* 34 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var SearchParameters = __webpack_require__(14);
-var SearchResults = __webpack_require__(16);
-var DerivedHelper = __webpack_require__(41);
-var requestBuilder = __webpack_require__(42);
+var SearchResults = __webpack_require__(15);
+var DerivedHelper = __webpack_require__(34);
+var requestBuilder = __webpack_require__(35);
 
-var events = __webpack_require__(19);
-var inherits = __webpack_require__(20);
-var objectHasKeys = __webpack_require__(10);
+var events = __webpack_require__(18);
+var inherits = __webpack_require__(19);
+var objectHasKeys = __webpack_require__(12);
+var omit = __webpack_require__(11);
+var merge = __webpack_require__(7);
 
-var version = __webpack_require__(21);
+var version = __webpack_require__(20);
 
 /**
  * Event triggered when a parameter is set or updated
@@ -5085,6 +4116,49 @@ AlgoliaSearchHelper.prototype.searchOnce = function(options, cb) {
     if (self._currentNbQueries === 0) self.emit('searchQueueEmpty');
     throw e;
   });
+};
+
+ /**
+ * Start the search for answers with the parameters set in the state.
+ * This method returns a promise.
+ * @param {Object} options - the options for answers API call
+ * @param {string[]} options.attributesForPrediction - Attributes to use for predictions. If empty, `searchableAttributes` is used instead.
+ * @param {string[]} options.queryLanguages - The languages in the query. Currently only supports ['en'].
+ * @param {number} options.nbHits - Maximum number of answers to retrieve from the Answers Engine. Cannot be greater than 1000.
+ *
+ * @return {promise} the answer results
+ */
+AlgoliaSearchHelper.prototype.findAnswers = function(options) {
+  var state = this.state;
+  var derivedHelper = this.derivedHelpers[0];
+  if (!derivedHelper) {
+    return Promise.resolve([]);
+  }
+  var derivedState = derivedHelper.getModifiedState(state);
+  var data = merge(
+    {
+      attributesForPrediction: options.attributesForPrediction,
+      nbHits: options.nbHits
+    },
+    {
+      params: omit(requestBuilder._getHitsSearchParams(derivedState), [
+        'attributesToSnippet',
+        'hitsPerPage',
+        'restrictSearchableAttributes',
+        'snippetEllipsisText' // FIXME remove this line once the engine is fixed.
+      ])
+    }
+  );
+
+  var errorMessage = 'search for answers was called, but this client does not have a function client.initIndex(index).findAnswers';
+  if (typeof this.client.initIndex !== 'function') {
+    throw new Error(errorMessage);
+  }
+  var index = this.client.initIndex(derivedState.index);
+  if (typeof index.findAnswers !== 'function') {
+    throw new Error(errorMessage);
+  }
+  return index.findAnswers(derivedState.query, options.queryLanguages, data);
 };
 
 /**
@@ -6262,7 +5336,7 @@ module.exports = AlgoliaSearchHelper;
 
 
 /***/ }),
-/* 35 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6281,7 +5355,7 @@ module.exports = intersection;
 
 
 /***/ }),
-/* 36 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6303,7 +5377,22 @@ module.exports = valToNumber;
 
 
 /***/ }),
-/* 37 */
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function isValidUserToken(userToken) {
+  if (userToken === null) {
+    return false;
+  }
+  return /^[a-zA-Z0-9_-]{1,64}$/.test(userToken);
+};
+
+
+/***/ }),
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6321,9 +5410,9 @@ module.exports = valToNumber;
  * @typedef {Object.<string, SearchParameters.refinementList.Refinements>} SearchParameters.refinementList.RefinementList
  */
 
-var defaultsPure = __webpack_require__(9);
-var omit = __webpack_require__(15);
-var objectHasKeys = __webpack_require__(10);
+var defaultsPure = __webpack_require__(10);
+var omit = __webpack_require__(11);
+var objectHasKeys = __webpack_require__(12);
 
 var lib = {
   /**
@@ -6457,7 +5546,7 @@ module.exports = lib;
 
 
 /***/ }),
-/* 38 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6473,7 +5562,7 @@ module.exports = function compact(array) {
 
 
 /***/ }),
-/* 39 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6495,7 +5584,7 @@ module.exports = function find(array, comparator) {
 
 
 /***/ }),
-/* 40 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6503,9 +5592,9 @@ module.exports = function find(array, comparator) {
 
 module.exports = generateTrees;
 
-var orderBy = __webpack_require__(17);
-var find = __webpack_require__(6);
-var prepareHierarchicalFacetSortBy = __webpack_require__(18);
+var orderBy = __webpack_require__(16);
+var find = __webpack_require__(8);
+var prepareHierarchicalFacetSortBy = __webpack_require__(17);
 
 function generateTrees(state) {
   return function generate(hierarchicalFacetResult, hierarchicalFacetIndex) {
@@ -6701,14 +5790,14 @@ function format(
 
 
 /***/ }),
-/* 41 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var events = __webpack_require__(19);
-var inherits = __webpack_require__(20);
+var events = __webpack_require__(18);
+var inherits = __webpack_require__(19);
 
 /**
  * A DerivedHelper is a way to create sub requests to
@@ -6746,13 +5835,13 @@ module.exports = DerivedHelper;
 
 
 /***/ }),
-/* 42 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var merge = __webpack_require__(8);
+var merge = __webpack_require__(7);
 
 var requestBuilder = {
   /**
@@ -7074,7 +6163,7 @@ module.exports = requestBuilder;
 
 
 /***/ }),
-/* 43 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7117,936 +6206,628 @@ var prop_types = __webpack_require__(1);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(2);
+var classnames = __webpack_require__(3);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
-// CONCATENATED MODULE: ./node_modules/@emotion/sheet/dist/sheet.browser.esm.js
-/*
+// EXTERNAL MODULE: external {"root":"@emotion/react","commonjs2":"@emotion/react","commonjs":"@emotion/react","amd":"@emotion/react"}
+var react_ = __webpack_require__(2);
 
-Based off glamor's StyleSheet, thanks Sunil ❤️
+// CONCATENATED MODULE: ./src/Typography/Text.js
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-high performance StyleSheet for css-in-js systems
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-- uses multiple style tags behind the scenes for millions of rules
-- uses `insertRule` for appending in production for *much* faster performance
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
-// usage
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-import { StyleSheet } from '@emotion/sheet'
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-let styleSheet = new StyleSheet({ key: '', container: document.head })
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-styleSheet.insert('#box { border: 1px solid red; }')
-- appends a css rule into the stylesheet
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-styleSheet.flush()
-- empties the stylesheet of all its contents
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-*/
-// $FlowFixMe
-function sheetForTag(tag) {
-  if (tag.sheet) {
-    // $FlowFixMe
-    return tag.sheet;
-  } // this weirdness brought to you by firefox
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-  /* istanbul ignore next */
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-  for (var i = 0; i < document.styleSheets.length; i++) {
-    if (document.styleSheets[i].ownerNode === tag) {
-      // $FlowFixMe
-      return document.styleSheets[i];
-    }
-  }
-}
 
-function createStyleElement(options) {
-  var tag = document.createElement('style');
-  tag.setAttribute('data-emotion', options.key);
 
-  if (options.nonce !== undefined) {
-    tag.setAttribute('nonce', options.nonce);
-  }
 
-  tag.appendChild(document.createTextNode(''));
-  return tag;
-}
 
-var StyleSheet =
-/*#__PURE__*/
-function () {
-  function StyleSheet(options) {
-    this.isSpeedy = options.speedy === undefined ? "production" === 'production' : options.speedy;
-    this.tags = [];
-    this.ctr = 0;
-    this.nonce = options.nonce; // key is the value of the data-emotion attribute, it's used to identify different sheets
+var Text_Text = /*#__PURE__*/function (_PureComponent) {
+  _inherits(Text, _PureComponent);
 
-    this.key = options.key;
-    this.container = options.container;
-    this.before = null;
+  var _super = _createSuper(Text);
+
+  function Text() {
+    _classCallCheck(this, Text);
+
+    return _super.apply(this, arguments);
   }
 
-  var _proto = StyleSheet.prototype;
+  _createClass(Text, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          className = _this$props.className,
+          bold = _this$props.bold,
+          color = _this$props.color,
+          small = _this$props.small,
+          is = _this$props.is,
+          props = _objectWithoutProperties(_this$props, ["className", "bold", "color", "small", "is"]);
 
-  _proto.insert = function insert(rule) {
-    // the max length is how many rules we have per style tag, it's 65000 in speedy mode
-    // it's 1 in dev because we insert source maps that map a single rule to a location
-    // and you can only have one source map per style tag
-    if (this.ctr % (this.isSpeedy ? 65000 : 1) === 0) {
-      var _tag = createStyleElement(this);
-
-      var before;
-
-      if (this.tags.length === 0) {
-        before = this.before;
-      } else {
-        before = this.tags[this.tags.length - 1].nextSibling;
-      }
-
-      this.container.insertBefore(_tag, before);
-      this.tags.push(_tag);
+      var Tag = is;
+      return Object(react_["jsx"])(Tag, _extends({
+        className: classnames_default()("leading-normal", className, color, {
+          "font-semibold": Boolean(bold),
+          "font-normal": !Boolean(bold),
+          "text-base": !Boolean(small),
+          "text-sm": Boolean(small)
+        })
+      }, props));
     }
+  }]);
 
-    var tag = this.tags[this.tags.length - 1];
+  return Text;
+}(external_root_React_commonjs2_react_commonjs_react_amd_react_["PureComponent"]);
 
-    if (this.isSpeedy) {
-      var sheet = sheetForTag(tag);
+_defineProperty(Text_Text, "propTypes", {
+  bold: prop_types_default.a.bool,
+  color: prop_types_default.a.string,
+  is: prop_types_default.a.oneOf(["span", "p", "li"]).isRequired,
+  className: prop_types_default.a.string
+});
 
-      try {
-        // this is a really hot path
-        // we check the second character first because having "i"
-        // as the second character will happen less often than
-        // having "@" as the first character
-        var isImportRule = rule.charCodeAt(1) === 105 && rule.charCodeAt(0) === 64; // this is the ultrafast version, works across browsers
-        // the big drawback is that the css won't be editable in devtools
+_defineProperty(Text_Text, "defaultProps", {
+  className: null,
+  color: "text-accent-seven",
+  is: "span"
+});
 
-        sheet.insertRule(rule, // we need to insert @import rules before anything else
-        // otherwise there will be an error
-        // technically this means that the @import rules will
-        // _usually_(not always since there could be multiple style tags)
-        // be the first ones in prod and generally later in dev
-        // this shouldn't really matter in the real world though
-        // @import is generally only used for font faces from google fonts and etc.
-        // so while this could be technically correct then it would be slower and larger
-        // for a tiny bit of correctness that won't matter in the real world
-        isImportRule ? 0 : sheet.cssRules.length);
-      } catch (e) {
-        if (false) {}
-      }
-    } else {
-      tag.appendChild(document.createTextNode(rule));
-    }
+/* harmony default export */ var Typography_Text = (Text_Text);
+// CONCATENATED MODULE: ./src/Table/index.js
+function Table_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-    this.ctr++;
-  };
 
-  _proto.flush = function flush() {
-    // $FlowFixMe
-    this.tags.forEach(function (tag) {
-      return tag.parentNode.removeChild(tag);
-    });
-    this.tags = [];
-    this.ctr = 0;
-  };
 
-  return StyleSheet;
-}();
 
 
 
-// CONCATENATED MODULE: ./node_modules/@emotion/stylis/dist/stylis.browser.esm.js
-function stylis_min (W) {
-  function M(d, c, e, h, a) {
-    for (var m = 0, b = 0, v = 0, n = 0, q, g, x = 0, K = 0, k, u = k = q = 0, l = 0, r = 0, I = 0, t = 0, B = e.length, J = B - 1, y, f = '', p = '', F = '', G = '', C; l < B;) {
-      g = e.charCodeAt(l);
-      l === J && 0 !== b + n + v + m && (0 !== b && (g = 47 === b ? 10 : 47), n = v = m = 0, B++, J++);
 
-      if (0 === b + n + v + m) {
-        if (l === J && (0 < r && (f = f.replace(N, '')), 0 < f.trim().length)) {
-          switch (g) {
-            case 32:
-            case 9:
-            case 59:
-            case 13:
-            case 10:
-              break;
-
-            default:
-              f += e.charAt(l);
-          }
-
-          g = 59;
-        }
-
-        switch (g) {
-          case 123:
-            f = f.trim();
-            q = f.charCodeAt(0);
-            k = 1;
-
-            for (t = ++l; l < B;) {
-              switch (g = e.charCodeAt(l)) {
-                case 123:
-                  k++;
-                  break;
-
-                case 125:
-                  k--;
-                  break;
-
-                case 47:
-                  switch (g = e.charCodeAt(l + 1)) {
-                    case 42:
-                    case 47:
-                      a: {
-                        for (u = l + 1; u < J; ++u) {
-                          switch (e.charCodeAt(u)) {
-                            case 47:
-                              if (42 === g && 42 === e.charCodeAt(u - 1) && l + 2 !== u) {
-                                l = u + 1;
-                                break a;
-                              }
-
-                              break;
-
-                            case 10:
-                              if (47 === g) {
-                                l = u + 1;
-                                break a;
-                              }
-
-                          }
-                        }
-
-                        l = u;
-                      }
-
-                  }
-
-                  break;
-
-                case 91:
-                  g++;
-
-                case 40:
-                  g++;
-
-                case 34:
-                case 39:
-                  for (; l++ < J && e.charCodeAt(l) !== g;) {
-                  }
-
-              }
-
-              if (0 === k) break;
-              l++;
-            }
-
-            k = e.substring(t, l);
-            0 === q && (q = (f = f.replace(ca, '').trim()).charCodeAt(0));
-
-            switch (q) {
-              case 64:
-                0 < r && (f = f.replace(N, ''));
-                g = f.charCodeAt(1);
-
-                switch (g) {
-                  case 100:
-                  case 109:
-                  case 115:
-                  case 45:
-                    r = c;
-                    break;
-
-                  default:
-                    r = O;
-                }
-
-                k = M(c, r, k, g, a + 1);
-                t = k.length;
-                0 < A && (r = X(O, f, I), C = H(3, k, r, c, D, z, t, g, a, h), f = r.join(''), void 0 !== C && 0 === (t = (k = C.trim()).length) && (g = 0, k = ''));
-                if (0 < t) switch (g) {
-                  case 115:
-                    f = f.replace(da, ea);
-
-                  case 100:
-                  case 109:
-                  case 45:
-                    k = f + '{' + k + '}';
-                    break;
-
-                  case 107:
-                    f = f.replace(fa, '$1 $2');
-                    k = f + '{' + k + '}';
-                    k = 1 === w || 2 === w && L('@' + k, 3) ? '@-webkit-' + k + '@' + k : '@' + k;
-                    break;
-
-                  default:
-                    k = f + k, 112 === h && (k = (p += k, ''));
-                } else k = '';
-                break;
-
-              default:
-                k = M(c, X(c, f, I), k, h, a + 1);
-            }
-
-            F += k;
-            k = I = r = u = q = 0;
-            f = '';
-            g = e.charCodeAt(++l);
-            break;
-
-          case 125:
-          case 59:
-            f = (0 < r ? f.replace(N, '') : f).trim();
-            if (1 < (t = f.length)) switch (0 === u && (q = f.charCodeAt(0), 45 === q || 96 < q && 123 > q) && (t = (f = f.replace(' ', ':')).length), 0 < A && void 0 !== (C = H(1, f, c, d, D, z, p.length, h, a, h)) && 0 === (t = (f = C.trim()).length) && (f = '\x00\x00'), q = f.charCodeAt(0), g = f.charCodeAt(1), q) {
-              case 0:
-                break;
-
-              case 64:
-                if (105 === g || 99 === g) {
-                  G += f + e.charAt(l);
-                  break;
-                }
-
-              default:
-                58 !== f.charCodeAt(t - 1) && (p += P(f, q, g, f.charCodeAt(2)));
-            }
-            I = r = u = q = 0;
-            f = '';
-            g = e.charCodeAt(++l);
-        }
-      }
-
-      switch (g) {
-        case 13:
-        case 10:
-          47 === b ? b = 0 : 0 === 1 + q && 107 !== h && 0 < f.length && (r = 1, f += '\x00');
-          0 < A * Y && H(0, f, c, d, D, z, p.length, h, a, h);
-          z = 1;
-          D++;
-          break;
-
-        case 59:
-        case 125:
-          if (0 === b + n + v + m) {
-            z++;
-            break;
-          }
-
-        default:
-          z++;
-          y = e.charAt(l);
-
-          switch (g) {
-            case 9:
-            case 32:
-              if (0 === n + m + b) switch (x) {
-                case 44:
-                case 58:
-                case 9:
-                case 32:
-                  y = '';
-                  break;
-
-                default:
-                  32 !== g && (y = ' ');
-              }
-              break;
-
-            case 0:
-              y = '\\0';
-              break;
-
-            case 12:
-              y = '\\f';
-              break;
-
-            case 11:
-              y = '\\v';
-              break;
-
-            case 38:
-              0 === n + b + m && (r = I = 1, y = '\f' + y);
-              break;
-
-            case 108:
-              if (0 === n + b + m + E && 0 < u) switch (l - u) {
-                case 2:
-                  112 === x && 58 === e.charCodeAt(l - 3) && (E = x);
-
-                case 8:
-                  111 === K && (E = K);
-              }
-              break;
-
-            case 58:
-              0 === n + b + m && (u = l);
-              break;
-
-            case 44:
-              0 === b + v + n + m && (r = 1, y += '\r');
-              break;
-
-            case 34:
-            case 39:
-              0 === b && (n = n === g ? 0 : 0 === n ? g : n);
-              break;
-
-            case 91:
-              0 === n + b + v && m++;
-              break;
-
-            case 93:
-              0 === n + b + v && m--;
-              break;
-
-            case 41:
-              0 === n + b + m && v--;
-              break;
-
-            case 40:
-              if (0 === n + b + m) {
-                if (0 === q) switch (2 * x + 3 * K) {
-                  case 533:
-                    break;
-
-                  default:
-                    q = 1;
-                }
-                v++;
-              }
-
-              break;
-
-            case 64:
-              0 === b + v + n + m + u + k && (k = 1);
-              break;
-
-            case 42:
-            case 47:
-              if (!(0 < n + m + v)) switch (b) {
-                case 0:
-                  switch (2 * g + 3 * e.charCodeAt(l + 1)) {
-                    case 235:
-                      b = 47;
-                      break;
-
-                    case 220:
-                      t = l, b = 42;
-                  }
-
-                  break;
-
-                case 42:
-                  47 === g && 42 === x && t + 2 !== l && (33 === e.charCodeAt(t + 2) && (p += e.substring(t, l + 1)), y = '', b = 0);
-              }
-          }
-
-          0 === b && (f += y);
-      }
-
-      K = x;
-      x = g;
-      l++;
-    }
-
-    t = p.length;
-
-    if (0 < t) {
-      r = c;
-      if (0 < A && (C = H(2, p, r, d, D, z, t, h, a, h), void 0 !== C && 0 === (p = C).length)) return G + p + F;
-      p = r.join(',') + '{' + p + '}';
-
-      if (0 !== w * E) {
-        2 !== w || L(p, 2) || (E = 0);
-
-        switch (E) {
-          case 111:
-            p = p.replace(ha, ':-moz-$1') + p;
-            break;
-
-          case 112:
-            p = p.replace(Q, '::-webkit-input-$1') + p.replace(Q, '::-moz-$1') + p.replace(Q, ':-ms-input-$1') + p;
-        }
-
-        E = 0;
-      }
-    }
-
-    return G + p + F;
-  }
-
-  function X(d, c, e) {
-    var h = c.trim().split(ia);
-    c = h;
-    var a = h.length,
-        m = d.length;
-
-    switch (m) {
-      case 0:
-      case 1:
-        var b = 0;
-
-        for (d = 0 === m ? '' : d[0] + ' '; b < a; ++b) {
-          c[b] = Z(d, c[b], e).trim();
-        }
-
-        break;
-
-      default:
-        var v = b = 0;
-
-        for (c = []; b < a; ++b) {
-          for (var n = 0; n < m; ++n) {
-            c[v++] = Z(d[n] + ' ', h[b], e).trim();
-          }
-        }
-
-    }
-
-    return c;
-  }
-
-  function Z(d, c, e) {
-    var h = c.charCodeAt(0);
-    33 > h && (h = (c = c.trim()).charCodeAt(0));
-
-    switch (h) {
-      case 38:
-        return c.replace(F, '$1' + d.trim());
-
-      case 58:
-        return d.trim() + c.replace(F, '$1' + d.trim());
-
-      default:
-        if (0 < 1 * e && 0 < c.indexOf('\f')) return c.replace(F, (58 === d.charCodeAt(0) ? '' : '$1') + d.trim());
-    }
-
-    return d + c;
-  }
-
-  function P(d, c, e, h) {
-    var a = d + ';',
-        m = 2 * c + 3 * e + 4 * h;
-
-    if (944 === m) {
-      d = a.indexOf(':', 9) + 1;
-      var b = a.substring(d, a.length - 1).trim();
-      b = a.substring(0, d).trim() + b + ';';
-      return 1 === w || 2 === w && L(b, 1) ? '-webkit-' + b + b : b;
-    }
-
-    if (0 === w || 2 === w && !L(a, 1)) return a;
-
-    switch (m) {
-      case 1015:
-        return 97 === a.charCodeAt(10) ? '-webkit-' + a + a : a;
-
-      case 951:
-        return 116 === a.charCodeAt(3) ? '-webkit-' + a + a : a;
-
-      case 963:
-        return 110 === a.charCodeAt(5) ? '-webkit-' + a + a : a;
-
-      case 1009:
-        if (100 !== a.charCodeAt(4)) break;
-
-      case 969:
-      case 942:
-        return '-webkit-' + a + a;
-
-      case 978:
-        return '-webkit-' + a + '-moz-' + a + a;
-
-      case 1019:
-      case 983:
-        return '-webkit-' + a + '-moz-' + a + '-ms-' + a + a;
-
-      case 883:
-        if (45 === a.charCodeAt(8)) return '-webkit-' + a + a;
-        if (0 < a.indexOf('image-set(', 11)) return a.replace(ja, '$1-webkit-$2') + a;
-        break;
-
-      case 932:
-        if (45 === a.charCodeAt(4)) switch (a.charCodeAt(5)) {
-          case 103:
-            return '-webkit-box-' + a.replace('-grow', '') + '-webkit-' + a + '-ms-' + a.replace('grow', 'positive') + a;
-
-          case 115:
-            return '-webkit-' + a + '-ms-' + a.replace('shrink', 'negative') + a;
-
-          case 98:
-            return '-webkit-' + a + '-ms-' + a.replace('basis', 'preferred-size') + a;
-        }
-        return '-webkit-' + a + '-ms-' + a + a;
-
-      case 964:
-        return '-webkit-' + a + '-ms-flex-' + a + a;
-
-      case 1023:
-        if (99 !== a.charCodeAt(8)) break;
-        b = a.substring(a.indexOf(':', 15)).replace('flex-', '').replace('space-between', 'justify');
-        return '-webkit-box-pack' + b + '-webkit-' + a + '-ms-flex-pack' + b + a;
-
-      case 1005:
-        return ka.test(a) ? a.replace(aa, ':-webkit-') + a.replace(aa, ':-moz-') + a : a;
-
-      case 1e3:
-        b = a.substring(13).trim();
-        c = b.indexOf('-') + 1;
-
-        switch (b.charCodeAt(0) + b.charCodeAt(c)) {
-          case 226:
-            b = a.replace(G, 'tb');
-            break;
-
-          case 232:
-            b = a.replace(G, 'tb-rl');
-            break;
-
-          case 220:
-            b = a.replace(G, 'lr');
-            break;
-
-          default:
-            return a;
-        }
-
-        return '-webkit-' + a + '-ms-' + b + a;
-
-      case 1017:
-        if (-1 === a.indexOf('sticky', 9)) break;
-
-      case 975:
-        c = (a = d).length - 10;
-        b = (33 === a.charCodeAt(c) ? a.substring(0, c) : a).substring(d.indexOf(':', 7) + 1).trim();
-
-        switch (m = b.charCodeAt(0) + (b.charCodeAt(7) | 0)) {
-          case 203:
-            if (111 > b.charCodeAt(8)) break;
-
-          case 115:
-            a = a.replace(b, '-webkit-' + b) + ';' + a;
-            break;
-
-          case 207:
-          case 102:
-            a = a.replace(b, '-webkit-' + (102 < m ? 'inline-' : '') + 'box') + ';' + a.replace(b, '-webkit-' + b) + ';' + a.replace(b, '-ms-' + b + 'box') + ';' + a;
-        }
-
-        return a + ';';
-
-      case 938:
-        if (45 === a.charCodeAt(5)) switch (a.charCodeAt(6)) {
-          case 105:
-            return b = a.replace('-items', ''), '-webkit-' + a + '-webkit-box-' + b + '-ms-flex-' + b + a;
-
-          case 115:
-            return '-webkit-' + a + '-ms-flex-item-' + a.replace(ba, '') + a;
-
-          default:
-            return '-webkit-' + a + '-ms-flex-line-pack' + a.replace('align-content', '').replace(ba, '') + a;
-        }
-        break;
-
-      case 973:
-      case 989:
-        if (45 !== a.charCodeAt(3) || 122 === a.charCodeAt(4)) break;
-
-      case 931:
-      case 953:
-        if (!0 === la.test(d)) return 115 === (b = d.substring(d.indexOf(':') + 1)).charCodeAt(0) ? P(d.replace('stretch', 'fill-available'), c, e, h).replace(':fill-available', ':stretch') : a.replace(b, '-webkit-' + b) + a.replace(b, '-moz-' + b.replace('fill-', '')) + a;
-        break;
-
-      case 962:
-        if (a = '-webkit-' + a + (102 === a.charCodeAt(5) ? '-ms-' + a : '') + a, 211 === e + h && 105 === a.charCodeAt(13) && 0 < a.indexOf('transform', 10)) return a.substring(0, a.indexOf(';', 27) + 1).replace(ma, '$1-webkit-$2') + a;
-    }
-
-    return a;
-  }
-
-  function L(d, c) {
-    var e = d.indexOf(1 === c ? ':' : '{'),
-        h = d.substring(0, 3 !== c ? e : 10);
-    e = d.substring(e + 1, d.length - 1);
-    return R(2 !== c ? h : h.replace(na, '$1'), e, c);
-  }
-
-  function ea(d, c) {
-    var e = P(c, c.charCodeAt(0), c.charCodeAt(1), c.charCodeAt(2));
-    return e !== c + ';' ? e.replace(oa, ' or ($1)').substring(4) : '(' + c + ')';
-  }
-
-  function H(d, c, e, h, a, m, b, v, n, q) {
-    for (var g = 0, x = c, w; g < A; ++g) {
-      switch (w = S[g].call(B, d, x, e, h, a, m, b, v, n, q)) {
-        case void 0:
-        case !1:
-        case !0:
-        case null:
-          break;
-
-        default:
-          x = w;
-      }
-    }
-
-    if (x !== c) return x;
-  }
-
-  function T(d) {
-    switch (d) {
-      case void 0:
-      case null:
-        A = S.length = 0;
-        break;
-
-      default:
-        if ('function' === typeof d) S[A++] = d;else if ('object' === typeof d) for (var c = 0, e = d.length; c < e; ++c) {
-          T(d[c]);
-        } else Y = !!d | 0;
-    }
-
-    return T;
-  }
-
-  function U(d) {
-    d = d.prefix;
-    void 0 !== d && (R = null, d ? 'function' !== typeof d ? w = 1 : (w = 2, R = d) : w = 0);
-    return U;
-  }
-
-  function B(d, c) {
-    var e = d;
-    33 > e.charCodeAt(0) && (e = e.trim());
-    V = e;
-    e = [V];
-
-    if (0 < A) {
-      var h = H(-1, c, e, e, D, z, 0, 0, 0, 0);
-      void 0 !== h && 'string' === typeof h && (c = h);
-    }
-
-    var a = M(O, e, c, 0, 0);
-    0 < A && (h = H(-2, a, e, e, D, z, a.length, 0, 0, 0), void 0 !== h && (a = h));
-    V = '';
-    E = 0;
-    z = D = 1;
-    return a;
-  }
-
-  var ca = /^\0+/g,
-      N = /[\0\r\f]/g,
-      aa = /: */g,
-      ka = /zoo|gra/,
-      ma = /([,: ])(transform)/g,
-      ia = /,\r+?/g,
-      F = /([\t\r\n ])*\f?&/g,
-      fa = /@(k\w+)\s*(\S*)\s*/,
-      Q = /::(place)/g,
-      ha = /:(read-only)/g,
-      G = /[svh]\w+-[tblr]{2}/,
-      da = /\(\s*(.*)\s*\)/g,
-      oa = /([\s\S]*?);/g,
-      ba = /-self|flex-/g,
-      na = /[^]*?(:[rp][el]a[\w-]+)[^]*/,
-      la = /stretch|:\s*\w+\-(?:conte|avail)/,
-      ja = /([^-])(image-set\()/,
-      z = 1,
-      D = 1,
-      E = 0,
-      w = 1,
-      O = [],
-      S = [],
-      A = 0,
-      R = null,
-      Y = 0,
-      V = '';
-  B.use = T;
-  B.set = U;
-  void 0 !== W && U(W);
-  return B;
-}
-
-/* harmony default export */ var stylis_browser_esm = (stylis_min);
-
-// CONCATENATED MODULE: ./node_modules/@emotion/weak-memoize/dist/weak-memoize.browser.esm.js
-var weakMemoize = function weakMemoize(func) {
-  // $FlowFixMe flow doesn't include all non-primitive types as allowed for weakmaps
-  var cache = new WeakMap();
-  return function (arg) {
-    if (cache.has(arg)) {
-      // $FlowFixMe
-      return cache.get(arg);
-    }
-
-    var ret = func(arg);
-    cache.set(arg, ret);
-    return ret;
-  };
+var Table_Table = function Table(_ref) {
+  var children = _ref.children,
+      className = _ref.className;
+  return Object(react_["jsx"])("table", {
+    className: classnames_default()("w-full max-w-full", className)
+  }, children);
 };
 
-/* harmony default export */ var weak_memoize_browser_esm = (weakMemoize);
-
-// CONCATENATED MODULE: ./node_modules/@emotion/cache/dist/cache.browser.esm.js
-
-
-
-
-// https://github.com/thysultan/stylis.js/tree/master/plugins/rule-sheet
-// inlined to avoid umd wrapper and peerDep warnings/installing stylis
-// since we use stylis after closure compiler
-var delimiter = '/*|*/';
-var needle = delimiter + '}';
-
-function toSheet(block) {
-  if (block) {
-    cache_browser_esm_Sheet.current.insert(block + '}');
-  }
-}
-
-var cache_browser_esm_Sheet = {
-  current: null
-};
-var ruleSheet = function ruleSheet(context, content, selectors, parents, line, column, length, ns, depth, at) {
-  switch (context) {
-    // property
-    case 1:
-      {
-        switch (content.charCodeAt(0)) {
-          case 64:
-            {
-              // @import
-              cache_browser_esm_Sheet.current.insert(content + ';');
-              return '';
-            }
-          // charcode for l
-
-          case 108:
-            {
-              // charcode for b
-              // this ignores label
-              if (content.charCodeAt(2) === 98) {
-                return '';
-              }
-            }
-        }
-
-        break;
-      }
-    // selector
-
-    case 2:
-      {
-        if (ns === 0) return content + delimiter;
-        break;
-      }
-    // at-rule
-
-    case 3:
-      {
-        switch (ns) {
-          // @font-face, @page
-          case 102:
-          case 112:
-            {
-              cache_browser_esm_Sheet.current.insert(selectors[0] + content);
-              return '';
-            }
-
-          default:
-            {
-              return content + (at === 0 ? delimiter : '');
-            }
-        }
-      }
-
-    case -2:
-      {
-        content.split(needle).forEach(toSheet);
-      }
-  }
+Table_Table.Head = function (_ref2) {
+  var children = _ref2.children,
+      className = _ref2.className;
+  return Object(react_["jsx"])("thead", {
+    className: classnames_default()("border-b border-border rounded", className)
+  }, children);
 };
 
-var cache_browser_esm_createCache = function createCache(options) {
-  if (options === undefined) options = {};
-  var key = options.key || 'css';
-  var stylisOptions;
+Table_Table.Body = function (_ref3) {
+  var children = _ref3.children,
+      className = _ref3.className;
+  return Object(react_["jsx"])("tbody", {
+    className: classnames_default()("bg-white", className)
+  }, children);
+};
 
-  if (options.prefix !== undefined) {
-    stylisOptions = {
-      prefix: options.prefix
-    };
-  }
+Table_Table.HeaderCell = function (_ref4) {
+  var children = _ref4.children,
+      className = _ref4.className;
+  return Object(react_["jsx"])("th", {
+    className: classnames_default()("px-6 py-2 bg-accent-two text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider", className)
+  }, children);
+};
 
-  var stylis = new stylis_browser_esm(stylisOptions);
+Table_Table.Row = function (_ref5) {
+  var children = _ref5.children,
+      className = _ref5.className,
+      onClick = _ref5.onClick,
+      isSelectable = _ref5.isSelectable;
+  return Object(react_["jsx"])("tr", {
+    onClick: onClick,
+    className: classnames_default()({
+      "hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer": onClick || isSelectable,
+      className: className
+    })
+  }, children);
+};
 
-  if (false) {}
+Table_Table.Cell = function (_ref6) {
+  var children = _ref6.children,
+      className = _ref6.className;
+  return Object(react_["jsx"])("td", {
+    className: classnames_default()("px-6 py-4", className)
+  }, Object(react_["jsx"])(Typography_Text, {
+    small: true
+  }, children));
+};
 
-  var inserted = {}; // $FlowFixMe
+Table_Table.TextCell = function (_ref7) {
+  var primary = _ref7.primary,
+      primaryClassname = _ref7.primaryClassname,
+      secondary = _ref7.secondary,
+      secondaryClassname = _ref7.secondaryClassname;
+  return Object(react_["jsx"])(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, primary && Object(react_["jsx"])("span", {
+    className: classnames_default()("font-semibold", Table_defineProperty({}, primaryClassname, primaryClassname))
+  }, primary), secondary && Object(react_["jsx"])("span", {
+    className: classnames_default()("block", Table_defineProperty({}, secondaryClassname, secondaryClassname))
+  }, secondary));
+};
 
-  var container;
+Table_Table.propTypes = {
+  children: prop_types_default.a.node.isRequired,
+  className: prop_types_default.a.string
+};
+Table_Table.Head.propTypes = {
+  children: prop_types_default.a.node.isRequired,
+  className: prop_types_default.a.string
+};
+Table_Table.Body.propTypes = {
+  children: prop_types_default.a.node.isRequired,
+  className: prop_types_default.a.string
+};
+Table_Table.HeaderCell.propTypes = {
+  children: prop_types_default.a.node.isRequired,
+  className: prop_types_default.a.string
+};
+Table_Table.Row.propTypes = {
+  children: prop_types_default.a.node.isRequired,
+  className: prop_types_default.a.string,
+  onClick: prop_types_default.a.func
+};
+Table_Table.Cell.propTypes = {
+  children: prop_types_default.a.node.isRequired,
+  className: prop_types_default.a.string
+};
+Table_Table.TextCell.propTypes = {
+  primary: prop_types_default.a.node,
+  primaryClassname: prop_types_default.a.string,
+  secondary: prop_types_default.a.node,
+  secondaryClassname: prop_types_default.a.string
+};
+/* harmony default export */ var src_Table = (Table_Table);
+// CONCATENATED MODULE: ./src/Header/index.js
 
-  {
-    container = options.container || document.head;
-    var nodes = document.querySelectorAll("style[data-emotion-" + key + "]");
-    Array.prototype.forEach.call(nodes, function (node) {
-      var attrib = node.getAttribute("data-emotion-" + key); // $FlowFixMe
 
-      attrib.split(' ').forEach(function (id) {
-        inserted[id] = true;
+
+
+var Header_Header = function Header(_ref) {
+  var leftContent = _ref.leftContent,
+      centerContent = _ref.centerContent,
+      rightContent = _ref.rightContent;
+  return Object(react_["jsx"])("div", {
+    className: "relative w-full bg-white shadow"
+  }, Object(react_["jsx"])("div", {
+    className: "flex p-4 px-8 flex-nowrap justify-between items-center relative flex-row flex-grow h-16"
+  }, Object(react_["jsx"])("div", {
+    className: "flex flex-1 flex-grow flex-shrink-0 min-w-0"
+  }, Object(react_["jsx"])("div", {
+    className: "flex items-center flex-grow-0 flex-row"
+  }, leftContent)), Object(react_["jsx"])("div", {
+    className: "flex flex-shrink p-0 w-auto items-center justify-between"
+  }, centerContent), Object(react_["jsx"])("div", {
+    className: "flex flex-grow p-0"
+  }, Object(react_["jsx"])("div", {
+    className: "flex flex-grow flex-row items-center justify-end max-w-full"
+  }, rightContent))));
+};
+
+Header_Header.propTypes = {
+  leftContent: prop_types_default.a.node,
+  centerContent: prop_types_default.a.node,
+  rightContent: prop_types_default.a.node
+};
+/* harmony default export */ var src_Header = (Header_Header);
+// CONCATENATED MODULE: ./src/Content/index.js
+
+
+
+
+
+var Content_Content = function Content(_ref) {
+  var children = _ref.children,
+      size = _ref.size,
+      className = _ref.className;
+
+  var base = Object(react_["jsx"])("div", {
+    className: classnames_default()("mx-auto px-4 sm:px-6 md:px-8", {
+      "max-w-3xl": size === "small",
+      "max-w-5xl": size === "default" || !size,
+      "max-w-full": size === "full"
+    }, className)
+  }, Object(react_["jsx"])("div", {
+    className: "py-8"
+  }, children));
+
+  return base;
+};
+
+Content_Content.propTypes = {
+  children: prop_types_default.a.node,
+  size: prop_types_default.a.string,
+  className: prop_types_default.a.string
+};
+/* harmony default export */ var src_Content = (Content_Content);
+// EXTERNAL MODULE: ./node_modules/classnames/bind.js
+var bind = __webpack_require__(4);
+var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
+
+// CONCATENATED MODULE: ./src/SpinningDots/index.js
+
+
+
+
+
+var SpinningDots_SpinningDots = function SpinningDots(_ref) {
+  var className = _ref.className,
+      variant = _ref.variant;
+  var i = classnames_default()("animate-pulse w-1.5 h-1.5 rounded-full", {
+    'bg-accent-three': variant === 'light',
+    'bg-accent-six': variant === 'default'
+  });
+  return Object(react_["jsx"])("div", {
+    className: classnames_default()("spinner inline p-0 h-auto w-full text-center", className)
+  }, Object(react_["jsx"])("span", {
+    className: "inline-flex relative align-middle h-2 text-center opacity-50 w-10"
+  }, Object(react_["jsx"])("div", {
+    className: "flex w-full justify-around"
+  }, Object(react_["jsx"])("i", {
+    className: i,
+    style: {
+      animationDelay: "-.2s"
+    }
+  }), Object(react_["jsx"])("i", {
+    className: i,
+    style: {
+      animationDelay: "-.1s"
+    }
+  }), Object(react_["jsx"])("i", {
+    className: i
+  }))));
+};
+
+SpinningDots_SpinningDots.propTypes = {
+  className: prop_types_default.a.string,
+  variant: prop_types_default.a.oneOf(["default", "light"])
+};
+SpinningDots_SpinningDots.defaultProps = {
+  variant: "default"
+};
+/* harmony default export */ var src_SpinningDots = (SpinningDots_SpinningDots);
+// CONCATENATED MODULE: ./src/Button/index.js
+function Button_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+var buttonTypes = {
+  "default": "border-transparent hover:border-accent-five text-white hover:text-foreground bg-foreground hover:bg-accent-two active:bg-foreground active:text-white",
+  secondary: "border-secondary hover:border-foreground text-secondary hover:text-foreground bg-white hover:bg-accent-two active:bg-foreground active:text-white",
+  danger: "border-error-dark hover:border-error-dark text-white hover:text-error-dark bg-error-dark hover:bg-accent-two active:bg-foreground active:text-white",
+  disabled: "border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed",
+  minimal: "border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five"
+};
+
+var Button_Button = function Button(_ref) {
+  var _cx;
+
+  var disabled = _ref.disabled,
+      iconBefore = _ref.iconBefore,
+      iconAfter = _ref.iconAfter,
+      onClick = _ref.onClick,
+      label = _ref.label,
+      type = _ref.type,
+      variant = _ref.variant,
+      component = _ref.component,
+      block = _ref.block,
+      large = _ref.large,
+      isLoading = _ref.isLoading;
+  var cx = bind_default.a.bind(buttonTypes);
+
+  var ButtonContent = Object(react_["jsx"])("div", {
+    className: bind_default()("flex items-center justify-center", {
+      "opacity-0": isLoading,
+      "opacity-100": !isLoading
+    })
+  }, iconBefore && Object(react_["jsx"])("span", {
+    className: "flex mr-2"
+  }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore)), Object(react_["jsx"])("span", {
+    className: "truncate"
+  }, label), iconAfter && Object(react_["jsx"])("span", {
+    className: "flex ml-2"
+  }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
+
+  var ButtonClasses = cx("Button border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer", (_cx = {
+    disabled: disabled
+  }, Button_defineProperty(_cx, variant, Boolean(variant) && !disabled), Button_defineProperty(_cx, "px-5 h-9 leading-9 text-sm", !Boolean(block)), Button_defineProperty(_cx, "px-12 h10 leading-10 w-full", Boolean(block)), Button_defineProperty(_cx, "px-12 h-10 leading-10", Boolean(large)), _cx));
+
+  var RenderComponent = function RenderComponent() {
+    if (component.props.children && typeof component.props.children !== "string") {
+      var children = /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component.props.children, {
+        className: ButtonClasses
       });
-
-      if (node.parentNode !== container) {
-        container.appendChild(node);
-      }
-    });
-  }
-
-  var _insert;
-
-  {
-    stylis.use(options.stylisPlugins)(ruleSheet);
-
-    _insert = function insert(selector, serialized, sheet, shouldCache) {
-      var name = serialized.name;
-      cache_browser_esm_Sheet.current = sheet;
-
-      if (false) { var map; }
-
-      stylis(selector, serialized.styles);
-
-      if (shouldCache) {
-        cache.inserted[name] = true;
-      }
-    };
-  }
-
-  if (false) { var commentEnd, commentStart; }
-
-  var cache = {
-    key: key,
-    sheet: new StyleSheet({
-      key: key,
-      container: container,
-      nonce: options.nonce,
-      speedy: options.speedy
-    }),
-    nonce: options.nonce,
-    inserted: inserted,
-    registered: {},
-    insert: _insert
+      return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {}, children);
+    } else {
+      return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {
+        className: ButtonClasses
+      });
+    }
   };
-  return cache;
+
+  return Object(react_["jsx"])(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, component ? Object(react_["jsx"])(RenderComponent, null) : Object(react_["jsx"])("button", {
+    type: type,
+    onClick: onClick,
+    disabled: disabled || isLoading,
+    className: ButtonClasses
+  }, isLoading && Object(react_["jsx"])(src_SpinningDots, {
+    variant: "light",
+    className: "absolute"
+  }), ButtonContent));
 };
 
-/* harmony default export */ var cache_browser_esm = (cache_browser_esm_createCache);
+Button_Button.propTypes = {
+  disabled: prop_types_default.a.bool,
+  className: prop_types_default.a.string,
+  iconBefore: prop_types_default.a.element,
+  iconAfter: prop_types_default.a.element,
+  label: prop_types_default.a.string,
+  onClick: prop_types_default.a.func,
+  type: prop_types_default.a.string,
+  variant: prop_types_default.a.oneOf(["default", "secondary", "danger", "disabled", "minimal"]),
+  isLoading: prop_types_default.a.bool,
+  component: prop_types_default.a.element
+};
+Button_Button.defaultProps = {
+  variant: "default",
+  type: "button",
+  isLoading: false,
+  disabled: false
+};
+/* harmony default export */ var src_Button = (Button_Button);
+// CONCATENATED MODULE: ./src/Box/index.js
+function Box_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+
+
+
+
+
+var Box_Box = function Box(_ref) {
+  var _classNames;
+
+  var flex = _ref.flex,
+      alignItems = _ref.alignItems,
+      justifyContent = _ref.justifyContent,
+      backgroundColor = _ref.backgroundColor,
+      flexDirection = _ref.flexDirection,
+      flexWrap = _ref.flexWrap,
+      children = _ref.children,
+      className = _ref.className,
+      rootCard = _ref.rootCard,
+      noPadding = _ref.noPadding;
+  return Object(react_["jsx"])("div", {
+    className: classnames_default()("overflow-hidden", className, (_classNames = {
+      flex: Boolean(flex),
+      "bg-white": !Boolean(backgroundColor)
+    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 border border-border rounded shadow-sm", Boolean(rootCard)), Box_defineProperty(_classNames, "px-6 py-4", !Boolean(noPadding)), Box_defineProperty(_classNames, "flex-".concat(flexWrap), Boolean(flexWrap)), _classNames))
+  }, children);
+};
+
+Box_Box.propTypes = {
+  flex: prop_types_default.a.bool,
+  alignItems: prop_types_default.a.string,
+  justifyContent: prop_types_default.a.string,
+  backgroundColor: prop_types_default.a.string,
+  flexDirection: prop_types_default.a.string,
+  children: prop_types_default.a.node,
+  className: prop_types_default.a.string,
+  rootCard: prop_types_default.a.bool,
+  noPadding: prop_types_default.a.bool,
+  flexWrap: prop_types_default.a.string
+};
+/* harmony default export */ var src_Box = (Box_Box);
+// EXTERNAL MODULE: external {"root":"ReactDOM","commonjs2":"react-dom","commonjs":"react-dom","amd":"react-dom"}
+var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_ = __webpack_require__(5);
+var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_default = /*#__PURE__*/__webpack_require__.n(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_);
+
+// CONCATENATED MODULE: ./src/Sidesheet/index.js
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+function XIcon() {
+  return Object(react_["jsx"])("svg", {
+    fill: "none",
+    className: "text-accent-four",
+    stroke: "currentColor",
+    viewBox: "0 0 24 24",
+    width: "16px",
+    height: "16px"
+  }, Object(react_["jsx"])("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "2",
+    d: "M6 18L18 6M6 6l12 12"
+  }));
+}
+
+var Sidesheet_SidesheetContent = function SidesheetContent(_ref) {
+  var id = _ref.id,
+      children = _ref.children;
+  if (typeof window === "undefined") return null;
+  var element = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(document.getElementById(id) || document.createElement("div"));
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (!document.getElementById(id)) {
+      element.current.id = id;
+      document.body.appendChild(element.current);
+    }
+
+    return function () {
+      if (element.current.parentElement) {
+        element.current.parentElement.removeChild(element.current);
+      }
+    };
+  }, [id]);
+  return /*#__PURE__*/Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
+};
+
+var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
+  var title = _ref2.title,
+      children = _ref2.children,
+      className = _ref2.className,
+      action = _ref2.action,
+      content = _ref2.content,
+      _ref2$width = _ref2.width,
+      width = _ref2$width === void 0 ? 400 : _ref2$width,
+      onClose = _ref2.onClose,
+      _ref2$isShown = _ref2.isShown,
+      isShown = _ref2$isShown === void 0 ? false : _ref2$isShown;
+  var sideSheet = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
+  var portal = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
+
+  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isOpened = _useState2[0],
+      setIsOpened = _useState2[1];
+
+  var _useState3 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      transition = _useState4[0],
+      setTransition = _useState4[1];
+
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (!isShown) {
+      setTransition(false);
+      setTimeout(function () {
+        return setIsOpened(false);
+      }, 500);
+    } else {
+      setIsOpened(true);
+      setTimeout(function () {
+        return setTransition(true);
+      }, 100);
+    }
+  }, [isShown]);
+
+  var closeTransition = function closeTransition() {
+    if (isOpened && transition) {
+      onClose();
+      setTransition(false);
+      setTimeout(function () {
+        return setIsOpened(false);
+      }, 500);
+    }
+  };
+
+  return Object(react_["jsx"])("div", {
+    ref: sideSheet,
+    className: bind_default()("relative inline-block text-left", className)
+  }, children, isOpened && Object(react_["jsx"])(Sidesheet_SidesheetContent, {
+    id: "sidesheet"
+  }, Object(react_["jsx"])("div", {
+    onClick: function onClick() {
+      return closeTransition();
+    },
+    className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
+      "bg-accent-eight": transition,
+      "bg-transparent": !transition
+    })
+  }), Object(react_["jsx"])("div", {
+    ref: portal,
+    style: {
+      transition: "transform .4s cubic-bezier(.3,0,0,1)",
+      transform: transition ? "translateX(calc(100vw - ".concat(width, "px - 20px))") : "translateX(100vw)",
+      top: 0,
+      bottom: 0,
+      width: width,
+      height: "calc(100% - 20px)"
+    },
+    className: "fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
+  }, Object(react_["jsx"])(src_Box, {
+    flex: true,
+    alignItems: "center",
+    className: "relative border-b border-border rounded rounded-b-none"
+  }, Object(react_["jsx"])("div", {
+    className: "text-foreground flex-auto truncate leading-6"
+  }, title), Object(react_["jsx"])(src_Box, {
+    flex: true,
+    backgroundColor: "transparent",
+    className: "cursor-pointer",
+    noPadding: true
+  }, Object(react_["jsx"])("div", {
+    onClick: function onClick() {
+      return closeTransition();
+    }
+  }, Object(react_["jsx"])(XIcon, null)))), Object(react_["jsx"])(src_Box, {
+    flex: true,
+    flexDirection: "col",
+    className: "sidesheet-content relative overflow-y-auto flex-1 rounded"
+  }, Object(react_["jsx"])(src_Box, {
+    noPadding: true,
+    flex: true,
+    flexDirection: "col",
+    className: "h-full"
+  }, content)), action && Object(react_["jsx"])(src_Box, {
+    flex: true,
+    justifyContent: "center",
+    alignItems: "center",
+    className: "sidesheet-action h-16 border-t border-border relative flex-initial rounded rounded-t-none"
+  }, action))));
+};
+
+Sidesheet_Sidesheet.propTypes = {
+  content: prop_types_default.a.element,
+  children: prop_types_default.a.element,
+  className: prop_types_default.a.string,
+  width: prop_types_default.a.string,
+  action: prop_types_default.a.element,
+  onClose: prop_types_default.a.func,
+  isShown: prop_types_default.a.bool,
+  title: prop_types_default.a.string
+};
+/* harmony default export */ var src_Sidesheet = (Sidesheet_Sidesheet);
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
-function _extends() {
-  _extends = Object.assign || function (target) {
+function extends_extends() {
+  extends_extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
 
@@ -8060,32 +6841,43 @@ function _extends() {
     return target;
   };
 
-  return _extends.apply(this, arguments);
+  return extends_extends.apply(this, arguments);
 }
-// EXTERNAL MODULE: ./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js
-var hoist_non_react_statics_cjs = __webpack_require__(11);
-var hoist_non_react_statics_cjs_default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics_cjs);
+// CONCATENATED MODULE: ./node_modules/@emotion/memoize/dist/emotion-memoize.browser.esm.js
+function memoize(fn) {
+  var cache = Object.create(null);
+  return function (arg) {
+    if (cache[arg] === undefined) cache[arg] = fn(arg);
+    return cache[arg];
+  };
+}
 
-// CONCATENATED MODULE: ./node_modules/@emotion/react/isolated-hoist-non-react-statics-do-not-use-this-in-your-code/dist/emotion-react-isolated-hoist-non-react-statics-do-not-use-this-in-your-code.browser.esm.js
+/* harmony default export */ var emotion_memoize_browser_esm = (memoize);
+
+// CONCATENATED MODULE: ./node_modules/@emotion/is-prop-valid/dist/emotion-is-prop-valid.browser.esm.js
 
 
-// this file isolates this package that is not tree-shakeable
-// and if this module doesn't actually contain any logic of its own
-// then Rollup just use 'hoist-non-react-statics' directly in other chunks
+var reactPropsRegex = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|download|draggable|encType|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|translate|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|fallback|inert|itemProp|itemScope|itemType|itemID|itemRef|on|option|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/; // https://esbench.com/bench/5bfee68a4cd7e6009ef61d23
 
-var hoistNonReactStatics = (function (targetComponent, sourceComponent) {
-  return hoist_non_react_statics_cjs_default()(targetComponent, sourceComponent);
-});
+var isPropValid = /* #__PURE__ */emotion_memoize_browser_esm(function (prop) {
+  return reactPropsRegex.test(prop) || prop.charCodeAt(0) === 111
+  /* o */
+  && prop.charCodeAt(1) === 110
+  /* n */
+  && prop.charCodeAt(2) < 91;
+}
+/* Z+1 */
+);
 
-/* harmony default export */ var emotion_react_isolated_hoist_non_react_statics_do_not_use_this_in_your_code_browser_esm = (hoistNonReactStatics);
+/* harmony default export */ var emotion_is_prop_valid_browser_esm = (isPropValid);
 
-// CONCATENATED MODULE: ./node_modules/@emotion/utils/dist/utils.browser.esm.js
+// CONCATENATED MODULE: ./node_modules/@emotion/utils/dist/emotion-utils.browser.esm.js
 var isBrowser = "object" !== 'undefined';
 function getRegisteredStyles(registered, registeredStyles, classNames) {
   var rawClassName = '';
   classNames.split(' ').forEach(function (className) {
     if (registered[className] !== undefined) {
-      registeredStyles.push(registered[className]);
+      registeredStyles.push(registered[className] + ";");
     } else {
       rawClassName += className + " ";
     }
@@ -8104,7 +6896,7 @@ var insertStyles = function insertStyles(cache, serialized, isStringTag) {
   // in node since emotion-server relies on whether a style is in
   // the registered cache to know whether a style is global or not
   // also, note that this check will be dead code eliminated in the browser
-  isBrowser === false && cache.compat !== undefined) && cache.registered[className] === undefined) {
+  isBrowser === false ) && cache.registered[className] === undefined) {
     cache.registered[className] = serialized.styles;
   }
 
@@ -8112,7 +6904,7 @@ var insertStyles = function insertStyles(cache, serialized, isStringTag) {
     var current = serialized;
 
     do {
-      var maybeStyles = cache.insert("." + className, current, cache.sheet, true);
+      var maybeStyles = cache.insert(serialized === current ? "." + className : '', current, cache.sheet, true);
 
       current = current.next;
     } while (current !== undefined);
@@ -8230,18 +7022,7 @@ var unitlessKeys = {
 
 /* harmony default export */ var unitless_browser_esm = (unitlessKeys);
 
-// CONCATENATED MODULE: ./node_modules/@emotion/memoize/dist/memoize.browser.esm.js
-function memoize(fn) {
-  var cache = {};
-  return function (arg) {
-    if (cache[arg] === undefined) cache[arg] = fn(arg);
-    return cache[arg];
-  };
-}
-
-/* harmony default export */ var memoize_browser_esm = (memoize);
-
-// CONCATENATED MODULE: ./node_modules/@emotion/serialize/dist/serialize.browser.esm.js
+// CONCATENATED MODULE: ./node_modules/@emotion/serialize/dist/emotion-serialize.browser.esm.js
 
 
 
@@ -8259,11 +7040,11 @@ var isProcessableValue = function isProcessableValue(value) {
   return value != null && typeof value !== 'boolean';
 };
 
-var processStyleName = memoize_browser_esm(function (styleName) {
+var processStyleName = /* #__PURE__ */emotion_memoize_browser_esm(function (styleName) {
   return isCustomProperty(styleName) ? styleName : styleName.replace(hyphenateRegex, '-$&').toLowerCase();
 });
 
-var serialize_browser_esm_processStyleValue = function processStyleValue(key, value) {
+var emotion_serialize_browser_esm_processStyleValue = function processStyleValue(key, value) {
   switch (key) {
     case 'animation':
     case 'animationName':
@@ -8290,9 +7071,7 @@ var serialize_browser_esm_processStyleValue = function processStyleValue(key, va
 
 if (false) { var hyphenatedCache, hyphenPattern, msPattern, oldProcessStyleValue, contentValues, contentValuePattern; }
 
-var shouldWarnAboutInterpolatingClassNameFromCss = true;
-
-function handleInterpolation(mergedProps, registered, interpolation, couldBeSelectorInterpolation) {
+function handleInterpolation(mergedProps, registered, interpolation) {
   if (interpolation == null) {
     return '';
   }
@@ -8352,7 +7131,7 @@ function handleInterpolation(mergedProps, registered, interpolation, couldBeSele
           var previousCursor = cursor;
           var result = interpolation(mergedProps);
           cursor = previousCursor;
-          return handleInterpolation(mergedProps, registered, result, couldBeSelectorInterpolation);
+          return handleInterpolation(mergedProps, registered, result);
         } else if (false) {}
 
         break;
@@ -8370,10 +7149,7 @@ function handleInterpolation(mergedProps, registered, interpolation, couldBeSele
   }
 
   var cached = registered[interpolation];
-
-  if (false) {}
-
-  return cached !== undefined && !couldBeSelectorInterpolation ? cached : interpolation;
+  return cached !== undefined ? cached : interpolation;
 }
 
 function createStringFromObject(mergedProps, registered, obj) {
@@ -8381,7 +7157,7 @@ function createStringFromObject(mergedProps, registered, obj) {
 
   if (Array.isArray(obj)) {
     for (var i = 0; i < obj.length; i++) {
-      string += handleInterpolation(mergedProps, registered, obj[i], false);
+      string += handleInterpolation(mergedProps, registered, obj[i]) + ";";
     }
   } else {
     for (var _key in obj) {
@@ -8391,21 +7167,21 @@ function createStringFromObject(mergedProps, registered, obj) {
         if (registered != null && registered[value] !== undefined) {
           string += _key + "{" + registered[value] + "}";
         } else if (isProcessableValue(value)) {
-          string += processStyleName(_key) + ":" + serialize_browser_esm_processStyleValue(_key, value) + ";";
+          string += processStyleName(_key) + ":" + emotion_serialize_browser_esm_processStyleValue(_key, value) + ";";
         }
       } else {
         if (_key === 'NO_COMPONENT_SELECTOR' && "production" !== 'production') {
-          throw new Error('Component selectors can only be used in conjunction with babel-plugin-emotion.');
+          throw new Error('Component selectors can only be used in conjunction with @emotion/babel-plugin.');
         }
 
         if (Array.isArray(value) && typeof value[0] === 'string' && (registered == null || registered[value[0]] === undefined)) {
           for (var _i = 0; _i < value.length; _i++) {
             if (isProcessableValue(value[_i])) {
-              string += processStyleName(_key) + ":" + serialize_browser_esm_processStyleValue(_key, value[_i]) + ";";
+              string += processStyleName(_key) + ":" + emotion_serialize_browser_esm_processStyleValue(_key, value[_i]) + ";";
             }
           }
         } else {
-          var interpolated = handleInterpolation(mergedProps, registered, value, false);
+          var interpolated = handleInterpolation(mergedProps, registered, value);
 
           switch (_key) {
             case 'animation':
@@ -8438,7 +7214,7 @@ if (false) {} // this is the cursor for keyframes
 
 
 var cursor;
-var serialize_browser_esm_serializeStyles = function serializeStyles(args, registered, mergedProps) {
+var emotion_serialize_browser_esm_serializeStyles = function serializeStyles(args, registered, mergedProps) {
   if (args.length === 1 && typeof args[0] === 'object' && args[0] !== null && args[0].styles !== undefined) {
     return args[0];
   }
@@ -8450,7 +7226,7 @@ var serialize_browser_esm_serializeStyles = function serializeStyles(args, regis
 
   if (strings == null || strings.raw === undefined) {
     stringMode = false;
-    styles += handleInterpolation(mergedProps, registered, strings, false);
+    styles += handleInterpolation(mergedProps, registered, strings);
   } else {
     if (false) {}
 
@@ -8459,7 +7235,7 @@ var serialize_browser_esm_serializeStyles = function serializeStyles(args, regis
 
 
   for (var i = 1; i < args.length; i++) {
-    styles += handleInterpolation(mergedProps, registered, args[i], styles.charCodeAt(styles.length - 1) === 46);
+    styles += handleInterpolation(mergedProps, registered, args[i]);
 
     if (stringMode) {
       if (false) {}
@@ -8495,7 +7271,7 @@ var serialize_browser_esm_serializeStyles = function serializeStyles(args, regis
 
 
 
-// CONCATENATED MODULE: ./node_modules/@emotion/react/dist/emotion-element-4fbd89c5.browser.esm.js
+// CONCATENATED MODULE: ./node_modules/@emotion/styled/base/dist/emotion-styled-base.browser.esm.js
 
 
 
@@ -8503,1105 +7279,207 @@ var serialize_browser_esm_serializeStyles = function serializeStyles(args, regis
 
 
 
+var testOmitPropsOnStringTag = emotion_is_prop_valid_browser_esm;
 
-var emotion_element_4fbd89c5_browser_esm_hasOwnProperty = Object.prototype.hasOwnProperty;
-
-var EmotionCacheContext = /* #__PURE__ */Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createContext"])( // we're doing this to avoid preconstruct's dead code elimination in this one case
-// because this module is primarily intended for the browser and node
-// but it's also required in react native and similar environments sometimes
-// and we could have a special build just for that
-// but this is much easier and the native packages
-// might use a different theme context in the future anyway
-typeof HTMLElement !== 'undefined' ? /* #__PURE__ */cache_browser_esm({
-  key: 'css'
-}) : null);
-var CacheProvider = EmotionCacheContext.Provider;
-
-var emotion_element_4fbd89c5_browser_esm_withEmotionCache = function withEmotionCache(func) {
-  // $FlowFixMe
-  return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"])(function (props, ref) {
-    // the cache will never be null in the browser
-    var cache = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"])(EmotionCacheContext);
-    return func(props, cache, ref);
-  });
+var testOmitPropsOnComponent = function testOmitPropsOnComponent(key) {
+  return key !== 'theme';
 };
 
-var ThemeContext = /* #__PURE__ */Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createContext"])({});
-var emotion_element_4fbd89c5_browser_esm_useTheme = function useTheme() {
-  return Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"])(ThemeContext);
+var getDefaultShouldForwardProp = function getDefaultShouldForwardProp(tag) {
+  return typeof tag === 'string' && // 96 is one less than the char code
+  // for "a" so this is checking that
+  // it's a lowercase character
+  tag.charCodeAt(0) > 96 ? testOmitPropsOnStringTag : testOmitPropsOnComponent;
 };
+var composeShouldForwardProps = function composeShouldForwardProps(tag, options, isReal) {
+  var shouldForwardProp;
 
-var emotion_element_4fbd89c5_browser_esm_getTheme = function getTheme(outerTheme, theme) {
-  if (typeof theme === 'function') {
-    var mergedTheme = theme(outerTheme);
-
-    if (false) {}
-
-    return mergedTheme;
+  if (options) {
+    var optionsShouldForwardProp = options.shouldForwardProp;
+    shouldForwardProp = tag.__emotion_forwardProp && optionsShouldForwardProp ? function (propName) {
+      return tag.__emotion_forwardProp(propName) && optionsShouldForwardProp(propName);
+    } : optionsShouldForwardProp;
   }
 
+  if (typeof shouldForwardProp !== 'function' && isReal) {
+    shouldForwardProp = tag.__emotion_forwardProp;
+  }
+
+  return shouldForwardProp;
+};
+
+var emotion_styled_base_browser_esm_ILLEGAL_ESCAPE_SEQUENCE_ERROR = "You have illegal escape sequence in your template literal, most likely inside content's property value.\nBecause you write your CSS inside a JavaScript string you actually have to do double escaping, so for example \"content: '\\00d7';\" should become \"content: '\\\\00d7';\".\nYou can read more about this here:\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#ES2018_revision_of_illegal_escape_sequences";
+
+var emotion_styled_base_browser_esm_createStyled = function createStyled(tag, options) {
   if (false) {}
 
-  return _extends({}, outerTheme, {}, theme);
-};
+  var isReal = tag.__emotion_real === tag;
+  var baseTag = isReal && tag.__emotion_base || tag;
+  var identifierName;
+  var targetClassName;
 
-var createCacheWithTheme = /* #__PURE__ */weak_memoize_browser_esm(function (outerTheme) {
-  return weak_memoize_browser_esm(function (theme) {
-    return emotion_element_4fbd89c5_browser_esm_getTheme(outerTheme, theme);
-  });
-});
-var emotion_element_4fbd89c5_browser_esm_ThemeProvider = function ThemeProvider(props) {
-  var theme = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"])(ThemeContext);
-
-  if (props.theme !== theme) {
-    theme = createCacheWithTheme(theme)(props.theme);
+  if (options !== undefined) {
+    identifierName = options.label;
+    targetClassName = options.target;
   }
 
-  return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"])(ThemeContext.Provider, {
-    value: theme
-  }, props.children);
-};
-function withTheme(Component) {
-  var componentName = Component.displayName || Component.name || 'Component';
+  var shouldForwardProp = composeShouldForwardProps(tag, options, isReal);
+  var defaultShouldForwardProp = shouldForwardProp || getDefaultShouldForwardProp(baseTag);
+  var shouldUseAs = !defaultShouldForwardProp('as');
+  return function () {
+    var args = arguments;
+    var styles = isReal && tag.__emotion_styles !== undefined ? tag.__emotion_styles.slice(0) : [];
 
-  var render = function render(props, ref) {
-    var theme = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"])(ThemeContext);
-    return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"])(Component, _extends({
-      theme: theme,
-      ref: ref
-    }, props));
-  }; // $FlowFixMe
-
-
-  var WithTheme = /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"])(render);
-  WithTheme.displayName = "WithTheme(" + componentName + ")";
-  return emotion_react_isolated_hoist_non_react_statics_do_not_use_this_in_your_code_browser_esm(WithTheme, Component);
-}
-
-// thus we only need to replace what is a valid character for JS, but not for CSS
-
-var sanitizeIdentifier = function sanitizeIdentifier(identifier) {
-  return identifier.replace(/\$/g, '-');
-};
-
-var typePropName = '__EMOTION_TYPE_PLEASE_DO_NOT_USE__';
-var labelPropName = '__EMOTION_LABEL_PLEASE_DO_NOT_USE__';
-var createEmotionProps = function createEmotionProps(type, props) {
-  if (false) {}
-
-  var newProps = {};
-
-  for (var key in props) {
-    if (emotion_element_4fbd89c5_browser_esm_hasOwnProperty.call(props, key)) {
-      newProps[key] = props[key];
-    }
-  }
-
-  newProps[typePropName] = type;
-
-  if (false) { var match, error; }
-
-  return newProps;
-};
-var Emotion = /* #__PURE__ */emotion_element_4fbd89c5_browser_esm_withEmotionCache(function (props, cache, ref) {
-  var cssProp = props.css; // so that using `css` from `emotion` and passing the result to the css prop works
-  // not passing the registered cache to serializeStyles because it would
-  // make certain babel optimisations not possible
-
-  if (typeof cssProp === 'string' && cache.registered[cssProp] !== undefined) {
-    cssProp = cache.registered[cssProp];
-  }
-
-  var type = props[typePropName];
-  var registeredStyles = [cssProp];
-  var className = '';
-
-  if (typeof props.className === 'string') {
-    className = getRegisteredStyles(cache.registered, registeredStyles, props.className);
-  } else if (props.className != null) {
-    className = props.className + " ";
-  }
-
-  var serialized = serialize_browser_esm_serializeStyles(registeredStyles, undefined, typeof cssProp === 'function' || Array.isArray(cssProp) ? Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"])(ThemeContext) : undefined);
-
-  if (false) { var labelFromStack; }
-
-  var rules = insertStyles(cache, serialized, typeof type === 'string');
-  className += cache.key + "-" + serialized.name;
-  var newProps = {};
-
-  for (var key in props) {
-    if (emotion_element_4fbd89c5_browser_esm_hasOwnProperty.call(props, key) && key !== 'css' && key !== typePropName && ( true || false)) {
-      newProps[key] = props[key];
-    }
-  }
-
-  newProps.ref = ref;
-  newProps.className = className;
-  var ele = /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"])(type, newProps);
-
-  return ele;
-});
-
-if (false) {}
-
-
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/extends.js
-var helpers_extends = __webpack_require__(13);
-
-// CONCATENATED MODULE: ./node_modules/@emotion/react/dist/emotion-react.browser.esm.js
-
-
-
-
-
-
-
-
-
-
-
-
-var pkg = {
-	name: "@emotion/react",
-	version: "11.1.5",
-	main: "dist/emotion-react.cjs.js",
-	module: "dist/emotion-react.esm.js",
-	browser: {
-		"./dist/emotion-react.cjs.js": "./dist/emotion-react.browser.cjs.js",
-		"./dist/emotion-react.esm.js": "./dist/emotion-react.browser.esm.js"
-	},
-	types: "types/index.d.ts",
-	files: [
-		"src",
-		"dist",
-		"jsx-runtime",
-		"jsx-dev-runtime",
-		"isolated-hoist-non-react-statics-do-not-use-this-in-your-code",
-		"types/*.d.ts",
-		"macro.js",
-		"macro.d.ts",
-		"macro.js.flow"
-	],
-	sideEffects: false,
-	author: "mitchellhamilton <mitchell@mitchellhamilton.me>",
-	license: "MIT",
-	scripts: {
-		"test:typescript": "dtslint types"
-	},
-	dependencies: {
-		"@babel/runtime": "^7.7.2",
-		"@emotion/cache": "^11.1.3",
-		"@emotion/serialize": "^1.0.0",
-		"@emotion/sheet": "^1.0.1",
-		"@emotion/utils": "^1.0.0",
-		"@emotion/weak-memoize": "^0.2.5",
-		"hoist-non-react-statics": "^3.3.1"
-	},
-	peerDependencies: {
-		"@babel/core": "^7.0.0",
-		react: ">=16.8.0"
-	},
-	peerDependenciesMeta: {
-		"@babel/core": {
-			optional: true
-		},
-		"@types/react": {
-			optional: true
-		}
-	},
-	devDependencies: {
-		"@babel/core": "^7.7.2",
-		"@emotion/css": "11.1.3",
-		"@emotion/css-prettifier": "1.0.0",
-		"@emotion/server": "11.0.0",
-		"@emotion/styled": "11.1.5",
-		"@types/react": "^16.9.11",
-		dtslint: "^0.3.0",
-		"html-tag-names": "^1.1.2",
-		react: "16.14.0",
-		"svg-tag-names": "^1.1.1"
-	},
-	repository: "https://github.com/emotion-js/emotion/tree/master/packages/react",
-	publishConfig: {
-		access: "public"
-	},
-	"umd:main": "dist/emotion-react.umd.min.js",
-	preconstruct: {
-		entrypoints: [
-			"./index.js",
-			"./jsx-runtime.js",
-			"./jsx-dev-runtime.js",
-			"./isolated-hoist-non-react-statics-do-not-use-this-in-your-code.js"
-		],
-		umdName: "emotionReact"
-	}
-};
-
-var emotion_react_browser_esm_jsx = function jsx(type, props) {
-  var args = arguments;
-
-  if (props == null || !emotion_element_4fbd89c5_browser_esm_hasOwnProperty.call(props, 'css')) {
-    // $FlowFixMe
-    return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"].apply(undefined, args);
-  }
-
-  var argsLength = args.length;
-  var createElementArgArray = new Array(argsLength);
-  createElementArgArray[0] = Emotion;
-  createElementArgArray[1] = createEmotionProps(type, props);
-
-  for (var i = 2; i < argsLength; i++) {
-    createElementArgArray[i] = args[i];
-  } // $FlowFixMe
-
-
-  return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"].apply(null, createElementArgArray);
-};
-
-var warnedAboutCssPropForGlobal = false; // maintain place over rerenders.
-// initial render from browser, insertBefore context.sheet.tags[0] or if a style hasn't been inserted there yet, appendChild
-// initial client-side render from SSR, use place of hydrating tag
-
-var Global = /* #__PURE__ */emotion_element_4fbd89c5_browser_esm_withEmotionCache(function (props, cache) {
-  if (false) {}
-
-  var styles = props.styles;
-  var serialized = serialize_browser_esm_serializeStyles([styles], undefined, typeof styles === 'function' || Array.isArray(styles) ? Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"])(ThemeContext) : undefined);
-  // but it is based on a constant that will never change at runtime
-  // it's effectively like having two implementations and switching them out
-  // so it's not actually breaking anything
-
-
-  var sheetRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
-  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useLayoutEffect"])(function () {
-    var key = cache.key + "-global";
-    var sheet = new StyleSheet({
-      key: key,
-      nonce: cache.sheet.nonce,
-      container: cache.sheet.container,
-      speedy: cache.sheet.isSpeedy
-    }); // $FlowFixMe
-
-    var node = document.querySelector("style[data-emotion=\"" + key + " " + serialized.name + "\"]");
-
-    if (cache.sheet.tags.length) {
-      sheet.before = cache.sheet.tags[0];
+    if (identifierName !== undefined) {
+      styles.push("label:" + identifierName + ";");
     }
 
-    if (node !== null) {
-      sheet.hydrate([node]);
-    }
-
-    sheetRef.current = sheet;
-    return function () {
-      sheet.flush();
-    };
-  }, [cache]);
-  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useLayoutEffect"])(function () {
-    if (serialized.next !== undefined) {
-      // insert keyframes
-      insertStyles(cache, serialized.next, true);
-    }
-
-    var sheet = sheetRef.current;
-
-    if (sheet.tags.length) {
-      // if this doesn't exist then it will be null so the style element will be appended
-      var element = sheet.tags[sheet.tags.length - 1].nextElementSibling;
-      sheet.before = element;
-      sheet.flush();
-    }
-
-    cache.insert("", serialized, sheet, false);
-  }, [cache, serialized.name]);
-  return null;
-});
-
-if (false) {}
-
-function emotion_react_browser_esm_css() {
-  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
-
-  return serialize_browser_esm_serializeStyles(args);
-}
-
-var keyframes = function keyframes() {
-  var insertable = emotion_react_browser_esm_css.apply(void 0, arguments);
-  var name = "animation-" + insertable.name; // $FlowFixMe
-
-  return {
-    name: name,
-    styles: "@keyframes " + name + "{" + insertable.styles + "}",
-    anim: 1,
-    toString: function toString() {
-      return "_EMO_" + this.name + "_" + this.styles + "_EMO_";
-    }
-  };
-};
-
-var emotion_react_browser_esm_classnames = function classnames(args) {
-  var len = args.length;
-  var i = 0;
-  var cls = '';
-
-  for (; i < len; i++) {
-    var arg = args[i];
-    if (arg == null) continue;
-    var toAdd = void 0;
-
-    switch (typeof arg) {
-      case 'boolean':
-        break;
-
-      case 'object':
-        {
-          if (Array.isArray(arg)) {
-            toAdd = classnames(arg);
-          } else {
-            if (false) {}
-
-            toAdd = '';
-
-            for (var k in arg) {
-              if (arg[k] && k) {
-                toAdd && (toAdd += ' ');
-                toAdd += k;
-              }
-            }
-          }
-
-          break;
-        }
-
-      default:
-        {
-          toAdd = arg;
-        }
-    }
-
-    if (toAdd) {
-      cls && (cls += ' ');
-      cls += toAdd;
-    }
-  }
-
-  return cls;
-};
-
-function merge(registered, css, className) {
-  var registeredStyles = [];
-  var rawClassName = getRegisteredStyles(registered, registeredStyles, className);
-
-  if (registeredStyles.length < 2) {
-    return className;
-  }
-
-  return rawClassName + css(registeredStyles);
-}
-
-var ClassNames = /* #__PURE__ */emotion_element_4fbd89c5_browser_esm_withEmotionCache(function (props, cache) {
-  var hasRendered = false;
-
-  var css = function css() {
-    if (hasRendered && "production" !== 'production') {
-      throw new Error('css can only be used during render');
-    }
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    var serialized = serialize_browser_esm_serializeStyles(args, cache.registered);
-
-    {
-      insertStyles(cache, serialized, false);
-    }
-
-    return cache.key + "-" + serialized.name;
-  };
-
-  var cx = function cx() {
-    if (hasRendered && "production" !== 'production') {
-      throw new Error('cx can only be used during render');
-    }
-
-    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
-    }
-
-    return merge(cache.registered, css, emotion_react_browser_esm_classnames(args));
-  };
-
-  var content = {
-    css: css,
-    cx: cx,
-    theme: Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"])(ThemeContext)
-  };
-  var ele = props.children(content);
-  hasRendered = true;
-
-  return ele;
-});
-
-if (false) {}
-
-if (false) { var globalKey, globalContext, isJest, emotion_react_browser_esm_isBrowser; }
-
-
-
-// CONCATENATED MODULE: ./src/Typography/Text.js
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function Text_extends() { Text_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Text_extends.apply(this, arguments); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-var Text_Text = /*#__PURE__*/function (_PureComponent) {
-  _inherits(Text, _PureComponent);
-
-  var _super = _createSuper(Text);
-
-  function Text() {
-    _classCallCheck(this, Text);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(Text, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          className = _this$props.className,
-          bold = _this$props.bold,
-          color = _this$props.color,
-          small = _this$props.small,
-          is = _this$props.is,
-          props = _objectWithoutProperties(_this$props, ["className", "bold", "color", "small", "is"]);
-
-      var Tag = is;
-      return emotion_react_browser_esm_jsx(Tag, Text_extends({
-        className: classnames_default()("leading-normal", className, color, {
-          "font-semibold": Boolean(bold),
-          "font-normal": !Boolean(bold),
-          "text-base": !Boolean(small),
-          "text-sm": Boolean(small)
-        })
-      }, props));
-    }
-  }]);
-
-  return Text;
-}(external_root_React_commonjs2_react_commonjs_react_amd_react_["PureComponent"]);
-
-_defineProperty(Text_Text, "propTypes", {
-  bold: prop_types_default.a.bool,
-
-  /**
-   * Any TailwindCSS [Text Color](https://tailwindcss.com/docs/text-color) class.
-   */
-  color: prop_types_default.a.string,
-  is: prop_types_default.a.oneOf(["span", "p", "li"]).isRequired,
-  className: prop_types_default.a.string
-});
-
-_defineProperty(Text_Text, "defaultProps", {
-  className: null,
-  color: "text-gray-700",
-  is: "span"
-});
-
-/* harmony default export */ var Typography_Text = (Text_Text);
-// CONCATENATED MODULE: ./src/Table/index.js
-function Table_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-
-var Table_Table = function Table(_ref) {
-  var children = _ref.children,
-      className = _ref.className;
-  return emotion_react_browser_esm_jsx("table", {
-    className: classnames_default()("w-full max-w-full", className)
-  }, children);
-};
-
-Table_Table.Head = function (_ref2) {
-  var children = _ref2.children,
-      className = _ref2.className;
-  return emotion_react_browser_esm_jsx("thead", {
-    className: className
-  }, children);
-};
-
-Table_Table.Body = function (_ref3) {
-  var children = _ref3.children,
-      className = _ref3.className;
-  return emotion_react_browser_esm_jsx("tbody", {
-    className: classnames_default()("bg-white", className)
-  }, children);
-};
-
-Table_Table.HeaderCell = function (_ref4) {
-  var children = _ref4.children,
-      className = _ref4.className;
-  return emotion_react_browser_esm_jsx("th", {
-    className: classnames_default()("px-6 py-2 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider", className)
-  }, children);
-};
-
-Table_Table.Row = function (_ref5) {
-  var children = _ref5.children,
-      className = _ref5.className,
-      onClick = _ref5.onClick,
-      isSelectable = _ref5.isSelectable;
-  return emotion_react_browser_esm_jsx("tr", {
-    onClick: onClick,
-    className: classnames_default()({
-      "hover:bg-gray-50 focus:outline-none focus:bg-gray-50 cursor-pointer": onClick || isSelectable,
-      className: className
-    })
-  }, children);
-};
-
-Table_Table.Cell = function (_ref6) {
-  var children = _ref6.children,
-      className = _ref6.className;
-  return emotion_react_browser_esm_jsx("td", {
-    className: classnames_default()("px-6 py-4", className)
-  }, emotion_react_browser_esm_jsx(Typography_Text, {
-    small: true
-  }, children));
-};
-
-Table_Table.TextCell = function (_ref7) {
-  var primary = _ref7.primary,
-      primaryClassname = _ref7.primaryClassname,
-      secondary = _ref7.secondary,
-      secondaryClassname = _ref7.secondaryClassname;
-  return emotion_react_browser_esm_jsx(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, primary && emotion_react_browser_esm_jsx("span", {
-    className: classnames_default()("font-semibold", Table_defineProperty({}, primaryClassname, primaryClassname))
-  }, primary), secondary && emotion_react_browser_esm_jsx("span", {
-    className: classnames_default()("block", Table_defineProperty({}, secondaryClassname, secondaryClassname))
-  }, secondary));
-};
-
-Table_Table.propTypes = {
-  children: prop_types_default.a.node.isRequired,
-  className: prop_types_default.a.string
-};
-Table_Table.Head.propTypes = {
-  children: prop_types_default.a.node.isRequired,
-  className: prop_types_default.a.string
-};
-Table_Table.Body.propTypes = {
-  children: prop_types_default.a.node.isRequired,
-  className: prop_types_default.a.string
-};
-Table_Table.HeaderCell.propTypes = {
-  children: prop_types_default.a.node.isRequired,
-  className: prop_types_default.a.string
-};
-Table_Table.Row.propTypes = {
-  children: prop_types_default.a.node.isRequired,
-  className: prop_types_default.a.string,
-  onClick: prop_types_default.a.func
-};
-Table_Table.Cell.propTypes = {
-  children: prop_types_default.a.node.isRequired,
-  className: prop_types_default.a.string
-};
-Table_Table.TextCell.propTypes = {
-  primary: prop_types_default.a.node,
-  primaryClassname: prop_types_default.a.string,
-  secondary: prop_types_default.a.node,
-  secondaryClassname: prop_types_default.a.string
-};
-/* harmony default export */ var src_Table = (Table_Table);
-// CONCATENATED MODULE: ./src/Header/index.js
-
-
-
-
-var Header_Header = function Header(_ref) {
-  var leftContent = _ref.leftContent,
-      centerContent = _ref.centerContent,
-      rightContent = _ref.rightContent;
-  return emotion_react_browser_esm_jsx("div", {
-    className: "relative w-full bg-white shadow"
-  }, emotion_react_browser_esm_jsx("div", {
-    className: "flex p-4 px-8 flex-no-wrap justify-between items-center relative flex-row flex-grow h-16"
-  }, emotion_react_browser_esm_jsx("div", {
-    className: "flex flex-1 flex-grow flex-shrink-0 min-w-0"
-  }, emotion_react_browser_esm_jsx("div", {
-    className: "flex items-center flex-grow-0 flex-row"
-  }, leftContent)), emotion_react_browser_esm_jsx("div", {
-    className: "flex flex-shrink p-0 w-auto items-center justify-between"
-  }, centerContent), emotion_react_browser_esm_jsx("div", {
-    className: "flex flex-grow p-0"
-  }, emotion_react_browser_esm_jsx("div", {
-    className: "flex flex-grow flex-row items-center justify-end max-w-full"
-  }, rightContent))));
-};
-
-Header_Header.propTypes = {
-  leftContent: prop_types_default.a.node,
-  centerContent: prop_types_default.a.node,
-  rightContent: prop_types_default.a.node
-};
-/* harmony default export */ var src_Header = (Header_Header);
-// CONCATENATED MODULE: ./src/Content/index.js
-
-
-
-
-
-var Content_Content = function Content(_ref) {
-  var children = _ref.children,
-      size = _ref.size,
-      className = _ref.className;
-
-  var base = emotion_react_browser_esm_jsx("div", {
-    className: classnames_default()("mx-auto px-4 sm:px-6 md:px-8", {
-      "max-w-3xl": size === "small",
-      "max-w-5xl": size === "default" || !size,
-      "max-w-full": size === "full"
-    }, className)
-  }, emotion_react_browser_esm_jsx("div", {
-    className: "py-8"
-  }, children));
-
-  return base;
-};
-
-Content_Content.propTypes = {
-  children: prop_types_default.a.node,
-  size: prop_types_default.a.string,
-  className: prop_types_default.a.string
-};
-/* harmony default export */ var src_Content = (Content_Content);
-// EXTERNAL MODULE: ./node_modules/classnames/bind.js
-var bind = __webpack_require__(3);
-var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
-
-// CONCATENATED MODULE: ./src/SpinningDots/index.js
-
-
-
-
-
-var SpinningDots_SpinningDots = function SpinningDots(_ref) {
-  var className = _ref.className,
-      variant = _ref.variant;
-  var i = classnames_default()("animate-pulse w-1.5 h-1.5 rounded-full", {
-    'bg-gray-300': variant === 'light',
-    'bg-gray-600': variant === 'default'
-  });
-  return emotion_react_browser_esm_jsx("div", {
-    className: classnames_default()("spinner inline p-0 h-auto w-full text-center", className)
-  }, emotion_react_browser_esm_jsx("span", {
-    className: "inline-flex relative align-middle h-2 text-center opacity-50 w-10"
-  }, emotion_react_browser_esm_jsx("div", {
-    className: "flex w-full justify-around"
-  }, emotion_react_browser_esm_jsx("i", {
-    className: i,
-    style: {
-      animationDelay: "-.2s"
-    }
-  }), emotion_react_browser_esm_jsx("i", {
-    className: i,
-    style: {
-      animationDelay: "-.1s"
-    }
-  }), emotion_react_browser_esm_jsx("i", {
-    className: i
-  }))));
-};
-
-SpinningDots_SpinningDots.propTypes = {
-  className: prop_types_default.a.string,
-  variant: prop_types_default.a.oneOf(["default", "light"])
-};
-SpinningDots_SpinningDots.defaultProps = {
-  variant: "default"
-};
-/* harmony default export */ var src_SpinningDots = (SpinningDots_SpinningDots);
-// CONCATENATED MODULE: ./src/Button/index.js
-function Button_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-var buttonTypes = {
-  "default": "border-transparent text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-700 focus:shadow-outline-indigo",
-  secondary: "border-gray-300 text-gray-800 bg-white hover:bg-gray-100 active:bg-gray-100 focus:shadow-outline-blue",
-  danger: "border-none text-white bg-red-600 hover:bg-red-700 active:bg-red-700 focus:shadow-outline-red",
-  disabled: "opacity-50 cursor-default hover:bg-transparent",
-  minimal: "border-transparent text-gray-700 bg-white hover:bg-gray-100 active:bg-gray-100"
-};
-
-var Button_Button = function Button(_ref) {
-  var _cx;
-
-  var disabled = _ref.disabled,
-      iconBefore = _ref.iconBefore,
-      iconAfter = _ref.iconAfter,
-      onClick = _ref.onClick,
-      label = _ref.label,
-      type = _ref.type,
-      variant = _ref.variant,
-      component = _ref.component,
-      block = _ref.block,
-      large = _ref.large,
-      isLoading = _ref.isLoading;
-  var cx = bind_default.a.bind(buttonTypes);
-
-  var ButtonContent = emotion_react_browser_esm_jsx("div", {
-    className: bind_default()("inline-flex items-center", {
-      "opacity-0": isLoading,
-      "opacity-100": !isLoading
-    })
-  }, iconBefore && emotion_react_browser_esm_jsx("span", {
-    className: "mr-2"
-  }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore)), emotion_react_browser_esm_jsx("span", null, label), iconAfter && emotion_react_browser_esm_jsx("span", {
-    className: "ml-2"
-  }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
-
-  var ButtonClasses = cx("Button border items-center inline-flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center", (_cx = {
-    disabled: disabled
-  }, Button_defineProperty(_cx, variant, Boolean(variant)), Button_defineProperty(_cx, "px-5 h-9 leading-9 text-sm", !Boolean(block)), Button_defineProperty(_cx, "w-full h-12 leading-12", Boolean(block)), Button_defineProperty(_cx, "px-10 h-10 leading-10", Boolean(large)), _cx));
-
-  var RenderComponent = function RenderComponent() {
-    if (component.props.children && typeof component.props.children !== "string") {
-      var children = /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component.props.children, {
-        className: ButtonClasses
-      });
-      return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {}, children);
+    if (args[0] == null || args[0].raw === undefined) {
+      styles.push.apply(styles, args);
     } else {
-      return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {
-        className: ButtonClasses
-      });
-    }
-  };
+      if (false) {}
 
-  return emotion_react_browser_esm_jsx(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, component ? emotion_react_browser_esm_jsx(RenderComponent, null) : emotion_react_browser_esm_jsx("button", {
-    type: type,
-    onClick: onClick,
-    disabled: disabled || isLoading,
-    className: ButtonClasses
-  }, isLoading && emotion_react_browser_esm_jsx(src_SpinningDots, {
-    variant: "light",
-    className: "absolute"
-  }), ButtonContent));
-};
+      styles.push(args[0][0]);
+      var len = args.length;
+      var i = 1;
 
-Button_Button.propTypes = {
-  disabled: prop_types_default.a.bool,
-  className: prop_types_default.a.string,
-  iconBefore: prop_types_default.a.element,
-  iconAfter: prop_types_default.a.element,
-  label: prop_types_default.a.string,
-  onClick: prop_types_default.a.func,
-  type: prop_types_default.a.string,
-  variant: prop_types_default.a.oneOf(["default", "secondary", "danger", "disabled", "minimal"]),
-  isLoading: prop_types_default.a.bool,
-  component: prop_types_default.a.element
-};
-Button_Button.defaultProps = {
-  variant: "default",
-  type: "button",
-  isLoading: false
-};
-/* harmony default export */ var src_Button = (Button_Button);
-// CONCATENATED MODULE: ./src/Box/index.js
-function Box_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+      for (; i < len; i++) {
+        if (false) {}
 
-
-
-
-
-
-var Box_Box = function Box(_ref) {
-  var _classNames;
-
-  var flex = _ref.flex,
-      alignItems = _ref.alignItems,
-      justifyContent = _ref.justifyContent,
-      backgroundColor = _ref.backgroundColor,
-      flexDirection = _ref.flexDirection,
-      flexWrap = _ref.flexWrap,
-      children = _ref.children,
-      className = _ref.className,
-      rootCard = _ref.rootCard,
-      noPadding = _ref.noPadding;
-  return emotion_react_browser_esm_jsx("div", {
-    className: classnames_default()("overflow-hidden", className, (_classNames = {
-      flex: Boolean(flex),
-      "bg-white": !Boolean(backgroundColor)
-    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 shadow rounded", Boolean(rootCard)), Box_defineProperty(_classNames, "px-6 py-4", !Boolean(noPadding)), Box_defineProperty(_classNames, "flex-".concat(flexWrap), Boolean(flexWrap)), _classNames))
-  }, children);
-};
-
-Box_Box.propTypes = {
-  flex: prop_types_default.a.bool,
-  alignItems: prop_types_default.a.string,
-  justifyContent: prop_types_default.a.string,
-  backgroundColor: prop_types_default.a.string,
-  flexDirection: prop_types_default.a.string,
-  children: prop_types_default.a.node,
-  className: prop_types_default.a.string,
-  rootCard: prop_types_default.a.bool,
-  noPadding: prop_types_default.a.bool,
-  flexWrap: prop_types_default.a.string
-};
-/* harmony default export */ var src_Box = (Box_Box);
-// EXTERNAL MODULE: external {"root":"ReactDOM","commonjs2":"react-dom","commonjs":"react-dom","amd":"react-dom"}
-var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_ = __webpack_require__(4);
-var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_default = /*#__PURE__*/__webpack_require__.n(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_);
-
-// CONCATENATED MODULE: ./src/Sidesheet/index.js
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-function XIcon() {
-  return emotion_react_browser_esm_jsx("svg", {
-    fill: "none",
-    className: "text-gray-600",
-    stroke: "currentColor",
-    viewBox: "0 0 24 24",
-    width: "16px",
-    height: "16px"
-  }, emotion_react_browser_esm_jsx("path", {
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    strokeWidth: "2",
-    d: "M6 18L18 6M6 6l12 12"
-  }));
-}
-
-var Sidesheet_SidesheetContent = function SidesheetContent(_ref) {
-  var id = _ref.id,
-      children = _ref.children;
-  if (typeof window === "undefined") return null;
-  var element = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(document.getElementById(id) || document.createElement("div"));
-  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
-    if (!document.getElementById(id)) {
-      element.current.id = id;
-      document.body.appendChild(element.current);
-    }
-
-    return function () {
-      if (element.current.parentElement) {
-        element.current.parentElement.removeChild(element.current);
+        styles.push(args[i], args[0][i]);
       }
+    } // $FlowFixMe: we need to cast StatelessFunctionalComponent to our PrivateStyledComponent class
+
+
+    var Styled = Object(react_["withEmotionCache"])(function (props, cache, ref) {
+      var finalTag = shouldUseAs && props.as || baseTag;
+      var className = '';
+      var classInterpolations = [];
+      var mergedProps = props;
+
+      if (props.theme == null) {
+        mergedProps = {};
+
+        for (var key in props) {
+          mergedProps[key] = props[key];
+        }
+
+        mergedProps.theme = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"])(react_["ThemeContext"]);
+      }
+
+      if (typeof props.className === 'string') {
+        className = getRegisteredStyles(cache.registered, classInterpolations, props.className);
+      } else if (props.className != null) {
+        className = props.className + " ";
+      }
+
+      var serialized = emotion_serialize_browser_esm_serializeStyles(styles.concat(classInterpolations), cache.registered, mergedProps);
+      var rules = insertStyles(cache, serialized, typeof finalTag === 'string');
+      className += cache.key + "-" + serialized.name;
+
+      if (targetClassName !== undefined) {
+        className += " " + targetClassName;
+      }
+
+      var finalShouldForwardProp = shouldUseAs && shouldForwardProp === undefined ? getDefaultShouldForwardProp(finalTag) : defaultShouldForwardProp;
+      var newProps = {};
+
+      for (var _key in props) {
+        if (shouldUseAs && _key === 'as') continue;
+
+        if ( // $FlowFixMe
+        finalShouldForwardProp(_key)) {
+          newProps[_key] = props[_key];
+        }
+      }
+
+      newProps.className = className;
+      newProps.ref = ref;
+      var ele = /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"])(finalTag, newProps);
+
+      return ele;
+    });
+    Styled.displayName = identifierName !== undefined ? identifierName : "Styled(" + (typeof baseTag === 'string' ? baseTag : baseTag.displayName || baseTag.name || 'Component') + ")";
+    Styled.defaultProps = tag.defaultProps;
+    Styled.__emotion_real = Styled;
+    Styled.__emotion_base = baseTag;
+    Styled.__emotion_styles = styles;
+    Styled.__emotion_forwardProp = shouldForwardProp;
+    Object.defineProperty(Styled, 'toString', {
+      value: function value() {
+        if (targetClassName === undefined && "production" !== 'production') {
+          return 'NO_COMPONENT_SELECTOR';
+        } // $FlowFixMe: coerce undefined to string
+
+
+        return "." + targetClassName;
+      }
+    });
+
+    Styled.withComponent = function (nextTag, nextOptions) {
+      return createStyled(nextTag, extends_extends({}, options, {}, nextOptions, {
+        shouldForwardProp: composeShouldForwardProps(Styled, nextOptions, true)
+      })).apply(void 0, styles);
     };
-  }, [id]);
-  return /*#__PURE__*/Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
-};
 
-var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
-  var title = _ref2.title,
-      children = _ref2.children,
-      className = _ref2.className,
-      action = _ref2.action,
-      content = _ref2.content,
-      _ref2$width = _ref2.width,
-      width = _ref2$width === void 0 ? 400 : _ref2$width,
-      onClose = _ref2.onClose,
-      _ref2$isShown = _ref2.isShown,
-      isShown = _ref2$isShown === void 0 ? false : _ref2$isShown;
-  var sideSheet = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
-  var portal = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
-
-  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      isOpened = _useState2[0],
-      setIsOpened = _useState2[1];
-
-  var _useState3 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
-      _useState4 = _slicedToArray(_useState3, 2),
-      transition = _useState4[0],
-      setTransition = _useState4[1];
-
-  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
-    if (!isShown) {
-      setTransition(false);
-      setTimeout(function () {
-        return setIsOpened(false);
-      }, 500);
-    } else {
-      setIsOpened(true);
-      setTimeout(function () {
-        return setTransition(true);
-      }, 100);
-    }
-  }, [isShown]);
-
-  var closeTransition = function closeTransition() {
-    if (isOpened && transition) {
-      onClose();
-      setTransition(false);
-      setTimeout(function () {
-        return setIsOpened(false);
-      }, 500);
-    }
+    return Styled;
   };
-
-  return emotion_react_browser_esm_jsx("div", {
-    ref: sideSheet,
-    className: bind_default()("relative inline-block text-left", className)
-  }, children, isOpened && emotion_react_browser_esm_jsx(Sidesheet_SidesheetContent, {
-    id: "sidesheet"
-  }, emotion_react_browser_esm_jsx("div", {
-    onClick: function onClick() {
-      return closeTransition();
-    },
-    className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
-      "bg-gray-800": transition,
-      "bg-transparent": !transition
-    })
-  }), emotion_react_browser_esm_jsx("div", {
-    ref: portal,
-    style: {
-      transition: "transform .4s cubic-bezier(.3,0,0,1)",
-      transform: transition ? "translateX(calc(100vw - ".concat(width, "px - 20px))") : "translateX(100vw)",
-      top: 0,
-      bottom: 0,
-      width: width,
-      height: "calc(100% - 20px)"
-    },
-    className: "fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
-  }, emotion_react_browser_esm_jsx(src_Box, {
-    flex: true,
-    alignItems: "center",
-    className: "relative border-b border-gray-200 rounded rounded-b-none"
-  }, emotion_react_browser_esm_jsx("div", {
-    className: "text-gray-600 flex-auto truncate leading-6"
-  }, title), emotion_react_browser_esm_jsx(src_Box, {
-    flex: true,
-    backgroundColor: "transparent",
-    className: "cursor-pointer",
-    noPadding: true
-  }, emotion_react_browser_esm_jsx("div", {
-    onClick: function onClick() {
-      return closeTransition();
-    }
-  }, emotion_react_browser_esm_jsx(XIcon, null)))), emotion_react_browser_esm_jsx(src_Box, {
-    flex: true,
-    flexDirection: "col",
-    className: "sidesheet-content relative overflow-y-auto flex-1 rounded"
-  }, emotion_react_browser_esm_jsx(src_Box, {
-    noPadding: true,
-    flex: true,
-    flexDirection: "col",
-    className: "h-full"
-  }, content)), action && emotion_react_browser_esm_jsx(src_Box, {
-    flex: true,
-    justifyContent: "center",
-    alignItems: "center",
-    className: "sidesheet-action h-16 border-t border-gray-200 relative flex-initial rounded rounded-t-none"
-  }, action))));
 };
 
-Sidesheet_Sidesheet.propTypes = {
-  content: prop_types_default.a.element,
-  children: prop_types_default.a.element,
-  className: prop_types_default.a.string,
-  width: prop_types_default.a.string,
-  action: prop_types_default.a.element,
-  onClose: prop_types_default.a.func,
-  isShown: prop_types_default.a.bool,
-  title: prop_types_default.a.string
-};
-/* harmony default export */ var src_Sidesheet = (Sidesheet_Sidesheet);
-// EXTERNAL MODULE: ./node_modules/styled-jsx/style.js
-var styled_jsx_style = __webpack_require__(22);
-var style_default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style);
+/* harmony default export */ var emotion_styled_base_browser_esm = (emotion_styled_base_browser_esm_createStyled);
 
-// CONCATENATED MODULE: ./src/Skeleton/styles.js
-var _defaultExport = new String("@-webkit-keyframes skeleton-jsx-309491756{0%{background-position:200% 0;}to{background-position:-200% 0;}}@keyframes skeleton-jsx-309491756{0%{background-position:200% 0;}to{background-position:-200% 0;}}.skeleton.jsx-309491756{display:block;border-radius:5px;background-image:linear-gradient( 270deg, #fafafa, #eaeaea, #eaeaea, #fafafa );background-size:400% 100%;-webkit-animation:skeleton-jsx-309491756 8s ease-in-out infinite;animation:skeleton-jsx-309491756 8s ease-in-out infinite;}");
-
-_defaultExport.__hash = "309491756";
-/* harmony default export */ var Skeleton_styles = (_defaultExport);
 // CONCATENATED MODULE: ./src/Skeleton/index.js
 
 
+var _templateObject;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 
 
 
-var Skeleton_Skeleton = function Skeleton(_ref) {
+
+var animation = Object(react_["keyframes"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  0% {\n    background-position: 200% 0;\n  }\n  to {\n    background-position: -200% 0;\n  }"])));
+
+var StyledSkeleton = emotion_styled_base_browser_esm("span",  true ? {
+  target: "e4rzf2q0"
+} : undefined)(function (_ref) {
   var width = _ref.width,
-      height = _ref.height,
-      className = _ref.className;
-  return emotion_react_browser_esm_jsx("div", null, emotion_react_browser_esm_jsx("span", {
-    style: {
-      width: width,
-      minHeight: height
-    },
-    className: "jsx-".concat(Skeleton_styles.__hash) + " " + (classnames_default()("skeleton", className) || "")
-  }, emotion_react_browser_esm_jsx(style_default.a, {
-    id: Skeleton_styles.__hash
-  }, Skeleton_styles)));
+      height = _ref.height;
+  return ["\n  display: block;\n  border-radius: 5px;\n  background-image: linear-gradient(\n    270deg,\n    #fafafa,\n    #eaeaea,\n    #eaeaea,\n    #fafafa\n  );\n  background-size: 400% 100%;\n  width: ".concat(width, "px;\n  min-height: ").concat(height, "px;\n")];
+},  true ? "" : undefined);
+
+var Skeleton_Skeleton = function Skeleton(_ref2) {
+  var width = _ref2.width,
+      height = _ref2.height,
+      className = _ref2.className;
+  return Object(react_["jsx"])("div", {
+    className: "skeleton"
+  }, Object(react_["jsx"])(StyledSkeleton, {
+    className: className,
+    width: width,
+    height: height,
+    css:
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+    Object(react_["css"])("animation:", animation, " 8s ease-in-out infinite;" + ( true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined)
+  }));
 };
 
 Skeleton_Skeleton.propTypes = {
   width: prop_types_default.a.number,
-  height: prop_types_default.a.number
+  height: prop_types_default.a.number,
+  className: prop_types_default.a.string
 };
 Skeleton_Skeleton.defaultProps = {
   width: 160,
@@ -9629,15 +7507,15 @@ function Toast_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Toast_XIcon() {
-  return emotion_react_browser_esm_jsx("svg", {
+  return Object(react_["jsx"])("svg", {
     fill: "none",
-    className: "text-gray-600",
+    className: "text-accent-6",
     stroke: "currentColor",
     viewBox: "0 0 24 24",
     role: "button",
     width: "16px",
     height: "16px"
-  }, emotion_react_browser_esm_jsx("path", {
+  }, Object(react_["jsx"])("path", {
     strokeLinecap: "round",
     strokeLinejoin: "round",
     strokeWidth: "2",
@@ -9711,12 +7589,12 @@ var Toast_Toast = function Toast(_ref2) {
   }, []);
 
   if (open) {
-    return emotion_react_browser_esm_jsx(Toast_ToastContent, {
+    return Object(react_["jsx"])(Toast_ToastContent, {
       id: "toast-content"
-    }, emotion_react_browser_esm_jsx("div", {
+    }, Object(react_["jsx"])("div", {
       className: bind_default()("fixed z-50 w-1/4 max-w-full p-5 bg-white bottom-0 rounded-md shadow-xl opacity-0", {
-        "text-white bg-red-600": error,
-        "text-white bg-indigo-600": success,
+        "text-white bg-error": error,
+        "text-white bg-success": success,
         "opacity-100": showToast
       }),
       style: {
@@ -9724,18 +7602,18 @@ var Toast_Toast = function Toast(_ref2) {
         transition: "all .4s cubic-bezier(.3,0,0,1)",
         transform: showToast && "translate(0, -20px)"
       }
-    }, emotion_react_browser_esm_jsx("div", {
+    }, Object(react_["jsx"])("div", {
       className: "flex justify-between items-center"
-    }, emotion_react_browser_esm_jsx("div", {
+    }, Object(react_["jsx"])("div", {
       className: "w-11/12"
-    }, emotion_react_browser_esm_jsx(Typography_Text, {
+    }, Object(react_["jsx"])(Typography_Text, {
       small: true,
       color: (success || error) && "text-white"
-    }, text)), showCloseIcon && emotion_react_browser_esm_jsx("div", {
+    }, text)), showCloseIcon && Object(react_["jsx"])("div", {
       onClick: function onClick() {
         return closeToast();
       }
-    }, emotion_react_browser_esm_jsx(Toast_XIcon, null)))));
+    }, Object(react_["jsx"])(Toast_XIcon, null)))));
   } else {
     return null;
   }
@@ -9799,14 +7677,14 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
       onChange(event.target.value, event);
     }
   }, [setInternalValue, onChange]);
-  return emotion_react_browser_esm_jsx("div", {
+  return Object(react_["jsx"])("div", {
     className: className
-  }, label && emotion_react_browser_esm_jsx("label", {
-    className: "block text-sm leading-5 font-medium text-gray-700",
+  }, label && Object(react_["jsx"])("label", {
+    className: "block text-sm leading-5 font-medium text-accent-six",
     htmlFor: id
-  }, label), emotion_react_browser_esm_jsx("div", {
-    className: "mt-1 relative rounded-md shadow-sm"
-  }, emotion_react_browser_esm_jsx("input", Input_extends({
+  }, label), Object(react_["jsx"])("div", {
+    className: "mt-1 relative"
+  }, Object(react_["jsx"])("input", Input_extends({
     id: id,
     ref: ref,
     onChange: handleChange,
@@ -9815,9 +7693,10 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
     "aria-required": label ? true : false,
     "aria-invalid": error ? true : false,
     disabled: disabled,
-    className: classnames_default()("form-input block w-full sm:text-sm sm:leading-5", inputClassName, {
-      "bg-red-100 border border-red-400 focus:border-red-300 focus:shadow-outline-red": error,
-      "bg-gray-100 cursor-not-allowed": disabled
+    className: classnames_default()("form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none", inputClassName, {
+      "border-border text-accent-six focus:border-accent-six": !error,
+      "border-error placeholder-error": error,
+      "bg-background cursor-not-allowed cursor-not-allowed": disabled
     })
   }, rest))));
 });
@@ -9882,12 +7761,12 @@ var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
       onChange(event.target.value);
     }
   }, [setInternalValue, onChange]);
-  return emotion_react_browser_esm_jsx("div", {
+  return Object(react_["jsx"])("div", {
     className: className
-  }, label && emotion_react_browser_esm_jsx("label", {
-    className: "block text-sm leading-5 font-medium text-gray-700",
+  }, label && Object(react_["jsx"])("label", {
+    className: "block text-sm leading-5 font-medium text-accent-six mb-1",
     htmlFor: id
-  }, label), emotion_react_browser_esm_jsx("textarea", Textarea_extends({
+  }, label), Object(react_["jsx"])("textarea", Textarea_extends({
     id: id,
     ref: ref,
     rows: rows,
@@ -9897,9 +7776,10 @@ var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
     "aria-required": label ? true : false,
     "aria-invalid": error ? true : false,
     disabled: disabled,
-    className: classnames_default()("form-textarea mt-1 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", textareaClassName, {
-      "bg-red-100 border border-red-400 focus:border-red-300 focus:shadow-outline-red": error,
-      "bg-gray-100 cursor-not-allowed": disabled
+    className: classnames_default()("form-textarea block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border-border border shadow-sm focus:outline-none", textareaClassName, {
+      "text-accent-six focus:border-accent-six": !error,
+      "border border-error placeholder-error": error,
+      "bg-accent-two cursor-not-allowed": disabled
     })
   }, rest)));
 });
@@ -9969,28 +7849,29 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
       onChange(event.target.value);
     }
   }, [setInternalValue, onChange]);
-  return emotion_react_browser_esm_jsx("div", {
+  return Object(react_["jsx"])("div", {
     className: className
-  }, label && emotion_react_browser_esm_jsx("label", {
-    className: "block text-sm font-medium leading-5 text-gray-700",
+  }, label && Object(react_["jsx"])("label", {
+    className: "block text-sm font-medium leading-5 text-accent-seven",
     htmlFor: id
-  }, label), emotion_react_browser_esm_jsx("div", {
-    className: "mt-1 relative rounded-md shadow-sm"
-  }, emotion_react_browser_esm_jsx("select", Select_extends({
+  }, label), Object(react_["jsx"])("div", {
+    className: "mt-1 relative"
+  }, Object(react_["jsx"])("select", Select_extends({
     id: id,
     ref: ref,
     onChange: handleChange,
     value: internalValue,
     disabled: disabled,
-    className: classnames_default()("mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5", selectClassName, {
-      "bg-red-100 border border-red-400 focus:border-red-300 focus:shadow-outline-red": error,
-      "bg-gray-100 cursor-not-allowed": disabled
+    className: classnames_default()("border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 focus:outline-none sm:text-sm sm:leading-5", selectClassName, {
+      "border-border hover:border-accent-five focus:border-accent-five": !error,
+      "border-error hover:border-error focus:border-error placeholder-error": error,
+      "bg-background cursor-not-allowed cursor-not-allowed": disabled
     })
-  }, rest), emotion_react_browser_esm_jsx("option", {
+  }, rest), Object(react_["jsx"])("option", {
     value: "",
     disabled: true
   }, placeholder), options.map(function (item, index) {
-    return emotion_react_browser_esm_jsx("option", {
+    return Object(react_["jsx"])("option", {
       key: "".concat(item.value, "-").concat(index),
       value: item.value,
       disabled: item.disabled
@@ -9999,7 +7880,7 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
 });
 Select.defaultProps = {
   options: [],
-  placeholder: 'Chose one'
+  placeholder: "Chose one"
 };
 Select.propTypes = {
   onChange: prop_types_default.a.func,
@@ -10385,7 +8266,7 @@ function Avatar_possibleConstructorReturn(self, call) { if (call && (Avatar_type
 
 function Avatar_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function Avatar_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function Avatar_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function Avatar_getPrototypeOf(o) { Avatar_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return Avatar_getPrototypeOf(o); }
 
@@ -10460,10 +8341,10 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
       }
 
       var colorProps = this.getColorProps();
-      return emotion_react_browser_esm_jsx("div", Avatar_extends({
+      return Object(react_["jsx"])("div", Avatar_extends({
         className: classnames_default()("overflow-hidden relative inline-flex flex-shrink-0 justify-center", className, {
           "rounded-full": !Boolean(isDashed),
-          "rounded border-2 border-dashed border-gray-300": Boolean(isDashed)
+          "rounded border-2 border-dashed border-accent-four": Boolean(isDashed)
         }),
         style: {
           backgroundColor: isDashed ? 'transparent' : colorProps.backgroundColor,
@@ -10471,9 +8352,9 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
           height: size
         },
         title: name
-      }, props), emotion_react_browser_esm_jsx("span", {
+      }, props), Object(react_["jsx"])("span", {
         className: classnames_default()("relative flex justify-center items-center", {
-          "text-gray-300": Boolean(isDashed)
+          "text-accent-four": Boolean(isDashed)
         }),
         style: {
           color: !isDashed && colorProps.color,
@@ -10713,7 +8594,7 @@ var TabController_TabController = function TabController(props) {
     setActiveElementIndex(prevIndex);
   };
 
-  return emotion_react_browser_esm_jsx(TabControllerContext.Provider, {
+  return Object(react_["jsx"])(TabControllerContext.Provider, {
     value: {
       activeElementIndex: activeElementIndex,
       resetActiveElementIndex: resetActiveElementIndex,
@@ -10748,7 +8629,7 @@ var TabController_TabController = function TabController(props) {
 
 /* harmony default export */ var providers_TabController = (TabController_TabController);
 // EXTERNAL MODULE: ./node_modules/algoliasearch/dist/algoliasearch-lite.umd.js
-var algoliasearch_lite_umd = __webpack_require__(23);
+var algoliasearch_lite_umd = __webpack_require__(22);
 var algoliasearch_lite_umd_default = /*#__PURE__*/__webpack_require__.n(algoliasearch_lite_umd);
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
@@ -10792,22 +8673,10 @@ function classCallCheck_classCallCheck(instance, Constructor) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
-function typeof_typeof(obj) {
-  "@babel/helpers - typeof";
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/typeof.js
+var helpers_typeof = __webpack_require__(21);
+var typeof_default = /*#__PURE__*/__webpack_require__.n(helpers_typeof);
 
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    typeof_typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    typeof_typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return typeof_typeof(obj);
-}
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
 function assertThisInitialized_assertThisInitialized(self) {
   if (self === void 0) {
@@ -10820,7 +8689,7 @@ function assertThisInitialized_assertThisInitialized(self) {
 
 
 function possibleConstructorReturn_possibleConstructorReturn(self, call) {
-  if (call && (typeof_typeof(call) === "object" || typeof call === "function")) {
+  if (call && (typeof_default()(call) === "object" || typeof call === "function")) {
     return call;
   }
 
@@ -10875,7 +8744,7 @@ function inherits_inherits(subClass, superClass) {
   if (superClass) setPrototypeOf_setPrototypeOf(subClass, superClass);
 }
 // EXTERNAL MODULE: ./node_modules/react-fast-compare/index.js
-var react_fast_compare = __webpack_require__(7);
+var react_fast_compare = __webpack_require__(9);
 var react_fast_compare_default = /*#__PURE__*/__webpack_require__.n(react_fast_compare);
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
@@ -10914,9 +8783,25 @@ function objectWithoutProperties_objectWithoutProperties(source, excluded) {
   return target;
 }
 // EXTERNAL MODULE: ./node_modules/algoliasearch-helper/index.js
-var algoliasearch_helper = __webpack_require__(5);
+var algoliasearch_helper = __webpack_require__(6);
 var algoliasearch_helper_default = /*#__PURE__*/__webpack_require__.n(algoliasearch_helper);
 
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
+function typeof_typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    typeof_typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    typeof_typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return typeof_typeof(obj);
+}
 // CONCATENATED MODULE: ./node_modules/react-instantsearch-core/dist/es/core/utils.js
 
 
@@ -11456,7 +9341,7 @@ function cleanUpValueWithMultiIndex(_ref4) {
   return searchState;
 }
 // CONCATENATED MODULE: ./node_modules/react-instantsearch-core/dist/es/core/version.js
-/* harmony default export */ var version = ('6.8.2');
+/* harmony default export */ var version = ('6.10.3');
 // CONCATENATED MODULE: ./node_modules/react-instantsearch-core/dist/es/core/createInstantSearchManager.js
 
 
@@ -12019,8 +9904,7 @@ function hydrateMetadata(resultsState) {
 }
 // CONCATENATED MODULE: ./node_modules/react-instantsearch-core/dist/es/core/context.js
 
-
-var _createContext = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createContext"])({
+var instantSearchContext = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createContext"])({
   onInternalStateUpdate: function onInternalStateUpdate() {
     return undefined;
   },
@@ -12039,15 +9923,14 @@ var _createContext = Object(external_root_React_commonjs2_react_commonjs_react_a
   store: {},
   widgetsManager: {},
   mainTargetedIndex: ''
-}),
-    InstantSearchConsumer = _createContext.Consumer,
-    InstantSearchProvider = _createContext.Provider;
+});
+var InstantSearchConsumer = instantSearchContext.Consumer,
+    InstantSearchProvider = instantSearchContext.Provider;
 
 
-
-var _createContext2 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createContext"])(undefined),
-    IndexConsumer = _createContext2.Consumer,
-    IndexProvider = _createContext2.Provider;
+var _createContext = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createContext"])(undefined),
+    IndexConsumer = _createContext.Consumer,
+    IndexProvider = _createContext.Provider;
 
 
 // CONCATENATED MODULE: ./node_modules/react-instantsearch-core/dist/es/widgets/InstantSearch.js
@@ -12429,7 +10312,7 @@ defineProperty_defineProperty(Index_Index, "propTypes", {
 var Index_IndexWrapper = function IndexWrapper(props) {
   var inferredIndexId = props.indexName;
   return external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(InstantSearchConsumer, null, function (contextValue) {
-    return external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Index_Index, _extends({
+    return external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Index_Index, extends_extends({
       contextValue: contextValue,
       indexId: inferredIndexId
     }, props));
@@ -12686,7 +10569,7 @@ function createConnectorWithoutContext(connectorDesc) {
           var searchForFacetValuesProps = typeof connectorDesc.searchForFacetValues === 'function' ? {
             searchForItems: this.searchForFacetValues
           } : {};
-          return external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Composed, _extends({}, props, providedProps, refineProps, searchForFacetValuesProps));
+          return external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Composed, extends_extends({}, props, providedProps, refineProps, searchForFacetValuesProps));
         }
       }]);
 
@@ -12710,7 +10593,7 @@ var createConnector_createConnectorWithContext = function createConnectorWithCon
     var ConnectorWrapper = function ConnectorWrapper(props) {
       return external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(InstantSearchConsumer, null, function (contextValue) {
         return external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(IndexConsumer, null, function (indexContextValue) {
-          return external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Connector, _extends({
+          return external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.createElement(Connector, extends_extends({
             contextValue: contextValue,
             indexContextValue: indexContextValue
           }, props));
@@ -12984,7 +10867,7 @@ var SearchBox_SearchBox = function SearchBox(props) {
       e.preventDefault();
     }
 
-    if (!(value === null || value === void 0 ? void 0 : value.length) && onSelect) {
+    if (!(value !== null && value !== void 0 && value.length) && onSelect) {
       // Trigger on Select when field clears
       onSelect();
     }
@@ -12998,20 +10881,20 @@ var SearchBox_SearchBox = function SearchBox(props) {
   };
 
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
-    if (searchInputRef === null || searchInputRef === void 0 ? void 0 : searchInputRef.current) {
+    if (searchInputRef !== null && searchInputRef !== void 0 && searchInputRef.current) {
       setSearchInputHeight(searchInputRef.current.offsetHeight);
     }
   }, []);
-  return emotion_react_browser_esm_jsx("div", {
+  return Object(react_["jsx"])("div", {
     className: "ais-SearchBox pb-2",
     ref: searchInputRef
-  }, emotion_react_browser_esm_jsx("form", {
+  }, Object(react_["jsx"])("form", {
     className: "ais-SearchBox-form m-0",
     noValidate: true,
     role: "search"
-  }, emotion_react_browser_esm_jsx(src_Input, SearchBox_extends({
+  }, Object(react_["jsx"])(src_Input, SearchBox_extends({
     ref: inputRef,
-    inputClassName: "".concat((isResultsWindowOpen ? "focused" : "", dark ? "bg-gray-800 border-gray-600 text-white focus:border-gray-500 hover:border-gray-500" : "bg-white border-gray-200 text-gray-900 focus:border-gray-300 hover:border-gray-300"), " -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none"),
+    inputClassName: "".concat((isResultsWindowOpen ? "focused" : "", dark ? "bg-accent-eight placeholder-accent-three text-white focus:text-accent-three focus:border-accent-three border border-border hover:border-accent-three" : "bg-white border-border text-foreground focus:border-accent-three hover:border-accent-three"), " -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none"),
     value: currentRefinement,
     onChange: handleOnChange,
     onFocus: checkIfResultsWindowShouldOpen,
@@ -13193,7 +11076,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
   };
 
   if (noResults) {
-    return emotion_react_browser_esm_jsx("li", {
+    return Object(react_["jsx"])("li", {
       ref: resultPillRef,
       className: "mb-1",
       style: ResultPill_objectSpread({}, ResultPill_style.resultPill),
@@ -13201,14 +11084,14 @@ var ResultPill_ResultPill = function ResultPill(props) {
       role: "option",
       "aria-selected": isCurrentElement,
       onMouseEnter: handleHoverSelection
-    }, emotion_react_browser_esm_jsx("div", {
+    }, Object(react_["jsx"])("div", {
       ref: clickableLink,
-      className: "px-2 border rounded text-gray-800",
+      className: "px-2 border border-border rounded text-accent-eight",
       style: ResultPill_objectSpread({}, ResultPill_style.resultPillLink)
     }, children));
   }
 
-  return emotion_react_browser_esm_jsx("li", {
+  return Object(react_["jsx"])("li", {
     className: "mb-1",
     style: ResultPill_objectSpread({}, ResultPill_style.resultPill),
     tabIndex: 0,
@@ -13216,11 +11099,10 @@ var ResultPill_ResultPill = function ResultPill(props) {
     "aria-selected": isCurrentElement,
     ref: resultPillRef,
     onMouseEnter: handleHoverSelection
-  }, emotion_react_browser_esm_jsx("a", {
+  }, Object(react_["jsx"])("a", {
     ref: clickableLink,
-    href: !onSelect ? formattedHitURL : null,
-    onClick: onSelect,
-    className: "px-2 rounded outline-none ".concat(isCurrentElement ? 'bg-indigo-600 text-white' : 'text-gray-800'),
+    href: formattedHitURL,
+    className: "px-2 rounded outline-none ".concat(isCurrentElement ? 'bg-accent-two text-foreground' : 'text-accent-eight'),
     style: ResultPill_objectSpread({}, ResultPill_style.resultPillLink)
   }, children));
 };
@@ -13248,9 +11130,9 @@ ResultPill_ResultPill.propTypes = {
 
 var SectionTitle_SectionTitle = function SectionTitle(_ref) {
   var title = _ref.title;
-  return emotion_react_browser_esm_jsx("div", {
-    className: "py-2 mb-2 top-0 bg-white border-b border-gray-200"
-  }, emotion_react_browser_esm_jsx(Typography_Text, {
+  return Object(react_["jsx"])("div", {
+    className: "py-2 mb-2 top-0 bg-white border-b border-border"
+  }, Object(react_["jsx"])(Typography_Text, {
     is: "p"
   }, title));
 };
@@ -13274,7 +11156,8 @@ var ResultsList_ResultsList = function ResultsList(props) {
       sectionIndex = props.sectionIndex,
       renderCardInfo = props.renderCardInfo,
       formatHitURL = props.formatHitURL,
-      onSelect = props.onSelect;
+      onSelect = props.onSelect,
+      isSelectable = props.isSelectable;
 
   var _useTabController = TabController_useTabController(),
       appendNewSectionLength = _useTabController.appendNewSectionLength,
@@ -13294,17 +11177,17 @@ var ResultsList_ResultsList = function ResultsList(props) {
   }, [formatHitURL]);
 
   if (Array.isArray(hits) && hits.length > 0 && !shouldHideResults) {
-    return emotion_react_browser_esm_jsx(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, emotion_react_browser_esm_jsx(ResultsList_SectionTitle, {
+    return Object(react_["jsx"])(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, Object(react_["jsx"])(ResultsList_SectionTitle, {
       title: sectionTitle
-    }), emotion_react_browser_esm_jsx("ul", {
+    }), Object(react_["jsx"])("ul", {
       role: "listbox"
     }, typeof renderCardInfo === 'function' && hits.map(function (hit, index) {
-      return emotion_react_browser_esm_jsx(ResultsList_ResultPill, {
+      return Object(react_["jsx"])(ResultsList_ResultPill, {
         key: index,
         elementIndex: index,
         sectionIndex: sectionIndex,
         formattedHitURL: formattedHitURL(hit),
-        onSelect: onSelect ? function () {
+        onSelect: isSelectable ? function () {
           onSelect(hit);
           setIsResultsWindowOpen(false);
         } : null
@@ -13329,16 +11212,16 @@ ResultsList_ResultsList.propTypes = {
 
 
 var ArrowDown_ArrowDown = function ArrowDown() {
-  return emotion_react_browser_esm_jsx("svg", {
+  return Object(react_["jsx"])("svg", {
     width: "15",
     height: "15"
-  }, emotion_react_browser_esm_jsx("g", {
+  }, Object(react_["jsx"])("g", {
     fill: "none",
     stroke: "currentColor",
     strokeLinecap: "round",
     strokeLinejoin: "round",
     strokeWidth: "1.2"
-  }, emotion_react_browser_esm_jsx("path", {
+  }, Object(react_["jsx"])("path", {
     d: "M7.5 3.5v8M10.5 8.5l-3 3-3-3"
   })));
 };
@@ -13349,16 +11232,16 @@ var ArrowDown_ArrowDown = function ArrowDown() {
 
 
 var ArrowUp_ArrowUp = function ArrowUp() {
-  return emotion_react_browser_esm_jsx("svg", {
+  return Object(react_["jsx"])("svg", {
     width: "15",
     height: "15"
-  }, emotion_react_browser_esm_jsx("g", {
+  }, Object(react_["jsx"])("g", {
     fill: "none",
     stroke: "currentColor",
     strokeLinecap: "round",
     strokeLinejoin: "round",
     strokeWidth: "1.2"
-  }, emotion_react_browser_esm_jsx("path", {
+  }, Object(react_["jsx"])("path", {
     d: "M7.5 11.5v-8M10.5 6.5l-3-3-3 3"
   })));
 };
@@ -13399,22 +11282,22 @@ var Controls_Controls = function Controls() {
       setControlsHeight = _useTabController.setControlsHeight;
 
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
-    if (controlsRef === null || controlsRef === void 0 ? void 0 : controlsRef.current) {
+    if (controlsRef !== null && controlsRef !== void 0 && controlsRef.current) {
       setControlsHeight(controlsRef.current.offsetHeight);
     }
   }, []);
-  return emotion_react_browser_esm_jsx("div", {
+  return Object(react_["jsx"])("div", {
     className: "p-3 bg-white rounded-b-md",
     style: Controls_objectSpread({}, Controls_style.controlBar),
     ref: controlsRef
-  }, emotion_react_browser_esm_jsx("span", {
-    className: "mr-2 rounded-sm text-gray-400",
+  }, Object(react_["jsx"])("span", {
+    className: "mr-2 rounded-sm text-accent-four",
     style: Controls_objectSpread({}, Controls_style.controlKey)
-  }, emotion_react_browser_esm_jsx(assets_ArrowDown, null)), emotion_react_browser_esm_jsx("span", {
-    className: "mr-2 rounded-sm text-gray-400",
+  }, Object(react_["jsx"])(assets_ArrowDown, null)), Object(react_["jsx"])("span", {
+    className: "mr-2 rounded-sm text-accent-four",
     style: Controls_objectSpread({}, Controls_style.controlKey)
-  }, emotion_react_browser_esm_jsx(assets_ArrowUp, null)), emotion_react_browser_esm_jsx("small", {
-    className: "text-gray-400"
+  }, Object(react_["jsx"])(assets_ArrowUp, null)), Object(react_["jsx"])("small", {
+    className: "text-accent-four"
   }, "to navigate"));
 };
 
@@ -13424,19 +11307,19 @@ var Controls_Controls = function Controls() {
 
 
 var Loader_Loader = function Loader() {
-  return emotion_react_browser_esm_jsx("svg", {
-    className: "animate-spin mt-2 mb-2 ml-auto mr-auto h-8 w-8 text-purple-600",
+  return Object(react_["jsx"])("svg", {
+    className: "animate-spin mt-2 mb-2 ml-auto mr-auto h-8 w-8 text-accent-three",
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
     viewBox: "0 0 24 24"
-  }, emotion_react_browser_esm_jsx("circle", {
+  }, Object(react_["jsx"])("circle", {
     className: "opacity-25",
     cx: "12",
     cy: "12",
     r: "10",
     stroke: "currentColor",
     strokeWidth: "4"
-  }), emotion_react_browser_esm_jsx("path", {
+  }), Object(react_["jsx"])("path", {
     className: "opacity-75",
     fill: "currentColor",
     d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
@@ -13448,14 +11331,16 @@ var Loader_Loader = function Loader() {
 
 
 
+
 var NoResults_NoResults = function NoResults() {
-  return emotion_react_browser_esm_jsx("li", {
+  return Object(react_["jsx"])("li", {
     className: "pb-2 pt-2",
     style: {
-      display: 'block'
+      display: "block"
     }
-  }, emotion_react_browser_esm_jsx("p", {
-    className: "p-2 border shadow-sm rounded border-red-600 text-red-700"
+  }, Object(react_["jsx"])(Typography_Text, {
+    is: "p",
+    className: "p-2"
   }, "No results were found..."));
 };
 
@@ -13521,6 +11406,7 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
       searchInputHeight = _useTabController.searchInputHeight;
 
   var algoliaClient = algoliasearch_lite_umd_default()(ALGOLIA_APP_ID, ALGOLIA_API_SEARCH_KEY);
+  var isSelectable = Boolean(onSelect);
   var searchClient = {
     search: function search(requests) {
       if (shouldBypassSearch === true) return null;
@@ -13696,36 +11582,38 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
   };
 
   var handleOnSelect = function handleOnSelect(hit) {
-    setSelectedItem(hit);
-    onSelect && onSelect(hit);
+    if (isSelectable) {
+      setSelectedItem(hit);
+      onSelect(hit);
+    }
   };
 
-  var LoaderToRender = customLoader ? customLoader : emotion_react_browser_esm_jsx(elements_Loader, null);
-  var NoResultsToRender = customNoResults ? customNoResults : emotion_react_browser_esm_jsx(elements_NoResults, null);
-  return emotion_react_browser_esm_jsx("div", {
+  var LoaderToRender = customLoader ? customLoader : Object(react_["jsx"])(elements_Loader, null);
+  var NoResultsToRender = customNoResults ? customNoResults : Object(react_["jsx"])(elements_NoResults, null);
+  return Object(react_["jsx"])("div", {
     ref: searchComponentRef,
     className: className
-  }, emotion_react_browser_esm_jsx(widgets_InstantSearch, {
+  }, Object(react_["jsx"])(widgets_InstantSearch, {
     searchClient: searchClient,
     indexName: indices[0].indexName,
     onSearchStateChange: handleOnSearchStateChange
-  }, emotion_react_browser_esm_jsx("div", {
+  }, Object(react_["jsx"])("div", {
     onKeyDown: handleOnKeyDown,
     role: "listbox",
     className: "relative"
-  }, emotion_react_browser_esm_jsx(elements_SearchBox, {
+  }, Object(react_["jsx"])(elements_SearchBox, {
     id: ALGOLIA_APP_ID,
     dark: dark,
     selectedText: selectedItem ? formatSelected(selectedItem) : '',
     inputProps: inputProps,
     placeholder: placeholder,
     onSelect: handleOnSelect
-  }), emotion_react_browser_esm_jsx("div", {
-    className: "shadow-xl rounded absolute w-full bg-white border border-gray-200",
+  }), Object(react_["jsx"])("div", {
+    className: "shadow-xl rounded absolute w-full bg-white border border-border",
     style: {
       visibility: "".concat(isResultsWindowOpen ? "visible" : "hidden")
     }
-  }, emotion_react_browser_esm_jsx("div", {
+  }, Object(react_["jsx"])("div", {
     className: "overflow-y-auto pl-2 pr-2",
     style: {
       maxHeight: "".concat(scrollableWindowHeight, "px")
@@ -13737,21 +11625,22 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
         renderCardInfo = algoliaIndice.renderCardInfo,
         formatHitURL = algoliaIndice.formatHitURL,
         searchConditions = algoliaIndice.searchConditions;
-    return emotion_react_browser_esm_jsx(widgets_Index, {
+    return Object(react_["jsx"])(widgets_Index, {
       key: sectionIndex,
       indexName: indexName,
       limit: 4
-    }, emotion_react_browser_esm_jsx(Configure, {
+    }, Object(react_["jsx"])(Configure, {
       filters: configureFilterState(searchConditions),
       hitsPerPage: indexResultsLimit
-    }), emotion_react_browser_esm_jsx(elements_ResultsList, {
+    }), Object(react_["jsx"])(elements_ResultsList, {
       sectionTitle: displayName,
       renderCardInfo: renderCardInfo,
       sectionIndex: sectionIndex,
       formatHitURL: formatHitURL,
-      onSelect: handleOnSelect
+      onSelect: handleOnSelect,
+      isSelectable: isSelectable
     }));
-  }), totalElementsCount === 0 && isSearchEmpty && NoResultsToRender, totalElementsCount === 0 && !isSearchEmpty && LoaderToRender), emotion_react_browser_esm_jsx(elements_Controls, null)))));
+  }), totalElementsCount === 0 && isSearchEmpty && NoResultsToRender, totalElementsCount === 0 && !isSearchEmpty && LoaderToRender), Object(react_["jsx"])(elements_Controls, null)))));
 };
 
 SearchComponent_SearchComponent.defaultProps = {
@@ -13794,10 +11683,10 @@ var AlgoliaSearch_AlgoliaSearch = function AlgoliaSearch(props) {
       ALGOLIA_API_SEARCH_KEY = props.ALGOLIA_API_SEARCH_KEY;
 
   if (!ALGOLIA_APP_ID || !ALGOLIA_API_SEARCH_KEY) {
-    return emotion_react_browser_esm_jsx(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, !ALGOLIA_APP_ID && emotion_react_browser_esm_jsx("h1", null, "ALGOLIA_APP_ID prop was not found and is required."), !ALGOLIA_API_SEARCH_KEY && emotion_react_browser_esm_jsx("h1", null, "ALGOLIA_API_SEARCH_KEY prop was not found and is required."));
+    return Object(react_["jsx"])(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, !ALGOLIA_APP_ID && Object(react_["jsx"])("h1", null, "ALGOLIA_APP_ID prop was not found and is required."), !ALGOLIA_API_SEARCH_KEY && Object(react_["jsx"])("h1", null, "ALGOLIA_API_SEARCH_KEY prop was not found and is required."));
   }
 
-  return emotion_react_browser_esm_jsx(providers_TabController, null, emotion_react_browser_esm_jsx(elements_SearchComponent, props));
+  return Object(react_["jsx"])(providers_TabController, null, Object(react_["jsx"])(elements_SearchComponent, props));
 };
 
 AlgoliaSearch_AlgoliaSearch.defaultProps = {
@@ -13835,227 +11724,38 @@ AlgoliaSearch_AlgoliaSearch.propTypes = {
 
 
 
-
 var Badge_Badge = function Badge(_ref) {
   var style = _ref.style,
       children = _ref.children,
       minimal = _ref.minimal,
-      className = _ref.className;
+      className = _ref.className,
+      rounded = _ref.rounded;
   var badgeStyle = [{
-    'bg-green-100 text-green-800': style === 'positive',
-    'bg-yellow-100 text-yellow-800': style === 'warning',
-    'bg-blue-100 text-blue-800': style === 'attention',
-    'bg-red-100 text-red-800': style === 'danger',
-    'bg-gray-100 text-gray-800': style === 'neutral'
+    "text-foreground": style === "default",
+    "text-success": style === "positive",
+    "text-warning": style === "warning",
+    "text-error": style === "danger"
   }];
-  return emotion_react_browser_esm_jsx("div", {
-    className: classnames_default()('inline-flex items-center px-2.5 rounded-md text-sm font-medium h-6 leading-6', badgeStyle, className)
-  }, !minimal && emotion_react_browser_esm_jsx("svg", {
-    className: classnames_default()('-ml-0.5 mr-1.5 h-2 w-2', badgeStyle),
+  var isRounded = [{
+    "rounded-full bg-foreground text-white": rounded
+  }];
+  return Object(react_["jsx"])("div", {
+    className: classnames_default()("border border-border inline-flex items-center px-2.5 rounded-md text-sm font-medium h-6 leading-6", badgeStyle, isRounded, className)
+  }, !minimal && Object(react_["jsx"])("svg", {
+    className: classnames_default()("-ml-0.5 mr-1.5 h-2 w-2", badgeStyle),
     fill: "currentColor",
     viewBox: "0 0 8 8"
-  }, emotion_react_browser_esm_jsx("circle", {
+  }, Object(react_["jsx"])("circle", {
     cx: "4",
     cy: "4",
     r: "3"
   })), children);
 };
 
+Badge_Badge.defaultProps = {
+  style: 'default'
+};
 /* harmony default export */ var src_Badge = (Badge_Badge);
-// CONCATENATED MODULE: ./node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js
-
-
-var reactPropsRegex = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|download|draggable|encType|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|inert|itemProp|itemScope|itemType|itemID|itemRef|on|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/; // https://esbench.com/bench/5bfee68a4cd7e6009ef61d23
-
-var is_prop_valid_browser_esm_index = memoize_browser_esm(function (prop) {
-  return reactPropsRegex.test(prop) || prop.charCodeAt(0) === 111
-  /* o */
-  && prop.charCodeAt(1) === 110
-  /* n */
-  && prop.charCodeAt(2) < 91;
-}
-/* Z+1 */
-);
-
-/* harmony default export */ var is_prop_valid_browser_esm = (is_prop_valid_browser_esm_index);
-
-// CONCATENATED MODULE: ./node_modules/@emotion/styled/base/dist/emotion-styled-base.browser.esm.js
-
-
-
-
-
-
-
-var testOmitPropsOnStringTag = is_prop_valid_browser_esm;
-
-var testOmitPropsOnComponent = function testOmitPropsOnComponent(key) {
-  return key !== 'theme';
-};
-
-var getDefaultShouldForwardProp = function getDefaultShouldForwardProp(tag) {
-  return typeof tag === 'string' && // 96 is one less than the char code
-  // for "a" so this is checking that
-  // it's a lowercase character
-  tag.charCodeAt(0) > 96 ? testOmitPropsOnStringTag : testOmitPropsOnComponent;
-};
-var composeShouldForwardProps = function composeShouldForwardProps(tag, options, isReal) {
-  var shouldForwardProp;
-
-  if (options) {
-    var optionsShouldForwardProp = options.shouldForwardProp;
-    shouldForwardProp = tag.__emotion_forwardProp && optionsShouldForwardProp ? function (propName) {
-      return tag.__emotion_forwardProp(propName) && optionsShouldForwardProp(propName);
-    } : optionsShouldForwardProp;
-  }
-
-  if (typeof shouldForwardProp !== 'function' && isReal) {
-    shouldForwardProp = tag.__emotion_forwardProp;
-  }
-
-  return shouldForwardProp;
-};
-
-var emotion_styled_base_browser_esm_ILLEGAL_ESCAPE_SEQUENCE_ERROR = "You have illegal escape sequence in your template literal, most likely inside content's property value.\nBecause you write your CSS inside a JavaScript string you actually have to do double escaping, so for example \"content: '\\00d7';\" should become \"content: '\\\\00d7';\".\nYou can read more about this here:\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#ES2018_revision_of_illegal_escape_sequences";
-
-var emotion_styled_base_browser_esm_createStyled = function createStyled(tag, options) {
-  if (false) {}
-
-  var isReal = tag.__emotion_real === tag;
-  var baseTag = isReal && tag.__emotion_base || tag;
-  var identifierName;
-  var targetClassName;
-
-  if (options !== undefined) {
-    identifierName = options.label;
-    targetClassName = options.target;
-  }
-
-  var shouldForwardProp = composeShouldForwardProps(tag, options, isReal);
-  var defaultShouldForwardProp = shouldForwardProp || getDefaultShouldForwardProp(baseTag);
-  var shouldUseAs = !defaultShouldForwardProp('as');
-  return function () {
-    var args = arguments;
-    var styles = isReal && tag.__emotion_styles !== undefined ? tag.__emotion_styles.slice(0) : [];
-
-    if (identifierName !== undefined) {
-      styles.push("label:" + identifierName + ";");
-    }
-
-    if (args[0] == null || args[0].raw === undefined) {
-      styles.push.apply(styles, args);
-    } else {
-      if (false) {}
-
-      styles.push(args[0][0]);
-      var len = args.length;
-      var i = 1;
-
-      for (; i < len; i++) {
-        if (false) {}
-
-        styles.push(args[i], args[0][i]);
-      }
-    } // $FlowFixMe: we need to cast StatelessFunctionalComponent to our PrivateStyledComponent class
-
-
-    var Styled = emotion_element_4fbd89c5_browser_esm_withEmotionCache(function (props, cache, ref) {
-      var finalTag = shouldUseAs && props.as || baseTag;
-      var className = '';
-      var classInterpolations = [];
-      var mergedProps = props;
-
-      if (props.theme == null) {
-        mergedProps = {};
-
-        for (var key in props) {
-          mergedProps[key] = props[key];
-        }
-
-        mergedProps.theme = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"])(ThemeContext);
-      }
-
-      if (typeof props.className === 'string') {
-        className = getRegisteredStyles(cache.registered, classInterpolations, props.className);
-      } else if (props.className != null) {
-        className = props.className + " ";
-      }
-
-      var serialized = serialize_browser_esm_serializeStyles(styles.concat(classInterpolations), cache.registered, mergedProps);
-      var rules = insertStyles(cache, serialized, typeof finalTag === 'string');
-      className += cache.key + "-" + serialized.name;
-
-      if (targetClassName !== undefined) {
-        className += " " + targetClassName;
-      }
-
-      var finalShouldForwardProp = shouldUseAs && shouldForwardProp === undefined ? getDefaultShouldForwardProp(finalTag) : defaultShouldForwardProp;
-      var newProps = {};
-
-      for (var _key in props) {
-        if (shouldUseAs && _key === 'as') continue;
-
-        if ( // $FlowFixMe
-        finalShouldForwardProp(_key)) {
-          newProps[_key] = props[_key];
-        }
-      }
-
-      newProps.className = className;
-      newProps.ref = ref;
-      var ele = /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"])(finalTag, newProps);
-
-      return ele;
-    });
-    Styled.displayName = identifierName !== undefined ? identifierName : "Styled(" + (typeof baseTag === 'string' ? baseTag : baseTag.displayName || baseTag.name || 'Component') + ")";
-    Styled.defaultProps = tag.defaultProps;
-    Styled.__emotion_real = Styled;
-    Styled.__emotion_base = baseTag;
-    Styled.__emotion_styles = styles;
-    Styled.__emotion_forwardProp = shouldForwardProp;
-    Object.defineProperty(Styled, 'toString', {
-      value: function value() {
-        if (targetClassName === undefined && "production" !== 'production') {
-          return 'NO_COMPONENT_SELECTOR';
-        } // $FlowFixMe: coerce undefined to string
-
-
-        return "." + targetClassName;
-      }
-    });
-
-    Styled.withComponent = function (nextTag, nextOptions) {
-      return createStyled(nextTag, _extends({}, options, {}, nextOptions, {
-        shouldForwardProp: composeShouldForwardProps(Styled, nextOptions, true)
-      })).apply(void 0, styles);
-    };
-
-    return Styled;
-  };
-};
-
-/* harmony default export */ var emotion_styled_base_browser_esm = (emotion_styled_base_browser_esm_createStyled);
-
-// CONCATENATED MODULE: ./node_modules/@emotion/styled/dist/emotion-styled.browser.esm.js
-
-
-
-
-
-
-
-
-var tags = ['a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base', 'bdi', 'bdo', 'big', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'cite', 'code', 'col', 'colgroup', 'data', 'datalist', 'dd', 'del', 'details', 'dfn', 'dialog', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'main', 'map', 'mark', 'marquee', 'menu', 'menuitem', 'meta', 'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', 'picture', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'script', 'section', 'select', 'small', 'source', 'span', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track', 'u', 'ul', 'var', 'video', 'wbr', // SVG
-'circle', 'clipPath', 'defs', 'ellipse', 'foreignObject', 'g', 'image', 'line', 'linearGradient', 'mask', 'path', 'pattern', 'polygon', 'polyline', 'radialGradient', 'rect', 'stop', 'svg', 'text', 'tspan'];
-
-var newStyled = emotion_styled_base_browser_esm.bind();
-tags.forEach(function (tagName) {
-  // $FlowFixMe: we can ignore this because its exposed type is defined by the CreateStyled type
-  newStyled[tagName] = newStyled(tagName);
-});
-
-/* harmony default export */ var emotion_styled_browser_esm = (newStyled);
-
 // CONCATENATED MODULE: ./node_modules/@radix-ui/react-id/dist/index.module.js
 function index_module_r(){return(index_module_r=Object.assign||function(e){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n])}return e}).apply(this,arguments)}const index_module_t={prefix:Math.round(1e10*Math.random()),current:0},index_module_n=external_root_React_commonjs2_react_commonjs_react_amd_react_["createContext"](index_module_t);const IdProvider=o=>{const a=external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"](index_module_n),i=a===index_module_t,c=external_root_React_commonjs2_react_commonjs_react_amd_react_["useMemo"]((()=>({prefix:i?0:++a.prefix,current:0})),[i,a]);return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](index_module_n.Provider,index_module_r({value:c},o))};function useId(r){const o=external_root_React_commonjs2_react_commonjs_react_amd_react_["useContext"](index_module_n);return Boolean(null===globalThis||void 0===globalThis?void 0:globalThis.document)||o!==index_module_t||console.warn("When server rendering, you must wrap your application in an <IdProvider> to ensure consistent ids are generated between the client and server."),external_root_React_commonjs2_react_commonjs_react_amd_react_["useMemo"]((()=>r||"radix-id-".concat(o.prefix,"-").concat(++o.current)),[r])}
 //# sourceMappingURL=index.module.js.map
@@ -15115,35 +12815,23 @@ function react_dropdown_menu_dist_index_module_u(){return(react_dropdown_menu_di
 //# sourceMappingURL=index.module.js.map
 
 // CONCATENATED MODULE: ./src/DropdownMenu/index.js
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    &[data-disabled] {\n      ", "\n    }\n  "]);
 
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
 
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    min-width: 150px;\n  "]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
+function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
 
 
 var Dropdown = react_dropdown_menu_dist_index_module_Root;
 var DropdownTrigger = Trigger;
 
-var DropdownContent = emotion_styled_browser_esm(index_module_Content)(function () {
+var DropdownMenu_ref2 =  true ? {
+  name: "1fmgkpl",
+  styles: "min-width:150px"
+} : undefined;
+
+var DropdownContent = /*#__PURE__*/emotion_styled_base_browser_esm(index_module_Content,  true ? {
+  target: "etal6nb3"
+} : undefined)(function () {
   return [{
     "marginTop": "0.5rem",
     "--tw-shadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
@@ -15151,10 +12839,12 @@ var DropdownContent = emotion_styled_browser_esm(index_module_Content)(function 
     "--tw-bg-opacity": "1",
     "backgroundColor": "rgba(255, 255, 255, var(--tw-bg-opacity))",
     "borderRadius": "0.25rem"
-  }, emotion_react_browser_esm_css(_templateObject())];
-});
+  }, DropdownMenu_ref2];
+},  true ? "" : undefined);
 
-var DropdownLabel = emotion_styled_browser_esm(index_module_Label)(function () {
+var DropdownLabel = /*#__PURE__*/emotion_styled_base_browser_esm(index_module_Label,  true ? {
+  target: "etal6nb2"
+} : undefined)(function () {
   return [{
     "paddingLeft": "1rem",
     "paddingRight": "1rem",
@@ -15163,12 +12853,19 @@ var DropdownLabel = emotion_styled_browser_esm(index_module_Label)(function () {
     "fontSize": "0.75rem",
     "lineHeight": "1rem",
     "--tw-text-opacity": "1",
-    "color": "rgba(75, 85, 99, var(--tw-text-opacity))",
+    "color": "rgba(68, 68, 68, var(--tw-text-opacity))",
     "textTransform": "uppercase"
   }];
-});
+},  true ? "" : undefined);
 
-var DropdownItem = emotion_styled_browser_esm(index_module_Item)(function () {
+var DropdownMenu_ref =  true ? {
+  name: "1eql9ny",
+  styles: "&[data-disabled]{--tw-text-opacity:1;color:rgba(229, 231, 235, var(--tw-text-opacity));cursor:default;;}"
+} : undefined;
+
+var DropdownItem = /*#__PURE__*/emotion_styled_base_browser_esm(index_module_Item,  true ? {
+  target: "etal6nb1"
+} : undefined)(function () {
   return [{
     "borderRadius": "0.25rem",
     "display": "block",
@@ -15177,35 +12874,33 @@ var DropdownItem = emotion_styled_browser_esm(index_module_Item)(function () {
     "paddingTop": "0.5rem",
     "paddingBottom": "0.5rem",
     "--tw-text-opacity": "1",
-    "color": "rgba(75, 85, 99, var(--tw-text-opacity))",
+    "color": "rgba(68, 68, 68, var(--tw-text-opacity))",
     "fontSize": "0.875rem",
     "lineHeight": "1.25rem",
     "cursor": "pointer"
   }, {
     ":focus": {
       "--tw-bg-opacity": "1",
-      "backgroundColor": "rgba(244, 245, 247, var(--tw-bg-opacity))",
+      "backgroundColor": "rgba(249, 250, 251, var(--tw-bg-opacity))",
       "--tw-text-opacity": "1",
-      "color": "rgba(22, 30, 46, var(--tw-text-opacity))",
+      "color": "rgba(17, 17, 17, var(--tw-text-opacity))",
       "outline": "2px solid transparent",
       "outlineOffset": "2px"
     }
-  }, emotion_react_browser_esm_css(_templateObject2(), {
-    "--tw-text-opacity": "1",
-    "color": "rgba(210, 214, 220, var(--tw-text-opacity))",
-    "cursor": "default"
-  })];
-});
+  }, DropdownMenu_ref];
+},  true ? "" : undefined);
 
-var DropdownSeparator = emotion_styled_browser_esm(index_module_Separator)(function () {
+var DropdownSeparator = /*#__PURE__*/emotion_styled_base_browser_esm(index_module_Separator,  true ? {
+  target: "etal6nb0"
+} : undefined)(function () {
   return [{
     "--tw-bg-opacity": "1",
-    "backgroundColor": "rgba(244, 245, 247, var(--tw-bg-opacity))",
+    "backgroundColor": "rgba(249, 250, 251, var(--tw-bg-opacity))",
     "borderBottomWidth": "1px",
     "--tw-border-opacity": "1",
-    "borderColor": "rgba(244, 245, 247, var(--tw-border-opacity))"
+    "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))"
   }];
-});
+},  true ? "" : undefined);
 
 DropdownContent.defaultProps = {
   onCloseAutoFocus: function onCloseAutoFocus(e) {
@@ -15239,7 +12934,7 @@ function Heading_possibleConstructorReturn(self, call) { if (call && (Heading_ty
 
 function Heading_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function Heading_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function Heading_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function Heading_getPrototypeOf(o) { Heading_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return Heading_getPrototypeOf(o); }
 
@@ -15271,7 +12966,7 @@ var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
           props = Heading_objectWithoutProperties(_this$props, ["className", "color", "size"]);
 
       var HTag = "h".concat(this.props.size);
-      return emotion_react_browser_esm_jsx(HTag, Heading_extends({
+      return Object(react_["jsx"])(HTag, Heading_extends({
         className: classnames_default()("font-medium leading-normal", className, {
           "text-4xl tracking-tighter": size == 1,
           "text-3xl tracking-tighter": size == 2,
@@ -15279,8 +12974,8 @@ var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
           "text-lg": size == 4,
           "text-base": size == 5,
           "text-sm": size == 6,
-          "text-gray-800": color == "default",
-          "text-red-700": color == "danger"
+          "text-accent-seven": color == "default",
+          "text-error": color == "danger"
         })
       }, props));
     }
@@ -15296,7 +12991,7 @@ Heading_defineProperty(Heading_Heading, "propTypes", {
   size: prop_types_default.a.oneOf([1, 2, 3, 4, 5, 6]).isRequired,
 
   /**
-   * The only options are default and danger.
+   * You can set any other available color
    */
   color: prop_types_default.a.oneOf(["default", "danger"]).isRequired,
   className: prop_types_default.a.string
@@ -15340,7 +13035,7 @@ function UnorderedList_possibleConstructorReturn(self, call) { if (call && (Unor
 
 function UnorderedList_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function UnorderedList_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function UnorderedList_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function UnorderedList_getPrototypeOf(o) { UnorderedList_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return UnorderedList_getPrototypeOf(o); }
 
@@ -15373,7 +13068,7 @@ var UnorderedList_UnorderedList = /*#__PURE__*/function (_PureComponent) {
 
         return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.cloneElement(child, UnorderedList_objectSpread({}, child.props));
       });
-      return emotion_react_browser_esm_jsx("ul", UnorderedList_extends({
+      return Object(react_["jsx"])("ul", UnorderedList_extends({
         className: classnames_default()("leading-normal list-disc p-0 m-0 ml-4", {})
       }, props), finalChildren);
     }
@@ -15384,11 +13079,11 @@ var UnorderedList_UnorderedList = /*#__PURE__*/function (_PureComponent) {
 
 
 // CONCATENATED MODULE: ./src/Typography/ListItem.js
+function ListItem_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { ListItem_typeof = function _typeof(obj) { return typeof obj; }; } else { ListItem_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return ListItem_typeof(obj); }
+
 function ListItem_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function ListItem_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ListItem_ownKeys(Object(source), true).forEach(function (key) { ListItem_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ListItem_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function ListItem_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { ListItem_typeof = function _typeof(obj) { return typeof obj; }; } else { ListItem_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return ListItem_typeof(obj); }
 
 function ListItem_extends() { ListItem_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return ListItem_extends.apply(this, arguments); }
 
@@ -15412,12 +13107,11 @@ function ListItem_possibleConstructorReturn(self, call) { if (call && (ListItem_
 
 function ListItem_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function ListItem_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function ListItem_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function ListItem_getPrototypeOf(o) { ListItem_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return ListItem_getPrototypeOf(o); }
 
 function ListItem_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -15441,7 +13135,7 @@ var ListItem_ListItem = /*#__PURE__*/function (_PureComponent) {
           children = _this$props.children,
           props = ListItem_objectWithoutProperties(_this$props, ["children"]);
 
-      return emotion_react_browser_esm_jsx(Typography_Text, ListItem_extends({
+      return Object(react_["jsx"])(Typography_Text, ListItem_extends({
         is: "li"
       }, props), children);
     }

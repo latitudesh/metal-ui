@@ -1,13 +1,14 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
 import Button from "./index";
 import Icon from "../../util/Icon";
+import { ArrowUpOutline } from "heroicons-react";
 
 <Meta title="Button" component={Button} />
 
-# Default
+# Variants
 
 <Preview>
-  <Story name="Default">
+  <Story name="Variants">
     <div>
       <div className="inline-flex">
         <Button label="Primary" />
@@ -27,20 +28,19 @@ import Icon from "../../util/Icon";
 
 # Disabled
 
+Disabled buttons do not inherit `variant` styling.
+
 <Preview>
   <Story name="Disabled">
     <div>
-      <div className="inline-flex">
+      <div className="block">
         <Button label="Disabled" disabled />
       </div>
-      <div className="inline-flex ml-2">
-        <Button label="Disabled" variant="secondary" disabled />
+      <div className="block mt-2">
+        <Button label="Disabled" disabled large />
       </div>
-      <div className="inline-flex ml-2">
-        <Button label="Disabled" variant="danger" disabled />
-      </div>
-      <div className="inline-flex ml-2">
-        <Button label="Disabled" variant="minimal" disabled />
+      <div className="block mt-2">
+        <Button label="Disabled" disabled block />
       </div>
     </div>
   </Story>
@@ -52,10 +52,15 @@ import Icon from "../../util/Icon";
   <Story name="Size">
     <div>
       <div>
-        <Button label="Large" large />
+        <Button label="Default" />
+      </div>
+      <div className="block mt-2">
+        <div className="inline-flex">
+          <Button label="Large" large />
+        </div>
       </div>
       <div className="mt-2">
-        <Button label="Full width" block />
+        <Button label="Block large" block />
       </div>
     </div>
   </Story>
@@ -75,9 +80,6 @@ import Icon from "../../util/Icon";
       <div className="inline-flex ml-2">
         <Button label="Loading" variant="danger" isLoading={true} />
       </div>
-      <div className="inline-flex ml-2">
-        <Button label="Loading" variant="minimal" isLoading={false} />
-      </div>
     </div>
   </Story>
 </Preview>
@@ -90,10 +92,22 @@ The component does not handle icon sizing. You should manage that from your proj
   <Story name="With Icon">
     <div>
       <div>
-        <Button iconBefore={<Icon />} label="Icon before" />
+        <Button iconBefore={<ArrowUpOutline size={20} />} label="Icon before" />
       </div>
       <div className="mt-2">
-        <Button iconAfter={<Icon />} variant="secondary" label="Icon after" />
+        <Button
+          iconAfter={<ArrowUpOutline size={20} />}
+          variant="secondary"
+          label="Icon after"
+        />
+      </div>
+      <div className="mt-2">
+        <Button
+          iconBefore={<ArrowUpOutline size={20} />}
+          iconAfter={<ArrowUpOutline size={20} />}
+          variant="secondary"
+          label="Icon before and after"
+        />
       </div>
     </div>
   </Story>
@@ -108,3 +122,7 @@ Buttons with components don't currently support icons
     <Button component={<a href="javascript:void()">With component</a>} />
   </Story>
 </Preview>
+
+# API
+
+<Props of={Button} />
