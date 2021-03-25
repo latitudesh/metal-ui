@@ -14,6 +14,7 @@ const ResultsList = (props) => {
     renderCardInfo,
     formatHitURL,
     onSelect,
+    isSelectable,
   } = props;
 
   const { appendNewSectionLength, shouldHideResults, setIsResultsWindowOpen } = useTabController();
@@ -43,7 +44,7 @@ const ResultsList = (props) => {
                   elementIndex={index}
                   sectionIndex={sectionIndex}
                   formattedHitURL={formattedHitURL(hit)}
-                  onSelect={onSelect ? () => {
+                  onSelect={isSelectable ? () => {
                     onSelect(hit)
                     setIsResultsWindowOpen(false)
                   } : null}
