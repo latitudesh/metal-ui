@@ -53,12 +53,12 @@ const Select = React.forwardRef(
             value={internalValue}
             disabled={disabled}
             className={classNames(
-              "border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 focus:outline-none sm:text-sm sm:leading-5",
+              "border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:ring-0 transition duration-150 ease-in-out",
               selectClassName,
               {
-                "border-border hover:border-accent-five focus:border-accent-five" : !error,
-                "border-error hover:border-error focus:border-error placeholder-error": error,
-                "bg-background cursor-not-allowed cursor-not-allowed": disabled,
+                "border-border text-accents-five hover:border-accent-five focus:border-accent-five": !error && !disabled,
+                "text-error border-error hover:border-error focus:border-error placeholder-error": error,
+                "border-border bg-background cursor-not-allowed": disabled,
               }
             )}
             {...rest}
