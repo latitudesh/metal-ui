@@ -10822,7 +10822,7 @@ function _cleanUp(props, searchState, context) {
   }
 }));
 // CONCATENATED MODULE: ./src/AlgoliaSearch/elements/SearchBox/index.js
-function SearchBox_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function SearchBox_extends() { SearchBox_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return SearchBox_extends.apply(this, arguments); }
 
 
 
@@ -10841,7 +10841,10 @@ var SearchBox_SearchBox = function SearchBox(props) {
       refine = props.refine,
       id = props.id,
       dark = props.dark,
-      placeholder = props.placeholder;
+      placeholder = props.placeholder,
+      selectedText = props.selectedText,
+      inputProps = props.inputProps,
+      onSelect = props.onSelect;
 
   var _useTabController = TabController_useTabController(),
       resetActiveElementIndex = _useTabController.resetActiveElementIndex,
@@ -10849,7 +10852,12 @@ var SearchBox_SearchBox = function SearchBox(props) {
       setIsResultsWindowOpen = _useTabController.setIsResultsWindowOpen,
       setSearchInputHeight = _useTabController.setSearchInputHeight;
 
+  var inputRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
   var searchInputRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(null);
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    refine(selectedText);
+    inputRef.current.value = selectedText || '';
+  }, [selectedText]);
 
   var handleOnChange = function handleOnChange(value, e) {
     if (e.keyCode !== 40 && e.keyCode !== 38) {
@@ -10857,6 +10865,11 @@ var SearchBox_SearchBox = function SearchBox(props) {
       refine(value);
     } else {
       e.preventDefault();
+    }
+
+    if (!(value !== null && value !== void 0 && value.length) && onSelect) {
+      // Trigger on Select when field clears
+      onSelect();
     }
 
     setIsResultsWindowOpen(valHasLength(value));
@@ -10879,23 +10892,25 @@ var SearchBox_SearchBox = function SearchBox(props) {
     className: "ais-SearchBox-form m-0",
     noValidate: true,
     role: "search"
-  }, Object(react_["jsx"])(src_Input, SearchBox_defineProperty({
+  }, Object(react_["jsx"])(src_Input, SearchBox_extends({
+    ref: inputRef,
     inputClassName: "".concat((isResultsWindowOpen ? "focused" : "", dark ? "bg-accent-eight placeholder-accent-three text-white focus:text-accent-three focus:border-accent-three border border-border hover:border-accent-three" : "bg-white border-border text-foreground focus:border-accent-three hover:border-accent-three"), " -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none"),
     value: currentRefinement,
     onChange: handleOnChange,
     onFocus: checkIfResultsWindowShouldOpen,
-    type: "search",
     "aria-label": "Search for a resource by typing here",
     placeholder: "".concat(placeholder ? placeholder : "Search..."),
     id: "search-box-".concat(id),
-    autoComplete: "off"
-  }, "type", "search"))));
+    autoComplete: "off",
+    type: "search"
+  }, inputProps))));
 };
 
 SearchBox_SearchBox.propTypes = {
   currentRefinement: prop_types_default.a.string.isRequired,
   refine: prop_types_default.a.func.isRequired,
-  id: prop_types_default.a.string.isRequired
+  id: prop_types_default.a.string.isRequired,
+  selectedText: prop_types_default.a.string
 };
 /* harmony default export */ var elements_SearchBox = (connectSearchBox(SearchBox_SearchBox));
 // CONCATENATED MODULE: ./node_modules/react-instantsearch-core/dist/es/connectors/connectHits.js
@@ -11010,7 +11025,8 @@ var ResultPill_ResultPill = function ResultPill(props) {
       elementIndex = props.elementIndex,
       sectionIndex = props.sectionIndex,
       formattedHitURL = props.formattedHitURL,
-      noResults = props.noResults;
+      noResults = props.noResults,
+      onSelect = props.onSelect;
 
   var _useTabController = TabController_useTabController(),
       activeElementIndex = _useTabController.activeElementIndex,
@@ -11032,8 +11048,10 @@ var ResultPill_ResultPill = function ResultPill(props) {
     if (isCurrentElement && enterKeyWasPressed) {
       if (formattedHitURL) {
         clickableLink.current.click();
+      } else if (onSelect) {
+        onSelect();
       } else {
-        alert('The formattedHitURL prop was not found, it is used to format the url for the pill! Without it, we dont know where to send you :)');
+        alert('The formattedHitURL or onSelect props were not found, it is used to format the url for the pill! Without it, we dont know where to send you :)');
       }
 
       setEnterKeyWasPressed(false);
@@ -11074,7 +11092,7 @@ var ResultPill_ResultPill = function ResultPill(props) {
   }
 
   return Object(react_["jsx"])("li", {
-    className: "pb-1",
+    className: "mb-1",
     style: ResultPill_objectSpread({}, ResultPill_style.resultPill),
     tabIndex: 0,
     role: "option",
@@ -11092,14 +11110,16 @@ var ResultPill_ResultPill = function ResultPill(props) {
 ResultPill_ResultPill.defaultProps = {
   elementIndex: null,
   sectionIndex: null,
-  noResults: false
+  noResults: false,
+  onSelect: null
 };
 ResultPill_ResultPill.propTypes = {
   children: prop_types_default.a.node.isRequired,
   elementIndex: prop_types_default.a.number,
   sectionIndex: prop_types_default.a.number,
   formattedHitURL: prop_types_default.a.string.isRequired,
-  noResults: prop_types_default.a.bool
+  noResults: prop_types_default.a.bool,
+  onSelect: prop_types_default.a.func
 };
 /* harmony default export */ var ResultsList_ResultPill = (ResultPill_ResultPill);
 // CONCATENATED MODULE: ./src/AlgoliaSearch/elements/ResultsList/SectionTitle/index.js
@@ -11135,11 +11155,13 @@ var ResultsList_ResultsList = function ResultsList(props) {
       sectionTitle = props.sectionTitle,
       sectionIndex = props.sectionIndex,
       renderCardInfo = props.renderCardInfo,
-      formatHitURL = props.formatHitURL;
+      formatHitURL = props.formatHitURL,
+      onSelect = props.onSelect;
 
   var _useTabController = TabController_useTabController(),
       appendNewSectionLength = _useTabController.appendNewSectionLength,
-      shouldHideResults = _useTabController.shouldHideResults;
+      shouldHideResults = _useTabController.shouldHideResults,
+      setIsResultsWindowOpen = _useTabController.setIsResultsWindowOpen;
 
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     if (hits.length > 0) {
@@ -11150,7 +11172,7 @@ var ResultsList_ResultsList = function ResultsList(props) {
   }, [hits.length]); // eslint-disable-line
 
   var formattedHitURL = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(function (hit) {
-    return formatHitURL(hit);
+    return formatHitURL ? formatHitURL(hit) : null;
   }, [formatHitURL]);
 
   if (Array.isArray(hits) && hits.length > 0 && !shouldHideResults) {
@@ -11163,7 +11185,11 @@ var ResultsList_ResultsList = function ResultsList(props) {
         key: index,
         elementIndex: index,
         sectionIndex: sectionIndex,
-        formattedHitURL: formattedHitURL(hit)
+        formattedHitURL: formattedHitURL(hit),
+        onSelect: onSelect ? function () {
+          onSelect(hit);
+          setIsResultsWindowOpen(false);
+        } : null
       }, renderCardInfo(hit));
     })));
   }
@@ -11176,7 +11202,8 @@ ResultsList_ResultsList.propTypes = {
   sectionTitle: prop_types_default.a.string.isRequired,
   sectionIndex: prop_types_default.a.number.isRequired,
   renderCardInfo: prop_types_default.a.func.isRequired,
-  formatHitURL: prop_types_default.a.func.isRequired
+  formatHitURL: prop_types_default.a.func,
+  onSelect: prop_types_default.a.func
 };
 /* harmony default export */ var elements_ResultsList = (connectHits(ResultsList_ResultsList));
 // CONCATENATED MODULE: ./src/AlgoliaSearch/assets/ArrowDown/index.js
@@ -11354,7 +11381,10 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
       indexResultsLimit = props.indexResultsLimit,
       className = props.className,
       dark = props.dark,
-      placeholder = props.placeholder;
+      placeholder = props.placeholder,
+      formatSelected = props.formatSelected,
+      onSelect = props.onSelect,
+      inputProps = props.inputProps;
 
   var _useTabController = TabController_useTabController(),
       activeElementIndex = _useTabController.activeElementIndex,
@@ -11398,6 +11428,11 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
       _useState6 = SearchComponent_slicedToArray(_useState5, 2),
       isSearchEmpty = _useState6[0],
       setIsSearchEmpty = _useState6[1];
+
+  var _useState7 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(),
+      _useState8 = SearchComponent_slicedToArray(_useState7, 2),
+      selectedItem = _useState8[0],
+      setSelectedItem = _useState8[1];
 
   var handleClickOutside = function handleClickOutside(e) {
     if (searchComponentRef.current.contains(e.target)) {
@@ -11534,12 +11569,19 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
 
       case 13:
         handleKeyNavigation(navigationKeyTypes.ENTER);
+        e.stopPropagation();
+        e.preventDefault();
         break;
 
       default:
         setShouldBypassSearch(false);
         break;
     }
+  };
+
+  var handleOnSelect = function handleOnSelect(hit) {
+    setSelectedItem(hit);
+    onSelect && onSelect(hit);
   };
 
   var LoaderToRender = customLoader ? customLoader : Object(react_["jsx"])(elements_Loader, null);
@@ -11558,7 +11600,10 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
   }, Object(react_["jsx"])(elements_SearchBox, {
     id: ALGOLIA_APP_ID,
     dark: dark,
-    placeholder: placeholder
+    selectedText: selectedItem ? formatSelected(selectedItem) : '',
+    inputProps: inputProps,
+    placeholder: placeholder,
+    onSelect: handleOnSelect
   }), Object(react_["jsx"])("div", {
     className: "shadow-xl rounded absolute w-full bg-white border border-border",
     style: {
@@ -11587,7 +11632,8 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
       sectionTitle: displayName,
       renderCardInfo: renderCardInfo,
       sectionIndex: sectionIndex,
-      formatHitURL: formatHitURL
+      formatHitURL: formatHitURL,
+      onSelect: handleOnSelect
     }));
   }), totalElementsCount === 0 && isSearchEmpty && NoResultsToRender, totalElementsCount === 0 && !isSearchEmpty && LoaderToRender), Object(react_["jsx"])(elements_Controls, null)))));
 };
@@ -11615,7 +11661,9 @@ SearchComponent_SearchComponent.propTypes = {
   scrollWindowHeight: prop_types_default.a.number,
   customLoader: prop_types_default.a.node,
   customNoResults: prop_types_default.a.node,
-  indexResultsLimit: prop_types_default.a.number.isRequired
+  indexResultsLimit: prop_types_default.a.number.isRequired,
+  onSelect: prop_types_default.a.func,
+  formatSelected: prop_types_default.a.func
 };
 /* harmony default export */ var elements_SearchComponent = (SearchComponent_SearchComponent);
 // CONCATENATED MODULE: ./src/AlgoliaSearch/index.js
