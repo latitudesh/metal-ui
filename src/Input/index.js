@@ -54,7 +54,7 @@ const Input = React.forwardRef(
             aria-invalid={error ? true : false}
             disabled={disabled}
             className={classNames(
-              "form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none",
+              "form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0",
               inputClassName,
               {
                 "border-border text-accent-five hover:border-accent-five focus:border-accent-five": !error && !disabled,
