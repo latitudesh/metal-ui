@@ -252,7 +252,7 @@ const SearchComponent = (props) => {
           />
 
           <div
-            className="shadow-xl rounded absolute w-full bg-white border border-gray-200"
+            className="shadow-xl rounded absolute w-full bg-white border border-border"
             style={{
               visibility: `${isResultsWindowOpen ? "visible" : "hidden"}`,
             }}

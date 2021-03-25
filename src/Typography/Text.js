@@ -5,9 +5,7 @@ import PropTypes from "prop-types";
 class Text extends PureComponent {
   static propTypes = {
     bold: PropTypes.bool,
-    /**
-     * Any TailwindCSS [Text Color](https://tailwindcss.com/docs/text-color) class.
-     */
+    
     color: PropTypes.string,
 
     is: PropTypes.oneOf(["span", "p", "li"]).isRequired,
@@ -17,7 +15,7 @@ class Text extends PureComponent {
 
   static defaultProps = {
     className: null,
-    color: "text-gray-700",
+    color: "text-accent-seven",
     is: "span",
   };
 

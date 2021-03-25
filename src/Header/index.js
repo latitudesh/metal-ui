@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Header = ({ leftContent, centerContent, rightContent }) => (
   <div className="relative w-full bg-white shadow">
-    <div className="flex p-4 px-8 flex-no-wrap justify-between items-center relative flex-row flex-grow h-16">
+    <div className="flex p-4 px-8 flex-nowrap justify-between items-center relative flex-row flex-grow h-16">
       <div className="flex flex-1 flex-grow flex-shrink-0 min-w-0">
         <div className="flex items-center flex-grow-0 flex-row">
           {leftContent}

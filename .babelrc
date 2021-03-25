@@ -1,22 +1,8 @@
 {
-  "presets": ["@babel/env", "@babel/preset-react"],
+  "presets": ["@babel/env", "@babel/preset-react", "@emotion/babel-preset-css-prop"],
   "plugins": [
-    "styled-jsx/babel",
+    "@emotion/babel-plugin",
     "babel-plugin-macros",
-    "@babel/plugin-proposal-class-properties",
-    [
-      "@emotion/babel-plugin-jsx-pragmatic",
-      {
-        "export": "jsx",
-        "import": "__cssprop",
-        "module": "@emotion/react"
-      }
-    ],
-    [
-      "@babel/plugin-transform-react-jsx",
-      {
-        "pragma": "__cssprop"
-      }
-    ]
+    "@babel/plugin-proposal-class-properties"
   ]
 }

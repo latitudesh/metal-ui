@@ -5,14 +5,15 @@ import SpinningDots from "../SpinningDots";
 
 const buttonTypes = {
   default:
-    "border-transparent text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-700 focus:shadow-outline-indigo",
+    "border-transparent hover:border-accent-five text-white hover:text-foreground bg-foreground hover:bg-accent-two active:bg-foreground active:text-white",
   secondary:
-    "border-gray-300 text-gray-800 bg-white hover:bg-gray-100 active:bg-gray-100 focus:shadow-outline-blue",
+    "border-secondary hover:border-foreground text-secondary hover:text-foreground bg-white hover:bg-accent-two active:bg-foreground active:text-white",
   danger:
-    "border-none text-white bg-red-600 hover:bg-red-700 active:bg-red-700 focus:shadow-outline-red",
-  disabled: "opacity-50 cursor-default hover:bg-transparent",
+    "border-error-dark hover:border-error-dark text-white hover:text-error-dark bg-error-dark hover:bg-accent-two active:bg-foreground active:text-white",
+  disabled:
+    "border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed",
   minimal:
-    "border-transparent text-gray-700 bg-white hover:bg-gray-100 active:bg-gray-100",
+    "border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five",
 };
 
 const Button = ({
@@ -32,25 +33,25 @@ const Button = ({
 
   const ButtonContent = (
     <div
-      className={classNames("inline-flex items-center", {
+      className={classNames("flex items-center justify-center", {
         "opacity-0": isLoading,
         "opacity-100": !isLoading,
       })}
     >
-      {iconBefore && <span className="mr-2">{cloneElement(iconBefore)}</span>}
-      <span>{label}</span>
-      {iconAfter && <span className="ml-2">{cloneElement(iconAfter)}</span>}
+      {iconBefore && <span className="flex mr-2">{cloneElement(iconBefore)}</span>}
+      <span className="truncate">{label}</span>
+      {iconAfter && <span className="flex ml-2">{cloneElement(iconAfter)}</span>}
     </div>
   );
 
   const ButtonClasses = cx(
-    "Button border items-center inline-flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center",
+    "Button border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer",
     {
       disabled: disabled,
-      [variant]: Boolean(variant),
+      [variant]: Boolean(variant) && !disabled,
       "px-5 h-9 leading-9 text-sm": !Boolean(block),
-      "w-full h-12 leading-12": Boolean(block),
-      "px-10 h-10 leading-10": Boolean(large),
+      "px-12 h10 leading-10 w-full": Boolean(block),
+      "px-12 h-10 leading-10": Boolean(large),
     }
   );
 
@@ -110,6 +111,7 @@ Button.defaultProps = {
   variant: "default",
   type: "button",
   isLoading: false,
+  disabled: false,
 };
 
 export default Button;
