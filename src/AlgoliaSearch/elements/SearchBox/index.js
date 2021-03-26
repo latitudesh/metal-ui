@@ -11,7 +11,15 @@ const valHasLength = (value) => {
 };
 
 const SearchBox = (props) => {
-  const { currentRefinement, refine, id, dark, placeholder, selectedText, inputProps, onSelect } = props;
+  const {
+    currentRefinement,
+    refine,
+    id,
+    placeholder,
+    selectedText,
+    inputProps,
+    onSelect,
+  } = props;
 
   const {
     resetActiveElementIndex,
@@ -20,13 +28,13 @@ const SearchBox = (props) => {
     setSearchInputHeight,
   } = useTabController();
 
-  const inputRef = useRef()
+  const inputRef = useRef();
   const searchInputRef = useRef(null);
 
   useEffect(() => {
-    refine(selectedText)
-    inputRef.current.value = selectedText || ''
-  }, [selectedText])
+    refine(selectedText);
+    inputRef.current.value = selectedText || "";
+  }, [selectedText]);
 
   const handleOnChange = (value, e) => {
     if (e.keyCode !== 40 && e.keyCode !== 38) {
@@ -38,7 +46,7 @@ const SearchBox = (props) => {
 
     if (!value?.length && onSelect) {
       // Trigger on Select when field clears
-      onSelect()
+      onSelect();
     }
 
     setIsResultsWindowOpen(valHasLength(value));
@@ -61,11 +69,8 @@ const SearchBox = (props) => {
         <Input
           ref={inputRef}
           inputClassName={`${
-            (isResultsWindowOpen ? "focused" : "",
-            dark
-              ? "bg-accent-eight placeholder-accent-three text-white focus:text-accent-three focus:border-accent-three border border-border hover:border-accent-three"
-              : "bg-white border-border text-foreground focus:border-accent-three hover:border-accent-three")
-          } -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none`}
+            isResultsWindowOpen ? "focused" : ""
+          } -mt-1 ais-SearchBox-input w-full`}
           value={currentRefinement}
           onChange={handleOnChange}
           onFocus={checkIfResultsWindowShouldOpen}

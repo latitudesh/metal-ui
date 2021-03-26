@@ -1,3 +1,12 @@
+## [2.6.1](https://github.com/Maxihost/metal-ui/compare/v2.6.0...v2.6.1) (2021-03-25)
+
+
+### Bug Fixes
+
+* Fixes emotion config for external usage ([43d623f](https://github.com/Maxihost/metal-ui/commit/43d623fde90608ed5ed022981114276780ddc276))
+* Fixes Emotion import in Storybook ([300e89f](https://github.com/Maxihost/metal-ui/commit/300e89f7a72e29e3fa1c9460637f238a679a21d2))
+* Fixes non-selectable handling AlgoliaSearch ([d921dd9](https://github.com/Maxihost/metal-ui/commit/d921dd9570e1854f114809d0fa9ec2b5f4f36a80))
+
 # [2.6.0](https://github.com/Maxihost/metal-ui/compare/v2.5.0...v2.6.0) (2021-03-24)
 
 

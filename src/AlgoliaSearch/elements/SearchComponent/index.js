@@ -25,7 +25,6 @@ const SearchComponent = (props) => {
     customNoResults,
     indexResultsLimit,
     className,
-    dark,
     placeholder,
     formatSelected,
     onSelect,
@@ -244,7 +243,6 @@ const SearchComponent = (props) => {
         <div onKeyDown={handleOnKeyDown} role="listbox" className="relative">
           <SearchBox
             id={ALGOLIA_APP_ID}
-            dark={dark}
             selectedText={selectedItem ? formatSelected(selectedItem) : ''}
             inputProps={inputProps}
             placeholder={placeholder}
