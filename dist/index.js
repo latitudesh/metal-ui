@@ -6475,18 +6475,28 @@ var bind = __webpack_require__(4);
 var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
 
 // CONCATENATED MODULE: ./src/SpinningDots/index.js
+function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
 
 
 
 
-var SpinningDots_SpinningDots = function SpinningDots(_ref) {
-  var className = _ref.className,
-      variant = _ref.variant;
-  var i = classnames_default()("animate-pulse w-1.5 h-1.5 rounded-full", {
-    'bg-accent-three': variant === 'light',
-    'bg-accent-six': variant === 'default'
+
+
+var SpinningDots_ref =  true ? {
+  name: "10904xo",
+  styles: "border-width:3px"
+} : undefined;
+
+var SpinningDots_SpinningDots = function SpinningDots(_ref2) {
+  var className = _ref2.className,
+      variant = _ref2.variant;
+  var i = classnames_default()("animate-pulse h-0 w-0 rounded-full", {
+    'text-accent-six': variant === 'default',
+    'text-accent-three': variant === 'light',
+    'text-accent-eight': variant === 'dark'
   });
+  var iCss = SpinningDots_ref;
   return Object(react_["jsx"])("div", {
     className: classnames_default()("spinner inline p-0 h-auto w-full text-center", className)
   }, Object(react_["jsx"])("span", {
@@ -6495,22 +6505,25 @@ var SpinningDots_SpinningDots = function SpinningDots(_ref) {
     className: "flex w-full justify-around"
   }, Object(react_["jsx"])("i", {
     className: i,
+    css: iCss,
     style: {
       animationDelay: "-.2s"
     }
   }), Object(react_["jsx"])("i", {
     className: i,
+    css: iCss,
     style: {
       animationDelay: "-.1s"
     }
   }), Object(react_["jsx"])("i", {
-    className: i
+    className: i,
+    css: iCss
   }))));
 };
 
 SpinningDots_SpinningDots.propTypes = {
   className: prop_types_default.a.string,
-  variant: prop_types_default.a.oneOf(["default", "light"])
+  variant: prop_types_default.a.oneOf(["default", "inherit", "light", "dark"])
 };
 SpinningDots_SpinningDots.defaultProps = {
   variant: "default"
@@ -6561,7 +6574,7 @@ var Button_Button = function Button(_ref) {
     className: "flex ml-2"
   }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
 
-  var ButtonClasses = cx("Button border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer", (_cx = {
+  var ButtonClasses = cx("Button relative border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer", (_cx = {
     disabled: disabled
   }, Button_defineProperty(_cx, variant, Boolean(variant) && !disabled), Button_defineProperty(_cx, "px-5 h-9 leading-9 text-sm", !Boolean(block)), Button_defineProperty(_cx, "px-12 h10 leading-10 w-full", Boolean(block)), Button_defineProperty(_cx, "px-12 h-10 leading-10", Boolean(large)), _cx));
 
@@ -6584,7 +6597,7 @@ var Button_Button = function Button(_ref) {
     disabled: disabled || isLoading,
     className: ButtonClasses
   }, isLoading && Object(react_["jsx"])(src_SpinningDots, {
-    variant: "light",
+    variant: "inherit",
     className: "absolute"
   }), ButtonContent));
 };
@@ -12817,7 +12830,7 @@ function react_dropdown_menu_dist_index_module_u(){return(react_dropdown_menu_di
 // CONCATENATED MODULE: ./src/DropdownMenu/index.js
 
 
-function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+function DropdownMenu_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
 
 
