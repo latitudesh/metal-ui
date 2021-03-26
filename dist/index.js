@@ -10905,7 +10905,8 @@ var ResultPill_ResultPill = function ResultPill(props) {
     onMouseEnter: handleHoverSelection
   }, Object(react_["jsx"])("a", {
     ref: clickableLink,
-    href: formattedHitURL,
+    href: !onSelect ? formattedHitURL : null,
+    onClick: onSelect,
     className: "px-2 rounded outline-none ".concat(isCurrentElement ? 'bg-accent-two text-foreground' : 'text-accent-eight'),
     style: ResultPill_objectSpread({}, ResultPill_style.resultPillLink)
   }, children));
