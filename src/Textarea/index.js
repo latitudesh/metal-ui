@@ -56,12 +56,12 @@ const Textarea = React.forwardRef(
           aria-invalid={error ? true : false}
           disabled={disabled}
           className={classNames(
-            "form-textarea block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border-border border shadow-sm focus:outline-none",
+            "form-textarea block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-6 border shadow-sm focus:ring-0",
             textareaClassName,
             {
-              "text-accent-six focus:border-accent-six": !error,
-              "border border-error placeholder-error": error,
-              "bg-accent-two cursor-not-allowed": disabled,
+              "border-border text-accent-five hover:border-accent-five focus:border-accent-five": !error && !disabled,
+              "text-error border-error hover:border-error focus:border-error placeholder-error": error,
+              "border-border bg-background cursor-not-allowed": disabled,
             }
           )}
           {...rest}

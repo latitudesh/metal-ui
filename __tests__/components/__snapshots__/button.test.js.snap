@@ -2,7 +2,7 @@
 
 exports[`Snapshots/Components/Button Render button 1`] = `
 <button
-  className="Button border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer border-transparent hover:border-accent-five text-white hover:text-foreground bg-foreground hover:bg-accent-two active:bg-foreground active:text-white px-5 h-9 leading-9 text-sm"
+  className="Button relative border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer border-transparent hover:border-accent-five text-white hover:text-foreground bg-foreground hover:bg-accent-two active:bg-foreground active:text-white px-5 h-9 leading-9 text-sm"
   disabled={false}
   type="button"
 >

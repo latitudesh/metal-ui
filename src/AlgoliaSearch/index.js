@@ -32,7 +32,6 @@ AlgoliaSearch.defaultProps = {
   scrollWindowHeight: 400,
   className: null,
   parentWindowHeight: null,
-  dark: false
 };
 
 AlgoliaSearch.propTypes = {
@@ -59,7 +58,6 @@ AlgoliaSearch.propTypes = {
   customLoader: PropTypes.node,
   customNoResults: PropTypes.node,
   className: PropTypes.string,
-  dark: PropTypes.bool,
 };
 
 export default AlgoliaSearch;
