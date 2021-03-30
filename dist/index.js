@@ -7510,10 +7510,10 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
     "aria-required": label ? true : false,
     "aria-invalid": error ? true : false,
     disabled: disabled,
-    className: classnames_default()("form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none", inputClassName, {
-      "border-border text-accent-five hover:border-accent-five focus:border-accent-five": !error,
-      "border-error placeholder-error": error,
-      "bg-background cursor-not-allowed cursor-not-allowed": disabled
+    className: classnames_default()("form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0", inputClassName, {
+      "border-border text-accent-five hover:border-accent-five focus:border-accent-five": !error && !disabled,
+      "text-error border-error hover:border-error focus:border-error placeholder-error": error,
+      "border-border bg-background cursor-not-allowed": disabled
     })
   }, rest))));
 });
@@ -7593,10 +7593,10 @@ var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
     "aria-required": label ? true : false,
     "aria-invalid": error ? true : false,
     disabled: disabled,
-    className: classnames_default()("form-textarea block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border-border border shadow-sm focus:outline-none", textareaClassName, {
-      "text-accent-six focus:border-accent-six": !error,
-      "border border-error placeholder-error": error,
-      "bg-accent-two cursor-not-allowed": disabled
+    className: classnames_default()("form-textarea block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-6 border shadow-sm focus:ring-0", textareaClassName, {
+      "border-border text-accent-five hover:border-accent-five focus:border-accent-five": !error && !disabled,
+      "text-error border-error hover:border-error focus:border-error placeholder-error": error,
+      "border-border bg-background cursor-not-allowed": disabled
     })
   }, rest)));
 });
@@ -7679,10 +7679,10 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
     onChange: handleChange,
     value: internalValue,
     disabled: disabled,
-    className: classnames_default()("border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:ring-0", selectClassName, {
+    className: classnames_default()("border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:ring-0 transition duration-150 ease-in-out", selectClassName, {
       "border-border text-accents-five hover:border-accent-five focus:border-accent-five": !error && !disabled,
       "text-error border-error hover:border-error focus:border-error placeholder-error": error,
-      "bg-background cursor-not-allowed border-border": disabled
+      "border-border bg-background cursor-not-allowed": disabled
     })
   }, rest), Object(react_["jsx"])("option", {
     value: "",
@@ -10657,7 +10657,6 @@ var SearchBox_SearchBox = function SearchBox(props) {
   var currentRefinement = props.currentRefinement,
       refine = props.refine,
       id = props.id,
-      dark = props.dark,
       placeholder = props.placeholder,
       selectedText = props.selectedText,
       inputProps = props.inputProps,
@@ -10673,7 +10672,7 @@ var SearchBox_SearchBox = function SearchBox(props) {
   var searchInputRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(null);
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
     refine(selectedText);
-    inputRef.current.value = selectedText || '';
+    inputRef.current.value = selectedText || "";
   }, [selectedText]);
 
   var handleOnChange = function handleOnChange(value, e) {
@@ -10711,7 +10710,7 @@ var SearchBox_SearchBox = function SearchBox(props) {
     role: "search"
   }, Object(react_["jsx"])(src_Input, SearchBox_extends({
     ref: inputRef,
-    inputClassName: "".concat((isResultsWindowOpen ? "focused" : "", dark ? "bg-accent-eight placeholder-accent-three text-white focus:text-accent-three focus:border-accent-three border border-border hover:border-accent-three" : "bg-white border-border text-foreground focus:border-accent-three hover:border-accent-three"), " -mt-1 ais-SearchBox-input w-full focus:outline-none focus:shadow-none"),
+    inputClassName: "".concat(isResultsWindowOpen ? "focused" : "", " -mt-1 ais-SearchBox-input w-full"),
     value: currentRefinement,
     onChange: handleOnChange,
     onFocus: checkIfResultsWindowShouldOpen,
@@ -11199,7 +11198,6 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
       customNoResults = props.customNoResults,
       indexResultsLimit = props.indexResultsLimit,
       className = props.className,
-      dark = props.dark,
       placeholder = props.placeholder,
       formatSelected = props.formatSelected,
       onSelect = props.onSelect,
@@ -11421,7 +11419,6 @@ var SearchComponent_SearchComponent = function SearchComponent(props) {
     className: "relative"
   }, Object(react_["jsx"])(elements_SearchBox, {
     id: ALGOLIA_APP_ID,
-    dark: dark,
     selectedText: selectedItem ? formatSelected(selectedItem) : '',
     inputProps: inputProps,
     placeholder: placeholder,
@@ -11511,8 +11508,7 @@ AlgoliaSearch_AlgoliaSearch.defaultProps = {
   indexResultsLimit: 8,
   scrollWindowHeight: 400,
   className: null,
-  parentWindowHeight: null,
-  dark: false
+  parentWindowHeight: null
 };
 AlgoliaSearch_AlgoliaSearch.propTypes = {
   ALGOLIA_APP_ID: prop_types_default.a.string.isRequired,
@@ -11533,8 +11529,7 @@ AlgoliaSearch_AlgoliaSearch.propTypes = {
   scrollWindowHeight: prop_types_default.a.number,
   customLoader: prop_types_default.a.node,
   customNoResults: prop_types_default.a.node,
-  className: prop_types_default.a.string,
-  dark: prop_types_default.a.bool
+  className: prop_types_default.a.string
 };
 /* harmony default export */ var src_AlgoliaSearch = (AlgoliaSearch_AlgoliaSearch);
 // CONCATENATED MODULE: ./src/Badge/index.js
