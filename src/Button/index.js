@@ -28,24 +28,30 @@ const Button = ({
   block,
   large,
   isLoading,
+  className,
 }) => {
   const cx = classNames.bind(buttonTypes);
 
   const ButtonContent = (
     <div
-      className={classNames("flex items-center justify-center", {
+      className={classNames("flex items-center justify-center", className, {
         "opacity-0": isLoading,
         "opacity-100": !isLoading,
       })}
     >
-      {iconBefore && <span className="flex mr-2">{cloneElement(iconBefore)}</span>}
+      {iconBefore && (
+        <span className="flex mr-2">{cloneElement(iconBefore)}</span>
+      )}
       <span className="truncate">{label}</span>
-      {iconAfter && <span className="flex ml-2">{cloneElement(iconAfter)}</span>}
+      {iconAfter && (
+        <span className="flex ml-2">{cloneElement(iconAfter)}</span>
+      )}
     </div>
   );
 
   const ButtonClasses = cx(
     "Button relative border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer",
+    className,
     {
       disabled: disabled,
       [variant]: Boolean(variant) && !disabled,

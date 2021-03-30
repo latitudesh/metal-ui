@@ -6362,11 +6362,12 @@ var Button_Button = function Button(_ref) {
       component = _ref.component,
       block = _ref.block,
       large = _ref.large,
-      isLoading = _ref.isLoading;
+      isLoading = _ref.isLoading,
+      className = _ref.className;
   var cx = bind_default.a.bind(buttonTypes);
 
   var ButtonContent = Object(react_["jsx"])("div", {
-    className: bind_default()("flex items-center justify-center", {
+    className: bind_default()("flex items-center justify-center", className, {
       "opacity-0": isLoading,
       "opacity-100": !isLoading
     })
@@ -6378,7 +6379,7 @@ var Button_Button = function Button(_ref) {
     className: "flex ml-2"
   }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
 
-  var ButtonClasses = cx("Button relative border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer", (_cx = {
+  var ButtonClasses = cx("Button relative border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer", className, (_cx = {
     disabled: disabled
   }, Button_defineProperty(_cx, variant, Boolean(variant) && !disabled), Button_defineProperty(_cx, "px-5 h-9 leading-9 text-sm", !Boolean(block)), Button_defineProperty(_cx, "px-12 h10 leading-10 w-full", Boolean(block)), Button_defineProperty(_cx, "px-12 h-10 leading-10", Boolean(large)), _cx));
 
@@ -7680,9 +7681,9 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
     value: internalValue,
     disabled: disabled,
     className: classnames_default()("border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:ring-0 transition duration-150 ease-in-out", selectClassName, {
-      "border-border text-foreground hover:border-accent-five focus:border-accent-five": !error && !disabled,
+      "border-border text-foreground hover:border-accent-five focus:border-accent-five placeholder-accent-five": !error && !disabled,
       "text-error border-error hover:border-error focus:border-error placeholder-error": error,
-      "border-border bg-background cursor-not-allowed": disabled
+      "border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five": disabled
     })
   }, rest), Object(react_["jsx"])("option", {
     value: "",
