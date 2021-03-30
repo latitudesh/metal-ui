@@ -57,7 +57,7 @@ const Input = React.forwardRef(
               "form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0",
               inputClassName,
               {
-                "border-border text-accent-five hover:border-accent-five focus:border-accent-five": !error && !disabled,
+                "border-border text-foreground hover:border-accent-five focus:border-accent-five placeholder-accent-five": !error && !disabled,
                 "text-error border-error hover:border-error focus:border-error placeholder-error": error,
                 "border-border bg-background cursor-not-allowed": disabled,
               }
