@@ -6346,7 +6346,10 @@ var buttonTypes = {
   secondary: "border-secondary hover:border-foreground text-secondary hover:text-foreground bg-white hover:bg-accent-two active:bg-foreground active:text-white",
   danger: "border-error-dark hover:border-error-dark text-white hover:text-error-dark bg-error-dark hover:bg-accent-two active:bg-foreground active:text-white",
   disabled: "border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed",
-  minimal: "border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five"
+  minimal: "border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five",
+  small: "px-4 h-8 leading-8 text-sm",
+  normal: "px-6 h-9 leading-9 text-sm",
+  large: "px-12 h-10 leading-10 text-base"
 };
 
 var Button_Button = function Button(_ref) {
@@ -6358,16 +6361,16 @@ var Button_Button = function Button(_ref) {
       onClick = _ref.onClick,
       label = _ref.label,
       type = _ref.type,
+      size = _ref.size,
       variant = _ref.variant,
       component = _ref.component,
       block = _ref.block,
-      large = _ref.large,
       isLoading = _ref.isLoading,
       className = _ref.className;
   var cx = bind_default.a.bind(buttonTypes);
 
   var ButtonContent = Object(react_["jsx"])("div", {
-    className: bind_default()("flex items-center justify-center", className, {
+    className: bind_default()("flex items-center justify-center", {
       "opacity-0": isLoading,
       "opacity-100": !isLoading
     })
@@ -6381,7 +6384,7 @@ var Button_Button = function Button(_ref) {
 
   var ButtonClasses = cx("Button relative border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer", className, (_cx = {
     disabled: disabled
-  }, Button_defineProperty(_cx, variant, Boolean(variant) && !disabled), Button_defineProperty(_cx, "px-5 h-9 leading-9 text-sm", !Boolean(block)), Button_defineProperty(_cx, "px-12 h10 leading-10 w-full", Boolean(block)), Button_defineProperty(_cx, "px-12 h-10 leading-10", Boolean(large)), _cx));
+  }, Button_defineProperty(_cx, variant, Boolean(variant) && !disabled), Button_defineProperty(_cx, size, Boolean(size)), Button_defineProperty(_cx, "block w-full", Boolean(block)), _cx));
 
   var RenderComponent = function RenderComponent() {
     if (component.props.children && typeof component.props.children !== "string") {
@@ -6416,10 +6419,12 @@ Button_Button.propTypes = {
   onClick: prop_types_default.a.func,
   type: prop_types_default.a.string,
   variant: prop_types_default.a.oneOf(["default", "secondary", "danger", "disabled", "minimal"]),
+  size: prop_types_default.a.oneOf(["small", "normal", "large"]),
   isLoading: prop_types_default.a.bool,
   component: prop_types_default.a.element
 };
 Button_Button.defaultProps = {
+  size: "normal",
   variant: "default",
   type: "button",
   isLoading: false,
