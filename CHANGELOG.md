@@ -1,3 +1,18 @@
+## [2.6.3](https://github.com/Maxihost/metal-ui/compare/v2.6.2...v2.6.3) (2021-03-30)
+
+
+### Bug Fixes
+
+* dist ([21441d1](https://github.com/Maxihost/metal-ui/commit/21441d10d04c55035e25ecce3f8c9e58f410fb41))
+
+## [2.6.2](https://github.com/Maxihost/metal-ui/compare/v2.6.1...v2.6.2) (2021-03-26)
+
+
+### Bug Fixes
+
+* Adds missing onClick on AlgoliaSearch selectable pill. ([9868216](https://github.com/Maxihost/metal-ui/commit/9868216c61b3fe9e19c7acaeeab33f1f4e870ed4))
+* Improves button loading colors and adds inherit & dark Spinning Dots variants. ([5bc91c4](https://github.com/Maxihost/metal-ui/commit/5bc91c4886d0403faada71d5aba6ca2c2aef1745))
+
 ## [2.6.1](https://github.com/Maxihost/metal-ui/compare/v2.6.0...v2.6.1) (2021-03-25)
 
 
