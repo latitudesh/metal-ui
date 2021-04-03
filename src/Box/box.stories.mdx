@@ -1,7 +1,9 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
 import Box from "./index";
 
 <Meta title="Box" component={Box} />
+
+<Props of={Box} />
 
 # Default
 
@@ -16,7 +18,7 @@ import Box from "./index";
 <Preview>
   <Story name="Color">
     <Box backgroundColor="success">Content</Box>
-  </Story> 
+  </Story>
 </Preview>
 
 # Root card
