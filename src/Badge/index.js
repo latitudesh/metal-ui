@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 
 const Badge = ({ style, children, minimal, className, rounded }) => {
   let badgeStyle = [
@@ -49,6 +50,21 @@ Badge.defaultProps = {
   style: "default",
   rounded: false,
   minimal: false,
+};
+
+Badge.propTypes = {
+  /**
+   * The color of the badge.
+   */
+  style: PropTypes.oneOf(["default", "positive", "warning", "danger"]),
+  /**
+   * When true, renders a rounded badge with inverted colors.
+   */
+  rounded: PropTypes.bool,
+  /**
+   * When true, renders a badge without the prepending dot.
+   */
+  minimal: PropTypes.bool,
 };
 
 export default Badge;
