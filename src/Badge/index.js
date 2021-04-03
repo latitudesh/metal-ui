@@ -4,6 +4,7 @@ import classNames from "classnames";
 const Badge = ({ style, children, minimal, className, rounded }) => {
   let badgeStyle = [
     {
+      "border border-border": !rounded,
       "text-foreground": style === "default",
       "text-success": style === "positive",
       "text-warning": style === "warning",
@@ -13,20 +14,24 @@ const Badge = ({ style, children, minimal, className, rounded }) => {
 
   let isRounded = [
     {
-      "rounded-full bg-foreground text-white": rounded,
+      "rounded-full text-white": rounded,
+      "bg-foreground": style === "default",
+      "bg-success": style == "positive",
+      "bg-warning": style === "warning",
+      "bg-error": style === "danger",
     },
   ];
 
   return (
     <div
       className={classNames(
-        "border border-border inline-flex items-center px-2.5 rounded-md text-sm font-medium h-6 leading-6",
-        badgeStyle,
-        isRounded,
+        "inline-flex items-center px-2.5 rounded-md text-sm font-medium h-6 leading-6",
+        !rounded && badgeStyle,
+        rounded && isRounded,
         className
       )}
     >
-      {!minimal && (
+      {!minimal && !rounded && (
         <svg
           className={classNames("-ml-0.5 mr-1.5 h-2 w-2", badgeStyle)}
           fill="currentColor"
@@ -41,7 +46,9 @@ const Badge = ({ style, children, minimal, className, rounded }) => {
 };
 
 Badge.defaultProps = {
-  style: 'default',
+  style: "default",
+  rounded: false,
+  minimal: false,
 };
 
 export default Badge;
