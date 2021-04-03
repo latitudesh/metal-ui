@@ -12,7 +12,7 @@
   "scripts": {
     "test": "jest --watch -u",
     "test--ci": "jest --ci",
-    "dev": "start-storybook -s ./public 9001",
+    "dev": "start-storybook ./public 9001",
     "deploy-storybook": "storybook-to-ghpages",
     "build": "webpack --config config/umd.js"
   },
@@ -40,9 +40,9 @@
     "@semantic-release/github": "^7.1.1",
     "@semantic-release/npm": "^7.0.6",
     "@semantic-release/release-notes-generator": "^9.0.1",
-    "@storybook/addon-actions": "^6.1.21",
-    "@storybook/addon-docs": "^6.1.21",
-    "@storybook/react": "^6.1.21",
+    "@storybook/addon-actions": "^6.2.2",
+    "@storybook/addon-docs": "^6.2.2",
+    "@storybook/react": "^6.2.2",
     "@storybook/storybook-deployer": "^2.8.7",
     "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/postcss7-compat": "^2.0.3",
