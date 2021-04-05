@@ -6346,7 +6346,10 @@ var buttonTypes = {
   secondary: "border-secondary hover:border-foreground text-secondary hover:text-foreground bg-white hover:bg-accent-two active:bg-foreground active:text-white",
   danger: "border-error-dark hover:border-error-dark text-white hover:text-error-dark bg-error-dark hover:bg-accent-two active:bg-foreground active:text-white",
   disabled: "border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed",
-  minimal: "border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five"
+  minimal: "border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five",
+  small: "px-4 h-8 leading-8 text-sm",
+  normal: "px-6 h-9 leading-9 text-sm",
+  large: "px-12 h-10 leading-10 text-base"
 };
 
 var Button_Button = function Button(_ref) {
@@ -6358,11 +6361,12 @@ var Button_Button = function Button(_ref) {
       onClick = _ref.onClick,
       label = _ref.label,
       type = _ref.type,
+      size = _ref.size,
       variant = _ref.variant,
       component = _ref.component,
       block = _ref.block,
-      large = _ref.large,
-      isLoading = _ref.isLoading;
+      isLoading = _ref.isLoading,
+      className = _ref.className;
   var cx = bind_default.a.bind(buttonTypes);
 
   var ButtonContent = Object(react_["jsx"])("div", {
@@ -6378,9 +6382,9 @@ var Button_Button = function Button(_ref) {
     className: "flex ml-2"
   }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
 
-  var ButtonClasses = cx("Button relative border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer", (_cx = {
+  var ButtonClasses = cx("Button relative border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer", className, (_cx = {
     disabled: disabled
-  }, Button_defineProperty(_cx, variant, Boolean(variant) && !disabled), Button_defineProperty(_cx, "px-5 h-9 leading-9 text-sm", !Boolean(block)), Button_defineProperty(_cx, "px-12 h10 leading-10 w-full", Boolean(block)), Button_defineProperty(_cx, "px-12 h-10 leading-10", Boolean(large)), _cx));
+  }, Button_defineProperty(_cx, variant, Boolean(variant) && !disabled), Button_defineProperty(_cx, size, Boolean(size)), Button_defineProperty(_cx, "block w-full", Boolean(block)), _cx));
 
   var RenderComponent = function RenderComponent() {
     if (component.props.children && typeof component.props.children !== "string") {
@@ -6415,10 +6419,12 @@ Button_Button.propTypes = {
   onClick: prop_types_default.a.func,
   type: prop_types_default.a.string,
   variant: prop_types_default.a.oneOf(["default", "secondary", "danger", "disabled", "minimal"]),
+  size: prop_types_default.a.oneOf(["small", "normal", "large"]),
   isLoading: prop_types_default.a.bool,
   component: prop_types_default.a.element
 };
 Button_Button.defaultProps = {
+  size: "normal",
   variant: "default",
   type: "button",
   isLoading: false,
@@ -7511,7 +7517,7 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
     "aria-invalid": error ? true : false,
     disabled: disabled,
     className: classnames_default()("form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0", inputClassName, {
-      "border-border text-accent-five hover:border-accent-five focus:border-accent-five": !error && !disabled,
+      "border-border text-foreground hover:border-accent-five focus:border-accent-five placeholder-accent-five": !error && !disabled,
       "text-error border-error hover:border-error focus:border-error placeholder-error": error,
       "border-border bg-background cursor-not-allowed": disabled
     })
@@ -7594,9 +7600,9 @@ var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
     "aria-invalid": error ? true : false,
     disabled: disabled,
     className: classnames_default()("form-textarea block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-6 border shadow-sm focus:ring-0", textareaClassName, {
-      "border-border text-accent-five hover:border-accent-five focus:border-accent-five": !error && !disabled,
+      "border-border text-foreground hover:border-foreground focus:border-foreground placeholder-accent-five": !error && !disabled,
       "text-error border-error hover:border-error focus:border-error placeholder-error": error,
-      "border-border bg-background cursor-not-allowed": disabled
+      "border-border bg-background cursor-not-allowed placeholder-accents-five": disabled
     })
   }, rest)));
 });
@@ -7680,9 +7686,9 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
     value: internalValue,
     disabled: disabled,
     className: classnames_default()("border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:ring-0 transition duration-150 ease-in-out", selectClassName, {
-      "border-border text-accents-five hover:border-accent-five focus:border-accent-five": !error && !disabled,
+      "border-border text-foreground hover:border-accent-five focus:border-accent-five placeholder-accent-five": !error && !disabled,
       "text-error border-error hover:border-error focus:border-error placeholder-error": error,
-      "border-border bg-background cursor-not-allowed": disabled
+      "border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five": disabled
     })
   }, rest), Object(react_["jsx"])("option", {
     value: "",
