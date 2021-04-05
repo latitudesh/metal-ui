@@ -35,7 +35,13 @@ AlgoliaSearch.defaultProps = {
 };
 
 AlgoliaSearch.propTypes = {
+  /**
+   * APP ID from your Algolia project.
+   */
   ALGOLIA_APP_ID: PropTypes.string.isRequired,
+  /**
+   * API Search Key from your Algolia Project.
+   */
   ALGOLIA_API_SEARCH_KEY: PropTypes.string.isRequired,
   specialChar: PropTypes.string.isRequired,
   searchOperators: PropTypes.arrayOf(PropTypes.string).isRequired,
