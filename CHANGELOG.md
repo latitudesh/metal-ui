@@ -1,3 +1,16 @@
+# [2.7.0](https://github.com/Maxihost/metal-ui/compare/v2.6.3...v2.7.0) (2021-04-05)
+
+
+### Bug Fixes
+
+* className support for Button ([ae175a9](https://github.com/Maxihost/metal-ui/commit/ae175a9f78b117ef8851cabf3f06879ac1d7830b))
+* Standardizes input and select colors ([563edb6](https://github.com/Maxihost/metal-ui/commit/563edb6ef70f887f4e208ada21e315684711cfb2))
+
+
+### Features
+
+* Button Sizes ([e308660](https://github.com/Maxihost/metal-ui/commit/e308660e18bcfd808c1c997ec75d43dbdbf9552a))
+
 ## [2.6.3](https://github.com/Maxihost/metal-ui/compare/v2.6.2...v2.6.3) (2021-03-30)
 
 
