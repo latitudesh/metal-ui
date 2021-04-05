@@ -1,0 +1,64 @@
+import { useState } from "react";
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import Sidesheet from ".";
+import Button from "../Button";
+import Text from "../Typography/Text";
+
+<Meta title="Sidesheet" component={Sidesheet} />
+
+# API
+
+<Props of={Sidesheet} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    {() => {
+      const [isShown, setIsShown] = useState(false);
+      return (
+        <Sidesheet
+          title={"Title"}
+          onClose={() => setIsShown(false)}
+          isShown={isShown}
+          content={<Text is="p">Content</Text>}
+        >
+          <Button
+            type="secondary"
+            onClick={() => setIsShown(true)}
+            label="Open Sidesheet"
+          />
+        </Sidesheet>
+      );
+    }}
+  </Story>
+</Preview>
+
+# With action
+
+<Preview>
+  <Story name="With action">
+    {() => {
+      const [isShown, setIsShown] = useState(false);
+      return (
+        <Sidesheet
+          onClose={() => setIsShown(false)}
+          title={"Title"}
+          isShown={isShown}
+          content={<Text is="p">Content</Text>}
+          action={
+            <>
+              <Button block onClick={() => setIsShown(false)} label={"Save"} />
+            </>
+          }
+        >
+          <Button
+            onClick={() => setIsShown(true)}
+            type="secondary"
+            label={"Open Sidesheet"}
+          />
+        </Sidesheet>
+      );
+    }}
+  </Story>
+</Preview>

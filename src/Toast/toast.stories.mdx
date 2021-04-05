@@ -1,0 +1,119 @@
+import { useState } from "react";
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import Toast from ".";
+import Box from "../Box";
+import Button from "../Button";
+
+<Meta title="Toast" component={Toast} />
+
+# API
+
+<Props of={Toast} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    {() => {
+      const [showToast, setShowToast] = useState(false);
+      return (
+        <>
+          <Button
+            type="secondary"
+            onClick={() => setShowToast(true)}
+            label="Show Toast"
+          />
+          {showToast && (
+            <Toast
+              onCloseToast={() => setShowToast(false)}
+              text="The five boxing wizards jump quickly."
+            />
+          )}
+        </>
+      );
+    }}
+  </Story>
+</Preview>
+
+# Success
+
+<Preview>
+  <Story name="Success">
+    {() => {
+      const [showToast, setShowToast] = useState(false);
+      return (
+        <>
+          <Button
+            type="secondary"
+            onClick={() => setShowToast(true)}
+            label="Show Toast"
+          />
+          {showToast && (
+            <Toast
+              success
+              onCloseToast={() => setShowToast(false)}
+              text="The five boxing wizards jump quickly. The five boxing wizards jump very
+        quickly."
+            />
+          )}
+        </>
+      );
+    }}
+  </Story>
+</Preview>
+
+# Error
+
+<Preview>
+  <Story name="Error">
+    {() => {
+      const [showToast, setShowToast] = useState(false);
+      return (
+        <>
+          <Button
+            type="secondary"
+            onClick={() => setShowToast(true)}
+            label="Show Toast"
+          />
+          {showToast && (
+            <Toast
+              error
+              onCloseToast={() => setShowToast(false)}
+              text="The five boxing wizards jump quickly. The five boxing wizards jump very
+        quickly."
+            />
+          )}
+        </>
+      );
+    }}
+  </Story>
+</Preview>
+
+# Dismissable
+Use `showCloseIcon` to show make the Toast dismissable. Optionally set `dismissTime` in miliseconds to force close.
+
+<Preview>
+  <Story name="Dismissable">
+    {() => {
+      const [showToast, setShowToast] = useState(false);
+      return (
+        <>
+          <Button
+            type="secondary"
+            onClick={() => setShowToast(true)}
+            label="Show Toast"
+          />
+          {showToast && (
+            <Toast
+              showCloseIcon
+              dismissTime={5000}
+              onCloseToast={() => setShowToast(false)}
+              text="The five boxing wizards jump quickly. The five boxing wizards jump very
+        quickly."
+            />
+          )}
+        </>
+      );
+    }}
+  </Story>
+</Preview>

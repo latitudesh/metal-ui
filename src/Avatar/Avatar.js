@@ -26,7 +26,7 @@ class Avatar extends PureComponent {
     hashValue: PropTypes.string,
 
     /**
-     * When true, render a solid avatar.
+     * When true, renders a solid avatar.
      */
     isSolid: PropTypes.bool,
 

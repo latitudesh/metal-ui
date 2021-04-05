@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
 import Avatar from "./Avatar";
 import Text from "../Typography/Text";
 
@@ -26,10 +26,11 @@ export const colors = [
   "purple",
 ];
 
-<Meta title="Avatar" component={Avatar} />
+# API
 
-**Credits:** 
-The Avatar component, including its code, were heavily inspired by the awesome [Evergreen](https://evergreen.segment.com/) design system. All credits to them.
+<Props of={Avatar} />
+
+<Meta title="Avatar" component={Avatar} />
 
 # Basic
 
@@ -145,3 +146,6 @@ In cases where it's not possible to determine the name of the user, use the <cod
     ))}
   </Story>
 </Preview>
+
+**Credits:**
+The Avatar component, including its code, were heavily inspired by the awesome [Evergreen](https://evergreen.segment.com/) design system. All credits to them.

@@ -144,7 +144,7 @@ const Sidesheet = ({
             {action && (
               <Box
                 flex
-                justifyContent="center"
+                justifyContent="evenly"
                 alignItems="center"
                 className="sidesheet-action h-16 border-t border-border relative flex-initial rounded rounded-t-none"
               >

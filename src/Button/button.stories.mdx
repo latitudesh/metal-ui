@@ -2,25 +2,44 @@ import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
 import Button from "./index";
 import Icon from "../../util/Icon";
 import { ArrowUpOutline } from "heroicons-react";
+import Box from "../Box";
 
 <Meta title="Button" component={Button} />
+
+# API
+
+<Props of={Button} />
+
 
 # Variants
 
 <Preview>
   <Story name="Variants">
+    <Box flex justifyContent="evenly">
+      <Button label="Primary" />
+      <Button label="Secondary" variant="secondary" />
+      <Button label="Danger" variant="danger" />
+      <Button label="Minimal" variant="minimal" />
+    </Box>
+  </Story>
+</Preview>
+
+# Sizes
+
+<Preview>
+  <Story name="Size">
     <div>
-      <div className="inline-flex">
-        <Button label="Primary" />
+      <Box flex justifyContent="evenly">
+        <Button label="Primary" size="small" />
+        <Button label="Default" />
+        <Button label="Primary" size="large" />
+      </Box>
+      <Button label="Block small" size="small" block />
+      <div className="mt-2">
+        <Button label="Block normal" block />
       </div>
-      <div className="inline-flex ml-2">
-        <Button label="Secondary" variant="secondary" />
-      </div>
-      <div className="inline-flex ml-2">
-        <Button label="Danger" variant="danger" />
-      </div>
-      <div className="inline-flex ml-2">
-        <Button label="Minimal" variant="minimal" />
+      <div className="mt-2">
+        <Button label="Block large" size="large" block />
       </div>
     </div>
   </Story>
@@ -32,37 +51,21 @@ Disabled buttons do not inherit `variant` styling.
 
 <Preview>
   <Story name="Disabled">
-    <div>
-      <div className="block">
-        <Button label="Disabled" disabled />
-      </div>
-      <div className="block mt-2">
-        <Button label="Disabled" disabled large />
-      </div>
-      <div className="block mt-2">
-        <Button label="Disabled" disabled block />
-      </div>
-    </div>
-  </Story>
-</Preview>
-
-# Sizes
-
-<Preview>
-  <Story name="Size">
-    <div>
-      <div>
-        <Button label="Default" />
-      </div>
-      <div className="block mt-2">
-        <div className="inline-flex">
-          <Button label="Large" large />
-        </div>
-      </div>
-      <div className="mt-2">
-        <Button label="Block large" block />
-      </div>
-    </div>
+    <Box flex justifyContent="around">
+      <Button label="Disabled" disabled />
+      <Button
+        label="Disabled"
+        disabled
+        iconBefore={<ArrowUpOutline size={20} />}
+      />
+      <Button
+        label="Disabled"
+        disabled
+        size="large"
+        iconBefore={<ArrowUpOutline size={20} />}
+        iconAfter={<ArrowUpOutline size={20} />}
+      />
+    </Box>
   </Story>
 </Preview>
 
@@ -70,17 +73,11 @@ Disabled buttons do not inherit `variant` styling.
 
 <Preview>
   <Story name="Loading">
-    <div>
-      <div className="inline-flex">
-        <Button label="Loading" isLoading={true} />
-      </div>
-      <div className="inline-flex ml-2">
-        <Button label="Loading" variant="secondary" isLoading={true} />
-      </div>
-      <div className="inline-flex ml-2">
-        <Button label="Loading" variant="danger" isLoading={true} />
-      </div>
-    </div>
+    <Box flex justifyContent="around">
+      <Button label="Loading" isLoading={true} />
+      <Button label="Loading" variant="secondary" isLoading={true} />
+      <Button label="Loading" variant="danger" isLoading={true} />
+    </Box>
   </Story>
 </Preview>
 
@@ -90,26 +87,20 @@ The component does not handle icon sizing. You should manage that from your proj
 
 <Preview>
   <Story name="With Icon">
-    <div>
-      <div>
-        <Button iconBefore={<ArrowUpOutline size={20} />} label="Icon before" />
-      </div>
-      <div className="mt-2">
-        <Button
-          iconAfter={<ArrowUpOutline size={20} />}
-          variant="secondary"
-          label="Icon after"
-        />
-      </div>
-      <div className="mt-2">
-        <Button
-          iconBefore={<ArrowUpOutline size={20} />}
-          iconAfter={<ArrowUpOutline size={20} />}
-          variant="secondary"
-          label="Icon before and after"
-        />
-      </div>
-    </div>
+    <Box flex justifyContent="around">
+      <Button iconBefore={<ArrowUpOutline size={20} />} label="Icon before" />
+      <Button
+        iconAfter={<ArrowUpOutline size={20} />}
+        variant="secondary"
+        label="Icon after"
+      />
+      <Button
+        iconBefore={<ArrowUpOutline size={20} />}
+        iconAfter={<ArrowUpOutline size={20} />}
+        variant="secondary"
+        label="Icon before and after"
+      />
+    </Box>
   </Story>
 </Preview>
 
@@ -122,7 +113,3 @@ Buttons with components don't currently support icons
     <Button component={<a href="javascript:void()">With component</a>} />
   </Story>
 </Preview>
-
-# API
-
-<Props of={Button} />

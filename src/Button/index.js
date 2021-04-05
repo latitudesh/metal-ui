@@ -14,6 +14,9 @@ const buttonTypes = {
     "border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed",
   minimal:
     "border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five",
+  small: "px-4 h-8 leading-8 text-sm",
+  normal: "px-6 h-9 leading-9 text-sm",
+  large: "px-12 h-10 leading-10 text-base",
 };
 
 const Button = ({
@@ -23,11 +26,12 @@ const Button = ({
   onClick,
   label,
   type,
+  size,
   variant,
   component,
   block,
-  large,
   isLoading,
+  className,
 }) => {
   const cx = classNames.bind(buttonTypes);
 
@@ -38,20 +42,24 @@ const Button = ({
         "opacity-100": !isLoading,
       })}
     >
-      {iconBefore && <span className="flex mr-2">{cloneElement(iconBefore)}</span>}
+      {iconBefore && (
+        <span className="flex mr-2">{cloneElement(iconBefore)}</span>
+      )}
       <span className="truncate">{label}</span>
-      {iconAfter && <span className="flex ml-2">{cloneElement(iconAfter)}</span>}
+      {iconAfter && (
+        <span className="flex ml-2">{cloneElement(iconAfter)}</span>
+      )}
     </div>
   );
 
   const ButtonClasses = cx(
     "Button relative border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer",
+    className,
     {
       disabled: disabled,
       [variant]: Boolean(variant) && !disabled,
-      "px-5 h-9 leading-9 text-sm": !Boolean(block),
-      "px-12 h10 leading-10 w-full": Boolean(block),
-      "px-12 h-10 leading-10": Boolean(large),
+      [size]: Boolean(size),
+      "block w-full": Boolean(block),
     }
   );
 
@@ -103,11 +111,13 @@ Button.propTypes = {
     "disabled",
     "minimal",
   ]),
+  size: PropTypes.oneOf(["small", "normal", "large"]),
   isLoading: PropTypes.bool,
   component: PropTypes.element,
 };
 
 Button.defaultProps = {
+  size: "normal",
   variant: "default",
   type: "button",
   isLoading: false,
