@@ -3,7 +3,7 @@ import Badge from "./index";
 
 <Meta title="Badge" component={Badge} />
 
-# Props
+# API
 
 <Props of={Badge} />
 
@@ -47,17 +47,17 @@ import Badge from "./index";
 
 <Preview>
   <Story name="Rounded">
-    <Badge rounded minimal>
+    <Badge rounded>
       5
     </Badge>
-    <Badge rounded minimal className="ml-2">
+    <Badge rounded style="positive" className="ml-2">
       10
     </Badge>
-    <Badge rounded minimal className="ml-2">
-      100
+    <Badge rounded style="warning" className="ml-2">
+      15
     </Badge>
-    <Badge rounded minimal className="ml-2">
-      2021
+    <Badge rounded style="danger" className="ml-2">
+      20
     </Badge>
   </Story>
 </Preview>

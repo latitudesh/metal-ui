@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 
 const Badge = ({ style, children, minimal, className, rounded }) => {
   let badgeStyle = [
@@ -13,20 +14,25 @@ const Badge = ({ style, children, minimal, className, rounded }) => {
 
   let isRounded = [
     {
-      "rounded-full bg-foreground text-white": rounded,
+      "rounded-full text-white": rounded,
+      "bg-foreground": style === "default",
+      "bg-success": style == "positive",
+      "bg-warning": style === "warning",
+      "bg-error": style === "danger",
     },
   ];
 
   return (
     <div
       className={classNames(
-        "border border-border inline-flex items-center px-2.5 rounded-md text-sm font-medium h-6 leading-6",
-        badgeStyle,
-        isRounded,
+        "inline-flex items-center px-2.5 rounded-md text-sm font-medium h-6 leading-6",
+        !rounded && badgeStyle,
+        !rounded && "border border-border",
+        rounded && isRounded,
         className
       )}
     >
-      {!minimal && (
+      {!minimal && !rounded && (
         <svg
           className={classNames("-ml-0.5 mr-1.5 h-2 w-2", badgeStyle)}
           fill="currentColor"
@@ -41,7 +47,24 @@ const Badge = ({ style, children, minimal, className, rounded }) => {
 };
 
 Badge.defaultProps = {
-  style: 'default',
+  style: "default",
+  rounded: false,
+  minimal: false,
+};
+
+Badge.propTypes = {
+  /**
+   * The color of the badge.
+   */
+  style: PropTypes.oneOf(["default", "positive", "warning", "danger"]),
+  /**
+   * When true, renders a rounded badge with inverted colors.
+   */
+  rounded: PropTypes.bool,
+  /**
+   * When true, renders a badge without the prepending dot.
+   */
+  minimal: PropTypes.bool,
 };
 
 export default Badge;

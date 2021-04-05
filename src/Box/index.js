@@ -18,14 +18,13 @@ const Box = ({
     <div
       className={classNames("overflow-hidden", className, {
         flex: Boolean(flex),
-        "bg-white": !Boolean(backgroundColor),
         [`items-${alignItems}`]: Boolean(alignItems),
         [`justify-${justifyContent}`]: Boolean(justifyContent),
         [`bg-${backgroundColor}`]: Boolean(backgroundColor),
         [`flex-${flexDirection}`]: Boolean(flexDirection),
         [`mb-4 border border-border rounded shadow-sm`]: Boolean(rootCard),
         [`px-6 py-4`]: !Boolean(noPadding),
-        [`flex-${flexWrap}`]: Boolean(flexWrap)
+        [`flex-${flexWrap}`]: Boolean(flexWrap),
       })}
     >
       {children}
@@ -33,17 +32,68 @@ const Box = ({
   );
 };
 
+Box.defaultProps = {
+  flex: false,
+  alignItems: null,
+  justifyContent: null,
+  backgroundColor: "white",
+  flexDirection: null,
+  rootCard: false,
+  noPadding: false,
+  flexWrap: null,
+};
+
 Box.propTypes = {
-  flex: PropTypes.bool,
-  alignItems: PropTypes.string,
-  justifyContent: PropTypes.string,
+  /**
+   * Sets the background color
+   */
   backgroundColor: PropTypes.string,
-  flexDirection: PropTypes.string,
+  /**
+   * When true, renders the Box with `display:flex`
+   */
+  flex: PropTypes.bool,
+  /**
+   * Controls item alignment with `align-items`. Only works when flex is true
+   */
+  alignItems: PropTypes.oneOf([
+    "start",
+    "end",
+    "center",
+    "baseline",
+    "stretch",
+  ]),
+  /**
+   * Controls item positioning with `justify-content`. Only works when flex is true
+   */
+  justifyContent: PropTypes.oneOf([
+    "start",
+    "end",
+    "center",
+    "between",
+    "around",
+    "evenly",
+  ]),
+  /**
+   * Controls the direction of flex items with `flex-direction`. Only works when flex is true
+   */
+  flexDirection: PropTypes.oneOf(["row", "row-reverse", "col", "col-reverse"]),
+  /**
+   * Controls how flex items wrap with `flex-wrap`. Only works when flex is true
+   */
+  flexWrap: PropTypes.oneOf(["wrap", "wrap-reverse", "nowrap"]),
+  /**
+   * Renders the content
+   */
   children: PropTypes.node,
-  className: PropTypes.string,
+  /**
+   * Adds border and shadow to the Box. Useful when using Box as the parent element of a section
+   */
   rootCard: PropTypes.bool,
+  /**
+   * Removes the padding from the Box. Useful when using Box as a standard `div`.
+   */
   noPadding: PropTypes.bool,
-  flexWrap: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default Box;
