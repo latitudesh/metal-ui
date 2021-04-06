@@ -1,5 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import Header from "./index";
+import Button from "../Button";
 
 <Meta title="Header" component={Header} />
 
@@ -7,10 +8,6 @@ import Header from "./index";
 
 <Preview>
   <Story name="Default">
-    <Header
-      leftContent={<p>Left content</p>}
-      centerContent={<p>Center content</p>}
-      rightContent={<p>Right content</p>}
-    />
+    <Header title="Title" actions={<Button label="Action" />} />
   </Story>
 </Preview>
