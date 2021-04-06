@@ -7,6 +7,14 @@ import {
   ToolbarToggleGroup,
   ToolbarToggle,
 } from "./index";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownContent,
+  DropdownLabel,
+  DropdownItem,
+  DropdownSeparator,
+} from "../DropdownMenu";
 
 <Meta title="Toolbar" component={Toolbar} />
 
@@ -42,6 +50,24 @@ This component uses the Radix UI `Toolbar` primitive. Refer to [this page](https
         <ToolbarToggle value="center">Center</ToolbarToggle>
         <ToolbarToggle value="right">Right</ToolbarToggle>
       </ToolbarToggleGroup>
+    </Toolbar>
+  </Story>
+</Preview>
+
+# With DropdownMenu
+
+You can render the DropdownMenu as part of the toolbar
+
+<Preview>
+  <Story name="With DropdownMenu">
+    <Toolbar>
+      <Dropdown>
+        <DropdownTrigger as={ToolbarButton}>Alphabetical</DropdownTrigger>
+        <DropdownContent>
+          <DropdownItem>Recently updated</DropdownItem>
+          <DropdownItem>Least recently updated</DropdownItem>
+        </DropdownContent>
+      </Dropdown>
     </Toolbar>
   </Story>
 </Preview>

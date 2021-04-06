@@ -2,6 +2,22 @@ import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import Header from "./index";
 import Button from "../Button";
 import { SwitchVerticalOutline } from "heroicons-react";
+import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarLink,
+  ToolbarSeparator,
+  ToolbarToggleGroup,
+  ToolbarToggle,
+} from "../Toolbar";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownContent,
+  DropdownLabel,
+  DropdownItem,
+  DropdownSeparator,
+} from "../DropdownMenu";
 
 <Meta title="Header" component={Header} />
 
@@ -29,15 +45,18 @@ import { SwitchVerticalOutline } from "heroicons-react";
       title="Title"
       actions={<Button label="Action" />}
       nav={
-        <>
-          <Button size="small" label="Page 1" />
-          <Button
-            size="small"
-            label="Page 2"
-            className="ml-1"
-            variant="minimal"
-          />
-        </>
+        <Toolbar>
+          <ToolbarButton>Button</ToolbarButton>
+          <ToolbarLink href="https://www.maxihost.com" target="_blank">
+            Link
+          </ToolbarLink>
+          <ToolbarSeparator />
+          <ToolbarToggleGroup type="single" defaultValue="center">
+            <ToolbarToggle value="left">Left</ToolbarToggle>
+            <ToolbarToggle value="center">Center</ToolbarToggle>
+            <ToolbarToggle value="right">Right</ToolbarToggle>
+          </ToolbarToggleGroup>
+        </Toolbar>
       }
     />
   </Story>
@@ -51,25 +70,31 @@ import { SwitchVerticalOutline } from "heroicons-react";
       title="Title"
       actions={<Button label="Action" />}
       nav={
-        <>
-          <Button size="small" label="Page 1" />
-          <Button
-            size="small"
-            label="Page 2"
-            className="ml-1"
-            variant="minimal"
-          />
-        </>
+        <Toolbar>
+          <ToolbarButton>Page 1</ToolbarButton>
+          <ToolbarButton>Page 2</ToolbarButton>
+          <ToolbarButton>Page 3</ToolbarButton>
+        </Toolbar>
       }
       filters={
-        <>
-          <Button
-            size="small"
-            variant="minimal"
-            iconBefore={<SwitchVerticalOutline size={18} />}
-            label="Sort"
-          />
-        </>
+        <Toolbar>
+          <Dropdown>
+            <DropdownTrigger as={ToolbarButton}>
+              Alphabetical
+            </DropdownTrigger>
+            <DropdownContent align="end">
+              <DropdownItem onSelect={() => console.log("cut")}>
+                Cut
+              </DropdownItem>
+              <DropdownItem onSelect={() => console.log("copy")}>
+                Copy
+              </DropdownItem>
+              <DropdownItem onSelect={() => console.log("paste")}>
+                Paste
+              </DropdownItem>
+            </DropdownContent>
+          </Dropdown>
+        </Toolbar>
       }
     />
   </Story>
