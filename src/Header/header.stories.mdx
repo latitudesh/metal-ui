@@ -79,19 +79,10 @@ import {
       filters={
         <Toolbar>
           <Dropdown>
-            <DropdownTrigger as={ToolbarButton}>
-              Alphabetical
-            </DropdownTrigger>
-            <DropdownContent align="end">
-              <DropdownItem onSelect={() => console.log("cut")}>
-                Cut
-              </DropdownItem>
-              <DropdownItem onSelect={() => console.log("copy")}>
-                Copy
-              </DropdownItem>
-              <DropdownItem onSelect={() => console.log("paste")}>
-                Paste
-              </DropdownItem>
+            <DropdownTrigger as={ToolbarButton}>Alphabetical</DropdownTrigger>
+            <DropdownContent>
+              <DropdownItem>Recently updated</DropdownItem>
+              <DropdownItem>Least recently updated</DropdownItem>
             </DropdownContent>
           </Dropdown>
         </Toolbar>
