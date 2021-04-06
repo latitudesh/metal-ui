@@ -8,6 +8,39 @@ import Button from "../Button";
 
 <Preview>
   <Story name="Default">
+    <Header title="Title" />
+  </Story>
+</Preview>
+
+# With action
+
+<Preview>
+  <Story name="With action">
     <Header title="Title" actions={<Button label="Action" />} />
+  </Story>
+</Preview>
+
+# With nav
+
+<Preview>
+  <Story name="With nav">
+    <Header
+      title="Title"
+      actions={<Button label="Action" />}
+      nav={<Button size="small" label="Nav" />}
+    />
+  </Story>
+</Preview>
+
+# With filters
+
+<Preview>
+  <Story name="With filters">
+    <Header
+      title="Title"
+      actions={<Button label="Action" />}
+      nav={<Button size="small" label="Nav" />}
+      filters={<Button size="small" label="Filters" />}
+    />
   </Story>
 </Preview>
