@@ -1,5 +1,12 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import { Toolbar, ToolbarButton, ToolbarLink, ToolbarSeparator } from "./index";
+import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarLink,
+  ToolbarSeparator,
+  ToolbarToggleGroup,
+  ToolbarToggle,
+} from "./index";
 
 <Meta title="Toolbar" component={Toolbar} />
 
@@ -9,6 +16,10 @@ Metal exports the following components for the Toolbar:
 
 - Toolbar
 - ToolbarButton
+- ToolbarLink
+- ToolbarSeparator
+- ToolbarToggleGroup
+- ToolbarToggle
 
 # API
 
@@ -19,11 +30,18 @@ This component uses the Radix UI `Toolbar` primitive. Refer to [this page](https
 <Preview>
   <Story name="Default">
     <Toolbar>
-      <ToolbarButton>Button</ToolbarButton>
+      <ToolbarButton>Button 1</ToolbarButton>
+      <ToolbarButton>Button 2</ToolbarButton>
+      <ToolbarSeparator />
       <ToolbarLink href="https://www.maxihost.com" target="_blank">
         Link
       </ToolbarLink>
       <ToolbarSeparator />
+      <ToolbarToggleGroup type="single" defaultValue="center">
+        <ToolbarToggle value="left">Left</ToolbarToggle>
+        <ToolbarToggle value="center">Center</ToolbarToggle>
+        <ToolbarToggle value="right">Right</ToolbarToggle>
+      </ToolbarToggleGroup>
     </Toolbar>
   </Story>
 </Preview>

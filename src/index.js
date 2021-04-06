@@ -31,4 +31,5 @@ export {
   ToolbarButton,
   ToolbarLink,
   ToolbarSeparator,
+  ToolbarToggle
 } from "./Toolbar";
