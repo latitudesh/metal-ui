@@ -34,6 +34,7 @@
     "@emotion/babel-plugin-jsx-pragmatic": "^0.1.5",
     "@emotion/babel-preset-css-prop": "^11.2.0",
     "@radix-ui/react-dropdown-menu": "0.0.10",
+    "@radix-ui/react-toolbar": "^0.0.9",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/git": "^9.0.0",
