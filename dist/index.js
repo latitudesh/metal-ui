@@ -13363,7 +13363,27 @@ function Toolbar_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to st
 
 
 
-var Toolbar_ref3 =  true ? {
+/*
+* Styles
+*/
+
+var itemStyles =  true ? {
+  name: "5w0ash",
+  styles: "transition-property:background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;appearance:none;background-color:transparent;border-width:1px;border-color:transparent;padding-top:0.125rem;padding-bottom:0.125rem;padding-left:0.5rem;padding-right:0.5rem;overflow:hidden;border-radius:0.25rem;font-size:0.875rem;line-height:1.25rem;--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));font-weight:400; margin:0 5px"
+} : undefined;
+var itemHover =  true ? {
+  name: "15a5ahb",
+  styles: "--tw-bg-opacity:1;background-color:rgba(229, 231, 235, var(--tw-bg-opacity));--tw-text-opacity:1;color:rgba(51, 51, 51, var(--tw-text-opacity));"
+} : undefined;
+var itemActive =  true ? {
+  name: "18c311v",
+  styles: "--tw-bg-opacity:1;background-color:rgba(0, 0, 0, var(--tw-bg-opacity));--tw-text-opacity:1;color:rgba(255, 255, 255, var(--tw-text-opacity));"
+} : undefined;
+/*
+* Components
+*/
+
+var Toolbar_ref2 =  true ? {
   name: "1hnnrgc",
   styles: "margin:0 -5px"
 } : undefined;
@@ -13373,31 +13393,48 @@ var Toolbar_Toolbar = /*#__PURE__*/emotion_styled_base_browser_esm(react_toolbar
 } : undefined)(function () {
   return [{
     "display": "flex"
-  }, Toolbar_ref3];
+  }, Toolbar_ref2];
 },  true ? "" : undefined);
-
-var itemStyles =  true ? {
-  name: "dqfocj",
-  styles: "appearance:none;background-color:transparent;border-width:1px;--tw-border-opacity:1;border-color:rgba(234, 234, 234, var(--tw-border-opacity));padding-top:0.25rem;padding-bottom:0.25rem;padding-left:0.5rem;padding-right:0.5rem;overflow:hidden;border-radius:0.25rem;font-size:0.875rem;line-height:1.25rem; margin:0 5px"
-} : undefined;
 
 var Toolbar_ToolbarButton = /*#__PURE__*/emotion_styled_base_browser_esm(index_module_Button,  true ? {
   target: "eo0zj63"
-} : undefined)(function () {
-  return [itemStyles];
+} : undefined)(function (_ref3) {
+  var active = _ref3.active;
+  return [itemStyles, active && itemActive,
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+  Object(react_["css"])("&:hover{", !active && itemHover, ";},&[data-state=\"open\"]{", itemActive, ";}" + ( true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined)];
 },  true ? "" : undefined);
 
 var Toolbar_ToolbarLink = /*#__PURE__*/emotion_styled_base_browser_esm(Link,  true ? {
   target: "eo0zj62"
-} : undefined)(function () {
-  return [itemStyles, {
-    "display": "inline-flex",
-    "justifyContent": "center",
-    "alignItems": "center"
-  }];
+} : undefined)(function (_ref4) {
+  var active = _ref4.active;
+  return [itemStyles, active && itemActive,
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+  Object(react_["css"])("&:hover{", !active && itemHover, ";},&[data-state=\"open\"]{", itemActive, ";}" + ( true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined)];
 },  true ? "" : undefined);
 
-var Toolbar_ref2 =  true ? {
+var Toolbar_ref =  true ? {
   name: "1448csx",
   styles: "width:1px"
 } : undefined;
@@ -13407,27 +13444,41 @@ var Toolbar_ToolbarSeparator = /*#__PURE__*/emotion_styled_base_browser_esm(reac
 } : undefined)(function () {
   return [{
     "--tw-bg-opacity": "1",
-    "backgroundColor": "rgba(136, 136, 136, var(--tw-bg-opacity))",
+    "backgroundColor": "rgba(229, 231, 235, var(--tw-bg-opacity))",
     "marginLeft": "0.5rem",
     "marginRight": "0.5rem",
     "marginTop": "0.25rem",
     "marginBottom": "0.25rem"
-  }, Toolbar_ref2];
+  }, Toolbar_ref];
 },  true ? "" : undefined);
 
 var Toolbar_ToolbarToggleGroup = index_module_ToggleGroup;
 
-var Toolbar_ref =  true ? {
-  name: "149qw01",
-  styles: "&[data-state=\"on\"]{--tw-bg-opacity:1;background-color:rgba(229, 231, 235, var(--tw-bg-opacity));;}"
-} : undefined;
-
 var ToolbarToggle = /*#__PURE__*/emotion_styled_base_browser_esm(ToggleItem,  true ? {
   target: "eo0zj60"
-} : undefined)(function () {
-  return [itemStyles, Toolbar_ref];
+} : undefined)(function (_ref5) {
+  var active = _ref5.active;
+  return [itemStyles, active && itemActive,
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+
+  /*#__PURE__*/
+  Object(react_["css"])("&:hover{", !active && itemHover, ";},&[data-state=\"on\"]{", itemActive, ";}" + ( true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined)];
 },  true ? "" : undefined);
 
+[Toolbar_ToolbarLink, Toolbar_ToolbarButton, ToolbarToggle].propTypes = {
+  active: prop_types_default.a.bool
+};
+[Toolbar_ToolbarLink, Toolbar_ToolbarButton, ToolbarToggle].defaultProps = {
+  active: false
+};
 
 // CONCATENATED MODULE: ./src/index.js
 

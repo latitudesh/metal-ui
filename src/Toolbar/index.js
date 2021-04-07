@@ -1,5 +1,27 @@
 import tw, { styled, css } from "twin.macro";
 import * as ToolbarPrimitive from "@radix-ui/react-toolbar";
+import PropTypes from "prop-types";
+
+/*
+* Styles
+*/
+
+const itemStyles = css`
+  ${tw`appearance-none bg-transparent border border-transparent py-0.5 px-2 overflow-hidden rounded text-sm transition ease-in-out duration-150 text-foreground font-normal`}
+  margin: 0 5px;
+`;
+
+const itemHover = css`
+  ${tw`bg-accent-three text-accent-seven`}
+`;
+
+const itemActive = css`
+  ${tw`bg-foreground text-white`}
+`;
+
+/*
+* Components
+*/
 
 const Toolbar = styled(ToolbarPrimitive.Root)(() => [
   tw`flex`,
@@ -8,20 +30,32 @@ const Toolbar = styled(ToolbarPrimitive.Root)(() => [
   `,
 ]);
 
-const itemStyles = css`
-  ${tw`appearance-none bg-transparent border border-border py-1 px-2 overflow-hidden rounded text-sm`}
-  margin: 0 5px;
-`;
-
-const ToolbarButton = styled(ToolbarPrimitive.Button)(() => [itemStyles]);
-
-const ToolbarLink = styled(ToolbarPrimitive.Link)(() => [
+const ToolbarButton = styled(ToolbarPrimitive.Button)(({ active }) => [
   itemStyles,
-  tw`inline-flex justify-center items-center`,
+  active && itemActive,
+  css`&:hover {
+    ${!active && itemHover}
+  },
+    &[data-state="open"] {
+      ${itemActive}
+    }
+  `,
+]);
+
+const ToolbarLink = styled(ToolbarPrimitive.Link)(({ active }) => [
+  itemStyles,
+  active && itemActive,
+  css`&:hover {
+    ${!active && itemHover}
+  },
+    &[data-state="open"] {
+      ${itemActive}
+    }
+  `,
 ]);
 
 const ToolbarSeparator = styled(ToolbarPrimitive.Separator)(() => [
-  tw`bg-accent-four mx-2 my-1`,
+  tw`bg-accent-three mx-2 my-1`,
   css`
     width: 1px;
   `,
@@ -29,14 +63,25 @@ const ToolbarSeparator = styled(ToolbarPrimitive.Separator)(() => [
 
 const ToolbarToggleGroup = ToolbarPrimitive.ToggleGroup;
 
-const ToolbarToggle = styled(ToolbarPrimitive.ToggleItem)(() => [
+const ToolbarToggle = styled(ToolbarPrimitive.ToggleItem)(({ active }) => [
   itemStyles,
-  css`
+  active && itemActive,
+  css`&:hover {
+    ${!active && itemHover}
+  },
     &[data-state="on"] {
-      ${tw`bg-accent-three`};
+      ${itemActive}
     }
   `,
 ]);
+
+[ToolbarLink, ToolbarButton, ToolbarToggle].propTypes = {
+  active: PropTypes.bool,
+};
+
+[ToolbarLink, ToolbarButton, ToolbarToggle].defaultProps = {
+  active: false,
+};
 
 export {
   Toolbar,
