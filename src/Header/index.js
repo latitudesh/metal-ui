@@ -36,7 +36,7 @@ Header.defaultProps = {
 };
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   actions: PropTypes.node,
   nav: PropTypes.node,
   filters: PropTypes.node,
