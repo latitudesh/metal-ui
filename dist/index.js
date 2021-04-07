@@ -6481,7 +6481,7 @@ var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
 
       var HTag = "h".concat(this.props.size);
       return Object(react_["jsx"])(HTag, Heading_extends({
-        className: classnames_default()("font-medium leading-normal", className, {
+        className: classnames_default()("font-medium", className, {
           "text-4xl tracking-tighter": size == 1,
           "text-3xl tracking-tighter": size == 2,
           "text-xl tracking-tight": size == 3,
@@ -6584,7 +6584,7 @@ var Header_Header = function Header(_ref) {
   }, Object(react_["jsx"])("div", {
     css: Header_ref4
   }, Object(react_["jsx"])(Typography_Heading, {
-    size: 1,
+    size: 2,
     css: Header_ref5
   }, title)), actions && Object(react_["jsx"])("div", {
     css: Header_ref6
