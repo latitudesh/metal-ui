@@ -33,7 +33,9 @@ Metal exports the following components for the Toolbar:
 
 This component uses the Radix UI `Toolbar` primitive. Refer to [this page](https://radix-ui.com/primitives/docs/components/toolbar) for the API reference, but note components in Metal UI do not use dot-notation.
 
-# Default
+There's an additional `active` prop available for selectable components.
+
+# Example
 
 <Preview>
   <Story name="Default">
@@ -61,13 +63,30 @@ You can render the DropdownMenu as part of the toolbar
 <Preview>
   <Story name="With DropdownMenu">
     <Toolbar>
+      <ToolbarButton>Button 1</ToolbarButton>
+      <ToolbarButton>Button 2</ToolbarButton>
+      <ToolbarSeparator />
       <Dropdown>
-        <DropdownTrigger as={ToolbarButton}>Alphabetical</DropdownTrigger>
+        <DropdownTrigger as={ToolbarButton}>I am a Dropdown</DropdownTrigger>
         <DropdownContent>
           <DropdownItem>Recently updated</DropdownItem>
           <DropdownItem>Least recently updated</DropdownItem>
         </DropdownContent>
       </Dropdown>
+    </Toolbar>
+  </Story>
+</Preview>
+
+# With active item
+
+You can render the DropdownMenu as part of the toolbar
+
+<Preview>
+  <Story name="With active item">
+    <Toolbar>
+      <ToolbarButton active>Active button</ToolbarButton>
+      <ToolbarButton>Button 2</ToolbarButton>
+      <ToolbarLink active href="#">Active link</ToolbarLink>
     </Toolbar>
   </Story>
 </Preview>
