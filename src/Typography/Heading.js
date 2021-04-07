@@ -28,7 +28,7 @@ class Heading extends PureComponent {
 
     return (
       <HTag
-        className={classNames("font-medium leading-normal", className, {
+        className={classNames("font-medium", className, {
           "text-4xl tracking-tighter": size == 1,
           "text-3xl tracking-tighter": size == 2,
           "text-xl tracking-tight": size == 3,
