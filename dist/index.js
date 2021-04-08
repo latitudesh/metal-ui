@@ -6287,7 +6287,7 @@ var Text_Text = /*#__PURE__*/function (_PureComponent) {
 
       var Tag = is;
       return Object(react_["jsx"])(Tag, _extends({
-        className: classnames_default()("leading-normal", className, color, {
+        className: classnames_default()(className, color, {
           "font-semibold": Boolean(bold),
           "font-normal": !Boolean(bold),
           "text-base": !Boolean(small),
@@ -6309,7 +6309,7 @@ _defineProperty(Text_Text, "propTypes", {
 
 _defineProperty(Text_Text, "defaultProps", {
   className: null,
-  color: "text-accent-seven",
+  color: "text-foreground",
   is: "span"
 });
 
@@ -6489,7 +6489,7 @@ var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
           "text-lg font-normal": size == 5,
           "text-normal font-normal": size == 6,
           "text-foreground": color == "default",
-          "text-error-dark": color == "danger"
+          "text-error": color == "danger"
         })
       }, props));
     }

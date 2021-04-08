@@ -36,7 +36,7 @@ class Heading extends PureComponent {
           "text-lg font-normal": size == 5,
           "text-normal font-normal": size == 6,
           "text-foreground": color == "default",
-          "text-error-dark": color == "danger",
+          "text-error": color == "danger",
         })}
         {...props}
       />
