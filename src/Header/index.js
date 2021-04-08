@@ -1,3 +1,6 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from '@emotion/react'
 import React from "react";
 import PropTypes from "prop-types";
 import Heading from "../Typography/Heading";
@@ -7,7 +10,7 @@ const Header = ({ title, actions, nav, filters }) => (
   <div tw="relative pt-4 px-8 w-full bg-white shadow pb-2">
     <div tw="flex flex-row items-center justify-between my-2" className="title">
       <div tw="flex flex-row items-center min-w-0">
-        <Heading size={2} tw="truncate pr-0.5">
+        <Heading size={3} tw="truncate pr-0.5 font-semibold">
           {title}
         </Heading>
       </div>

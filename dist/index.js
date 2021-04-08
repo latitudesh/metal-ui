@@ -6482,12 +6482,12 @@ var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
       var HTag = "h".concat(this.props.size);
       return Object(react_["jsx"])(HTag, Heading_extends({
         className: classnames_default()("", className, {
-          "text-5xl font-bold tracking-tighter": size == 1,
-          "text-4xl font-semibold tracking-tighter": size == 2,
+          "text-4xl font-bold tracking-tighter": size == 1,
+          "text-3xl font-semibold tracking-tighter": size == 2,
           "text-2xl font-semibold tracking-tight": size == 3,
           "text-xl font-semibold tracking-tight": size == 4,
-          "text-base font-normal": size == 5,
-          "text-sm font-normal": size == 6,
+          "text-lg font-normal": size == 5,
+          "text-normal font-normal": size == 6,
           "text-foreground": color == "default",
           "text-error": color == "danger"
         })
@@ -6521,6 +6521,10 @@ Heading_defineProperty(Heading_Heading, "defaultProps", {
 // CONCATENATED MODULE: ./src/Header/index.js
 function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
+
 
 
 
@@ -6542,8 +6546,8 @@ var Header_ref4 =  true ? {
 } : undefined;
 
 var Header_ref5 =  true ? {
-  name: "qvrjc5",
-  styles: "overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:0.125rem"
+  name: "1h5hd82",
+  styles: "overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:0.125rem;font-weight:600"
 } : undefined;
 
 var Header_ref6 =  true ? {
@@ -6584,7 +6588,7 @@ var Header_Header = function Header(_ref) {
   }, Object(react_["jsx"])("div", {
     css: Header_ref4
   }, Object(react_["jsx"])(Typography_Heading, {
-    size: 2,
+    size: 3,
     css: Header_ref5
   }, title)), actions && Object(react_["jsx"])("div", {
     css: Header_ref6
@@ -6648,6 +6652,10 @@ var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
 
 // CONCATENATED MODULE: ./src/SpinningDots/index.js
 function SpinningDots_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
 
 
 
@@ -6750,7 +6758,7 @@ var Button_Button = function Button(_ref) {
     className: "flex ml-2"
   }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
 
-  var ButtonClasses = cx("Button relative border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer", className, (_cx = {
+  var ButtonClasses = cx("Button relative border items-center flex font-medium rounded focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer", className, (_cx = {
     disabled: disabled
   }, Button_defineProperty(_cx, variant, Boolean(variant) && !disabled), Button_defineProperty(_cx, size, Boolean(size)), Button_defineProperty(_cx, "block w-full", Boolean(block)), _cx));
 
@@ -13121,7 +13129,7 @@ var DropdownContent = /*#__PURE__*/emotion_styled_base_browser_esm(index_module_
     "boxShadow": "var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)",
     "--tw-bg-opacity": "1",
     "backgroundColor": "rgba(255, 255, 255, var(--tw-bg-opacity))",
-    "borderRadius": "0.25rem"
+    "borderRadius": "5px"
   }, DropdownMenu_ref2];
 },  true ? "" : undefined);
 
@@ -13150,7 +13158,7 @@ var DropdownItem = /*#__PURE__*/emotion_styled_base_browser_esm(index_module_Ite
   target: "etal6nb1"
 } : undefined)(function () {
   return [{
-    "borderRadius": "0.25rem",
+    "borderRadius": "5px",
     "display": "block",
     "paddingLeft": "1rem",
     "paddingRight": "1rem",
@@ -13362,14 +13370,19 @@ function Toolbar_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to st
 
 
 
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
+
+
 
 /*
 * Styles
 */
 
 var itemStyles =  true ? {
-  name: "5w0ash",
-  styles: "transition-property:background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;appearance:none;background-color:transparent;border-width:1px;border-color:transparent;padding-top:0.125rem;padding-bottom:0.125rem;padding-left:0.5rem;padding-right:0.5rem;overflow:hidden;border-radius:0.25rem;font-size:0.875rem;line-height:1.25rem;--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));font-weight:400; margin:0 5px"
+  name: "1ivfmmd",
+  styles: "transition-property:background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;appearance:none;background-color:transparent;border-width:1px;border-color:transparent;padding-top:0.125rem;padding-bottom:0.125rem;padding-left:0.5rem;padding-right:0.5rem;overflow:hidden;border-radius:5px;font-size:0.875rem;line-height:1.25rem;--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));font-weight:400; margin:0 5px"
 } : undefined;
 var itemHover =  true ? {
   name: "15a5ahb",
