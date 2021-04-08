@@ -1,50 +1,56 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from '@emotion/react'
-import tw, { styled, css } from "twin.macro";
+import { jsx } from "@emotion/react";
+import tw, { styled, css, theme } from "twin.macro";
 import * as ToolbarPrimitive from "@radix-ui/react-toolbar";
 import PropTypes from "prop-types";
 
 /*
-* Styles
-*/
+ * Styles
+ */
 
-const itemStyles = css`
-  ${tw`appearance-none bg-transparent border border-transparent py-0.5 px-2 overflow-hidden rounded text-sm transition ease-in-out duration-150 text-foreground font-normal`}
-  margin: 0 5px;
+const commonStyles = css`
+  ${tw`flex items-center focus:outline-none text-sm transition ease-in-out duration-150 text-accent-five font-normal border-b-2 border-transparent mr-6 py-2 px-0.5`}
+  margin-bottom: -1px;
 `;
 
 const itemHover = css`
-  ${tw`bg-accent-three text-accent-seven`}
+  ${tw`text-foreground`}
 `;
 
 const itemActive = css`
-  ${tw`bg-foreground text-white`}
+  ${tw`text-foreground border-foreground border-b-2`}
 `;
 
 /*
-* Components
-*/
+ * Components
+ */
 
 const Toolbar = styled(ToolbarPrimitive.Root)(() => [
-  tw`flex`,
+  tw`flex flex-nowrap items-baseline overflow-x-auto`,
   css`
-    margin: 0 -5px;
+    padding-bottom: 1px;
+    box-shadow: 0 -1px 0 ${theme`colors.accent.three`} inset;
+    > button:first-of-type {
+      padding-left: 0;
+    }
   `,
 ]);
 
 const ToolbarButton = styled(ToolbarPrimitive.Button, {
-  shouldForwardProp: prop => {
+  shouldForwardProp: (prop) => {
     // Prevent forwarding `active` prop to <button> tag as it's managed by react-dom
-    if (prop === 'active') return false
-    return true
-  }
-})(({ active }) => [
-  itemStyles,
-  active && itemActive,
-  css`&:hover {
-    ${!active && itemHover}
+    if (prop === "active") return false;
+    return true;
   },
+})(({ active }) => [
+  commonStyles,
+  active && itemActive,
+  css`
+    &:hover {
+      ${!active && itemHover}
+    }
+    ,
     &[data-state="open"] {
       ${itemActive}
     }
@@ -52,57 +58,31 @@ const ToolbarButton = styled(ToolbarPrimitive.Button, {
 ]);
 
 const ToolbarLink = styled(ToolbarPrimitive.Link, {
-  shouldForwardProp: prop => {
+  shouldForwardProp: (prop) => {
     // Prevent forwarding `active` prop to <a> tag as it's managed by react-dom
-    if (prop === 'active') return false
-    return true
-  }
-})(({ active }) => [
-  itemStyles,
-  active && itemActive,
-  css`&:hover {
-    ${!active && itemHover}
+    if (prop === "active") return false;
+    return true;
   },
+})(({ active }) => [
+  commonStyles,
+  active && itemActive,
+  css`
+    &:hover {
+      ${!active && itemHover}
+    }
+    ,
     &[data-state="open"] {
       ${itemActive}
     }
   `,
 ]);
 
-const ToolbarSeparator = styled(ToolbarPrimitive.Separator)(() => [
-  tw`bg-accent-three mx-2 my-1`,
-  css`
-    width: 1px;
-  `,
-]);
-
-const ToolbarToggleGroup = ToolbarPrimitive.ToggleGroup;
-
-const ToolbarToggle = styled(ToolbarPrimitive.ToggleItem)(({ active }) => [
-  itemStyles,
-  active && itemActive,
-  css`&:hover {
-    ${!active && itemHover}
-  },
-    &[data-state="on"] {
-      ${itemActive}
-    }
-  `,
-]);
-
-[ToolbarLink, ToolbarButton, ToolbarToggle].propTypes = {
+[ToolbarLink, ToolbarButton].propTypes = {
   active: PropTypes.bool,
 };
 
-[ToolbarLink, ToolbarButton, ToolbarToggle].defaultProps = {
+[ToolbarLink, ToolbarButton].defaultProps = {
   active: false,
 };
 
-export {
-  Toolbar,
-  ToolbarButton,
-  ToolbarLink,
-  ToolbarSeparator,
-  ToolbarToggleGroup,
-  ToolbarToggle,
-};
+export { Toolbar, ToolbarButton, ToolbarLink };

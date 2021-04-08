@@ -6209,8 +6209,6 @@ __webpack_require__.d(__webpack_exports__, "ListItem", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "Toolbar", function() { return /* reexport */ Toolbar_Toolbar; });
 __webpack_require__.d(__webpack_exports__, "ToolbarButton", function() { return /* reexport */ Toolbar_ToolbarButton; });
 __webpack_require__.d(__webpack_exports__, "ToolbarLink", function() { return /* reexport */ Toolbar_ToolbarLink; });
-__webpack_require__.d(__webpack_exports__, "ToolbarSeparator", function() { return /* reexport */ Toolbar_ToolbarSeparator; });
-__webpack_require__.d(__webpack_exports__, "ToolbarToggle", function() { return /* reexport */ ToolbarToggle; });
 
 // EXTERNAL MODULE: external {"root":"React","commonjs2":"react","commonjs":"react","amd":"react"}
 var external_root_React_commonjs2_react_commonjs_react_amd_react_ = __webpack_require__(0);
@@ -13377,48 +13375,51 @@ function Toolbar_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to st
 
 
 /*
-* Styles
-*/
+ * Styles
+ */
 
-var itemStyles =  true ? {
-  name: "1ivfmmd",
-  styles: "transition-property:background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;appearance:none;background-color:transparent;border-width:1px;border-color:transparent;padding-top:0.125rem;padding-bottom:0.125rem;padding-left:0.5rem;padding-right:0.5rem;overflow:hidden;border-radius:5px;font-size:0.875rem;line-height:1.25rem;--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));font-weight:400; margin:0 5px"
+var commonStyles =  true ? {
+  name: "quy600",
+  styles: "transition-property:background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;display:flex;align-items:center;:focus{outline:2px solid transparent;outline-offset:2px;}font-size:0.875rem;line-height:1.25rem;--tw-text-opacity:1;color:rgba(102, 102, 102, var(--tw-text-opacity));font-weight:400;border-bottom-width:2px;border-color:transparent;margin-right:1.5rem;padding-top:0.5rem;padding-bottom:0.5rem;padding-left:0.125rem;padding-right:0.125rem; margin-bottom:-1px"
 } : undefined;
 var itemHover =  true ? {
-  name: "15a5ahb",
-  styles: "--tw-bg-opacity:1;background-color:rgba(229, 231, 235, var(--tw-bg-opacity));--tw-text-opacity:1;color:rgba(51, 51, 51, var(--tw-text-opacity));"
+  name: "m3tbdc",
+  styles: "--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));"
 } : undefined;
 var itemActive =  true ? {
-  name: "18c311v",
-  styles: "--tw-bg-opacity:1;background-color:rgba(0, 0, 0, var(--tw-bg-opacity));--tw-text-opacity:1;color:rgba(255, 255, 255, var(--tw-text-opacity));"
+  name: "l9jnbz",
+  styles: "--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));--tw-border-opacity:1;border-color:rgba(0, 0, 0, var(--tw-border-opacity));border-bottom-width:2px;"
 } : undefined;
 /*
-* Components
-*/
+ * Components
+ */
 
-var Toolbar_ref2 =  true ? {
-  name: "1hnnrgc",
-  styles: "margin:0 -5px"
+var Toolbar_ref =  true ? {
+  name: "1smg5tk",
+  styles: "padding-bottom:1px;box-shadow:0 -1px 0 #e5e7eb inset;>button:first-of-type{padding-left:0;}"
 } : undefined;
 
 var Toolbar_Toolbar = /*#__PURE__*/emotion_styled_base_browser_esm(react_toolbar_dist_index_module_Root,  true ? {
-  target: "eo0zj64"
+  target: "eo0zj62"
 } : undefined)(function () {
   return [{
-    "display": "flex"
-  }, Toolbar_ref2];
+    "display": "flex",
+    "flexWrap": "nowrap",
+    "alignItems": "baseline",
+    "overflowX": "auto"
+  }, Toolbar_ref];
 },  true ? "" : undefined);
 
 var Toolbar_ToolbarButton = /*#__PURE__*/emotion_styled_base_browser_esm(index_module_Button,  true ? {
   shouldForwardProp: function shouldForwardProp(prop) {
     // Prevent forwarding `active` prop to <button> tag as it's managed by react-dom
-    if (prop === 'active') return false;
+    if (prop === "active") return false;
     return true;
   },
-  target: "eo0zj63"
-} : undefined)(function (_ref3) {
-  var active = _ref3.active;
-  return [itemStyles, active && itemActive,
+  target: "eo0zj61"
+} : undefined)(function (_ref2) {
+  var active = _ref2.active;
+  return [commonStyles, active && itemActive,
   /*#__PURE__*/
 
   /*#__PURE__*/
@@ -13436,13 +13437,13 @@ var Toolbar_ToolbarButton = /*#__PURE__*/emotion_styled_base_browser_esm(index_m
 var Toolbar_ToolbarLink = /*#__PURE__*/emotion_styled_base_browser_esm(Link,  true ? {
   shouldForwardProp: function shouldForwardProp(prop) {
     // Prevent forwarding `active` prop to <a> tag as it's managed by react-dom
-    if (prop === 'active') return false;
+    if (prop === "active") return false;
     return true;
   },
-  target: "eo0zj62"
-} : undefined)(function (_ref4) {
-  var active = _ref4.active;
-  return [itemStyles, active && itemActive,
+  target: "eo0zj60"
+} : undefined)(function (_ref3) {
+  var active = _ref3.active;
+  return [commonStyles, active && itemActive,
   /*#__PURE__*/
 
   /*#__PURE__*/
@@ -13457,49 +13458,10 @@ var Toolbar_ToolbarLink = /*#__PURE__*/emotion_styled_base_browser_esm(Link,  tr
   Object(react_["css"])("&:hover{", !active && itemHover, ";},&[data-state=\"open\"]{", itemActive, ";}" + ( true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined)];
 },  true ? "" : undefined);
 
-var Toolbar_ref =  true ? {
-  name: "1448csx",
-  styles: "width:1px"
-} : undefined;
-
-var Toolbar_ToolbarSeparator = /*#__PURE__*/emotion_styled_base_browser_esm(react_toolbar_dist_index_module_Separator,  true ? {
-  target: "eo0zj61"
-} : undefined)(function () {
-  return [{
-    "--tw-bg-opacity": "1",
-    "backgroundColor": "rgba(229, 231, 235, var(--tw-bg-opacity))",
-    "marginLeft": "0.5rem",
-    "marginRight": "0.5rem",
-    "marginTop": "0.25rem",
-    "marginBottom": "0.25rem"
-  }, Toolbar_ref];
-},  true ? "" : undefined);
-
-var Toolbar_ToolbarToggleGroup = index_module_ToggleGroup;
-
-var ToolbarToggle = /*#__PURE__*/emotion_styled_base_browser_esm(ToggleItem,  true ? {
-  target: "eo0zj60"
-} : undefined)(function (_ref5) {
-  var active = _ref5.active;
-  return [itemStyles, active && itemActive,
-  /*#__PURE__*/
-
-  /*#__PURE__*/
-
-  /*#__PURE__*/
-
-  /*#__PURE__*/
-
-  /*#__PURE__*/
-
-  /*#__PURE__*/
-  Object(react_["css"])("&:hover{", !active && itemHover, ";},&[data-state=\"on\"]{", itemActive, ";}" + ( true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined)];
-},  true ? "" : undefined);
-
-[Toolbar_ToolbarLink, Toolbar_ToolbarButton, ToolbarToggle].propTypes = {
+[Toolbar_ToolbarLink, Toolbar_ToolbarButton].propTypes = {
   active: prop_types_default.a.bool
 };
-[Toolbar_ToolbarLink, Toolbar_ToolbarButton, ToolbarToggle].defaultProps = {
+[Toolbar_ToolbarLink, Toolbar_ToolbarButton].defaultProps = {
   active: false
 };
 
