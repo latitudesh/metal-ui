@@ -6287,7 +6287,7 @@ var Text_Text = /*#__PURE__*/function (_PureComponent) {
 
       var Tag = is;
       return Object(react_["jsx"])(Tag, _extends({
-        className: classnames_default()("leading-normal", className, color, {
+        className: classnames_default()(className, color, {
           "font-semibold": Boolean(bold),
           "font-normal": !Boolean(bold),
           "text-base": !Boolean(small),
@@ -6309,7 +6309,7 @@ _defineProperty(Text_Text, "propTypes", {
 
 _defineProperty(Text_Text, "defaultProps", {
   className: null,
-  color: "text-accent-seven",
+  color: "text-foreground",
   is: "span"
 });
 
@@ -6481,14 +6481,14 @@ var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
 
       var HTag = "h".concat(this.props.size);
       return Object(react_["jsx"])(HTag, Heading_extends({
-        className: classnames_default()("font-medium", className, {
-          "text-4xl tracking-tighter": size == 1,
-          "text-3xl tracking-tighter": size == 2,
-          "text-xl tracking-tight": size == 3,
-          "text-lg": size == 4,
-          "text-base": size == 5,
-          "text-sm": size == 6,
-          "text-accent-seven": color == "default",
+        className: classnames_default()("", className, {
+          "text-5xl font-bold tracking-tighter": size == 1,
+          "text-4xl font-semibold tracking-tighter": size == 2,
+          "text-2xl font-semibold tracking-tight": size == 3,
+          "text-xl font-semibold tracking-tight": size == 4,
+          "text-base font-normal": size == 5,
+          "text-sm font-normal": size == 6,
+          "text-foreground": color == "default",
           "text-error": color == "danger"
         })
       }, props));
