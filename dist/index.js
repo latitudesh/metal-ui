@@ -13410,6 +13410,11 @@ var Toolbar_Toolbar = /*#__PURE__*/emotion_styled_base_browser_esm(react_toolbar
 },  true ? "" : undefined);
 
 var Toolbar_ToolbarButton = /*#__PURE__*/emotion_styled_base_browser_esm(index_module_Button,  true ? {
+  shouldForwardProp: function shouldForwardProp(prop) {
+    // Prevent forwarding `active` prop to <button> tag as it's managed by react-dom
+    if (prop !== 'active') return false;
+    return true;
+  },
   target: "eo0zj63"
 } : undefined)(function (_ref3) {
   var active = _ref3.active;
@@ -13429,6 +13434,11 @@ var Toolbar_ToolbarButton = /*#__PURE__*/emotion_styled_base_browser_esm(index_m
 },  true ? "" : undefined);
 
 var Toolbar_ToolbarLink = /*#__PURE__*/emotion_styled_base_browser_esm(Link,  true ? {
+  shouldForwardProp: function shouldForwardProp(prop) {
+    // Prevent forwarding `active` prop to <a> tag as it's managed by react-dom
+    if (prop !== 'active') return false;
+    return true;
+  },
   target: "eo0zj62"
 } : undefined)(function (_ref4) {
   var active = _ref4.active;

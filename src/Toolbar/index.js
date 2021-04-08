@@ -33,7 +33,13 @@ const Toolbar = styled(ToolbarPrimitive.Root)(() => [
   `,
 ]);
 
-const ToolbarButton = styled(ToolbarPrimitive.Button)(({ active }) => [
+const ToolbarButton = styled(ToolbarPrimitive.Button, {
+  shouldForwardProp: prop => {
+    // Prevent forwarding `active` prop to <button> tag as it's managed by react-dom
+    if (prop !== 'active') return false
+    return true
+  }
+})(({ active }) => [
   itemStyles,
   active && itemActive,
   css`&:hover {
@@ -45,7 +51,13 @@ const ToolbarButton = styled(ToolbarPrimitive.Button)(({ active }) => [
   `,
 ]);
 
-const ToolbarLink = styled(ToolbarPrimitive.Link)(({ active }) => [
+const ToolbarLink = styled(ToolbarPrimitive.Link, {
+  shouldForwardProp: prop => {
+    // Prevent forwarding `active` prop to <a> tag as it's managed by react-dom
+    if (prop !== 'active') return false
+    return true
+  }
+})(({ active }) => [
   itemStyles,
   active && itemActive,
   css`&:hover {
