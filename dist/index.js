@@ -6521,6 +6521,10 @@ Heading_defineProperty(Heading_Heading, "defaultProps", {
 // CONCATENATED MODULE: ./src/Header/index.js
 function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
+
 
 
 
@@ -6648,6 +6652,10 @@ var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
 
 // CONCATENATED MODULE: ./src/SpinningDots/index.js
 function SpinningDots_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
 
 
 
@@ -13360,6 +13368,11 @@ const[react_toolbar_dist_index_module_m,react_toolbar_dist_index_module_p]=creat
 
 function Toolbar_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
+
+
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
 
 
 
