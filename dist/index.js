@@ -6519,6 +6519,8 @@ Heading_defineProperty(Heading_Heading, "defaultProps", {
 // CONCATENATED MODULE: ./src/Header/index.js
 function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
+
+
 /** @jsxRuntime classic */
 
 /** @jsx jsx */
@@ -6529,83 +6531,61 @@ function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringif
 
 
 var Header_ref2 =  true ? {
-  name: "1g3sy4a",
-  styles: "position:relative;padding-top:1rem;padding-left:2rem;padding-right:2rem;width:100%;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity));--tw-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);padding-bottom:0.5rem"
+  name: "e9qyyn",
+  styles: "display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-top:1rem;padding-bottom:1rem;padding-left:2rem;padding-right:2rem"
 } : undefined;
 
 var Header_ref3 =  true ? {
-  name: "is62xi",
-  styles: "display:flex;flex-direction:row;align-items:center;justify-content:space-between;margin-top:0.5rem;margin-bottom:0.5rem"
-} : undefined;
-
-var Header_ref4 =  true ? {
   name: "6v84ff",
   styles: "display:flex;flex-direction:row;align-items:center;min-width:0px"
 } : undefined;
 
-var Header_ref5 =  true ? {
+var Header_ref4 =  true ? {
   name: "1h5hd82",
   styles: "overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:0.125rem;font-weight:600"
 } : undefined;
 
-var Header_ref6 =  true ? {
+var Header_ref5 =  true ? {
   name: "psasdh",
   styles: "display:flex;flex-direction:row;align-items:center;justify-content:flex-end;margin-left:0.5rem"
 } : undefined;
 
-var Header_ref7 =  true ? {
+var Header_ref6 =  true ? {
   name: "1kjf4md",
   styles: "display:inline-flex;margin-left:0px"
-} : undefined;
-
-var _ref8 =  true ? {
-  name: "mk35wx",
-  styles: "display:flex;flex-direction:row;align-items:center;padding-top:0.5rem;padding-bottom:0.5rem"
-} : undefined;
-
-var _ref9 =  true ? {
-  name: "8oukd2",
-  styles: "display:flex;flex-direction:row;margin-top:0px;margin-bottom:0px;padding:0px;margin-right:0px"
-} : undefined;
-
-var _ref10 =  true ? {
-  name: "1mpiyy1",
-  styles: "display:flex;flex-direction:row;align-items:center;flex-grow:1;justify-content:flex-end;padding:0px"
 } : undefined;
 
 var Header_Header = function Header(_ref) {
   var title = _ref.title,
       actions = _ref.actions,
-      nav = _ref.nav,
-      filters = _ref.filters;
+      nav = _ref.nav;
   return Object(react_["jsx"])("div", {
-    css: Header_ref2
+    css: ["position:relative;width:100%;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity));", !nav &&
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+    Object(react_["css"])({
+      boxShadow: "0 -1px 0 ".concat("#e5e7eb", " inset")
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, Object(react_["jsx"])("div", {
-    css: Header_ref3,
+    css: Header_ref2,
     className: "title"
   }, Object(react_["jsx"])("div", {
-    css: Header_ref4
+    css: Header_ref3
   }, Object(react_["jsx"])(Typography_Heading, {
     size: 3,
-    css: Header_ref5
+    css: Header_ref4
   }, title)), actions && Object(react_["jsx"])("div", {
+    css: Header_ref5
+  }, Object(react_["jsx"])("div", {
     css: Header_ref6
-  }, Object(react_["jsx"])("div", {
-    css: Header_ref7
-  }, actions))), (nav || filters) && Object(react_["jsx"])("div", {
-    css: _ref8
-  }, Object(react_["jsx"])("div", {
-    css: _ref9
-  }, nav), Object(react_["jsx"])("div", {
-    css: _ref10
-  }, filters)));
+  }, actions))), nav && Object(react_["jsx"])("div", null, nav));
 };
 
 Header_Header.defaultProps = {
   title: null,
   actions: null,
-  nav: null,
-  filters: null
+  nav: null
 };
 Header_Header.propTypes = {
   title: prop_types_default.a.oneOfType([prop_types_default.a.string, prop_types_default.a.number]).isRequired,
@@ -13379,8 +13359,8 @@ function Toolbar_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to st
  */
 
 var commonStyles =  true ? {
-  name: "quy600",
-  styles: "transition-property:background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;display:flex;align-items:center;:focus{outline:2px solid transparent;outline-offset:2px;}font-size:0.875rem;line-height:1.25rem;--tw-text-opacity:1;color:rgba(102, 102, 102, var(--tw-text-opacity));font-weight:400;border-bottom-width:2px;border-color:transparent;margin-right:1.5rem;padding-top:0.5rem;padding-bottom:0.5rem;padding-left:0.125rem;padding-right:0.125rem; margin-bottom:-1px"
+  name: "1x9m3c0",
+  styles: "transition-property:background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;display:flex;align-items:center;:focus{outline:2px solid transparent;outline-offset:2px;}font-size:1rem;line-height:1.5rem;--tw-text-opacity:1;color:rgba(102, 102, 102, var(--tw-text-opacity));font-weight:400;border-bottom-width:2px;border-color:transparent;margin-right:1.5rem;padding-top:0.5rem;padding-bottom:0.5rem;padding-left:0.125rem;padding-right:0.125rem; margin-bottom:-1px"
 } : undefined;
 var itemHover =  true ? {
   name: "m3tbdc",

@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
  */
 
 const commonStyles = css`
-  ${tw`flex items-center focus:outline-none text-sm transition ease-in-out duration-150 text-accent-five font-normal border-b-2 border-transparent mr-6 py-2 px-0.5`}
+  ${tw`flex items-center focus:outline-none text-base transition ease-in-out duration-150 text-accent-five font-normal border-b-2 border-transparent mr-6 py-2 px-0.5`}
   margin-bottom: -1px;
 `;
 
