@@ -1,16 +1,16 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from '@emotion/react'
+import { jsx } from "@emotion/react";
 import React from "react";
 import PropTypes from "prop-types";
 import Heading from "../Typography/Heading";
 import "twin.macro";
 
-const Header = ({ title, actions, nav, filters }) => (
-  <div tw="relative pt-4 px-8 w-full bg-white shadow pb-2">
-    <div tw="flex flex-row items-center justify-between my-2" className="title">
+const Header = ({ title, actions, nav }) => (
+  <div tw="relative w-full bg-white shadow pb-2">
+    <div tw="flex flex-row items-center justify-between my-2 pt-4 px-8" className="title">
       <div tw="flex flex-row items-center min-w-0">
-        <Heading size={3} tw="truncate pr-0.5 font-semibold">
+        <Heading size={2} tw="truncate pr-0.5 font-semibold">
           {title}
         </Heading>
       </div>
@@ -20,14 +20,7 @@ const Header = ({ title, actions, nav, filters }) => (
         </div>
       )}
     </div>
-    {(nav || filters) && (
-      <div tw="flex flex-row items-center py-2">
-        <div tw="flex flex-row my-0 p-0 mr-0">{nav}</div>
-        <div tw="flex flex-row items-center flex-grow justify-end p-0">
-          {filters}
-        </div>
-      </div>
-    )}
+    {nav && <div tw="mt-4">{nav}</div>}
   </div>
 );
 
@@ -35,7 +28,6 @@ Header.defaultProps = {
   title: null,
   actions: null,
   nav: null,
-  filters: null,
 };
 
 Header.propTypes = {
