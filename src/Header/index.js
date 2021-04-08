@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Heading from "../Typography/Heading";
-import tw from "twin.macro";
+import "twin.macro";
 
 const Header = ({ title, actions, nav, filters }) => (
   <div tw="relative pt-4 px-8 w-full bg-white shadow pb-2">
