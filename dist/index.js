@@ -6481,14 +6481,14 @@ var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
 
       var HTag = "h".concat(this.props.size);
       return Object(react_["jsx"])(HTag, Heading_extends({
-        className: classnames_default()("font-medium", className, {
-          "text-4xl tracking-tighter": size == 1,
-          "text-3xl tracking-tighter": size == 2,
-          "text-xl tracking-tight": size == 3,
-          "text-lg": size == 4,
-          "text-base": size == 5,
-          "text-sm": size == 6,
-          "text-accent-seven": color == "default",
+        className: classnames_default()("", className, {
+          "text-4xl font-bold tracking-tighter": size == 1,
+          "text-3xl font-semibold tracking-tighter": size == 2,
+          "text-2xl font-semibold tracking-tight": size == 3,
+          "text-xl font-semibold tracking-tight": size == 4,
+          "text-xl font-normal": size == 5,
+          "text-normal font-normal": size == 6,
+          "text-foreground": color == "default",
           "text-error": color == "danger"
         })
       }, props));
@@ -6542,8 +6542,8 @@ var Header_ref4 =  true ? {
 } : undefined;
 
 var Header_ref5 =  true ? {
-  name: "qvrjc5",
-  styles: "overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:0.125rem"
+  name: "1h5hd82",
+  styles: "overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:0.125rem;font-weight:600"
 } : undefined;
 
 var Header_ref6 =  true ? {
@@ -6584,7 +6584,7 @@ var Header_Header = function Header(_ref) {
   }, Object(react_["jsx"])("div", {
     css: Header_ref4
   }, Object(react_["jsx"])(Typography_Heading, {
-    size: 2,
+    size: 3,
     css: Header_ref5
   }, title)), actions && Object(react_["jsx"])("div", {
     css: Header_ref6

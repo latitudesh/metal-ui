@@ -28,15 +28,15 @@ class Heading extends PureComponent {
 
     return (
       <HTag
-        className={classNames("font-medium", className, {
-          "text-4xl tracking-tighter": size == 1,
-          "text-3xl tracking-tighter": size == 2,
-          "text-xl tracking-tight": size == 3,
-          "text-lg": size == 4,
-          "text-base": size == 5,
-          "text-sm": size == 6,
-          "text-accent-seven": color == "default",
-          "text-error": color == "danger",
+        className={classNames("", className, {
+          "text-4xl font-bold tracking-tighter": size == 1,
+          "text-3xl font-semibold tracking-tighter": size == 2,
+          "text-2xl font-semibold tracking-tight": size == 3,
+          "text-xl font-semibold tracking-tight": size == 4,
+          "text-lg font-normal": size == 5,
+          "text-normal font-normal": size == 6,
+          "text-foreground": color == "default",
+          "text-error-dark": color == "danger",
         })}
         {...props}
       />
