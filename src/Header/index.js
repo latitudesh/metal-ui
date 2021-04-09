@@ -4,7 +4,7 @@ import { jsx } from "@emotion/react";
 import React from "react";
 import PropTypes from "prop-types";
 import Heading from "../Typography/Heading";
-import { theme, css } from "twin.macro";
+import tw, { theme, css } from "twin.macro";
 
 const Header = ({ title, actions, nav }) => (
   <div
@@ -14,8 +14,8 @@ const Header = ({ title, actions, nav }) => (
     }
   >
     <div
-      tw="flex flex-row items-center justify-between py-4 px-8"
-      className="title"
+      tw="flex flex-row items-center justify-between px-8"
+      css={[nav ? tw`pt-6 pb-4` : tw`py-6`]}
     >
       <div tw="flex flex-row items-center min-w-0">
         <Heading size={3} tw="truncate pr-0.5 font-semibold">
@@ -28,7 +28,7 @@ const Header = ({ title, actions, nav }) => (
         </div>
       )}
     </div>
-    {nav && <div>{nav}</div>}
+    {nav && <div tw="px-8">{nav}</div>}
   </div>
 );
 

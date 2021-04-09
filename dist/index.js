@@ -6531,28 +6531,28 @@ function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringif
 
 
 var Header_ref2 =  true ? {
-  name: "e9qyyn",
-  styles: "display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-top:1rem;padding-bottom:1rem;padding-left:2rem;padding-right:2rem"
-} : undefined;
-
-var Header_ref3 =  true ? {
   name: "6v84ff",
   styles: "display:flex;flex-direction:row;align-items:center;min-width:0px"
 } : undefined;
 
-var Header_ref4 =  true ? {
+var Header_ref3 =  true ? {
   name: "1h5hd82",
   styles: "overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:0.125rem;font-weight:600"
 } : undefined;
 
-var Header_ref5 =  true ? {
+var Header_ref4 =  true ? {
   name: "psasdh",
   styles: "display:flex;flex-direction:row;align-items:center;justify-content:flex-end;margin-left:0.5rem"
 } : undefined;
 
-var Header_ref6 =  true ? {
+var Header_ref5 =  true ? {
   name: "1kjf4md",
   styles: "display:inline-flex;margin-left:0px"
+} : undefined;
+
+var Header_ref6 =  true ? {
+  name: "1ex87v0",
+  styles: "padding-left:2rem;padding-right:2rem"
 } : undefined;
 
 var Header_Header = function Header(_ref) {
@@ -6568,18 +6568,25 @@ var Header_Header = function Header(_ref) {
       boxShadow: "0 -1px 0 ".concat("#e5e7eb", " inset")
     },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, Object(react_["jsx"])("div", {
-    css: Header_ref2,
-    className: "title"
+    css: ["display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:2rem;padding-right:2rem;", nav ? {
+      "paddingTop": "1.5rem",
+      "paddingBottom": "1rem"
+    } : {
+      "paddingTop": "1.5rem",
+      "paddingBottom": "1.5rem"
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, Object(react_["jsx"])("div", {
-    css: Header_ref3
+    css: Header_ref2
   }, Object(react_["jsx"])(Typography_Heading, {
     size: 3,
-    css: Header_ref4
+    css: Header_ref3
   }, title)), actions && Object(react_["jsx"])("div", {
-    css: Header_ref5
+    css: Header_ref4
   }, Object(react_["jsx"])("div", {
+    css: Header_ref5
+  }, actions))), nav && Object(react_["jsx"])("div", {
     css: Header_ref6
-  }, actions))), nav && Object(react_["jsx"])("div", null, nav));
+  }, nav));
 };
 
 Header_Header.defaultProps = {
