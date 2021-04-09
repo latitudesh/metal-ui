@@ -27,3 +27,4 @@ export { default as Heading } from "./Typography/Heading";
 export { default as UnorderedList } from "./Typography/UnorderedList";
 export { default as ListItem } from "./Typography/ListItem";
 export { Toolbar, ToolbarButton, ToolbarLink } from "./Toolbar";
+export { Tabs, TabsList, TabsTab, TabsPanel } from "./Tabs";

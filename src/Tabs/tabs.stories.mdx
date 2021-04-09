@@ -1,0 +1,28 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Tabs, TabsList, TabsTab, TabsPanel } from "./index";
+import Text from "../Typography/Text";
+
+<Meta title="Tabs" component={Tabs} />
+
+# API
+
+This component uses the Radix UI `Tabs` primitive. Refer to [this page](https://radix-ui.com/primitives/docs/components/tabs) for the API reference, but note components in Metal UI do not use dot-notation.
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    <Tabs defaultValue="tab1">
+      <TabsList aria-label="tabs example">
+        <TabsTab value="tab1">
+          One
+        </TabsTab>
+        <TabsTab value="tab2">Two</TabsTab>
+        <TabsTab value="tab3">Three</TabsTab>
+      </TabsList>
+      <TabsPanel value="tab1">Tab one content</TabsPanel>
+      <TabsPanel value="tab2">Tab two content</TabsPanel>
+      <TabsPanel value="tab3">Tab three content</TabsPanel>
+    </Tabs>
+  </Story>
+</Preview>

@@ -6209,6 +6209,10 @@ __webpack_require__.d(__webpack_exports__, "ListItem", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "Toolbar", function() { return /* reexport */ Toolbar_Toolbar; });
 __webpack_require__.d(__webpack_exports__, "ToolbarButton", function() { return /* reexport */ Toolbar_ToolbarButton; });
 __webpack_require__.d(__webpack_exports__, "ToolbarLink", function() { return /* reexport */ Toolbar_ToolbarLink; });
+__webpack_require__.d(__webpack_exports__, "Tabs", function() { return /* reexport */ Tabs_Tabs; });
+__webpack_require__.d(__webpack_exports__, "TabsList", function() { return /* reexport */ Tabs_TabsList; });
+__webpack_require__.d(__webpack_exports__, "TabsTab", function() { return /* reexport */ Tabs_TabsTab; });
+__webpack_require__.d(__webpack_exports__, "TabsPanel", function() { return /* reexport */ Tabs_TabsPanel; });
 
 // EXTERNAL MODULE: external {"root":"React","commonjs2":"react","commonjs":"react","amd":"react"}
 var external_root_React_commonjs2_react_commonjs_react_amd_react_ = __webpack_require__(0);
@@ -13452,7 +13456,90 @@ var Toolbar_ToolbarLink = /*#__PURE__*/emotion_styled_base_browser_esm(Link,  tr
   active: false
 };
 
+// CONCATENATED MODULE: ./node_modules/@radix-ui/react-tabs/dist/index.module.js
+const[react_tabs_dist_index_module_c,react_tabs_dist_index_module_u]=createContext("Tabs");const Tabs=/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"](((a,t)=>{const{value:n,onValueChange:i,defaultValue:s,orientation:u="horizontal",dir:b="ltr",activationMode:m="automatic",...f}=a,p=useId(),[v,x]=useControllableState({prop:n,onChange:i,defaultProp:s});/*#__PURE__*/return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](react_tabs_dist_index_module_c,{baseId:p,value:v,onValueChange:x,orientation:u,dir:b,activationMode:m},/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](Primitive,extends_extends({"data-orientation":u},f,{ref:t})))}));/*#__PURE__*/const TabsList=/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"](((e,t)=>{const{loop:r=!0,...n}=e,i=react_tabs_dist_index_module_u("TabsList");/*#__PURE__*/return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](RovingFocusGroup,{orientation:i.orientation,loop:r,dir:i.dir},/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](Primitive,extends_extends({role:"tablist","aria-orientation":i.orientation,"data-orientation":i.orientation},n,{ref:t})))}));/*#__PURE__*/const TabsTab=/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"](((e,a)=>{const{value:r,disabled:i,...c}=e,f=react_tabs_dist_index_module_u("TabsTab"),p=dist_index_module_b(f.baseId,r),v=react_tabs_dist_index_module_m(f.baseId,r),x=r===f.value,T=useRovingFocus({disabled:i,active:x}),w=index_module_useCallbackRef((()=>f.onValueChange(r))),h=composeEventHandlers(c.onKeyDown,composeEventHandlers(T.onKeyDown,(e=>{i||" "!==e.key&&"Enter"!==e.key||w()}))),y=composeEventHandlers(c.onMouseDown,composeEventHandlers(T.onMouseDown,(e=>{i||0!==e.button||!1!==e.ctrlKey||w()}))),E=composeEventHandlers(c.onFocus,composeEventHandlers(T.onFocus,(()=>{const e="manual"!==f.activationMode;x||i||!e||w()})));/*#__PURE__*/return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](Primitive,extends_extends({role:"tab","aria-selected":x,"aria-controls":v,"aria-disabled":i||void 0,"data-state":x?"active":"inactive","data-disabled":i?"":void 0,"data-orientation":f.orientation,id:p},c,T,{ref:a,onKeyDown:h,onMouseDown:y,onFocus:E}))}));/*#__PURE__*/const TabsPanel=/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"](((e,a)=>{const{value:t,...r}=e,n=react_tabs_dist_index_module_u("TabsPanel"),i=dist_index_module_b(n.baseId,t),s=react_tabs_dist_index_module_m(n.baseId,t),c=t===n.value;/*#__PURE__*/return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](Primitive,extends_extends({"data-state":c?"active":"inactive","data-orientation":n.orientation,role:"tabpanel","aria-labelledby":i,hidden:!c,id:s,tabIndex:0},r,{ref:a}))}));/*#__PURE__*/function dist_index_module_b(e,a){return`${e}-tab-${a}`}function react_tabs_dist_index_module_m(e,a){return`${e}-panel-${a}`}const react_tabs_dist_index_module_Root=Tabs;const List=TabsList;const Tab=TabsTab;const Panel=TabsPanel;
+//# sourceMappingURL=index.module.js.map
+
+// CONCATENATED MODULE: ./src/Tabs/index.js
+
+
+function Tabs_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+
+
+
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
+
+
+
+
+
+var Tabs_Tabs = /*#__PURE__*/emotion_styled_base_browser_esm(react_tabs_dist_index_module_Root,  true ? {
+  target: "e1klorew3"
+} : undefined)(function () {
+  return [{
+    "display": "flex",
+    "flexDirection": "column"
+  }];
+},  true ? "" : undefined);
+
+var Tabs_TabsList = /*#__PURE__*/emotion_styled_base_browser_esm(List,  true ? {
+  target: "e1klorew2"
+} : undefined)(function () {
+  return [{
+    "display": "flex",
+    "flexShrink": "0",
+    "borderBottomWidth": "1px",
+    "--tw-border-opacity": "1",
+    "borderColor": "rgba(229, 231, 235, var(--tw-border-opacity))"
+  }];
+},  true ? "" : undefined);
+
+var Tabs_ref =  true ? {
+  name: "16xd6pn",
+  styles: "&[role=\"tab\"]:first-child{padding-left:0;}&[data-state=\"active\"]{--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));--tw-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); box-shadow:inset 0 -1px 0 0 currentColor,0 1px 0 0 currentColor;}"
+} : undefined;
+
+var Tabs_TabsTab = /*#__PURE__*/emotion_styled_base_browser_esm(Tab,  true ? {
+  target: "e1klorew1"
+} : undefined)(function () {
+  return [{
+    "transitionProperty": "background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transitionDuration": "150ms",
+    "flexShrink": "0",
+    "paddingTop": "0.5rem",
+    "paddingBottom": "0.5rem",
+    "paddingLeft": "0.5rem",
+    "paddingRight": "0.5rem",
+    "marginRight": "1rem",
+    "--tw-text-opacity": "1",
+    "color": "rgba(102, 102, 102, var(--tw-text-opacity))",
+    "userSelect": "none",
+    "outline": "2px solid transparent",
+    "outlineOffset": "2px",
+    "cursor": "pointer"
+  }, {
+    ":hover": {
+      "--tw-text-opacity": "1",
+      "color": "rgba(0, 0, 0, var(--tw-text-opacity))"
+    }
+  }, Tabs_ref];
+},  true ? "" : undefined);
+
+var Tabs_TabsPanel = /*#__PURE__*/emotion_styled_base_browser_esm(Panel,  true ? {
+  target: "e1klorew0"
+} : undefined)(function () {
+  return [{
+    "flexGrow": "1",
+    "padding": "1.5rem"
+  }];
+},  true ? "" : undefined);
+
+
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
