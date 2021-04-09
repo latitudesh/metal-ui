@@ -33,7 +33,7 @@ class Heading extends PureComponent {
           "text-3xl font-semibold tracking-tighter": size == 2,
           "text-2xl font-semibold tracking-tight": size == 3,
           "text-xl font-semibold tracking-tight": size == 4,
-          "text-lg font-normal": size == 5,
+          "text-lg font-semibold": size == 5,
           "text-normal font-normal": size == 6,
           "text-foreground": color == "default",
           "text-error": color == "danger",
