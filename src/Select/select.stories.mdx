@@ -7,7 +7,7 @@ export const options = [{value: 'option_1', name: 'Option 1'}, {value: 'option_2
 
 # Select
 
-Use the `options` prop to set select options 
+Use the `options` prop to set select options
 ```json
 [
    {
@@ -30,6 +30,14 @@ Use the `options` prop to set select options
 <Preview>
   <Story name="Default">
     <Select id="select-default" options={options} />
+  </Story>
+</Preview>
+
+# Multiple
+
+<Preview>
+  <Story name="Multiple">
+    <Select id="select-multiple" multiple options={options} />
   </Story>
 </Preview>
 

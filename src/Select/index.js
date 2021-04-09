@@ -15,11 +15,12 @@ const Select = React.forwardRef(
       disabled,
       placeholder,
       error,
+      multiple,
       ...rest
     },
     ref
   ) => {
-    const [internalValue, setInternalValue] = useState("");
+    const [internalValue, setInternalValue] = useState(multiple ? [] : "");
 
     useEffect(() => {
       setInternalValue(value);
@@ -27,12 +28,25 @@ const Select = React.forwardRef(
 
     const handleChange = useCallback(
       (event) => {
-        setInternalValue(event.target.value);
+        let newValue = event.target.value
+
+        if (multiple) {
+          newValue = [...internalValue]
+          const foundIndex = newValue.indexOf(event.target.value)
+
+          if (foundIndex !== -1) {
+            newValue.splice(foundIndex, 1)
+          } else {
+            newValue.push(event.target.value)
+          }
+        }
+
+        setInternalValue(newValue);
         if (onChange) {
-          onChange(event.target.value);
+          onChange(newValue);
         }
       },
-      [setInternalValue, onChange]
+      [setInternalValue, internalValue, onChange]
     );
 
     return (
@@ -52,6 +66,7 @@ const Select = React.forwardRef(
             onChange={handleChange}
             value={internalValue}
             disabled={disabled}
+            multiple={multiple}
             className={classNames(
               "border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:ring-0 transition duration-150 ease-in-out",
               selectClassName,
@@ -92,11 +107,12 @@ Select.propTypes = {
   selectClassName: PropTypes.string,
   options: PropTypes.array,
   className: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   label: PropTypes.string,
   id: PropTypes.string.isRequired,
   error: PropTypes.bool,
   disabled: PropTypes.bool,
+  multiple: PropTypes.bool,
 };
 
 export default Select;
