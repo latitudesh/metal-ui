@@ -1,5 +1,8 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import Header from "./index";
+import Button from "../Button";
+import { SwitchVerticalOutline } from "heroicons-react";
+import { Tabs, TabsList, TabsTab, TabsPanel } from "../Tabs";
 
 <Meta title="Header" component={Header} />
 
@@ -7,10 +10,35 @@ import Header from "./index";
 
 <Preview>
   <Story name="Default">
+    <Header title="Title" />
+  </Story>
+</Preview>
+
+# With action
+
+<Preview>
+  <Story name="With action">
+    <Header title="Title" actions={<Button label="Action" />} />
+  </Story>
+</Preview>
+
+# With nav
+
+<Preview>
+  <Story name="With nav">
     <Header
-      leftContent={<p>Left content</p>}
-      centerContent={<p>Center content</p>}
-      rightContent={<p>Right content</p>}
+      title="Title"
+      actions={<Button label="Action" />}
+      nav={
+        <Tabs defaultValue="one">
+          <TabsList>
+            <TabsTab value="one">One</TabsTab>
+            <TabsTab value="two">Two</TabsTab>
+            <TabsTab value="three">Three</TabsTab>
+            <TabsTab value="four">Four</TabsTab>
+          </TabsList>
+        </Tabs>
+      }
     />
   </Story>
 </Preview>

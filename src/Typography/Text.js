@@ -15,7 +15,7 @@ class Text extends PureComponent {
 
   static defaultProps = {
     className: null,
-    color: "text-accent-seven",
+    color: "text-foreground",
     is: "span",
   };
 
@@ -26,7 +26,7 @@ class Text extends PureComponent {
 
     return (
       <Tag
-        className={classNames("leading-normal", className, color, {
+        className={classNames(className, color, {
           "font-semibold": Boolean(bold),
           "font-normal": !Boolean(bold),
           "text-base": !Boolean(small),
