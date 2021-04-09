@@ -13401,7 +13401,10 @@ var Tabs_TabsTab = /*#__PURE__*/emotion_styled_base_browser_esm(Tab,  true ? {
     "userSelect": "none",
     "outline": "2px solid transparent",
     "outlineOffset": "2px",
-    "cursor": "pointer"
+    "cursor": "pointer",
+    "fontWeight": "400",
+    "fontSize": "0.875rem",
+    "lineHeight": "1.25rem"
   }, {
     ":hover": {
       "--tw-text-opacity": "1",
