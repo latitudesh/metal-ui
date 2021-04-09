@@ -7193,11 +7193,11 @@ var Header_Header = function Header(_ref2) {
     },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, Object(react_["jsx"])("div", {
     css: ["display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:2rem;padding-right:2rem;", nav ? {
-      "paddingTop": "1.5rem",
-      "paddingBottom": "1rem"
+      "paddingTop": "1rem",
+      "paddingBottom": "0.25rem"
     } : {
-      "paddingTop": "1.5rem",
-      "paddingBottom": "1.5rem"
+      "paddingTop": "1rem",
+      "paddingBottom": "1rem"
     },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, Object(react_["jsx"])("div", {
     css: Header_ref3
@@ -13520,8 +13520,8 @@ var Tabs_TabsTab = /*#__PURE__*/emotion_styled_base_browser_esm(Tab,  true ? {
     "flexShrink": "0",
     "paddingTop": "0.5rem",
     "paddingBottom": "0.5rem",
-    "paddingLeft": "0.5rem",
-    "paddingRight": "0.5rem",
+    "paddingLeft": "0.25rem",
+    "paddingRight": "0.25rem",
     "marginRight": "1rem",
     "--tw-text-opacity": "1",
     "color": "rgba(102, 102, 102, var(--tw-text-opacity))",

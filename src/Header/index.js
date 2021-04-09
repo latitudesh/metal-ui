@@ -23,7 +23,7 @@ const Header = ({ title, actions, nav }) => (
   >
     <div
       tw="flex flex-row items-center justify-between px-8"
-      css={[nav ? tw`pt-6 pb-4` : tw`py-6`]}
+      css={[nav ? tw`pt-4 pb-1` : tw`py-4`]}
     >
       <div tw="flex flex-row items-center min-w-0">
         <Heading size={3} tw="truncate pr-0.5 font-semibold">
