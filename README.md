@@ -1,4 +1,4 @@
-### Note: Metal UI is not ready for production. If you use it, keep in mind things *will* break.
+### Note: Metal UI is not ready for production. If you use it, keep in mind things _will_ break.
 
 # Metal UI
 
@@ -23,65 +23,62 @@ Install package:
 It's highly recommended that you do some additional set up. Here's an example of how to use Metal UI on a NextJS project.
 
 ```javascript
-// postcss.config.js
 module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
   },
-}
+};
 ```
 
 ```javascript
-// tailwind.config.js
-// make sure to download and add the font files to /public/fonts
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   purge: [
-    './pages/**/*.{js,jsx,ts,tsx}',
-    './components/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@maxihost/metal-ui/dist/**/*.{js,jsx,ts,tsx}', // important, otherwise purge will remove all Metal UI styles
-    './next.config.js',
+    "./pages/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/@maxihost/metal-ui/dist/**/*.{js,jsx,ts,tsx}",
+    "./next.config.js",
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },
     },
   },
   variants: {},
   plugins: [
-    require('@tailwindcss/ui'),
+    require("@tailwindcss/ui"),
     function ({ addBase, addComponents, theme }) {
       addBase([
         {
-          '@font-face': {
-            fontFamily: 'Inter var',
-            fontWeight: '100 900',
-            fontStyle: 'normal',
-            fontNamedInstance: 'Regular',
-            fontDisplay: 'swap',
+          "@font-face": {
+            fontFamily: "Inter var",
+            fontWeight: "100 900",
+            fontStyle: "normal",
+            fontNamedInstance: "Regular",
+            fontDisplay: "swap",
             src:
               'url("/fonts/Inter-roman.var-latin.woff2?3.13") format("woff2")',
           },
         },
         {
-          '@font-face': {
-            fontFamily: 'Inter var',
-            fontWeight: '100 900',
-            fontStyle: 'italic',
-            fontNamedInstance: 'Italic',
-            fontDisplay: 'swap',
+          "@font-face": {
+            fontFamily: "Inter var",
+            fontWeight: "100 900",
+            fontStyle: "italic",
+            fontNamedInstance: "Italic",
+            fontDisplay: "swap",
             src:
               'url("/fonts/Inter-italic.var-latin.woff2?3.13") format("woff2")',
           },
         },
-      ])
+      ]);
     },
   ],
-}
+};
 ```
 
 ```javascript
@@ -93,7 +90,8 @@ module.exports = {
 @tailwind utilities;
 ```
 
-## Example usage 
+## Example usage
+
 Import the component:
 
 `import { Button } from '@maxihost/metal-ui';`
@@ -104,26 +102,24 @@ Import the component:
 
 ## Developing
 
-After cloning and installing the project, run it with: 
+Install and run:
 
-`npm run dev` 
+`yarn && yarn dev`
 
 A Storybook tab will open automatically in your browser.
 
-If you want to develop a new component or make changes to one, you might want to run it on a separate project. Go to the directory where you have Metal UI installed and run: 
+If you want to develop a new component or make changes to one, you might want to run it on a separate project. Go to the directory where you have Metal UI installed and run:
 
-`npm link`
-
-You'll need to link React too to avoid conflicts
-
-`npm link path-to-your-project/node_modules/react` 
-
-Then go to the project where you want to use Metal UI and run:
-
-`npm link @maxihost/metal-ui`
-
-After making changes to components, you need to build the project with.
-
- `npm run build`
-
-This will update the dist folder and automatically reload the linked project.
+```bash
+cd PATH_TO_METALUI
+yarn link
+yarn install
+cd node_modules/react
+yarn link
+cd ../../node_modules/react-dom
+yarn link
+cd YOUR_PROJECT
+yarn link @maxihost/metal-ui
+yarn link react
+yarn link react-dom
+```

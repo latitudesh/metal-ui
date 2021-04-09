@@ -2,6 +2,7 @@ import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import Header from "./index";
 import Button from "../Button";
 import { SwitchVerticalOutline } from "heroicons-react";
+import { Tabs, TabsList, TabsTab, TabsPanel } from "../Tabs";
 
 <Meta title="Header" component={Header} />
 
@@ -29,47 +30,14 @@ import { SwitchVerticalOutline } from "heroicons-react";
       title="Title"
       actions={<Button label="Action" />}
       nav={
-        <>
-          <Button size="small" label="Page 1" />
-          <Button
-            size="small"
-            label="Page 2"
-            className="ml-1"
-            variant="minimal"
-          />
-        </>
-      }
-    />
-  </Story>
-</Preview>
-
-# With filters
-
-<Preview>
-  <Story name="With filters">
-    <Header
-      title="Title"
-      actions={<Button label="Action" />}
-      nav={
-        <>
-          <Button size="small" label="Page 1" />
-          <Button
-            size="small"
-            label="Page 2"
-            className="ml-1"
-            variant="minimal"
-          />
-        </>
-      }
-      filters={
-        <>
-          <Button
-            size="small"
-            variant="minimal"
-            iconBefore={<SwitchVerticalOutline size={18} />}
-            label="Sort"
-          />
-        </>
+        <Tabs defaultValue="one">
+          <TabsList>
+            <TabsTab value="one">One</TabsTab>
+            <TabsTab value="two">Two</TabsTab>
+            <TabsTab value="three">Three</TabsTab>
+            <TabsTab value="four">Four</TabsTab>
+          </TabsList>
+        </Tabs>
       }
     />
   </Story>

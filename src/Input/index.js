@@ -59,7 +59,7 @@ const Input = React.forwardRef(
               {
                 "border-border text-foreground hover:border-accent-five focus:border-accent-five placeholder-accent-five": !error && !disabled,
                 "text-error border-error hover:border-error focus:border-error placeholder-error": error,
-                "border-border bg-background cursor-not-allowed": disabled,
+                "border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five": disabled,
               }
             )}
             {...rest}
