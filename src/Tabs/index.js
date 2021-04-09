@@ -12,7 +12,7 @@ const TabsList = styled(TabsPrimitive.List)(() => [
 ]);
 
 const TabsTab = styled(TabsPrimitive.Tab)(() => [
-  tw`flex-shrink-0 py-2 px-1 mr-4 text-accent-five select-none outline-none cursor-pointer transition ease-in-out duration-150`,
+  tw`flex-shrink-0 py-2 px-1 mr-4 text-accent-five select-none outline-none cursor-pointer transition ease-in-out duration-150 font-normal text-sm`,
   tw`hover:(text-foreground)`,
   css`
     &[role="tab"]:first-child {
