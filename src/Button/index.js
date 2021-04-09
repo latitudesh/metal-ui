@@ -53,7 +53,7 @@ const Button = ({
   );
 
   const ButtonClasses = cx(
-    "Button relative border items-center flex font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer",
+    "Button relative border items-center flex font-medium rounded focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer",
     className,
     {
       disabled: disabled,

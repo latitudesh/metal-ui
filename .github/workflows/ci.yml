@@ -25,14 +25,14 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: NPM install
-      run: npm ci
+    - name: Yarn install
+      run: yarn install --frozen-lockfile
 
-    - name: NPM Build
-      run: npm run build --if-present
+    - name: Yarn Build
+      run: yarn build --if-present
 
     - name: Run Tests
-      run: npm run test--ci
+      run: yarn run test--ci
 
   release:
     
@@ -50,8 +50,8 @@ jobs:
       with:
         node-version: 12.x
 
-    - name: NPM Install ci
-      run: npm ci
+    - name: Yarn Install ci
+      run: yarn ci
 
     - name: Publish with Semantic Release
       run: npx semantic-release
