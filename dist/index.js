@@ -7019,7 +7019,7 @@ var emotion_styled_base_browser_esm_createStyled = function createStyled(tag, op
     });
 
     Styled.withComponent = function (nextTag, nextOptions) {
-      return createStyled(nextTag, extends_extends({}, options, {}, nextOptions, {
+      return createStyled(nextTag, extends_extends({}, options, nextOptions, {
         shouldForwardProp: composeShouldForwardProps(Styled, nextOptions, true)
       })).apply(void 0, styles);
     };
