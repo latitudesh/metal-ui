@@ -6425,638 +6425,6 @@ Table_Table.TextCell.propTypes = {
   secondaryClassname: prop_types_default.a.string
 };
 /* harmony default export */ var src_Table = (Table_Table);
-// CONCATENATED MODULE: ./src/Typography/Heading.js
-function Heading_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Heading_typeof = function _typeof(obj) { return typeof obj; }; } else { Heading_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Heading_typeof(obj); }
-
-function Heading_extends() { Heading_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Heading_extends.apply(this, arguments); }
-
-function Heading_objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = Heading_objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function Heading_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function Heading_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function Heading_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function Heading_createClass(Constructor, protoProps, staticProps) { if (protoProps) Heading_defineProperties(Constructor.prototype, protoProps); if (staticProps) Heading_defineProperties(Constructor, staticProps); return Constructor; }
-
-function Heading_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) Heading_setPrototypeOf(subClass, superClass); }
-
-function Heading_setPrototypeOf(o, p) { Heading_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return Heading_setPrototypeOf(o, p); }
-
-function Heading_createSuper(Derived) { var hasNativeReflectConstruct = Heading_isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Heading_getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Heading_getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Heading_possibleConstructorReturn(this, result); }; }
-
-function Heading_possibleConstructorReturn(self, call) { if (call && (Heading_typeof(call) === "object" || typeof call === "function")) { return call; } return Heading_assertThisInitialized(self); }
-
-function Heading_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function Heading_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function Heading_getPrototypeOf(o) { Heading_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return Heading_getPrototypeOf(o); }
-
-function Heading_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
-  Heading_inherits(Heading, _PureComponent);
-
-  var _super = Heading_createSuper(Heading);
-
-  function Heading() {
-    Heading_classCallCheck(this, Heading);
-
-    return _super.apply(this, arguments);
-  }
-
-  Heading_createClass(Heading, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          className = _this$props.className,
-          color = _this$props.color,
-          size = _this$props.size,
-          props = Heading_objectWithoutProperties(_this$props, ["className", "color", "size"]);
-
-      var HTag = "h".concat(this.props.size);
-      return Object(react_["jsx"])(HTag, Heading_extends({
-        className: classnames_default()("", className, {
-          "text-4xl font-bold tracking-tighter": size == 1,
-          "text-3xl font-semibold tracking-tighter": size == 2,
-          "text-2xl font-semibold tracking-tight": size == 3,
-          "text-xl font-semibold tracking-tight": size == 4,
-          "text-lg font-normal": size == 5,
-          "text-normal font-normal": size == 6,
-          "text-foreground": color == "default",
-          "text-error": color == "danger"
-        })
-      }, props));
-    }
-  }]);
-
-  return Heading;
-}(external_root_React_commonjs2_react_commonjs_react_amd_react_["PureComponent"]);
-
-Heading_defineProperty(Heading_Heading, "propTypes", {
-  /**
-   * Each size represents its corresponding Heading element.
-   */
-  size: prop_types_default.a.oneOf([1, 2, 3, 4, 5, 6]).isRequired,
-
-  /**
-   * You can set any other available color
-   */
-  color: prop_types_default.a.oneOf(["default", "danger"]).isRequired,
-  className: prop_types_default.a.string
-});
-
-Heading_defineProperty(Heading_Heading, "defaultProps", {
-  size: 1,
-  color: "default",
-  className: ""
-});
-
-/* harmony default export */ var Typography_Heading = (Heading_Heading);
-// CONCATENATED MODULE: ./src/Header/index.js
-function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
-
-
-
-/** @jsxRuntime classic */
-
-/** @jsx jsx */
-
-
-
-
-
-
-var Header_ref2 =  true ? {
-  name: "6v84ff",
-  styles: "display:flex;flex-direction:row;align-items:center;min-width:0px"
-} : undefined;
-
-var Header_ref3 =  true ? {
-  name: "1h5hd82",
-  styles: "overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:0.125rem;font-weight:600"
-} : undefined;
-
-var Header_ref4 =  true ? {
-  name: "psasdh",
-  styles: "display:flex;flex-direction:row;align-items:center;justify-content:flex-end;margin-left:0.5rem"
-} : undefined;
-
-var Header_ref5 =  true ? {
-  name: "1kjf4md",
-  styles: "display:inline-flex;margin-left:0px"
-} : undefined;
-
-var Header_ref6 =  true ? {
-  name: "1ex87v0",
-  styles: "padding-left:2rem;padding-right:2rem"
-} : undefined;
-
-var Header_Header = function Header(_ref) {
-  var title = _ref.title,
-      actions = _ref.actions,
-      nav = _ref.nav;
-  return Object(react_["jsx"])("div", {
-    css: ["position:relative;width:100%;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity));", !nav &&
-    /*#__PURE__*/
-
-    /*#__PURE__*/
-    Object(react_["css"])({
-      boxShadow: "0 -1px 0 ".concat("#e5e7eb", " inset")
-    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
-  }, Object(react_["jsx"])("div", {
-    css: ["display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:2rem;padding-right:2rem;", nav ? {
-      "paddingTop": "1.5rem",
-      "paddingBottom": "1rem"
-    } : {
-      "paddingTop": "1.5rem",
-      "paddingBottom": "1.5rem"
-    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
-  }, Object(react_["jsx"])("div", {
-    css: Header_ref2
-  }, Object(react_["jsx"])(Typography_Heading, {
-    size: 3,
-    css: Header_ref3
-  }, title)), actions && Object(react_["jsx"])("div", {
-    css: Header_ref4
-  }, Object(react_["jsx"])("div", {
-    css: Header_ref5
-  }, actions))), nav && Object(react_["jsx"])("div", {
-    css: Header_ref6
-  }, nav));
-};
-
-Header_Header.defaultProps = {
-  title: null,
-  actions: null,
-  nav: null
-};
-Header_Header.propTypes = {
-  title: prop_types_default.a.oneOfType([prop_types_default.a.string, prop_types_default.a.number]).isRequired,
-  actions: prop_types_default.a.node,
-  nav: prop_types_default.a.node,
-  filters: prop_types_default.a.node
-};
-/* harmony default export */ var src_Header = (Header_Header);
-// CONCATENATED MODULE: ./src/Content/index.js
-
-
-
-
-
-var Content_Content = function Content(_ref) {
-  var children = _ref.children,
-      size = _ref.size,
-      className = _ref.className;
-
-  var base = Object(react_["jsx"])("div", {
-    className: classnames_default()("mx-auto px-4 sm:px-6 md:px-8", {
-      "max-w-3xl": size === "small",
-      "max-w-5xl": size === "default" || !size,
-      "max-w-full": size === "full"
-    }, className)
-  }, Object(react_["jsx"])("div", {
-    className: "py-8"
-  }, children));
-
-  return base;
-};
-
-Content_Content.propTypes = {
-  children: prop_types_default.a.node,
-  size: prop_types_default.a.string,
-  className: prop_types_default.a.string
-};
-/* harmony default export */ var src_Content = (Content_Content);
-// EXTERNAL MODULE: ./node_modules/classnames/bind.js
-var bind = __webpack_require__(4);
-var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
-
-// CONCATENATED MODULE: ./src/SpinningDots/index.js
-function SpinningDots_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
-
-/** @jsxRuntime classic */
-
-/** @jsx jsx */
-
-
-
-
-
-
-
-var SpinningDots_ref =  true ? {
-  name: "10904xo",
-  styles: "border-width:3px"
-} : undefined;
-
-var SpinningDots_SpinningDots = function SpinningDots(_ref2) {
-  var className = _ref2.className,
-      variant = _ref2.variant;
-  var i = classnames_default()("animate-pulse h-0 w-0 rounded-full", {
-    'text-accent-six': variant === 'default',
-    'text-accent-three': variant === 'light',
-    'text-accent-eight': variant === 'dark'
-  });
-  var iCss = SpinningDots_ref;
-  return Object(react_["jsx"])("div", {
-    className: classnames_default()("spinner inline p-0 h-auto w-full text-center", className)
-  }, Object(react_["jsx"])("span", {
-    className: "inline-flex relative align-middle h-2 text-center opacity-50 w-10"
-  }, Object(react_["jsx"])("div", {
-    className: "flex w-full justify-around"
-  }, Object(react_["jsx"])("i", {
-    className: i,
-    css: iCss,
-    style: {
-      animationDelay: "-.2s"
-    }
-  }), Object(react_["jsx"])("i", {
-    className: i,
-    css: iCss,
-    style: {
-      animationDelay: "-.1s"
-    }
-  }), Object(react_["jsx"])("i", {
-    className: i,
-    css: iCss
-  }))));
-};
-
-SpinningDots_SpinningDots.propTypes = {
-  className: prop_types_default.a.string,
-  variant: prop_types_default.a.oneOf(["default", "inherit", "light", "dark"])
-};
-SpinningDots_SpinningDots.defaultProps = {
-  variant: "default"
-};
-/* harmony default export */ var src_SpinningDots = (SpinningDots_SpinningDots);
-// CONCATENATED MODULE: ./src/Button/index.js
-function Button_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-var buttonTypes = {
-  "default": "border-transparent hover:border-accent-five text-white hover:text-foreground bg-foreground hover:bg-accent-two active:bg-foreground active:text-white",
-  secondary: "border-secondary hover:border-foreground text-secondary hover:text-foreground bg-white hover:bg-accent-two active:bg-foreground active:text-white",
-  danger: "border-error-dark hover:border-error-dark text-white hover:text-error-dark bg-error-dark hover:bg-accent-two active:bg-foreground active:text-white",
-  disabled: "border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed",
-  minimal: "border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five",
-  small: "px-4 h-8 leading-8 text-sm",
-  normal: "px-6 h-9 leading-9 text-sm",
-  large: "px-12 h-10 leading-10 text-base"
-};
-
-var Button_Button = function Button(_ref) {
-  var _cx;
-
-  var disabled = _ref.disabled,
-      iconBefore = _ref.iconBefore,
-      iconAfter = _ref.iconAfter,
-      onClick = _ref.onClick,
-      label = _ref.label,
-      type = _ref.type,
-      size = _ref.size,
-      variant = _ref.variant,
-      component = _ref.component,
-      block = _ref.block,
-      isLoading = _ref.isLoading,
-      className = _ref.className;
-  var cx = bind_default.a.bind(buttonTypes);
-
-  var ButtonContent = Object(react_["jsx"])("div", {
-    className: bind_default()("flex items-center justify-center", {
-      "opacity-0": isLoading,
-      "opacity-100": !isLoading
-    })
-  }, iconBefore && Object(react_["jsx"])("span", {
-    className: "flex mr-2"
-  }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore)), Object(react_["jsx"])("span", {
-    className: "truncate"
-  }, label), iconAfter && Object(react_["jsx"])("span", {
-    className: "flex ml-2"
-  }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
-
-  var ButtonClasses = cx("Button relative border items-center flex font-medium rounded focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer", className, (_cx = {
-    disabled: disabled
-  }, Button_defineProperty(_cx, variant, Boolean(variant) && !disabled), Button_defineProperty(_cx, size, Boolean(size)), Button_defineProperty(_cx, "block w-full", Boolean(block)), _cx));
-
-  var RenderComponent = function RenderComponent() {
-    if (component.props.children && typeof component.props.children !== "string") {
-      var children = /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component.props.children, {
-        className: ButtonClasses
-      });
-      return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {}, children);
-    } else {
-      return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {
-        className: ButtonClasses
-      });
-    }
-  };
-
-  return Object(react_["jsx"])(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, component ? Object(react_["jsx"])(RenderComponent, null) : Object(react_["jsx"])("button", {
-    type: type,
-    onClick: onClick,
-    disabled: disabled || isLoading,
-    className: ButtonClasses
-  }, isLoading && Object(react_["jsx"])(src_SpinningDots, {
-    variant: "inherit",
-    className: "absolute"
-  }), ButtonContent));
-};
-
-Button_Button.propTypes = {
-  disabled: prop_types_default.a.bool,
-  className: prop_types_default.a.string,
-  iconBefore: prop_types_default.a.element,
-  iconAfter: prop_types_default.a.element,
-  label: prop_types_default.a.string,
-  onClick: prop_types_default.a.func,
-  type: prop_types_default.a.string,
-  variant: prop_types_default.a.oneOf(["default", "secondary", "danger", "disabled", "minimal"]),
-  size: prop_types_default.a.oneOf(["small", "normal", "large"]),
-  isLoading: prop_types_default.a.bool,
-  component: prop_types_default.a.element
-};
-Button_Button.defaultProps = {
-  size: "normal",
-  variant: "default",
-  type: "button",
-  isLoading: false,
-  disabled: false
-};
-/* harmony default export */ var src_Button = (Button_Button);
-// CONCATENATED MODULE: ./src/Box/index.js
-function Box_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-var Box_Box = function Box(_ref) {
-  var _classNames;
-
-  var flex = _ref.flex,
-      alignItems = _ref.alignItems,
-      justifyContent = _ref.justifyContent,
-      backgroundColor = _ref.backgroundColor,
-      flexDirection = _ref.flexDirection,
-      flexWrap = _ref.flexWrap,
-      children = _ref.children,
-      className = _ref.className,
-      rootCard = _ref.rootCard,
-      noPadding = _ref.noPadding;
-  return Object(react_["jsx"])("div", {
-    className: classnames_default()("overflow-hidden", className, (_classNames = {
-      flex: Boolean(flex)
-    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 border border-border rounded shadow-sm", Boolean(rootCard)), Box_defineProperty(_classNames, "px-6 py-4", !Boolean(noPadding)), Box_defineProperty(_classNames, "flex-".concat(flexWrap), Boolean(flexWrap)), _classNames))
-  }, children);
-};
-
-Box_Box.defaultProps = {
-  flex: false,
-  alignItems: null,
-  justifyContent: null,
-  backgroundColor: "white",
-  flexDirection: null,
-  rootCard: false,
-  noPadding: false,
-  flexWrap: null
-};
-Box_Box.propTypes = {
-  /**
-   * Sets the background color
-   */
-  backgroundColor: prop_types_default.a.string,
-
-  /**
-   * When true, renders the Box with `display:flex`
-   */
-  flex: prop_types_default.a.bool,
-
-  /**
-   * Controls item alignment with `align-items`. Only works when flex is true
-   */
-  alignItems: prop_types_default.a.oneOf(["start", "end", "center", "baseline", "stretch"]),
-
-  /**
-   * Controls item positioning with `justify-content`. Only works when flex is true
-   */
-  justifyContent: prop_types_default.a.oneOf(["start", "end", "center", "between", "around", "evenly"]),
-
-  /**
-   * Controls the direction of flex items with `flex-direction`. Only works when flex is true
-   */
-  flexDirection: prop_types_default.a.oneOf(["row", "row-reverse", "col", "col-reverse"]),
-
-  /**
-   * Controls how flex items wrap with `flex-wrap`. Only works when flex is true
-   */
-  flexWrap: prop_types_default.a.oneOf(["wrap", "wrap-reverse", "nowrap"]),
-
-  /**
-   * Renders the content
-   */
-  children: prop_types_default.a.node,
-
-  /**
-   * Adds border and shadow to the Box. Useful when using Box as the parent element of a section
-   */
-  rootCard: prop_types_default.a.bool,
-
-  /**
-   * Removes the padding from the Box. Useful when using Box as a standard `div`.
-   */
-  noPadding: prop_types_default.a.bool,
-  className: prop_types_default.a.string
-};
-/* harmony default export */ var src_Box = (Box_Box);
-// EXTERNAL MODULE: external {"root":"ReactDOM","commonjs2":"react-dom","commonjs":"react-dom","amd":"react-dom"}
-var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_ = __webpack_require__(5);
-var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_default = /*#__PURE__*/__webpack_require__.n(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_);
-
-// CONCATENATED MODULE: ./src/Sidesheet/index.js
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-function XIcon() {
-  return Object(react_["jsx"])("svg", {
-    fill: "none",
-    className: "text-accent-four",
-    stroke: "currentColor",
-    viewBox: "0 0 24 24",
-    width: "16px",
-    height: "16px"
-  }, Object(react_["jsx"])("path", {
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    strokeWidth: "2",
-    d: "M6 18L18 6M6 6l12 12"
-  }));
-}
-
-var Sidesheet_SidesheetContent = function SidesheetContent(_ref) {
-  var id = _ref.id,
-      children = _ref.children;
-  if (typeof window === "undefined") return null;
-  var element = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(document.getElementById(id) || document.createElement("div"));
-  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
-    if (!document.getElementById(id)) {
-      element.current.id = id;
-      document.body.appendChild(element.current);
-    }
-
-    return function () {
-      if (element.current.parentElement) {
-        element.current.parentElement.removeChild(element.current);
-      }
-    };
-  }, [id]);
-  return /*#__PURE__*/Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
-};
-
-var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
-  var title = _ref2.title,
-      children = _ref2.children,
-      className = _ref2.className,
-      action = _ref2.action,
-      content = _ref2.content,
-      _ref2$width = _ref2.width,
-      width = _ref2$width === void 0 ? 400 : _ref2$width,
-      onClose = _ref2.onClose,
-      _ref2$isShown = _ref2.isShown,
-      isShown = _ref2$isShown === void 0 ? false : _ref2$isShown;
-  var sideSheet = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
-  var portal = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
-
-  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      isOpened = _useState2[0],
-      setIsOpened = _useState2[1];
-
-  var _useState3 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
-      _useState4 = _slicedToArray(_useState3, 2),
-      transition = _useState4[0],
-      setTransition = _useState4[1];
-
-  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
-    if (!isShown) {
-      setTransition(false);
-      setTimeout(function () {
-        return setIsOpened(false);
-      }, 500);
-    } else {
-      setIsOpened(true);
-      setTimeout(function () {
-        return setTransition(true);
-      }, 100);
-    }
-  }, [isShown]);
-
-  var closeTransition = function closeTransition() {
-    if (isOpened && transition) {
-      onClose();
-      setTransition(false);
-      setTimeout(function () {
-        return setIsOpened(false);
-      }, 500);
-    }
-  };
-
-  return Object(react_["jsx"])("div", {
-    ref: sideSheet,
-    className: bind_default()("relative inline-block text-left", className)
-  }, children, isOpened && Object(react_["jsx"])(Sidesheet_SidesheetContent, {
-    id: "sidesheet"
-  }, Object(react_["jsx"])("div", {
-    onClick: function onClick() {
-      return closeTransition();
-    },
-    className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
-      "bg-accent-eight": transition,
-      "bg-transparent": !transition
-    })
-  }), Object(react_["jsx"])("div", {
-    ref: portal,
-    style: {
-      transition: "transform .4s cubic-bezier(.3,0,0,1)",
-      transform: transition ? "translateX(calc(100vw - ".concat(width, "px - 20px))") : "translateX(100vw)",
-      top: 0,
-      bottom: 0,
-      width: width,
-      height: "calc(100% - 20px)"
-    },
-    className: "fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
-  }, Object(react_["jsx"])(src_Box, {
-    flex: true,
-    alignItems: "center",
-    className: "relative border-b border-border rounded rounded-b-none"
-  }, Object(react_["jsx"])("div", {
-    className: "text-foreground flex-auto truncate leading-6"
-  }, title), Object(react_["jsx"])(src_Box, {
-    flex: true,
-    backgroundColor: "transparent",
-    className: "cursor-pointer",
-    noPadding: true
-  }, Object(react_["jsx"])("div", {
-    onClick: function onClick() {
-      return closeTransition();
-    }
-  }, Object(react_["jsx"])(XIcon, null)))), Object(react_["jsx"])(src_Box, {
-    flex: true,
-    flexDirection: "col",
-    className: "sidesheet-content relative overflow-y-auto flex-1 rounded"
-  }, Object(react_["jsx"])(src_Box, {
-    noPadding: true,
-    flex: true,
-    flexDirection: "col",
-    className: "h-full"
-  }, content)), action && Object(react_["jsx"])(src_Box, {
-    flex: true,
-    justifyContent: "evenly",
-    alignItems: "center",
-    className: "sidesheet-action h-16 border-t border-border relative flex-initial rounded rounded-t-none"
-  }, action))));
-};
-
-Sidesheet_Sidesheet.propTypes = {
-  content: prop_types_default.a.element,
-  children: prop_types_default.a.element,
-  className: prop_types_default.a.string,
-  width: prop_types_default.a.string,
-  action: prop_types_default.a.element,
-  onClose: prop_types_default.a.func,
-  isShown: prop_types_default.a.bool,
-  title: prop_types_default.a.string
-};
-/* harmony default export */ var src_Sidesheet = (Sidesheet_Sidesheet);
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
 function extends_extends() {
   extends_extends = Object.assign || function (target) {
@@ -7665,6 +7033,648 @@ var emotion_styled_base_browser_esm_createStyled = function createStyled(tag, op
 
 /* harmony default export */ var emotion_styled_base_browser_esm = (emotion_styled_base_browser_esm_createStyled);
 
+// CONCATENATED MODULE: ./src/Typography/Heading.js
+function Heading_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Heading_typeof = function _typeof(obj) { return typeof obj; }; } else { Heading_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Heading_typeof(obj); }
+
+function Heading_extends() { Heading_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Heading_extends.apply(this, arguments); }
+
+function Heading_objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = Heading_objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function Heading_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function Heading_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function Heading_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function Heading_createClass(Constructor, protoProps, staticProps) { if (protoProps) Heading_defineProperties(Constructor.prototype, protoProps); if (staticProps) Heading_defineProperties(Constructor, staticProps); return Constructor; }
+
+function Heading_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) Heading_setPrototypeOf(subClass, superClass); }
+
+function Heading_setPrototypeOf(o, p) { Heading_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return Heading_setPrototypeOf(o, p); }
+
+function Heading_createSuper(Derived) { var hasNativeReflectConstruct = Heading_isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Heading_getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Heading_getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Heading_possibleConstructorReturn(this, result); }; }
+
+function Heading_possibleConstructorReturn(self, call) { if (call && (Heading_typeof(call) === "object" || typeof call === "function")) { return call; } return Heading_assertThisInitialized(self); }
+
+function Heading_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function Heading_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function Heading_getPrototypeOf(o) { Heading_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return Heading_getPrototypeOf(o); }
+
+function Heading_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+var Heading_Heading = /*#__PURE__*/function (_PureComponent) {
+  Heading_inherits(Heading, _PureComponent);
+
+  var _super = Heading_createSuper(Heading);
+
+  function Heading() {
+    Heading_classCallCheck(this, Heading);
+
+    return _super.apply(this, arguments);
+  }
+
+  Heading_createClass(Heading, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          className = _this$props.className,
+          color = _this$props.color,
+          size = _this$props.size,
+          props = Heading_objectWithoutProperties(_this$props, ["className", "color", "size"]);
+
+      var HTag = "h".concat(this.props.size);
+      return Object(react_["jsx"])(HTag, Heading_extends({
+        className: classnames_default()("", className, {
+          "text-4xl font-bold tracking-tighter": size == 1,
+          "text-3xl font-semibold tracking-tighter": size == 2,
+          "text-2xl font-semibold tracking-tight": size == 3,
+          "text-xl font-semibold tracking-tight": size == 4,
+          "text-lg font-normal": size == 5,
+          "text-normal font-normal": size == 6,
+          "text-foreground": color == "default",
+          "text-error": color == "danger"
+        })
+      }, props));
+    }
+  }]);
+
+  return Heading;
+}(external_root_React_commonjs2_react_commonjs_react_amd_react_["PureComponent"]);
+
+Heading_defineProperty(Heading_Heading, "propTypes", {
+  /**
+   * Each size represents its corresponding Heading element.
+   */
+  size: prop_types_default.a.oneOf([1, 2, 3, 4, 5, 6]).isRequired,
+
+  /**
+   * You can set any other available color
+   */
+  color: prop_types_default.a.oneOf(["default", "danger"]).isRequired,
+  className: prop_types_default.a.string
+});
+
+Heading_defineProperty(Heading_Heading, "defaultProps", {
+  size: 1,
+  color: "default",
+  className: ""
+});
+
+/* harmony default export */ var Typography_Heading = (Heading_Heading);
+// CONCATENATED MODULE: ./src/Header/index.js
+
+
+function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+
+
+
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
+
+
+
+
+
+
+var Header_ref =  true ? {
+  name: "vi0yoq",
+  styles: "[role=\"tablist\"]{padding-left:2rem;padding-right:2rem;;}"
+} : undefined;
+
+var Nav = emotion_styled_base_browser_esm("div",  true ? {
+  target: "e5yo00a0"
+} : undefined)(function () {
+  return [Header_ref];
+},  true ? "" : undefined);
+
+var Header_ref3 =  true ? {
+  name: "6v84ff",
+  styles: "display:flex;flex-direction:row;align-items:center;min-width:0px"
+} : undefined;
+
+var Header_ref4 =  true ? {
+  name: "1h5hd82",
+  styles: "overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:0.125rem;font-weight:600"
+} : undefined;
+
+var Header_ref5 =  true ? {
+  name: "psasdh",
+  styles: "display:flex;flex-direction:row;align-items:center;justify-content:flex-end;margin-left:0.5rem"
+} : undefined;
+
+var Header_ref6 =  true ? {
+  name: "1kjf4md",
+  styles: "display:inline-flex;margin-left:0px"
+} : undefined;
+
+var Header_Header = function Header(_ref2) {
+  var title = _ref2.title,
+      actions = _ref2.actions,
+      nav = _ref2.nav;
+  return Object(react_["jsx"])("div", {
+    css: ["position:relative;width:100%;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity));", !nav &&
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+    Object(react_["css"])({
+      boxShadow: "0 -1px 0 ".concat("#e5e7eb", " inset")
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
+  }, Object(react_["jsx"])("div", {
+    css: ["display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:2rem;padding-right:2rem;", nav ? {
+      "paddingTop": "1.5rem",
+      "paddingBottom": "1rem"
+    } : {
+      "paddingTop": "1.5rem",
+      "paddingBottom": "1.5rem"
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
+  }, Object(react_["jsx"])("div", {
+    css: Header_ref3
+  }, Object(react_["jsx"])(Typography_Heading, {
+    size: 3,
+    css: Header_ref4
+  }, title)), actions && Object(react_["jsx"])("div", {
+    css: Header_ref5
+  }, Object(react_["jsx"])("div", {
+    css: Header_ref6
+  }, actions))), nav && Object(react_["jsx"])(Nav, null, nav));
+};
+
+Header_Header.defaultProps = {
+  title: null,
+  actions: null,
+  nav: null
+};
+Header_Header.propTypes = {
+  title: prop_types_default.a.oneOfType([prop_types_default.a.string, prop_types_default.a.number]).isRequired,
+  actions: prop_types_default.a.node,
+  nav: prop_types_default.a.node,
+  filters: prop_types_default.a.node
+};
+/* harmony default export */ var src_Header = (Header_Header);
+// CONCATENATED MODULE: ./src/Content/index.js
+
+
+
+
+
+var Content_Content = function Content(_ref) {
+  var children = _ref.children,
+      size = _ref.size,
+      className = _ref.className;
+
+  var base = Object(react_["jsx"])("div", {
+    className: classnames_default()("mx-auto px-4 sm:px-6 md:px-8", {
+      "max-w-3xl": size === "small",
+      "max-w-5xl": size === "default" || !size,
+      "max-w-full": size === "full"
+    }, className)
+  }, Object(react_["jsx"])("div", {
+    className: "py-8"
+  }, children));
+
+  return base;
+};
+
+Content_Content.propTypes = {
+  children: prop_types_default.a.node,
+  size: prop_types_default.a.string,
+  className: prop_types_default.a.string
+};
+/* harmony default export */ var src_Content = (Content_Content);
+// EXTERNAL MODULE: ./node_modules/classnames/bind.js
+var bind = __webpack_require__(4);
+var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
+
+// CONCATENATED MODULE: ./src/SpinningDots/index.js
+function SpinningDots_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
+
+
+
+
+
+
+
+var SpinningDots_ref =  true ? {
+  name: "10904xo",
+  styles: "border-width:3px"
+} : undefined;
+
+var SpinningDots_SpinningDots = function SpinningDots(_ref2) {
+  var className = _ref2.className,
+      variant = _ref2.variant;
+  var i = classnames_default()("animate-pulse h-0 w-0 rounded-full", {
+    'text-accent-six': variant === 'default',
+    'text-accent-three': variant === 'light',
+    'text-accent-eight': variant === 'dark'
+  });
+  var iCss = SpinningDots_ref;
+  return Object(react_["jsx"])("div", {
+    className: classnames_default()("spinner inline p-0 h-auto w-full text-center", className)
+  }, Object(react_["jsx"])("span", {
+    className: "inline-flex relative align-middle h-2 text-center opacity-50 w-10"
+  }, Object(react_["jsx"])("div", {
+    className: "flex w-full justify-around"
+  }, Object(react_["jsx"])("i", {
+    className: i,
+    css: iCss,
+    style: {
+      animationDelay: "-.2s"
+    }
+  }), Object(react_["jsx"])("i", {
+    className: i,
+    css: iCss,
+    style: {
+      animationDelay: "-.1s"
+    }
+  }), Object(react_["jsx"])("i", {
+    className: i,
+    css: iCss
+  }))));
+};
+
+SpinningDots_SpinningDots.propTypes = {
+  className: prop_types_default.a.string,
+  variant: prop_types_default.a.oneOf(["default", "inherit", "light", "dark"])
+};
+SpinningDots_SpinningDots.defaultProps = {
+  variant: "default"
+};
+/* harmony default export */ var src_SpinningDots = (SpinningDots_SpinningDots);
+// CONCATENATED MODULE: ./src/Button/index.js
+function Button_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+var buttonTypes = {
+  "default": "border-transparent hover:border-accent-five text-white hover:text-foreground bg-foreground hover:bg-accent-two active:bg-foreground active:text-white",
+  secondary: "border-secondary hover:border-foreground text-secondary hover:text-foreground bg-white hover:bg-accent-two active:bg-foreground active:text-white",
+  danger: "border-error-dark hover:border-error-dark text-white hover:text-error-dark bg-error-dark hover:bg-accent-two active:bg-foreground active:text-white",
+  disabled: "border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed",
+  minimal: "border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five",
+  small: "px-4 h-8 leading-8 text-sm",
+  normal: "px-6 h-9 leading-9 text-sm",
+  large: "px-12 h-10 leading-10 text-base"
+};
+
+var Button_Button = function Button(_ref) {
+  var _cx;
+
+  var disabled = _ref.disabled,
+      iconBefore = _ref.iconBefore,
+      iconAfter = _ref.iconAfter,
+      onClick = _ref.onClick,
+      label = _ref.label,
+      type = _ref.type,
+      size = _ref.size,
+      variant = _ref.variant,
+      component = _ref.component,
+      block = _ref.block,
+      isLoading = _ref.isLoading,
+      className = _ref.className;
+  var cx = bind_default.a.bind(buttonTypes);
+
+  var ButtonContent = Object(react_["jsx"])("div", {
+    className: bind_default()("flex items-center justify-center", {
+      "opacity-0": isLoading,
+      "opacity-100": !isLoading
+    })
+  }, iconBefore && Object(react_["jsx"])("span", {
+    className: "flex mr-2"
+  }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore)), Object(react_["jsx"])("span", {
+    className: "truncate"
+  }, label), iconAfter && Object(react_["jsx"])("span", {
+    className: "flex ml-2"
+  }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
+
+  var ButtonClasses = cx("Button relative border items-center flex font-medium rounded focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer", className, (_cx = {
+    disabled: disabled
+  }, Button_defineProperty(_cx, variant, Boolean(variant) && !disabled), Button_defineProperty(_cx, size, Boolean(size)), Button_defineProperty(_cx, "block w-full", Boolean(block)), _cx));
+
+  var RenderComponent = function RenderComponent() {
+    if (component.props.children && typeof component.props.children !== "string") {
+      var children = /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component.props.children, {
+        className: ButtonClasses
+      });
+      return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {}, children);
+    } else {
+      return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {
+        className: ButtonClasses
+      });
+    }
+  };
+
+  return Object(react_["jsx"])(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, component ? Object(react_["jsx"])(RenderComponent, null) : Object(react_["jsx"])("button", {
+    type: type,
+    onClick: onClick,
+    disabled: disabled || isLoading,
+    className: ButtonClasses
+  }, isLoading && Object(react_["jsx"])(src_SpinningDots, {
+    variant: "inherit",
+    className: "absolute"
+  }), ButtonContent));
+};
+
+Button_Button.propTypes = {
+  disabled: prop_types_default.a.bool,
+  className: prop_types_default.a.string,
+  iconBefore: prop_types_default.a.element,
+  iconAfter: prop_types_default.a.element,
+  label: prop_types_default.a.string,
+  onClick: prop_types_default.a.func,
+  type: prop_types_default.a.string,
+  variant: prop_types_default.a.oneOf(["default", "secondary", "danger", "disabled", "minimal"]),
+  size: prop_types_default.a.oneOf(["small", "normal", "large"]),
+  isLoading: prop_types_default.a.bool,
+  component: prop_types_default.a.element
+};
+Button_Button.defaultProps = {
+  size: "normal",
+  variant: "default",
+  type: "button",
+  isLoading: false,
+  disabled: false
+};
+/* harmony default export */ var src_Button = (Button_Button);
+// CONCATENATED MODULE: ./src/Box/index.js
+function Box_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+var Box_Box = function Box(_ref) {
+  var _classNames;
+
+  var flex = _ref.flex,
+      alignItems = _ref.alignItems,
+      justifyContent = _ref.justifyContent,
+      backgroundColor = _ref.backgroundColor,
+      flexDirection = _ref.flexDirection,
+      flexWrap = _ref.flexWrap,
+      children = _ref.children,
+      className = _ref.className,
+      rootCard = _ref.rootCard,
+      noPadding = _ref.noPadding;
+  return Object(react_["jsx"])("div", {
+    className: classnames_default()("overflow-hidden", className, (_classNames = {
+      flex: Boolean(flex)
+    }, Box_defineProperty(_classNames, "items-".concat(alignItems), Boolean(alignItems)), Box_defineProperty(_classNames, "justify-".concat(justifyContent), Boolean(justifyContent)), Box_defineProperty(_classNames, "bg-".concat(backgroundColor), Boolean(backgroundColor)), Box_defineProperty(_classNames, "flex-".concat(flexDirection), Boolean(flexDirection)), Box_defineProperty(_classNames, "mb-4 border border-border rounded shadow-sm", Boolean(rootCard)), Box_defineProperty(_classNames, "px-6 py-4", !Boolean(noPadding)), Box_defineProperty(_classNames, "flex-".concat(flexWrap), Boolean(flexWrap)), _classNames))
+  }, children);
+};
+
+Box_Box.defaultProps = {
+  flex: false,
+  alignItems: null,
+  justifyContent: null,
+  backgroundColor: "white",
+  flexDirection: null,
+  rootCard: false,
+  noPadding: false,
+  flexWrap: null
+};
+Box_Box.propTypes = {
+  /**
+   * Sets the background color
+   */
+  backgroundColor: prop_types_default.a.string,
+
+  /**
+   * When true, renders the Box with `display:flex`
+   */
+  flex: prop_types_default.a.bool,
+
+  /**
+   * Controls item alignment with `align-items`. Only works when flex is true
+   */
+  alignItems: prop_types_default.a.oneOf(["start", "end", "center", "baseline", "stretch"]),
+
+  /**
+   * Controls item positioning with `justify-content`. Only works when flex is true
+   */
+  justifyContent: prop_types_default.a.oneOf(["start", "end", "center", "between", "around", "evenly"]),
+
+  /**
+   * Controls the direction of flex items with `flex-direction`. Only works when flex is true
+   */
+  flexDirection: prop_types_default.a.oneOf(["row", "row-reverse", "col", "col-reverse"]),
+
+  /**
+   * Controls how flex items wrap with `flex-wrap`. Only works when flex is true
+   */
+  flexWrap: prop_types_default.a.oneOf(["wrap", "wrap-reverse", "nowrap"]),
+
+  /**
+   * Renders the content
+   */
+  children: prop_types_default.a.node,
+
+  /**
+   * Adds border and shadow to the Box. Useful when using Box as the parent element of a section
+   */
+  rootCard: prop_types_default.a.bool,
+
+  /**
+   * Removes the padding from the Box. Useful when using Box as a standard `div`.
+   */
+  noPadding: prop_types_default.a.bool,
+  className: prop_types_default.a.string
+};
+/* harmony default export */ var src_Box = (Box_Box);
+// EXTERNAL MODULE: external {"root":"ReactDOM","commonjs2":"react-dom","commonjs":"react-dom","amd":"react-dom"}
+var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_ = __webpack_require__(5);
+var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_default = /*#__PURE__*/__webpack_require__.n(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_);
+
+// CONCATENATED MODULE: ./src/Sidesheet/index.js
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+function XIcon() {
+  return Object(react_["jsx"])("svg", {
+    fill: "none",
+    className: "text-accent-four",
+    stroke: "currentColor",
+    viewBox: "0 0 24 24",
+    width: "16px",
+    height: "16px"
+  }, Object(react_["jsx"])("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "2",
+    d: "M6 18L18 6M6 6l12 12"
+  }));
+}
+
+var Sidesheet_SidesheetContent = function SidesheetContent(_ref) {
+  var id = _ref.id,
+      children = _ref.children;
+  if (typeof window === "undefined") return null;
+  var element = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(document.getElementById(id) || document.createElement("div"));
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (!document.getElementById(id)) {
+      element.current.id = id;
+      document.body.appendChild(element.current);
+    }
+
+    return function () {
+      if (element.current.parentElement) {
+        element.current.parentElement.removeChild(element.current);
+      }
+    };
+  }, [id]);
+  return /*#__PURE__*/Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
+};
+
+var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
+  var title = _ref2.title,
+      children = _ref2.children,
+      className = _ref2.className,
+      action = _ref2.action,
+      content = _ref2.content,
+      _ref2$width = _ref2.width,
+      width = _ref2$width === void 0 ? 400 : _ref2$width,
+      onClose = _ref2.onClose,
+      _ref2$isShown = _ref2.isShown,
+      isShown = _ref2$isShown === void 0 ? false : _ref2$isShown;
+  var sideSheet = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
+  var portal = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
+
+  var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isOpened = _useState2[0],
+      setIsOpened = _useState2[1];
+
+  var _useState3 = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      transition = _useState4[0],
+      setTransition = _useState4[1];
+
+  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    if (!isShown) {
+      setTransition(false);
+      setTimeout(function () {
+        return setIsOpened(false);
+      }, 500);
+    } else {
+      setIsOpened(true);
+      setTimeout(function () {
+        return setTransition(true);
+      }, 100);
+    }
+  }, [isShown]);
+
+  var closeTransition = function closeTransition() {
+    if (isOpened && transition) {
+      onClose();
+      setTransition(false);
+      setTimeout(function () {
+        return setIsOpened(false);
+      }, 500);
+    }
+  };
+
+  return Object(react_["jsx"])("div", {
+    ref: sideSheet,
+    className: bind_default()("relative inline-block text-left", className)
+  }, children, isOpened && Object(react_["jsx"])(Sidesheet_SidesheetContent, {
+    id: "sidesheet"
+  }, Object(react_["jsx"])("div", {
+    onClick: function onClick() {
+      return closeTransition();
+    },
+    className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
+      "bg-accent-eight": transition,
+      "bg-transparent": !transition
+    })
+  }), Object(react_["jsx"])("div", {
+    ref: portal,
+    style: {
+      transition: "transform .4s cubic-bezier(.3,0,0,1)",
+      transform: transition ? "translateX(calc(100vw - ".concat(width, "px - 20px))") : "translateX(100vw)",
+      top: 0,
+      bottom: 0,
+      width: width,
+      height: "calc(100% - 20px)"
+    },
+    className: "fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
+  }, Object(react_["jsx"])(src_Box, {
+    flex: true,
+    alignItems: "center",
+    className: "relative border-b border-border rounded rounded-b-none"
+  }, Object(react_["jsx"])("div", {
+    className: "text-foreground flex-auto truncate leading-6"
+  }, title), Object(react_["jsx"])(src_Box, {
+    flex: true,
+    backgroundColor: "transparent",
+    className: "cursor-pointer",
+    noPadding: true
+  }, Object(react_["jsx"])("div", {
+    onClick: function onClick() {
+      return closeTransition();
+    }
+  }, Object(react_["jsx"])(XIcon, null)))), Object(react_["jsx"])(src_Box, {
+    flex: true,
+    flexDirection: "col",
+    className: "sidesheet-content relative overflow-y-auto flex-1 rounded"
+  }, Object(react_["jsx"])(src_Box, {
+    noPadding: true,
+    flex: true,
+    flexDirection: "col",
+    className: "h-full"
+  }, content)), action && Object(react_["jsx"])(src_Box, {
+    flex: true,
+    justifyContent: "evenly",
+    alignItems: "center",
+    className: "sidesheet-action h-16 border-t border-border relative flex-initial rounded rounded-t-none"
+  }, action))));
+};
+
+Sidesheet_Sidesheet.propTypes = {
+  content: prop_types_default.a.element,
+  children: prop_types_default.a.element,
+  className: prop_types_default.a.string,
+  width: prop_types_default.a.string,
+  action: prop_types_default.a.element,
+  onClose: prop_types_default.a.func,
+  isShown: prop_types_default.a.bool,
+  title: prop_types_default.a.string
+};
+/* harmony default export */ var src_Sidesheet = (Sidesheet_Sidesheet);
 // CONCATENATED MODULE: ./src/Skeleton/index.js
 
 
@@ -13470,7 +13480,6 @@ function Tabs_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to strin
 /** @jsxRuntime classic */
 
 /** @jsx jsx */
-
 
 
 
