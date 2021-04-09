@@ -4,7 +4,6 @@ import { jsx } from "@emotion/react";
 import tw, { styled, css } from "twin.macro";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import PropTypes from "prop-types";
-import Text from "../Typography/Text";
 
 const Tabs = styled(TabsPrimitive.Root)(() => [tw`flex flex-col`]);
 

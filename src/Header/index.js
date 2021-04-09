@@ -4,7 +4,15 @@ import { jsx } from "@emotion/react";
 import React from "react";
 import PropTypes from "prop-types";
 import Heading from "../Typography/Heading";
-import tw, { theme, css } from "twin.macro";
+import tw, { theme, css, styled } from "twin.macro";
+
+const Nav = styled.div(() => [
+  css`
+    [role="tablist"] {
+      ${tw`px-8`}
+    }
+  `,
+]);
 
 const Header = ({ title, actions, nav }) => (
   <div
@@ -28,7 +36,7 @@ const Header = ({ title, actions, nav }) => (
         </div>
       )}
     </div>
-    {nav && <div tw="px-8">{nav}</div>}
+    {nav && <Nav>{nav}</Nav>}
   </div>
 );
 

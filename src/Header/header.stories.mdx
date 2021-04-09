@@ -2,13 +2,7 @@ import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import Header from "./index";
 import Button from "../Button";
 import { SwitchVerticalOutline } from "heroicons-react";
-import { Toolbar, ToolbarButton, ToolbarLink } from "../Toolbar";
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownContent,
-  DropdownItem,
-} from "../DropdownMenu";
+import { Tabs, TabsList, TabsTab, TabsPanel } from "../Tabs";
 
 <Meta title="Header" component={Header} />
 
@@ -36,12 +30,14 @@ import {
       title="Title"
       actions={<Button label="Action" />}
       nav={
-        <Toolbar>
-          <ToolbarButton active>Button</ToolbarButton>
-          <ToolbarLink href="https://www.maxihost.com" target="_blank">
-            Link
-          </ToolbarLink>
-        </Toolbar>
+        <Tabs defaultValue="one">
+          <TabsList>
+            <TabsTab value="one">One</TabsTab>
+            <TabsTab value="two">Two</TabsTab>
+            <TabsTab value="three">Three</TabsTab>
+            <TabsTab value="four">Four</TabsTab>
+          </TabsList>
+        </Tabs>
       }
     />
   </Story>
