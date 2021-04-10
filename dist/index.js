@@ -7225,6 +7225,8 @@ Header_Header.propTypes = {
 };
 /* harmony default export */ var src_Header = (Header_Header);
 // CONCATENATED MODULE: ./src/Content/index.js
+function Content_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -7232,13 +7234,15 @@ Header_Header.propTypes = {
 
 var Content_Content = function Content(_ref) {
   var children = _ref.children,
-      size = _ref.size;
+      size = _ref.size,
+      className = _ref.className,
+      bg = _ref.bg;
 
   var base = Object(react_["jsx"])("div", {
-    className: classnames_default()("p-8 h-full overflow-y-auto", {
-      "bg-background": size !== "full",
-      "bg-white": size === "full"
-    })
+    className: classnames_default()("p-8 h-full overflow-y-auto", Content_defineProperty({
+      "bg-background": size !== "full" && !bg,
+      "bg-white": size === "full" && !bg
+    }, "bg-".concat(bg), bg), className)
   }, Object(react_["jsx"])("div", {
     className: classnames_default()("mx-auto", {
       "max-w-3xl": size === "small",
@@ -7254,7 +7258,12 @@ var Content_Content = function Content(_ref) {
 Content_Content.propTypes = {
   children: prop_types_default.a.node,
   size: prop_types_default.a.string,
-  className: prop_types_default.a.string
+  className: prop_types_default.a.string,
+
+  /** 
+   * Overrides the default background color.
+   */
+  bg: prop_types_default.a.string
 };
 /* harmony default export */ var src_Content = (Content_Content);
 // EXTERNAL MODULE: ./node_modules/classnames/bind.js
