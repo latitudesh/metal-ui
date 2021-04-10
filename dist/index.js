@@ -7239,9 +7239,7 @@ var Content_Content = function Content(_ref) {
       "px-4 sm:px-6 md:px-8": size !== "full"
     }, className)
   }, Object(react_["jsx"])("div", {
-    className: classnames_default()({
-      "py-8": size !== "full"
-    }, className)
+    className: "p-8"
   }, children));
 
   return base;

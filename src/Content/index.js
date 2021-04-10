@@ -16,16 +16,7 @@ const Content = ({ children, size, className }) => {
         className
       )}
     >
-      <div
-        className={classNames(
-          {
-            "py-8": size !== "full",
-          },
-          className
-        )}
-      >
-        {children}
-      </div>
+      <div className="p-8">{children}</div>
     </div>
   );
 
