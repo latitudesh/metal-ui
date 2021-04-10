@@ -6350,7 +6350,7 @@ Table_Table.HeaderCell = function (_ref4) {
   var children = _ref4.children,
       className = _ref4.className;
   return Object(react_["jsx"])("th", {
-    className: classnames_default()("px-6 py-2 bg-accent-two text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider", className)
+    className: classnames_default()("px-6 py-2 bg-white text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider", className)
   }, children);
 };
 
@@ -7232,13 +7232,16 @@ var Content_Content = function Content(_ref) {
       className = _ref.className;
 
   var base = Object(react_["jsx"])("div", {
-    className: classnames_default()("mx-auto px-4 sm:px-6 md:px-8", {
+    className: classnames_default()("mx-auto", {
       "max-w-3xl": size === "small",
       "max-w-5xl": size === "default" || !size,
-      "max-w-full": size === "full"
+      "max-w-full": size === "full",
+      "px-4 sm:px-6 md:px-8": size !== "full"
     }, className)
   }, Object(react_["jsx"])("div", {
-    className: "py-8"
+    className: classnames_default()({
+      "py-8": size !== "full"
+    }, className)
   }, children));
 
   return base;

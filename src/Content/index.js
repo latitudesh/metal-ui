@@ -6,16 +6,26 @@ const Content = ({ children, size, className }) => {
   const base = (
     <div
       className={classNames(
-        "mx-auto px-4 sm:px-6 md:px-8",
+        "mx-auto",
         {
           "max-w-3xl": size === "small",
           "max-w-5xl": size === "default" || !size,
           "max-w-full": size === "full",
+          "px-4 sm:px-6 md:px-8": size !== "full",
         },
         className
       )}
     >
-      <div className="py-8">{children}</div>
+      <div
+        className={classNames(
+          {
+            "py-8": size !== "full",
+          },
+          className
+        )}
+      >
+        {children}
+      </div>
     </div>
   );
 
