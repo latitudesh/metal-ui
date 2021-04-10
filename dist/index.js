@@ -7228,18 +7228,20 @@ Header_Header.propTypes = {
 
 var Content_Content = function Content(_ref) {
   var children = _ref.children,
-      size = _ref.size,
-      className = _ref.className;
+      size = _ref.size;
 
   var base = Object(react_["jsx"])("div", {
+    className: classnames_default()("p-8 h-full overflow-y-auto", {
+      "bg-background": size !== "full",
+      "bg-white": size === "full"
+    })
+  }, Object(react_["jsx"])("div", {
     className: classnames_default()("mx-auto", {
       "max-w-3xl": size === "small",
       "max-w-5xl": size === "default" || !size,
       "max-w-full": size === "full",
       "px-4 sm:px-6 md:px-8": size !== "full"
-    }, className)
-  }, Object(react_["jsx"])("div", {
-    className: "p-8"
+    })
   }, children));
 
   return base;

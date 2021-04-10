@@ -2,21 +2,24 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const Content = ({ children, size, className }) => {
+const Content = ({ children, size }) => {
   const base = (
     <div
-      className={classNames(
-        "mx-auto",
-        {
+      className={classNames("p-8 h-full overflow-y-auto", {
+        "bg-background": size !== "full",
+        "bg-white": size === "full",
+      })}
+    >
+      <div
+        className={classNames("mx-auto", {
           "max-w-3xl": size === "small",
           "max-w-5xl": size === "default" || !size,
           "max-w-full": size === "full",
           "px-4 sm:px-6 md:px-8": size !== "full",
-        },
-        className
-      )}
-    >
-      <div className="p-8">{children}</div>
+        })}
+      >
+        {children}
+      </div>
     </div>
   );
 
