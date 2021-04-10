@@ -50,8 +50,8 @@ jobs:
       with:
         node-version: 12.x
 
-    - name: Yarn Install ci
-      run: yarn ci
+    - name: Yarn Install
+      run: yarn install --frozen-lockfile
 
     - name: Publish with Semantic Release
       run: npx semantic-release
