@@ -35,6 +35,9 @@ Content.propTypes = {
   children: PropTypes.node,
   size: PropTypes.string,
   className: PropTypes.string,
+  /** 
+   * Overrides the default background color.
+   */
   bg: PropTypes.string,
 };
 
