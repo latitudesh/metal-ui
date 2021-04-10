@@ -7622,8 +7622,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
   };
 
   return Object(react_["jsx"])("div", {
-    ref: sideSheet,
-    className: bind_default()("relative inline-block text-left", className)
+    ref: sideSheet
   }, children, isOpened && Object(react_["jsx"])(Sidesheet_SidesheetContent, {
     id: "sidesheet"
   }, Object(react_["jsx"])("div", {
