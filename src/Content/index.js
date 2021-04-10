@@ -2,13 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const Content = ({ children, size }) => {
+const Content = ({ children, size, className, bg }) => {
   const base = (
     <div
-      className={classNames("p-8 h-full overflow-y-auto", {
-        "bg-background": size !== "full",
-        "bg-white": size === "full",
-      })}
+      className={classNames(
+        "p-8 h-full overflow-y-auto",
+        {
+          "bg-background": size !== "full" && !bg,
+          "bg-white": size === "full" && !bg,
+          [`bg-${bg}`]: bg,
+        },
+        className
+      )}
     >
       <div
         className={classNames("mx-auto", {
@@ -30,6 +35,7 @@ Content.propTypes = {
   children: PropTypes.node,
   size: PropTypes.string,
   className: PropTypes.string,
+  bg: PropTypes.string,
 };
 
 export default Content;
