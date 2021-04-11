@@ -1,3 +1,20 @@
+# [2.8.0](https://github.com/Maxihost/metal-ui/compare/v2.7.0...v2.8.0) (2021-04-10)
+
+
+### Bug Fixes
+
+* disabled Input color ([4057645](https://github.com/Maxihost/metal-ui/commit/405764546b5e2528e442eb1c7d8a3348f8a7e321))
+* Emotion jsx ([332b58c](https://github.com/Maxihost/metal-ui/commit/332b58c5bb3c4de793f39d957fce401e6aa03093))
+* Header PropTypes to accept numbers ([3329a1b](https://github.com/Maxihost/metal-ui/commit/3329a1b2080081df8836d1ccae5e1a74426a2ec3))
+* Prevent forwarding active props on links and buttons ([d7e05ec](https://github.com/Maxihost/metal-ui/commit/d7e05ecbd9286e67131fa5e433bd94c4847174cc))
+
+
+### Features
+
+* Introduces Toolbar ([3257baf](https://github.com/Maxihost/metal-ui/commit/3257baf2e780f688d2e54e66dff18eafcdfd4d1f))
+* Tabs ([c12da99](https://github.com/Maxihost/metal-ui/commit/c12da996f7901b14bc65207b4887688511ae5e6b))
+* Toolbar ([c7bf498](https://github.com/Maxihost/metal-ui/commit/c7bf49863f9b3001da340d83f5bb295be70aa3ee))
+
 # [2.7.0](https://github.com/Maxihost/metal-ui/compare/v2.6.3...v2.7.0) (2021-04-05)
 
 
