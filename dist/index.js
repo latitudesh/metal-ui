@@ -7234,7 +7234,7 @@ var Content_Content = function Content(_ref) {
       bg = _ref.bg;
 
   var base = Object(react_["jsx"])("div", {
-    className: classnames_default()("p-8 h-full overflow-y-auto", Content_defineProperty({
+    className: classnames_default()("px-10 py-8 h-full overflow-y-auto", Content_defineProperty({
       "bg-background": size !== "full" && !bg,
       "bg-white": size === "full" && !bg
     }, "bg-".concat(bg), bg), className)
@@ -7243,7 +7243,7 @@ var Content_Content = function Content(_ref) {
       "max-w-3xl": size === "small",
       "max-w-5xl": size === "default" || !size,
       "max-w-full": size === "full",
-      "px-4 sm:px-6 md:px-8": size !== "full"
+      "px-4 sm:px-6 md:px-10": size !== "full"
     })
   }, children));
 
