@@ -7691,6 +7691,11 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
+
+
 
 
 
@@ -7700,21 +7705,30 @@ var StyledSkeleton = emotion_styled_base_browser_esm("span",  true ? {
   target: "e4rzf2q0"
 } : undefined)(function (_ref) {
   var width = _ref.width,
-      height = _ref.height;
-  return ["\n  display: block;\n  border-radius: 5px;\n  background-image: linear-gradient(\n    270deg,\n    #fafafa,\n    #eaeaea,\n    #eaeaea,\n    #fafafa\n  );\n  background-size: 400% 100%;\n  width: ".concat(width, "px;\n  min-height: ").concat(height, "px;\n")];
+      height = _ref.height,
+      vertical = _ref.vertical;
+  return ["\n  display: flex;\n  border-radius: 5px;\n  background-image: linear-gradient(\n    270deg,\n    #fafafa,\n    #eaeaea,\n    #eaeaea,\n    #fafafa\n  );\n  background-size: 400% 100%;\n  width: ".concat(width, "px;\n  min-height: ").concat(height, "px;\n")];
 },  true ? "" : undefined);
 
 var Skeleton_Skeleton = function Skeleton(_ref2) {
   var width = _ref2.width,
       height = _ref2.height,
-      className = _ref2.className;
+      className = _ref2.className,
+      vertical = _ref2.vertical;
   return Object(react_["jsx"])("div", {
-    className: "skeleton"
+    className: "skeleton",
+    css: [vertical && {
+      "display": "inline-flex",
+      "alignItems": "flex-end",
+      "justifyContent": "space-between",
+      "marginRight": "0.5rem"
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, Object(react_["jsx"])(StyledSkeleton, {
     className: className,
     width: width,
     height: height,
-    css:
+    vertical: vertical,
+    css: ["flex-direction:column;",
     /*#__PURE__*/
 
     /*#__PURE__*/
@@ -7726,18 +7740,20 @@ var Skeleton_Skeleton = function Skeleton(_ref2) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(react_["css"])("animation:", animation, " 8s ease-in-out infinite;" + ( true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined)
+    Object(react_["css"])("animation:", animation, " 8s ease-in-out infinite;" + ( true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }));
 };
 
 Skeleton_Skeleton.propTypes = {
   width: prop_types_default.a.number,
   height: prop_types_default.a.number,
-  className: prop_types_default.a.string
+  className: prop_types_default.a.string,
+  vertical: prop_types_default.a.bool
 };
 Skeleton_Skeleton.defaultProps = {
   width: 160,
-  height: 24
+  height: 24,
+  vertical: false
 };
 /* harmony default export */ var src_Skeleton = (Skeleton_Skeleton);
 // CONCATENATED MODULE: ./src/Toast/index.js

@@ -32,7 +32,10 @@ const StyledSkeleton = styled.span(({ width, height, vertical }) => [
 ]);
 
 const Skeleton = ({ width, height, className, vertical }) => (
-  <div className="skeleton" css={[vertical && tw`inline-flex items-center mr-2`]}>
+  <div
+    className="skeleton"
+    css={[vertical && tw`inline-flex items-end justify-between mr-2`]}
+  >
     <StyledSkeleton
       className={className}
       width={width}
