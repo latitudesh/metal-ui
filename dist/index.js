@@ -7140,46 +7140,41 @@ function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringif
 
 
 
-var Header_ref2 =  true ? {
-  name: "vi0yoq",
-  styles: "[role=\"tablist\"]{padding-left:2rem;padding-right:2rem;;}"
+var Header_ref =  true ? {
+  name: "datk8v",
+  styles: "[role=\"tablist\"]{padding-left:2.5rem;padding-right:2.5rem;;}"
 } : undefined;
 
 var Nav = emotion_styled_base_browser_esm("div",  true ? {
   target: "e5yo00a0"
 } : undefined)(function () {
-  return [Header_ref2];
+  return [Header_ref];
 },  true ? "" : undefined);
 
-var Header_ref =  true ? {
-  name: "g2136x",
-  styles: "height:55px"
+var Header_ref3 =  true ? {
+  name: "1ug6i4f",
+  styles: "display:flex;flex-direction:row;align-items:center;min-width:0px;padding-top:0.5rem;padding-bottom:0.5rem"
 } : undefined;
 
 var Header_ref4 =  true ? {
-  name: "6v84ff",
-  styles: "display:flex;flex-direction:row;align-items:center;min-width:0px"
-} : undefined;
-
-var Header_ref5 =  true ? {
   name: "1h5hd82",
   styles: "overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:0.125rem;font-weight:600"
 } : undefined;
 
-var Header_ref6 =  true ? {
+var Header_ref5 =  true ? {
   name: "psasdh",
   styles: "display:flex;flex-direction:row;align-items:center;justify-content:flex-end;margin-left:0.5rem"
 } : undefined;
 
-var Header_ref7 =  true ? {
+var Header_ref6 =  true ? {
   name: "1kjf4md",
   styles: "display:inline-flex;margin-left:0px"
 } : undefined;
 
-var Header_Header = function Header(_ref3) {
-  var title = _ref3.title,
-      actions = _ref3.actions,
-      nav = _ref3.nav;
+var Header_Header = function Header(_ref2) {
+  var title = _ref2.title,
+      actions = _ref2.actions,
+      nav = _ref2.nav;
   return Object(react_["jsx"])("div", {
     css: ["position:relative;width:100%;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity));", !nav &&
     /*#__PURE__*/
@@ -7193,22 +7188,22 @@ var Header_Header = function Header(_ref3) {
       boxShadow: "0 -1px 0 ".concat("#e5e7eb", " inset")
     },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, Object(react_["jsx"])("div", {
-    css: ["display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:2rem;padding-right:2rem;", ([nav ? {
+    css: ["display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:2.5rem;padding-right:2.5rem;", nav ? {
       "paddingTop": "1rem",
       "paddingBottom": "0.25rem"
     } : {
       "paddingTop": "1rem",
       "paddingBottom": "1rem"
-    }], Header_ref),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, Object(react_["jsx"])("div", {
-    css: Header_ref4
+    css: Header_ref3
   }, Object(react_["jsx"])(Typography_Heading, {
     size: 3,
-    css: Header_ref5
+    css: Header_ref4
   }, title)), actions && Object(react_["jsx"])("div", {
-    css: Header_ref6
+    css: Header_ref5
   }, Object(react_["jsx"])("div", {
-    css: Header_ref7
+    css: Header_ref6
   }, actions))), nav && Object(react_["jsx"])(Nav, null, nav));
 };
 
