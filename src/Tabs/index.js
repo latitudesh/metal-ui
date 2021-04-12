@@ -15,7 +15,7 @@ const TabsTab = styled(TabsPrimitive.Tab)(() => [
   tw`flex-shrink-0 py-2 px-1 mr-4 text-accent-five select-none outline-none cursor-pointer transition ease-in-out duration-150 font-normal text-sm`,
   tw`hover:(text-foreground)`,
   css`
-    &[role="tab"]:first-child {
+    &[role="tab"]:first-of-type {
       padding-left: 0;
     }
     &[data-state="active"] {
