@@ -110,11 +110,15 @@ class Avatar extends PureComponent {
           className,
           {
             "rounded-full": !Boolean(isDashed),
-            "rounded border-2 border-dashed border-accent-four": Boolean(isDashed),
+            "rounded border-2 border-dashed border-accent-four": Boolean(
+              isDashed
+            ),
           }
         )}
         style={{
-          backgroundColor: isDashed ? 'transparent' : colorProps.backgroundColor,
+          backgroundColor: isDashed
+            ? "transparent"
+            : colorProps.backgroundColor,
           width: size,
           height: size,
         }}
@@ -122,12 +126,9 @@ class Avatar extends PureComponent {
         {...props}
       >
         <span
-        className={classNames(
-          "relative flex justify-center items-center",
-          {
+          className={classNames("relative flex justify-center items-center", {
             "text-accent-four": Boolean(isDashed),
-          }
-        )}
+          })}
           style={{
             color: !isDashed && colorProps.color,
             fontSize: initialsFontSize,
