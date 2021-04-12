@@ -63,18 +63,12 @@ Use the <code>size</code> property to change sizes. The initials will size autom
 <Preview>
   <Story name="Sizes">
     <div>
-      <Avatar
-        isSolid
-        marginRight={16}
-        name={names[0]}
-        size={16}
-        className="mr-2"
-      />
-      <Avatar marginRight={16} name={names[1]} size={24} className="mr-2" />
-      <Avatar marginRight={16} name={names[2]} size={32} className="mr-2" />
-      <Avatar marginRight={16} name={names[3]} size={40} className="mr-2" />
-      <Avatar marginRight={16} name={names[4]} size={96} className="mr-2" />
-      <Avatar marginRight={16} name={names[5]} size={128} className="mr-2" />
+      <Avatar isSolid name={names[0]} size={16} className="mr-2" />
+      <Avatar name={names[1]} size={24} className="mr-2" />
+      <Avatar name={names[2]} size={32} className="mr-2" />
+      <Avatar name={names[3]} size={40} className="mr-2" />
+      <Avatar name={names[4]} size={96} className="mr-2" />
+      <Avatar name={names[5]} size={128} className="mr-2" />
     </div>
   </Story>
 </Preview>
@@ -138,7 +132,7 @@ In cases where it's not possible to determine the name of the user, use the <cod
     {anonymousIds.map((id) => (
       <Avatar
         key={id}
-        hashValue={id}
+        hashValue={`id_${id}`}
         name="Anonymous User"
         size={40}
         className="mr-2"
