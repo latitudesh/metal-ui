@@ -7,7 +7,7 @@ import {
   DropdownItem,
   DropdownSeparator,
 } from "./index";
-import Button from '../Button'
+import Button from "../Button";
 
 <Meta title="DropdownMenu" component={Dropdown} />
 
@@ -98,10 +98,12 @@ This component uses the Radix UI `DropdownMenu` primitive. Refer to [this page](
 
 # Custom Trigger
 
+When using a `button` as a custom trigger, set `DropdownTrigger` as a different element to avoid nesting buttons.
+
 <Preview>
   <Story name="Custom Trigger">
     <Dropdown>
-      <DropdownTrigger>
+      <DropdownTrigger as="span">
         <Button label="Trigger" />
       </DropdownTrigger>
       <DropdownContent>
