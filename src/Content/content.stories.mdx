@@ -1,13 +1,22 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
 import Content from "./index";
+import Box from "../Box";
 
 <Meta title="Content" component={Content} />
 
+# API
+
+<Props of={Content} />
+
 # Default
+
+Content uses the `foreground` color for sizes default and small, and `white` for size full. You can optionally set the background color with the `bg` prop.
 
 <Preview>
   <Story name="Default">
-    <Content className="bg-foreground" />
+    <Content>
+      <Box>Content</Box>
+    </Content>
   </Story>
 </Preview>
 
@@ -15,7 +24,9 @@ import Content from "./index";
 
 <Preview>
   <Story name="Small">
-    <Content size="small" className="bg-foreground" />
+    <Content size="small">
+      <Box>Content</Box>
+    </Content>
   </Story>
 </Preview>
 
@@ -23,6 +34,8 @@ import Content from "./index";
 
 <Preview>
   <Story name="full">
-    <Content size="full" className="bg-foreground" />
+    <Content size="full" bg="foreground" className="p-4">
+      <Box>Content</Box>
+    </Content>
   </Story>
 </Preview>

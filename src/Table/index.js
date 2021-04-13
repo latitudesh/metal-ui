@@ -22,7 +22,7 @@ Table.Body = ({ children, className }) => (
 Table.HeaderCell = ({ children, className }) => (
   <th
     className={classNames(
-      "px-6 py-2 bg-accent-two text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider",
+      "px-6 py-2 bg-white text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider",
       className
     )}
   >

@@ -1,7 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
-import React from "react";
 import PropTypes from "prop-types";
 import Heading from "../Typography/Heading";
 import tw, { theme, css, styled } from "twin.macro";
@@ -9,7 +8,7 @@ import tw, { theme, css, styled } from "twin.macro";
 const Nav = styled.div(() => [
   css`
     [role="tablist"] {
-      ${tw`px-8`}
+      ${tw`px-10`}
     }
   `,
 ]);
@@ -22,10 +21,10 @@ const Header = ({ title, actions, nav }) => (
     }
   >
     <div
-      tw="flex flex-row items-center justify-between px-8"
+      tw="flex flex-row items-center justify-between px-10"
       css={[nav ? tw`pt-4 pb-1` : tw`py-4`]}
     >
-      <div tw="flex flex-row items-center min-w-0">
+      <div tw="flex flex-row items-center min-w-0 py-2">
         <Heading size={3} tw="truncate pr-0.5 font-semibold">
           {title}
         </Heading>

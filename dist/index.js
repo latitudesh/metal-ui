@@ -6350,7 +6350,7 @@ Table_Table.HeaderCell = function (_ref4) {
   var children = _ref4.children,
       className = _ref4.className;
   return Object(react_["jsx"])("th", {
-    className: classnames_default()("px-6 py-2 bg-accent-two text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider", className)
+    className: classnames_default()("px-6 py-2 bg-white text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider", className)
   }, children);
 };
 
@@ -7140,10 +7140,9 @@ function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringif
 
 
 
-
 var Header_ref =  true ? {
-  name: "vi0yoq",
-  styles: "[role=\"tablist\"]{padding-left:2rem;padding-right:2rem;;}"
+  name: "datk8v",
+  styles: "[role=\"tablist\"]{padding-left:2.5rem;padding-right:2.5rem;;}"
 } : undefined;
 
 var Nav = emotion_styled_base_browser_esm("div",  true ? {
@@ -7153,8 +7152,8 @@ var Nav = emotion_styled_base_browser_esm("div",  true ? {
 },  true ? "" : undefined);
 
 var Header_ref3 =  true ? {
-  name: "6v84ff",
-  styles: "display:flex;flex-direction:row;align-items:center;min-width:0px"
+  name: "1ug6i4f",
+  styles: "display:flex;flex-direction:row;align-items:center;min-width:0px;padding-top:0.5rem;padding-bottom:0.5rem"
 } : undefined;
 
 var Header_ref4 =  true ? {
@@ -7189,7 +7188,7 @@ var Header_Header = function Header(_ref2) {
       boxShadow: "0 -1px 0 ".concat("#e5e7eb", " inset")
     },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, Object(react_["jsx"])("div", {
-    css: ["display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:2rem;padding-right:2rem;", nav ? {
+    css: ["display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:2.5rem;padding-right:2.5rem;", nav ? {
       "paddingTop": "1rem",
       "paddingBottom": "0.25rem"
     } : {
@@ -7221,6 +7220,8 @@ Header_Header.propTypes = {
 };
 /* harmony default export */ var src_Header = (Header_Header);
 // CONCATENATED MODULE: ./src/Content/index.js
+function Content_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -7229,16 +7230,21 @@ Header_Header.propTypes = {
 var Content_Content = function Content(_ref) {
   var children = _ref.children,
       size = _ref.size,
-      className = _ref.className;
+      className = _ref.className,
+      bg = _ref.bg;
 
   var base = Object(react_["jsx"])("div", {
-    className: classnames_default()("mx-auto px-4 sm:px-6 md:px-8", {
+    className: classnames_default()("px-10 py-8 h-full overflow-y-auto", Content_defineProperty({
+      "bg-background": size !== "full" && !bg,
+      "bg-white": size === "full" && !bg
+    }, "bg-".concat(bg), bg), className)
+  }, Object(react_["jsx"])("div", {
+    className: classnames_default()("mx-auto", {
       "max-w-3xl": size === "small",
       "max-w-5xl": size === "default" || !size,
-      "max-w-full": size === "full"
-    }, className)
-  }, Object(react_["jsx"])("div", {
-    className: "py-8"
+      "max-w-full": size === "full",
+      "px-4 sm:px-6 md:px-10": size !== "full"
+    })
   }, children));
 
   return base;
@@ -7247,7 +7253,12 @@ var Content_Content = function Content(_ref) {
 Content_Content.propTypes = {
   children: prop_types_default.a.node,
   size: prop_types_default.a.string,
-  className: prop_types_default.a.string
+  className: prop_types_default.a.string,
+
+  /** 
+   * Overrides the default background color.
+   */
+  bg: prop_types_default.a.string
 };
 /* harmony default export */ var src_Content = (Content_Content);
 // EXTERNAL MODULE: ./node_modules/classnames/bind.js
@@ -7606,8 +7617,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
   };
 
   return Object(react_["jsx"])("div", {
-    ref: sideSheet,
-    className: bind_default()("relative inline-block text-left", className)
+    ref: sideSheet
   }, children, isOpened && Object(react_["jsx"])(Sidesheet_SidesheetContent, {
     id: "sidesheet"
   }, Object(react_["jsx"])("div", {

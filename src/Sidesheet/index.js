@@ -80,10 +80,7 @@ const Sidesheet = ({
   };
 
   return (
-    <div
-      ref={sideSheet}
-      className={classNames("relative inline-block text-left", className)}
-    >
+    <div ref={sideSheet}>
       {children}
       {isOpened && (
         <SidesheetContent id="sidesheet">
