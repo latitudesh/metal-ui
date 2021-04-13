@@ -8617,7 +8617,7 @@ var Avatar_Avatar = /*#__PURE__*/function (_PureComponent) {
           "rounded border-2 border-dashed border-accent-four": Boolean(isDashed)
         }),
         style: {
-          backgroundColor: isDashed ? 'transparent' : colorProps.backgroundColor,
+          backgroundColor: isDashed ? "transparent" : colorProps.backgroundColor,
           width: size,
           height: size
         },
@@ -13405,8 +13405,8 @@ var Tabs_TabsList = /*#__PURE__*/emotion_styled_base_browser_esm(List,  true ? {
 },  true ? "" : undefined);
 
 var Tabs_ref =  true ? {
-  name: "16xd6pn",
-  styles: "&[role=\"tab\"]:first-child{padding-left:0;}&[data-state=\"active\"]{--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));--tw-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); box-shadow:inset 0 -1px 0 0 currentColor,0 1px 0 0 currentColor;}"
+  name: "11ymp0m",
+  styles: "&[role=\"tab\"]:first-of-type{padding-left:0;}&[data-state=\"active\"]{--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));--tw-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); box-shadow:inset 0 -1px 0 0 currentColor,0 1px 0 0 currentColor;}"
 } : undefined;
 
 var Tabs_TabsTab = /*#__PURE__*/emotion_styled_base_browser_esm(Tab,  true ? {
