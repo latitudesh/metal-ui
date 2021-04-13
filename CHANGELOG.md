@@ -1,3 +1,13 @@
+## [2.8.1](https://github.com/Maxihost/metal-ui/compare/v2.8.0...v2.8.1) (2021-04-13)
+
+
+### Bug Fixes
+
+* content overflow ([c39da2a](https://github.com/Maxihost/metal-ui/commit/c39da2a4e8d205a17dca8c1a9b4bb9a835f215ec))
+* Content storeis ([d76fa79](https://github.com/Maxihost/metal-ui/commit/d76fa79f674ad5341d4546bb145103833c0414dc))
+* Fixed header height to support actions ([6658e77](https://github.com/Maxihost/metal-ui/commit/6658e771fea8ceda733f0f73e8760786f4c7b2fe))
+* Removes unnecessary Sidesheet class ([4e14468](https://github.com/Maxihost/metal-ui/commit/4e144686b93aebe883f41b372606e184d943ccc7))
+
 # [2.8.0](https://github.com/Maxihost/metal-ui/compare/v2.7.0...v2.8.0) (2021-04-10)
 
 
