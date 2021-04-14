@@ -61,7 +61,7 @@ Table.TextCell = ({
         small
         className={classNames("block font-semibold truncate", {
           [primaryClassname]: primaryClassname,
-          "mb-1": secondary,
+          "mb-0.5": secondary,
         })}
       >
         {primary}
