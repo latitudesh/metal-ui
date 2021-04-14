@@ -1,3 +1,10 @@
+## [2.8.3](https://github.com/Maxihost/metal-ui/compare/v2.8.2...v2.8.3) (2021-04-14)
+
+
+### Bug Fixes
+
+* Table primary and secondary spacing ([295db0a](https://github.com/Maxihost/metal-ui/commit/295db0a1327d40203a97a31b56303b09ab6572a5))
+
 ## [2.8.2](https://github.com/Maxihost/metal-ui/compare/v2.8.1...v2.8.2) (2021-04-14)
 
 
