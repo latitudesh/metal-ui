@@ -1,30 +1,34 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Text from "../Typography/Text";
+import tw from "twin.macro";
 
 const Table = ({ children, className }) => (
-  <table className={classNames("w-full max-w-full", className)}>
+  <table tw="w-full max-w-full" className={className}>
     {children}
   </table>
 );
 
 Table.Head = ({ children, className }) => (
-  <thead className={classNames("border-b border-border rounded", className)}>
+  <thead tw="border-b border-border rounded" className={className}>
     {children}
   </thead>
 );
 
 Table.Body = ({ children, className }) => (
-  <tbody className={classNames("bg-white", className)}>{children}</tbody>
+  <tbody tw="bg-white" className={className}>
+    {children}
+  </tbody>
 );
 
 Table.HeaderCell = ({ children, className }) => (
   <th
-    className={classNames(
-      "px-6 py-2 bg-white text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider",
-      className
-    )}
+    tw="px-6 py-2 bg-white text-left text-xs leading-5 font-medium text-foreground uppercase tracking-wider"
+    className={className}
   >
     {children}
   </th>
@@ -33,19 +37,20 @@ Table.HeaderCell = ({ children, className }) => (
 Table.Row = ({ children, className, onClick, isSelectable }) => (
   <tr
     onClick={onClick}
-    className={classNames({
-      "hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer":
-        onClick || isSelectable,
-      className,
-    })}
+    css={[
+      onClick || isSelectable
+        ? tw`hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer`
+        : null,
+    ]}
+    className={className}
   >
     {children}
   </tr>
 );
 
 Table.Cell = ({ children, className }) => (
-  <td className={classNames("px-6 py-4", className)}>
-    <Text small>{children}</Text>
+  <td tw="px-6 py-4" className={className}>
+    {children}
   </td>
 );
 
@@ -57,22 +62,24 @@ Table.TextCell = ({
 }) => (
   <>
     {primary && (
-      <span
-        className={classNames("font-semibold", {
-          [primaryClassname]: primaryClassname,
-        })}
+      <Text
+        small
+        tw="block font-medium truncate"
+        css={[secondary && tw`mb-0.5`]}
+        className={primaryClassname}
       >
         {primary}
-      </span>
+      </Text>
     )}
     {secondary && (
-      <span
-        className={classNames("block", {
-          [secondaryClassname]: secondaryClassname,
-        })}
+      <Text
+        small
+        color="text-accent-five"
+        tw="block truncate"
+        className={secondaryClassname}
       >
         {secondary}
-      </span>
+      </Text>
     )}
   </>
 );

@@ -1,3 +1,42 @@
+## [2.8.5](https://github.com/Maxihost/metal-ui/compare/v2.8.4...v2.8.5) (2021-04-14)
+
+
+### Bug Fixes
+
+* build ([d7b44ae](https://github.com/Maxihost/metal-ui/commit/d7b44aeb2baaaf16a9eb50572a49862fe3de0c30))
+* Table Twin Macro ([8e71d7a](https://github.com/Maxihost/metal-ui/commit/8e71d7a75810e7c584b59b60cb536b7f6ff76194))
+
+## [2.8.4](https://github.com/Maxihost/metal-ui/compare/v2.8.3...v2.8.4) (2021-04-14)
+
+
+### Bug Fixes
+
+* Table Primary margin ([203316d](https://github.com/Maxihost/metal-ui/commit/203316d4a169dcd96d092204b614821f0f443898))
+
+## [2.8.3](https://github.com/Maxihost/metal-ui/compare/v2.8.2...v2.8.3) (2021-04-14)
+
+
+### Bug Fixes
+
+* Table primary and secondary spacing ([295db0a](https://github.com/Maxihost/metal-ui/commit/295db0a1327d40203a97a31b56303b09ab6572a5))
+
+## [2.8.2](https://github.com/Maxihost/metal-ui/compare/v2.8.1...v2.8.2) (2021-04-14)
+
+
+### Bug Fixes
+
+* Content overflow and sizes ([015f2d9](https://github.com/Maxihost/metal-ui/commit/015f2d9d3494b7ec2703fb9331a64840a26c45d7))
+
+## [2.8.1](https://github.com/Maxihost/metal-ui/compare/v2.8.0...v2.8.1) (2021-04-13)
+
+
+### Bug Fixes
+
+* content overflow ([c39da2a](https://github.com/Maxihost/metal-ui/commit/c39da2a4e8d205a17dca8c1a9b4bb9a835f215ec))
+* Content storeis ([d76fa79](https://github.com/Maxihost/metal-ui/commit/d76fa79f674ad5341d4546bb145103833c0414dc))
+* Fixed header height to support actions ([6658e77](https://github.com/Maxihost/metal-ui/commit/6658e771fea8ceda733f0f73e8760786f4c7b2fe))
+* Removes unnecessary Sidesheet class ([4e14468](https://github.com/Maxihost/metal-ui/commit/4e144686b93aebe883f41b372606e184d943ccc7))
+
 # [2.8.0](https://github.com/Maxihost/metal-ui/compare/v2.7.0...v2.8.0) (2021-04-10)
 
 
