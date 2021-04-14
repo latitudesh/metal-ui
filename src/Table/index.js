@@ -59,7 +59,7 @@ Table.TextCell = ({
     {primary && (
       <Text
         small
-        className={classNames("block font-semibold truncate", {
+        className={classNames("block font-medium truncate", {
           [primaryClassname]: primaryClassname,
           "mb-0.5": secondary,
         })}
