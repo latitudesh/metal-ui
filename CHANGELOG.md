@@ -1,3 +1,10 @@
+## [2.8.2](https://github.com/Maxihost/metal-ui/compare/v2.8.1...v2.8.2) (2021-04-14)
+
+
+### Bug Fixes
+
+* Content overflow and sizes ([015f2d9](https://github.com/Maxihost/metal-ui/commit/015f2d9d3494b7ec2703fb9331a64840a26c45d7))
+
 ## [2.8.1](https://github.com/Maxihost/metal-ui/compare/v2.8.0...v2.8.1) (2021-04-13)
 
 
