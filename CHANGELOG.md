@@ -1,3 +1,11 @@
+## [2.8.5](https://github.com/Maxihost/metal-ui/compare/v2.8.4...v2.8.5) (2021-04-14)
+
+
+### Bug Fixes
+
+* build ([d7b44ae](https://github.com/Maxihost/metal-ui/commit/d7b44aeb2baaaf16a9eb50572a49862fe3de0c30))
+* Table Twin Macro ([8e71d7a](https://github.com/Maxihost/metal-ui/commit/8e71d7a75810e7c584b59b60cb536b7f6ff76194))
+
 ## [2.8.4](https://github.com/Maxihost/metal-ui/compare/v2.8.3...v2.8.4) (2021-04-14)
 
 
