@@ -6350,7 +6350,7 @@ Table_Table.HeaderCell = function (_ref4) {
   var children = _ref4.children,
       className = _ref4.className;
   return Object(react_["jsx"])("th", {
-    className: classnames_default()("px-6 py-2 bg-white text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider", className)
+    className: classnames_default()("px-6 py-2 bg-white text-left text-xs leading-5 font-medium text-foreground uppercase tracking-wider", className)
   }, children);
 };
 
@@ -6362,9 +6362,8 @@ Table_Table.Row = function (_ref5) {
   return Object(react_["jsx"])("tr", {
     onClick: onClick,
     className: classnames_default()({
-      "hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer": onClick || isSelectable,
-      className: className
-    })
+      "hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer": onClick || isSelectable
+    }, className)
   }, children);
 };
 
@@ -6373,20 +6372,23 @@ Table_Table.Cell = function (_ref6) {
       className = _ref6.className;
   return Object(react_["jsx"])("td", {
     className: classnames_default()("px-6 py-4", className)
-  }, Object(react_["jsx"])(Typography_Text, {
-    small: true
-  }, children));
+  }, children);
 };
 
 Table_Table.TextCell = function (_ref7) {
+  var _classNames;
+
   var primary = _ref7.primary,
       primaryClassname = _ref7.primaryClassname,
       secondary = _ref7.secondary,
       secondaryClassname = _ref7.secondaryClassname;
-  return Object(react_["jsx"])(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, primary && Object(react_["jsx"])("span", {
-    className: classnames_default()("font-semibold", Table_defineProperty({}, primaryClassname, primaryClassname))
-  }, primary), secondary && Object(react_["jsx"])("span", {
-    className: classnames_default()("block", Table_defineProperty({}, secondaryClassname, secondaryClassname))
+  return Object(react_["jsx"])(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, primary && Object(react_["jsx"])(Typography_Text, {
+    small: true,
+    className: classnames_default()("block font-semibold truncate", (_classNames = {}, Table_defineProperty(_classNames, primaryClassname, primaryClassname), Table_defineProperty(_classNames, "mb-1", secondary), _classNames))
+  }, primary), secondary && Object(react_["jsx"])(Typography_Text, {
+    small: true,
+    color: "text-accent-five",
+    className: classnames_default()("block truncate", Table_defineProperty({}, secondaryClassname, secondaryClassname))
   }, secondary));
 };
 

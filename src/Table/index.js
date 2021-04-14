@@ -22,7 +22,7 @@ Table.Body = ({ children, className }) => (
 Table.HeaderCell = ({ children, className }) => (
   <th
     className={classNames(
-      "px-6 py-2 bg-white text-left text-xs leading-4 font-medium text-foreground uppercase tracking-wider",
+      "px-6 py-2 bg-white text-left text-xs leading-5 font-medium text-foreground uppercase tracking-wider",
       className
     )}
   >
@@ -33,20 +33,20 @@ Table.HeaderCell = ({ children, className }) => (
 Table.Row = ({ children, className, onClick, isSelectable }) => (
   <tr
     onClick={onClick}
-    className={classNames({
-      "hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer":
-        onClick || isSelectable,
-      className,
-    })}
+    className={classNames(
+      {
+        "hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer":
+          onClick || isSelectable,
+      },
+      className
+    )}
   >
     {children}
   </tr>
 );
 
 Table.Cell = ({ children, className }) => (
-  <td className={classNames("px-6 py-4", className)}>
-    <Text small>{children}</Text>
-  </td>
+  <td className={classNames("px-6 py-4", className)}>{children}</td>
 );
 
 Table.TextCell = ({
@@ -57,22 +57,26 @@ Table.TextCell = ({
 }) => (
   <>
     {primary && (
-      <span
-        className={classNames("font-semibold", {
+      <Text
+        small
+        className={classNames("block font-semibold truncate", {
           [primaryClassname]: primaryClassname,
+          "mb-1": secondary,
         })}
       >
         {primary}
-      </span>
+      </Text>
     )}
     {secondary && (
-      <span
-        className={classNames("block", {
+      <Text
+        small
+        color="text-accent-five"
+        className={classNames("block truncate", {
           [secondaryClassname]: secondaryClassname,
         })}
       >
         {secondary}
-      </span>
+      </Text>
     )}
   </>
 );
