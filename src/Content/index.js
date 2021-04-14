@@ -6,7 +6,7 @@ const Content = ({ children, size, className, bg }) => {
   const base = (
     <div
       className={classNames(
-        "px-10 py-8 h-full overflow-y-auto",
+        "flex-1 relative overflow-y-auto focus:outline-none",
         {
           "bg-background": size !== "full" && !bg,
           "bg-white": size === "full" && !bg,
@@ -15,15 +15,17 @@ const Content = ({ children, size, className, bg }) => {
         className
       )}
     >
-      <div
-        className={classNames("mx-auto", {
-          "max-w-3xl": size === "small",
-          "max-w-5xl": size === "default" || !size,
-          "max-w-full": size === "full",
-          "px-4 sm:px-6 md:px-10": size !== "full",
-        })}
-      >
-        {children}
+      <div className="px-10 py-8">
+        <div
+          className={classNames("mx-auto", {
+            "max-w-xs": size === "xsmall",
+            "max-w-2xl": size === "small",
+            "max-w-5xl": size === "default" || !size,
+            "max-w-full": size === "full",
+          })}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );
@@ -35,7 +37,7 @@ Content.propTypes = {
   children: PropTypes.node,
   size: PropTypes.string,
   className: PropTypes.string,
-  /** 
+  /**
    * Overrides the default background color.
    */
   bg: PropTypes.string,
