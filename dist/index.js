@@ -6211,6 +6211,9 @@ __webpack_require__.d(__webpack_exports__, "TabsList", function() { return /* re
 __webpack_require__.d(__webpack_exports__, "TabsTab", function() { return /* reexport */ Tabs_TabsTab; });
 __webpack_require__.d(__webpack_exports__, "TabsPanel", function() { return /* reexport */ Tabs_TabsPanel; });
 
+// EXTERNAL MODULE: external {"root":"@emotion/react","commonjs2":"@emotion/react","commonjs":"@emotion/react","amd":"@emotion/react"}
+var react_ = __webpack_require__(2);
+
 // EXTERNAL MODULE: external {"root":"React","commonjs2":"react","commonjs":"react","amd":"react"}
 var external_root_React_commonjs2_react_commonjs_react_amd_react_ = __webpack_require__(0);
 var external_root_React_commonjs2_react_commonjs_react_amd_react_default = /*#__PURE__*/__webpack_require__.n(external_root_React_commonjs2_react_commonjs_react_amd_react_);
@@ -6222,9 +6225,6 @@ var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
 var classnames = __webpack_require__(3);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
-
-// EXTERNAL MODULE: external {"root":"@emotion/react","commonjs2":"@emotion/react","commonjs":"@emotion/react","amd":"@emotion/react"}
-var react_ = __webpack_require__(2);
 
 // CONCATENATED MODULE: ./src/Typography/Text.js
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -6316,75 +6316,123 @@ _defineProperty(Text_Text, "defaultProps", {
 // CONCATENATED MODULE: ./src/Table/index.js
 function Table_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
 
 
 
 
 
+
+
+var Table_ref2 =  true ? {
+  name: "jk7dkw",
+  styles: "width:100%;max-width:100%"
+} : undefined;
 
 var Table_Table = function Table(_ref) {
   var children = _ref.children,
       className = _ref.className;
   return Object(react_["jsx"])("table", {
-    className: classnames_default()("w-full max-w-full", className)
+    css: Table_ref2,
+    className: className
   }, children);
 };
 
-Table_Table.Head = function (_ref2) {
-  var children = _ref2.children,
-      className = _ref2.className;
-  return Object(react_["jsx"])("thead", {
-    className: classnames_default()("border-b border-border rounded", className)
-  }, children);
-};
+var Table_ref4 =  true ? {
+  name: "s6prfl",
+  styles: "border-bottom-width:1px;--tw-border-opacity:1;border-color:rgba(234, 234, 234, var(--tw-border-opacity));border-radius:5px"
+} : undefined;
 
-Table_Table.Body = function (_ref3) {
+Table_Table.Head = function (_ref3) {
   var children = _ref3.children,
       className = _ref3.className;
-  return Object(react_["jsx"])("tbody", {
-    className: classnames_default()("bg-white", className)
+  return Object(react_["jsx"])("thead", {
+    css: Table_ref4,
+    className: className
   }, children);
 };
 
-Table_Table.HeaderCell = function (_ref4) {
-  var children = _ref4.children,
-      className = _ref4.className;
-  return Object(react_["jsx"])("th", {
-    className: classnames_default()("px-6 py-2 bg-white text-left text-xs leading-5 font-medium text-foreground uppercase tracking-wider", className)
-  }, children);
-};
+var _ref6 =  true ? {
+  name: "14tkg57",
+  styles: "--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity))"
+} : undefined;
 
-Table_Table.Row = function (_ref5) {
+Table_Table.Body = function (_ref5) {
   var children = _ref5.children,
-      className = _ref5.className,
-      onClick = _ref5.onClick,
-      isSelectable = _ref5.isSelectable;
+      className = _ref5.className;
+  return Object(react_["jsx"])("tbody", {
+    css: _ref6,
+    className: className
+  }, children);
+};
+
+var _ref8 =  true ? {
+  name: "1sn1294",
+  styles: "padding-left:1.5rem;padding-right:1.5rem;padding-top:0.5rem;padding-bottom:0.5rem;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity));text-align:left;font-size:0.75rem;line-height:1.25rem;font-weight:500;--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));text-transform:uppercase;letter-spacing:0.05em"
+} : undefined;
+
+Table_Table.HeaderCell = function (_ref7) {
+  var children = _ref7.children,
+      className = _ref7.className;
+  return Object(react_["jsx"])("th", {
+    css: _ref8,
+    className: className
+  }, children);
+};
+
+Table_Table.Row = function (_ref9) {
+  var children = _ref9.children,
+      className = _ref9.className,
+      onClick = _ref9.onClick,
+      isSelectable = _ref9.isSelectable;
   return Object(react_["jsx"])("tr", {
     onClick: onClick,
-    className: classnames_default()({
-      "hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer": onClick || isSelectable
-    }, className)
+    css: [onClick || isSelectable ? {
+      ":hover": {
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(249, 250, 251, var(--tw-bg-opacity))"
+      },
+      ":focus": {
+        "outline": "2px solid transparent",
+        "outlineOffset": "2px",
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(249, 250, 251, var(--tw-bg-opacity))"
+      },
+      "cursor": "pointer"
+    } : null,  true ? "" : undefined,  true ? "" : undefined],
+    className: className
   }, children);
 };
 
-Table_Table.Cell = function (_ref6) {
-  var children = _ref6.children,
-      className = _ref6.className;
+var _ref11 =  true ? {
+  name: "16hw2j3",
+  styles: "padding-left:1.5rem;padding-right:1.5rem;padding-top:1rem;padding-bottom:1rem"
+} : undefined;
+
+Table_Table.Cell = function (_ref10) {
+  var children = _ref10.children,
+      className = _ref10.className;
   return Object(react_["jsx"])("td", {
-    className: classnames_default()("px-6 py-4", className)
+    css: _ref11,
+    className: className
   }, children);
 };
 
-Table_Table.TextCell = function (_ref7) {
-  var _classNames;
-
-  var primary = _ref7.primary,
-      primaryClassname = _ref7.primaryClassname,
-      secondary = _ref7.secondary,
-      secondaryClassname = _ref7.secondaryClassname;
+Table_Table.TextCell = function (_ref12) {
+  var primary = _ref12.primary,
+      primaryClassname = _ref12.primaryClassname,
+      secondary = _ref12.secondary,
+      secondaryClassname = _ref12.secondaryClassname;
   return Object(react_["jsx"])(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, primary && Object(react_["jsx"])(Typography_Text, {
     small: true,
-    className: classnames_default()("block font-medium truncate", (_classNames = {}, Table_defineProperty(_classNames, primaryClassname, primaryClassname), Table_defineProperty(_classNames, "mb-0.5", secondary), _classNames))
+    css: ["display:block;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;", secondary && {
+      "marginBottom": "0.125rem"
+    },  true ? "" : undefined,  true ? "" : undefined],
+    className: primaryClassname
   }, primary), secondary && Object(react_["jsx"])(Typography_Text, {
     small: true,
     color: "text-accent-five",
@@ -7130,7 +7178,7 @@ Heading_defineProperty(Heading_Heading, "defaultProps", {
 // CONCATENATED MODULE: ./src/Header/index.js
 
 
-function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+function Header_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
 
 
