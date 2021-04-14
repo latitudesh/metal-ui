@@ -6384,7 +6384,7 @@ Table_Table.TextCell = function (_ref7) {
       secondaryClassname = _ref7.secondaryClassname;
   return Object(react_["jsx"])(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, primary && Object(react_["jsx"])(Typography_Text, {
     small: true,
-    className: classnames_default()("block font-semibold truncate", (_classNames = {}, Table_defineProperty(_classNames, primaryClassname, primaryClassname), Table_defineProperty(_classNames, "mb-0.5", secondary), _classNames))
+    className: classnames_default()("block font-medium truncate", (_classNames = {}, Table_defineProperty(_classNames, primaryClassname, primaryClassname), Table_defineProperty(_classNames, "mb-0.5", secondary), _classNames))
   }, primary), secondary && Object(react_["jsx"])(Typography_Text, {
     small: true,
     color: "text-accent-five",
