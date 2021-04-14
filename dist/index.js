@@ -6314,8 +6314,6 @@ _defineProperty(Text_Text, "defaultProps", {
 
 /* harmony default export */ var Typography_Text = (Text_Text);
 // CONCATENATED MODULE: ./src/Table/index.js
-function Table_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
 /** @jsxRuntime classic */
@@ -6422,6 +6420,11 @@ Table_Table.Cell = function (_ref10) {
   }, children);
 };
 
+var _ref13 =  true ? {
+  name: "hdknak",
+  styles: "display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"
+} : undefined;
+
 Table_Table.TextCell = function (_ref12) {
   var primary = _ref12.primary,
       primaryClassname = _ref12.primaryClassname,
@@ -6436,7 +6439,8 @@ Table_Table.TextCell = function (_ref12) {
   }, primary), secondary && Object(react_["jsx"])(Typography_Text, {
     small: true,
     color: "text-accent-five",
-    className: classnames_default()("block truncate", Table_defineProperty({}, secondaryClassname, secondaryClassname))
+    css: _ref13,
+    className: secondaryClassname
   }, secondary));
 };
 
