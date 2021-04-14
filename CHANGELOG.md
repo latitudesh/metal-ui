@@ -1,3 +1,10 @@
+## [2.8.4](https://github.com/Maxihost/metal-ui/compare/v2.8.3...v2.8.4) (2021-04-14)
+
+
+### Bug Fixes
+
+* Table Primary margin ([203316d](https://github.com/Maxihost/metal-ui/commit/203316d4a169dcd96d092204b614821f0f443898))
+
 ## [2.8.3](https://github.com/Maxihost/metal-ui/compare/v2.8.2...v2.8.3) (2021-04-14)
 
 
