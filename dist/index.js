@@ -7655,7 +7655,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
       setTransition(false);
       transitionTimeout = setTimeout(function () {
         return setIsOpened(false);
-      }, 500);
+      }, 300);
     } else {
       setIsOpened(true);
       transitionTimeout = setTimeout(function () {
@@ -7686,14 +7686,14 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
     onClick: function onClick() {
       return closeTransition();
     },
-    className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
+    className: bind_default()("fixed z-50 inset-0 opacity-25 duration-200 delay-100 transition", {
       "bg-accent-eight": transition,
       "bg-transparent": !transition
     })
   }), Object(react_["jsx"])("div", {
     ref: portal,
     style: {
-      transition: "transform .4s cubic-bezier(.3,0,0,1)",
+      transition: "transform .2s cubic-bezier(.3,0,0,1)",
       transform: transition ? "translateX(calc(100vw - ".concat(width, "px - 20px))") : "translateX(100vw)",
       top: 0,
       bottom: 0,
