@@ -7649,17 +7649,23 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
       setTransition = _useState4[1];
 
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    var transitionTimeout;
+
     if (!isShown) {
       setTransition(false);
-      setTimeout(function () {
+      transitionTimeout = setTimeout(function () {
         return setIsOpened(false);
       }, 500);
     } else {
       setIsOpened(true);
-      setTimeout(function () {
+      transitionTimeout = setTimeout(function () {
         return setTransition(true);
       }, 100);
     }
+
+    return function () {
+      return clearTimeout(transitionTimeout);
+    };
   }, [isShown]);
 
   var closeTransition = function closeTransition() {

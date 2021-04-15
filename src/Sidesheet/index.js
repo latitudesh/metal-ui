@@ -62,13 +62,17 @@ const Sidesheet = ({
   const [transition, setTransition] = useState(false);
 
   useEffect(() => {
+    let transitionTimeout
+
     if (!isShown) {
       setTransition(false);
-      setTimeout(() => setIsOpened(false), 500);
+      transitionTimeout = setTimeout(() => setIsOpened(false), 500);
     } else {
       setIsOpened(true);
-      setTimeout(() => setTransition(true), 100);
+      transitionTimeout = setTimeout(() => setTransition(true), 100);
     }
+
+    return () => clearTimeout(transitionTimeout)
   }, [isShown]);
 
   const closeTransition = () => {
