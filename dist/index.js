@@ -7724,7 +7724,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
     noPadding: true,
     flex: true,
     flexDirection: "col",
-    className: "h-full"
+    className: "overflow-visible"
   }, content)), action && Object(react_["jsx"])(src_Box, {
     flex: true,
     justifyContent: "evenly",
