@@ -62,13 +62,17 @@ const Sidesheet = ({
   const [transition, setTransition] = useState(false);
 
   useEffect(() => {
+    let transitionTimeout
+
     if (!isShown) {
       setTransition(false);
-      setTimeout(() => setIsOpened(false), 500);
+      transitionTimeout = setTimeout(() => setIsOpened(false), 300);
     } else {
       setIsOpened(true);
-      setTimeout(() => setTransition(true), 100);
+      transitionTimeout = setTimeout(() => setTransition(true), 100);
     }
+
+    return () => clearTimeout(transitionTimeout)
   }, [isShown]);
 
   const closeTransition = () => {
@@ -87,7 +91,7 @@ const Sidesheet = ({
           <div
             onClick={() => closeTransition()}
             className={classNames(
-              "fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition",
+              "fixed z-50 inset-0 opacity-25 duration-200 delay-100 transition",
               {
                 "bg-accent-eight": transition,
                 "bg-transparent": !transition,
@@ -97,7 +101,7 @@ const Sidesheet = ({
           <div
             ref={portal}
             style={{
-              transition: `transform .4s cubic-bezier(.3,0,0,1)`,
+              transition: `transform .2s cubic-bezier(.3,0,0,1)`,
               transform: transition
                 ? `translateX(calc(100vw - ${width}px - 20px))`
                 : `translateX(100vw)`,
@@ -134,7 +138,7 @@ const Sidesheet = ({
               flexDirection="col"
               className="sidesheet-content relative overflow-y-auto flex-1 rounded"
             >
-              <Box noPadding flex flexDirection="col" className="h-full">
+              <Box noPadding flex flexDirection="col" className="overflow-visible">
                 {content}
               </Box>
             </Box>
