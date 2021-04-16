@@ -1,3 +1,10 @@
+## [2.8.7](https://github.com/Maxihost/metal-ui/compare/v2.8.6...v2.8.7) (2021-04-16)
+
+
+### Bug Fixes
+
+* Adds tailwind-preset to npm ([6c9814c](https://github.com/Maxihost/metal-ui/commit/6c9814c227febf42bf2f3180e9ed91eae533214a))
+
 ## [2.8.6](https://github.com/Maxihost/metal-ui/compare/v2.8.5...v2.8.6) (2021-04-16)
 
 
