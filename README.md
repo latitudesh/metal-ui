@@ -4,13 +4,11 @@
 
 Metal UI is a set of UI Components using React and TailwindCSS built by the [Maxihost](https://www.maxihost.com) team.
 
-It uses the [8-Point Grid](https://spec.fm/specifics/8-pt-grid) but sticks to TailwindCSS' [default spacing scale](https://tailwindcss.com/docs/customizing-spacing/#default-spacing-scale) instead of implementing its own, mainly to keep things simple.
+Metal UI is very opinionated, in the sense that it explicitly replaces TailwindCSS variants to support Maxihost's product visual identity. While there are no support or plan on supporting theming, most components allow for some degree of customization.
 
-This package does not export styles, fonts or images, including Tailwind's. You should add those directly into your project. This is done to keep the package small and to avoid conflicts with your PurgeCSS settings.
+In order to use the package you need to have Tailwind installed in your project, as Metal UI doesn't export Tailwind styles. Some components make use of [twin.macro](https://github.com/ben-rogerson/twin.macro) and we're slowly transitioning the code base to use twin.macro for all components so Tailwind dependency can be dropped on projects using Metal UI.
 
-Despite that, you shoudn't treat this as an utility system. Components are heavily opinionated and most don't allow for styling flexibility.
-
-We built this for desktop applications, so most components are not responsive.
+We built this for desktop applications, so most components are still not optimized for responsiveness.
 
 ## Installing
 
@@ -20,74 +18,21 @@ Install package:
 
 ## Set up
 
-It's highly recommended that you do some additional set up. Here's an example of how to use Metal UI on a NextJS project.
+Metal UI exports a Tailwind preset. This is the easiest way to get started with Metal UI. Not importing the preset will cause components that are using custom variants to break in your project.
+
+Here's an example of the `tailwind.config.js` file on a NextJS project.
 
 ```javascript
 module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-};
-```
-
-```javascript
-const defaultTheme = require("tailwindcss/defaultTheme");
-
-module.exports = {
+  presets: [require("@maxihost/metal-ui/tailwind-preset")], {/* preset */}
   purge: [
-    "./pages/**/*.{js,jsx,ts,tsx}",
+    "./pages/**/*.{js,jsx,ts,tsx}", {/* change these to your own project paths */}
     "./components/**/*.{js,jsx,ts,tsx}",
     "./node_modules/@maxihost/metal-ui/dist/**/*.{js,jsx,ts,tsx}",
     "./next.config.js",
   ],
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
-      },
-    },
-  },
   variants: {},
-  plugins: [
-    require("@tailwindcss/ui"),
-    function ({ addBase, addComponents, theme }) {
-      addBase([
-        {
-          "@font-face": {
-            fontFamily: "Inter var",
-            fontWeight: "100 900",
-            fontStyle: "normal",
-            fontNamedInstance: "Regular",
-            fontDisplay: "swap",
-            src:
-              'url("/fonts/Inter-roman.var-latin.woff2?3.13") format("woff2")',
-          },
-        },
-        {
-          "@font-face": {
-            fontFamily: "Inter var",
-            fontWeight: "100 900",
-            fontStyle: "italic",
-            fontNamedInstance: "Italic",
-            fontDisplay: "swap",
-            src:
-              'url("/fonts/Inter-italic.var-latin.woff2?3.13") format("woff2")',
-          },
-        },
-      ]);
-    },
-  ],
 };
-```
-
-```javascript
-// /styles/index.css
-/* purgecss start ignore */
-@tailwind base;
-@tailwind components;
-/* purgecss end ignore */
-@tailwind utilities;
 ```
 
 ## Example usage

@@ -7649,17 +7649,23 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
       setTransition = _useState4[1];
 
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+    var transitionTimeout;
+
     if (!isShown) {
       setTransition(false);
-      setTimeout(function () {
+      transitionTimeout = setTimeout(function () {
         return setIsOpened(false);
-      }, 500);
+      }, 300);
     } else {
       setIsOpened(true);
-      setTimeout(function () {
+      transitionTimeout = setTimeout(function () {
         return setTransition(true);
       }, 100);
     }
+
+    return function () {
+      return clearTimeout(transitionTimeout);
+    };
   }, [isShown]);
 
   var closeTransition = function closeTransition() {
@@ -7680,14 +7686,14 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
     onClick: function onClick() {
       return closeTransition();
     },
-    className: bind_default()("fixed z-50 inset-0 opacity-25 duration-300 delay-200 transition", {
+    className: bind_default()("fixed z-50 inset-0 opacity-25 duration-200 delay-100 transition", {
       "bg-accent-eight": transition,
       "bg-transparent": !transition
     })
   }), Object(react_["jsx"])("div", {
     ref: portal,
     style: {
-      transition: "transform .4s cubic-bezier(.3,0,0,1)",
+      transition: "transform .2s cubic-bezier(.3,0,0,1)",
       transform: transition ? "translateX(calc(100vw - ".concat(width, "px - 20px))") : "translateX(100vw)",
       top: 0,
       bottom: 0,
@@ -7718,7 +7724,7 @@ var Sidesheet_Sidesheet = function Sidesheet(_ref2) {
     noPadding: true,
     flex: true,
     flexDirection: "col",
-    className: "h-full"
+    className: "overflow-visible"
   }, content)), action && Object(react_["jsx"])(src_Box, {
     flex: true,
     justifyContent: "evenly",
