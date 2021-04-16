@@ -1,3 +1,11 @@
+## [2.8.6](https://github.com/Maxihost/metal-ui/compare/v2.8.5...v2.8.6) (2021-04-16)
+
+
+### Bug Fixes
+
+* Clears Sidesheet old transition timeouts on useEffect value change ([23ed4c2](https://github.com/Maxihost/metal-ui/commit/23ed4c260f62a72e2014aeb5dc1824c3fd0c34d9))
+* Makes sidesheet scrollable ([53d4a92](https://github.com/Maxihost/metal-ui/commit/53d4a921d325c7f2f1f6402c6fba5e01701bea6e))
+
 ## [2.8.5](https://github.com/Maxihost/metal-ui/compare/v2.8.4...v2.8.5) (2021-04-14)
 
 
