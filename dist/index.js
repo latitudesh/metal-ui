@@ -8025,7 +8025,7 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
     className: className
   }, label && Object(react_["jsx"])("label", {
     htmlFor: id,
-    css: ["display:block;font-size:0.875rem;line-height:1.25rem;font-weight:500;--tw-text-opacity:1;color:rgba(68, 68, 68, var(--tw-text-opacity));text-transform:none;", variant == "brand-dark" && !disabled && {
+    css: ["display:block;font-size:0.875rem;line-height:1.25rem;font-weight:500;--tw-text-opacity:1;color:rgba(68, 68, 68, var(--tw-text-opacity));text-transform:none;margin-bottom:0.25rem;", variant == "brand-dark" && !disabled && {
       "--tw-text-opacity": "1",
       "color": "rgba(255, 255, 255, var(--tw-text-opacity))"
     },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
@@ -8092,20 +8092,20 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
         "color": "rgba(136, 136, 136, var(--tw-placeholder-opacity))"
       }
     }, variant == "brand-dark" && !disabled && {
-      "--tw-border-opacity": "0.1",
+      "--tw-border-opacity": "0.2",
       "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
       "--tw-text-opacity": "1",
       "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
-      "--tw-bg-opacity": "0.1",
+      "--tw-bg-opacity": "0.2",
       "backgroundColor": "rgba(134, 131, 229, var(--tw-bg-opacity))",
       "::placeholder": {
         "--tw-placeholder-opacity": "1",
         "color": "rgba(134, 131, 229, var(--tw-placeholder-opacity))"
       },
       ":hover, :focus": {
-        "--tw-border-opacity": "0.1",
+        "--tw-border-opacity": "0.2",
         "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
-        "--tw-bg-opacity": "0.2"
+        "--tw-bg-opacity": "0.3"
       }
     },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, rest))));

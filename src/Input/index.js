@@ -63,7 +63,7 @@ const Input = React.forwardRef(
             aria-invalid={error ? true : false}
             disabled={disabled}
             css={[
-              tw`block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0`,
+              tw`block w-full rounded p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0`,
               inputClassName && inputClassName,
               !error &&
                 !disabled &&
@@ -77,7 +77,7 @@ const Input = React.forwardRef(
                 tw`border-border text-brand-uv hocus:border-brand-uv placeholder-accent-four`,
               variant == "brand-dark" &&
                 !disabled &&
-                tw`border-brand-melrose border-opacity-10 text-white bg-brand-melrose bg-opacity-10 placeholder-brand-melrose hocus:(border-brand-melrose border-opacity-10 bg-opacity-20)`,
+                tw`border-brand-melrose border-opacity-20 text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-brand-melrose border-opacity-20 bg-opacity-30)`,
             ]}
             {...rest}
           />
