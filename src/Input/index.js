@@ -41,8 +41,13 @@ const Input = React.forwardRef(
       <div className={className}>
         {label && (
           <label
-            tw="block text-sm leading-5 font-medium text-accent-six"
+            tw="block text-sm leading-5 font-medium text-accent-six normal-case mb-1"
             htmlFor={id}
+            css={[
+              variant == "brand-dark" &&
+                !disabled &&
+                tw`text-white`,
+            ]}
           >
             {label}
           </label>
@@ -62,14 +67,17 @@ const Input = React.forwardRef(
               inputClassName && inputClassName,
               !error &&
                 !disabled &&
-                tw`border-border text-foreground hover:border-accent-five focus:border-accent-five placeholder-accent-five`,
+                tw`border-border text-foreground hocus:border-accent-five placeholder-accent-five`,
               error &&
-                tw`text-error border-error hover:border-error focus:border-error placeholder-error`,
+                tw`text-error border-error hocus:border-error placeholder-error`,
               disabled &&
                 tw`border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five`,
               variant == "brand" &&
                 !disabled &&
-                tw`border-border text-brand-uv hover:border-brand-uv focus:border-brand-uv placeholder-accent-four`,
+                tw`border-border text-brand-uv hocus:border-brand-uv placeholder-accent-four`,
+              variant == "brand-dark" &&
+                !disabled &&
+                tw`border-brand-melrose border-opacity-10 text-white bg-brand-melrose bg-opacity-10 placeholder-brand-melrose hocus:(border-brand-melrose border-opacity-10 bg-opacity-20)`,
             ]}
             {...rest}
           />
@@ -88,7 +96,7 @@ Input.propTypes = {
   id: PropTypes.string.isRequired,
   error: PropTypes.bool,
   disabled: PropTypes.bool,
-  variant: PropTypes.oneOf(["brand"]),
+  variant: PropTypes.oneOf(["brand", "brand-dark"]),
 };
 
 export default Input;

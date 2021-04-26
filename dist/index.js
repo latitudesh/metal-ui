@@ -7990,11 +7990,6 @@ function Input_objectWithoutPropertiesLoose(source, excluded) { if (source == nu
 
 
 var Input_ref2 =  true ? {
-  name: "15f3l8i",
-  styles: "display:block;font-size:0.875rem;line-height:1.25rem;font-weight:500;--tw-text-opacity:1;color:rgba(68, 68, 68, var(--tw-text-opacity))"
-} : undefined;
-
-var Input_ref3 =  true ? {
   name: "pruvhc",
   styles: "margin-top:0.25rem;position:relative"
 } : undefined;
@@ -8029,10 +8024,13 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
   return Object(react_["jsx"])("div", {
     className: className
   }, label && Object(react_["jsx"])("label", {
-    css: Input_ref2,
-    htmlFor: id
+    htmlFor: id,
+    css: ["display:block;font-size:0.875rem;line-height:1.25rem;font-weight:500;--tw-text-opacity:1;color:rgba(68, 68, 68, var(--tw-text-opacity));text-transform:none;", variant == "brand-dark" && !disabled && {
+      "--tw-text-opacity": "1",
+      "color": "rgba(255, 255, 255, var(--tw-text-opacity))"
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, label), Object(react_["jsx"])("div", {
-    css: Input_ref3
+    css: Input_ref2
   }, Object(react_["jsx"])("input", Input_extends({
     id: id,
     ref: ref,
@@ -8047,11 +8045,7 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
       "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
       "--tw-text-opacity": "1",
       "color": "rgba(0, 0, 0, var(--tw-text-opacity))",
-      ":hover": {
-        "--tw-border-opacity": "1",
-        "borderColor": "rgba(102, 102, 102, var(--tw-border-opacity))"
-      },
-      ":focus": {
+      ":hover, :focus": {
         "--tw-border-opacity": "1",
         "borderColor": "rgba(102, 102, 102, var(--tw-border-opacity))"
       },
@@ -8064,11 +8058,7 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
       "color": "rgba(238, 0, 0, var(--tw-text-opacity))",
       "--tw-border-opacity": "1",
       "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))",
-      ":hover": {
-        "--tw-border-opacity": "1",
-        "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))"
-      },
-      ":focus": {
+      ":hover, :focus": {
         "--tw-border-opacity": "1",
         "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))"
       },
@@ -8093,11 +8083,7 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
       "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
       "--tw-text-opacity": "1",
       "color": "rgba(99, 89, 249, var(--tw-text-opacity))",
-      ":hover": {
-        "--tw-border-opacity": "1",
-        "borderColor": "rgba(99, 89, 249, var(--tw-border-opacity))"
-      },
-      ":focus": {
+      ":hover, :focus": {
         "--tw-border-opacity": "1",
         "borderColor": "rgba(99, 89, 249, var(--tw-border-opacity))"
       },
@@ -8105,25 +8091,22 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
         "--tw-placeholder-opacity": "1",
         "color": "rgba(136, 136, 136, var(--tw-placeholder-opacity))"
       }
-    }, variant == "brandDark" && !disabled && {
-      "--tw-border-opacity": "1",
-      "borderColor": "rgba(241, 245, 248, var(--tw-border-opacity))",
+    }, variant == "brand-dark" && !disabled && {
+      "--tw-border-opacity": "0.1",
+      "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
       "--tw-text-opacity": "1",
       "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
-      ":hover": {
-        "--tw-border-opacity": "1",
-        "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))"
-      },
-      ":focus": {
-        "--tw-border-opacity": "1",
-        "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))"
-      },
+      "--tw-bg-opacity": "0.1",
+      "backgroundColor": "rgba(134, 131, 229, var(--tw-bg-opacity))",
       "::placeholder": {
         "--tw-placeholder-opacity": "1",
         "color": "rgba(134, 131, 229, var(--tw-placeholder-opacity))"
       },
-      "--tw-bg-opacity": "1",
-      "backgroundColor": "rgba(134, 131, 229, var(--tw-bg-opacity))"
+      ":hover, :focus": {
+        "--tw-border-opacity": "0.1",
+        "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
+        "--tw-bg-opacity": "0.2"
+      }
     },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, rest))));
 });
@@ -8136,7 +8119,7 @@ Input.propTypes = {
   id: prop_types_default.a.string.isRequired,
   error: prop_types_default.a.bool,
   disabled: prop_types_default.a.bool,
-  variant: prop_types_default.a.oneOf(["brand", "brandDark"])
+  variant: prop_types_default.a.oneOf(["brand", "brand-dark"])
 };
 /* harmony default export */ var src_Input = (Input);
 // CONCATENATED MODULE: ./src/Textarea/index.js
