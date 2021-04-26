@@ -7963,6 +7963,8 @@ Toast_Toast.propTypes = {
 // CONCATENATED MODULE: ./src/Input/index.js
 function Input_extends() { Input_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Input_extends.apply(this, arguments); }
 
+function Input_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+
 function Input_slicedToArray(arr, i) { return Input_arrayWithHoles(arr) || Input_iterableToArrayLimit(arr, i) || Input_unsupportedIterableToArray(arr, i) || Input_nonIterableRest(); }
 
 function Input_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -7979,20 +7981,35 @@ function Input_objectWithoutProperties(source, excluded) { if (source == null) r
 
 function Input_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
 
 
 
+
+
+var Input_ref2 =  true ? {
+  name: "15f3l8i",
+  styles: "display:block;font-size:0.875rem;line-height:1.25rem;font-weight:500;--tw-text-opacity:1;color:rgba(68, 68, 68, var(--tw-text-opacity))"
+} : undefined;
+
+var Input_ref3 =  true ? {
+  name: "pruvhc",
+  styles: "margin-top:0.25rem;position:relative"
+} : undefined;
 
 var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
   var onChange = _ref.onChange,
       inputClassName = _ref.inputClassName,
       className = _ref.className,
+      variant = _ref.variant,
       value = _ref.value,
       label = _ref.label,
       id = _ref.id,
       error = _ref.error,
       disabled = _ref.disabled,
-      rest = Input_objectWithoutProperties(_ref, ["onChange", "inputClassName", "className", "value", "label", "id", "error", "disabled"]);
+      rest = Input_objectWithoutProperties(_ref, ["onChange", "inputClassName", "className", "variant", "value", "label", "id", "error", "disabled"]);
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(),
       _useState2 = Input_slicedToArray(_useState, 2),
@@ -8012,10 +8029,10 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
   return Object(react_["jsx"])("div", {
     className: className
   }, label && Object(react_["jsx"])("label", {
-    className: "block text-sm leading-5 font-medium text-accent-six",
+    css: Input_ref2,
     htmlFor: id
   }, label), Object(react_["jsx"])("div", {
-    className: "mt-1 relative"
+    css: Input_ref3
   }, Object(react_["jsx"])("input", Input_extends({
     id: id,
     ref: ref,
@@ -8025,11 +8042,89 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
     "aria-required": label ? true : false,
     "aria-invalid": error ? true : false,
     disabled: disabled,
-    className: classnames_default()("form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0", inputClassName, {
-      "border-border text-foreground hover:border-accent-five focus:border-accent-five placeholder-accent-five": !error && !disabled,
-      "text-error border-error hover:border-error focus:border-error placeholder-error": error,
-      "border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five": disabled
-    })
+    css: ["transition-property:background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;display:block;width:100%;border-radius:0.375rem;padding:0.5rem;border-width:1px;--tw-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.05);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);}@media (min-width: 640px){font-size:0.875rem;line-height:1.25rem;}", inputClassName && inputClassName, !error && !disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(0, 0, 0, var(--tw-text-opacity))",
+      ":hover": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(102, 102, 102, var(--tw-border-opacity))"
+      },
+      ":focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(102, 102, 102, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(102, 102, 102, var(--tw-placeholder-opacity))"
+      }
+    }, error && {
+      "--tw-text-opacity": "1",
+      "color": "rgba(238, 0, 0, var(--tw-text-opacity))",
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))",
+      ":hover": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))"
+      },
+      ":focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(238, 0, 0, var(--tw-placeholder-opacity))"
+      }
+    }, disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(102, 102, 102, var(--tw-text-opacity))",
+      "--tw-bg-opacity": "1",
+      "backgroundColor": "rgba(244, 245, 247, var(--tw-bg-opacity))",
+      "cursor": "not-allowed",
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(102, 102, 102, var(--tw-placeholder-opacity))"
+      }
+    }, variant == "brand" && !disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(99, 89, 249, var(--tw-text-opacity))",
+      ":hover": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(99, 89, 249, var(--tw-border-opacity))"
+      },
+      ":focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(99, 89, 249, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(136, 136, 136, var(--tw-placeholder-opacity))"
+      }
+    }, variant == "brandDark" && !disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(241, 245, 248, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+      ":hover": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))"
+      },
+      ":focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(134, 131, 229, var(--tw-placeholder-opacity))"
+      },
+      "--tw-bg-opacity": "1",
+      "backgroundColor": "rgba(134, 131, 229, var(--tw-bg-opacity))"
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, rest))));
 });
 Input.propTypes = {
@@ -8040,7 +8135,8 @@ Input.propTypes = {
   label: prop_types_default.a.string,
   id: prop_types_default.a.string.isRequired,
   error: prop_types_default.a.bool,
-  disabled: prop_types_default.a.bool
+  disabled: prop_types_default.a.bool,
+  variant: prop_types_default.a.oneOf(["brand", "brandDark"])
 };
 /* harmony default export */ var src_Input = (Input);
 // CONCATENATED MODULE: ./src/Textarea/index.js

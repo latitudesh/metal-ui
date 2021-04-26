@@ -1,6 +1,9 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
+import tw from "twin.macro";
 
 const Input = React.forwardRef(
   (
@@ -8,6 +11,7 @@ const Input = React.forwardRef(
       onChange,
       inputClassName,
       className,
+      variant,
       value,
       label,
       id,
@@ -37,13 +41,13 @@ const Input = React.forwardRef(
       <div className={className}>
         {label && (
           <label
-            className="block text-sm leading-5 font-medium text-accent-six"
+            tw="block text-sm leading-5 font-medium text-accent-six"
             htmlFor={id}
           >
             {label}
           </label>
         )}
-        <div className="mt-1 relative">
+        <div tw="mt-1 relative">
           <input
             id={id}
             ref={ref}
@@ -53,15 +57,20 @@ const Input = React.forwardRef(
             aria-required={label ? true : false}
             aria-invalid={error ? true : false}
             disabled={disabled}
-            className={classNames(
-              "form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0",
-              inputClassName,
-              {
-                "border-border text-foreground hover:border-accent-five focus:border-accent-five placeholder-accent-five": !error && !disabled,
-                "text-error border-error hover:border-error focus:border-error placeholder-error": error,
-                "border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five": disabled,
-              }
-            )}
+            css={[
+              tw`block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0`,
+              inputClassName && inputClassName,
+              !error &&
+                !disabled &&
+                tw`border-border text-foreground hover:border-accent-five focus:border-accent-five placeholder-accent-five`,
+              error &&
+                tw`text-error border-error hover:border-error focus:border-error placeholder-error`,
+              disabled &&
+                tw`border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five`,
+              variant == "brand" &&
+                !disabled &&
+                tw`border-border text-brand-uv hover:border-brand-uv focus:border-brand-uv placeholder-accent-four`,
+            ]}
             {...rest}
           />
         </div>
@@ -79,6 +88,7 @@ Input.propTypes = {
   id: PropTypes.string.isRequired,
   error: PropTypes.bool,
   disabled: PropTypes.bool,
+  variant: PropTypes.oneOf(["brand"]),
 };
 
 export default Input;
