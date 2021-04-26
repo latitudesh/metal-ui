@@ -43,14 +43,14 @@ const Select = React.forwardRef(
       <div className={className}>
         {label && (
           <label
-            tw="block text-sm font-medium leading-5 text-accent-seven"
+            tw="block text-sm font-medium leading-5 text-accent-six normal-case mb-1"
             css={[variant == "brand-dark" && !disabled && tw`text-white`]}
             htmlFor={id}
           >
             {label}
           </label>
         )}
-        <div className="mt-1 relative">
+        <div className="relative">
           <select
             id={id}
             ref={ref}
@@ -58,7 +58,7 @@ const Select = React.forwardRef(
             value={internalValue}
             disabled={disabled}
             css={[
-              tw`border rounded shadow-sm mt-1 block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:ring-0 transition duration-150 ease-in-out`,
+              tw`border rounded shadow-sm block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out`,
               selectClassName && selectClassName,
               !error &&
                 !disabled &&

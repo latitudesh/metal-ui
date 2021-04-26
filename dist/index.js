@@ -8297,6 +8297,9 @@ function Select_objectWithoutProperties(source, excluded) { if (source == null) 
 
 function Select_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
 
 
 
@@ -8312,7 +8315,8 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
       disabled = _ref.disabled,
       placeholder = _ref.placeholder,
       error = _ref.error,
-      rest = Select_objectWithoutProperties(_ref, ["onChange", "selectClassName", "options", "className", "value", "label", "id", "disabled", "placeholder", "error"]);
+      variant = _ref.variant,
+      rest = Select_objectWithoutProperties(_ref, ["onChange", "selectClassName", "options", "className", "value", "label", "id", "disabled", "placeholder", "error", "variant"]);
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(""),
       _useState2 = Select_slicedToArray(_useState, 2),
@@ -8332,21 +8336,87 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
   return Object(react_["jsx"])("div", {
     className: className
   }, label && Object(react_["jsx"])("label", {
-    className: "block text-sm font-medium leading-5 text-accent-seven",
+    css: ["display:block;font-size:0.875rem;line-height:1.25rem;font-weight:500;--tw-text-opacity:1;color:rgba(68, 68, 68, var(--tw-text-opacity));text-transform:none;margin-bottom:0.25rem;", variant == "brand-dark" && !disabled && {
+      "--tw-text-opacity": "1",
+      "color": "rgba(255, 255, 255, var(--tw-text-opacity))"
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined],
     htmlFor: id
   }, label), Object(react_["jsx"])("div", {
-    className: "mt-1 relative"
+    className: "relative"
   }, Object(react_["jsx"])("select", Select_extends({
     id: id,
     ref: ref,
     onChange: handleChange,
     value: internalValue,
     disabled: disabled,
-    className: classnames_default()("border rounded shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:ring-0 transition duration-150 ease-in-out", selectClassName, {
-      "border-border text-foreground hover:border-accent-five focus:border-accent-five placeholder-accent-five": !error && !disabled,
-      "text-error border-error hover:border-error focus:border-error placeholder-error": error,
-      "border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five": disabled
-    })
+    css: ["transition-property:background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;border-width:1px;border-radius:5px;--tw-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.05);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);display:block;width:100%;padding-left:0.75rem;padding-right:2.5rem;padding-top:0.5rem;padding-bottom:0.5rem;font-size:1rem;line-height:1.5rem;:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);}@media (min-width: 640px){font-size:0.875rem;line-height:1.25rem;}", selectClassName && selectClassName, !error && !disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(0, 0, 0, var(--tw-text-opacity))",
+      ":hover, :focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(102, 102, 102, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(102, 102, 102, var(--tw-placeholder-opacity))"
+      }
+    }, error && {
+      "--tw-text-opacity": "1",
+      "color": "rgba(238, 0, 0, var(--tw-text-opacity))",
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))",
+      ":hover, :focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(238, 0, 0, var(--tw-placeholder-opacity))"
+      }
+    }, disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(102, 102, 102, var(--tw-text-opacity))",
+      "--tw-bg-opacity": "1",
+      "backgroundColor": "rgba(244, 245, 247, var(--tw-bg-opacity))",
+      "cursor": "not-allowed",
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(102, 102, 102, var(--tw-placeholder-opacity))"
+      }
+    }, variant == "brand" && !disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(99, 89, 249, var(--tw-text-opacity))",
+      ":hover, :focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(99, 89, 249, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(136, 136, 136, var(--tw-placeholder-opacity))"
+      }
+    }, variant == "brand-dark" && !disabled && {
+      "--tw-border-opacity": "0.2",
+      "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+      "--tw-bg-opacity": "0.2",
+      "backgroundColor": "rgba(134, 131, 229, var(--tw-bg-opacity))",
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(134, 131, 229, var(--tw-placeholder-opacity))"
+      },
+      ":hover, :focus": {
+        "--tw-border-opacity": "0.2",
+        "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
+        "--tw-bg-opacity": "0.3"
+      }
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, rest), Object(react_["jsx"])("option", {
     value: "",
     disabled: true
@@ -8371,7 +8441,8 @@ Select.propTypes = {
   label: prop_types_default.a.string,
   id: prop_types_default.a.string.isRequired,
   error: prop_types_default.a.bool,
-  disabled: prop_types_default.a.bool
+  disabled: prop_types_default.a.bool,
+  variant: prop_types_default.a.oneOf(["brand", "brand-dark"])
 };
 /* harmony default export */ var src_Select = (Select);
 // CONCATENATED MODULE: ./src/Avatar/utils/getInitials.js
