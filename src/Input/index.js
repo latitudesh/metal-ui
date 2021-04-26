@@ -3,7 +3,7 @@
 import { jsx } from "@emotion/react";
 import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
-import tw from "twin.macro";
+import tw, { theme } from "twin.macro";
 
 const Input = React.forwardRef(
   (
@@ -37,6 +37,8 @@ const Input = React.forwardRef(
       [setInternalValue, onChange]
     );
 
+    const brandDarkStyles = tw`border-brand-melrose border-opacity-20 text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-brand-melrose border-opacity-20 bg-opacity-30)`;
+
     return (
       <div className={className}>
         {label && (
@@ -64,16 +66,20 @@ const Input = React.forwardRef(
               !error &&
                 !disabled &&
                 tw`border-border text-foreground hocus:border-accent-five placeholder-accent-five`,
-              error &&
-                tw`text-error border-error hocus:border-error placeholder-error`,
               disabled &&
                 tw`border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five`,
-              variant == "brand" &&
-                !disabled &&
+              !disabled &&
+                variant == "brand" &&
                 tw`border-border text-brand-uv hocus:border-brand-uv placeholder-accent-four`,
-              variant == "brand-dark" &&
-                !disabled &&
-                tw`border-brand-melrose border-opacity-20 text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-brand-melrose border-opacity-20 bg-opacity-30)`,
+              !disabled && variant == "brand-dark" && brandDarkStyles,
+              error &&
+                tw`text-error border-error hocus:border-error placeholder-error`,
+              error &&
+                variant == "brand-dark" && [
+                  brandDarkStyles,
+                  `background-image: url(https://maxihost-assets.s3-sa-east-1.amazonaws.com/metal-ui/error-icon.svg);background-repeat: no-repeat;background-position-x: calc(100% - 16px);
+                background-position-y: 9px;`,
+                ],
             ]}
             {...rest}
           />

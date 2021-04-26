@@ -8021,6 +8021,23 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
       onChange(event.target.value, event);
     }
   }, [setInternalValue, onChange]);
+  var brandDarkStyles = {
+    "--tw-border-opacity": "0.2",
+    "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
+    "--tw-text-opacity": "1",
+    "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+    "--tw-bg-opacity": "0.2",
+    "backgroundColor": "rgba(134, 131, 229, var(--tw-bg-opacity))",
+    "::placeholder": {
+      "--tw-placeholder-opacity": "1",
+      "color": "rgba(134, 131, 229, var(--tw-placeholder-opacity))"
+    },
+    ":hover, :focus": {
+      "--tw-border-opacity": "0.2",
+      "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
+      "--tw-bg-opacity": "0.3"
+    }
+  };
   return Object(react_["jsx"])("div", {
     className: className
   }, label && Object(react_["jsx"])("label", {
@@ -8053,19 +8070,6 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
         "--tw-placeholder-opacity": "1",
         "color": "rgba(102, 102, 102, var(--tw-placeholder-opacity))"
       }
-    }, error && {
-      "--tw-text-opacity": "1",
-      "color": "rgba(238, 0, 0, var(--tw-text-opacity))",
-      "--tw-border-opacity": "1",
-      "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))",
-      ":hover, :focus": {
-        "--tw-border-opacity": "1",
-        "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))"
-      },
-      "::placeholder": {
-        "--tw-placeholder-opacity": "1",
-        "color": "rgba(238, 0, 0, var(--tw-placeholder-opacity))"
-      }
     }, disabled && {
       "--tw-border-opacity": "1",
       "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
@@ -8078,7 +8082,7 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
         "--tw-placeholder-opacity": "1",
         "color": "rgba(102, 102, 102, var(--tw-placeholder-opacity))"
       }
-    }, variant == "brand" && !disabled && {
+    }, !disabled && variant == "brand" && {
       "--tw-border-opacity": "1",
       "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
       "--tw-text-opacity": "1",
@@ -8091,23 +8095,20 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
         "--tw-placeholder-opacity": "1",
         "color": "rgba(136, 136, 136, var(--tw-placeholder-opacity))"
       }
-    }, variant == "brand-dark" && !disabled && {
-      "--tw-border-opacity": "0.2",
-      "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
+    }, !disabled && variant == "brand-dark" && brandDarkStyles, error && {
       "--tw-text-opacity": "1",
-      "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
-      "--tw-bg-opacity": "0.2",
-      "backgroundColor": "rgba(134, 131, 229, var(--tw-bg-opacity))",
+      "color": "rgba(238, 0, 0, var(--tw-text-opacity))",
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))",
+      ":hover, :focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))"
+      },
       "::placeholder": {
         "--tw-placeholder-opacity": "1",
-        "color": "rgba(134, 131, 229, var(--tw-placeholder-opacity))"
-      },
-      ":hover, :focus": {
-        "--tw-border-opacity": "0.2",
-        "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
-        "--tw-bg-opacity": "0.3"
+        "color": "rgba(238, 0, 0, var(--tw-placeholder-opacity))"
       }
-    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
+    }, error && variant == "brand-dark" && [brandDarkStyles, "background-image: url(https://maxihost-assets.s3-sa-east-1.amazonaws.com/metal-ui/error-icon.svg);background-repeat: no-repeat;background-position-x: calc(100% - 16px);\n                background-position-y: 9px;"],  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, rest))));
 });
 Input.propTypes = {
