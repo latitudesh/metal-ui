@@ -1,6 +1,9 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
+import tw from "twin.macro";
 
 const Select = React.forwardRef(
   (
@@ -15,6 +18,7 @@ const Select = React.forwardRef(
       disabled,
       placeholder,
       error,
+      variant,
       ...rest
     },
     ref
@@ -39,7 +43,8 @@ const Select = React.forwardRef(
       <div className={className}>
         {label && (
           <label
-            className="block text-sm font-medium leading-5 text-accent-seven"
+            tw="block text-sm font-medium leading-5 text-accent-seven"
+            css={[variant == "brand-dark" && !disabled && tw`text-white`]}
             htmlFor={id}
           >
             {label}
@@ -52,15 +57,23 @@ const Select = React.forwardRef(
             onChange={handleChange}
             value={internalValue}
             disabled={disabled}
-            className={classNames(
-              "border rounded shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:ring-0 transition duration-150 ease-in-out",
-              selectClassName,
-              {
-                "border-border text-foreground hover:border-accent-five focus:border-accent-five placeholder-accent-five": !error && !disabled,
-                "text-error border-error hover:border-error focus:border-error placeholder-error": error,
-                "border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five": disabled,
-              }
-            )}
+            css={[
+              tw`border rounded shadow-sm mt-1 block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:ring-0 transition duration-150 ease-in-out`,
+              selectClassName && selectClassName,
+              !error &&
+                !disabled &&
+                tw`border-border text-foreground hocus:border-accent-five placeholder-accent-five`,
+              error &&
+                tw`text-error border-error hocus:border-error placeholder-error`,
+              disabled &&
+                tw`border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five`,
+              variant == "brand" &&
+                !disabled &&
+                tw`border-border text-brand-uv hocus:border-brand-uv placeholder-accent-four`,
+              variant == "brand-dark" &&
+                !disabled &&
+                tw`border-brand-melrose border-opacity-20 text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-brand-melrose border-opacity-20 bg-opacity-30)`,
+            ]}
             {...rest}
           >
             <option value="" disabled>
@@ -97,6 +110,7 @@ Select.propTypes = {
   id: PropTypes.string.isRequired,
   error: PropTypes.bool,
   disabled: PropTypes.bool,
+  variant: PropTypes.oneOf(["brand", "brand-dark"]),
 };
 
 export default Select;
