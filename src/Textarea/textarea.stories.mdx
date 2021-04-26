@@ -55,7 +55,7 @@ import Textarea from ".";
   </Story>
 </Preview>
 
-# Disabled 
+# Disabled
 
 <Preview>
   <Story name="Disabled">
@@ -63,3 +63,19 @@ import Textarea from ".";
   </Story>
 </Preview>
 
+# Brand variants
+
+The dark version of the textarea is meant to be used against a `deep-purple` background and not by itself.
+
+<Preview>
+  <Story name="Brand variants">
+    <Textarea variant="brand" placeholder="Text here..." label="Message" />
+    <div className="bg-brand-deepPurple p-2 my-2 block">
+      <Textarea
+        variant="brand-dark"
+        placeholder="Text here..."
+        label="Message"
+      />
+    </div>
+  </Story>
+</Preview>

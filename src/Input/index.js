@@ -43,11 +43,7 @@ const Input = React.forwardRef(
           <label
             tw="block text-sm leading-5 font-medium text-accent-six normal-case mb-1"
             htmlFor={id}
-            css={[
-              variant == "brand-dark" &&
-                !disabled &&
-                tw`text-white`,
-            ]}
+            css={[variant == "brand-dark" && !disabled && tw`text-white`]}
           >
             {label}
           </label>
