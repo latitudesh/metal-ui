@@ -8022,8 +8022,7 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
     }
   }, [setInternalValue, onChange]);
   var brandDarkStyles = {
-    "--tw-border-opacity": "0.2",
-    "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
+    "borderColor": "transparent",
     "--tw-text-opacity": "1",
     "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
     "--tw-bg-opacity": "0.2",
@@ -8033,8 +8032,7 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
       "color": "rgba(134, 131, 229, var(--tw-placeholder-opacity))"
     },
     ":hover, :focus": {
-      "--tw-border-opacity": "0.2",
-      "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
+      "borderColor": "transparent",
       "--tw-bg-opacity": "0.3"
     }
   };
@@ -8245,8 +8243,7 @@ var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
         "color": "rgba(136, 136, 136, var(--tw-placeholder-opacity))"
       }
     }, variant == "brand-dark" && !disabled && {
-      "--tw-border-opacity": "0.2",
-      "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
+      "borderColor": "transparent",
       "--tw-text-opacity": "1",
       "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
       "--tw-bg-opacity": "0.2",
@@ -8256,8 +8253,7 @@ var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
         "color": "rgba(134, 131, 229, var(--tw-placeholder-opacity))"
       },
       ":hover, :focus": {
-        "--tw-border-opacity": "0.2",
-        "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
+        "borderColor": "transparent",
         "--tw-bg-opacity": "0.3"
       }
     },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
@@ -8402,8 +8398,7 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
         "color": "rgba(136, 136, 136, var(--tw-placeholder-opacity))"
       }
     }, variant == "brand-dark" && !disabled && {
-      "--tw-border-opacity": "0.2",
-      "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
+      "borderColor": "transparent",
       "--tw-text-opacity": "1",
       "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
       "--tw-bg-opacity": "0.2",
@@ -8413,8 +8408,7 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
         "color": "rgba(134, 131, 229, var(--tw-placeholder-opacity))"
       },
       ":hover, :focus": {
-        "--tw-border-opacity": "0.2",
-        "borderColor": "rgba(134, 131, 229, var(--tw-border-opacity))",
+        "borderColor": "transparent",
         "--tw-bg-opacity": "0.3"
       }
     },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]

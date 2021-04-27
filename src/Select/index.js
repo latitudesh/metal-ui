@@ -72,7 +72,7 @@ const Select = React.forwardRef(
                 tw`border-border text-brand-uv hocus:border-brand-uv placeholder-accent-four`,
               variant == "brand-dark" &&
                 !disabled &&
-                tw`border-brand-melrose border-opacity-20 text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-brand-melrose border-opacity-20 bg-opacity-30)`,
+                tw`border-transparent text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-transparent bg-opacity-30)`,
             ]}
             {...rest}
           >

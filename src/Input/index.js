@@ -37,7 +37,7 @@ const Input = React.forwardRef(
       [setInternalValue, onChange]
     );
 
-    const brandDarkStyles = tw`border-brand-melrose border-opacity-20 text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-brand-melrose border-opacity-20 bg-opacity-30)`;
+    const brandDarkStyles = tw`border-transparent text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-transparent bg-opacity-30)`;
 
     return (
       <div className={className}>
