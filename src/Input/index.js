@@ -3,7 +3,7 @@
 import { jsx } from "@emotion/react";
 import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
-import tw, { theme } from "twin.macro";
+import tw from "twin.macro";
 
 const Input = React.forwardRef(
   (

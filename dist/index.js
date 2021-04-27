@@ -7831,17 +7831,28 @@ function Toast_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" 
 
 function Toast_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function Toast_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
 
 
 
 
 
 
+
+
+var Toast_ref =  true ? {
+  name: "1scx0rr",
+  styles: "--tw-text-opacity:1;color:rgba(68, 68, 68, var(--tw-text-opacity))"
+} : undefined;
 
 function Toast_XIcon() {
   return Object(react_["jsx"])("svg", {
     fill: "none",
-    className: "text-accent-6",
+    css: Toast_ref,
     stroke: "currentColor",
     viewBox: "0 0 24 24",
     role: "button",
@@ -7855,9 +7866,9 @@ function Toast_XIcon() {
   }));
 }
 
-var Toast_ToastContent = function ToastContent(_ref) {
-  var id = _ref.id,
-      children = _ref.children;
+var Toast_ToastContent = function ToastContent(_ref2) {
+  var id = _ref2.id,
+      children = _ref2.children;
   if (typeof window === "undefined") return null;
   var element = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(document.getElementById(id) || document.createElement("div"));
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
@@ -7875,15 +7886,25 @@ var Toast_ToastContent = function ToastContent(_ref) {
   return /*#__PURE__*/Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
 };
 
-var Toast_Toast = function Toast(_ref2) {
-  var text = _ref2.text,
-      error = _ref2.error,
-      success = _ref2.success,
-      showCloseIcon = _ref2.showCloseIcon,
-      hide = _ref2.hide,
-      _ref2$dismissTime = _ref2.dismissTime,
-      dismissTime = _ref2$dismissTime === void 0 ? 6000 : _ref2$dismissTime,
-      onCloseToast = _ref2.onCloseToast;
+var Toast_ref4 =  true ? {
+  name: "1066lcq",
+  styles: "display:flex;justify-content:space-between;align-items:center"
+} : undefined;
+
+var Toast_ref5 =  true ? {
+  name: "1bvnjn9",
+  styles: "width:91.666667%"
+} : undefined;
+
+var Toast_Toast = function Toast(_ref3) {
+  var text = _ref3.text,
+      error = _ref3.error,
+      success = _ref3.success,
+      showCloseIcon = _ref3.showCloseIcon,
+      hide = _ref3.hide,
+      _ref3$dismissTime = _ref3.dismissTime,
+      dismissTime = _ref3$dismissTime === void 0 ? 6000 : _ref3$dismissTime,
+      onCloseToast = _ref3.onCloseToast;
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(true),
       _useState2 = Toast_slicedToArray(_useState, 2),
@@ -7924,23 +7945,34 @@ var Toast_Toast = function Toast(_ref2) {
     return Object(react_["jsx"])(Toast_ToastContent, {
       id: "toast-content"
     }, Object(react_["jsx"])("div", {
-      className: bind_default()("fixed z-50 w-1/4 max-w-full p-5 bg-white bottom-0 rounded-md shadow-xl opacity-0", {
-        "text-white bg-error": error,
-        "text-white bg-success": success,
-        "opacity-100": showToast
-      }),
+      css: ["position:fixed;z-index:50;width:25%;max-width:100%;padding:1.25rem;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity));bottom:0px;border-radius:0.375rem;--tw-shadow:0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);opacity:0;", error && {
+        "--tw-text-opacity": "1",
+        "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(238, 0, 0, var(--tw-bg-opacity))"
+      }, success && {
+        "--tw-text-opacity": "1",
+        "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(99, 89, 249, var(--tw-bg-opacity))"
+      }, showToast && {
+        "opacity": "1"
+      },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined],
       style: {
         right: 20,
         transition: "all .4s cubic-bezier(.3,0,0,1)",
         transform: showToast && "translate(0, -20px)"
       }
     }, Object(react_["jsx"])("div", {
-      className: "flex justify-between items-center"
+      css: Toast_ref4
     }, Object(react_["jsx"])("div", {
-      className: "w-11/12"
+      css: Toast_ref5
     }, Object(react_["jsx"])(Typography_Text, {
       small: true,
-      color: (success || error) && "text-white"
+      color: (success || error) && {
+        "--tw-text-opacity": "1",
+        "color": "rgba(255, 255, 255, var(--tw-text-opacity))"
+      }
     }, text)), showCloseIcon && Object(react_["jsx"])("div", {
       onClick: function onClick() {
         return closeToast();
