@@ -58,7 +58,7 @@ const Select = React.forwardRef(
             value={internalValue}
             disabled={disabled}
             css={[
-              tw`border rounded shadow-sm block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out`,
+              tw`border rounded shadow-sm block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out font-family[inherit]`,
               selectClassName && selectClassName,
               !error &&
                 !disabled &&

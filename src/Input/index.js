@@ -61,7 +61,7 @@ const Input = React.forwardRef(
             aria-invalid={error ? true : false}
             disabled={disabled}
             css={[
-              tw`block w-full rounded p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0`,
+              tw`block w-full rounded p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0 font-family[inherit]`,
               inputClassName && inputClassName,
               !error &&
                 !disabled &&
