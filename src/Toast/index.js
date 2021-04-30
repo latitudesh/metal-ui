@@ -1,14 +1,18 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 import Text from "../Typography/Text";
+import tw from "twin.macro";
 
 function XIcon() {
   return (
     <svg
       fill="none"
-      className="text-accent-6"
+      tw="text-accent-six"
       stroke="currentColor"
       viewBox="0 0 24 24"
       role="button"
@@ -63,7 +67,7 @@ const Toast = ({
   const closeToast = () => {
     setShowToast(false);
     setOpen(false);
-    if(onCloseToast) {
+    if (onCloseToast) {
       onCloseToast();
     }
   };
@@ -90,23 +94,21 @@ const Toast = ({
     return (
       <ToastContent id="toast-content">
         <div
-          className={classNames(
-            "fixed z-50 w-1/4 max-w-full p-5 bg-white bottom-0 rounded-md shadow-xl opacity-0",
-            {
-              "text-white bg-error": error,
-              "text-white bg-success": success,
-              "opacity-100": showToast,
-            }
-          )}
+          css={[
+            tw`fixed z-50 w-1/4 max-w-full p-5 bg-white bottom-0 rounded-md shadow-xl opacity-0`,
+            error && tw`text-white bg-error`,
+            success && tw`text-white bg-success`,
+            showToast && tw`opacity-100`,
+          ]}
           style={{
             right: 20,
             transition: `all .4s cubic-bezier(.3,0,0,1)`,
             transform: showToast && `translate(0, -20px)`,
           }}
         >
-          <div className="flex justify-between items-center">
-            <div className="w-11/12">
-              <Text small color={(success || error) && "text-white"}>
+          <div tw="flex justify-between items-center">
+            <div tw="w-11/12">
+              <Text small color={(success || error) && tw`text-white`}>
                 {text}
               </Text>
             </div>

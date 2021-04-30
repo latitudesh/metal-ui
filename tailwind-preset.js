@@ -25,6 +25,13 @@ module.exports = {
       purple: "#F81CE5",
       alert: "#FF0080",
       violet: "#7928CA",
+      brand: {
+        gray: "#80798b",
+        lightGray: "#f1f5f8",
+        uv: "#6359f9",
+        deepPurple: "#2B223D",
+        melrose: "#8683e5"
+      },
       accent: {
         DEFAULT: "#FAFAFA",
         two: "#f9fafb",

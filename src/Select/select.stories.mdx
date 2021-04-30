@@ -1,27 +1,32 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import Select from ".";
 
-export const options = [{value: 'option_1', name: 'Option 1'}, {value: 'option_2', name: 'Option 2'}, {value: 'option_3', name: 'Option 3'}]
+export const options = [
+  { value: "option_1", name: "Option 1" },
+  { value: "option_2", name: "Option 2" },
+  { value: "option_3", name: "Option 3" },
+];
 
 <Meta title="Select" component={Select} />
 
 # Select
 
-Use the `options` prop to set select options 
+Use the `options` prop to set select options
+
 ```json
 [
-   {
-      "value":"option_1",
-      "name":"Option 1"
-   },
-   {
-      "value":"option_2",
-      "name":"Option 2"
-   },
-   {
-      "value":"option_3",
-      "name":"Option 3"
-   }
+  {
+    "value": "option_1",
+    "name": "Option 1"
+  },
+  {
+    "value": "option_2",
+    "name": "Option 2"
+  },
+  {
+    "value": "option_3",
+    "name": "Option 3"
+  }
 ]
 ```
 
@@ -53,7 +58,12 @@ Use the `options` prop to set select options
 
 <Preview>
   <Story name="with className">
-    <Select id="select-with-classname" label="Server list" className="w-1/3 border-2 p-2" options={options} />
+    <Select
+      id="select-with-classname"
+      label="Server list"
+      className="w-1/3 border-2 p-2"
+      options={options}
+    />
   </Story>
 </Preview>
 
@@ -61,7 +71,11 @@ Use the `options` prop to set select options
 
 <Preview>
   <Story name="With selectClassName">
-    <Select id="select-with-selectClassName" selectClassName="h-20" options={options} />
+    <Select
+      id="select-with-selectClassName"
+      selectClassName="h-20"
+      options={options}
+    />
   </Story>
 </Preview>
 
@@ -78,5 +92,18 @@ Use the `options` prop to set select options
 <Preview>
   <Story name="Disabled">
     <Select id="Disabled" disabled options={options} />
+  </Story>
+</Preview>
+
+# Brand variants
+
+The dark version of select is meant to be used against a `deep-purple` background and not by itself.
+
+<Preview>
+  <Story name="Brand variants">
+    <Select className="w-1/3" variant="brand" options={options} />
+    <div className="w-1/3 bg-brand-deepPurple p-2 my-2 block">
+      <Select variant="brand-dark" options={options} />
+    </div>
   </Story>
 </Preview>
