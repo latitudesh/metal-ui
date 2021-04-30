@@ -1,3 +1,12 @@
+## [2.8.8](https://github.com/Maxihost/metal-ui/compare/v2.8.7...v2.8.8) (2021-04-30)
+
+
+### Bug Fixes
+
+* Dark Inputs borders ([fa219ab](https://github.com/Maxihost/metal-ui/commit/fa219ab9abc638774011f6f01d2c733c816ce99a))
+* select classes ([12caf6e](https://github.com/Maxihost/metal-ui/commit/12caf6e2357cf5604f021fe4abbc7b97a683e518))
+* Updates border-radius of several components to the default one ([35e0110](https://github.com/Maxihost/metal-ui/commit/35e01106ceb27cbb8f3d2b3df99f3cd0468afd46))
+
 ## [2.8.7](https://github.com/Maxihost/metal-ui/compare/v2.8.6...v2.8.7) (2021-04-16)
 
 
