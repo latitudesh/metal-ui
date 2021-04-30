@@ -7831,17 +7831,28 @@ function Toast_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" 
 
 function Toast_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function Toast_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
 
 
 
 
 
 
+
+
+var Toast_ref =  true ? {
+  name: "1scx0rr",
+  styles: "--tw-text-opacity:1;color:rgba(68, 68, 68, var(--tw-text-opacity))"
+} : undefined;
 
 function Toast_XIcon() {
   return Object(react_["jsx"])("svg", {
     fill: "none",
-    className: "text-accent-6",
+    css: Toast_ref,
     stroke: "currentColor",
     viewBox: "0 0 24 24",
     role: "button",
@@ -7855,9 +7866,9 @@ function Toast_XIcon() {
   }));
 }
 
-var Toast_ToastContent = function ToastContent(_ref) {
-  var id = _ref.id,
-      children = _ref.children;
+var Toast_ToastContent = function ToastContent(_ref2) {
+  var id = _ref2.id,
+      children = _ref2.children;
   if (typeof window === "undefined") return null;
   var element = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(document.getElementById(id) || document.createElement("div"));
   Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
@@ -7875,15 +7886,25 @@ var Toast_ToastContent = function ToastContent(_ref) {
   return /*#__PURE__*/Object(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_["createPortal"])(children, element.current);
 };
 
-var Toast_Toast = function Toast(_ref2) {
-  var text = _ref2.text,
-      error = _ref2.error,
-      success = _ref2.success,
-      showCloseIcon = _ref2.showCloseIcon,
-      hide = _ref2.hide,
-      _ref2$dismissTime = _ref2.dismissTime,
-      dismissTime = _ref2$dismissTime === void 0 ? 6000 : _ref2$dismissTime,
-      onCloseToast = _ref2.onCloseToast;
+var Toast_ref4 =  true ? {
+  name: "1066lcq",
+  styles: "display:flex;justify-content:space-between;align-items:center"
+} : undefined;
+
+var Toast_ref5 =  true ? {
+  name: "1bvnjn9",
+  styles: "width:91.666667%"
+} : undefined;
+
+var Toast_Toast = function Toast(_ref3) {
+  var text = _ref3.text,
+      error = _ref3.error,
+      success = _ref3.success,
+      showCloseIcon = _ref3.showCloseIcon,
+      hide = _ref3.hide,
+      _ref3$dismissTime = _ref3.dismissTime,
+      dismissTime = _ref3$dismissTime === void 0 ? 6000 : _ref3$dismissTime,
+      onCloseToast = _ref3.onCloseToast;
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(true),
       _useState2 = Toast_slicedToArray(_useState, 2),
@@ -7924,23 +7945,34 @@ var Toast_Toast = function Toast(_ref2) {
     return Object(react_["jsx"])(Toast_ToastContent, {
       id: "toast-content"
     }, Object(react_["jsx"])("div", {
-      className: bind_default()("fixed z-50 w-1/4 max-w-full p-5 bg-white bottom-0 rounded-md shadow-xl opacity-0", {
-        "text-white bg-error": error,
-        "text-white bg-success": success,
-        "opacity-100": showToast
-      }),
+      css: ["position:fixed;z-index:50;width:25%;max-width:100%;padding:1.25rem;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity));bottom:0px;border-radius:0.375rem;--tw-shadow:0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);opacity:0;", error && {
+        "--tw-text-opacity": "1",
+        "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(238, 0, 0, var(--tw-bg-opacity))"
+      }, success && {
+        "--tw-text-opacity": "1",
+        "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(99, 89, 249, var(--tw-bg-opacity))"
+      }, showToast && {
+        "opacity": "1"
+      },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined],
       style: {
         right: 20,
         transition: "all .4s cubic-bezier(.3,0,0,1)",
         transform: showToast && "translate(0, -20px)"
       }
     }, Object(react_["jsx"])("div", {
-      className: "flex justify-between items-center"
+      css: Toast_ref4
     }, Object(react_["jsx"])("div", {
-      className: "w-11/12"
+      css: Toast_ref5
     }, Object(react_["jsx"])(Typography_Text, {
       small: true,
-      color: (success || error) && "text-white"
+      color: (success || error) && {
+        "--tw-text-opacity": "1",
+        "color": "rgba(255, 255, 255, var(--tw-text-opacity))"
+      }
     }, text)), showCloseIcon && Object(react_["jsx"])("div", {
       onClick: function onClick() {
         return closeToast();
@@ -7963,6 +7995,8 @@ Toast_Toast.propTypes = {
 // CONCATENATED MODULE: ./src/Input/index.js
 function Input_extends() { Input_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Input_extends.apply(this, arguments); }
 
+function Input_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+
 function Input_slicedToArray(arr, i) { return Input_arrayWithHoles(arr) || Input_iterableToArrayLimit(arr, i) || Input_unsupportedIterableToArray(arr, i) || Input_nonIterableRest(); }
 
 function Input_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -7979,20 +8013,30 @@ function Input_objectWithoutProperties(source, excluded) { if (source == null) r
 
 function Input_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
 
 
 
+
+
+var Input_ref2 =  true ? {
+  name: "pruvhc",
+  styles: "margin-top:0.25rem;position:relative"
+} : undefined;
 
 var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
   var onChange = _ref.onChange,
       inputClassName = _ref.inputClassName,
       className = _ref.className,
+      variant = _ref.variant,
       value = _ref.value,
       label = _ref.label,
       id = _ref.id,
       error = _ref.error,
       disabled = _ref.disabled,
-      rest = Input_objectWithoutProperties(_ref, ["onChange", "inputClassName", "className", "value", "label", "id", "error", "disabled"]);
+      rest = Input_objectWithoutProperties(_ref, ["onChange", "inputClassName", "className", "variant", "value", "label", "id", "error", "disabled"]);
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(),
       _useState2 = Input_slicedToArray(_useState, 2),
@@ -8009,13 +8053,31 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
       onChange(event.target.value, event);
     }
   }, [setInternalValue, onChange]);
+  var brandDarkStyles = {
+    "borderColor": "transparent",
+    "--tw-text-opacity": "1",
+    "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+    "--tw-bg-opacity": "0.2",
+    "backgroundColor": "rgba(134, 131, 229, var(--tw-bg-opacity))",
+    "::placeholder": {
+      "--tw-placeholder-opacity": "1",
+      "color": "rgba(134, 131, 229, var(--tw-placeholder-opacity))"
+    },
+    ":hover, :focus": {
+      "borderColor": "transparent",
+      "--tw-bg-opacity": "0.3"
+    }
+  };
   return Object(react_["jsx"])("div", {
     className: className
   }, label && Object(react_["jsx"])("label", {
-    className: "block text-sm leading-5 font-medium text-accent-six",
-    htmlFor: id
+    htmlFor: id,
+    css: ["display:block;font-size:0.875rem;line-height:1.25rem;font-weight:500;--tw-text-opacity:1;color:rgba(68, 68, 68, var(--tw-text-opacity));text-transform:none;margin-bottom:0.25rem;", variant == "brand-dark" && !disabled && {
+      "--tw-text-opacity": "1",
+      "color": "rgba(255, 255, 255, var(--tw-text-opacity))"
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, label), Object(react_["jsx"])("div", {
-    className: "mt-1 relative"
+    css: Input_ref2
   }, Object(react_["jsx"])("input", Input_extends({
     id: id,
     ref: ref,
@@ -8025,11 +8087,58 @@ var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_
     "aria-required": label ? true : false,
     "aria-invalid": error ? true : false,
     disabled: disabled,
-    className: classnames_default()("form-input block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0", inputClassName, {
-      "border-border text-foreground hover:border-accent-five focus:border-accent-five placeholder-accent-five": !error && !disabled,
-      "text-error border-error hover:border-error focus:border-error placeholder-error": error,
-      "border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five": disabled
-    })
+    css: ["transition-property:background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;display:block;width:100%;border-radius:5px;padding:0.5rem;border-width:1px;--tw-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.05);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);}font-family:inherit;@media (min-width: 640px){font-size:0.875rem;line-height:1.25rem;}", inputClassName && inputClassName, !error && !disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(0, 0, 0, var(--tw-text-opacity))",
+      ":hover, :focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(102, 102, 102, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(102, 102, 102, var(--tw-placeholder-opacity))"
+      }
+    }, disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(102, 102, 102, var(--tw-text-opacity))",
+      "--tw-bg-opacity": "1",
+      "backgroundColor": "rgba(244, 245, 247, var(--tw-bg-opacity))",
+      "cursor": "not-allowed",
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(102, 102, 102, var(--tw-placeholder-opacity))"
+      }
+    }, !disabled && variant == "brand" && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(99, 89, 249, var(--tw-text-opacity))",
+      ":hover, :focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(99, 89, 249, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(136, 136, 136, var(--tw-placeholder-opacity))"
+      }
+    }, !disabled && variant == "brand-dark" && brandDarkStyles, error && {
+      "--tw-text-opacity": "1",
+      "color": "rgba(238, 0, 0, var(--tw-text-opacity))",
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))",
+      ":hover, :focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(238, 0, 0, var(--tw-placeholder-opacity))"
+      }
+    }, error && variant == "brand-dark" && [brandDarkStyles, "background-image: url(https://maxihost-assets.s3-sa-east-1.amazonaws.com/metal-ui/error-icon.svg);background-repeat: no-repeat;background-position-x: calc(100% - 16px);\n                background-position-y: 9px;"],  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, rest))));
 });
 Input.propTypes = {
@@ -8040,7 +8149,8 @@ Input.propTypes = {
   label: prop_types_default.a.string,
   id: prop_types_default.a.string.isRequired,
   error: prop_types_default.a.bool,
-  disabled: prop_types_default.a.bool
+  disabled: prop_types_default.a.bool,
+  variant: prop_types_default.a.oneOf(["brand", "brand-dark"])
 };
 /* harmony default export */ var src_Input = (Input);
 // CONCATENATED MODULE: ./src/Textarea/index.js
@@ -8062,6 +8172,9 @@ function Textarea_objectWithoutProperties(source, excluded) { if (source == null
 
 function Textarea_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
 
 
 
@@ -8076,7 +8189,8 @@ var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
       error = _ref.error,
       disabled = _ref.disabled,
       rows = _ref.rows,
-      rest = Textarea_objectWithoutProperties(_ref, ["onChange", "textareaClassName", "className", "value", "label", "id", "error", "disabled", "rows"]);
+      variant = _ref.variant,
+      rest = Textarea_objectWithoutProperties(_ref, ["onChange", "textareaClassName", "className", "value", "label", "id", "error", "disabled", "rows", "variant"]);
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(),
       _useState2 = Textarea_slicedToArray(_useState, 2),
@@ -8096,8 +8210,11 @@ var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
   return Object(react_["jsx"])("div", {
     className: className
   }, label && Object(react_["jsx"])("label", {
-    className: "block text-sm leading-5 font-medium text-accent-six mb-1",
-    htmlFor: id
+    htmlFor: id,
+    css: ["display:block;font-size:0.875rem;line-height:1.25rem;font-weight:500;--tw-text-opacity:1;color:rgba(68, 68, 68, var(--tw-text-opacity));margin-bottom:0.25rem;text-transform:none;", variant == "brand-dark" && !disabled && {
+      "--tw-text-opacity": "1",
+      "color": "rgba(255, 255, 255, var(--tw-text-opacity))"
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, label), Object(react_["jsx"])("textarea", Textarea_extends({
     id: id,
     ref: ref,
@@ -8108,11 +8225,70 @@ var Textarea = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
     "aria-required": label ? true : false,
     "aria-invalid": error ? true : false,
     disabled: disabled,
-    className: classnames_default()("form-textarea block w-full rounded-md p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-6 border shadow-sm focus:ring-0", textareaClassName, {
-      "border-border text-foreground hover:border-foreground focus:border-foreground placeholder-accent-five": !error && !disabled,
-      "text-error border-error hover:border-error focus:border-error placeholder-error": error,
-      "border-border bg-background cursor-not-allowed placeholder-accents-five": disabled
-    })
+    css: ["transition-property:background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;display:block;width:100%;border-radius:5px;padding:0.5rem;border-width:1px;--tw-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.05);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);}font-family:inherit;@media (min-width: 640px){font-size:0.875rem;line-height:1.5rem;}", textareaClassName && textareaClassName, !error && !disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(0, 0, 0, var(--tw-text-opacity))",
+      ":hover, :focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(0, 0, 0, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(102, 102, 102, var(--tw-placeholder-opacity))"
+      }
+    }, error && {
+      "--tw-text-opacity": "1",
+      "color": "rgba(238, 0, 0, var(--tw-text-opacity))",
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))",
+      ":hover, :focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(238, 0, 0, var(--tw-placeholder-opacity))"
+      }
+    }, disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-bg-opacity": "1",
+      "backgroundColor": "rgba(244, 245, 247, var(--tw-bg-opacity))",
+      "cursor": "not-allowed",
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(102, 102, 102, var(--tw-placeholder-opacity))"
+      }
+    }, variant == "brand" && !disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(99, 89, 249, var(--tw-text-opacity))",
+      ":hover, :focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(99, 89, 249, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(136, 136, 136, var(--tw-placeholder-opacity))"
+      }
+    }, variant == "brand-dark" && !disabled && {
+      "borderColor": "transparent",
+      "--tw-text-opacity": "1",
+      "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+      "--tw-bg-opacity": "0.2",
+      "backgroundColor": "rgba(134, 131, 229, var(--tw-bg-opacity))",
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(134, 131, 229, var(--tw-placeholder-opacity))"
+      },
+      ":hover, :focus": {
+        "borderColor": "transparent",
+        "--tw-bg-opacity": "0.3"
+      }
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, rest)));
 });
 Textarea.defaultProps = {
@@ -8127,7 +8303,8 @@ Textarea.propTypes = {
   id: prop_types_default.a.string.isRequired,
   error: prop_types_default.a.bool,
   disabled: prop_types_default.a.bool,
-  rows: prop_types_default.a.number
+  rows: prop_types_default.a.number,
+  variant: prop_types_default.a.oneOf(["brand", "brand-dark"])
 };
 /* harmony default export */ var src_Textarea = (Textarea);
 // CONCATENATED MODULE: ./src/Select/index.js
@@ -8149,6 +8326,9 @@ function Select_objectWithoutProperties(source, excluded) { if (source == null) 
 
 function Select_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
 
 
 
@@ -8164,7 +8344,8 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
       disabled = _ref.disabled,
       placeholder = _ref.placeholder,
       error = _ref.error,
-      rest = Select_objectWithoutProperties(_ref, ["onChange", "selectClassName", "options", "className", "value", "label", "id", "disabled", "placeholder", "error"]);
+      variant = _ref.variant,
+      rest = Select_objectWithoutProperties(_ref, ["onChange", "selectClassName", "options", "className", "value", "label", "id", "disabled", "placeholder", "error", "variant"]);
 
   var _useState = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(""),
       _useState2 = Select_slicedToArray(_useState, 2),
@@ -8184,21 +8365,85 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
   return Object(react_["jsx"])("div", {
     className: className
   }, label && Object(react_["jsx"])("label", {
-    className: "block text-sm font-medium leading-5 text-accent-seven",
+    css: ["display:block;font-size:0.875rem;line-height:1.25rem;font-weight:500;--tw-text-opacity:1;color:rgba(68, 68, 68, var(--tw-text-opacity));text-transform:none;margin-bottom:0.25rem;", variant == "brand-dark" && !disabled && {
+      "--tw-text-opacity": "1",
+      "color": "rgba(255, 255, 255, var(--tw-text-opacity))"
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined],
     htmlFor: id
   }, label), Object(react_["jsx"])("div", {
-    className: "mt-1 relative"
+    className: "relative"
   }, Object(react_["jsx"])("select", Select_extends({
     id: id,
     ref: ref,
     onChange: handleChange,
     value: internalValue,
     disabled: disabled,
-    className: classnames_default()("border rounded-md shadow-sm mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:ring-0 transition duration-150 ease-in-out", selectClassName, {
-      "border-border text-foreground hover:border-accent-five focus:border-accent-five placeholder-accent-five": !error && !disabled,
-      "text-error border-error hover:border-error focus:border-error placeholder-error": error,
-      "border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five": disabled
-    })
+    css: ["transition-property:background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;border-width:1px;border-radius:5px;--tw-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.05);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);display:block;width:100%;padding-left:0.75rem;padding-right:2.5rem;padding-top:0.5rem;padding-bottom:0.5rem;font-size:1rem;line-height:1.5rem;:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);}font-family:inherit;@media (min-width: 640px){font-size:0.875rem;line-height:1.25rem;}", selectClassName && selectClassName, !error && !disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(0, 0, 0, var(--tw-text-opacity))",
+      ":hover, :focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(102, 102, 102, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(102, 102, 102, var(--tw-placeholder-opacity))"
+      }
+    }, error && {
+      "--tw-text-opacity": "1",
+      "color": "rgba(238, 0, 0, var(--tw-text-opacity))",
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))",
+      ":hover, :focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(238, 0, 0, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(238, 0, 0, var(--tw-placeholder-opacity))"
+      }
+    }, disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(102, 102, 102, var(--tw-text-opacity))",
+      "--tw-bg-opacity": "1",
+      "backgroundColor": "rgba(244, 245, 247, var(--tw-bg-opacity))",
+      "cursor": "not-allowed",
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(102, 102, 102, var(--tw-placeholder-opacity))"
+      }
+    }, variant == "brand" && !disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(99, 89, 249, var(--tw-text-opacity))",
+      ":hover, :focus": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(99, 89, 249, var(--tw-border-opacity))"
+      },
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(136, 136, 136, var(--tw-placeholder-opacity))"
+      }
+    }, variant == "brand-dark" && !disabled && {
+      "borderColor": "transparent",
+      "--tw-text-opacity": "1",
+      "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+      "--tw-bg-opacity": "0.2",
+      "backgroundColor": "rgba(134, 131, 229, var(--tw-bg-opacity))",
+      "::placeholder": {
+        "--tw-placeholder-opacity": "1",
+        "color": "rgba(134, 131, 229, var(--tw-placeholder-opacity))"
+      },
+      ":hover, :focus": {
+        "borderColor": "transparent",
+        "--tw-bg-opacity": "0.3"
+      }
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, rest), Object(react_["jsx"])("option", {
     value: "",
     disabled: true
@@ -8223,7 +8468,8 @@ Select.propTypes = {
   label: prop_types_default.a.string,
   id: prop_types_default.a.string.isRequired,
   error: prop_types_default.a.bool,
-  disabled: prop_types_default.a.bool
+  disabled: prop_types_default.a.bool,
+  variant: prop_types_default.a.oneOf(["brand", "brand-dark"])
 };
 /* harmony default export */ var src_Select = (Select);
 // CONCATENATED MODULE: ./src/Avatar/utils/getInitials.js
@@ -12080,7 +12326,7 @@ var Badge_Badge = function Badge(_ref) {
     "bg-error": style === "danger"
   }];
   return Object(react_["jsx"])("div", {
-    className: classnames_default()("inline-flex items-center px-2.5 rounded-md text-sm font-medium h-6 leading-6", !rounded && badgeStyle, !rounded && "border border-border", rounded && isRounded, className)
+    className: classnames_default()("inline-flex items-center px-2.5 rounded text-sm font-medium h-6 leading-6", !rounded && badgeStyle, !rounded && "border border-border", rounded && isRounded, className)
   }, !minimal && !rounded && Object(react_["jsx"])("svg", {
     className: classnames_default()("-ml-0.5 mr-1.5 h-2 w-2", badgeStyle),
     fill: "currentColor",
