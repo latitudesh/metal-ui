@@ -84,7 +84,6 @@
   },
   "dependencies": {
     "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5",
-    "node-sass": "^5.0.0"
+    "@emotion/styled": "^11.1.5"
   }
 }
