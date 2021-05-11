@@ -2,7 +2,6 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
 import React, { cloneElement } from "react";
-import classNames from "classnames/bind";
 import PropTypes from "prop-types";
 import SpinningDots from "../SpinningDots";
 import tw from "twin.macro";
