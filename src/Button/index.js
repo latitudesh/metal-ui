@@ -5,23 +5,7 @@ import React, { cloneElement } from "react";
 import classNames from "classnames/bind";
 import PropTypes from "prop-types";
 import SpinningDots from "../SpinningDots";
-import tw, { css, styled } from "twin.macro";
-
-const buttonTypes = {
-  default:
-    "border-transparent hover:border-accent-five text-white hover:text-foreground bg-foreground hover:bg-accent-two active:bg-foreground active:text-white",
-  secondary:
-    "border-secondary hover:border-foreground text-secondary hover:text-foreground bg-white hover:bg-accent-two active:bg-foreground active:text-white",
-  danger:
-    "border-error-dark hover:border-error-dark text-white hover:text-error-dark bg-error-dark hover:bg-accent-two active:bg-foreground active:text-white",
-  disabled:
-    "border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed",
-  minimal:
-    "border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five",
-  small: "px-4 h-8 leading-8 text-sm",
-  normal: "px-6 h-9 leading-9 text-sm",
-  large: "px-12 h-10 leading-10 text-base",
-};
+import tw from "twin.macro";
 
 const Button = ({
   disabled,
@@ -36,15 +20,6 @@ const Button = ({
   isLoading,
   className,
 }) => {
-  const cx = classNames.bind(buttonTypes);
-
-  const ButtonClasses = cx(className, {
-    disabled: disabled,
-    [variant]: Boolean(variant) && !disabled,
-    [size]: Boolean(size),
-    "block w-full": Boolean(block),
-  });
-
   const ButtonContent = (
     <div
       tw="flex items-center justify-center"
@@ -61,9 +36,27 @@ const Button = ({
       type={type}
       onClick={onClick}
       disabled={disabled || isLoading}
-      className={ButtonClasses}
+      className={className}
       css={[
         tw`relative border items-center flex font-medium rounded focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer`,
+        disabled &&
+          tw`border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed`,
+        variant == "default" &&
+          !disabled &&
+          tw`border-transparent hover:border-accent-five text-white hover:text-foreground bg-foreground hover:bg-accent-two active:bg-foreground active:text-white`,
+        variant == "secondary" &&
+          !disabled &&
+          tw`border-secondary hover:border-foreground text-secondary hover:text-foreground bg-white hover:bg-accent-two active:bg-foreground active:text-white`,
+        variant == "danger" &&
+          !disabled &&
+          tw`border-error-dark hover:border-error-dark text-white hover:text-error-dark bg-error-dark hover:bg-accent-two active:bg-foreground active:text-white`,
+        variant == "minimal" &&
+          !disabled &&
+          tw`border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five`,
+        size == "small" && tw`px-4 h-8 leading-8 text-sm`,
+        size == "normal" && tw`px-6 h-9 leading-9 text-sm`,
+        size == "large" && tw`px-12 h-10 leading-10 text-base`,
+        block && tw`block w-full`,
       ]}
     >
       {isLoading && <SpinningDots variant="inherit" tw="absolute" />}
