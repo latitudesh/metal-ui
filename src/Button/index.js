@@ -1,7 +1,11 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import React, { cloneElement } from "react";
 import classNames from "classnames/bind";
 import PropTypes from "prop-types";
 import SpinningDots from "../SpinningDots";
+import tw, { css, styled } from "twin.macro";
 
 const buttonTypes = {
   default:
@@ -28,71 +32,43 @@ const Button = ({
   type,
   size,
   variant,
-  component,
   block,
   isLoading,
   className,
 }) => {
   const cx = classNames.bind(buttonTypes);
 
+  const ButtonClasses = cx(className, {
+    disabled: disabled,
+    [variant]: Boolean(variant) && !disabled,
+    [size]: Boolean(size),
+    "block w-full": Boolean(block),
+  });
+
   const ButtonContent = (
     <div
-      className={classNames("flex items-center justify-center", {
-        "opacity-0": isLoading,
-        "opacity-100": !isLoading,
-      })}
+      tw="flex items-center justify-center"
+      css={[isLoading ? tw`opacity-0` : tw`opacity-100`]}
     >
-      {iconBefore && (
-        <span className="flex mr-2">{cloneElement(iconBefore)}</span>
-      )}
-      <span className="truncate">{label}</span>
-      {iconAfter && (
-        <span className="flex ml-2">{cloneElement(iconAfter)}</span>
-      )}
+      {iconBefore && <span tw="flex mr-2">{cloneElement(iconBefore)}</span>}
+      <span tw="truncate">{label}</span>
+      {iconAfter && <span tw="flex ml-2">{cloneElement(iconAfter)}</span>}
     </div>
   );
 
-  const ButtonClasses = cx(
-    "Button relative border items-center flex font-medium rounded focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer",
-    className,
-    {
-      disabled: disabled,
-      [variant]: Boolean(variant) && !disabled,
-      [size]: Boolean(size),
-      "block w-full": Boolean(block),
-    }
-  );
-
-  const RenderComponent = () => {
-    if (
-      component.props.children &&
-      typeof component.props.children !== "string"
-    ) {
-      const children = cloneElement(component.props.children, {
-        className: ButtonClasses,
-      });
-      return cloneElement(component, {}, children);
-    } else {
-      return cloneElement(component, { className: ButtonClasses });
-    }
-  };
-
   return (
-    <>
-      {component ? (
-        <RenderComponent />
-      ) : (
-        <button
-          type={type}
-          onClick={onClick}
-          disabled={disabled || isLoading}
-          className={ButtonClasses}
-        >
-          {isLoading && <SpinningDots variant="inherit" className="absolute" />}
-          {ButtonContent}
-        </button>
-      )}
-    </>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled || isLoading}
+      className={ButtonClasses}
+      css={[
+        tw`relative border items-center flex font-medium rounded focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer`,
+      ]}
+    >
+      {isLoading && <SpinningDots variant="inherit" tw="absolute" />}
+      {ButtonContent}
+    </button>
   );
 };
 
@@ -113,7 +89,6 @@ Button.propTypes = {
   ]),
   size: PropTypes.oneOf(["small", "normal", "large"]),
   isLoading: PropTypes.bool,
-  component: PropTypes.element,
 };
 
 Button.defaultProps = {
