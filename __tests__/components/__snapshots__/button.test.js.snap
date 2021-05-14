@@ -2,15 +2,15 @@
 
 exports[`Snapshots/Components/Button Render button 1`] = `
 <button
-  className="Button relative border items-center flex font-medium rounded focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer border-transparent hover:border-accent-five text-white hover:text-foreground bg-foreground hover:bg-accent-two active:bg-foreground active:text-white px-6 h-9 leading-9 text-sm"
+  className="css-9cvso6-Button-Button"
   disabled={false}
   type="button"
 >
   <div
-    className="flex items-center justify-center opacity-100"
+    className="css-4to0c4-ButtonContent-ButtonContent"
   >
     <span
-      className="truncate"
+      className="css-1661tgp-ButtonContent"
     />
   </div>
 </button>
