@@ -58,7 +58,7 @@ const Button = ({
         block && tw`block w-full`,
       ]}
     >
-      {isLoading && <SpinningDots variant="inherit" tw="absolute" />}
+      {isLoading && <SpinningDots variant="inherit" className={tw`absolute`} />}
       {ButtonContent}
     </button>
   );
