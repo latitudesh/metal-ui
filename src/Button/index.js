@@ -52,6 +52,12 @@ const Button = ({
         variant == "minimal" &&
           !disabled &&
           tw`border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five`,
+        variant == "brand-p" &&
+          !disabled &&
+          tw`border-transparent text-white hover:text-white bg-brand-uv hover:bg-opacity-90 active:bg-opacity-90 active:text-white`,
+        variant == "brand-s" &&
+          !disabled &&
+          tw`border-brand-gray text-white hover:text-white bg-transparent hover:opacity-80 active:text-white`,
         size == "small" && tw`px-4 h-8 leading-8 text-sm`,
         size == "normal" && tw`px-6 h-9 leading-9 text-sm`,
         size == "large" && tw`px-12 h-10 leading-10 text-base`,
@@ -78,6 +84,8 @@ Button.propTypes = {
     "danger",
     "disabled",
     "minimal",
+    "brand-p",
+    "brand-s",
   ]),
   size: PropTypes.oneOf(["small", "normal", "large"]),
   isLoading: PropTypes.bool,

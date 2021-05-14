@@ -11,6 +11,7 @@ import Box from "../Box";
 <Props of={Button} />
 
 # Variants
+Brand secondary is meant to be used against dark background.
 
 <Preview>
   <Story name="Variants">
@@ -19,6 +20,10 @@ import Box from "../Box";
       <Button label="Secondary" variant="secondary" />
       <Button label="Danger" variant="danger" />
       <Button label="Minimal" variant="minimal" />
+      <Button label="Brand primary" variant="brand-p" />
+      <div className="block px-2 py-2 -mt-2 bg-brand-deepPurple">
+        <Button label="Brand secondary" variant="brand-s" />
+      </div>
     </Box>
   </Story>
 </Preview>

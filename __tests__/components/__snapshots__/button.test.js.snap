@@ -2,7 +2,7 @@
 
 exports[`Snapshots/Components/Button Render button 1`] = `
 <button
-  className="css-9cvso6-Button-Button"
+  className="css-5v8zyg-Button-Button"
   disabled={false}
   type="button"
 >

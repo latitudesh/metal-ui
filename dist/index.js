@@ -7,7 +7,7 @@
 		exports["metal-ui"] = factory(require("react"), require("@emotion/react"), require("react-dom"));
 	else
 		root["metal-ui"] = factory(root["React"], root["@emotion/react"], root["ReactDOM"]);
-})((typeof window !== 'undefined' ? window : this), function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__5__) {
+})((typeof window !== 'undefined' ? window : this), function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__4__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -189,70 +189,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-  Copyright (c) 2018 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-/* global define */
-
-(function () {
-	'use strict';
-
-	var hasOwn = {}.hasOwnProperty;
-
-	function classNames () {
-		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
-
-			var argType = typeof arg;
-
-			if (argType === 'string' || argType === 'number') {
-				classes.push(this && this[arg] || arg);
-			} else if (Array.isArray(arg)) {
-				classes.push(classNames.apply(this, arg));
-			} else if (argType === 'object') {
-				if (arg.toString === Object.prototype.toString) {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(this && this[key] || key);
-						}
-					}
-				} else {
-					classes.push(arg.toString());
-				}
-			}
-		}
-
-		return classes.join(' ');
-	}
-
-	if ( true && module.exports) {
-		classNames.default = classNames;
-		module.exports = classNames;
-	} else if (true) {
-		// register as 'classnames', consistent with npm package name
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
-			return classNames;
-		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	} else {}
-}());
-
+module.exports = __WEBPACK_EXTERNAL_MODULE__4__;
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__5__;
-
-/***/ }),
-/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -330,7 +272,7 @@ module.exports = algoliasearchHelper;
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -412,7 +354,7 @@ module.exports = merge;
 
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -433,7 +375,7 @@ module.exports = function find(array, comparator) {
 
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports) {
 
 /* global Map:readonly, Set:readonly, ArrayBuffer:readonly */
@@ -573,7 +515,7 @@ module.exports = function isEqual(a, b) {
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -601,7 +543,7 @@ module.exports = function defaultsPure() {
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -626,7 +568,7 @@ module.exports = _objectWithoutPropertiesLoose;
 
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -640,6 +582,64 @@ module.exports = objectHasKeys;
 
 
 /***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2018 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(this && this[arg] || arg);
+			} else if (Array.isArray(arg)) {
+				classes.push(classNames.apply(this, arg));
+			} else if (argType === 'object') {
+				if (arg.toString === Object.prototype.toString) {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(this && this[key] || key);
+						}
+					}
+				} else {
+					classes.push(arg.toString());
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
 /* 13 */,
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -647,13 +647,13 @@ module.exports = objectHasKeys;
 "use strict";
 
 
-var merge = __webpack_require__(7);
-var defaultsPure = __webpack_require__(10);
+var merge = __webpack_require__(6);
+var defaultsPure = __webpack_require__(9);
 var intersection = __webpack_require__(27);
-var find = __webpack_require__(8);
+var find = __webpack_require__(7);
 var valToNumber = __webpack_require__(28);
-var omit = __webpack_require__(11);
-var objectHasKeys = __webpack_require__(12);
+var omit = __webpack_require__(10);
+var objectHasKeys = __webpack_require__(11);
 var isValidUserToken = __webpack_require__(29);
 
 var RefinementList = __webpack_require__(30);
@@ -2156,11 +2156,11 @@ module.exports = SearchParameters;
 "use strict";
 
 
-var merge = __webpack_require__(7);
-var defaultsPure = __webpack_require__(10);
+var merge = __webpack_require__(6);
+var defaultsPure = __webpack_require__(9);
 var orderBy = __webpack_require__(16);
 var compact = __webpack_require__(31);
-var find = __webpack_require__(8);
+var find = __webpack_require__(7);
 var findIndex = __webpack_require__(32);
 var formatSort = __webpack_require__(17);
 
@@ -3172,7 +3172,7 @@ module.exports = orderBy;
 "use strict";
 
 
-var find = __webpack_require__(8);
+var find = __webpack_require__(7);
 
 /**
  * Transform sort format from user friendly notation to lodash format
@@ -3885,9 +3885,9 @@ var requestBuilder = __webpack_require__(35);
 
 var events = __webpack_require__(18);
 var inherits = __webpack_require__(19);
-var objectHasKeys = __webpack_require__(12);
-var omit = __webpack_require__(11);
-var merge = __webpack_require__(7);
+var objectHasKeys = __webpack_require__(11);
+var omit = __webpack_require__(10);
+var merge = __webpack_require__(6);
 
 var version = __webpack_require__(20);
 
@@ -5420,9 +5420,9 @@ module.exports = function isValidUserToken(userToken) {
  * @typedef {Object.<string, SearchParameters.refinementList.Refinements>} SearchParameters.refinementList.RefinementList
  */
 
-var defaultsPure = __webpack_require__(10);
-var omit = __webpack_require__(11);
-var objectHasKeys = __webpack_require__(12);
+var defaultsPure = __webpack_require__(9);
+var omit = __webpack_require__(10);
+var objectHasKeys = __webpack_require__(11);
 
 var lib = {
   /**
@@ -5603,7 +5603,7 @@ module.exports = function find(array, comparator) {
 module.exports = generateTrees;
 
 var orderBy = __webpack_require__(16);
-var find = __webpack_require__(8);
+var find = __webpack_require__(7);
 var prepareHierarchicalFacetSortBy = __webpack_require__(17);
 
 function generateTrees(state) {
@@ -5851,7 +5851,7 @@ module.exports = DerivedHelper;
 "use strict";
 
 
-var merge = __webpack_require__(7);
+var merge = __webpack_require__(6);
 
 var requestBuilder = {
   /**
@@ -7317,11 +7317,9 @@ Content_Content.propTypes = {
   bg: prop_types_default.a.string
 };
 /* harmony default export */ var src_Content = (Content_Content);
-// EXTERNAL MODULE: ./node_modules/classnames/bind.js
-var bind = __webpack_require__(4);
-var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
-
 // CONCATENATED MODULE: ./src/SpinningDots/index.js
+
+
 function SpinningDots_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
 /** @jsxRuntime classic */
@@ -7332,44 +7330,56 @@ function SpinningDots_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried 
 
 
 
-
-
-var SpinningDots_ref =  true ? {
-  name: "10904xo",
-  styles: "border-width:3px"
+var SpinningDots_ref2 =  true ? {
+  name: "fhgur2",
+  styles: "display:inline-flex;position:relative;vertical-align:middle;height:0.5rem;text-align:center;opacity:0.5;width:2.5rem"
 } : undefined;
 
-var SpinningDots_SpinningDots = function SpinningDots(_ref2) {
-  var className = _ref2.className,
-      variant = _ref2.variant;
-  var i = classnames_default()("animate-pulse h-0 w-0 rounded-full", {
-    'text-accent-six': variant === 'default',
-    'text-accent-three': variant === 'light',
-    'text-accent-eight': variant === 'dark'
-  });
-  var iCss = SpinningDots_ref;
+var SpinningDots_ref3 =  true ? {
+  name: "1lxykmj",
+  styles: "display:flex;width:100%;justify-content:space-around"
+} : undefined;
+
+var SpinningDots_SpinningDots = function SpinningDots(_ref) {
+  var className = _ref.className,
+      variant = _ref.variant;
+
+  var StyledIcon = emotion_styled_base_browser_esm("i",  true ? {
+    target: "ejico0d0"
+  } : undefined)(function () {
+    return [{
+      "animation": "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      "height": "0px",
+      "width": "0px",
+      "borderRadius": "9999px",
+      "borderWidth": "3px"
+    }, variant == "default" && {
+      "--tw-text-opacity": "1",
+      "color": "rgba(68, 68, 68, var(--tw-text-opacity))"
+    }, variant == "light" && {
+      "--tw-text-opacity": "1",
+      "color": "rgba(229, 231, 235, var(--tw-text-opacity))"
+    }, variant == "dark" && {
+      "--tw-text-opacity": "1",
+      "color": "rgba(17, 17, 17, var(--tw-text-opacity))"
+    }];
+  },  true ? "" : undefined);
+
   return Object(react_["jsx"])("div", {
-    className: classnames_default()("spinner inline p-0 h-auto w-full text-center", className)
+    css: ["display:inline;padding:0px;height:auto;width:100%;text-align:center;", className && className,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, Object(react_["jsx"])("span", {
-    className: "inline-flex relative align-middle h-2 text-center opacity-50 w-10"
+    css: SpinningDots_ref2
   }, Object(react_["jsx"])("div", {
-    className: "flex w-full justify-around"
-  }, Object(react_["jsx"])("i", {
-    className: i,
-    css: iCss,
+    css: SpinningDots_ref3
+  }, Object(react_["jsx"])(StyledIcon, {
     style: {
-      animationDelay: "-.2s"
+      animationDelay: "-.3s"
     }
-  }), Object(react_["jsx"])("i", {
-    className: i,
-    css: iCss,
+  }), Object(react_["jsx"])(StyledIcon, {
     style: {
-      animationDelay: "-.1s"
+      animationDelay: "-.15s"
     }
-  }), Object(react_["jsx"])("i", {
-    className: i,
-    css: iCss
-  }))));
+  }), Object(react_["jsx"])(StyledIcon, null))));
 };
 
 SpinningDots_SpinningDots.propTypes = {
@@ -7381,27 +7391,33 @@ SpinningDots_SpinningDots.defaultProps = {
 };
 /* harmony default export */ var src_SpinningDots = (SpinningDots_SpinningDots);
 // CONCATENATED MODULE: ./src/Button/index.js
-function Button_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function Button_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+
+/** @jsxRuntime classic */
+
+/** @jsx jsx */
 
 
 
 
 
 
-var buttonTypes = {
-  "default": "border-transparent hover:border-accent-five text-white hover:text-foreground bg-foreground hover:bg-accent-two active:bg-foreground active:text-white",
-  secondary: "border-secondary hover:border-foreground text-secondary hover:text-foreground bg-white hover:bg-accent-two active:bg-foreground active:text-white",
-  danger: "border-error-dark hover:border-error-dark text-white hover:text-error-dark bg-error-dark hover:bg-accent-two active:bg-foreground active:text-white",
-  disabled: "border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed",
-  minimal: "border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five",
-  small: "px-4 h-8 leading-8 text-sm",
-  normal: "px-6 h-9 leading-9 text-sm",
-  large: "px-12 h-10 leading-10 text-base"
-};
+var Button_ref2 =  true ? {
+  name: "ro053d",
+  styles: "display:flex;margin-right:0.5rem"
+} : undefined;
+
+var Button_ref3 =  true ? {
+  name: "1h52dri",
+  styles: "overflow:hidden;text-overflow:ellipsis;white-space:nowrap"
+} : undefined;
+
+var Button_ref4 =  true ? {
+  name: "1gj7rap",
+  styles: "display:flex;margin-left:0.5rem"
+} : undefined;
 
 var Button_Button = function Button(_ref) {
-  var _cx;
-
   var disabled = _ref.disabled,
       iconBefore = _ref.iconBefore,
       iconAfter = _ref.iconAfter,
@@ -7410,51 +7426,185 @@ var Button_Button = function Button(_ref) {
       type = _ref.type,
       size = _ref.size,
       variant = _ref.variant,
-      component = _ref.component,
       block = _ref.block,
       isLoading = _ref.isLoading,
       className = _ref.className;
-  var cx = bind_default.a.bind(buttonTypes);
-
   var ButtonContent = Object(react_["jsx"])("div", {
-    className: bind_default()("flex items-center justify-center", {
-      "opacity-0": isLoading,
-      "opacity-100": !isLoading
-    })
+    css: ["display:flex;align-items:center;justify-content:center;", isLoading ? {
+      "opacity": "0"
+    } : {
+      "opacity": "1"
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, iconBefore && Object(react_["jsx"])("span", {
-    className: "flex mr-2"
+    css: Button_ref2
   }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconBefore)), Object(react_["jsx"])("span", {
-    className: "truncate"
+    css: Button_ref3
   }, label), iconAfter && Object(react_["jsx"])("span", {
-    className: "flex ml-2"
+    css: Button_ref4
   }, /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(iconAfter)));
-
-  var ButtonClasses = cx("Button relative border items-center flex font-medium rounded focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer", className, (_cx = {
-    disabled: disabled
-  }, Button_defineProperty(_cx, variant, Boolean(variant) && !disabled), Button_defineProperty(_cx, size, Boolean(size)), Button_defineProperty(_cx, "block w-full", Boolean(block)), _cx));
-
-  var RenderComponent = function RenderComponent() {
-    if (component.props.children && typeof component.props.children !== "string") {
-      var children = /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component.props.children, {
-        className: ButtonClasses
-      });
-      return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {}, children);
-    } else {
-      return /*#__PURE__*/Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"])(component, {
-        className: ButtonClasses
-      });
-    }
-  };
-
-  return Object(react_["jsx"])(external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.Fragment, null, component ? Object(react_["jsx"])(RenderComponent, null) : Object(react_["jsx"])("button", {
+  return Object(react_["jsx"])("button", {
     type: type,
     onClick: onClick,
     disabled: disabled || isLoading,
-    className: ButtonClasses
+    className: className,
+    css: ["transition-property:background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;position:relative;border-width:1px;align-items:center;display:flex;font-weight:500;border-radius:5px;:focus{outline:2px solid transparent;outline-offset:2px;}justify-content:center;max-width:100%;cursor:pointer;", disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(136, 136, 136, var(--tw-text-opacity))",
+      ":hover": {
+        "--tw-text-opacity": "1",
+        "color": "rgba(136, 136, 136, var(--tw-text-opacity))",
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(249, 250, 251, var(--tw-bg-opacity))"
+      },
+      ":active": {
+        "--tw-text-opacity": "1",
+        "color": "rgba(136, 136, 136, var(--tw-text-opacity))",
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(249, 250, 251, var(--tw-bg-opacity))"
+      },
+      "--tw-bg-opacity": "1",
+      "backgroundColor": "rgba(249, 250, 251, var(--tw-bg-opacity))",
+      "cursor": "not-allowed"
+    }, variant == "default" && !disabled && {
+      "borderColor": "transparent",
+      ":hover": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(102, 102, 102, var(--tw-border-opacity))",
+        "--tw-text-opacity": "1",
+        "color": "rgba(0, 0, 0, var(--tw-text-opacity))",
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(249, 250, 251, var(--tw-bg-opacity))"
+      },
+      "--tw-text-opacity": "1",
+      "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+      "--tw-bg-opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, var(--tw-bg-opacity))",
+      ":active": {
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(0, 0, 0, var(--tw-bg-opacity))",
+        "--tw-text-opacity": "1",
+        "color": "rgba(255, 255, 255, var(--tw-text-opacity))"
+      }
+    }, variant == "secondary" && !disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(102, 102, 102, var(--tw-border-opacity))",
+      ":hover": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(0, 0, 0, var(--tw-border-opacity))",
+        "--tw-text-opacity": "1",
+        "color": "rgba(0, 0, 0, var(--tw-text-opacity))",
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(249, 250, 251, var(--tw-bg-opacity))"
+      },
+      "--tw-text-opacity": "1",
+      "color": "rgba(102, 102, 102, var(--tw-text-opacity))",
+      "--tw-bg-opacity": "1",
+      "backgroundColor": "rgba(255, 255, 255, var(--tw-bg-opacity))",
+      ":active": {
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(0, 0, 0, var(--tw-bg-opacity))",
+        "--tw-text-opacity": "1",
+        "color": "rgba(255, 255, 255, var(--tw-text-opacity))"
+      }
+    }, variant == "danger" && !disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(197, 0, 0, var(--tw-border-opacity))",
+      ":hover": {
+        "--tw-border-opacity": "1",
+        "borderColor": "rgba(197, 0, 0, var(--tw-border-opacity))",
+        "--tw-text-opacity": "1",
+        "color": "rgba(197, 0, 0, var(--tw-text-opacity))",
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(249, 250, 251, var(--tw-bg-opacity))"
+      },
+      "--tw-text-opacity": "1",
+      "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+      "--tw-bg-opacity": "1",
+      "backgroundColor": "rgba(197, 0, 0, var(--tw-bg-opacity))",
+      ":active": {
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(0, 0, 0, var(--tw-bg-opacity))",
+        "--tw-text-opacity": "1",
+        "color": "rgba(255, 255, 255, var(--tw-text-opacity))"
+      }
+    }, variant == "minimal" && !disabled && {
+      "borderColor": "transparent",
+      "backgroundColor": "transparent",
+      ":hover": {
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(229, 231, 235, var(--tw-bg-opacity))",
+        "--tw-text-opacity": "1",
+        "color": "rgba(51, 51, 51, var(--tw-text-opacity))"
+      },
+      ":active": {
+        "--tw-bg-opacity": "1",
+        "backgroundColor": "rgba(249, 250, 251, var(--tw-bg-opacity))",
+        "--tw-text-opacity": "1",
+        "color": "rgba(102, 102, 102, var(--tw-text-opacity))"
+      },
+      "--tw-text-opacity": "1",
+      "color": "rgba(0, 0, 0, var(--tw-text-opacity))"
+    }, variant == "brand-p" && !disabled && {
+      "borderColor": "transparent",
+      "--tw-text-opacity": "1",
+      "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+      ":hover": {
+        "--tw-text-opacity": "1",
+        "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+        "--tw-bg-opacity": "0.9"
+      },
+      "--tw-bg-opacity": "1",
+      "backgroundColor": "rgba(99, 89, 249, var(--tw-bg-opacity))",
+      ":active": {
+        "--tw-bg-opacity": "0.9",
+        "--tw-text-opacity": "1",
+        "color": "rgba(255, 255, 255, var(--tw-text-opacity))"
+      }
+    }, variant == "brand-s" && !disabled && {
+      "--tw-border-opacity": "1",
+      "borderColor": "rgba(128, 121, 139, var(--tw-border-opacity))",
+      "--tw-text-opacity": "1",
+      "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+      ":hover": {
+        "--tw-text-opacity": "1",
+        "color": "rgba(255, 255, 255, var(--tw-text-opacity))",
+        "opacity": "0.8"
+      },
+      "backgroundColor": "transparent",
+      ":active": {
+        "--tw-text-opacity": "1",
+        "color": "rgba(255, 255, 255, var(--tw-text-opacity))"
+      }
+    }, size == "small" && {
+      "paddingLeft": "1rem",
+      "paddingRight": "1rem",
+      "height": "2rem",
+      "lineHeight": "1.25rem",
+      "fontSize": "0.875rem"
+    }, size == "normal" && {
+      "paddingLeft": "1.5rem",
+      "paddingRight": "1.5rem",
+      "height": "2.25rem",
+      "lineHeight": "1.25rem",
+      "fontSize": "0.875rem"
+    }, size == "large" && {
+      "paddingLeft": "3rem",
+      "paddingRight": "3rem",
+      "height": "2.5rem",
+      "lineHeight": "1.5rem",
+      "fontSize": "1rem"
+    }, block && {
+      "display": "block",
+      "width": "100%"
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, isLoading && Object(react_["jsx"])(src_SpinningDots, {
     variant: "inherit",
-    className: "absolute"
-  }), ButtonContent));
+    className: {
+      "position": "absolute"
+    }
+  }), ButtonContent);
 };
 
 Button_Button.propTypes = {
@@ -7465,10 +7615,9 @@ Button_Button.propTypes = {
   label: prop_types_default.a.string,
   onClick: prop_types_default.a.func,
   type: prop_types_default.a.string,
-  variant: prop_types_default.a.oneOf(["default", "secondary", "danger", "disabled", "minimal"]),
+  variant: prop_types_default.a.oneOf(["default", "secondary", "danger", "disabled", "minimal", "brand-p", "brand-s"]),
   size: prop_types_default.a.oneOf(["small", "normal", "large"]),
-  isLoading: prop_types_default.a.bool,
-  component: prop_types_default.a.element
+  isLoading: prop_types_default.a.bool
 };
 Button_Button.defaultProps = {
   size: "normal",
@@ -7565,8 +7714,12 @@ Box_Box.propTypes = {
 };
 /* harmony default export */ var src_Box = (Box_Box);
 // EXTERNAL MODULE: external {"root":"ReactDOM","commonjs2":"react-dom","commonjs":"react-dom","amd":"react-dom"}
-var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_ = __webpack_require__(5);
+var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_ = __webpack_require__(4);
 var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_default = /*#__PURE__*/__webpack_require__.n(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_);
+
+// EXTERNAL MODULE: ./node_modules/classnames/bind.js
+var bind = __webpack_require__(12);
+var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
 
 // CONCATENATED MODULE: ./src/Sidesheet/index.js
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -9322,7 +9475,7 @@ function inherits_inherits(subClass, superClass) {
   if (superClass) setPrototypeOf_setPrototypeOf(subClass, superClass);
 }
 // EXTERNAL MODULE: ./node_modules/react-fast-compare/index.js
-var react_fast_compare = __webpack_require__(9);
+var react_fast_compare = __webpack_require__(8);
 var react_fast_compare_default = /*#__PURE__*/__webpack_require__.n(react_fast_compare);
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
@@ -9361,7 +9514,7 @@ function objectWithoutProperties_objectWithoutProperties(source, excluded) {
   return target;
 }
 // EXTERNAL MODULE: ./node_modules/algoliasearch-helper/index.js
-var algoliasearch_helper = __webpack_require__(6);
+var algoliasearch_helper = __webpack_require__(5);
 var algoliasearch_helper_default = /*#__PURE__*/__webpack_require__.n(algoliasearch_helper);
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
