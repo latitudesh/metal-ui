@@ -61,7 +61,7 @@ const Button = ({
         size == "small" && tw`px-4 h-8 leading-8 text-sm`,
         size == "normal" && tw`px-6 h-9 leading-9 text-sm`,
         size == "large" && tw`px-12 h-10 leading-10 text-base`,
-        block && tw`block w-full`,
+        block && tw`w-full`,
       ]}
     >
       {isLoading && <SpinningDots variant="inherit" className={tw`absolute`} />}

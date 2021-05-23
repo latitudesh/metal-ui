@@ -11,6 +11,7 @@ import Box from "../Box";
 <Props of={Button} />
 
 # Variants
+
 Brand secondary is meant to be used against dark background.
 
 <Preview>
@@ -82,6 +83,9 @@ Disabled buttons do not inherit `variant` styling.
       <Button label="Loading" variant="secondary" isLoading={true} />
       <Button label="Loading" variant="danger" isLoading={true} />
     </Box>
+    <Box flex justifyContent="around">
+      <Button label="Loading" block isLoading={true} />
+    </Box>
   </Story>
 </Preview>
 
@@ -107,3 +111,15 @@ The component does not handle icon sizing. You should manage that from your proj
     </Box>
   </Story>
 </Preview>
+
+# With `next/link`
+
+For use in conjunction with NextJS' `next/link`, wrap the button with `<Link>` and set `passHref` to true.
+
+```javascript
+<Link href="https://www.maxihost.com" passHref>
+  <Button
+    label="Go to website"
+  />
+</Link>
+```
