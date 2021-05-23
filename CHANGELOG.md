@@ -1,3 +1,12 @@
+## [2.8.9](https://github.com/Maxihost/metal-ui/compare/v2.8.8...v2.8.9) (2021-05-23)
+
+
+### Bug Fixes
+
+* Button twin class ([9fbee6a](https://github.com/Maxihost/metal-ui/commit/9fbee6a4d28e87c46bc074d8672b67c8ddc06b4c))
+* Removes tailwind dependency from Button ([722aab7](https://github.com/Maxihost/metal-ui/commit/722aab7e90cb8a993c3cb9734483925e2c4b5102))
+* Removes Tailwind dependency from Spinningdots ([dabf658](https://github.com/Maxihost/metal-ui/commit/dabf6586ed55798d022a08c35a6d109b047949c1))
+
 ## [2.8.8](https://github.com/Maxihost/metal-ui/compare/v2.8.7...v2.8.8) (2021-04-30)
 
 
