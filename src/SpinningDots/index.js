@@ -1,35 +1,27 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from '@emotion/react'
+import { jsx } from "@emotion/react";
 import React from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
-import { css } from '@emotion/react';
+import tw, { styled } from "twin.macro";
 
 const SpinningDots = ({ className, variant }) => {
-  const i = classNames("animate-pulse h-0 w-0 rounded-full", {
-      'text-accent-six': variant === 'default',
-      'text-accent-three': variant === 'light',
-      'text-accent-eight': variant === 'dark',
-    }
-  );
-
-  const iCss = css`
-    border-width: 3px;
-  `;
+  const StyledIcon = styled.i(() => [
+    tw`animate-pulse h-0 w-0 rounded-full border-width[3px]`,
+    variant == "default" && tw`text-accent-six`,
+    variant == "light" && tw`text-accent-three`,
+    variant == "dark" && tw`text-accent-eight`,
+  ]);
 
   return (
     <div
-      className={classNames(
-        "spinner inline p-0 h-auto w-full text-center",
-        className
-      )}
+      css={[tw`inline p-0 h-auto w-full text-center`, className && className]}
     >
-      <span className="inline-flex relative align-middle h-2 text-center opacity-50 w-10">
-        <div className="flex w-full justify-around">
-          <i className={i} css={iCss} style={{ animationDelay: "-.2s" }}></i>
-          <i className={i} css={iCss} style={{ animationDelay: "-.1s" }}></i>
-          <i className={i} css={iCss}></i>
+      <span tw="inline-flex relative align-middle h-2 text-center opacity-50 w-10">
+        <div tw="flex w-full justify-around">
+          <StyledIcon style={{ animationDelay: "-.3s" }} />
+          <StyledIcon style={{ animationDelay: "-.15s" }} />
+          <StyledIcon />
         </div>
       </span>
     </div>
@@ -38,12 +30,7 @@ const SpinningDots = ({ className, variant }) => {
 
 SpinningDots.propTypes = {
   className: PropTypes.string,
-  variant: PropTypes.oneOf([
-    "default",
-    "inherit",
-    "light",
-    "dark",
-  ]),
+  variant: PropTypes.oneOf(["default", "inherit", "light", "dark"]),
 };
 
 SpinningDots.defaultProps = {

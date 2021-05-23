@@ -8,8 +8,6 @@ const Content = ({ children, size, className, bg }) => {
       className={classNames(
         "flex-1 relative overflow-y-auto focus:outline-none",
         {
-          "bg-background": size !== "full" && !bg,
-          "bg-white": size === "full" && !bg,
           [`bg-${bg}`]: bg,
         },
         className
@@ -31,6 +29,10 @@ const Content = ({ children, size, className, bg }) => {
   );
 
   return base;
+};
+
+Content.defaultProps = {
+  bg: "white",
 };
 
 Content.propTypes = {
