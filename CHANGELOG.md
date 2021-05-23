@@ -1,3 +1,27 @@
+## [2.8.8](https://github.com/Maxihost/metal-ui/compare/v2.8.7...v2.8.8) (2021-04-30)
+
+
+### Bug Fixes
+
+* Dark Inputs borders ([fa219ab](https://github.com/Maxihost/metal-ui/commit/fa219ab9abc638774011f6f01d2c733c816ce99a))
+* select classes ([12caf6e](https://github.com/Maxihost/metal-ui/commit/12caf6e2357cf5604f021fe4abbc7b97a683e518))
+* Updates border-radius of several components to the default one ([35e0110](https://github.com/Maxihost/metal-ui/commit/35e01106ceb27cbb8f3d2b3df99f3cd0468afd46))
+
+## [2.8.7](https://github.com/Maxihost/metal-ui/compare/v2.8.6...v2.8.7) (2021-04-16)
+
+
+### Bug Fixes
+
+* Adds tailwind-preset to npm ([6c9814c](https://github.com/Maxihost/metal-ui/commit/6c9814c227febf42bf2f3180e9ed91eae533214a))
+
+## [2.8.6](https://github.com/Maxihost/metal-ui/compare/v2.8.5...v2.8.6) (2021-04-16)
+
+
+### Bug Fixes
+
+* Clears Sidesheet old transition timeouts on useEffect value change ([23ed4c2](https://github.com/Maxihost/metal-ui/commit/23ed4c260f62a72e2014aeb5dc1824c3fd0c34d9))
+* Makes sidesheet scrollable ([53d4a92](https://github.com/Maxihost/metal-ui/commit/53d4a921d325c7f2f1f6402c6fba5e01701bea6e))
+
 ## [2.8.5](https://github.com/Maxihost/metal-ui/compare/v2.8.4...v2.8.5) (2021-04-14)
 
 

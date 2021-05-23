@@ -10,8 +10,9 @@ import Box from "../Box";
 
 <Props of={Button} />
 
-
 # Variants
+
+Brand secondary is meant to be used against dark background.
 
 <Preview>
   <Story name="Variants">
@@ -20,6 +21,10 @@ import Box from "../Box";
       <Button label="Secondary" variant="secondary" />
       <Button label="Danger" variant="danger" />
       <Button label="Minimal" variant="minimal" />
+      <Button label="Brand primary" variant="brand-p" />
+      <div className="block px-2 py-2 -mt-2 bg-brand-deepPurple">
+        <Button label="Brand secondary" variant="brand-s" />
+      </div>
     </Box>
   </Story>
 </Preview>
@@ -78,6 +83,9 @@ Disabled buttons do not inherit `variant` styling.
       <Button label="Loading" variant="secondary" isLoading={true} />
       <Button label="Loading" variant="danger" isLoading={true} />
     </Box>
+    <Box flex justifyContent="around">
+      <Button label="Loading" block isLoading={true} />
+    </Box>
   </Story>
 </Preview>
 
@@ -104,12 +112,14 @@ The component does not handle icon sizing. You should manage that from your proj
   </Story>
 </Preview>
 
-# With Component
+# With `next/link`
 
-Buttons with components don't currently support icons
+For use in conjunction with NextJS' `next/link`, wrap the button with `<Link>` and set `passHref` to true.
 
-<Preview>
-  <Story name="With Component">
-    <Button component={<a href="javascript:void()">With component</a>} />
-  </Story>
-</Preview>
+```javascript
+<Link href="https://www.maxihost.com" passHref>
+  <Button
+    label="Go to website"
+  />
+</Link>
+```
