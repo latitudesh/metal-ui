@@ -7288,10 +7288,7 @@ var Content_Content = function Content(_ref) {
       bg = _ref.bg;
 
   var base = Object(react_["jsx"])("div", {
-    className: classnames_default()("flex-1 relative overflow-y-auto focus:outline-none", Content_defineProperty({
-      "bg-background": size !== "full" && !bg,
-      "bg-white": size === "full" && !bg
-    }, "bg-".concat(bg), bg), className)
+    className: classnames_default()("flex-1 relative overflow-y-auto focus:outline-none", Content_defineProperty({}, "bg-".concat(bg), bg), className)
   }, Object(react_["jsx"])("div", {
     className: "px-10 py-8"
   }, Object(react_["jsx"])("div", {
@@ -7306,6 +7303,9 @@ var Content_Content = function Content(_ref) {
   return base;
 };
 
+Content_Content.defaultProps = {
+  bg: "white"
+};
 Content_Content.propTypes = {
   children: prop_types_default.a.node,
   size: prop_types_default.a.string,
@@ -7596,7 +7596,6 @@ var Button_Button = function Button(_ref) {
       "lineHeight": "1.5rem",
       "fontSize": "1rem"
     }, block && {
-      "display": "block",
       "width": "100%"
     },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
   }, isLoading && Object(react_["jsx"])(src_SpinningDots, {
