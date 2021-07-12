@@ -97,7 +97,7 @@ const Select = React.forwardRef(
 
 Select.defaultProps = {
   options: [],
-  placeholder: "Chose one",
+  placeholder: "Choose one",
 };
 
 Select.propTypes = {
