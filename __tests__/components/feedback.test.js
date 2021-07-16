@@ -26,4 +26,16 @@ describe('Feedback', () => {
         fireEvent.click(screen.getByText('Outside'))
         expect(screen.getByTestId('form').getAttribute('class')).toContain('opacity-0')
     })
+
+    test('closes form on hitting escape', async () => {
+        render(<div>
+            Outside
+            <Feedback email={true} />
+        </div>)
+
+        fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
+        expect(screen.getByTestId('form').getAttribute('class')).toContain('opacity-100')
+        fireEvent.keyPress(screen.getByRole('button', { name: 'Feedback' }), { key: 'Escape', code: 'Escape' })
+        expect(screen.getByTestId('form').getAttribute('class')).toContain('opacity-0')
+    })
 });
