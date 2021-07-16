@@ -452,7 +452,7 @@ const EmojiSelector = ({ onEmojiSelect, loading }) => {
         <button
           type="button"
           className={cn(
-            "option inline-flex outline-none bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-gray-200 focus:outline-none active:outline-none transform hover:scale-105 active:scale-105 hover:bg-white active:bg-white cursor-pointer text-center",
+            "option inline-flex outline-none bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-gray-200 active:outline-none transform hover:scale-105 active:scale-105 hover:bg-white active:bg-white cursor-pointer text-center",
             {
               "active scale-110 border bg-white border-orange-400": emoji === current,
               "cursor-default": loading,
