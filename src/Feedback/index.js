@@ -27,10 +27,10 @@ function getEmoji(code) {
   return EMOJI_CODES.get(code);
 }
 
-const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
+const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) => {
   const [emoji, setEmoji] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [focused, setFocused] = useState(false);
+  const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
   const [emojiShown, setEmojiShown] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -50,7 +50,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
   }, []);
 
   const handleClickOutside = useCallback(() => {
-    setFocused(false);
+    setOpen(false);
     onErrorDismiss();
     onSuccessDismiss();
 
@@ -125,13 +125,13 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
   useEffect(() => {
     // Inputs were hidden if we were showing an error message and
     // now we hide it
-    if (focused && inputFocused.current && errorMessage === '') {
+    if (open && inputFocused.current && errorMessage === '') {
       inputFocused.current.focus({ preventScroll: true });
     }
-  }, [errorMessage, focused, inputFocused]);
+  }, [errorMessage, open, inputFocused]);
 
   useEffect(() => {
-    if (focused) {
+    if (open) {
       if (textAreaRef && textAreaRef.current) {
         textAreaRef.current.value = feedbackText;
       }
@@ -141,7 +141,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
       }
 
       window.addEventListener("keydown", onKeyDown);
-    } else if (!focused && inputFocused && inputFocused.current) {
+    } else if (!open && inputFocused && inputFocused.current) {
       inputFocused.current.blur();
 
       // Remove feedbackText visibly from textarea while it's unfocused
@@ -156,7 +156,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [
-    focused,
+    open,
     inputFocused,
     handleClickOutside,
     emailValue,
@@ -181,18 +181,18 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
   }, [inputFocused]);
 
   const onFocus = useCallback(() => {
-    if (email && emailInputRef.current && !focused) {
+    if (email && emailInputRef.current && !open) {
       focusEmailInput();
-    } else if (textAreaRef.current && !focused) {
+    } else if (textAreaRef.current && !open) {
       focusTextArea();
     }
 
-    setFocused(true);
+    setOpen(true);
   }, [
     email,
     emailInputRef,
     textAreaRef,
-    focused,
+    open,
     focusEmailInput,
     focusTextArea,
   ]);
@@ -268,8 +268,8 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
           className={cn(
             "feedback-input p-0 w-24 relative inline-block antialiased focus:outline-0 active:outline-0",
             {
-              "h-8": !focused || !open,
-              focused: focused || open,
+              "h-8": !open || !forceOpen,
+              focused: open || forceOpen,
               "error text-transparent select-none": errorMessage,
               loading: loading,
               "success text-transparent select-none h-32": success,
@@ -284,7 +284,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
               "feedback-wrapper appearance-none border-0 bg-white border border-gray-300 flex leading-6 text-sm rounded w-24 h-8 resize-none z-50 outline-none text-black flex-col justify-start overflow-hidden relative transition-all ease-in-out hover:border-black focus:border-black active:border-black focus:outline-none active:outline-none",
               {
                 "focused w-72 h-auto min-h-full border-none border-white shadow-lg bg-white transition-all ease-in-out":
-                  focused || open,
+                  open || forceOpen,
               }
             )}
             onSubmit={onSubmit}
@@ -293,7 +293,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
               className={cn(
                 "placeholder flex absolute -top-1 -left-1 items-center justify-center w-24 h-8 border border-transparent flex-shrink-0 bg-white text-gray-600 transition-opacity duration-50 ease-out cursor-text",
                 {
-                  "opacity-0 pointer-events-none top-0 left-0 text-gray-300 transition-opacity duration-75 ease-linear": focused,
+                  "opacity-0 pointer-events-none top-0 left-0 text-gray-300 transition-opacity duration-75 ease-linear": open,
                 }
               )}
               style={{ marginTop: "-1px", marginLeft: "-1px" }}
@@ -306,8 +306,8 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                 className={cn(
                   "input-wrapper p-4 opacity-0 transition-opacity duration-50 ease relative h-32",
                   {
-                    "opacity-100": focused,
-                    hidden: !focused,
+                    "opacity-100": open,
+                    hidden: !open,
                   }
                 )}
               >
@@ -399,8 +399,8 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                 className={cn(
                   "controls w-full h-16 p-4 flex items-center bg-gray-100 border-t border-gray-200 opacity-0 transition-opacity duration-200 ease",
                   {
-                    "focused opacity-100 mt-20 pointer-events-auto": focused,
-                    "hidden pointer-events-none": !focused,
+                    "focused opacity-100 mt-20 pointer-events-auto": open,
+                    "hidden pointer-events-none": !open,
                   }
                 )}
                 data-testid={'form'}
@@ -438,7 +438,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
 
 FeedbackInput.propTypes = {
   dryRun: PropTypes.bool,
-  open: PropTypes.bool,
+  forceOpen: PropTypes.bool,
   className: PropTypes.string,
   url: PropTypes.string,
 };
