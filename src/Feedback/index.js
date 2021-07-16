@@ -55,10 +55,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
     onSuccessDismiss();
 
     setFeedbackText('')
-
-    if (emailInputRef.current) {
-      emailInputRef.current.value = "";
-    }
+    setEmailValue('')
   }, [onErrorDismiss, onSuccessDismiss]);
 
   const onSubmit = useCallback(
@@ -313,6 +310,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                       width="100%"
                       disabled={loading === true || errorMessage != ''}
                       onChange={setEmailValue}
+                      value={emailValue}
                     />
                   </div>
                 )}
