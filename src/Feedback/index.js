@@ -322,6 +322,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                 }
               )}
               style={{ marginTop: "-1px", marginLeft: "-1px" }}
+              role={'button'}
             >
               Feedback
             </div>
@@ -426,6 +427,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                     "hidden pointer-events-none": !focused,
                   }
                 )}
+                data-testid={'form'}
               >
                 <span className={"emojis"} style={{ width: '160px' }}>
                   <EmojiSelector
