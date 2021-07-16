@@ -147,9 +147,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
       // Remove feedbackText visibly from textarea while it's unfocused
       setFeedbackText('')
 
-      if (email) {
-        emailInputRef.current.value = "";
-      }
+      setEmailValue('')
 
       window.removeEventListener("keydown", onKeyDown);
     }
@@ -210,15 +208,6 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
   const onEmojiSelect = useCallback((selectedEmoji) => {
     setEmoji(selectedEmoji);
   }, []);
-
-  const handleEmailChange = useCallback(
-    (e) => {
-      if (focused) {
-        setEmailValue(e);
-      }
-    },
-    [focused]
-  );
 
   const eventListeners = useRef();
   eventListeners.current = {
@@ -337,7 +326,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                       placeholder="Your email address..."
                       width="100%"
                       disabled={loading === true || errorMessage != ''}
-                      onChange={handleEmailChange}
+                      onChange={setEmailValue}
                     />
                   </div>
                 )}
