@@ -36,7 +36,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [inputFocused, setInputFocused] = useState(null);
-  const [value, setValue] = useState('');
+  const [feedbackText, setFeedbackText] = useState('');
   const textAreaRef = useRef();
   const emailInputRef = useRef();
   const containerRef = useRef();
@@ -54,9 +54,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
     onErrorDismiss();
     onSuccessDismiss();
 
-    if (textAreaRef.current) {
-      textAreaRef.current.value = "";
-    }
+    setFeedbackText('')
 
     if (emailInputRef.current) {
       emailInputRef.current.value = "";
@@ -68,7 +66,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
       event.preventDefault();
       containerRef.current.focus();
 
-      if (value.trim() === "") {
+      if (feedbackText.trim() === "") {
         setErrorMessage("Your feedback can't be empty");
         return;
       }
@@ -78,13 +76,13 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
       if (dryRun) {
         setLoading(false);
         setSuccess(true);
-        setValue("");
+        setFeedbackText("");
         return;
       }
 
       const body = {
           url: window.location.toString(),
-          note: textAreaRef.current.value,
+          note: feedbackText,
           email: emailValue || "",
           emotion: getEmoji(emoji),
         }
@@ -95,17 +93,17 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
         throwOnHTTPError: true,
       })
         .then(() => {
-          // Reset the textarea value on success
+          // Reset the textarea feedbackText on success
           setLoading(false);
           setSuccess(true);
-          setValue("");
+          setFeedbackText("");
         })
         .catch((err) => {
           setLoading(false);
           setErrorMessage(err.message);
         });
     },
-    [dryRun, emoji, value, emailValue]
+    [dryRun, emoji, feedbackText, emailValue]
   );
 
   const onKeyDown = useCallback(
@@ -135,7 +133,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
   useEffect(() => {
     if (focused) {
       if (textAreaRef && textAreaRef.current) {
-        textAreaRef.current.value = value;
+        textAreaRef.current.value = feedbackText;
       }
 
       if (emailInputRef && emailInputRef.current) {
@@ -146,8 +144,8 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
     } else if (!focused && inputFocused && inputFocused.current) {
       inputFocused.current.blur();
 
-      // Remove value visibly from textarea while it's unfocused
-      textAreaRef.current.value = "";
+      // Remove feedbackText visibly from textarea while it's unfocused
+      setFeedbackText('')
 
       if (email) {
         emailInputRef.current.value = "";
@@ -164,7 +162,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
     inputFocused,
     handleClickOutside,
     emailValue,
-    value,
+    feedbackText,
     email,
     onSubmit,
     onKeyDown,
@@ -212,15 +210,6 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
   const onEmojiSelect = useCallback((selectedEmoji) => {
     setEmoji(selectedEmoji);
   }, []);
-
-  const handleChange = useCallback(
-    (e) => {
-      if (focused) {
-        setValue(e);
-      }
-    },
-    [focused]
-  );
 
   const handleEmailChange = useCallback(
     (e) => {
@@ -360,8 +349,9 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                     ref={(ref) => (textAreaRef.current = ref)}
                     placeholder="Your feedback..."
                     width="100%"
+                    value={feedbackText}
                     onFocus={() => setInputFocused(textAreaRef)}
-                    onChange={handleChange}
+                    onChange={setFeedbackText}
                     aria-label="Feedback input"
                     disabled={loading === true || errorMessage != ''}
                     // Disable the Grammarly extension on this textarea
