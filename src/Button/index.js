@@ -24,6 +24,7 @@ const Button = ({
   component,
   block,
   large,
+  ...props
 }) => {
   const cx = classNames.bind(buttonTypes);
 
@@ -64,13 +65,14 @@ const Button = ({
   return (
     <>
       {component ? (
-        <RenderComponent />
+        <RenderComponent {...props}/>
       ) : (
         <button
           type={"button"}
           onClick={onClick}
           disabled={disabled}
           className={ButtonClasses}
+          {...props}
         >
           {ButtonContent}
         </button>

@@ -426,6 +426,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                     width={60}
                     label="Send"
                     onClick={onSubmit}
+                    data-testid={'submit-button'}
                   />
                 </span>
               </div>

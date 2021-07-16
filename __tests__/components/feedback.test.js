@@ -38,4 +38,20 @@ describe('Feedback', () => {
         fireEvent.keyPress(screen.getByRole('button', { name: 'Feedback' }), { key: 'Escape', code: 'Escape' })
         expect(screen.getByTestId('form').getAttribute('class')).toContain('opacity-0')
     })
+
+    test('submits form on hitting enter key', async () => {
+        // TODO what happens when enter is hit elsewhere?
+        render(<div>
+            Outside
+            <Feedback email={true} />
+        </div>)
+
+        fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
+        fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'test@email.com' }});
+        fireEvent.change(screen.getByLabelText('Feedback'), { target: { value: 'This is great!' }});
+
+        fireEvent.keyPress(screen.getByTestId('submit-button'), { key: 'Enter', code: 'Enter' })
+
+        await waitFor(() => screen.getByText('Your feedback has been received!'))
+    })
 });
