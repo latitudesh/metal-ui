@@ -33,16 +33,16 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
   const [focused, setFocused] = useState(false);
   const [success, setSuccess] = useState(false);
   const [emojiShown, setEmojiShown] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [emailValue, setEmailValue] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [emailValue, setEmailValue] = useState('');
   const [inputFocused, setInputFocused] = useState(null);
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState('');
   const textAreaRef = useRef();
   const emailInputRef = useRef();
   const containerRef = useRef();
 
   const onErrorDismiss = useCallback(() => {
-    setErrorMessage(null);
+    setErrorMessage('');
   }, []);
 
   const onSuccessDismiss = useCallback(() => {
@@ -127,7 +127,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
   useEffect(() => {
     // Inputs were hidden if we were showing an error message and
     // now we hide it
-    if (focused && inputFocused.current && errorMessage === null) {
+    if (focused && inputFocused.current && errorMessage === '') {
       inputFocused.current.focus({ preventScroll: true });
     }
   }, [errorMessage, focused, inputFocused]);
@@ -347,7 +347,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                       type="email"
                       placeholder="Your email address..."
                       width="100%"
-                      disabled={loading === true || errorMessage != null}
+                      disabled={loading === true || errorMessage != ''}
                       onChange={handleEmailChange}
                     />
                   </div>
@@ -363,7 +363,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
                     onFocus={() => setInputFocused(textAreaRef)}
                     onChange={handleChange}
                     aria-label="Feedback input"
-                    disabled={loading === true || errorMessage != null}
+                    disabled={loading === true || errorMessage != ''}
                     // Disable the Grammarly extension on this textarea
                     data-gramm-editor="false"
                     textareaClassName={cn("feedback-input", {
@@ -374,7 +374,7 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
               </div>
             )}
 
-            {errorMessage != null && (
+            {errorMessage && (
               <div
                 className={
                   "flex flex-col items-center justify-center p-4 success-message text-center z-50"
