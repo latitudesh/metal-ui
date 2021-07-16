@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 
 import Button from "../Button";
-import ClickOutside from "../../util/ClickOutside";
 import Input from "../Input";
 import Textarea from "../Textarea";
 import Text from "../Typography/Text";
+
+import useClickAway from 'react-use/lib/useClickAway';
 
 const EMOJIS = new Map([
   ["🤩", "f929"],
@@ -81,14 +82,16 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
         return;
       }
 
-      fetch(url, {
-        method: "POST",
-        body: JSON.stringify({
+      const body = {
           url: window.location.toString(),
           note: textAreaRef.current.value,
           email: emailValue || "",
           emotion: getEmoji(emoji),
-        }),
+        }
+      console.log('body: ', body);
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify(body),
         throwOnHTTPError: true,
       })
         .then(() => {
@@ -277,16 +280,10 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
     };
   }, []);
 
+  useClickAway(containerRef, handleClickOutside);
   return (
-    <ClickOutside
-      active={!focused}
-      onClick={handleClickOutside}
-      render={({ innerRef }) => (
         <div
-          ref={(node) => {
-            containerRef.current = node;
-            innerRef(node);
-          }}
+          ref={containerRef}
           title="Share any feedback about our products and services"
           onClick={onFocus}
           tabIndex={0}
@@ -456,8 +453,6 @@ const FeedbackInput = ({ dryRun, className, open, email, url, ...props }) => {
             )}
           </form>
         </div>
-      )}
-    />
   );
 };
 
