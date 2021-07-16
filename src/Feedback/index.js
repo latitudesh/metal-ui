@@ -8,6 +8,19 @@ import Textarea from "../Textarea";
 import Text from "../Typography/Text";
 
 import useClickAway from 'react-use/lib/useClickAway';
+// TODO rely on browser support for emojis
+
+import f929 from './svgs/f929.svg'
+import f600 from './svgs/f600.svg'
+import f615 from './svgs/f615.svg'
+import f62d from './svgs/f62d.svg'
+
+const emojiSvgs = {
+    f929: f929,
+    f600: f600,
+    f615: f615,
+    f62d: f62d,
+}
 
 const EMOJIS = new Map([
   ["🤩", "f929"],
@@ -479,7 +492,7 @@ const Emoji = React.memo(({ code }) => (
     decoding="async"
     width={20}
     height={20}
-    src={`https://maxihost-assets.s3.sa-east-1.amazonaws.com/metal-ui/1${code}.svg`}
+    src={emojiSvgs[code]}
     alt="emoji"
   />
 ));
