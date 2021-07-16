@@ -132,14 +132,6 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
 
   useEffect(() => {
     if (open) {
-      if (textAreaRef && textAreaRef.current) {
-        textAreaRef.current.value = feedbackText;
-      }
-
-      if (emailInputRef && emailInputRef.current) {
-        emailInputRef.current.value = emailValue;
-      }
-
       window.addEventListener("keydown", onKeyDown);
     } else if (!open && inputFocused && inputFocused.current) {
       inputFocused.current.blur();
