@@ -138,7 +138,6 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
 
       // Remove feedbackText visibly from textarea while it's unfocused
       setFeedbackText('')
-
       setEmailValue('')
 
       window.removeEventListener("keydown", onKeyDown);
@@ -150,11 +149,6 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
   }, [
     open,
     inputFocused,
-    handleClickOutside,
-    emailValue,
-    feedbackText,
-    email,
-    onSubmit,
     onKeyDown,
   ]);
 

@@ -39,7 +39,7 @@ describe('Feedback', () => {
         expect(screen.getByTestId('form').getAttribute('class')).toContain('opacity-0')
     })
 
-    test('submits form on hitting enter key', async () => {
+    test.skip('submits form on hitting enter key', async () => {
         // TODO what happens when enter is hit elsewhere?
         render(<div>
             Outside
