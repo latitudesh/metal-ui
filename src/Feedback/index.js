@@ -152,7 +152,9 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
         >
           <form
             className={cn(
-              "feedback-wrapper appearance-none border-0 bg-white border border-gray-300 flex leading-6 text-sm rounded w-24 h-8 resize-none z-50 outline-none text-black flex-col justify-start overflow-hidden relative transition-all ease-in-out hover:border-black focus:border-black active:border-black focus:outline-none active:outline-none",
+              "feedback-wrapper appearance-none border-0 bg-white border border-gray-300 flex leading-6 text-sm rounded w-24 h-8",
+                "resize-none z-50 outline-none text-black flex-col justify-start overflow-hidden relative transition-all ease-in-out",
+                "hover:border-black focus:border-black active:border-black focus:outline-none active:outline-none",
               {
                 "focused w-72 h-auto min-h-full border-none border-white shadow-lg bg-white transition-all ease-in-out":
                   open || forceOpen,
@@ -162,7 +164,8 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
           >
             <button
               className={cn(
-                "placeholder flex absolute -top-1 -left-1 items-center justify-center w-24 h-8 border border-transparent flex-shrink-0 bg-white text-gray-600 transition-opacity duration-50 ease-out cursor-text",
+                "placeholder flex absolute -top-1 -left-1 items-center justify-center w-24 h-8 border border-transparent ",
+                  "flex-shrink-0 bg-white text-gray-600 transition-opacity duration-50 ease-out cursor-text",
                 {
                   "opacity-0 pointer-events-none top-0 left-0 text-gray-300 transition-opacity duration-75 ease-linear": open,
                 }
@@ -329,7 +332,9 @@ const EmojiSelector = ({ selectedEmoji, onEmojiSelect, loading, onFocus }) => {
         <button
           type="button"
           className={cn(
-            "option inline-flex outline-none bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-gray-200 active:outline-none transform hover:scale-105 active:scale-105 hover:bg-white active:bg-white cursor-pointer text-center",
+            "option inline-flex last-none bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-gray-200 transform cursor-pointer text-center",
+              "active:last-none hover:scale-105 active:scale-105 hover:bg-white active:bg-white",
+              "outline-none focus:outline-none focus:shadow-outline-blue",
             {
               "active scale-110 border bg-white border-orange-400": emoji.char === selectedEmoji,
               "cursor-default": loading,
