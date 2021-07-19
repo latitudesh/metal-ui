@@ -74,4 +74,6 @@ describe('Feedback', () => {
               throwOnHTTPError: true,
         });
     })
+
+    test.todo('dont show inputs in case of error')
 });

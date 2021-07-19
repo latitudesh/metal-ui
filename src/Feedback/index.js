@@ -15,7 +15,7 @@ import f600 from './svgs/f600.svg'
 import f615 from './svgs/f615.svg'
 import f62d from './svgs/f62d.svg'
 
-const emojiSvgs = {
+const emojiSVGs = {
     f929: f929,
     f600: f600,
     f615: f615,
@@ -45,7 +45,6 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [emojiShown, setEmojiShown] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [inputFocused, setInputFocused] = useState(null);
@@ -132,14 +131,6 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
   );
 
   useEffect(() => {
-    // Inputs were hidden if we were showing an error message and
-    // now we hide it
-    if (open && inputFocused.current && errorMessage === '') {
-      inputFocused.current.focus({ preventScroll: true });
-    }
-  }, [errorMessage, open, inputFocused]);
-
-  useEffect(() => {
     if (open) {
       window.addEventListener("keydown", onKeyDown);
     } else if (!open && inputFocused && inputFocused.current) {
@@ -176,9 +167,9 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
   }, [inputFocused]);
 
   const onFocus = useCallback(() => {
-    if (email && emailInputRef.current && !open) {
+    if (email && emailValue && !open) {
       focusEmailInput();
-    } else if (textAreaRef.current && !open) {
+    } else if (feedbackText && !open) {
       focusTextArea();
     }
 
@@ -191,14 +182,6 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
     focusEmailInput,
     focusTextArea,
   ]);
-
-  const onEmojiShown = useCallback(() => {
-    setEmojiShown(true);
-  }, []);
-
-  const onEmojiHidden = useCallback(() => {
-    setEmojiShown(false);
-  }, []);
 
   const onEmojiSelect = useCallback((selectedEmoji) => {
     setEmoji(selectedEmoji);
@@ -403,8 +386,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
               >
                 <span className={"emojis"} style={{ width: '160px' }}>
                   <EmojiSelector
-                    onShow={onEmojiShown}
-                    onHide={onEmojiHidden}
+                    selectedEmoji={emoji}
                     onEmojiSelect={onEmojiSelect}
                     loading={loading}
                   />
@@ -412,9 +394,6 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                 <span
                   className={cn(
                     "buttons flex-1 text-right transition-opacity duration-200 ease ml-auto",
-                    {
-                      hidden: emojiShown,
-                    }
                   )}
                 >
                   <Button
@@ -439,21 +418,7 @@ FeedbackInput.propTypes = {
   url: PropTypes.string,
 };
 
-const EmojiSelector = ({ onEmojiSelect, loading }) => {
-  const [current, setCurrent] = useState(null);
-
-  useEffect(() => {
-    if (onEmojiSelect) {
-      onEmojiSelect(current);
-    }
-  }, [current, onEmojiSelect]);
-
-  const onSelect = (emoji) => {
-    if (emoji !== current) {
-      setCurrent(emoji);
-    }
-  };
-
+const EmojiSelector = ({ selectedEmoji, onEmojiSelect, loading }) => {
   return (
     <div
       className={cn("emoji-selector flex space-x-2", {
@@ -466,12 +431,12 @@ const EmojiSelector = ({ onEmojiSelect, loading }) => {
           className={cn(
             "option inline-flex outline-none bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-gray-200 active:outline-none transform hover:scale-105 active:scale-105 hover:bg-white active:bg-white cursor-pointer text-center",
             {
-              "active scale-110 border bg-white border-orange-400": emoji === current,
+              "active scale-110 border bg-white border-orange-400": emoji === selectedEmoji,
               "cursor-default": loading,
             }
           )}
           key={emoji}
-          onClick={() => onSelect(emoji)}
+          onClick={() => onEmojiSelect(emoji)}
           style={{ borderRadius: "50%" }}
         >
           <span
@@ -491,7 +456,7 @@ const Emoji = React.memo(({ code }) => (
     decoding="async"
     width={20}
     height={20}
-    src={emojiSvgs[code]}
+    src={emojiSVGs[code]}
     alt="emoji"
   />
 ));
