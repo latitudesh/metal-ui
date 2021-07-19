@@ -67,23 +67,22 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
 
       setLoading(true);
 
-      if (dryRun) {
-        setLoading(false);
-        setSuccess(true);
-        setFeedbackText("");
-        return;
-      }
-
       const body = {
           url: url,
           note: feedbackText,
           email: emailValue || "",
           emotion: emoji
         }
-        fetch(url, {
-              method: "POST",
-              body: JSON.stringify(body),
-              throwOnHTTPError: true,
+      Promise.resolve()
+          .then(() => {
+              if (dryRun) {
+                  return;
+              }
+              return fetch(url, {
+                  method: "POST",
+                  body: JSON.stringify(body),
+                  throwOnHTTPError: true,
+              })
           })
         .then(() => {
           // Reset the textarea feedbackText on success
@@ -282,7 +281,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                   )}
                 >
                   <Button
-                    loading={loading}
+                    disabled={loading}
                     width={60}
                     label="Send"
                     onFocus={(e) => setFocusedElement(e.target)}
