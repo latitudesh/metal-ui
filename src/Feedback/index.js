@@ -23,20 +23,24 @@ const EMOJIS = [
 ];
 
 const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) => {
-  const [emoji, setEmoji] = useState(null);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [feedbackText, setFeedbackText] = useState('');
+  const [emoji, setEmoji] = useState(null);
   const containerRef = useRef();
+  const toggleButtonRef = useRef();
   const [focusedElement, setFocusedElement] = useState(null);
 
   useEffect(() => {
-      // Preserve focus
-      if (!open) return;
-      focusedElement?.focus();
+      if (open) {
+          // Preserve focus
+          focusedElement?.focus();
+      } else {
+          toggleButtonRef.current?.focus();
+      }
   }, [open, focusedElement])
 
   const onErrorDismiss = useCallback(() => {
@@ -47,7 +51,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
     setSuccess(false);
   }, []);
 
-  const handleClickOutside = useCallback(() => {
+  const closeFeedbackForm = useCallback(() => {
     setOpen(false);
     onErrorDismiss();
     onSuccessDismiss();
@@ -57,8 +61,9 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
   }, [onErrorDismiss, onSuccessDismiss]);
 
   const onSubmit = (event) => {
+      console.log('onSubmit ', );
       event.preventDefault();
-      containerRef.current.focus();
+      // containerRef.current.focus();
 
       if (feedbackText.trim() === "") {
         setErrorMessage("Your feedback can't be empty");
@@ -99,12 +104,12 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
   const onKeyDown = useCallback(
     (e) => {
       if (e.key === 'Escape') {
-        handleClickOutside();
+        closeFeedbackForm();
       } else if (e.key === "Enter" && e.metaKey) {
         onSubmit(e);
       }
     },
-    [handleClickOutside, onSubmit]
+    [closeFeedbackForm, onSubmit]
   );
 
   useEffect(() => {
@@ -113,20 +118,20 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [
-      onSubmit
+      onKeyDown
   ]);
 
   const onEmojiSelect = useCallback((selectedEmoji) => {
     setEmoji(selectedEmoji);
   }, []);
 
-  useClickAway(containerRef, handleClickOutside);
+  const disableInputs = Boolean(loading || errorMessage);
+  useClickAway(containerRef, closeFeedbackForm);
   return (
         <div
           ref={containerRef}
           title="Share any feedback about our products and services"
           tabIndex={0}
-          onClick={() => setOpen(true)}
           className={cn(
             "feedback-input p-0 w-24 relative inline-block antialiased focus:outline-0 active:outline-0",
             {
@@ -151,7 +156,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
             )}
             onSubmit={onSubmit}
           >
-            <div
+            <button
               className={cn(
                 "placeholder flex absolute -top-1 -left-1 items-center justify-center w-24 h-8 border border-transparent flex-shrink-0 bg-white text-gray-600 transition-opacity duration-50 ease-out cursor-text",
                 {
@@ -160,9 +165,14 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
               )}
               style={{ marginTop: "-1px", marginLeft: "-1px" }}
               role={'button'}
+              ref={toggleButtonRef}
+              onClick={(e) => {
+                  e.preventDefault();
+                  setOpen(true);
+              }}
             >
               Feedback
-            </div>
+            </button>
             {!errorMessage && !success && (
               <div
                 className={cn(
@@ -187,7 +197,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                       type="email"
                       placeholder="Your email address..."
                       width="100%"
-                      disabled={loading === true || errorMessage != ''}
+                      disabled={disableInputs}
                       onChange={setEmailValue}
                       value={emailValue}
                     />
@@ -204,7 +214,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                     onChange={(e) => setFeedbackText(e)}
                     onFocus={(e) => setFocusedElement(e.target)}
                     aria-label="Feedback input"
-                    disabled={loading === true || errorMessage != ''}
+                    disabled={disableInputs}
                     // Disable the Grammarly extension on this textarea
                     data-gramm-editor="false"
                     textareaClassName={cn("feedback-input", {
