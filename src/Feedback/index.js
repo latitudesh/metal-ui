@@ -47,11 +47,15 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [emailValue, setEmailValue] = useState('');
-  const [inputFocused, setInputFocused] = useState(null);
   const [feedbackText, setFeedbackText] = useState('');
   const textAreaRef = useRef();
   const emailInputRef = useRef();
   const containerRef = useRef();
+
+  useEffect(() => {
+      if (!open) return;
+      emailInputRef?.current?.focus();
+  }, [open, emailInputRef])
 
   const onErrorDismiss = useCallback(() => {
     setErrorMessage('');
@@ -70,8 +74,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
     setEmailValue('')
   }, [onErrorDismiss, onSuccessDismiss]);
 
-  const onSubmit = useCallback(
-    (event) => {
+  const onSubmit = (event) => {
       event.preventDefault();
       containerRef.current.focus();
 
@@ -110,19 +113,13 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
           setLoading(false);
           setErrorMessage(err.message);
         });
-    },
-    [dryRun, emoji, feedbackText, emailValue]
-  );
+    };
 
   const onKeyDown = useCallback(
     (e) => {
-      if (e.keyCode === 27) {
+      if (e.key === 'Escape') {
         handleClickOutside();
-        // we still need to make the container's DOM focused programmatically
-        // to keep the current tab position
-        if (containerRef.current) {
-          containerRef.current.focus();
-        }
+
       } else if (e.key === "Enter" && e.metaKey) {
         onSubmit(e);
       }
@@ -131,109 +128,17 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
   );
 
   useEffect(() => {
-    if (open) {
-      window.addEventListener("keydown", onKeyDown);
-    } else if (!open && inputFocused && inputFocused.current) {
-      inputFocused.current.blur();
-
-      // Remove feedbackText visibly from textarea while it's unfocused
-      setFeedbackText('')
-      setEmailValue('')
-
-      window.removeEventListener("keydown", onKeyDown);
-    }
+    window.addEventListener("keydown", onKeyDown);
 
     return () => {
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [
-    open,
-    inputFocused,
-    onKeyDown,
-  ]);
-
-  const focusEmailInput = useCallback(() => {
-    if (inputFocused !== emailInputRef) {
-      setInputFocused(emailInputRef);
-      emailInputRef.current.focus({ preventScroll: true });
-    }
-  }, [inputFocused]);
-
-  const focusTextArea = useCallback(() => {
-    if (inputFocused !== textAreaRef) {
-      setInputFocused(textAreaRef);
-      textAreaRef.current.focus({ preventScroll: true });
-    }
-  }, [inputFocused]);
-
-  const onFocus = useCallback(() => {
-    if (email && emailValue && !open) {
-      focusEmailInput();
-    } else if (feedbackText && !open) {
-      focusTextArea();
-    }
-
-    setOpen(true);
-  }, [
-    email,
-    emailInputRef,
-    textAreaRef,
-    open,
-    focusEmailInput,
-    focusTextArea,
+      onSubmit
   ]);
 
   const onEmojiSelect = useCallback((selectedEmoji) => {
     setEmoji(selectedEmoji);
-  }, []);
-
-  const eventListeners = useRef();
-  eventListeners.current = {
-    focus: onFocus,
-    blur: handleClickOutside,
-  };
-
-  useEffect(() => {
-    if (!containerRef || !containerRef.current) return;
-
-    let isFocusedInside = false;
-    let lastState = false;
-    const checkFinalState = () => {
-      setTimeout(() => {
-        if (isFocusedInside !== lastState) {
-          if (isFocusedInside) {
-            eventListeners.current.focus();
-          } else {
-            eventListeners.current.blur();
-          }
-          lastState = isFocusedInside;
-        }
-      }, 0);
-    };
-
-    // when hitting tab, there might be 2 things happening:
-    //   1. an element inside is focused
-    //   2. an element inside is unfocused
-    // and they can happen in any order inside one tick:
-    //   1 -> needs to stay open (outside -> inside)
-    //   2 -> needs to be closed (inside -> outside)
-    //   2 -> 1 needs to stay open (inside -> inside)
-    const focusIn = () => {
-      isFocusedInside = true;
-      checkFinalState();
-    };
-    const blurIn = () => {
-      isFocusedInside = false;
-      checkFinalState();
-    };
-
-    // we add these 2 events manually because react doesn't yet support them as props
-    containerRef.current.addEventListener("focusout", blurIn);
-    containerRef.current.addEventListener("focusin", focusIn);
-    return () => {
-      containerRef.current.addEventListener("focusout", blurIn);
-      containerRef.current.removeEventListener("focusin", focusIn);
-    };
   }, []);
 
   useClickAway(containerRef, handleClickOutside);
@@ -241,8 +146,8 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
         <div
           ref={containerRef}
           title="Share any feedback about our products and services"
-          onClick={onFocus}
           tabIndex={0}
+          onClick={() => setOpen(true)}
           className={cn(
             "feedback-input p-0 w-24 relative inline-block antialiased focus:outline-0 active:outline-0",
             {
@@ -298,8 +203,8 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                     <Input
                       label="Email"
                       id="feedback-input"
-                      ref={(ref) => (emailInputRef.current = ref)}
-                      onFocus={() => setInputFocused(emailInputRef)}
+                      ref={emailInputRef}
+                      autoFocus={true}
                       type="email"
                       placeholder="Your email address..."
                       width="100%"
@@ -318,8 +223,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                     placeholder="Your feedback..."
                     width="100%"
                     value={feedbackText}
-                    onFocus={() => setInputFocused(textAreaRef)}
-                    onChange={setFeedbackText}
+                    onChange={(e) => setFeedbackText(e)}
                     aria-label="Feedback input"
                     disabled={loading === true || errorMessage != ''}
                     // Disable the Grammarly extension on this textarea
