@@ -91,17 +91,16 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
       }
 
       const body = {
-          url: window.location.toString(),
+          url: url,
           note: feedbackText,
           email: emailValue || "",
           emotion: getEmoji(emoji),
         }
-      console.log('body: ', body);
-      fetch(url, {
-        method: "POST",
-        body: JSON.stringify(body),
-        throwOnHTTPError: true,
-      })
+        fetch(url, {
+              method: "POST",
+              body: JSON.stringify(body),
+              throwOnHTTPError: true,
+          })
         .then(() => {
           // Reset the textarea feedbackText on success
           setLoading(false);
