@@ -8,37 +8,19 @@ import Textarea from "../Textarea";
 import Text from "../Typography/Text";
 
 import useClickAway from 'react-use/lib/useClickAway';
-// TODO rely on browser support for emojis
 
+// TODO rely on browser support for emojis
 import f929 from './svgs/f929.svg'
 import f600 from './svgs/f600.svg'
 import f615 from './svgs/f615.svg'
 import f62d from './svgs/f62d.svg'
 
-const emojiSVGs = {
-    f929: f929,
-    f600: f600,
-    f615: f615,
-    f62d: f62d,
-}
-
-const EMOJIS = new Map([
-  ["🤩", "f929"],
-  ["🙂", "f600"],
-  ["😕", "f615"],
-  ["😭", "f62d"],
-]);
-
-// gets the emoji from the code
-let EMOJI_CODES = null;
-function getEmoji(code) {
-  if (code === null) return code;
-
-  if (EMOJI_CODES === null) {
-    EMOJI_CODES = new Map([...EMOJIS].map(([k, v]) => [v, k]));
-  }
-  return EMOJI_CODES.get(code);
-}
+const EMOJIS = [
+    { code: "f929", char: "🤩", svg: f929},
+    { code: "f600", char: "🙂", svg: f600},
+    { code: "f615", char: "😕", svg: f615},
+    { code: "f62d", char: "😭", svg: f62d},
+];
 
 const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) => {
   const [emoji, setEmoji] = useState(null);
@@ -96,7 +78,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
           url: url,
           note: feedbackText,
           email: emailValue || "",
-          emotion: getEmoji(emoji),
+          emotion: emoji
         }
         fetch(url, {
               method: "POST",
@@ -119,7 +101,6 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
     (e) => {
       if (e.key === 'Escape') {
         handleClickOutside();
-
       } else if (e.key === "Enter" && e.metaKey) {
         onSubmit(e);
       }
@@ -129,7 +110,6 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
 
   useEffect(() => {
     window.addEventListener("keydown", onKeyDown);
-
     return () => {
       window.removeEventListener("keydown", onKeyDown);
     };
@@ -219,7 +199,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                   <Textarea
                     id="feedback-text"
                     label="Feedback"
-                    ref={(ref) => (textAreaRef.current = ref)}
+                    ref={textAreaRef}
                     placeholder="Your feedback..."
                     width="100%"
                     value={feedbackText}
@@ -329,25 +309,25 @@ const EmojiSelector = ({ selectedEmoji, onEmojiSelect, loading }) => {
         "loading cursor-default": loading,
       })}
     >
-      {Array.from(EMOJIS.values()).map((emoji) => (
+      {EMOJIS.map((emoji) => (
         <button
           type="button"
           className={cn(
             "option inline-flex outline-none bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-gray-200 active:outline-none transform hover:scale-105 active:scale-105 hover:bg-white active:bg-white cursor-pointer text-center",
             {
-              "active scale-110 border bg-white border-orange-400": emoji === selectedEmoji,
+              "active scale-110 border bg-white border-orange-400": emoji.char === selectedEmoji,
               "cursor-default": loading,
             }
           )}
-          key={emoji}
-          onClick={() => onEmojiSelect(emoji)}
+          key={emoji.code}
+          onClick={() => onEmojiSelect(emoji.char)}
           style={{ borderRadius: "50%" }}
         >
           <span
             className={cn("inner flex justify-center items-center")}
             style={{ width: 32, height: 32, borderRadius: '50%' }}
           >
-            <Emoji code={emoji} />
+            <Emoji svg={emoji.svg} />
           </span>
         </button>
       ))}
@@ -355,12 +335,12 @@ const EmojiSelector = ({ selectedEmoji, onEmojiSelect, loading }) => {
   );
 };
 
-const Emoji = React.memo(({ code }) => (
+const Emoji = React.memo(({ svg }) => (
   <img
     decoding="async"
     width={20}
     height={20}
-    src={emojiSVGs[code]}
+    src={svg}
     alt="emoji"
   />
 ));

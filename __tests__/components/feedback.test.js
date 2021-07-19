@@ -44,7 +44,7 @@ describe('Feedback', () => {
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
         expect(screen.getByTestId('form').getAttribute('class')).toContain('opacity-100')
-        fireEvent.keyPress(screen.getByRole('button', { name: 'Feedback' }), { key: 'Escape', code: 'Escape' })
+        fireEvent.keyPress(screen.getByLabelText('Feedback'), { key: 'Escape', code: 'Escape' })
         expect(screen.getByTestId('form').getAttribute('class')).toContain('opacity-0')
     })
 
@@ -76,4 +76,6 @@ describe('Feedback', () => {
     })
 
     test.todo('dont show inputs in case of error')
+    test.todo('preserve focus')
+    test.todo('should close on hitting escape on feedback textarea')
 });
