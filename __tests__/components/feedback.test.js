@@ -6,13 +6,6 @@ import {Feedback} from "../../src";
 
 const testEndpoint = 'http://test-endpoint.local';
 
-const fetchMock = jest.fn(() => {
-    return Promise.resolve()
-});
-
-global.fetch = fetchMock;
-
-
 describe('Feedback', () => {
     test('opens form on click', async () => {
         render(<Feedback email={true} />)
@@ -49,6 +42,11 @@ describe('Feedback', () => {
     })
 
     test('submits form on hitting enter key with meta key', async () => {
+        const fetchMock = jest.fn((url) => {
+            return Promise.resolve()
+        });
+        global.fetch = fetchMock
+
         // TODO what happens when enter is hit elsewhere?
         render(<div>
             Outside
@@ -75,7 +73,37 @@ describe('Feedback', () => {
         });
     })
 
-    test.todo('dont show inputs in case of error')
+    test('dont show inputs in case of error', async () => {
+        const fetchMock = jest.fn((url) => {
+            throw { message: 'Test error' };
+        });
+        global.fetch = fetchMock
+        render(<div>
+            Outside
+            <Feedback email={true} url={testEndpoint} />
+        </div>)
+
+        fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
+        fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'test@email.com' }});
+        fireEvent.change(screen.getByLabelText('Feedback'), { target: { value: 'This is great!' }});
+
+        userEvent.type(screen.getByLabelText('Feedback'), '{meta}{enter}');
+
+        await waitFor(() => screen.getByText('Test error'))
+        expect(screen.queryByLabelText('Email')).not.toBeInTheDocument()
+        expect(screen.queryByLabelText('Feedback')).not.toBeInTheDocument()
+        const body = {
+            url: testEndpoint,
+            note: 'This is great!',
+            email: 'test@email.com',
+            emotion: null
+        }
+        expect(fetchMock).toHaveBeenCalledWith(testEndpoint, {
+            method: "POST",
+            body: JSON.stringify(body),
+            throwOnHTTPError: true,
+        });
+    })
     test.todo('preserve focus')
     test.todo('should close on hitting escape on feedback textarea')
 });

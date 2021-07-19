@@ -31,13 +31,20 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
   const [feedbackText, setFeedbackText] = useState('');
   const [emoji, setEmoji] = useState(null);
   const containerRef = useRef();
+  const emailRef = useRef();
   const toggleButtonRef = useRef();
   const [focusedElement, setFocusedElement] = useState(null);
 
   useEffect(() => {
       if (open) {
-          // Preserve focus
-          focusedElement?.focus();
+          if (focusedElement) {
+              // Preserve focus an subsequent uses
+              focusedElement?.focus();
+          } else {
+              // Focus on email on first use
+              // We need this because we aren't using the autoFocus attribute
+              emailRef.current?.focus();
+          }
       } else {
           toggleButtonRef.current?.focus();
       }
@@ -61,9 +68,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
   }, [onErrorDismiss, onSuccessDismiss]);
 
   const onSubmit = (event) => {
-      console.log('onSubmit ', );
       event.preventDefault();
-      // containerRef.current.focus();
 
       if (feedbackText.trim() === "") {
         setErrorMessage("Your feedback can't be empty");
@@ -75,7 +80,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
       const body = {
           url: url,
           note: feedbackText,
-          email: emailValue || "",
+          email: emailValue,
           emotion: emoji
         }
       Promise.resolve()
@@ -131,7 +136,6 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
         <div
           ref={containerRef}
           title="Share any feedback about our products and services"
-          tabIndex={0}
           className={cn(
             "feedback-input p-0 w-24 relative inline-block antialiased focus:outline-0 active:outline-0",
             {
@@ -191,6 +195,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                   >
                     <Input
                       label="Email"
+                      ref={emailRef}
                       id="feedback-input"
                       autoFocus={true}
                       onFocus={(e) => setFocusedElement(e.target)}
