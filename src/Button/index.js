@@ -24,6 +24,10 @@ const Button = ({
   component,
   block,
   large,
+  // Types have been used for styling so we need another prop to specify submit buttons
+  //
+  isSubmit = false,
+  isReset = false,
   ...props
 }) => {
   const cx = classNames.bind(buttonTypes);
@@ -62,13 +66,16 @@ const Button = ({
     }
   };
 
+  let buttonType = 'button'
+  buttonType = isSubmit ? 'submit' : buttonType
+  buttonType = isReset ? 'reset' : buttonType
   return (
     <>
       {component ? (
         <RenderComponent {...props}/>
       ) : (
         <button
-          type={"button"}
+          type={buttonType}
           onClick={onClick}
           disabled={disabled}
           className={ButtonClasses}
@@ -90,6 +97,8 @@ Button.propTypes = {
   onClick: PropTypes.func,
   type: PropTypes.string,
   component: PropTypes.element,
+  isSubmit: PropTypes.bool,
+  isReset: PropTypes.bool
 };
 
 export default Button;

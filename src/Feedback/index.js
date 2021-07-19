@@ -203,6 +203,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                       autoFocus={true}
                       onFocus={(e) => setFocusedElement(e.target)}
                       type="email"
+                      required
                       placeholder="Your email address..."
                       width="100%"
                       disabled={disableInputs}
@@ -219,6 +220,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                     placeholder="Your feedback..."
                     width="100%"
                     value={feedbackText}
+                    required
                     onChange={(e) => setFeedbackText(e)}
                     onFocus={(e) => setFocusedElement(e.target)}
                     aria-label="Feedback input"
@@ -279,7 +281,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                 className={cn(
                   "controls w-full h-16 p-4 flex items-center bg-gray-100 border-t border-gray-200 opacity-0 transition-opacity duration-200 ease",
                   {
-                    "focused opacity-100 mt-20 pointer-events-auto": open,
+            "focused opacity-100 mt-20 pointer-events-auto": open,
                     "hidden pointer-events-none": !open,
                   }
                 )}
@@ -303,8 +305,8 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                     width={60}
                     label="Send"
                     onFocus={(e) => setFocusedElement(e.target)}
-                    onClick={onSubmit}
                     data-testid={'submit-button'}
+                    isSubmit={true}
                   />
                 </span>
               </div>

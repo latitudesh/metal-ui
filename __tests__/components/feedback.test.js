@@ -104,6 +104,7 @@ describe('Feedback', () => {
             throwOnHTTPError: true,
         });
     })
+    test.todo('focus on email the first time')
     test.todo('preserve focus')
     test.todo('should close on hitting escape on feedback textarea')
 });
