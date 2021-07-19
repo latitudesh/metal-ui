@@ -30,14 +30,14 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
   const [errorMessage, setErrorMessage] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [feedbackText, setFeedbackText] = useState('');
-  const textAreaRef = useRef();
-  const emailInputRef = useRef();
   const containerRef = useRef();
+  const [focusedElement, setFocusedElement] = useState(null);
 
   useEffect(() => {
+      // Preserve focus
       if (!open) return;
-      emailInputRef?.current?.focus();
-  }, [open, emailInputRef])
+      focusedElement?.focus();
+  }, [open, focusedElement])
 
   const onErrorDismiss = useCallback(() => {
     setErrorMessage('');
@@ -183,8 +183,8 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                     <Input
                       label="Email"
                       id="feedback-input"
-                      ref={emailInputRef}
                       autoFocus={true}
+                      onFocus={(e) => setFocusedElement(e.target)}
                       type="email"
                       placeholder="Your email address..."
                       width="100%"
@@ -199,11 +199,11 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                   <Textarea
                     id="feedback-text"
                     label="Feedback"
-                    ref={textAreaRef}
                     placeholder="Your feedback..."
                     width="100%"
                     value={feedbackText}
                     onChange={(e) => setFeedbackText(e)}
+                    onFocus={(e) => setFocusedElement(e.target)}
                     aria-label="Feedback input"
                     disabled={loading === true || errorMessage != ''}
                     // Disable the Grammarly extension on this textarea
@@ -273,6 +273,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                     selectedEmoji={emoji}
                     onEmojiSelect={onEmojiSelect}
                     loading={loading}
+                    onFocus={(e) => setFocusedElement(e.target)}
                   />
                 </span>
                 <span
@@ -284,6 +285,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                     loading={loading}
                     width={60}
                     label="Send"
+                    onFocus={(e) => setFocusedElement(e.target)}
                     onClick={onSubmit}
                     data-testid={'submit-button'}
                   />
@@ -302,7 +304,7 @@ FeedbackInput.propTypes = {
   url: PropTypes.string,
 };
 
-const EmojiSelector = ({ selectedEmoji, onEmojiSelect, loading }) => {
+const EmojiSelector = ({ selectedEmoji, onEmojiSelect, loading, onFocus }) => {
   return (
     <div
       className={cn("emoji-selector flex space-x-2", {
@@ -320,6 +322,7 @@ const EmojiSelector = ({ selectedEmoji, onEmojiSelect, loading }) => {
             }
           )}
           key={emoji.code}
+          onFocus={onFocus}
           onClick={() => onEmojiSelect(emoji.char)}
           style={{ borderRadius: "50%" }}
         >
