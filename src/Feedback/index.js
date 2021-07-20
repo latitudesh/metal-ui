@@ -1,6 +1,10 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
+import tw from 'twin.macro';
 
 import Button from "../Button";
 import Input from "../Input";
@@ -136,40 +140,28 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
         <div
           ref={containerRef}
           title="Share any feedback about our products and services"
-          className={cn(
-            "feedback-input p-0 w-24 relative inline-block antialiased focus:outline-0 active:outline-0",
-            {
-              "h-8": !open || !forceOpen,
-              focused: open || forceOpen,
-              "error text-transparent select-none": errorMessage,
-              loading: loading,
-              "success text-transparent select-none h-32": success,
-              email: email,
-            },
-            className
-          )}
+          css={[
+            tw`p-0 w-24 relative inline-block antialiased`,
+              (!open || !forceOpen) && tw`h-8`,
+              errorMessage && tw`text-transparent`,
+          ]}
           {...props}
         >
           <form
-            className={cn(
-              "feedback-wrapper appearance-none border-0 bg-white border border-gray-300 flex leading-6 text-sm rounded w-24 h-8",
-                "resize-none z-50 outline-none text-black flex-col justify-start overflow-hidden relative transition-all ease-in-out",
-                "hover:border-black focus:border-black active:border-black focus:outline-none active:outline-none",
-              {
-                "focused w-72 h-auto min-h-full border-none border-white shadow-lg bg-white transition-all ease-in-out":
-                  open || forceOpen,
-              }
-            )}
+            css={[
+            tw`appearance-none border-0 bg-white border border-brand-gray flex leading-6 text-sm rounded w-24 h-8`,
+            tw`resize-none z-50 text-foreground flex-col justify-start overflow-hidden relative transition-all ease-in-out`,
+            tw`hover:border-foreground focus:border-foreground active:border-foreground`,
+            (open || forceOpen) && tw`w-72 h-auto min-h-full border-none border-white shadow-lg bg-white transition-all ease-in-out`,
+            ]}
             onSubmit={onSubmit}
           >
             <button
-              className={cn(
-                "placeholder flex absolute -top-1 -left-1 items-center justify-center w-24 h-8 border border-transparent ",
-                  "flex-shrink-0 bg-white text-gray-600 transition-opacity duration-50 ease-out cursor-text",
-                {
-                  "opacity-0 pointer-events-none top-0 left-0 text-gray-300 transition-opacity duration-75 ease-linear": open,
-                }
-              )}
+              css={[
+                tw`flex absolute -top-1 -left-1 items-center justify-center w-24 h-8 border border-transparent `,
+                  tw`flex-shrink-0 bg-white text-brand-gray transition-opacity duration-75 ease-out cursor-text`,
+                  open && tw`opacity-0 pointer-events-none top-0 left-0 text-brand-gray transition-opacity duration-75 ease-linear`
+              ]}
               style={{ marginTop: "-1px", marginLeft: "-1px" }}
               role={'button'}
               ref={toggleButtonRef}
@@ -182,18 +174,16 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
             </button>
             {!errorMessage && !success && (
               <div
-                className={cn(
-                  "input-wrapper p-4 opacity-0 transition-opacity duration-50 ease relative h-32",
-                  {
-                    "opacity-100": open,
-                    hidden: !open,
-                  }
-                )}
+                css={[
+                  tw`p-4 opacity-0 transition-opacity duration-75 ease relative h-32`,
+                open && tw`opacity-100`,
+                !open && tw`hidden`,
+                ]}
               >
                 {email && (
                   <div
-                    className={
-                      "input mb-2 placeholder-gray-300 transition duration-100 ease-in-out"
+                    tw={
+                      "mb-2 transition duration-100 ease-in-out"
                     }
                   >
                     <Input
@@ -228,7 +218,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                     // Disable the Grammarly extension on this textarea
                     data-gramm-editor="false"
                     textareaClassName={cn("feedback-input", {
-                      "text-gray-900": loading,
+                      "text-brand-gray": loading,
                     })}
                   />
                 </div>
@@ -237,8 +227,8 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
 
             {errorMessage && (
               <div
-                className={
-                  "flex flex-col items-center justify-center p-4 success-message text-center z-50"
+                tw={
+                  "flex flex-col items-center justify-center p-4 text-center z-50"
                 }
               >
                 <Text
@@ -263,8 +253,8 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
 
             {success && (
               <div
-                className={
-                  "flex flex-col items-center justify-center p-4 success-message text-center z-50"
+                tw={
+                  "flex flex-col items-center justify-center p-4 text-center z-50"
                 }
               >
                 <Text small is="p">
@@ -278,13 +268,11 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
 
             {!success && !errorMessage && (
               <div
-                className={cn(
-                  "controls w-full h-16 p-4 flex items-center bg-gray-100 border-t border-gray-200 opacity-0 transition-opacity duration-200 ease",
-                  {
-            "focused opacity-100 mt-20 pointer-events-auto": open,
-                    "hidden pointer-events-none": !open,
-                  }
-                )}
+                css={[
+                  tw`w-full h-16 p-4 flex items-center bg-brand-gray border-t border-brand-gray opacity-0 transition-opacity duration-200 ease`,
+                open && tw`opacity-100 mt-20 pointer-events-auto`,
+                        !open && tw`hidden pointer-events-none`
+                ]}
                 data-testid={'form'}
               >
                 <span className={"emojis"} style={{ width: '160px' }}>
@@ -296,9 +284,9 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                   />
                 </span>
                 <span
-                  className={cn(
-                    "buttons flex-1 text-right transition-opacity duration-200 ease ml-auto",
-                  )}
+                  tw={
+                    "flex-1 text-right transition-opacity duration-200 ease ml-auto"
+                  }
                 >
                   <Button
                     disabled={loading}
@@ -334,8 +322,8 @@ const EmojiSelector = ({ selectedEmoji, onEmojiSelect, loading, onFocus }) => {
         <button
           type="button"
           className={cn(
-            "option inline-flex last-none bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-gray-200 transform cursor-pointer text-center",
-              "active:last-none hover:scale-105 active:scale-105 hover:bg-white active:bg-white",
+            "option inline-flex bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-brand-gray transform cursor-pointer text-center",
+              "hover:scale-105 active:scale-105 hover:bg-white active:bg-white",
               "outline-none focus:outline-none focus:shadow-outline-blue",
             {
               "active scale-110 border bg-white border-orange-400": emoji.char === selectedEmoji,
