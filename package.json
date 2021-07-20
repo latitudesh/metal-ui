@@ -38,6 +38,7 @@
     "@tailwindcss/ui": "^0.5.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.2.0",
     "algoliasearch": "^4.4.0",
     "babel-loader": "8.1.0",
     "babel-preset-react-app": "^9.1.2",
@@ -66,7 +67,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@testing-library/user-event": "^13.2.0",
     "react-instantsearch-dom": "^6.7.0",
     "react-use": "^17.2.4"
   }
