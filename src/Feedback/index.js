@@ -141,7 +141,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
           ref={containerRef}
           title="Share any feedback about our products and services"
           css={[
-            tw`p-0 w-24 relative inline-block antialiased`,
+            tw`p-0 w-24 relative inline-block antialiased focus:outline-none active:outline-none`,
               (!open || !forceOpen) && tw`h-8`,
               errorMessage && tw`text-transparent`,
           ]}
@@ -158,11 +158,10 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
           >
             <button
               css={[
-                tw`flex absolute -top-1 -left-1 items-center justify-center w-24 h-8 border border-transparent `,
+                tw`flex absolute items-center justify-center w-24 h-8 border border-transparent `,
                   tw`flex-shrink-0 bg-white text-brand-gray transition-opacity duration-75 ease-out cursor-text`,
-                  open && tw`opacity-0 pointer-events-none top-0 left-0 text-brand-gray transition-opacity duration-75 ease-linear`
+                  open && tw`opacity-0 pointer-events-none text-brand-gray transition-opacity duration-75 ease-linear`
               ]}
-              style={{ marginTop: "-1px", marginLeft: "-1px" }}
               role={'button'}
               ref={toggleButtonRef}
               onClick={(e) => {
@@ -269,7 +268,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
             {!success && !errorMessage && (
               <div
                 css={[
-                  tw`w-full h-16 p-4 flex items-center bg-brand-gray border-t border-brand-gray opacity-0 transition-opacity duration-200 ease`,
+                  tw`w-full h-16 p-4 flex items-center gap-4 bg-brand-lightGray border-t border-brand-lightGray opacity-0 transition-opacity duration-200 ease`,
                 open && tw`opacity-100 mt-20 pointer-events-auto`,
                         !open && tw`hidden pointer-events-none`
                 ]}
@@ -295,6 +294,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                     onFocus={(e) => setFocusedElement(e.target)}
                     data-testid={'submit-button'}
                     type={'submit'}
+                    variant={'brand-p'}
                   />
                 </span>
               </div>
