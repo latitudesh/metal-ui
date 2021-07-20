@@ -1,0 +1,46 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import SpinningDots from "./index";
+
+<Meta title="SpinningDots" component={SpinningDots} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    <SpinningDots />
+  </Story>
+</Preview>
+
+# Light
+
+<Preview>
+  <Story name="Light">
+    <SpinningDots variant="light" />
+  </Story>
+</Preview>
+
+# Dark
+
+<Preview>
+  <Story name="Dark">
+    <SpinningDots variant="dark" />
+  </Story>
+</Preview>
+
+# Inherit
+
+Will inherit color from the closest parent
+
+<Preview>
+  <Story name="Inherit">
+    <div className="inline-flex mr-2 text-error">
+      <SpinningDots variant="inherit" />
+    </div>
+    <div className="inline-flex mr-2 text-success">
+      <SpinningDots variant="inherit" />
+    </div>
+    <div className="inline-flex mr-2 text-foreground">
+      <SpinningDots variant="inherit" />
+    </div>
+  </Story>
+</Preview>

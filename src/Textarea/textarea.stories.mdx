@@ -17,7 +17,7 @@ import Textarea from ".";
   <Story name="With label">
     <Textarea
       id="textarea-with-label"
-      label="Name:"
+      label="Name"
       placeholder="Text here..."
     />
   </Story>
@@ -27,7 +27,7 @@ import Textarea from ".";
 
 <Preview>
   <Story name="With className">
-    <Textarea className="w-1/3" placeholder="Text here..." />
+    <Textarea className="bg-success p-4" placeholder="Text here..." />
   </Story>
 </Preview>
 
@@ -35,7 +35,7 @@ import Textarea from ".";
 
 <Preview>
   <Story name="With textareaClassName">
-    <Textarea textareaClassName="h-56" className="w-1/3" placeholder="Text here..." />
+    <Textarea textareaClassName="border-success" placeholder="Text here..." />
   </Story>
 </Preview>
 
@@ -43,7 +43,7 @@ import Textarea from ".";
 
 <Preview>
   <Story name="With rows">
-    <Textarea rows={6} className="w-1/3" placeholder="Text here..." />
+    <Textarea rows={6} placeholder="Text here..." />
   </Story>
 </Preview>
 
@@ -51,15 +51,31 @@ import Textarea from ".";
 
 <Preview>
   <Story name="With validation error">
-    <Textarea error className="w-1/3" placeholder="Text here..." />
+    <Textarea error placeholder="Text here..." />
   </Story>
 </Preview>
 
-# Disabled 
+# Disabled
 
 <Preview>
   <Story name="Disabled">
-    <Textarea disabled className="w-1/3" placeholder="Text here..." />
+    <Textarea disabled placeholder="Text here..." />
   </Story>
 </Preview>
 
+# Brand variants
+
+The dark version of the textarea is meant to be used against a `deep-purple` background and not by itself.
+
+<Preview>
+  <Story name="Brand variants">
+    <Textarea variant="brand" placeholder="Text here..." label="Message" />
+    <div className="bg-brand-deepPurple p-2 my-2 block">
+      <Textarea
+        variant="brand-dark"
+        placeholder="Text here..."
+        label="Message"
+      />
+    </div>
+  </Story>
+</Preview>

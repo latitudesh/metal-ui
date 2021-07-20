@@ -1,0 +1,64 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import Skeleton from "./index";
+
+<Meta title="Skeleton" component={Skeleton} />
+
+# API
+
+<Props of={Skeleton} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    <Skeleton />
+  </Story>
+</Preview>
+
+# Width
+
+<Preview>
+  <Story name="Width">
+    <Skeleton width={240} />
+  </Story>
+</Preview>
+
+# Height
+
+<Preview>
+  <Story name="Height">
+    <Skeleton height={64} />
+  </Story>
+</Preview>
+
+# Vertical
+
+<Preview>
+  <Story name="Vertical">
+    <Skeleton width={30} height={160} vertical />
+  </Story>
+</Preview>
+
+# Example
+
+<Preview>
+  <Story name="Example">
+    <Skeleton width={240} className="mt-2" />
+    <Skeleton width={480} className="mt-2" />
+    <Skeleton width={480} height={64} className="mt-2" />
+    <Skeleton width={480} className="mt-2" />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Vertical Example">
+    <Skeleton width={30} height={240} vertical />
+    <Skeleton width={30} height={160} vertical />
+    <Skeleton width={30} height={60} vertical />
+    <Skeleton width={30} height={120} vertical />
+    <Skeleton width={30} height={160} vertical />
+    <Skeleton width={30} height={260} vertical />
+    <Skeleton width={30} height={240} vertical />
+    <Skeleton width={30} height={64} vertical />
+  </Story>
+</Preview>

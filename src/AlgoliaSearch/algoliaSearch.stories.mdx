@@ -1,15 +1,25 @@
-import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import {
+  Meta,
+  Story,
+  Preview,
+  Props,
+  ArgsTable,
+} from "@storybook/addon-docs/blocks";
 import AlgoliaSearch from "./index";
-import Text from "../Typography/Text"
+import Text from "../Typography/Text";
+import Content from "../Content";
 
 <Meta title="AlgoliaSearch" component={AlgoliaSearch} />
 
+<ArgsTable of={AlgoliaSearch} />
+
 # Default
+
 Try searching for a movie title like `The Shawshank Redemption`
 
 <Preview>
   <Story name="Default">
-    <div style={{ height: '300px' }}>
+    <div style={{ height: "300px" }}>
       <AlgoliaSearch
         ALGOLIA_APP_ID="XWSX3ZKORI"
         ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
@@ -19,7 +29,7 @@ Try searching for a movie title like `The Shawshank Redemption`
             displayName: "Movies",
             renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
             formatHitURL: (data) => `/${data.title}`,
-          }
+          },
         ]}
         searchOperators={["<", "=", ">", ">=", "<="]}
         specialChar=":"
@@ -29,11 +39,12 @@ Try searching for a movie title like `The Shawshank Redemption`
 </Preview>
 
 # Multiple indexes
+
 Use multiple indexes to search for different data.
 
 <Preview>
   <Story name="Multiple indexes">
-    <div style={{ height: '300px' }}>
+    <div style={{ height: "300px" }}>
       <AlgoliaSearch
         ALGOLIA_APP_ID="XWSX3ZKORI"
         ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
@@ -49,7 +60,7 @@ Use multiple indexes to search for different data.
             displayName: "Actors",
             renderCardInfo: (data) => <Text color="white">{data.name}</Text>,
             formatHitURL: (data) => `/${data.name}`,
-          }
+          },
         ]}
         searchOperators={["<", "=", ">", ">=", "<="]}
         specialChar=":"
@@ -63,7 +74,7 @@ Use multiple indexes to search for different data.
 
 <Preview>
   <Story name="Custom render">
-    <div style={{ height: '300px' }}>
+    <div style={{ height: "300px" }}>
       <AlgoliaSearch
         ALGOLIA_APP_ID="XWSX3ZKORI"
         ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
@@ -73,15 +84,21 @@ Use multiple indexes to search for different data.
             displayName: "Movies",
             renderCardInfo: (data) => (
               <>
-              <Text is="p" color="white">{data.title}</Text>
-              <Text small bold color="white">Genres: </Text> 
-              {data.genre.map((genre) => (
-                <Text small color="white">{genre}&nbsp;</Text>
-              ))} 
+                <Text is="p" color="white">
+                  {data.title}
+                </Text>
+                <Text small bold color="white">
+                  Genres:{" "}
+                </Text>
+                {data.genre.map((genre) => (
+                  <Text small color="white">
+                    {genre}&nbsp;
+                  </Text>
+                ))}
               </>
             ),
             formatHitURL: (data) => `/${data.title}`,
-          }
+          },
         ]}
         searchOperators={["<", "=", ">", ">=", "<="]}
         specialChar=":"
@@ -91,11 +108,12 @@ Use multiple indexes to search for different data.
 </Preview>
 
 # Custom height
+
 Use `scrollWindowHeight` to control the height of the results window
 
 <Preview>
   <Story name="Custom height">
-    <div style={{ height: '200px' }}>
+    <div style={{ height: "200px" }}>
       <AlgoliaSearch
         ALGOLIA_APP_ID="XWSX3ZKORI"
         ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
@@ -105,7 +123,7 @@ Use `scrollWindowHeight` to control the height of the results window
             displayName: "Movies",
             renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
             formatHitURL: (data) => `/${data.title}`,
-          }
+          },
         ]}
         searchOperators={["<", "=", ">", ">=", "<="]}
         specialChar=":"
@@ -119,7 +137,7 @@ Use `scrollWindowHeight` to control the height of the results window
 
 <Preview>
   <Story name="Custom no results">
-    <div style={{ height: '200px' }}>
+    <div style={{ height: "200px" }}>
       <AlgoliaSearch
         ALGOLIA_APP_ID="XWSX3ZKORI"
         ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
@@ -129,11 +147,92 @@ Use `scrollWindowHeight` to control the height of the results window
             displayName: "Movies",
             renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
             formatHitURL: (data) => `/${data.title}`,
-          }
+          },
         ]}
         searchOperators={["<", "=", ">", ">=", "<="]}
         specialChar=":"
-        customNoResults={ <Text>No movies found</Text> }
+        customNoResults={<Text>No movies found</Text>}
+      />
+    </div>
+  </Story>
+</Preview>
+
+# Custom placeholder
+
+<Preview>
+  <Story name="Custom placeholder">
+    <div style={{ height: "200px" }}>
+      <AlgoliaSearch
+        ALGOLIA_APP_ID="XWSX3ZKORI"
+        ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
+        indices={[
+          {
+            indexName: "movies",
+            displayName: "Movies",
+            renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
+            formatHitURL: (data) => `/${data.title}`,
+          },
+        ]}
+        searchOperators={["<", "=", ">", ">=", "<="]}
+        specialChar=":"
+        placeholder="Use / to focus..."
+      />
+    </div>
+  </Story>
+</Preview>
+
+# Custom input props
+
+<Preview>
+  <Story name="Custom input props">
+    <div style={{ height: "200px" }}>
+      <AlgoliaSearch
+        ALGOLIA_APP_ID="XWSX3ZKORI"
+        ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
+        indices={[
+          {
+            indexName: "movies",
+            displayName: "Movies",
+            renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
+          },
+        ]}
+        searchOperators={["<", "=", ">", ">=", "<="]}
+        specialChar=":"
+        formatSelected={(data) => data.title}
+        onSelect={(data) => console.log('SELECTED', data)}
+        inputProps={{
+          label: 'Movie',
+          placeholder: 'Choose a movie...',
+        }}
+      />
+    </div>
+  </Story>
+</Preview>
+
+# Selectable
+
+Pass the `onSelect` and `formatSelected` props so the AlgoliaSearch will become selectable.
+When setting AlgoliaSearch as selectable, it will ignore the `formatHitURL` prop.
+
+Disclaimer: AlgoliaSearch selectable mode is not yet tested with multiple indices.
+
+<Preview>
+  <Story name="Selectable">
+    <div style={{ height: "200px" }}>
+      <AlgoliaSearch
+        ALGOLIA_APP_ID="XWSX3ZKORI"
+        ALGOLIA_API_SEARCH_KEY="bc85ff85b128ba7dfc859b986cc9df21"
+        indices={[
+          {
+            indexName: "movies",
+            displayName: "Movies",
+            renderCardInfo: (data) => <Text color="white">{data.title}</Text>,
+          },
+        ]}
+        searchOperators={["<", "=", ">", ">=", "<="]}
+        specialChar=":"
+        formatSelected={(data) => data.title}
+        onSelect={(data) => console.log('SELECTED', data)}
       />
     </div>
   </Story>

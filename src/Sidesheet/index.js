@@ -8,7 +8,7 @@ function XIcon() {
   return (
     <svg
       fill="none"
-      className="text-gray-600"
+      className="text-accent-four"
       stroke="currentColor"
       viewBox="0 0 24 24"
       width="16px"
@@ -62,17 +62,21 @@ const Sidesheet = ({
   const [transition, setTransition] = useState(false);
 
   useEffect(() => {
+    let transitionTimeout
+
     if (!isShown) {
       setTransition(false);
-      setTimeout(() => setIsOpened(false), 500);
+      transitionTimeout = setTimeout(() => setIsOpened(false), 300);
     } else {
       setIsOpened(true);
-      setTimeout(() => setTransition(true), 100);
+      transitionTimeout = setTimeout(() => setTransition(true), 100);
     }
+
+    return () => clearTimeout(transitionTimeout)
   }, [isShown]);
 
   const closeTransition = () => {
-    if (isOpened) {
+    if (isOpened && transition) {
       onClose();
       setTransition(false);
       setTimeout(() => setIsOpened(false), 500);
@@ -80,19 +84,16 @@ const Sidesheet = ({
   };
 
   return (
-    <div
-      ref={sideSheet}
-      className={classNames("relative inline-block text-left", className)}
-    >
+    <div ref={sideSheet}>
       {children}
       {isOpened && (
         <SidesheetContent id="sidesheet">
           <div
             onClick={() => closeTransition()}
             className={classNames(
-              "fixed z-40 inset-0 opacity-25 duration-300 delay-200 transition",
+              "fixed z-50 inset-0 opacity-25 duration-200 delay-100 transition",
               {
-                "bg-gray-800": transition,
+                "bg-accent-eight": transition,
                 "bg-transparent": !transition,
               }
             )}
@@ -100,7 +101,7 @@ const Sidesheet = ({
           <div
             ref={portal}
             style={{
-              transition: `transform .4s cubic-bezier(.3,0,0,1)`,
+              transition: `transform .2s cubic-bezier(.3,0,0,1)`,
               transform: transition
                 ? `translateX(calc(100vw - ${width}px - 20px))`
                 : `translateX(100vw)`,
@@ -116,9 +117,9 @@ const Sidesheet = ({
             <Box
               flex
               alignItems="center"
-              className="relative border-b border-gray-200 rounded rounded-b-none"
+              className="relative border-b border-border rounded rounded-b-none"
             >
-              <div className="text-gray-600 flex-auto truncate leading-6">
+              <div className="text-foreground flex-auto truncate leading-6">
                 {title}
               </div>
               <Box
@@ -137,16 +138,16 @@ const Sidesheet = ({
               flexDirection="col"
               className="sidesheet-content relative overflow-y-auto flex-1 rounded"
             >
-              <Box noPadding flex flexDirection="col" className="h-full">
+              <Box noPadding flex flexDirection="col" className="overflow-visible">
                 {content}
               </Box>
             </Box>
             {action && (
               <Box
                 flex
-                justifyContent="center"
+                justifyContent="evenly"
                 alignItems="center"
-                className="sidesheet-action h-16 border-t border-gray-200 relative flex-initial rounded rounded-t-none"
+                className="sidesheet-action h-16 border-t border-border relative flex-initial rounded rounded-t-none"
               >
                 {action}
               </Box>

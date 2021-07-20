@@ -1,0 +1,63 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import Badge from "./index";
+
+<Meta title="Badge" component={Badge} />
+
+# API
+
+<Props of={Badge} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    <Badge>Default</Badge>
+    <Badge style="positive" className="ml-2">
+      Positive
+    </Badge>
+    <Badge style="warning" className="ml-2">
+      Warning
+    </Badge>
+    <Badge style="danger" className="ml-2">
+      Danger
+    </Badge>
+  </Story>
+</Preview>
+
+# Minimal
+
+<Preview>
+  <Story name="Minimal">
+    <Badge minimal className="ml-2">
+      Default
+    </Badge>
+    <Badge minimal style="positive" className="ml-2">
+      Positive
+    </Badge>
+    <Badge minimal style="warning" className="ml-2">
+      Warning
+    </Badge>
+    <Badge minimal style="danger" className="ml-2">
+      Danger
+    </Badge>
+  </Story>
+</Preview>
+
+# Rounded
+
+<Preview>
+  <Story name="Rounded">
+    <Badge rounded>
+      5
+    </Badge>
+    <Badge rounded style="positive" className="ml-2">
+      10
+    </Badge>
+    <Badge rounded style="warning" className="ml-2">
+      15
+    </Badge>
+    <Badge rounded style="danger" className="ml-2">
+      20
+    </Badge>
+  </Story>
+</Preview>

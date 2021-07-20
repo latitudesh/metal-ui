@@ -4,33 +4,29 @@ import PropTypes from "prop-types";
 
 class Text extends PureComponent {
   static propTypes = {
-    /**
-     * When true, makes Text semi-bold.
-     */
     bold: PropTypes.bool,
-
+    
     color: PropTypes.string,
 
-    is: PropTypes.oneOf(['span', 'p', 'li']).isRequired,
+    is: PropTypes.oneOf(["span", "p", "li"]).isRequired,
 
-    margin: PropTypes.string
-
+    className: PropTypes.string,
   };
 
   static defaultProps = {
-    color: "text-gray-700",
+    className: null,
+    color: "text-foreground",
     is: "span",
-    margin: ""
   };
 
   render() {
-    const { className, bold, color, small, is, margin, ...props } = this.props;
+    const { className, bold, color, small, is, ...props } = this.props;
 
     const Tag = is;
 
     return (
       <Tag
-        className={classNames("leading-normal", margin, color, {
+        className={classNames(className, color, {
           "font-semibold": Boolean(bold),
           "font-normal": !Boolean(bold),
           "text-base": !Boolean(small),

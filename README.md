@@ -1,16 +1,12 @@
-### Note: Metal UI is not ready for production. If you use it, keep in mind things *will* break.
-
 # Metal UI
 
 Metal UI is a set of UI Components using React and TailwindCSS built by the [Maxihost](https://www.maxihost.com) team.
 
-It uses the [8-Point Grid](https://spec.fm/specifics/8-pt-grid) but sticks to TailwindCSS' [default spacing scale](https://tailwindcss.com/docs/customizing-spacing/#default-spacing-scale) instead of implementing its own, mainly to keep things simple.
+Metal UI is opinionated, in the sense that it explicitly replaces TailwindCSS variants to support Maxihost's brand identity. While there are no support or plan on supporting theming, most components allow for some degree of customization.
 
-This package does not export styles, fonts or images, including Tailwind's. You should add those directly into your project. This is done to keep the package small and to avoid conflicts with your PurgeCSS settings.
+In order to use the package you need to have Tailwind installed in your project, as Metal UI doesn't export Tailwind styles. Some components make use of [twin.macro](https://github.com/ben-rogerson/twin.macro) and we're slowly transitioning the code base to use twin.macro for all components so Tailwind dependency can be dropped on projects using Metal UI.
 
-Despite that, you shoudn't treat this as an utility system. Components are heavily opinionated and most don't allow for styling flexibility.
-
-We built this for desktop applications, so most components are not responsive.
+We built this for desktop applications, so most components are not optimized for responsiveness.
 
 ## Installing
 
@@ -20,80 +16,53 @@ Install package:
 
 ## Set up
 
-It's highly recommended that you do some additional set up. Here's an example of how to use Metal UI on a NextJS project.
+1. Metal UI exports a Tailwind preset. This is the easiest way to get started with Metal UI. Not importing the preset will cause components that are using custom variants to break in your project.
+
+Here's an example of the `tailwind.config.js` file on a NextJS project.
 
 ```javascript
-// postcss.config.js
 module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-}
-```
-
-```javascript
-// tailwind.config.js
-// make sure to download and add the font files to /public/fonts
-const defaultTheme = require('tailwindcss/defaultTheme')
-
-module.exports = {
+  presets: [require("@maxihost/metal-ui/tailwind-preset")], {/* preset */}
   purge: [
-    './pages/**/*.{js,jsx,ts,tsx}',
-    './components/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@maxihost/metal-ui/dist/**/*.{js,jsx,ts,tsx}', // important, otherwise purge will remove all Metal UI styles
-    './next.config.js',
+    "./pages/**/*.{js,jsx,ts,tsx}", {/* change these to your own project paths */}
+    "./components/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/@maxihost/metal-ui/dist/**/*.{js,jsx,ts,tsx}",
+    "./next.config.js",
   ],
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-      },
-    },
-  },
   variants: {},
-  plugins: [
-    require('@tailwindcss/ui'),
-    function ({ addBase, addComponents, theme }) {
-      addBase([
-        {
-          '@font-face': {
-            fontFamily: 'Inter var',
-            fontWeight: '100 900',
-            fontStyle: 'normal',
-            fontNamedInstance: 'Regular',
-            fontDisplay: 'swap',
-            src:
-              'url("/fonts/Inter-roman.var-latin.woff2?3.13") format("woff2")',
-          },
-        },
-        {
-          '@font-face': {
-            fontFamily: 'Inter var',
-            fontWeight: '100 900',
-            fontStyle: 'italic',
-            fontNamedInstance: 'Italic',
-            fontDisplay: 'swap',
-            src:
-              'url("/fonts/Inter-italic.var-latin.woff2?3.13") format("woff2")',
-          },
-        },
-      ])
-    },
-  ],
-}
+};
 ```
+
+2. Metal UI sets Inter as the default font, but it doesn't export the font in order to keep the package small for users that don't use Inter. If you do use Inter, all you have to do is import the font in your project.
+
+On a NextJS project, this is as simples as extending the Head component on `_document.js`
 
 ```javascript
-// /styles/index.css
-/* purgecss start ignore */
-@tailwind base;
-@tailwind components;
-/* purgecss end ignore */
-@tailwind utilities;
+import Document, { Html, Head, Main } from "next/document";
+
+class AppDocument extends Document {
+  render() {
+    return (
+      <Html>
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
+        <body>
+          <Main />
+        </body>
+      </Html>
+    );
+  }
+}
+
+export default AppDocument;
 ```
 
-## Example usage 
+## Example usage
+
 Import the component:
 
 `import { Button } from '@maxihost/metal-ui';`
@@ -104,26 +73,24 @@ Import the component:
 
 ## Developing
 
-After cloning and installing the project, run it with: 
+Install and run:
 
-`npm run dev` 
+`yarn && yarn dev`
 
 A Storybook tab will open automatically in your browser.
 
-If you want to develop a new component or make changes to one, you might want to run it on a separate project. Go to the directory where you have Metal UI installed and run: 
+If you want to develop a new component or make changes to one, you might want to run it on a separate project. Go to the directory where you have Metal UI installed and run:
 
-`npm link`
-
-You'll need to link React too to avoid conflicts
-
-`npm link path-to-your-project/node_modules/react` 
-
-Then go to the project where you want to use Metal UI and run:
-
-`npm link @maxihost/metal-ui`
-
-After making changes to components, you need to build the project with.
-
- `npm run build`
-
-This will update the dist folder and automatically reload the linked project.
+```bash
+cd PATH_TO_METALUI
+yarn link
+yarn install
+cd node_modules/react
+yarn link
+cd ../../node_modules/react-dom
+yarn link
+cd YOUR_PROJECT
+yarn link @maxihost/metal-ui
+yarn link react
+yarn link react-dom
+```

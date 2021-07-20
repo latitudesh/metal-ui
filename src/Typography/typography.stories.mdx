@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Preview, ArgsTable } from "@storybook/addon-docs/blocks";
 import Text from "./Text";
 import Heading from "./Heading";
 import UnorderedList from "./UnorderedList";
@@ -13,7 +13,7 @@ import ListItem from "./ListItem";
     <div>
       <Heading size={1}>The quick brown fox jumps over the lazy dog.</Heading>
       <Heading size={2}>The quick brown fox jumps over the lazy dog.</Heading>
-      <Heading size={3} color="danger">
+      <Heading size={3}>
         The quick brown fox jumps over the lazy dog.
       </Heading>
       <Heading size={4}>The quick brown fox jumps over the lazy dog.</Heading>
@@ -22,6 +22,8 @@ import ListItem from "./ListItem";
     </div>
   </Story>
 </Preview>
+
+<ArgsTable of={Heading} />
 
 # Paragraph
 
@@ -32,7 +34,7 @@ import ListItem from "./ListItem";
         The quick brown fox jumps over the lazy dog
       </Text>
       <Text is="p">The quick brown fox jumps over the lazy dog</Text>
-      <Text is="p" color="text-blue-700">
+      <Text is="p" color="text-success">
         The quick brown fox jumps over the lazy dog
       </Text>
       <Text is="p" bold>
@@ -41,6 +43,8 @@ import ListItem from "./ListItem";
     </div>
   </Story>
 </Preview>
+
+<ArgsTable of={Text} />
 
 # Span
 
@@ -67,6 +71,8 @@ The are no style differences between `span` and `p`. The differences in how they
   </Story>
 </Preview>
 
+<ArgsTable of={Text} />
+
 # Unordered List
 
 Takes the same props as `Text`
@@ -74,9 +80,11 @@ Takes the same props as `Text`
 <Preview>
   <Story name="Unordered List">
     <UnorderedList>
-      <ListItem bold>The quick brown fox jumps over the lazy dog.</ListItem>
-      <ListItem color="text-red-500">The quick brown fox jumps over the lazy dog.</ListItem>
-      <ListItem small>The quick brown fox jumps over the lazy dog.</ListItem>
+      <ListItem is="li" bold>The quick brown fox jumps over the lazy dog.</ListItem>
+      <ListItem is="li" color="text-error">The quick brown fox jumps over the lazy dog.</ListItem>
+      <ListItem is="li" small>The quick brown fox jumps over the lazy dog.</ListItem>
     </UnorderedList>
   </Story>
 </Preview>
+
+<ArgsTable of={Text} />

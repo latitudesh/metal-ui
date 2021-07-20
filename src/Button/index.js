@@ -1,18 +1,10 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import React, { cloneElement } from "react";
-import classNames from "classnames/bind";
 import PropTypes from "prop-types";
-
-const buttonTypes = {
-  default:
-    "border-transparent text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-700 focus:shadow-outline-indigo",
-  secondary:
-    "border-gray-300 text-gray-800 bg-white hover:bg-gray-100 active:bg-gray-100 focus:shadow-outline-blue",
-  danger:
-    "border-none text-white bg-red-600 hover:bg-red-700 active:bg-red-700 focus:shadow-outline-red",
-  disabled: "opacity-50 cursor-default hover:bg-transparent",
-  minimal:
-    "border-transparent text-gray-700 bg-white hover:bg-gray-100 active:bg-gray-100",
-};
+import SpinningDots from "../SpinningDots";
+import tw from "twin.macro";
 
 const Button = ({
   disabled,
@@ -21,70 +13,60 @@ const Button = ({
   onClick,
   label,
   type,
-  component,
+  size,
+  variant,
   block,
-  large,
-  // Types have been used for styling so we need another prop to specify submit buttons
-  //
-  isSubmit = false,
-  isReset = false,
-  ...props
+  isLoading,
+  className,
 }) => {
-  const cx = classNames.bind(buttonTypes);
-
   const ButtonContent = (
-    <>
-      {iconBefore && <span className="mr-2">{cloneElement(iconBefore)}</span>}
-      <span>{label}</span>
-      {iconAfter && <span className="ml-2">{cloneElement(iconAfter)}</span>}
-    </>
+    <div
+      tw="flex items-center justify-center"
+      css={[isLoading ? tw`opacity-0` : tw`opacity-100`]}
+    >
+      {iconBefore && <span tw="flex mr-2">{cloneElement(iconBefore)}</span>}
+      <span tw="truncate">{label}</span>
+      {iconAfter && <span tw="flex ml-2">{cloneElement(iconAfter)}</span>}
+    </div>
   );
 
-  const ButtonClasses = cx(
-    "Button items-center border font-medium rounded-lg focus:outline-none transition ease-in-out duration-150 justify-center",
-    {
-      disabled: disabled,
-      default: !type,
-      [type]: Boolean(type),
-      "px-5 h-9 leading-9 inline-flex text-sm": !Boolean(block),
-      "w-full h-12 leading-12 text-base block": Boolean(block),
-      "px-10 h-10 leading-10 inline-flex": Boolean(large),
-    }
-  );
-
-  const RenderComponent = () => {
-    if (
-      component.props.children &&
-      typeof component.props.children !== "string"
-    ) {
-      const children = cloneElement(component.props.children, {
-        className: ButtonClasses,
-      });
-      return cloneElement(component, {}, children);
-    } else {
-      return cloneElement(component, { className: ButtonClasses });
-    }
-  };
-
-  let buttonType = 'button'
-  buttonType = isSubmit ? 'submit' : buttonType
-  buttonType = isReset ? 'reset' : buttonType
   return (
-    <>
-      {component ? (
-        <RenderComponent {...props}/>
-      ) : (
-        <button
-          type={buttonType}
-          onClick={onClick}
-          disabled={disabled}
-          className={ButtonClasses}
-          {...props}
-        >
-          {ButtonContent}
-        </button>
-      )}
-    </>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled || isLoading}
+      className={className}
+      css={[
+        tw`relative border items-center flex font-medium rounded focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer`,
+        disabled &&
+          tw`border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed`,
+        variant == "default" &&
+          !disabled &&
+          tw`border-transparent hover:border-accent-five text-white hover:text-foreground bg-foreground hover:bg-accent-two active:bg-foreground active:text-white`,
+        variant == "secondary" &&
+          !disabled &&
+          tw`border-secondary hover:border-foreground text-secondary hover:text-foreground bg-white hover:bg-accent-two active:bg-foreground active:text-white`,
+        variant == "danger" &&
+          !disabled &&
+          tw`border-error-dark hover:border-error-dark text-white hover:text-error-dark bg-error-dark hover:bg-accent-two active:bg-foreground active:text-white`,
+        variant == "minimal" &&
+          !disabled &&
+          tw`border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five`,
+        variant == "brand-p" &&
+          !disabled &&
+          tw`border-transparent text-white hover:text-white bg-brand-uv hover:bg-opacity-90 active:bg-opacity-90 active:text-white`,
+        variant == "brand-s" &&
+          !disabled &&
+          tw`border-brand-gray text-white hover:text-white bg-transparent hover:opacity-80 active:text-white`,
+        size == "small" && tw`px-4 h-8 leading-8 text-sm`,
+        size == "normal" && tw`px-6 h-9 leading-9 text-sm`,
+        size == "large" && tw`px-12 h-10 leading-10 text-base`,
+        block && tw`w-full`,
+      ]}
+    >
+      {isLoading && <SpinningDots variant="inherit" className={tw`absolute`} />}
+      {ButtonContent}
+    </button>
   );
 };
 
@@ -96,9 +78,25 @@ Button.propTypes = {
   label: PropTypes.string,
   onClick: PropTypes.func,
   type: PropTypes.string,
-  component: PropTypes.element,
-  isSubmit: PropTypes.bool,
-  isReset: PropTypes.bool
+  variant: PropTypes.oneOf([
+    "default",
+    "secondary",
+    "danger",
+    "disabled",
+    "minimal",
+    "brand-p",
+    "brand-s",
+  ]),
+  size: PropTypes.oneOf(["small", "normal", "large"]),
+  isLoading: PropTypes.bool,
+};
+
+Button.defaultProps = {
+  size: "normal",
+  variant: "default",
+  type: "button",
+  isLoading: false,
+  disabled: false,
 };
 
 export default Button;

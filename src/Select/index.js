@@ -1,6 +1,9 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
+import tw from "twin.macro";
 
 const Select = React.forwardRef(
   (
@@ -13,7 +16,9 @@ const Select = React.forwardRef(
       label,
       id,
       disabled,
+      placeholder,
       error,
+      variant,
       ...rest
     },
     ref
@@ -38,34 +43,48 @@ const Select = React.forwardRef(
       <div className={className}>
         {label && (
           <label
-            className="block text-sm font-medium leading-5 text-gray-700"
+            tw="block text-sm font-medium leading-5 text-accent-six normal-case mb-1"
+            css={[variant == "brand-dark" && !disabled && tw`text-white`]}
             htmlFor={id}
           >
             {label}
           </label>
         )}
-        <div className="mt-1 relative rounded-md shadow-sm">
+        <div className="relative">
           <select
             id={id}
             ref={ref}
             onChange={handleChange}
             value={internalValue}
             disabled={disabled}
-            className={classNames(
-              "mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5",
-              selectClassName,
-              {
-                "bg-red-100 border border-red-400 focus:border-red-300 focus:shadow-outline-red": error,
-                "bg-gray-100 cursor-not-allowed": disabled,
-              }
-            )}
+            css={[
+              tw`border rounded shadow-sm block w-full pl-3 pr-10 py-2 text-base leading-6 sm:text-sm sm:leading-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out font-family[inherit]`,
+              selectClassName && selectClassName,
+              !error &&
+                !disabled &&
+                tw`border-border text-foreground hocus:border-accent-five placeholder-accent-five`,
+              error &&
+                tw`text-error border-error hocus:border-error placeholder-error`,
+              disabled &&
+                tw`border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five`,
+              variant == "brand" &&
+                !disabled &&
+                tw`border-border text-brand-uv hocus:border-brand-uv placeholder-accent-four`,
+              variant == "brand-dark" &&
+                !disabled &&
+                tw`border-transparent text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-transparent bg-opacity-30)`,
+            ]}
             {...rest}
           >
             <option value="" disabled>
-              Choose one
+              {placeholder}
             </option>
             {options.map((item, index) => (
-              <option key={`${item.value}-${index}`} value={item.value}>
+              <option
+                key={`${item.value}-${index}`}
+                value={item.value}
+                disabled={item.disabled}
+              >
                 {item.name}
               </option>
             ))}
@@ -78,6 +97,7 @@ const Select = React.forwardRef(
 
 Select.defaultProps = {
   options: [],
+  placeholder: "Choose one",
 };
 
 Select.propTypes = {
@@ -90,6 +110,7 @@ Select.propTypes = {
   id: PropTypes.string.isRequired,
   error: PropTypes.bool,
   disabled: PropTypes.bool,
+  variant: PropTypes.oneOf(["brand", "brand-dark"]),
 };
 
 export default Select;

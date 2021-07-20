@@ -1,0 +1,51 @@
+version: 2
+registries:
+  git-github-com:
+    type: git
+    url: https://github.com
+    username: x-access-token
+    password: "${{secrets.GIT_GITHUB_COM_PASSWORD}}"
+
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "08:00"
+  ignore:
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.12.10
+    - 7.13.10
+    - 7.13.15
+    - 7.13.8
+  - dependency-name: npm-user-validate
+    versions:
+    - 1.0.1
+  - dependency-name: node-notifier
+    versions:
+    - 8.0.1
+    - 8.0.2
+  - dependency-name: jest
+    versions:
+    - 26.6.3
+  - dependency-name: ini
+    versions:
+    - 1.3.7
+  - dependency-name: elliptic
+    versions:
+    - 6.5.4
+  - dependency-name: "@babel/cli"
+    versions:
+    - 7.12.10
+    - 7.13.0
+  - dependency-name: algoliasearch
+    versions:
+    - 4.8.3
+    - 4.8.4
+    - 4.8.5
+  - dependency-name: "@tailwindcss/ui"
+    versions:
+    - 0.7.2
+  registries:
+  - git-github-com

@@ -1,45 +1,87 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import Text from "../Typography/Text";
+import tw from "twin.macro";
 
 const Table = ({ children, className }) => (
-  <table className={classNames("min-w-full", className)}>{children}</table>
+  <table tw="w-full max-w-full" className={className}>
+    {children}
+  </table>
 );
 
 Table.Head = ({ children, className }) => (
-  <thead className={className}>{children}</thead>
+  <thead tw="border-b border-border rounded" className={className}>
+    {children}
+  </thead>
 );
 
 Table.Body = ({ children, className }) => (
-  <tbody className={classNames("bg-white", className)}>{children}</tbody>
+  <tbody tw="bg-white" className={className}>
+    {children}
+  </tbody>
 );
 
 Table.HeaderCell = ({ children, className }) => (
   <th
-    className={classNames(
-      "px-6 py-2 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider",
-      className
-    )}
+    tw="px-6 py-2 bg-white text-left text-xs leading-5 font-medium text-foreground uppercase tracking-wider"
+    className={className}
   >
     {children}
   </th>
 );
 
-Table.Row = ({ children, className, onSelect }) => (
-  <tr onSelect={onSelect} className={classNames(className)}>
+Table.Row = ({ children, className, onClick, isSelectable }) => (
+  <tr
+    onClick={onClick}
+    css={[
+      onClick || isSelectable
+        ? tw`hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer`
+        : null,
+    ]}
+    className={className}
+  >
     {children}
   </tr>
 );
 
 Table.Cell = ({ children, className }) => (
-  <td
-    className={classNames(
-      "px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500",
-      className
-    )}
-  >
+  <td tw="px-6 py-4" className={className}>
     {children}
   </td>
+);
+
+Table.TextCell = ({
+  primary,
+  primaryClassname,
+  secondary,
+  secondaryClassname,
+}) => (
+  <>
+    {primary && (
+      <Text
+        small
+        tw="block font-medium truncate"
+        css={[secondary && tw`mb-0.5`]}
+        className={primaryClassname}
+      >
+        {primary}
+      </Text>
+    )}
+    {secondary && (
+      <Text
+        small
+        color="text-accent-five"
+        tw="block truncate"
+        className={secondaryClassname}
+      >
+        {secondary}
+      </Text>
+    )}
+  </>
 );
 
 Table.propTypes = {
@@ -65,12 +107,19 @@ Table.HeaderCell.propTypes = {
 Table.Row.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  onSelect: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 Table.Cell.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+};
+
+Table.TextCell.propTypes = {
+  primary: PropTypes.node,
+  primaryClassname: PropTypes.string,
+  secondary: PropTypes.node,
+  secondaryClassname: PropTypes.string,
 };
 
 export default Table;

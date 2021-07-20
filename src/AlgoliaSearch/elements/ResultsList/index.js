@@ -13,9 +13,11 @@ const ResultsList = (props) => {
     sectionIndex,
     renderCardInfo,
     formatHitURL,
+    onSelect,
+    isSelectable,
   } = props;
 
-  const { appendNewSectionLength, shouldHideResults } = useTabController();
+  const { appendNewSectionLength, shouldHideResults, setIsResultsWindowOpen } = useTabController();
 
   useEffect(() => {
     if (hits.length > 0) {
@@ -24,10 +26,10 @@ const ResultsList = (props) => {
       appendNewSectionLength(sectionIndex, 0);
     }
   }, [hits.length]); // eslint-disable-line
-  
+
   const formattedHitURL = useCallback((hit) => {
-    return formatHitURL(hit)
-  }, []);
+    return formatHitURL ? formatHitURL(hit) : null
+  }, [formatHitURL]);
 
   if ((Array.isArray(hits) && hits.length > 0) && !shouldHideResults) {
     return (
@@ -42,6 +44,10 @@ const ResultsList = (props) => {
                   elementIndex={index}
                   sectionIndex={sectionIndex}
                   formattedHitURL={formattedHitURL(hit)}
+                  onSelect={isSelectable ? () => {
+                    onSelect(hit)
+                    setIsResultsWindowOpen(false)
+                  } : null}
                 >
                   {renderCardInfo(hit)}
                 </ResultPill>
@@ -62,7 +68,8 @@ ResultsList.propTypes = {
   sectionTitle: PropTypes.string.isRequired,
   sectionIndex: PropTypes.number.isRequired,
   renderCardInfo: PropTypes.func.isRequired,
-  formatHitURL: PropTypes.func.isRequired,
+  formatHitURL: PropTypes.func,
+  onSelect: PropTypes.func,
 };
 
 export default connectHits(ResultsList);

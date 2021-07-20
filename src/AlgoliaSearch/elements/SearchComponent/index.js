@@ -1,14 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, Index, Configure } from 'react-instantsearch-dom';
+import React, { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+import algoliasearch from "algoliasearch/lite";
+import { InstantSearch, Index, Configure } from "react-instantsearch-dom";
 
-import { useTabController, navigationKeyTypes } from '../../providers/TabController';
-import SearchBox from '../SearchBox';
-import ResultsList from '../ResultsList';
-import Controls from '../Controls';
-import Loader from '../Loader';
-import NoResults from '../NoResults';
+import {
+  useTabController,
+  navigationKeyTypes,
+} from "../../providers/TabController";
+import SearchBox from "../SearchBox";
+import ResultsList from "../ResultsList";
+import Controls from "../Controls";
+import Loader from "../Loader";
+import NoResults from "../NoResults";
 
 const SearchComponent = (props) => {
   const {
@@ -22,6 +25,10 @@ const SearchComponent = (props) => {
     customNoResults,
     indexResultsLimit,
     className,
+    placeholder,
+    formatSelected,
+    onSelect,
+    inputProps,
   } = props;
 
   const {
@@ -43,10 +50,9 @@ const SearchComponent = (props) => {
     searchInputHeight,
   } = useTabController();
 
-  const algoliaClient = algoliasearch(
-    ALGOLIA_APP_ID,
-    ALGOLIA_API_SEARCH_KEY,
-  );
+  const algoliaClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_SEARCH_KEY);
+
+  const isSelectable = Boolean(onSelect)
 
   const searchClient = {
     search(requests) {
@@ -58,10 +64,11 @@ const SearchComponent = (props) => {
 
   const scrollWindowRef = useRef(null);
   const searchComponentRef = useRef(null);
-  const [filterState, setFilterState] = useState('');
+  const [filterState, setFilterState] = useState("");
   const [conditionalOperands, setConditionalOperands] = useState(null);
   const [isSearchEmpty, setIsSearchEmpty] = useState(false);
-  
+  const [selectedItem, setSelectedItem] = useState()
+
   const handleClickOutside = (e) => {
     if (searchComponentRef.current.contains(e.target)) {
       return;
@@ -76,7 +83,9 @@ const SearchComponent = (props) => {
 
   useEffect(() => {
     if (controlsHeight && searchInputHeight) {
-      setScrollableWindowHeight(scrollWindowHeight - controlsHeight - searchInputHeight);
+      setScrollableWindowHeight(
+        scrollWindowHeight - controlsHeight - searchInputHeight
+      );
     } else {
       setScrollableWindowHeight(scrollWindowHeight);
     }
@@ -84,8 +93,12 @@ const SearchComponent = (props) => {
 
   useEffect(() => {
     if (Array.isArray(searchOperators) && searchOperators.length > 0) {
-      const sortedSearchOperators = searchOperators.sort((a, b) => a.length - b.length);
-      const adjustedSearchOperators = sortedSearchOperators.map((condition) => `${specialChar}${condition}`);
+      const sortedSearchOperators = searchOperators.sort(
+        (a, b) => a.length - b.length
+      );
+      const adjustedSearchOperators = sortedSearchOperators.map(
+        (condition) => `${specialChar}${condition}`
+      );
       setConditionalOperands(adjustedSearchOperators);
     }
   }, [specialChar, searchOperators]);
@@ -98,11 +111,15 @@ const SearchComponent = (props) => {
   }, [setScrollableWindowTopOffset, activeElementIndex]);
 
   useEffect(() => {
-    if (typeof scrollDistance === 'number' && isResultsWindowOpen && !isScrollDisabled) {
+    if (
+      typeof scrollDistance === "number" &&
+      isResultsWindowOpen &&
+      !isScrollDisabled
+    ) {
       scrollWindowRef.current.scrollTo(0, scrollDistance);
     }
   }, [scrollDistance, isResultsWindowOpen, isScrollDisabled]);
-  
+
   useEffect(() => {
     let interval = null;
     if (totalElementsCount === 0) {
@@ -110,28 +127,28 @@ const SearchComponent = (props) => {
         if (totalElementsCount === 0) {
           setIsSearchEmpty(true);
         }
-      }, 800);  
+      }, 800);
     } else {
       setIsSearchEmpty(false);
     }
-    
+
     return clearInterval(interval);
   }, [totalElementsCount]);
-  
+
   useEffect(() => {
     if (isResultsWindowOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     } else {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isResultsWindowOpen]);
 
   const handleOnSearchStateChange = ({ query }) => {
-    let filter = '';
+    let filter = "";
     let operandFound = false;
 
     if (query) {
@@ -141,7 +158,9 @@ const SearchComponent = (props) => {
         if (operandIndex !== -1) {
           const [fieldName, compareValue] = query.split(operand);
 
-          filter = `${fieldName} ${operand.substr(specialChar.length)} ${compareValue}`;
+          filter = `${fieldName} ${operand.substr(
+            specialChar.length
+          )} ${compareValue}`;
           operandFound = true;
         }
       });
@@ -153,28 +172,34 @@ const SearchComponent = (props) => {
         operandFound = true;
       }
 
-      setFilterState(operandFound ? filter : '');
+      setFilterState(operandFound ? filter : "");
     }
   };
 
   const configureFilterState = (searchConditions = null) => {
     if (Array.isArray(searchConditions) && searchConditions.length > 0) {
-      const conditionalFilterState = searchConditions.reduce((acc, condition, index) => {
-        const { conditionType, conditionString } = condition;
+      const conditionalFilterState = searchConditions.reduce(
+        (acc, condition, index) => {
+          const { conditionType, conditionString } = condition;
 
-        if (index === 0) {
-          if (filterState) return `${filterState} ${conditionType || 'AND'} ${conditionString}`;
-          return `${conditionString}`;
-        }
+          if (index === 0) {
+            if (filterState)
+              return `${filterState} ${
+                conditionType || "AND"
+              } ${conditionString}`;
+            return `${conditionString}`;
+          }
 
-        return `${acc} ${conditionType || 'AND'} ${conditionString}`;
-      }, '');
+          return `${acc} ${conditionType || "AND"} ${conditionString}`;
+        },
+        ""
+      );
 
       return conditionalFilterState;
     }
 
     return filterState;
-  }
+  };
 
   const handleOnKeyDown = (e) => {
     switch (e.keyCode) {
@@ -188,6 +213,8 @@ const SearchComponent = (props) => {
 
       case 13:
         handleKeyNavigation(navigationKeyTypes.ENTER);
+        e.stopPropagation()
+        e.preventDefault()
         break;
 
       default:
@@ -195,7 +222,14 @@ const SearchComponent = (props) => {
         break;
     }
   };
-  
+
+  const handleOnSelect = (hit) => {
+    if (isSelectable) {
+      setSelectedItem(hit)
+      onSelect(hit)
+    }
+  }
+
   const LoaderToRender = customLoader ? customLoader : <Loader />;
   const NoResultsToRender = customNoResults ? customNoResults : <NoResults />;
 
@@ -206,16 +240,20 @@ const SearchComponent = (props) => {
         indexName={indices[0].indexName}
         onSearchStateChange={handleOnSearchStateChange}
       >
-        <div
-          onKeyDown={handleOnKeyDown}
-          role="listbox"
-          className="relative"
-        >
-          <SearchBox id={ALGOLIA_APP_ID} />
+        <div onKeyDown={handleOnKeyDown} role="listbox" className="relative">
+          <SearchBox
+            id={ALGOLIA_APP_ID}
+            selectedText={selectedItem ? formatSelected(selectedItem) : ''}
+            inputProps={inputProps}
+            placeholder={placeholder}
+            onSelect={handleOnSelect}
+          />
 
           <div
-            className="shadow-xl rounded absolute w-full bg-white border border-gray-200"
-            style={{ visibility: `${isResultsWindowOpen ? 'visible' : 'hidden'}` }}
+            className="shadow-xl rounded absolute w-full bg-white border border-border"
+            style={{
+              visibility: `${isResultsWindowOpen ? "visible" : "hidden"}`,
+            }}
           >
             <div
               className="overflow-y-auto pl-2 pr-2"
@@ -223,14 +261,16 @@ const SearchComponent = (props) => {
               ref={scrollWindowRef}
             >
               {indices.map((algoliaIndice, sectionIndex) => {
-                const { indexName, displayName, renderCardInfo, formatHitURL, searchConditions } = algoliaIndice;
+                const {
+                  indexName,
+                  displayName,
+                  renderCardInfo,
+                  formatHitURL,
+                  searchConditions,
+                } = algoliaIndice;
 
                 return (
-                  <Index
-                    key={sectionIndex}
-                    indexName={indexName}
-                    limit={4}
-                  >
+                  <Index key={sectionIndex} indexName={indexName} limit={4}>
                     <Configure
                       filters={configureFilterState(searchConditions)}
                       hitsPerPage={indexResultsLimit}
@@ -240,15 +280,16 @@ const SearchComponent = (props) => {
                       renderCardInfo={renderCardInfo}
                       sectionIndex={sectionIndex}
                       formatHitURL={formatHitURL}
+                      onSelect={handleOnSelect}
+                      isSelectable={isSelectable}
                     />
                   </Index>
                 );
               })}
 
-              {(totalElementsCount === 0 && isSearchEmpty) && NoResultsToRender}
+              {totalElementsCount === 0 && isSearchEmpty && NoResultsToRender}
 
-              {(totalElementsCount === 0 && !isSearchEmpty) && LoaderToRender}
-
+              {totalElementsCount === 0 && !isSearchEmpty && LoaderToRender}
             </div>
             <Controls />
           </div>
@@ -262,29 +303,33 @@ SearchComponent.defaultProps = {
   scrollWindowHeight: 400,
   customLoader: null,
   customNoResults: null,
-}
+};
 
 SearchComponent.propTypes = {
   ALGOLIA_APP_ID: PropTypes.string.isRequired,
   ALGOLIA_API_SEARCH_KEY: PropTypes.string.isRequired,
   specialChar: PropTypes.string.isRequired,
   searchOperators: PropTypes.arrayOf(PropTypes.string).isRequired,
-  indices: PropTypes.arrayOf(PropTypes.shape({
-    indexName: PropTypes.string,
-    displayName: PropTypes.string,
-    renderCardInfo: PropTypes.func,
-    formatHitURL: PropTypes.func,
-    searchConditions: PropTypes.arrayOf(
-      PropTypes.shape({
-        conditionType: PropTypes.oneOf(['OR', 'AND']),
-        conditionString: PropTypes.string,
-      }),
-    )
-  })).isRequired,
+  indices: PropTypes.arrayOf(
+    PropTypes.shape({
+      indexName: PropTypes.string,
+      displayName: PropTypes.string,
+      renderCardInfo: PropTypes.func,
+      formatHitURL: PropTypes.func,
+      searchConditions: PropTypes.arrayOf(
+        PropTypes.shape({
+          conditionType: PropTypes.oneOf(["OR", "AND"]),
+          conditionString: PropTypes.string,
+        })
+      ),
+    })
+  ).isRequired,
   scrollWindowHeight: PropTypes.number,
   customLoader: PropTypes.node,
   customNoResults: PropTypes.node,
   indexResultsLimit: PropTypes.number.isRequired,
-}
+  onSelect: PropTypes.func,
+  formatSelected: PropTypes.func,
+};
 
 export default SearchComponent;

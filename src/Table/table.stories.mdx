@@ -1,7 +1,25 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import {
+  Meta,
+  Story,
+  Preview,
+  Props,
+  ArgsTable,
+} from "@storybook/addon-docs/blocks";
 import Table from "./index";
 
 <Meta title="Table" component={Table} />
+
+### Available components
+
+Metal exports the following components for tables:
+
+- `Table`
+- `Table.Head`
+- `Table.HeaderCell`
+- `Table.Body`
+- `Table.Row`
+- `Table.Cell`
+- `Table.TextCell`
 
 # Default
 
@@ -27,3 +45,63 @@ import Table from "./index";
     </Table>
   </Story>
 </Preview>
+
+# Clickable row
+
+<Preview>
+  <Story name="Clickable row">
+    <Table>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>IP</Table.HeaderCell>
+          <Table.HeaderCell>Type</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row onClick={() => alert("Clicked")}>
+          <Table.Cell>10.54.157.26</Table.Cell>
+          <Table.Cell>Private IPMI</Table.Cell>
+        </Table.Row>
+        <Table.Row onClick={() => alert("Clicked")}>
+          <Table.Cell>192.168.0.2</Table.Cell>
+          <Table.Cell>Public IPv4</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  </Story>
+</Preview>
+
+# Multi-line content
+
+Use `Table.TextCell` to add multi-line content to a table.
+
+<Preview>
+  <Story name="Multi-line content">
+    <Table>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>IP</Table.HeaderCell>
+          <Table.HeaderCell>Device</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>
+            <Table.TextCell primary="10.54.157.26" secondary="Private IPMI" />
+          </Table.Cell>
+          <Table.Cell>master-db-prod.maxihost.com</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>
+            <Table.TextCell primary="192.168.0.2" secondary="Public IPv4" />
+          </Table.Cell>
+          <Table.Cell>slave-db-prod.maxihost.com</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  </Story>
+</Preview>
+
+# Table Props
+
+<ArgsTable of={Table} />

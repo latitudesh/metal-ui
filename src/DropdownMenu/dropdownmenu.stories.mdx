@@ -1,0 +1,116 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownContent,
+  DropdownLabel,
+  DropdownItem,
+  DropdownSeparator,
+} from "./index";
+import Button from "../Button";
+
+<Meta title="DropdownMenu" component={Dropdown} />
+
+# Available components
+
+Metal exports the following components for Dropdowns:
+
+- Dropdown
+- DropdownTrigger
+- DropdownContent
+- DropdownLabel
+- DropdownItem
+- DropdownSeparator
+
+# API
+
+This component uses the Radix UI `DropdownMenu` primitive. Refer to [this page](https://radix-ui.com/primitives/docs/components/dropdown-menu#api-reference) for the API reference, but note components in Metal UI do not use dot-notation.
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    <Dropdown>
+      <DropdownTrigger>Trigger</DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem onSelect={() => console.log("cut")}>Cut</DropdownItem>
+        <DropdownItem onSelect={() => console.log("copy")}>Copy</DropdownItem>
+        <DropdownItem onSelect={() => console.log("paste")}>Paste</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+  </Story>
+</Preview>
+
+# Disabled Items
+
+<Preview>
+  <Story name="Disabled Items">
+    <Dropdown>
+      <DropdownTrigger>Trigger</DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem disabled onSelect={() => console.log("cut")}>
+          Cut
+        </DropdownItem>
+        <DropdownItem onSelect={() => console.log("copy")}>Copy</DropdownItem>
+        <DropdownItem onSelect={() => console.log("paste")}>Paste</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+  </Story>
+</Preview>
+
+# Separators
+
+<Preview>
+  <Story name="Separators">
+    <Dropdown>
+      <DropdownTrigger>Trigger</DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem disabled onSelect={() => console.log("cut")}>
+          Cut
+        </DropdownItem>
+        <DropdownSeparator />
+        <DropdownItem onSelect={() => console.log("copy")}>Copy</DropdownItem>
+        <DropdownSeparator />
+        <DropdownItem onSelect={() => console.log("paste")}>Paste</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+  </Story>
+</Preview>
+
+# Labels
+
+<Preview>
+  <Story name="Labels">
+    <Dropdown>
+      <DropdownTrigger>Trigger</DropdownTrigger>
+      <DropdownContent>
+        <DropdownLabel>Text actions</DropdownLabel>
+        <DropdownItem onSelect={() => console.log("cut")}>Cut</DropdownItem>
+        <DropdownItem onSelect={() => console.log("copy")}>Copy</DropdownItem>
+        <DropdownItem onSelect={() => console.log("paste")}>Paste</DropdownItem>
+        <DropdownLabel>File actions</DropdownLabel>
+        <DropdownItem onSelect={() => console.log("save")}>Save</DropdownItem>
+        <DropdownItem onSelect={() => console.log("trash")}>Trash</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+  </Story>
+</Preview>
+
+# Custom Trigger
+
+When using a `button` as a custom trigger, set `DropdownTrigger` as a different element to avoid nesting buttons.
+
+<Preview>
+  <Story name="Custom Trigger">
+    <Dropdown>
+      <DropdownTrigger as="span">
+        <Button label="Trigger" />
+      </DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem onSelect={() => console.log("cut")}>Cut</DropdownItem>
+        <DropdownItem onSelect={() => console.log("copy")}>Copy</DropdownItem>
+        <DropdownItem onSelect={() => console.log("paste")}>Paste</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+  </Story>
+</Preview>

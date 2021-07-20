@@ -1,48 +1,31 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
 import Button from "./index";
 import Icon from "../../util/Icon";
+import { ArrowUpOutline } from "heroicons-react";
+import Box from "../Box";
 
 <Meta title="Button" component={Button} />
 
-# Default
+# API
+
+<Props of={Button} />
+
+# Variants
+
+Brand secondary is meant to be used against dark background.
 
 <Preview>
-  <Story name="Default">
-    <div>
-      <div className="inline-flex">
-        <Button label="Primary" />
+  <Story name="Variants">
+    <Box flex justifyContent="evenly">
+      <Button label="Primary" />
+      <Button label="Secondary" variant="secondary" />
+      <Button label="Danger" variant="danger" />
+      <Button label="Minimal" variant="minimal" />
+      <Button label="Brand primary" variant="brand-p" />
+      <div className="block px-2 py-2 -mt-2 bg-brand-deepPurple">
+        <Button label="Brand secondary" variant="brand-s" />
       </div>
-      <div className="inline-flex ml-2">
-        <Button label="Secondary" type="secondary" />
-      </div>
-      <div className="inline-flex ml-2">
-        <Button label="Danger" type="danger" />
-      </div>
-      <div className="inline-flex ml-2">
-        <Button label="Minimal" type="minimal" />
-      </div>
-    </div>
-  </Story>
-</Preview>
-
-# Disabled
-
-<Preview>
-  <Story name="Disabled">
-    <div>
-      <div className="inline-flex">
-        <Button label="Disabled" disabled />
-      </div>
-      <div className="inline-flex ml-2">
-        <Button label="Disabled" type="secondary" disabled />
-      </div>
-      <div className="inline-flex ml-2">
-        <Button label="Disabled" type="danger" disabled />
-      </div>
-      <div className="inline-flex ml-2">
-        <Button label="Disabled" type="minimal" disabled />
-      </div>
-    </div>
+    </Box>
   </Story>
 </Preview>
 
@@ -51,37 +34,92 @@ import Icon from "../../util/Icon";
 <Preview>
   <Story name="Size">
     <div>
-      <div>
-        <Button label="Large" large />
+      <Box flex justifyContent="evenly">
+        <Button label="Primary" size="small" />
+        <Button label="Default" />
+        <Button label="Primary" size="large" />
+      </Box>
+      <Button label="Block small" size="small" block />
+      <div className="mt-2">
+        <Button label="Block normal" block />
       </div>
       <div className="mt-2">
-        <Button label="Full width" block />
+        <Button label="Block large" size="large" block />
       </div>
     </div>
+  </Story>
+</Preview>
+
+# Disabled
+
+Disabled buttons do not inherit `variant` styling.
+
+<Preview>
+  <Story name="Disabled">
+    <Box flex justifyContent="around">
+      <Button label="Disabled" disabled />
+      <Button
+        label="Disabled"
+        disabled
+        iconBefore={<ArrowUpOutline size={20} />}
+      />
+      <Button
+        label="Disabled"
+        disabled
+        size="large"
+        iconBefore={<ArrowUpOutline size={20} />}
+        iconAfter={<ArrowUpOutline size={20} />}
+      />
+    </Box>
+  </Story>
+</Preview>
+
+# Loading
+
+<Preview>
+  <Story name="Loading">
+    <Box flex justifyContent="around">
+      <Button label="Loading" isLoading={true} />
+      <Button label="Loading" variant="secondary" isLoading={true} />
+      <Button label="Loading" variant="danger" isLoading={true} />
+    </Box>
+    <Box flex justifyContent="around">
+      <Button label="Loading" block isLoading={true} />
+    </Box>
   </Story>
 </Preview>
 
 # With Icon
+
 The component does not handle icon sizing. You should manage that from your project. `20px` is usually the recommended size.
 
 <Preview>
   <Story name="With Icon">
-    <div>
-      <div>
-        <Button iconBefore={<Icon />} label="Icon before" />
-      </div>
-      <div className="mt-2">
-        <Button iconAfter={<Icon />} type="secondary" label="Icon after" />
-      </div>
-    </div>
+    <Box flex justifyContent="around">
+      <Button iconBefore={<ArrowUpOutline size={20} />} label="Icon before" />
+      <Button
+        iconAfter={<ArrowUpOutline size={20} />}
+        variant="secondary"
+        label="Icon after"
+      />
+      <Button
+        iconBefore={<ArrowUpOutline size={20} />}
+        iconAfter={<ArrowUpOutline size={20} />}
+        variant="secondary"
+        label="Icon before and after"
+      />
+    </Box>
   </Story>
 </Preview>
 
-# With Component 
-Buttons with components don't currently support icons
+# With `next/link`
 
-<Preview>
-  <Story name="With Component">
-    <Button component={<a href="javascript:void()">With component</a>} />
-  </Story>
-</Preview>
+For use in conjunction with NextJS' `next/link`, wrap the button with `<Link>` and set `passHref` to true.
+
+```javascript
+<Link href="https://www.maxihost.com" passHref>
+  <Button
+    label="Go to website"
+  />
+</Link>
+```

@@ -15,11 +15,7 @@ import Input from ".";
 
 <Preview>
   <Story name="With label">
-    <Input
-      id="input-with-label"
-      label="Name"
-      placeholder="Text here..."
-    />
+    <Input id="input-with-label" label="Name" placeholder="Text here..." />
   </Story>
 </Preview>
 
@@ -55,3 +51,27 @@ import Input from ".";
   </Story>
 </Preview>
 
+# Brand variants
+
+The dark version of the input is meant to be used against a `deep-purple` background and not by itself.
+
+<Preview>
+  <Story name="Brand variants">
+    <Input className="w-1/3" variant="brand" label="Name" placeholder="Text here..."/>
+    <div className="bg-brand-deepPurple p-2 my-2 block">
+      <Input
+        className="w-1/3"
+        variant="brand-dark"
+        placeholder="Text here..."
+        label="Name"
+      />
+      <Input
+        className="mt-2 w-1/3"
+        variant="brand-dark"
+        placeholder="Text here..."
+        label="Error on dark input"
+        error
+      />
+    </div>
+  </Story>
+</Preview>
