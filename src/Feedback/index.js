@@ -306,7 +306,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                     label="Send"
                     onFocus={(e) => setFocusedElement(e.target)}
                     data-testid={'submit-button'}
-                    isSubmit={true}
+                    type={'submit'}
                   />
                 </span>
               </div>
