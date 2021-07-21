@@ -314,29 +314,27 @@ FeedbackInput.propTypes = {
 const EmojiSelector = ({ selectedEmoji, onEmojiSelect, loading, onFocus }) => {
   return (
     <div
-      className={cn("emoji-selector flex space-x-2", {
-        "loading cursor-default": loading,
-      })}
+      css={[
+          tw`flex space-x-2`,
+          loading && tw`cursor-default`,
+      ]}
     >
       {EMOJIS.map((emoji) => (
         <button
           type="button"
-          className={cn(
-            "option inline-flex bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-brand-gray transform cursor-pointer text-center",
-              "hover:scale-105 active:scale-105 hover:bg-white active:bg-white",
-              "outline-none focus:outline-none focus:shadow-outline-blue",
-            {
-              "active scale-110 border bg-white border-orange-400": emoji.char === selectedEmoji,
-              "cursor-default": loading,
-            }
-          )}
+          css={[
+            tw`inline-flex bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-brand-gray transform cursor-pointer text-center`,
+              tw`hover:scale-105 active:scale-105 hover:bg-white active:bg-white`,
+              emoji.char === selectedEmoji && tw`scale-110 border bg-white border-warning-light`,
+              loading && tw`cursor-default`,
+          ]}
           key={emoji.code}
           onFocus={onFocus}
           onClick={() => onEmojiSelect(emoji.char)}
           style={{ borderRadius: "50%" }}
         >
           <span
-            className={cn("inner flex justify-center items-center")}
+            tw={"flex justify-center items-center"}
             style={{ width: 32, height: 32, borderRadius: '50%' }}
           >
             <Emoji svg={emoji.svg} />
