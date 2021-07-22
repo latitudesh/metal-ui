@@ -18,6 +18,7 @@ const Button = React.forwardRef(({
   block,
   isLoading,
   className,
+  ...rest
 }, ref) => {
   const ButtonContent = (
     <div
@@ -64,6 +65,7 @@ const Button = React.forwardRef(({
         size == "large" && tw`px-12 h-10 leading-10 text-base`,
         block && tw`w-full`,
       ]}
+      {...rest}
     >
       {isLoading && <SpinningDots variant="inherit" className={tw`absolute`} />}
       {ButtonContent}
