@@ -95,9 +95,14 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
               return fetch(url, {
                   method: "POST",
                   body: JSON.stringify(body),
-                  throwOnHTTPError: true,
               })
           })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`The network request failed with Status Code:${response.status}`)
+            }
+            return response.json()
+        })
         .then(() => {
           // Reset the textarea feedbackText on success
           setLoading(false);

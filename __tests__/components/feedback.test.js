@@ -69,7 +69,6 @@ describe('Feedback', () => {
         expect(fetchMock).toHaveBeenCalledWith(testEndpoint, {
               method: "POST",
               body: JSON.stringify(body),
-              throwOnHTTPError: true,
         });
     })
 
@@ -101,7 +100,6 @@ describe('Feedback', () => {
         expect(fetchMock).toHaveBeenCalledWith(testEndpoint, {
             method: "POST",
             body: JSON.stringify(body),
-            throwOnHTTPError: true,
         });
     })
     test.todo('focus on email the first time')
