@@ -165,7 +165,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
               css={[
                 tw`flex absolute w-24`,
                 tw`flex-shrink-0 transition-opacity duration-75 ease-out`,
-                  open && tw`opacity-0 pointer-events-none text-brand-gray transition-opacity duration-75 ease-linear`
+                open && tw`opacity-0 pointer-events-none text-brand-gray transition-opacity duration-75 ease-linear`
               ]}
               role={'button'}
               ref={toggleButtonRef}
@@ -180,10 +180,12 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
             {!errorMessage && !success && (
               <div
                 css={[
-                  tw`p-4 opacity-0 transition-opacity duration-75 ease relative`,
-                open && tw`opacity-100`,
+                tw`p-4 transition-opacity duration-75 ease relative`,
                 !open && tw`hidden`,
                 ]}
+                style={{
+                    opacity: open ? 1 : 0
+                }}
               >
                 {email && (
                   <div
@@ -275,11 +277,14 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
             {!success && !errorMessage && (
               <div
                 css={[
-                  tw`w-full h-16 p-4 flex items-center gap-4 bg-background border-t border-border opacity-0 transition-opacity duration-200 ease`,
-                open && tw`opacity-100 pointer-events-auto`,
+                tw`w-full h-16 p-4 flex items-center gap-4 bg-background border-t border-border transition-opacity duration-200 ease`,
+                open && tw`pointer-events-auto`,
                         !open && tw`hidden pointer-events-none`
                 ]}
                 data-testid={'form'}
+                style={{
+                    opacity: open ? 1 : 0
+                }}
               >
                 <span className={"emojis"} style={{ width: '160px' }}>
                   <EmojiSelector
@@ -319,47 +324,52 @@ FeedbackInput.propTypes = {
 };
 
 const EmojiSelector = ({ selectedEmoji, onEmojiSelect, loading, onFocus }) => {
-  return (
-    <div
-      css={[
-          tw`flex space-x-2`,
-          loading && tw`cursor-default`,
-      ]}
-    >
-      {EMOJIS.map((emoji) => (
-        <button
-          type="button"
-          css={[
-            tw`inline-flex bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-border transform cursor-pointer text-center`,
-              tw`hover:scale-105 active:scale-105 hover:bg-white active:bg-white outline-none focus:outline-none focus:ring`,
-              emoji.char === selectedEmoji && tw`scale-110 border bg-white border-warning-light`,
-              loading && tw`cursor-default`,
-          ]}
-          key={emoji.code}
-          onFocus={onFocus}
-          onClick={() => onEmojiSelect(emoji.char)}
-          style={{ borderRadius: "50%" }}
+    const noneSelected = !selectedEmoji;
+    return (
+        <div
+            css={[
+                tw`flex space-x-2`,
+                loading && tw`cursor-default`,
+            ]}
         >
+            {EMOJIS.map((emoji, index) => {
+                const selected = emoji.char === selectedEmoji;
+                return (
+                    <button
+                        type="button"
+                        css={[
+                            tw`inline-flex bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-border transform cursor-pointer text-center`,
+                            tw`hover:scale-105 active:scale-105 hover:bg-white active:bg-white outline-none focus:outline-none focus:ring`,
+                            selected && tw`scale-110 border bg-white border-warning-light`,
+                            loading && tw`cursor-default`,
+                        ]}
+                        key={emoji.code}
+                        onFocus={onFocus}
+                        onClick={() => onEmojiSelect(emoji.char)}
+                        style={{borderRadius: "50%"}}
+                        role={'radio'}
+                    >
           <span
-            tw={"flex justify-center items-center"}
-            style={{ width: 32, height: 32, borderRadius: '50%' }}
+              tw={"flex justify-center items-center"}
+              style={{width: 32, height: 32, borderRadius: '50%'}}
           >
-            <Emoji svg={emoji.svg} />
+            <Emoji svg={emoji.svg}/>
           </span>
-        </button>
-      ))}
-    </div>
-  );
+                    </button>
+                )
+            })}
+        </div>
+    );
 };
 
 const Emoji = React.memo(({ svg }) => (
-  <img
-    decoding="async"
-    width={20}
-    height={20}
-    src={svg}
-    alt="emoji"
-  />
+    <img
+        decoding="async"
+        width={20}
+        height={20}
+        src={svg}
+        alt="emoji"
+    />
 ));
 
 export default FeedbackInput;

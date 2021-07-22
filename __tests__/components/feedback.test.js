@@ -23,10 +23,11 @@ describe('Feedback', () => {
             <Feedback email={true} />
         </div>)
 
+        expect(screen.getByTestId('form')).toHaveStyle('opacity: 0')
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
-        expect(screen.getByTestId('form').getAttribute('class')).toContain('opacity-100')
+        expect(screen.getByTestId('form')).toHaveStyle('opacity: 1')
         fireEvent.click(screen.getByText('Outside'))
-        expect(screen.getByTestId('form').getAttribute('class')).toContain('opacity-0')
+        expect(screen.getByTestId('form')).toHaveStyle('opacity: 0')
     })
 
     test('closes form on hitting escape', async () => {
@@ -36,14 +37,14 @@ describe('Feedback', () => {
         </div>)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
-        expect(screen.getByTestId('form').getAttribute('class')).toContain('opacity-100')
+        expect(screen.getByTestId('form')).toHaveStyle('opacity: 1')
         fireEvent.keyPress(screen.getByLabelText('Feedback'), { key: 'Escape', code: 'Escape' })
-        expect(screen.getByTestId('form').getAttribute('class')).toContain('opacity-0')
+        expect(screen.getByTestId('form')).toHaveStyle('opacity: 0')
     })
 
     test('submits form on hitting enter key with meta key', async () => {
         const fetchMock = jest.fn((url) => {
-            return Promise.resolve()
+            return Promise.resolve({ ok: true, json: () => Promise.resolve() })
         });
         global.fetch = fetchMock
 
@@ -102,7 +103,4 @@ describe('Feedback', () => {
             body: JSON.stringify(body),
         });
     })
-    test.todo('focus on email the first time')
-    test.todo('preserve focus')
-    test.todo('should close on hitting escape on feedback textarea')
 });
