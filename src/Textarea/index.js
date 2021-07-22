@@ -18,6 +18,7 @@ const Textarea = React.forwardRef(
       disabled,
       rows,
       variant,
+      resize,
       ...rest
     },
     ref
@@ -76,6 +77,7 @@ const Textarea = React.forwardRef(
             variant == "brand-dark" &&
               !disabled &&
               tw`border-transparent text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-transparent bg-opacity-30)`,
+            resize && tw`resize-none`
           ]}
           {...rest}
         />
@@ -85,6 +87,7 @@ const Textarea = React.forwardRef(
 );
 
 Textarea.defaultProps = {
+  resize: true,
   rows: 3,
 };
 
@@ -99,6 +102,7 @@ Textarea.propTypes = {
   disabled: PropTypes.bool,
   rows: PropTypes.number,
   variant: PropTypes.oneOf(["brand", "brand-dark"]),
+  resize: PropTypes.bool.isRequired
 };
 
 export default Textarea;

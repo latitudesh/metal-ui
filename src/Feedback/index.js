@@ -142,23 +142,23 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
           title="Share any feedback about our products and services"
           css={[
             tw`p-0 w-24 relative inline-block antialiased focus:outline-none active:outline-none`,
-              (!open || !forceOpen) && tw`h-8`,
+              // (!open || !forceOpen) && tw`h-8`,
               errorMessage && tw`text-transparent`,
           ]}
           {...props}
         >
           <form
             css={[
-            tw`appearance-none border-0 bg-white flex leading-6 text-sm rounded w-24 h-8`,
-            tw`resize-none z-50 text-foreground flex-col justify-start overflow-hidden relative transition-all ease-in-out`,
+            tw`appearance-none border-0 bg-white flex leading-6 text-sm rounded`,
+            tw`resize-none z-50 text-foreground flex-col justify-start relative transition-all ease-in-out`,
             tw`hover:border-foreground focus:border-foreground active:border-foreground`,
-            (open || forceOpen) && tw`w-72 h-auto min-h-full border-none border-white shadow-lg bg-white transition-all ease-in-out`,
+            (open || forceOpen) && tw`w-72 h-auto border-none border-white shadow-lg bg-white transition-all ease-in-out`,
             ]}
             onSubmit={onSubmit}
           >
             <Button
               css={[
-                tw`flex absolute w-24 h-8`,
+                tw`flex absolute w-24`,
                 tw`flex-shrink-0 transition-opacity duration-75 ease-out`,
                   open && tw`opacity-0 pointer-events-none text-brand-gray transition-opacity duration-75 ease-linear`
               ]}
@@ -175,7 +175,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
             {!errorMessage && !success && (
               <div
                 css={[
-                  tw`p-4 opacity-0 transition-opacity duration-75 ease relative h-32`,
+                  tw`p-4 opacity-0 transition-opacity duration-75 ease relative`,
                 open && tw`opacity-100`,
                 !open && tw`hidden`,
                 ]}
@@ -211,6 +211,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                     width="100%"
                     value={feedbackText}
                     required
+                    rows={3}
                     onChange={(e) => setFeedbackText(e)}
                     onFocus={(e) => setFocusedElement(e.target)}
                     aria-label="Feedback input"
@@ -270,7 +271,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
               <div
                 css={[
                   tw`w-full h-16 p-4 flex items-center gap-4 bg-background border-t border-border opacity-0 transition-opacity duration-200 ease`,
-                open && tw`opacity-100 mt-20 pointer-events-auto`,
+                open && tw`opacity-100 pointer-events-auto`,
                         !open && tw`hidden pointer-events-none`
                 ]}
                 data-testid={'form'}
