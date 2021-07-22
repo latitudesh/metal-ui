@@ -149,17 +149,17 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
         >
           <form
             css={[
-            tw`appearance-none border-0 bg-white border border-brand-gray flex leading-6 text-sm rounded w-24 h-8`,
+            tw`appearance-none border-0 bg-white flex leading-6 text-sm rounded w-24 h-8`,
             tw`resize-none z-50 text-foreground flex-col justify-start overflow-hidden relative transition-all ease-in-out`,
             tw`hover:border-foreground focus:border-foreground active:border-foreground`,
             (open || forceOpen) && tw`w-72 h-auto min-h-full border-none border-white shadow-lg bg-white transition-all ease-in-out`,
             ]}
             onSubmit={onSubmit}
           >
-            <button
+            <Button
               css={[
-                tw`flex absolute items-center justify-center w-24 h-8 border border-transparent `,
-                  tw`flex-shrink-0 bg-white text-brand-gray transition-opacity duration-75 ease-out cursor-text`,
+                tw`flex absolute w-24 h-8`,
+                tw`flex-shrink-0 transition-opacity duration-75 ease-out`,
                   open && tw`opacity-0 pointer-events-none text-brand-gray transition-opacity duration-75 ease-linear`
               ]}
               role={'button'}
@@ -168,9 +168,10 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
                   e.preventDefault();
                   setOpen(true);
               }}
+              variant={'secondary'}
+              label={"Feedback"}
             >
-              Feedback
-            </button>
+            </Button>
             {!errorMessage && !success && (
               <div
                 css={[
@@ -268,7 +269,7 @@ const FeedbackInput = ({ dryRun, className, forceOpen, email, url, ...props }) =
             {!success && !errorMessage && (
               <div
                 css={[
-                  tw`w-full h-16 p-4 flex items-center gap-4 bg-brand-lightGray border-t border-brand-lightGray opacity-0 transition-opacity duration-200 ease`,
+                  tw`w-full h-16 p-4 flex items-center gap-4 bg-background border-t border-border opacity-0 transition-opacity duration-200 ease`,
                 open && tw`opacity-100 mt-20 pointer-events-auto`,
                         !open && tw`hidden pointer-events-none`
                 ]}
@@ -323,8 +324,8 @@ const EmojiSelector = ({ selectedEmoji, onEmojiSelect, loading, onFocus }) => {
         <button
           type="button"
           css={[
-            tw`inline-flex bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-brand-gray transform cursor-pointer text-center`,
-              tw`hover:scale-105 active:scale-105 hover:bg-white active:bg-white`,
+            tw`inline-flex bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-border transform cursor-pointer text-center`,
+              tw`hover:scale-105 active:scale-105 hover:bg-white active:bg-white outline-none focus:outline-none focus:ring`,
               emoji.char === selectedEmoji && tw`scale-110 border bg-white border-warning-light`,
               loading && tw`cursor-default`,
           ]}
