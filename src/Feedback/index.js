@@ -82,6 +82,10 @@ const FeedbackInput = ({
   enableEmail = true,
   enableFeedbackText = true,
   enableEmoji = true,
+  emailProps,
+  feedbackTextProps,
+  toggleButtonProps,
+  submitButtonProps,
   dryRun,
   ...props
 }) => {
@@ -96,6 +100,37 @@ const FeedbackInput = ({
   const emailRef = useRef();
   const toggleButtonRef = useRef();
   const [focusedElement, setFocusedElement] = useState(null);
+
+  const combinedEmailProps = {
+    required: true,
+    label: "Email",
+    autoFocus: true,
+    placeholder: "Your email address...",
+    ...emailProps,
+  };
+
+  const combinedFeedbackTextProps = {
+    label: "Feedback",
+    placeholder: "Your feedback...",
+    required: true,
+    rows: 3,
+    "aria-label": "Feedback input",
+    // Disable the Grammarly extension on this textarea
+    "data-gramm-editor": false,
+    ...feedbackTextProps,
+  };
+
+  const combinedToggleButtonProps = {
+    variant: "secondary",
+    label: "Feedback",
+    ...toggleButtonProps,
+  };
+
+  const combinedSubmitButtonProps = {
+    label: "Send",
+    variant: "brand-p",
+    ...submitButtonProps,
+  };
 
   useEffect(() => {
     if (open) {
@@ -228,8 +263,7 @@ const FeedbackInput = ({
             e.preventDefault();
             setOpen(true);
           }}
-          variant={"secondary"}
-          label={"Feedback"}
+          {...combinedToggleButtonProps}
         />
         {!errorMessage && !success && (
           <div
@@ -243,18 +277,14 @@ const FeedbackInput = ({
             {enableEmail && (
               <div tw={"mb-2 transition duration-100 ease-in-out"}>
                 <Input
-                  label="Email"
                   ref={emailRef}
-                  id="feedback-input"
-                  autoFocus={true}
+                  id="feedback-email"
                   onFocus={(e) => setFocusedElement(e.target)}
                   type="email"
-                  required
-                  placeholder="Your email address..."
-                  width="100%"
                   disabled={disableInputs}
                   onChange={setEmailValue}
                   value={emailValue}
+                  {...combinedEmailProps}
                 />
               </div>
             )}
@@ -263,21 +293,15 @@ const FeedbackInput = ({
               <div className={"input"}>
                 <Textarea
                   id="feedback-text"
-                  label="Feedback"
-                  placeholder="Your feedback..."
-                  width="100%"
                   value={feedbackText}
-                  required
-                  rows={3}
                   onChange={(e) => setFeedbackText(e)}
                   onFocus={(e) => setFocusedElement(e.target)}
-                  aria-label="Feedback input"
                   disabled={disableInputs}
                   // Disable the Grammarly extension on this textarea
-                  data-gramm-editor="false"
                   textareaClassName={cn("feedback-input", {
                     "text-brand-gray": loading,
                   })}
+                  {...combinedFeedbackTextProps}
                 />
               </div>
             )}
@@ -357,12 +381,10 @@ const FeedbackInput = ({
             <span tw={"transition-opacity duration-200 ease ml-auto"}>
               <Button
                 disabled={loading}
-                width={60}
-                label="Send"
                 onFocus={(e) => setFocusedElement(e.target)}
                 data-testid={"submit-button"}
                 type={"submit"}
-                variant={"brand-p"}
+                {...combinedSubmitButtonProps}
               />
             </span>
           </div>
