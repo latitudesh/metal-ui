@@ -24,10 +24,10 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { useFocusRing } from "@react-aria/focus";
 
 const EMOJIS = [
-  { code: "f929", char: "🤩", svg: f929, label: 'very-happy' },
-  { code: "f600", char: "🙂", svg: f600, label: 'happy' },
-  { code: "f615", char: "😕", svg: f615, label: 'meh' },
-  { code: "f62d", char: "😭", svg: f62d, label: 'unhappy'},
+  { code: "f929", char: "🤩", svg: f929, label: "very-happy" },
+  { code: "f600", char: "🙂", svg: f600, label: "happy" },
+  { code: "f615", char: "😕", svg: f615, label: "meh" },
+  { code: "f62d", char: "😭", svg: f62d, label: "unhappy" },
 ];
 
 let RadioContext = React.createContext(null);
@@ -55,6 +55,7 @@ function EmojiRadio(props) {
 
   return (
     <label
+      onFocus={props.onFocus}
       css={[
         tw`inline-flex bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-border transform cursor-pointer text-center rounded-full`,
         tw`hover:scale-105 active:scale-105 hover:bg-white active:bg-white outline-none focus:outline-none `,
@@ -70,7 +71,7 @@ function EmojiRadio(props) {
           tw={"flex justify-center items-center"}
           style={{ width: 32, height: 32, borderRadius: "50%" }}
         >
-          <Emoji svg={props.emoji.svg} />
+          {children}
         </span>
       </div>
     </label>
@@ -91,7 +92,6 @@ const FeedbackInput = ({
   const [errorMessage, setErrorMessage] = useState("");
   const [emailValue, setEmailValue] = useState("");
   const [feedbackText, setFeedbackText] = useState("");
-  const [emoji, setEmoji] = useState(null);
   let emojiState = useRadioGroupState(props);
   const containerRef = useRef();
   const emailRef = useRef();
@@ -144,7 +144,7 @@ const FeedbackInput = ({
       url: url,
       note: feedbackText,
       email: emailValue,
-      emotion: emoji,
+      emotion: emojiState.selectedValue,
     };
     Promise.resolve()
       .then(() => {
@@ -194,10 +194,6 @@ const FeedbackInput = ({
     };
   }, [onKeyDown]);
 
-  const onEmojiSelect = useCallback((selectedEmoji) => {
-    setEmoji(selectedEmoji);
-  }, []);
-
   const disableInputs = Boolean(loading || errorMessage);
   useClickAway(containerRef, closeFeedbackForm);
   return (
@@ -236,7 +232,7 @@ const FeedbackInput = ({
           }}
           variant={"secondary"}
           label={"Feedback"}
-        ></Button>
+        />
         {!errorMessage && !success && (
           <div
             css={[
@@ -343,16 +339,16 @@ const FeedbackInput = ({
             }}
           >
             <span className={"emojis"} style={{ width: "160px" }}>
-              {/*<EmojiSelector*/}
-              {/*  selectedEmoji={emoji}*/}
-              {/*  onEmojiSelect={onEmojiSelect}*/}
-              {/*  loading={loading}*/}
-              {/*  onFocus={(e) => setFocusedElement(e.target)}*/}
-              {/*/>*/}
               <EmojiRadioGroup label="Select an emoji" emojiState={emojiState}>
                 {EMOJIS.map((emoji) => {
                   return (
-                    <EmojiRadio value={emoji.char} emoji={emoji}></EmojiRadio>
+                    <EmojiRadio
+                      value={emoji.char}
+                      label={emoji.label}
+                      onFocus={(e) => setFocusedElement(e.target)}
+                    >
+                      <Emoji svg={emoji.svg} label={emoji.label} />
+                    </EmojiRadio>
                   );
                 })}
               </EmojiRadioGroup>
@@ -386,42 +382,8 @@ FeedbackInput.propTypes = {
   url: PropTypes.string,
 };
 
-const EmojiSelector = ({ selectedEmoji, onEmojiSelect, loading, onFocus }) => {
-  const noneSelected = !selectedEmoji;
-  return (
-    <div css={[tw`flex space-x-2`, loading && tw`cursor-default`]}>
-      {EMOJIS.map((emoji, index) => {
-        const selected = emoji.char === selectedEmoji;
-        return (
-          <button
-            type="button"
-            css={[
-              tw`inline-flex bg-transparent p-0 m-0 transition-all duration-100 ease-in-out border border-border transform cursor-pointer text-center`,
-              tw`hover:scale-105 active:scale-105 hover:bg-white active:bg-white outline-none focus:outline-none focus:ring`,
-              selected && tw`scale-110 border bg-white border-warning-light`,
-              loading && tw`cursor-default`,
-            ]}
-            key={emoji.code}
-            onFocus={onFocus}
-            onClick={() => onEmojiSelect(emoji.char)}
-            style={{ borderRadius: "50%" }}
-            role={"radio"}
-          >
-            <span
-              tw={"flex justify-center items-center"}
-              style={{ width: 32, height: 32, borderRadius: "50%" }}
-            >
-              <Emoji svg={emoji.svg} />
-            </span>
-          </button>
-        );
-      })}
-    </div>
-  );
-};
-
-const Emoji = React.memo(({ svg }) => (
-  <img decoding="async" width={20} height={20} src={svg} alt="emoji" />
+const Emoji = React.memo(({ svg, label }) => (
+  <img decoding="async" width={20} height={20} src={svg} alt={label} />
 ));
 
 export default FeedbackInput;
