@@ -87,7 +87,7 @@ const FeedbackInput = ({
   ...props
 }) => {
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(true); // TODO change
+  const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [emailValue, setEmailValue] = useState("");
@@ -236,12 +236,11 @@ const FeedbackInput = ({
         {!errorMessage && !success && (
           <div
             css={[
-              tw`p-4 transition-opacity duration-75 ease relative`,
-              !open && tw`hidden`,
+              tw`p-4 transition-opacity duration-75 ease relative opacity-100`,
+              !open && tw`hidden opacity-0`,
             ]}
-            style={{
-              opacity: open ? 1 : 0,
-            }}
+            aria-expanded={open}
+            data-testid={"form"}
           >
             {email && (
               <div tw={"mb-2 transition duration-100 ease-in-out"}>
@@ -329,20 +328,17 @@ const FeedbackInput = ({
         {!success && !errorMessage && (
           <div
             css={[
-              tw`w-full h-16 p-4 flex items-center gap-4 bg-background border-t border-border transition-opacity duration-200 ease`,
-              open && tw`pointer-events-auto`,
+              tw`w-full h-16 p-4 flex items-center gap-4 bg-background border-t border-border transition-opacity duration-200 ease opacity-0`,
+              open && tw`pointer-events-auto opacity-100`,
               !open && tw`hidden pointer-events-none`,
             ]}
-            data-testid={"form"}
-            style={{
-              opacity: open ? 1 : 0,
-            }}
           >
             <span className={"emojis"} style={{ width: "160px" }}>
               <EmojiRadioGroup label="Select an emoji" emojiState={emojiState}>
                 {EMOJIS.map((emoji) => {
                   return (
                     <EmojiRadio
+                      key={emoji.char}
                       value={emoji.char}
                       label={emoji.label}
                       onFocus={(e) => setFocusedElement(e.target)}

@@ -18,28 +18,27 @@ describe('Feedback', () => {
     });
 
     test('closes form on clicking outside', async () => {
-        render(<div>
-            Outside
+        render(<div data-testid={'outside'}>
             <Feedback email={true} />
         </div>)
 
-        expect(screen.getByTestId('form')).toHaveStyle('opacity: 0')
+        expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'false')
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
-        expect(screen.getByTestId('form')).toHaveStyle('opacity: 1')
-        fireEvent.click(screen.getByText('Outside'))
-        expect(screen.getByTestId('form')).toHaveStyle('opacity: 0')
+        expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'true')
+        fireEvent.click(screen.getByTestId('outside'))
+        expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'false')
     })
 
-    test('closes form on hitting escape', async () => {
+    test.only('closes form on hitting escape', async () => {
         render(<div>
             Outside
             <Feedback email={true} />
         </div>)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
-        expect(screen.getByTestId('form')).toHaveStyle('opacity: 1')
-        fireEvent.keyPress(screen.getByLabelText('Feedback'), { key: 'Escape', code: 'Escape' })
-        expect(screen.getByTestId('form')).toHaveStyle('opacity: 0')
+        expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'true')
+        fireEvent.keyDown(screen.getByLabelText('Feedback'), { key: 'Escape', code: 'Escape' })
+        expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'false')
     })
 
     test('submits form on hitting enter key with meta key', async () => {
@@ -65,7 +64,6 @@ describe('Feedback', () => {
             url: testEndpoint,
             note: 'This is great!',
             email: 'test@email.com',
-            emotion: null
         }
         expect(fetchMock).toHaveBeenCalledWith(testEndpoint, {
               method: "POST",
@@ -96,7 +94,6 @@ describe('Feedback', () => {
             url: testEndpoint,
             note: 'This is great!',
             email: 'test@email.com',
-            emotion: null
         }
         expect(fetchMock).toHaveBeenCalledWith(testEndpoint, {
             method: "POST",
