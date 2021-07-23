@@ -13,7 +13,6 @@ import Text from "../Typography/Text";
 
 import useClickAway from "react-use/lib/useClickAway";
 
-// TODO rely on browser support for emojis
 import f929 from "./svgs/f929.svg";
 import f600 from "./svgs/f600.svg";
 import f615 from "./svgs/f615.svg";
@@ -79,11 +78,11 @@ function EmojiRadio(props) {
 }
 
 const FeedbackInput = ({
-  dryRun,
-  className,
-  forceOpen,
-  email,
   url,
+  enableEmail = true,
+  enableFeedbackText = true,
+  enableEmoji = true,
+  dryRun,
   ...props
 }) => {
   const [loading, setLoading] = useState(false);
@@ -202,7 +201,6 @@ const FeedbackInput = ({
       title="Share any feedback about our products and services"
       css={[
         tw`p-0 w-24 relative inline-block antialiased focus:outline-none active:outline-none`,
-        // (!open || !forceOpen) && tw`h-8`,
         errorMessage && tw`text-transparent`,
       ]}
       {...props}
@@ -212,7 +210,7 @@ const FeedbackInput = ({
           tw`appearance-none border-0 bg-white flex leading-6 text-sm rounded`,
           tw`resize-none z-50 text-foreground flex-col justify-start relative transition-all ease-in-out`,
           tw`hover:border-foreground focus:border-foreground active:border-foreground`,
-          (open || forceOpen) &&
+          open &&
             tw`w-72 h-auto border-none border-white shadow-lg bg-white transition-all ease-in-out`,
         ]}
         onSubmit={onSubmit}
@@ -242,7 +240,7 @@ const FeedbackInput = ({
             aria-expanded={open}
             data-testid={"form"}
           >
-            {email && (
+            {enableEmail && (
               <div tw={"mb-2 transition duration-100 ease-in-out"}>
                 <Input
                   label="Email"
@@ -261,26 +259,28 @@ const FeedbackInput = ({
               </div>
             )}
 
-            <div className={"input"}>
-              <Textarea
-                id="feedback-text"
-                label="Feedback"
-                placeholder="Your feedback..."
-                width="100%"
-                value={feedbackText}
-                required
-                rows={3}
-                onChange={(e) => setFeedbackText(e)}
-                onFocus={(e) => setFocusedElement(e.target)}
-                aria-label="Feedback input"
-                disabled={disableInputs}
-                // Disable the Grammarly extension on this textarea
-                data-gramm-editor="false"
-                textareaClassName={cn("feedback-input", {
-                  "text-brand-gray": loading,
-                })}
-              />
-            </div>
+            {enableFeedbackText && (
+              <div className={"input"}>
+                <Textarea
+                  id="feedback-text"
+                  label="Feedback"
+                  placeholder="Your feedback..."
+                  width="100%"
+                  value={feedbackText}
+                  required
+                  rows={3}
+                  onChange={(e) => setFeedbackText(e)}
+                  onFocus={(e) => setFocusedElement(e.target)}
+                  aria-label="Feedback input"
+                  disabled={disableInputs}
+                  // Disable the Grammarly extension on this textarea
+                  data-gramm-editor="false"
+                  textareaClassName={cn("feedback-input", {
+                    "text-brand-gray": loading,
+                  })}
+                />
+              </div>
+            )}
           </div>
         )}
 
@@ -328,32 +328,33 @@ const FeedbackInput = ({
         {!success && !errorMessage && (
           <div
             css={[
-              tw`w-full h-16 p-4 flex items-center gap-4 bg-background border-t border-border transition-opacity duration-200 ease opacity-0`,
+              tw`w-full h-16 p-4 flex justify-end items-center gap-4 bg-background border-t border-border transition-opacity duration-200 ease opacity-0`,
               open && tw`pointer-events-auto opacity-100`,
               !open && tw`hidden pointer-events-none`,
             ]}
           >
-            <span className={"emojis"}>
-              <EmojiRadioGroup label="Select an emoji" emojiState={emojiState}>
-                {EMOJIS.map((emoji) => {
-                  return (
-                    <EmojiRadio
-                      key={emoji.char}
-                      value={emoji.char}
-                      label={emoji.label}
-                      onFocus={(e) => setFocusedElement(e.target)}
-                    >
-                      <Emoji svg={emoji.svg} label={emoji.label} />
-                    </EmojiRadio>
-                  );
-                })}
-              </EmojiRadioGroup>
-            </span>
-            <span
-              tw={
-                "flex-1 text-right transition-opacity duration-200 ease ml-auto"
-              }
-            >
+            {enableEmoji && (
+              <span className={"emojis"}>
+                <EmojiRadioGroup
+                  label="Select an emoji"
+                  emojiState={emojiState}
+                >
+                  {EMOJIS.map((emoji) => {
+                    return (
+                      <EmojiRadio
+                        key={emoji.char}
+                        value={emoji.char}
+                        label={emoji.label}
+                        onFocus={(e) => setFocusedElement(e.target)}
+                      >
+                        <Emoji svg={emoji.svg} label={emoji.label} />
+                      </EmojiRadio>
+                    );
+                  })}
+                </EmojiRadioGroup>
+              </span>
+            )}
+            <span tw={"transition-opacity duration-200 ease ml-auto"}>
               <Button
                 disabled={loading}
                 width={60}
@@ -372,10 +373,10 @@ const FeedbackInput = ({
 };
 
 FeedbackInput.propTypes = {
-  email: PropTypes.bool,
+  enableEmail: PropTypes.bool,
+  enableFeedbackText: PropTypes.bool,
+  enableEmoji: PropTypes.bool,
   dryRun: PropTypes.bool,
-  forceOpen: PropTypes.bool,
-  className: PropTypes.string,
   url: PropTypes.string,
 };
 

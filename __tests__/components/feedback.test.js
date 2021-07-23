@@ -8,7 +8,7 @@ const testEndpoint = 'http://test-endpoint.local';
 
 describe('Feedback', () => {
     test('opens form on click', async () => {
-        render(<Feedback email={true} />)
+        render(<Feedback enableEmail={true} />)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
 
@@ -19,7 +19,7 @@ describe('Feedback', () => {
 
     test('closes form on clicking outside', async () => {
         render(<div data-testid={'outside'}>
-            <Feedback email={true} />
+            <Feedback enableEmail={true} />
         </div>)
 
         expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'false')
@@ -32,7 +32,7 @@ describe('Feedback', () => {
     test('closes form on hitting escape', async () => {
         render(<div>
             Outside
-            <Feedback email={true} />
+            <Feedback enableEmail={true} />
         </div>)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
@@ -50,7 +50,7 @@ describe('Feedback', () => {
         // TODO what happens when enter is hit elsewhere?
         render(<div>
             Outside
-            <Feedback email={true} url={testEndpoint} />
+            <Feedback enableEmail={true} url={testEndpoint} />
         </div>)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
@@ -80,7 +80,7 @@ describe('Feedback', () => {
         // TODO what happens when enter is hit elsewhere?
         render(<div>
             Outside
-            <Feedback email={true} url={testEndpoint} />
+            <Feedback enableEmail={true} url={testEndpoint} />
         </div>)
 
         userEvent.keyboard('{Enter}test@email.com');
@@ -113,7 +113,7 @@ describe('Feedback', () => {
         global.fetch = fetchMock
         render(<div>
             Outside
-            <Feedback email={true} url={testEndpoint} />
+            <Feedback enableEmail={true} url={testEndpoint} />
         </div>)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
