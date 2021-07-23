@@ -25,11 +25,11 @@ describe('Feedback', () => {
         expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'false')
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
         expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'true')
-        fireEvent.click(screen.getByTestId('outside'))
+        fireEvent.mouseDown(screen.getByTestId('outside'))
         expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'false')
     })
 
-    test.only('closes form on hitting escape', async () => {
+    test('closes form on hitting escape', async () => {
         render(<div>
             Outside
             <Feedback email={true} />
@@ -71,6 +71,41 @@ describe('Feedback', () => {
         });
     })
 
+    test('submits form with keyboard navigation', async () => {
+        const fetchMock = jest.fn((url) => {
+            return Promise.resolve({ ok: true, json: () => Promise.resolve() })
+        });
+        global.fetch = fetchMock
+
+        // TODO what happens when enter is hit elsewhere?
+        render(<div>
+            Outside
+            <Feedback email={true} url={testEndpoint} />
+        </div>)
+
+        userEvent.keyboard('{Enter}test@email.com');
+        userEvent.tab()
+        // Enter feedback
+        userEvent.keyboard('This is great!');
+        // Tab to emoji radio button
+        userEvent.tab()
+        // Select the emoji radio then use right arrow to select the next one
+        userEvent.keyboard('{Enter}{ArrowRight}');
+        userEvent.tab()
+        userEvent.keyboard('{Enter}');
+
+        await waitFor(() => screen.getByText('Your feedback has been received!'))
+        const body = {
+            url: testEndpoint,
+            note: 'This is great!',
+            email: 'test@email.com',
+            emotion: '🙂'
+        }
+        expect(fetchMock).toHaveBeenCalledWith(testEndpoint, {
+            method: "POST",
+            body: JSON.stringify(body),
+        });
+    })
     test('dont show inputs in case of error', async () => {
         const fetchMock = jest.fn((url) => {
             throw { message: 'Test error' };

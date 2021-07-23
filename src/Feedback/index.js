@@ -92,7 +92,7 @@ const FeedbackInput = ({
   const [errorMessage, setErrorMessage] = useState("");
   const [emailValue, setEmailValue] = useState("");
   const [feedbackText, setFeedbackText] = useState("");
-  let emojiState = useRadioGroupState(props);
+  const emojiState = useRadioGroupState(props);
   const containerRef = useRef();
   const emailRef = useRef();
   const toggleButtonRef = useRef();
@@ -333,7 +333,7 @@ const FeedbackInput = ({
               !open && tw`hidden pointer-events-none`,
             ]}
           >
-            <span className={"emojis"} style={{ width: "160px" }}>
+            <span className={"emojis"}>
               <EmojiRadioGroup label="Select an emoji" emojiState={emojiState}>
                 {EMOJIS.map((emoji) => {
                   return (
@@ -372,6 +372,7 @@ const FeedbackInput = ({
 };
 
 FeedbackInput.propTypes = {
+  email: PropTypes.bool,
   dryRun: PropTypes.bool,
   forceOpen: PropTypes.bool,
   className: PropTypes.string,
