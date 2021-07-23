@@ -108,7 +108,7 @@ describe('Feedback', () => {
     })
     test('dont show inputs in case of error', async () => {
         const fetchMock = jest.fn((url) => {
-            throw { message: 'Test error' };
+            return Promise.resolve({ ok: false, status: 404, json: () => Promise.resolve() })
         });
         global.fetch = fetchMock
         render(<div>
@@ -122,7 +122,7 @@ describe('Feedback', () => {
 
         userEvent.type(screen.getByLabelText('Feedback'), '{meta}{enter}');
 
-        await waitFor(() => screen.getByText('Test error'))
+        await waitFor(() => screen.getByText('Sorry, we couldn\'t send your feedback. Status: 404'))
         expect(screen.queryByLabelText('Email')).not.toBeInTheDocument()
         expect(screen.queryByLabelText('Feedback')).not.toBeInTheDocument()
         const body = {

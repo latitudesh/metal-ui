@@ -159,7 +159,7 @@ const FeedbackInput = ({
       .then((response) => {
         if (!response.ok) {
           throw new Error(
-            `The network request failed with Status Code:${response.status}`
+            `Sorry, we couldn't send your feedback. Status: ${response.status}`
           );
         }
         return response.json();
