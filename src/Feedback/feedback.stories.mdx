@@ -1,7 +1,5 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import Feedback from "./index";
-import FeedbackButton from "./FeedbackButton";
-import FeedbackTrigger from "./FeedbackTrigger";
 
 <Meta title="Feedback" component={Feedback} />
 
@@ -13,11 +11,7 @@ The `Feedback` component, including its code, is an adaptation of [Vercel](https
 <Preview>
   <Story name="Default">
     <div className="flex h-full items-top justify-center w-full my-10" style={{ height: '300px' }}>
-      <Feedback url="https://httpbin.org/post">
-        <FeedbackTrigger>
-          <FeedbackButton />
-        </FeedbackTrigger>
-      </Feedback>
+      <Feedback url="https://httpbin.org/post" />
     </div>
   </Story>
 </Preview>

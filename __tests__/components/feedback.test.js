@@ -3,8 +3,7 @@ import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom/extend-expect'
 import Feedback from "../../src/Feedback";
-import FeedbackTrigger from "../../src/Feedback/FeedbackTrigger";
-import FeedbackButton from "../../src/Feedback/FeedbackButton";
+import Button from '../../src/Button'
 
 const testEndpoint = 'http://test-endpoint.local';
 
@@ -12,9 +11,6 @@ describe('Feedback', () => {
     test('opens form on click', async () => {
         render(
             <Feedback>
-                <FeedbackTrigger>
-                    <FeedbackButton />
-                </FeedbackTrigger>
             </Feedback>
         )
 
@@ -28,9 +24,6 @@ describe('Feedback', () => {
     test('closes form on clicking outside', async () => {
         render(<div data-testid={'outside'}>
             <Feedback>
-                <FeedbackTrigger>
-                    <FeedbackButton />
-                </FeedbackTrigger>
             </Feedback>
         </div>)
 
@@ -45,9 +38,6 @@ describe('Feedback', () => {
         render(<div>
             Outside
             <Feedback>
-                <FeedbackTrigger>
-                    <FeedbackButton />
-                </FeedbackTrigger>
             </Feedback>
         </div>)
 
@@ -67,9 +57,6 @@ describe('Feedback', () => {
         render(<div>
             Outside
             <Feedback url={testEndpoint} >
-                <FeedbackTrigger>
-                    <FeedbackButton />
-                </FeedbackTrigger>
             </Feedback>
         </div>)
 
@@ -101,9 +88,6 @@ describe('Feedback', () => {
         render(<div>
             Outside
             <Feedback url={testEndpoint} >
-                <FeedbackTrigger>
-                    <FeedbackButton />
-                </FeedbackTrigger>
             </Feedback>
         </div>)
 
@@ -138,9 +122,6 @@ describe('Feedback', () => {
         render(<div>
             Outside
             <Feedback url={testEndpoint} >
-                <FeedbackTrigger>
-                    <FeedbackButton />
-                </FeedbackTrigger>
             </Feedback>
         </div>)
 
@@ -174,9 +155,6 @@ describe('Feedback', () => {
         render(<div>
             Outside
             <Feedback url={testEndpoint} email={'prop@email.com'} >
-                <FeedbackTrigger>
-                    <FeedbackButton />
-                </FeedbackTrigger>
             </Feedback>
         </div>)
 
@@ -207,13 +185,13 @@ describe('Feedback', () => {
         });
         global.fetch = fetchMock
 
-        // TODO what happens when enter is hit elsewhere?
         render(<div>
             Outside
             <Feedback url={testEndpoint} email={'prop@email.com'} >
-                <FeedbackTrigger>
-                    <FeedbackButton />
-                </FeedbackTrigger>
+                {({ open, setOpen, ref }) => <Button ref={ref} onClick={(e) => {
+                    e.preventDefault()
+                    setOpen(true);
+                }} label={"Feedback"}/>}
             </Feedback>
         </div>)
 

@@ -21,6 +21,7 @@ import { useRadioGroupState } from "@react-stately/radio";
 import { useRadio, useRadioGroup } from "@react-aria/radio";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { useFocusRing } from "@react-aria/focus";
+import FeedbackButton from "./FeedbackButton";
 
 const EMOJIS = [
   { code: "f929", char: "🤩", svg: f929, label: "very-happy" },
@@ -246,7 +247,9 @@ const Feedback = ({
         style={{ width: '22rem'}}
         onSubmit={onSubmit}
       >
-        {React.cloneElement(children, {open, setOpen, ref: triggerRef})}
+        {children
+            ? children({ open, setOpen, ref: triggerRef })
+            : <FeedbackButton open={open} setOpen={setOpen} ref={triggerRef}/>}
         {!errorMessage && !success && (
           <div
             css={[
