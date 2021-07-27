@@ -2,7 +2,9 @@ import React from 'react'
 import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom/extend-expect'
-import {Feedback, FeedbackTrigger, FeedbackButton} from "../../src/Feedback";
+import Feedback from "../../src/Feedback";
+import FeedbackTrigger from "../../src/Feedback/FeedbackTrigger";
+import FeedbackButton from "../../src/Feedback/FeedbackButton";
 
 const testEndpoint = 'http://test-endpoint.local';
 
@@ -163,6 +165,43 @@ describe('Feedback', () => {
     })
 
     test('submits form correctly if email is provided as a prop', async () => {
+        const fetchMock = jest.fn((url) => {
+            return Promise.resolve({ ok: true, json: () => Promise.resolve() })
+        });
+        global.fetch = fetchMock
+
+        // TODO what happens when enter is hit elsewhere?
+        render(<div>
+            Outside
+            <Feedback url={testEndpoint} email={'prop@email.com'} >
+                <FeedbackTrigger>
+                    <FeedbackButton />
+                </FeedbackTrigger>
+            </Feedback>
+        </div>)
+
+        expect(
+            screen.queryByLabelText('Email'),
+        ).not.toBeInTheDocument()
+
+        fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
+        fireEvent.change(screen.getByLabelText('Feedback'), { target: { value: 'This is great!' }});
+
+        userEvent.type(screen.getByLabelText('Feedback'), '{meta}{enter}');
+
+        await waitFor(() => screen.getByText('Your feedback has been received!'))
+        const body = {
+            url: testEndpoint,
+            note: 'This is great!',
+            email: 'prop@email.com',
+        }
+        expect(fetchMock).toHaveBeenCalledWith(testEndpoint, {
+            method: "POST",
+            body: JSON.stringify(body),
+        });
+    })
+
+    test('works with custom triggers', async () => {
         const fetchMock = jest.fn((url) => {
             return Promise.resolve({ ok: true, json: () => Promise.resolve() })
         });

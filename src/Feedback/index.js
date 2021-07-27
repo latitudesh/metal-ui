@@ -77,41 +77,7 @@ function EmojiRadio(props) {
   );
 }
 
-export const FeedbackButton = React.forwardRef(({ open }, ref) => {
-  const combinedTriggerProps = {
-    variant: "secondary",
-    label: "Feedback",
-    // ...triggerProps,
-  };
-
-  return (
-      <Button
-          ref={ref}
-          css={[
-            tw`flex absolute w-24`,
-            tw`flex-shrink-0 transition-opacity duration-75 ease-out`,
-            open &&
-            tw`opacity-0 pointer-events-none text-brand-gray transition-opacity duration-75 ease-linear`,
-          ]}
-          {...combinedTriggerProps}
-      />
-  )
-})
-
-export const FeedbackTrigger = React.forwardRef(({ open, setOpen, children }, ref) => {
-  return (
-      <div
-          onClick={(e) => {
-            e.preventDefault();
-            setOpen(true);
-          }}
-      >
-        {React.cloneElement(children, { open, ref })}
-      </div>
-  )
-})
-
-export const Feedback = ({
+const Feedback = ({
   url,
   email,
   enableFeedbackText = true,
@@ -422,3 +388,4 @@ const Emoji = React.memo(({ svg, label }) => (
   <img decoding="async" width={20} height={20} src={svg} alt={label} />
 ));
 
+export default Feedback
