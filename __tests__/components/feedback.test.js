@@ -8,7 +8,7 @@ const testEndpoint = 'http://test-endpoint.local';
 
 describe('Feedback', () => {
     test('opens form on click', async () => {
-        render(<Feedback enableEmail={true} />)
+        render(<Feedback />)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
 
@@ -19,7 +19,7 @@ describe('Feedback', () => {
 
     test('closes form on clicking outside', async () => {
         render(<div data-testid={'outside'}>
-            <Feedback enableEmail={true} />
+            <Feedback />
         </div>)
 
         expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'false')
@@ -32,7 +32,7 @@ describe('Feedback', () => {
     test('closes form on hitting escape', async () => {
         render(<div>
             Outside
-            <Feedback enableEmail={true} />
+            <Feedback />
         </div>)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
@@ -50,7 +50,7 @@ describe('Feedback', () => {
         // TODO what happens when enter is hit elsewhere?
         render(<div>
             Outside
-            <Feedback enableEmail={true} url={testEndpoint} />
+            <Feedback url={testEndpoint} />
         </div>)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
@@ -80,7 +80,7 @@ describe('Feedback', () => {
         // TODO what happens when enter is hit elsewhere?
         render(<div>
             Outside
-            <Feedback enableEmail={true} url={testEndpoint} />
+            <Feedback url={testEndpoint} />
         </div>)
 
         userEvent.keyboard('{Enter}test@email.com');
@@ -113,7 +113,7 @@ describe('Feedback', () => {
         global.fetch = fetchMock
         render(<div>
             Outside
-            <Feedback enableEmail={true} url={testEndpoint} />
+            <Feedback url={testEndpoint} />
         </div>)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
@@ -129,6 +129,39 @@ describe('Feedback', () => {
             url: testEndpoint,
             note: 'This is great!',
             email: 'test@email.com',
+        }
+        expect(fetchMock).toHaveBeenCalledWith(testEndpoint, {
+            method: "POST",
+            body: JSON.stringify(body),
+        });
+    })
+
+    test('submits form correctly if email is provided as a prop', async () => {
+        const fetchMock = jest.fn((url) => {
+            return Promise.resolve({ ok: true, json: () => Promise.resolve() })
+        });
+        global.fetch = fetchMock
+
+        // TODO what happens when enter is hit elsewhere?
+        render(<div>
+            Outside
+            <Feedback url={testEndpoint} email={'prop@email.com'}/>
+        </div>)
+
+        expect(
+            screen.queryByLabelText('Email'),
+        ).not.toBeInTheDocument()
+
+        fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
+        fireEvent.change(screen.getByLabelText('Feedback'), { target: { value: 'This is great!' }});
+
+        userEvent.type(screen.getByLabelText('Feedback'), '{meta}{enter}');
+
+        await waitFor(() => screen.getByText('Your feedback has been received!'))
+        const body = {
+            url: testEndpoint,
+            note: 'This is great!',
+            email: 'prop@email.com',
         }
         expect(fetchMock).toHaveBeenCalledWith(testEndpoint, {
             method: "POST",

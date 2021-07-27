@@ -79,7 +79,7 @@ function EmojiRadio(props) {
 
 const FeedbackInput = ({
   url,
-  enableEmail = true,
+  email,
   enableFeedbackText = true,
   enableEmoji = true,
   emailProps,
@@ -93,7 +93,8 @@ const FeedbackInput = ({
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [emailValue, setEmailValue] = useState("");
+  const enableEmail = !email;
+  const [emailValue, setEmailValue] = useState(email);
   const [feedbackText, setFeedbackText] = useState("");
   const emojiState = useRadioGroupState(props);
   const containerRef = useRef();
@@ -246,8 +247,9 @@ const FeedbackInput = ({
           tw`resize-none z-50 text-foreground flex-col justify-start relative transition-all ease-in-out`,
           tw`hover:border-foreground focus:border-foreground active:border-foreground`,
           open &&
-            tw`w-72 h-auto border-none border-white shadow-lg bg-white transition-all ease-in-out`,
+            tw`h-auto border-none border-white shadow-lg bg-white transition-all ease-in-out`,
         ]}
+        style={{ width: '22rem'}}
         onSubmit={onSubmit}
       >
         <Button
@@ -395,11 +397,11 @@ const FeedbackInput = ({
 };
 
 FeedbackInput.propTypes = {
-  enableEmail: PropTypes.bool,
   enableFeedbackText: PropTypes.bool,
   enableEmoji: PropTypes.bool,
   dryRun: PropTypes.bool,
   url: PropTypes.string,
+  email: PropTypes.string,
 };
 
 const Emoji = React.memo(({ svg, label }) => (
