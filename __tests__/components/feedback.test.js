@@ -2,13 +2,19 @@ import React from 'react'
 import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom/extend-expect'
-import {Feedback} from "../../src";
+import {Feedback, FeedbackTrigger, FeedbackButton} from "../../src/Feedback";
 
 const testEndpoint = 'http://test-endpoint.local';
 
 describe('Feedback', () => {
     test('opens form on click', async () => {
-        render(<Feedback />)
+        render(
+            <Feedback>
+                <FeedbackTrigger>
+                    <FeedbackButton />
+                </FeedbackTrigger>
+            </Feedback>
+        )
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
 
@@ -19,7 +25,11 @@ describe('Feedback', () => {
 
     test('closes form on clicking outside', async () => {
         render(<div data-testid={'outside'}>
-            <Feedback />
+            <Feedback>
+                <FeedbackTrigger>
+                    <FeedbackButton />
+                </FeedbackTrigger>
+            </Feedback>
         </div>)
 
         expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'false')
@@ -32,7 +42,11 @@ describe('Feedback', () => {
     test('closes form on hitting escape', async () => {
         render(<div>
             Outside
-            <Feedback />
+            <Feedback>
+                <FeedbackTrigger>
+                    <FeedbackButton />
+                </FeedbackTrigger>
+            </Feedback>
         </div>)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
@@ -50,7 +64,11 @@ describe('Feedback', () => {
         // TODO what happens when enter is hit elsewhere?
         render(<div>
             Outside
-            <Feedback url={testEndpoint} />
+            <Feedback url={testEndpoint} >
+                <FeedbackTrigger>
+                    <FeedbackButton />
+                </FeedbackTrigger>
+            </Feedback>
         </div>)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
@@ -66,8 +84,8 @@ describe('Feedback', () => {
             email: 'test@email.com',
         }
         expect(fetchMock).toHaveBeenCalledWith(testEndpoint, {
-              method: "POST",
-              body: JSON.stringify(body),
+            method: "POST",
+            body: JSON.stringify(body),
         });
     })
 
@@ -80,7 +98,11 @@ describe('Feedback', () => {
         // TODO what happens when enter is hit elsewhere?
         render(<div>
             Outside
-            <Feedback url={testEndpoint} />
+            <Feedback url={testEndpoint} >
+                <FeedbackTrigger>
+                    <FeedbackButton />
+                </FeedbackTrigger>
+            </Feedback>
         </div>)
 
         userEvent.keyboard('{Enter}test@email.com');
@@ -113,7 +135,11 @@ describe('Feedback', () => {
         global.fetch = fetchMock
         render(<div>
             Outside
-            <Feedback url={testEndpoint} />
+            <Feedback url={testEndpoint} >
+                <FeedbackTrigger>
+                    <FeedbackButton />
+                </FeedbackTrigger>
+            </Feedback>
         </div>)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
@@ -145,7 +171,11 @@ describe('Feedback', () => {
         // TODO what happens when enter is hit elsewhere?
         render(<div>
             Outside
-            <Feedback url={testEndpoint} email={'prop@email.com'}/>
+            <Feedback url={testEndpoint} email={'prop@email.com'} >
+                <FeedbackTrigger>
+                    <FeedbackButton />
+                </FeedbackTrigger>
+            </Feedback>
         </div>)
 
         expect(
