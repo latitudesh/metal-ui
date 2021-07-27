@@ -77,6 +77,32 @@ function EmojiRadio(props) {
   );
 }
 
+const FeedbackTrigger = React.forwardRef(({ open, setOpen, triggerProps }, ref) => {
+  const combinedTriggerProps = {
+    variant: "secondary",
+    label: "Feedback",
+    ...triggerProps,
+  };
+
+  return (
+      <Button
+          css={[
+            tw`flex absolute w-24`,
+            tw`flex-shrink-0 transition-opacity duration-75 ease-out`,
+            open &&
+            tw`opacity-0 pointer-events-none text-brand-gray transition-opacity duration-75 ease-linear`,
+          ]}
+          role={"button"}
+          ref={ref}
+          onClick={(e) => {
+            e.preventDefault();
+            setOpen(true);
+          }}
+          {...combinedTriggerProps}
+      />
+  )
+})
+
 const FeedbackInput = ({
   url,
   email,
@@ -84,7 +110,6 @@ const FeedbackInput = ({
   enableEmoji = true,
   emailProps,
   feedbackTextProps,
-  toggleButtonProps,
   submitButtonProps,
   dryRun,
   ...props
@@ -99,7 +124,7 @@ const FeedbackInput = ({
   const emojiState = useRadioGroupState(props);
   const containerRef = useRef();
   const emailRef = useRef();
-  const toggleButtonRef = useRef();
+  const triggerRef = useRef();
   const [focusedElement, setFocusedElement] = useState(null);
 
   const combinedEmailProps = {
@@ -121,12 +146,6 @@ const FeedbackInput = ({
     ...feedbackTextProps,
   };
 
-  const combinedToggleButtonProps = {
-    variant: "secondary",
-    label: "Feedback",
-    ...toggleButtonProps,
-  };
-
   const combinedSubmitButtonProps = {
     label: "Send",
     variant: "brand-p",
@@ -144,9 +163,9 @@ const FeedbackInput = ({
         emailRef.current?.focus();
       }
     } else {
-      toggleButtonRef.current?.focus();
+      triggerRef.current?.focus();
     }
-  }, [open, focusedElement, toggleButtonRef]);
+  }, [open, focusedElement, triggerRef]);
 
   const onErrorDismiss = useCallback(() => {
     setErrorMessage("");
@@ -252,21 +271,7 @@ const FeedbackInput = ({
         style={{ width: '22rem'}}
         onSubmit={onSubmit}
       >
-        <Button
-          css={[
-            tw`flex absolute w-24`,
-            tw`flex-shrink-0 transition-opacity duration-75 ease-out`,
-            open &&
-              tw`opacity-0 pointer-events-none text-brand-gray transition-opacity duration-75 ease-linear`,
-          ]}
-          role={"button"}
-          ref={toggleButtonRef}
-          onClick={(e) => {
-            e.preventDefault();
-            setOpen(true);
-          }}
-          {...combinedToggleButtonProps}
-        />
+        <FeedbackTrigger open={open} setOpen={setOpen} ref={triggerRef}/>
         {!errorMessage && !success && (
           <div
             css={[
