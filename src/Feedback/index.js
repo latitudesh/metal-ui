@@ -86,7 +86,7 @@ const Feedback = ({
   emailProps,
   feedbackTextProps,
   submitButtonProps,
-  dryRun,
+  dryRun = false,
   children,
   ...props
 }) => {
@@ -380,11 +380,38 @@ const Feedback = ({
 };
 
 Feedback.propTypes = {
+  /**
+   Show text area to collect feedback text
+   */
   enableFeedbackText: PropTypes.bool,
+  /**
+   Show emoji selection buttons
+   */
   enableEmoji: PropTypes.bool,
+  /**
+   Don't make the http request
+   */
   dryRun: PropTypes.bool,
+  /**
+   URL to make the POST request
+   */
   url: PropTypes.string,
+  /**
+   Don't show the email input field and use the specified email instead
+   */
   email: PropTypes.string,
+  /**
+   Props to pass on to the email input field
+   */
+  emailProps: PropTypes.any,
+  /**
+   Props to pass on to the feedback text area
+   */
+  feedbackTextProps: PropTypes.any,
+  /**
+   Props to pass on to the submit button
+   */
+  submitButtonProps: PropTypes.any,
 };
 
 const Emoji = React.memo(({ svg, label }) => (

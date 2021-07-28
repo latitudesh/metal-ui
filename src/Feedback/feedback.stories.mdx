@@ -1,10 +1,15 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
 import Feedback from "./index";
+import Button from "../Button";
 
 <Meta title="Feedback" component={Feedback} />
 
 **Credits:**
 The `Feedback` component, including its code, is an adaptation of [Vercel](https://vercel.com/)'s Geist Design System, modified to use TailwindCSS. All credits to them.
+
+# API
+
+<Props of={Feedback} />
 
 # Default
 
@@ -14,4 +19,22 @@ The `Feedback` component, including its code, is an adaptation of [Vercel](https
       <Feedback url="https://httpbin.org/post" />
     </div>
   </Story>
+</Preview>
+
+
+# Custom Trigger
+
+<Preview>
+    <Story name="Custom Trigger">
+        <div className="flex h-full items-top justify-center w-full my-10" style={{ height: '300px' }}>
+            <Feedback url="https://httpbin.org/post">
+                {({ open, setOpen, ref }) => <div>
+                <Button variant="brand-p" size="small" ref={ref} onClick={(e) => {
+                    e.preventDefault()
+                    setOpen(true);
+                }} label={"Custom Trigger"}/>
+                </div>}
+            </Feedback>
+        </div>
+    </Story>
 </Preview>
