@@ -8174,8 +8174,8 @@ function Input_objectWithoutPropertiesLoose(source, excluded) { if (source == nu
 
 
 var Input_ref2 =  true ? {
-  name: "pruvhc",
-  styles: "margin-top:0.25rem;position:relative"
+  name: "bjn8wh",
+  styles: "position:relative"
 } : undefined;
 
 var Input = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(function (_ref, ref) {
@@ -8609,7 +8609,7 @@ var Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd
 });
 Select.defaultProps = {
   options: [],
-  placeholder: "Chose one"
+  placeholder: "Choose one"
 };
 Select.propTypes = {
   onChange: prop_types_default.a.func,

@@ -1,3 +1,11 @@
+## [2.8.10](https://github.com/Maxihost/metal-ui/compare/v2.8.9...v2.8.10) (2021-07-14)
+
+
+### Bug Fixes
+
+* Changes default font name from Inter var to Inter to minimize necessary changes for projects using Inter ([024aa0d](https://github.com/Maxihost/metal-ui/commit/024aa0d3bc9e145c4a97df199d1f4b9dd214ac22))
+* Typo ([b6c232d](https://github.com/Maxihost/metal-ui/commit/b6c232d5f4c0f0e761fc30e886c2e1929af8cd7c))
+
 ## [2.8.9](https://github.com/Maxihost/metal-ui/compare/v2.8.8...v2.8.9) (2021-05-23)
 
 
