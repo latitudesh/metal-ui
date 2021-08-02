@@ -50,7 +50,7 @@ const Input = React.forwardRef(
             {label}
           </label>
         )}
-        <div tw="mt-1 relative">
+        <div tw="relative">
           <input
             id={id}
             ref={ref}
