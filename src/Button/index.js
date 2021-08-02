@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import SpinningDots from "../SpinningDots";
 import tw from "twin.macro";
 
-const Button = ({
+const Button = React.forwardRef(({
   disabled,
   iconBefore,
   iconAfter,
@@ -18,7 +18,8 @@ const Button = ({
   block,
   isLoading,
   className,
-}) => {
+  ...rest
+}, ref) => {
   const ButtonContent = (
     <div
       tw="flex items-center justify-center"
@@ -36,8 +37,9 @@ const Button = ({
       onClick={onClick}
       disabled={disabled || isLoading}
       className={className}
+      ref={ref}
       css={[
-        tw`relative border items-center flex font-medium rounded focus:outline-none transition ease-in-out duration-150 justify-center max-w-full cursor-pointer`,
+        tw`relative border items-center flex font-medium rounded focus:outline-none focus:ring transition ease-in-out duration-150 justify-center max-w-full cursor-pointer`,
         disabled &&
           tw`border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed`,
         variant == "default" &&
@@ -63,12 +65,13 @@ const Button = ({
         size == "large" && tw`px-12 h-10 leading-10 text-base`,
         block && tw`w-full`,
       ]}
+      {...rest}
     >
       {isLoading && <SpinningDots variant="inherit" className={tw`absolute`} />}
       {ButtonContent}
     </button>
   );
-};
+});
 
 Button.propTypes = {
   disabled: PropTypes.bool,
