@@ -1,5 +1,11 @@
 {
-  "presets": ["@babel/env", "@babel/preset-react", "@emotion/babel-preset-css-prop"],
+  "presets": [
+    ["@babel/env", {
+      "targets": {
+        "node": 14
+      }
+    }],
+    "@babel/preset-react", "@emotion/babel-preset-css-prop"],
   "plugins": [
     "@emotion/babel-plugin",
     "babel-plugin-macros",
