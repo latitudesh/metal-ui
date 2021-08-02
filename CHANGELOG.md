@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/Maxihost/metal-ui/compare/v3.0.0...v3.0.1) (2021-08-02)
+
+
+### Bug Fixes
+
+* Horizontal alignment of inputs ([06e20b4](https://github.com/Maxihost/metal-ui/commit/06e20b46d2708e1a861523b8c4378646ab7f45be))
+
 # [3.0.0](https://github.com/Maxihost/metal-ui/compare/v2.8.10...v3.0.0) (2021-08-02)
 
 
