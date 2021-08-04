@@ -12,6 +12,7 @@ const Textarea = React.forwardRef(
       textareaClassName,
       className,
       value,
+      defaultValue,
       label,
       id,
       error,
@@ -50,7 +51,7 @@ const Textarea = React.forwardRef(
           ref={ref}
           rows={rows}
           onChange={handleChange}
-          defaultValue={value}
+          defaultValue={defaultValue}
           aria-label={label}
           aria-required={!!label}
           aria-invalid={!!error}
@@ -91,6 +92,7 @@ Textarea.propTypes = {
   textareaClassName: PropTypes.string,
   className: PropTypes.string,
   value: PropTypes.string,
+  defaultValue: PropTypes.string,
   label: PropTypes.string,
   id: PropTypes.string.isRequired,
   error: PropTypes.bool,

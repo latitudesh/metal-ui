@@ -13,6 +13,7 @@ const Input = React.forwardRef(
       className,
       variant,
       value,
+      defaultValue,
       label,
       id,
       error,
@@ -51,7 +52,7 @@ const Input = React.forwardRef(
             onChange={handleChange}
             // React does not pass defaultValue changes to the DOM after initial render
             // https://reactjs.org/docs/uncontrolled-components.html#default-values
-            defaultValue={value}
+            defaultValue={defaultValue}
             aria-label={label}
             aria-required={!!label}
             aria-invalid={!!error}
@@ -91,6 +92,7 @@ Input.propTypes = {
   inputClassName: PropTypes.string,
   className: PropTypes.string,
   value: PropTypes.string,
+  defaultValue: PropTypes.string,
   label: PropTypes.string,
   id: PropTypes.string.isRequired,
   error: PropTypes.bool,
