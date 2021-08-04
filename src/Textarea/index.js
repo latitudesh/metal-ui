@@ -39,7 +39,7 @@ const Textarea = React.forwardRef(
           <label
             tw="block text-sm leading-5 font-medium text-accent-six mb-1 normal-case"
             htmlFor={id}
-            css={[variant == "brand-dark" && !disabled && tw`text-white`]}
+            css={[variant === "brand-dark" && !disabled && tw`text-white`]}
           >
             {label}
           </label>
@@ -52,8 +52,8 @@ const Textarea = React.forwardRef(
           onChange={handleChange}
           defaultValue={value}
           aria-label={label}
-          aria-required={label ? true : false}
-          aria-invalid={error ? true : false}
+          aria-required={!!label}
+          aria-invalid={!!error}
           disabled={disabled}
           value={value}
           css={[
@@ -66,10 +66,10 @@ const Textarea = React.forwardRef(
               tw`text-error border-error hocus:border-error placeholder-error`,
             disabled &&
               tw`border-border bg-background cursor-not-allowed placeholder-accent-five`,
-            variant == "brand" &&
+            variant === "brand" &&
               !disabled &&
               tw`border-border text-brand-uv hocus:border-brand-uv placeholder-accent-four`,
-            variant == "brand-dark" &&
+            variant === "brand-dark" &&
               !disabled &&
               tw`border-transparent text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-transparent bg-opacity-30)`,
             resize && tw`resize-none`

@@ -39,7 +39,7 @@ const Input = React.forwardRef(
           <label
             tw="block text-sm leading-5 font-medium text-accent-six normal-case mb-1"
             htmlFor={id}
-            css={[variant == "brand-dark" && !disabled && tw`text-white`]}
+            css={[variant === "brand-dark" && !disabled && tw`text-white`]}
           >
             {label}
           </label>
@@ -53,8 +53,8 @@ const Input = React.forwardRef(
             // https://reactjs.org/docs/uncontrolled-components.html#default-values
             defaultValue={value}
             aria-label={label}
-            aria-required={label ? true : false}
-            aria-invalid={error ? true : false}
+            aria-required={!!label}
+            aria-invalid={!!error}
             disabled={disabled}
             value={value}
             css={[
@@ -66,13 +66,13 @@ const Input = React.forwardRef(
               disabled &&
                 tw`border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five`,
               !disabled &&
-                variant == "brand" &&
+                variant === "brand" &&
                 tw`border-border text-brand-uv hocus:border-brand-uv placeholder-accent-four`,
-              !disabled && variant == "brand-dark" && brandDarkStyles,
+              !disabled && variant === "brand-dark" && brandDarkStyles,
               error &&
                 tw`text-error border-error hocus:border-error placeholder-error`,
               error &&
-                variant == "brand-dark" && [
+                variant === "brand-dark" && [
                   brandDarkStyles,
                   `background-image: url(https://maxihost-assets.s3-sa-east-1.amazonaws.com/metal-ui/error-icon.svg);background-repeat: no-repeat;background-position-x: calc(100% - 16px);
                 background-position-y: 9px;`,
