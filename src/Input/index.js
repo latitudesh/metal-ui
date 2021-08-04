@@ -21,20 +21,14 @@ const Input = React.forwardRef(
     },
     ref
   ) => {
-    const [internalValue, setInternalValue] = useState();
-
-    useEffect(() => {
-      setInternalValue(value);
-    }, [value]);
 
     const handleChange = useCallback(
       (event) => {
-        setInternalValue(event.target.value);
         if (onChange) {
           onChange(event.target.value, event);
         }
       },
-      [setInternalValue, onChange]
+      [onChange]
     );
 
     const brandDarkStyles = tw`border-transparent text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-transparent bg-opacity-30)`;
@@ -55,11 +49,14 @@ const Input = React.forwardRef(
             id={id}
             ref={ref}
             onChange={handleChange}
-            defaultValue={internalValue}
+            // React does not pass defaultValue changes to the DOM after initial render
+            // https://reactjs.org/docs/uncontrolled-components.html#default-values
+            defaultValue={value}
             aria-label={label}
             aria-required={label ? true : false}
             aria-invalid={error ? true : false}
             disabled={disabled}
+            value={value}
             css={[
               tw`block w-full rounded p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0 font-family[inherit]`,
               inputClassName && inputClassName,
