@@ -23,20 +23,14 @@ const Textarea = React.forwardRef(
     },
     ref
   ) => {
-    const [internalValue, setInternalValue] = useState();
-
-    useEffect(() => {
-      setInternalValue(value);
-    }, [value]);
 
     const handleChange = useCallback(
       (event) => {
-        setInternalValue(event.target.value);
         if (onChange) {
           onChange(event.target.value);
         }
       },
-      [setInternalValue, onChange]
+      [onChange]
     );
 
     return (
@@ -56,11 +50,12 @@ const Textarea = React.forwardRef(
           ref={ref}
           rows={rows}
           onChange={handleChange}
-          defaultValue={internalValue}
+          defaultValue={value}
           aria-label={label}
           aria-required={label ? true : false}
           aria-invalid={error ? true : false}
           disabled={disabled}
+          value={value}
           css={[
             tw`block w-full rounded p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-6 border shadow-sm focus:outline-none focus:ring-0 font-family[inherit]`,
             textareaClassName && textareaClassName,
