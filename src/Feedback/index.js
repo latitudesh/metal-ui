@@ -95,7 +95,8 @@ const Feedback = ({
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const enableEmail = !email;
-  const [emailValue, setEmailValue] = useState(email);
+  const emailInitialValue = email ? email : ""
+  const [emailValue, setEmailValue] = useState(emailInitialValue);
   const [feedbackText, setFeedbackText] = useState("");
   const emojiState = useRadioGroupState(props);
   const containerRef = useRef();
@@ -155,9 +156,6 @@ const Feedback = ({
     setOpen(false);
     onErrorDismiss();
     onSuccessDismiss();
-
-    setFeedbackText("");
-    setEmailValue("");
   }, [onErrorDismiss, onSuccessDismiss]);
 
   const onSubmit = (event) => {
@@ -198,6 +196,7 @@ const Feedback = ({
         // Reset the textarea feedbackText on success
         setLoading(false);
         setSuccess(true);
+        setEmailValue(emailInitialValue)
         setFeedbackText("");
       })
       .catch((err) => {

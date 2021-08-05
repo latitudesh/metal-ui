@@ -1,3 +1,73 @@
+## [3.0.1](https://github.com/Maxihost/metal-ui/compare/v3.0.0...v3.0.1) (2021-08-02)
+
+
+### Bug Fixes
+
+* Horizontal alignment of inputs ([06e20b4](https://github.com/Maxihost/metal-ui/commit/06e20b46d2708e1a861523b8c4378646ab7f45be))
+
+# [3.0.0](https://github.com/Maxihost/metal-ui/compare/v2.8.10...v3.0.0) (2021-08-02)
+
+
+### Bug Fixes
+
+* Build and run svgo ([ea53346](https://github.com/Maxihost/metal-ui/commit/ea5334692f1c235d95a4843cee8af60688dd37bf))
+* Controlled email value ([4664c55](https://github.com/Maxihost/metal-ui/commit/4664c5573ce0bd34df706ff80968b9897eff828b))
+* Emoji outlines ([6328abc](https://github.com/Maxihost/metal-ui/commit/6328abc4ab08869a90f266a65e3da42cf9615c55))
+* Ids on input and textarea ([9816360](https://github.com/Maxihost/metal-ui/commit/98163604da31293b17ed8c3ee6657f30e5b386a3))
+* Layout ([db53112](https://github.com/Maxihost/metal-ui/commit/db531128887ecd79fa220d8ea49b8ff9d9a3f22b))
+* Outlines ([2832889](https://github.com/Maxihost/metal-ui/commit/2832889f6dff53c0837b5859dbf8b2309539d050))
+* Remove geist references ([932ced0](https://github.com/Maxihost/metal-ui/commit/932ced0297577c48f2617dad8a239aaf32423c2e))
+* Submit button ([a5f1ae8](https://github.com/Maxihost/metal-ui/commit/a5f1ae87a65b1a86be4022d1260b1dfefafea2d7))
+* Submit feedback form test ([42a21b9](https://github.com/Maxihost/metal-ui/commit/42a21b9d1cf6135092b0805c91f8e91edd5e9204))
+* Tailwind classes ([6458c7c](https://github.com/Maxihost/metal-ui/commit/6458c7ce75015140a2c40727a0193e94448746ce))
+* Tests ([1fc1ac1](https://github.com/Maxihost/metal-ui/commit/1fc1ac1681329bf6aae5a17aaf5eb0501e395f47))
+* **feedback widget:** import to control-next ([db91c4a](https://github.com/Maxihost/metal-ui/commit/db91c4a973e6483d6734800a6de3224db8f94d2e))
+
+
+### Features
+
+* Add focus outline ([fd92f74](https://github.com/Maxihost/metal-ui/commit/fd92f7499dc5df9a2d879b2d26b7710368825d6a))
+* Add keyboard navigation test ([ab91d81](https://github.com/Maxihost/metal-ui/commit/ab91d8141ccbc31366ba876027b042b0f8b62556))
+* Add partial test ([bc3e31b](https://github.com/Maxihost/metal-ui/commit/bc3e31bf80d1cd9a441c20c40091461c131a70dc))
+* Add support for email prop ([76000aa](https://github.com/Maxihost/metal-ui/commit/76000aa1dce6c7323bdfe1544e90ff7e9b011b22))
+* Add svgs ([8e2142c](https://github.com/Maxihost/metal-ui/commit/8e2142c8991b19dac959cb0427c33aef8b1d0cbd))
+* Add test ([a7ea826](https://github.com/Maxihost/metal-ui/commit/a7ea826084303443c5723d1898d5fcaf5ddca1e8))
+* Add tests ([3b02ef7](https://github.com/Maxihost/metal-ui/commit/3b02ef790fc34289c5845361d32649f9832b6ea8))
+* Allow custom trigger components ([d446ac1](https://github.com/Maxihost/metal-ui/commit/d446ac1ea472e42d6272d31abde1edd70f5f5757))
+* Change props ([4a09f69](https://github.com/Maxihost/metal-ui/commit/4a09f69edde4c80b76d58308e13ed910a5c9d8e3))
+* Convert classnames to twin.macro ([8bf330a](https://github.com/Maxihost/metal-ui/commit/8bf330af82a2d2d90fd1f54bc09a7d44f2177240))
+* Dont hit external urls ([f9407fc](https://github.com/Maxihost/metal-ui/commit/f9407fc4598ae493ebf9c0e0f6f80000a3ad2796))
+* Dont set unused values ([330d303](https://github.com/Maxihost/metal-ui/commit/330d303027d43b2ecc463447b8e641cf97ff0bab))
+* Dont submit form when main button is clicked ([064545e](https://github.com/Maxihost/metal-ui/commit/064545ed0ee91f5b941c8af25d1b6b676adde2c3))
+* Focus on email the first time ([10041d2](https://github.com/Maxihost/metal-ui/commit/10041d2034b1eda297ab9242f6db99921e858942))
+* Forward button ref ([f1203bb](https://github.com/Maxihost/metal-ui/commit/f1203bb5dd0c24e0d1c63e7f89f3d76bde513b84))
+* Forward remaining properties on button ([31e2b49](https://github.com/Maxihost/metal-ui/commit/31e2b494461877ac126a242b0ff5074fc2181106))
+* Handle fetch error ([c39a2c5](https://github.com/Maxihost/metal-ui/commit/c39a2c50042c3c6777203013b34763df548d5cd7))
+* Install dependencies ([287f0b7](https://github.com/Maxihost/metal-ui/commit/287f0b7b608929975b18ec74b02cd30df317b261))
+* Make props overridable ([c9b174e](https://github.com/Maxihost/metal-ui/commit/c9b174eebdccce4ecec0b1f4a8a8a3ec094f13df))
+* Move to dev dependency ([ab859b7](https://github.com/Maxihost/metal-ui/commit/ab859b72c70caf41c0280bf2d8d7981e988d01fe))
+* Preserve focus ([d18e6e9](https://github.com/Maxihost/metal-ui/commit/d18e6e9af60e3349f9090ee966c2d74e15ddb348))
+* Refactor emojis ([4e00be4](https://github.com/Maxihost/metal-ui/commit/4e00be45766856d87b655df3af467dbf706205ba))
+* Remove focus management ([0334e3d](https://github.com/Maxihost/metal-ui/commit/0334e3d6035e8fbf6a89fe4475bd9ed117929baa))
+* Remove old emoji code ([6051216](https://github.com/Maxihost/metal-ui/commit/6051216a226cd17764989f2b6ebbb25487b0d61b))
+* Remove unused deps ([a9ef699](https://github.com/Maxihost/metal-ui/commit/a9ef699e275db7f10198c8928fffa21ee656a6b1))
+* Rename variable ([ce1bc3f](https://github.com/Maxihost/metal-ui/commit/ce1bc3fe06e9ba092b9faa5f2efb5c5a3fb77f08))
+* Separate feedback button ([eabf941](https://github.com/Maxihost/metal-ui/commit/eabf9412ea8d670e90161d00857ff740599fbd8c))
+* Separate feedback trigger ([5827ee5](https://github.com/Maxihost/metal-ui/commit/5827ee57c4bfe282c7f06d48b68ba78983e94118))
+* Switch to react use for click outside ([b87402f](https://github.com/Maxihost/metal-ui/commit/b87402f86cc0890b0f0c7a051e2a8c3bf8b92d2b))
+* Switch to twin.macro ([89b153d](https://github.com/Maxihost/metal-ui/commit/89b153d63fffd5bf64d1693ede52bae5136bd678))
+* Use browser validation and and support for submit and reset buttons ([d9cac9a](https://github.com/Maxihost/metal-ui/commit/d9cac9ae2ea29f17e86e877b6d2fe6a4944d73a2))
+* Use controlled component ([c3a4201](https://github.com/Maxihost/metal-ui/commit/c3a42019e9f6083c47478951564335aeb95dbb53))
+* Use controlled email component ([e1f24be](https://github.com/Maxihost/metal-ui/commit/e1f24beeafaf1981dfa7801e4f86fe73f00dbad1))
+* Use react-aria for emoji ([b77883a](https://github.com/Maxihost/metal-ui/commit/b77883a53a39a030e44cbfa1384ccaf1e62bb841))
+* Use strings for error messages ([388fe76](https://github.com/Maxihost/metal-ui/commit/388fe7622379f8af679e0c8ef3f66bee05f4c84c))
+
+
+### BREAKING CHANGES
+
+* Chaning a component to forward refs is a breaking
+change.
+
 ## [2.8.10](https://github.com/Maxihost/metal-ui/compare/v2.8.9...v2.8.10) (2021-07-14)
 
 
