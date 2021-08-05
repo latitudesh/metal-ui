@@ -13,6 +13,7 @@ const Input = React.forwardRef(
       className,
       variant,
       value,
+      defaultValue,
       label,
       id,
       error,
@@ -21,20 +22,14 @@ const Input = React.forwardRef(
     },
     ref
   ) => {
-    const [internalValue, setInternalValue] = useState();
-
-    useEffect(() => {
-      setInternalValue(value);
-    }, [value]);
 
     const handleChange = useCallback(
       (event) => {
-        setInternalValue(event.target.value);
         if (onChange) {
           onChange(event.target.value, event);
         }
       },
-      [setInternalValue, onChange]
+      [onChange]
     );
 
     const brandDarkStyles = tw`border-transparent text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-transparent bg-opacity-30)`;
@@ -45,7 +40,7 @@ const Input = React.forwardRef(
           <label
             tw="block text-sm leading-5 font-medium text-accent-six normal-case mb-1"
             htmlFor={id}
-            css={[variant == "brand-dark" && !disabled && tw`text-white`]}
+            css={[variant === "brand-dark" && !disabled && tw`text-white`]}
           >
             {label}
           </label>
@@ -55,11 +50,14 @@ const Input = React.forwardRef(
             id={id}
             ref={ref}
             onChange={handleChange}
-            defaultValue={internalValue}
+            // React does not pass defaultValue changes to the DOM after initial render
+            // https://reactjs.org/docs/uncontrolled-components.html#default-values
+            defaultValue={defaultValue}
             aria-label={label}
-            aria-required={label ? true : false}
-            aria-invalid={error ? true : false}
+            aria-required={!!label}
+            aria-invalid={!!error}
             disabled={disabled}
+            value={value}
             css={[
               tw`block w-full rounded p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0 font-family[inherit]`,
               inputClassName && inputClassName,
@@ -69,13 +67,13 @@ const Input = React.forwardRef(
               disabled &&
                 tw`border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five`,
               !disabled &&
-                variant == "brand" &&
+                variant === "brand" &&
                 tw`border-border text-brand-uv hocus:border-brand-uv placeholder-accent-four`,
-              !disabled && variant == "brand-dark" && brandDarkStyles,
+              !disabled && variant === "brand-dark" && brandDarkStyles,
               error &&
                 tw`text-error border-error hocus:border-error placeholder-error`,
               error &&
-                variant == "brand-dark" && [
+                variant === "brand-dark" && [
                   brandDarkStyles,
                   `background-image: url(https://maxihost-assets.s3-sa-east-1.amazonaws.com/metal-ui/error-icon.svg);background-repeat: no-repeat;background-position-x: calc(100% - 16px);
                 background-position-y: 9px;`,
@@ -94,6 +92,7 @@ Input.propTypes = {
   inputClassName: PropTypes.string,
   className: PropTypes.string,
   value: PropTypes.string,
+  defaultValue: PropTypes.string,
   label: PropTypes.string,
   id: PropTypes.string.isRequired,
   error: PropTypes.bool,
