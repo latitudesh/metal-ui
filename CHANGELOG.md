@@ -1,3 +1,15 @@
+## [3.0.2](https://github.com/Maxihost/metal-ui/compare/v3.0.1...v3.0.2) (2021-08-05)
+
+
+### Bug Fixes
+
+* Allow inputs to be controlled ([fd754d4](https://github.com/Maxihost/metal-ui/commit/fd754d4a7708855703a52de1b22dd85746dd23b9))
+* Allow textareas to be controlled ([9a98ec0](https://github.com/Maxihost/metal-ui/commit/9a98ec00e1b717e440e42cf6d7b89c242467d7c6))
+* Default value ([4633db0](https://github.com/Maxihost/metal-ui/commit/4633db0bd669877e68b71ac2a13caf9dc113b67e))
+* Dont reset fields on close ([84b66e6](https://github.com/Maxihost/metal-ui/commit/84b66e688b8bc1fe004ed7771191558c488e41eb))
+* IDE warnings ([6cf910a](https://github.com/Maxihost/metal-ui/commit/6cf910a5e5e7f5502fb21294fd97abb5440ec4a2))
+* Update built file ([52c4cc0](https://github.com/Maxihost/metal-ui/commit/52c4cc0cf59a1d87703279a4c2f12a6c86bdc6a8))
+
 ## [3.0.1](https://github.com/Maxihost/metal-ui/compare/v3.0.0...v3.0.1) (2021-08-02)
 
 
