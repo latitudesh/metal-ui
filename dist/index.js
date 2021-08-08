@@ -6356,7 +6356,6 @@ function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringif
 
 
 
-
 var Table_ref =  true ? {
   name: "jk7dkw",
   styles: "width:100%;max-width:100%"
@@ -6403,10 +6402,12 @@ var Table_ref4 =  true ? {
 
 Table.HeaderCell = ({
   children,
-  className
+  className,
+  colSpan
 }) => Object(react_["jsx"])("th", {
   css: Table_ref4,
-  className: className
+  className: className,
+  colspan: colSpan
 }, children);
 
 Table.Row = ({
@@ -6439,10 +6440,12 @@ var Table_ref5 =  true ? {
 
 Table.Cell = ({
   children,
-  className
+  className,
+  colSpan
 }) => Object(react_["jsx"])("td", {
   css: Table_ref5,
-  className: className
+  className: className,
+  colspan: colSpan
 }, children);
 
 var _ref6 =  true ? {
@@ -6474,7 +6477,8 @@ Table.propTypes = {
 };
 Table.Head.propTypes = {
   children: prop_types_default.a.node.isRequired,
-  className: prop_types_default.a.string
+  className: prop_types_default.a.string,
+  colSpan: prop_types_default.a.number
 };
 Table.Body.propTypes = {
   children: prop_types_default.a.node.isRequired,
@@ -6482,7 +6486,8 @@ Table.Body.propTypes = {
 };
 Table.HeaderCell.propTypes = {
   children: prop_types_default.a.node.isRequired,
-  className: prop_types_default.a.string
+  className: prop_types_default.a.string,
+  colSpan: prop_types_default.a.number
 };
 Table.Row.propTypes = {
   children: prop_types_default.a.node.isRequired,
@@ -6491,7 +6496,8 @@ Table.Row.propTypes = {
 };
 Table.Cell.propTypes = {
   children: prop_types_default.a.node.isRequired,
-  className: prop_types_default.a.string
+  className: prop_types_default.a.string,
+  colSpan: prop_types_default.a.number
 };
 Table.TextCell.propTypes = {
   primary: prop_types_default.a.node,
