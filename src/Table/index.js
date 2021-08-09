@@ -49,7 +49,7 @@ Table.Row = ({ children, className, onClick, isSelectable }) => (
 );
 
 Table.Cell = ({ children, className, colSpan }) => (
-  <td tw="px-6 py-4" className={className} colspan={colSpan}>
+  <td tw="px-6 py-4" className={className} colSpan={colSpan}>
     {children}
   </td>
 );
