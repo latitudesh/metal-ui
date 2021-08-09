@@ -2,6 +2,7 @@ import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import Select from ".";
 
 export const options = [
+  { value: "", name: "Choose One", disabled: true },
   { value: "option_1", name: "Option 1" },
   { value: "option_2", name: "Option 2" },
   { value: "option_3", name: "Option 3" },
@@ -11,10 +12,16 @@ export const options = [
 
 # Select
 
-Use the `options` prop to set select options
+Use the `options` prop to set select options.
+To provide a placeholder, add an option with value "" and disabled true.
 
 ```json
 [
+  {
+    "value": "",
+    "name": "Choose One",
+    "disabled": true
+  },
   {
     "value": "option_1",
     "name": "Option 1"
@@ -34,7 +41,7 @@ Use the `options` prop to set select options
 
 <Preview>
   <Story name="Default">
-    <Select id="select-default" options={options} />
+    <Select id="select-default" options={options} value={""}/>
   </Story>
 </Preview>
 

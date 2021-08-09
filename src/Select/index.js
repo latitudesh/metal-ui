@@ -80,6 +80,7 @@ const Select = React.forwardRef(
                 key={`${item.value}-${index}`}
                 value={item.value}
                 disabled={item.disabled}
+                selected={item.selected}
               >
                 {item.name}
               </option>
