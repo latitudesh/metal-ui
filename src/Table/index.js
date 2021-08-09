@@ -28,7 +28,7 @@ Table.HeaderCell = ({ children, className, colSpan }) => (
   <th
     tw="px-6 py-2 bg-white text-left text-xs leading-5 font-medium text-foreground uppercase tracking-wider"
     className={className}
-    colspan={colSpan}
+    colSpan={colSpan}
   >
     {children}
   </th>
