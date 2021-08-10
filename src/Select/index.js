@@ -16,7 +16,6 @@ const Select = React.forwardRef(
       label,
       id,
       disabled,
-      placeholder,
       error,
       variant,
       ...rest
@@ -76,9 +75,6 @@ const Select = React.forwardRef(
             ]}
             {...rest}
           >
-            <option value="" disabled>
-              {placeholder}
-            </option>
             {options.map((item, index) => (
               <option
                 key={`${item.value}-${index}`}
@@ -97,7 +93,6 @@ const Select = React.forwardRef(
 
 Select.defaultProps = {
   options: [],
-  placeholder: "Choose one",
 };
 
 Select.propTypes = {

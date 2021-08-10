@@ -8381,7 +8381,6 @@ const Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
   label,
   id,
   disabled,
-  placeholder,
   error,
   variant,
   ...rest
@@ -8479,18 +8478,14 @@ const Select = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_a
         "--tw-bg-opacity": "0.3"
       }
     },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
-  }, rest), Object(react_["jsx"])("option", {
-    value: "",
-    disabled: true
-  }, placeholder), options.map((item, index) => Object(react_["jsx"])("option", {
+  }, rest), options.map((item, index) => Object(react_["jsx"])("option", {
     key: `${item.value}-${index}`,
     value: item.value,
     disabled: item.disabled
   }, item.name)))));
 });
 Select.defaultProps = {
-  options: [],
-  placeholder: "Choose one"
+  options: []
 };
 Select.propTypes = {
   onChange: prop_types_default.a.func,
