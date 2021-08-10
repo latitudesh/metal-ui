@@ -1,3 +1,16 @@
+# [3.1.0](https://github.com/Maxihost/metal-ui/compare/v3.0.2...v3.1.0) (2021-08-10)
+
+
+### Bug Fixes
+
+* Remove selected ([639109f](https://github.com/Maxihost/metal-ui/commit/639109f4e88387b3e6e5351130f24368e070ce7a))
+
+
+### Features
+
+* Remove placeholder ([0650981](https://github.com/Maxihost/metal-ui/commit/0650981cd855505c8d46431185fb1e573d893ee4))
+* Update docs ([acdb82e](https://github.com/Maxihost/metal-ui/commit/acdb82e1c64c3e275d6042104fb505a729c7cefe))
+
 ## [3.0.2](https://github.com/Maxihost/metal-ui/compare/v3.0.1...v3.0.2) (2021-08-05)
 
 
