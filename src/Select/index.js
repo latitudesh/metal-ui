@@ -43,7 +43,7 @@ const Select = React.forwardRef(
         {label && (
           <label
             tw="block text-sm font-medium leading-5 text-accent-six normal-case mb-1"
-            css={[variant == "brand-dark" && !disabled && tw`text-white`]}
+            css={[variant === "brand-dark" && !disabled && tw`text-white`]}
             htmlFor={id}
           >
             {label}
@@ -66,10 +66,10 @@ const Select = React.forwardRef(
                 tw`text-error border-error hocus:border-error placeholder-error`,
               disabled &&
                 tw`border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five`,
-              variant == "brand" &&
+              variant === "brand" &&
                 !disabled &&
                 tw`border-border text-brand-uv hocus:border-brand-uv placeholder-accent-four`,
-              variant == "brand-dark" &&
+              variant === "brand-dark" &&
                 !disabled &&
                 tw`border-transparent text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-transparent bg-opacity-30)`,
             ]}
