@@ -34,12 +34,20 @@ Metal exports the following components for tables:
       </Table.Head>
       <Table.Body>
         <Table.Row>
-          <Table.Cell>10.54.157.26</Table.Cell>
-          <Table.Cell>Private IPMI</Table.Cell>
+          <Table.Cell>
+            <Table.TextCell primary="10.54.157.26" />
+          </Table.Cell>
+          <Table.Cell>
+            <Table.TextCell primary="Private IPMI" />
+          </Table.Cell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell>192.168.0.2</Table.Cell>
-          <Table.Cell>Public IPv4</Table.Cell>
+          <Table.Cell>
+            <Table.TextCell primary="192.168.0.2" />
+          </Table.Cell>
+          <Table.Cell>
+            <Table.TextCell primary="Public IPv4" />
+          </Table.Cell>
         </Table.Row>
       </Table.Body>
     </Table>
@@ -59,12 +67,20 @@ Metal exports the following components for tables:
       </Table.Head>
       <Table.Body>
         <Table.Row onClick={() => alert("Clicked")}>
-          <Table.Cell>10.54.157.26</Table.Cell>
-          <Table.Cell>Private IPMI</Table.Cell>
+          <Table.Cell>
+            <Table.TextCell primary="10.54.157.26" />
+          </Table.Cell>
+          <Table.Cell>
+            <Table.TextCell primary="Private IPMI" />
+          </Table.Cell>
         </Table.Row>
         <Table.Row onClick={() => alert("Clicked")}>
-          <Table.Cell>192.168.0.2</Table.Cell>
-          <Table.Cell>Public IPv4</Table.Cell>
+          <Table.Cell>
+            <Table.TextCell primary="192.168.0.2" />
+          </Table.Cell>
+          <Table.Cell>
+            <Table.TextCell primary="Public IPv4" />
+          </Table.Cell>
         </Table.Row>
       </Table.Body>
     </Table>
@@ -89,13 +105,17 @@ Use `Table.TextCell` to add multi-line content to a table.
           <Table.Cell>
             <Table.TextCell primary="10.54.157.26" secondary="Private IPMI" />
           </Table.Cell>
-          <Table.Cell>master-db-prod.maxihost.com</Table.Cell>
+          <Table.Cell>
+            <Table.TextCell secondary="master-db-prod.maxihost.com" />
+          </Table.Cell>
         </Table.Row>
         <Table.Row>
           <Table.Cell>
             <Table.TextCell primary="192.168.0.2" secondary="Public IPv4" />
           </Table.Cell>
-          <Table.Cell>slave-db-prod.maxihost.com</Table.Cell>
+          <Table.Cell>
+            <Table.TextCell secondary="slave-db-prod.maxihost.com" />
+          </Table.Cell>
         </Table.Row>
       </Table.Body>
     </Table>
