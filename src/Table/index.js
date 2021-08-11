@@ -91,7 +91,6 @@ Table.propTypes = {
 Table.Head.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  colSpan: PropTypes.number,
 };
 
 Table.Body.propTypes = {
@@ -102,7 +101,6 @@ Table.Body.propTypes = {
 Table.HeaderCell.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  colSpan: PropTypes.number,
 };
 
 Table.Row.propTypes = {
@@ -114,7 +112,6 @@ Table.Row.propTypes = {
 Table.Cell.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  colSpan: PropTypes.number,
 };
 
 Table.TextCell.propTypes = {
