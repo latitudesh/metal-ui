@@ -6345,12 +6345,13 @@ _defineProperty(Text_Text, "defaultProps", {
 
 /* harmony default export */ var Typography_Text = (Text_Text);
 // CONCATENATED MODULE: ./src/Table/index.js
+function Table_extends() { Table_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Table_extends.apply(this, arguments); }
+
 function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
 /** @jsxRuntime classic */
 
 /** @jsx jsx */
-
 
 
 
@@ -6364,11 +6365,10 @@ var Table_ref =  true ? {
 
 const Table = ({
   children,
-  className
-}) => Object(react_["jsx"])("table", {
-  css: Table_ref,
-  className: className
-}, children);
+  ...props
+}) => Object(react_["jsx"])("table", Table_extends({
+  css: Table_ref
+}, props), children);
 
 var Table_ref2 =  true ? {
   name: "s6prfl",
@@ -6377,11 +6377,10 @@ var Table_ref2 =  true ? {
 
 Table.Head = ({
   children,
-  className
-}) => Object(react_["jsx"])("thead", {
-  css: Table_ref2,
-  className: className
-}, children);
+  ...props
+}) => Object(react_["jsx"])("thead", Table_extends({
+  css: Table_ref2
+}, props), children);
 
 var Table_ref3 =  true ? {
   name: "14tkg57",
@@ -6390,11 +6389,10 @@ var Table_ref3 =  true ? {
 
 Table.Body = ({
   children,
-  className
-}) => Object(react_["jsx"])("tbody", {
-  css: Table_ref3,
-  className: className
-}, children);
+  ...props
+}) => Object(react_["jsx"])("tbody", Table_extends({
+  css: Table_ref3
+}, props), children);
 
 var Table_ref4 =  true ? {
   name: "1sn1294",
@@ -6403,18 +6401,17 @@ var Table_ref4 =  true ? {
 
 Table.HeaderCell = ({
   children,
-  className
-}) => Object(react_["jsx"])("th", {
-  css: Table_ref4,
-  className: className
-}, children);
+  ...props
+}) => Object(react_["jsx"])("th", Table_extends({
+  css: Table_ref4
+}, props), children);
 
 Table.Row = ({
   children,
-  className,
   onClick,
-  isSelectable
-}) => Object(react_["jsx"])("tr", {
+  isSelectable,
+  ...props
+}) => Object(react_["jsx"])("tr", Table_extends({
   onClick: onClick,
   css: [onClick || isSelectable ? {
     ":hover": {
@@ -6428,9 +6425,8 @@ Table.Row = ({
       "backgroundColor": "rgba(249, 250, 251, var(--tw-bg-opacity))"
     },
     "cursor": "pointer"
-  } : null,  true ? "" : undefined,  true ? "" : undefined],
-  className: className
-}, children);
+  } : null,  true ? "" : undefined,  true ? "" : undefined]
+}, props), children);
 
 var Table_ref5 =  true ? {
   name: "16hw2j3",
@@ -6439,11 +6435,12 @@ var Table_ref5 =  true ? {
 
 Table.Cell = ({
   children,
-  className
-}) => Object(react_["jsx"])("td", {
+  className,
+  ...props
+}) => Object(react_["jsx"])("td", Table_extends({
   css: Table_ref5,
   className: className
-}, children);
+}, props), children);
 
 var _ref6 =  true ? {
   name: "hdknak",

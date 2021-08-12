@@ -3,38 +3,37 @@
 import { jsx } from "@emotion/react";
 import React from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
 import Text from "../Typography/Text";
 import tw from "twin.macro";
 
-const Table = ({ children, className }) => (
-  <table tw="w-full max-w-full" className={className}>
+const Table = ({ children, ...props }) => (
+  <table tw="w-full max-w-full" {...props}>
     {children}
   </table>
 );
 
-Table.Head = ({ children, className }) => (
-  <thead tw="border-b border-border rounded" className={className}>
+Table.Head = ({ children, ...props }) => (
+  <thead tw="border-b border-border rounded" {...props}>
     {children}
   </thead>
 );
 
-Table.Body = ({ children, className }) => (
-  <tbody tw="bg-white" className={className}>
+Table.Body = ({ children, ...props }) => (
+  <tbody tw="bg-white" {...props}>
     {children}
   </tbody>
 );
 
-Table.HeaderCell = ({ children, className }) => (
+Table.HeaderCell = ({ children, ...props }) => (
   <th
     tw="px-6 py-2 bg-white text-left text-xs leading-5 font-medium text-foreground uppercase tracking-wider"
-    className={className}
+    {...props}
   >
     {children}
   </th>
 );
 
-Table.Row = ({ children, className, onClick, isSelectable }) => (
+Table.Row = ({ children, onClick, isSelectable, ...props }) => (
   <tr
     onClick={onClick}
     css={[
@@ -42,14 +41,14 @@ Table.Row = ({ children, className, onClick, isSelectable }) => (
         ? tw`hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer`
         : null,
     ]}
-    className={className}
+    {...props}
   >
     {children}
   </tr>
 );
 
-Table.Cell = ({ children, className }) => (
-  <td tw="px-6 py-4" className={className}>
+Table.Cell = ({ children, className, ...props }) => (
+  <td tw="px-6 py-4" className={className} {...props}>
     {children}
   </td>
 );
