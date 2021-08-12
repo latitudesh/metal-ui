@@ -6471,8 +6471,7 @@ Table.propTypes = {
 };
 Table.Head.propTypes = {
   children: prop_types_default.a.node.isRequired,
-  className: prop_types_default.a.string,
-  colSpan: prop_types_default.a.number
+  className: prop_types_default.a.string
 };
 Table.Body.propTypes = {
   children: prop_types_default.a.node.isRequired,
@@ -6480,8 +6479,7 @@ Table.Body.propTypes = {
 };
 Table.HeaderCell.propTypes = {
   children: prop_types_default.a.node.isRequired,
-  className: prop_types_default.a.string,
-  colSpan: prop_types_default.a.number
+  className: prop_types_default.a.string
 };
 Table.Row.propTypes = {
   children: prop_types_default.a.node.isRequired,
@@ -6490,8 +6488,7 @@ Table.Row.propTypes = {
 };
 Table.Cell.propTypes = {
   children: prop_types_default.a.node.isRequired,
-  className: prop_types_default.a.string,
-  colSpan: prop_types_default.a.number
+  className: prop_types_default.a.string
 };
 Table.TextCell.propTypes = {
   primary: prop_types_default.a.node,
