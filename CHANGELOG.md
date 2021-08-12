@@ -1,3 +1,15 @@
+# [3.2.0](https://github.com/Maxihost/metal-ui/compare/v3.1.0...v3.2.0) (2021-08-12)
+
+
+### Bug Fixes
+
+* Pass props down to the elements instead of manually adding each. ([be9b084](https://github.com/Maxihost/metal-ui/commit/be9b0848d38229c6a3cf2f501d1b60ce2c839d5d))
+
+
+### Features
+
+* Adds `colspan` support to `th` and `td` elements ([240b485](https://github.com/Maxihost/metal-ui/commit/240b485eed974dfcfcfd24bcdec0a596fa79d5ba))
+
 # [3.1.0](https://github.com/Maxihost/metal-ui/compare/v3.0.2...v3.1.0) (2021-08-10)
 
 
