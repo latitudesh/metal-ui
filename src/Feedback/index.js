@@ -84,6 +84,7 @@ const Feedback = ({
   enableFeedbackText = true,
   enableEmoji = true,
   openTop = false,
+  side = "bottom",
   emailProps,
   feedbackTextProps,
   submitButtonProps,
@@ -241,7 +242,7 @@ const Feedback = ({
       ]}
       {...props}
     >
-      {!openTop && (children
+      {side === "bottom" && (children
         ? children({ open, setOpen, ref: triggerRef })
         : <FeedbackButton open={open} setOpen={setOpen} ref={triggerRef} />)}
       <form
@@ -382,7 +383,7 @@ const Feedback = ({
           </div>
         )}
       </form>
-      {openTop && (children
+      {side === "top" && (children
         ? children({ open, setOpen, ref: triggerRef })
         : <FeedbackButton open={open} setOpen={setOpen} ref={triggerRef} />)}
     </div>
@@ -394,10 +395,6 @@ Feedback.propTypes = {
    Show text area to collect feedback text
    */
   enableFeedbackText: PropTypes.bool,
-  /**
-   Show feedback top side of trigger button
-   */
-  openTop: PropTypes.bool,
   /**
    Show emoji selection buttons
    */
@@ -426,6 +423,10 @@ Feedback.propTypes = {
    Props to pass on to the submit button
    */
   submitButtonProps: PropTypes.any,
+  /**
+ The preferred side of the anchor to render against when open.
+ */
+  side: PropTypes.oneOf(['top', 'bottom']),
 };
 
 export default Feedback
