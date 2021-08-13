@@ -395,6 +395,10 @@ Feedback.propTypes = {
    */
   enableFeedbackText: PropTypes.bool,
   /**
+   Show feedback top side of trigger button
+   */
+  openTop: PropTypes.bool,
+  /**
    Show emoji selection buttons
    */
   enableEmoji: PropTypes.bool,
