@@ -20852,6 +20852,7 @@ const Feedback = ({
   email,
   enableFeedbackText = true,
   enableEmoji = true,
+  openTop = false,
   emailProps,
   feedbackTextProps,
   submitButtonProps,
@@ -20870,6 +20871,7 @@ const Feedback = ({
   const emojiState = useRadioGroupState(props);
   const containerRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
   const emailRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
+  const textAreaFeedbackRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
   const triggerRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
   const [focusedElement, setFocusedElement] = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null);
   const combinedEmailProps = {
@@ -20900,11 +20902,17 @@ const Feedback = ({
         // Preserve focus an subsequent uses
         focusedElement === null || focusedElement === void 0 ? void 0 : focusedElement.focus();
       } else {
-        var _emailRef$current;
-
         // Focus on email on first use
         // We need this because we aren't using the autoFocus attribute
-        (_emailRef$current = emailRef.current) === null || _emailRef$current === void 0 ? void 0 : _emailRef$current.focus();
+        if (enableEmail) {
+          var _emailRef$current;
+
+          (_emailRef$current = emailRef.current) === null || _emailRef$current === void 0 ? void 0 : _emailRef$current.focus();
+        } else {
+          var _textAreaFeedbackRef$;
+
+          (_textAreaFeedbackRef$ = textAreaFeedbackRef.current) === null || _textAreaFeedbackRef$ === void 0 ? void 0 : _textAreaFeedbackRef$.focus();
+        }
       }
     } else {
       var _triggerRef$current;
@@ -20987,8 +20995,16 @@ const Feedback = ({
     css: ["padding:0px;width:6rem;position:relative;display:inline-block;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;:focus{outline:2px solid transparent;outline-offset:2px;}:active{outline:2px solid transparent;outline-offset:2px;}", errorMessage && {
       "color": "transparent"
     },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
-  }, props), Object(react_["jsx"])("form", {
-    css: ["appearance:none;border-width:0px;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity));display:flex;line-height:1.25rem;font-size:0.875rem;border-radius:5px;resize:none;z-index:50;--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));flex-direction:column;justify-content:flex-start;position:relative;transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;:hover{--tw-border-opacity:1;border-color:rgba(0, 0, 0, var(--tw-border-opacity));}:focus{--tw-border-opacity:1;border-color:rgba(0, 0, 0, var(--tw-border-opacity));}:active{--tw-border-opacity:1;border-color:rgba(0, 0, 0, var(--tw-border-opacity));}", open && {
+  }, props), !openTop && (children ? children({
+    open,
+    setOpen,
+    ref: triggerRef
+  }) : Object(react_["jsx"])(Feedback_FeedbackButton, {
+    open: open,
+    setOpen: setOpen,
+    ref: triggerRef
+  })), Object(react_["jsx"])("form", {
+    css: ["appearance:none;border-width:0px;display:flex;line-height:1.25rem;font-size:0.875rem;border-radius:5px;resize:none;z-index:50;--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));flex-direction:column;justify-content:flex-start;position:relative;transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;:hover{--tw-border-opacity:1;border-color:rgba(0, 0, 0, var(--tw-border-opacity));}:focus{--tw-border-opacity:1;border-color:rgba(0, 0, 0, var(--tw-border-opacity));}:active{--tw-border-opacity:1;border-color:rgba(0, 0, 0, var(--tw-border-opacity));}", open && {
       "height": "auto",
       "borderStyle": "none",
       "--tw-border-opacity": "1",
@@ -21005,15 +21021,7 @@ const Feedback = ({
       width: '22rem'
     },
     onSubmit: onSubmit
-  }, children ? children({
-    open,
-    setOpen,
-    ref: triggerRef
-  }) : Object(react_["jsx"])(Feedback_FeedbackButton, {
-    open: open,
-    setOpen: setOpen,
-    ref: triggerRef
-  }), !errorMessage && !success && Object(react_["jsx"])("div", {
+  }, !errorMessage && !success && Object(react_["jsx"])("div", {
     css: ["padding:1rem;transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:75ms;position:relative;opacity:1;", !open && {
       "display": "none",
       "opacity": "0"
@@ -21033,6 +21041,7 @@ const Feedback = ({
   }, combinedEmailProps))), enableFeedbackText && Object(react_["jsx"])("div", {
     className: "input"
   }, Object(react_["jsx"])(src_Textarea, Feedback_extends({
+    ref: textAreaFeedbackRef,
     id: "feedback-text",
     value: feedbackText,
     onChange: e => setFeedbackText(e),
@@ -21097,7 +21106,15 @@ const Feedback = ({
     onFocus: e => setFocusedElement(e.target),
     "data-testid": "submit-button",
     type: "submit"
-  }, combinedSubmitButtonProps))))));
+  }, combinedSubmitButtonProps))))), openTop && (children ? children({
+    open,
+    setOpen,
+    ref: triggerRef
+  }) : Object(react_["jsx"])(Feedback_FeedbackButton, {
+    open: open,
+    setOpen: setOpen,
+    ref: triggerRef
+  })));
 };
 
 Feedback.propTypes = {

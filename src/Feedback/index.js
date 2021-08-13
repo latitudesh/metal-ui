@@ -83,6 +83,7 @@ const Feedback = ({
   email,
   enableFeedbackText = true,
   enableEmoji = true,
+  openTop = false,
   emailProps,
   feedbackTextProps,
   submitButtonProps,
@@ -101,6 +102,7 @@ const Feedback = ({
   const emojiState = useRadioGroupState(props);
   const containerRef = useRef();
   const emailRef = useRef();
+  const textAreaFeedbackRef = useRef();
   const triggerRef = useRef();
   const [focusedElement, setFocusedElement] = useState(null);
 
@@ -137,7 +139,11 @@ const Feedback = ({
       } else {
         // Focus on email on first use
         // We need this because we aren't using the autoFocus attribute
-        emailRef.current?.focus();
+        if (enableEmail) {
+          emailRef.current?.focus();
+        } else {
+          textAreaFeedbackRef.current?.focus();
+        }
       }
     } else {
       triggerRef.current?.focus();
@@ -235,20 +241,20 @@ const Feedback = ({
       ]}
       {...props}
     >
+      {!openTop && (children
+        ? children({ open, setOpen, ref: triggerRef })
+        : <FeedbackButton open={open} setOpen={setOpen} ref={triggerRef} />)}
       <form
         css={[
-          tw`appearance-none border-0 bg-white flex leading-6 text-sm rounded`,
+          tw`appearance-none border-0 flex leading-6 text-sm rounded`,
           tw`resize-none z-50 text-foreground flex-col justify-start relative transition-all ease-in-out`,
           tw`hover:border-foreground focus:border-foreground active:border-foreground`,
           open &&
-            tw`h-auto border-none border-white shadow-lg bg-white transition-all ease-in-out`,
+          tw`h-auto border-none border-white shadow-lg bg-white transition-all ease-in-out`,
         ]}
-        style={{ width: '22rem'}}
+        style={{ width: '22rem' }}
         onSubmit={onSubmit}
       >
-        {children
-            ? children({ open, setOpen, ref: triggerRef })
-            : <FeedbackButton open={open} setOpen={setOpen} ref={triggerRef}/>}
         {!errorMessage && !success && (
           <div
             css={[
@@ -276,6 +282,7 @@ const Feedback = ({
             {enableFeedbackText && (
               <div className={"input"}>
                 <Textarea
+                  ref={textAreaFeedbackRef}
                   id="feedback-text"
                   value={feedbackText}
                   onChange={(e) => setFeedbackText(e)}
@@ -375,6 +382,9 @@ const Feedback = ({
           </div>
         )}
       </form>
+      {openTop && (children
+        ? children({ open, setOpen, ref: triggerRef })
+        : <FeedbackButton open={open} setOpen={setOpen} ref={triggerRef} />)}
     </div>
   );
 };
