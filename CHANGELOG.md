@@ -1,3 +1,10 @@
+## [3.3.1](https://github.com/Maxihost/metal-ui/compare/v3.3.0...v3.3.1) (2021-08-13)
+
+
+### Bug Fixes
+
+* add build ([989aaa7](https://github.com/Maxihost/metal-ui/commit/989aaa76c1f727266746f96ea7f950924123682d))
+
 # [3.3.0](https://github.com/Maxihost/metal-ui/compare/v3.2.0...v3.3.0) (2021-08-13)
 
 
