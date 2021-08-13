@@ -13,10 +13,10 @@ import Text from "../Typography/Text";
 
 import useClickAway from "react-use/lib/useClickAway";
 
-import f929 from "./svgs/f929.svg";
-import f600 from "./svgs/f600.svg";
-import f615 from "./svgs/f615.svg";
-import f62d from "./svgs/f62d.svg";
+import f929 from "./svgs/f929.js";
+import f600 from "./svgs/f600.js";
+import f615 from "./svgs/f615.js";
+import f62d from "./svgs/f62d.js";
 import { useRadioGroupState } from "@react-stately/radio";
 import { useRadio, useRadioGroup } from "@react-aria/radio";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
@@ -348,6 +348,7 @@ const Feedback = ({
                   emojiState={emojiState}
                 >
                   {EMOJIS.map((emoji) => {
+                    const SvgComponent = emoji.svg
                     return (
                       <EmojiRadio
                         key={emoji.char}
@@ -355,7 +356,7 @@ const Feedback = ({
                         label={emoji.label}
                         onFocus={(e) => setFocusedElement(e.target)}
                       >
-                        <Emoji svg={emoji.svg} label={emoji.label} />
+                        <SvgComponent css={[tw`w-5 h-5`]} />
                       </EmojiRadio>
                     );
                   })}
@@ -412,9 +413,5 @@ Feedback.propTypes = {
    */
   submitButtonProps: PropTypes.any,
 };
-
-const Emoji = React.memo(({ svg, label }) => (
-  <img decoding="async" width={20} height={20} src={svg} alt={label} />
-));
 
 export default Feedback
