@@ -7,7 +7,7 @@
 		exports["metal-ui"] = factory(require("react"), require("@emotion/react"), require("react-dom"));
 	else
 		root["metal-ui"] = factory(root["React"], root["@emotion/react"], root["ReactDOM"]);
-})((typeof window !== 'undefined' ? window : this), function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__2__, __WEBPACK_EXTERNAL_MODULE__4__) {
+})((typeof window !== 'undefined' ? window : this), function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__4__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -102,6 +102,12 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -117,12 +123,6 @@ if (false) { var throwOnDirectAccess, ReactIs; } else {
   module.exports = __webpack_require__(25)();
 }
 
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
 
 /***/ }),
 /* 3 */
@@ -6283,14 +6283,14 @@ __webpack_require__.d(__webpack_exports__, "TabsTab", function() { return /* ree
 __webpack_require__.d(__webpack_exports__, "TabsPanel", function() { return /* reexport */ Tabs_TabsPanel; });
 
 // EXTERNAL MODULE: external {"root":"@emotion/react","commonjs2":"@emotion/react","commonjs":"@emotion/react","amd":"@emotion/react"}
-var react_ = __webpack_require__(2);
+var react_ = __webpack_require__(1);
 
 // EXTERNAL MODULE: external {"root":"React","commonjs2":"react","commonjs":"react","amd":"react"}
 var external_root_React_commonjs2_react_commonjs_react_amd_react_ = __webpack_require__(0);
 var external_root_React_commonjs2_react_commonjs_react_amd_react_default = /*#__PURE__*/__webpack_require__.n(external_root_React_commonjs2_react_commonjs_react_amd_react_);
 
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(1);
+var prop_types = __webpack_require__(2);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
@@ -13398,123 +13398,121 @@ DropdownContent.defaultProps = {
 var useClickAway = __webpack_require__(23);
 var useClickAway_default = /*#__PURE__*/__webpack_require__.n(useClickAway);
 
-// CONCATENATED MODULE: ./src/Feedback/svgs/f929.svg
-var _path, _path2, _path3, _path4;
-
+// CONCATENATED MODULE: ./src/Feedback/svgs/f929.js
 function f929_extends() { f929_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return f929_extends.apply(this, arguments); }
 
 
 
-function SvgF929(props) {
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("svg", f929_extends({
+
+function f929_SvgComponent(props) {
+  return Object(react_["jsx"])("svg", f929_extends({
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 36 36"
-  }, props), _path || (_path = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("path", {
+  }, props), Object(react_["jsx"])("path", {
     fill: "#FFCC4D",
     d: "M36 18c0 9.941-8.059 18-18 18S0 27.941 0 18 8.059 0 18 0s18 8.059 18 18"
-  })), _path2 || (_path2 = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("path", {
+  }), Object(react_["jsx"])("path", {
     fill: "#664500",
     d: "M18 21c-3.623 0-6.027-.422-9-1-.679-.131-2 0-2 2 0 4 4.595 9 11 9 6.404 0 11-5 11-9 0-2-1.321-2.132-2-2-2.973.578-5.377 1-9 1z"
-  })), _path3 || (_path3 = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("path", {
+  }), Object(react_["jsx"])("path", {
     fill: "#FFF",
     d: "M9 22s3 1 9 1 9-1 9-1-2 4-9 4-9-4-9-4z"
-  })), _path4 || (_path4 = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("path", {
+  }), Object(react_["jsx"])("path", {
     fill: "#E95F28",
     d: "M15.682 4.413l-4.542.801L8.8.961a1.252 1.252 0 00-2.331.411l-.745 4.797-4.542.801a1.25 1.25 0 00-.318 2.361l4.07 1.932-.748 4.812a1.253 1.253 0 001.235 1.442c.327 0 .65-.128.891-.372l3.512-3.561 4.518 2.145a1.25 1.25 0 001.631-1.731L13.625 9.73l3.165-3.208a1.252 1.252 0 00-1.108-2.109zm4.636 0l4.542.801L27.2.961a1.251 1.251 0 012.33.411l.745 4.797 4.542.801c.536.094.949.524 1.021 1.063s-.211 1.063-.703 1.297l-4.07 1.932.748 4.812a1.253 1.253 0 01-1.235 1.442c-.327 0-.65-.128-.891-.372l-3.512-3.561-4.518 2.145a1.25 1.25 0 01-1.631-1.731l2.348-4.267-3.165-3.208a1.252 1.252 0 01-.217-1.459 1.259 1.259 0 011.326-.65z"
-  })));
+  }));
 }
 
-/* harmony default export */ var f929 = (SvgF929);
-// CONCATENATED MODULE: ./src/Feedback/svgs/f600.svg
-var _g;
-
+/* harmony default export */ var f929 = (f929_SvgComponent);
+// CONCATENATED MODULE: ./src/Feedback/svgs/f600.js
 function f600_extends() { f600_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return f600_extends.apply(this, arguments); }
 
 
 
-function SvgF600(props) {
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("svg", f600_extends({
+
+function f600_SvgComponent(props) {
+  return Object(react_["jsx"])("svg", f600_extends({
+    viewBox: "0 0 43 43",
     width: 43,
     height: 43,
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _g || (_g = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("g", {
+  }, props), Object(react_["jsx"])("g", {
     fill: "none"
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("path", {
+  }, Object(react_["jsx"])("path", {
     d: "M43 21.75C43 33.486 33.486 43 21.75 43S.5 33.486.5 21.75 10.014.5 21.75.5 43 10.014 43 21.75",
     fill: "#FFCC4D"
-  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("path", {
+  }), Object(react_["jsx"])("path", {
     d: "M21.75 25.5c-4.529 0-7.534-.527-11.25-1.25-.849-.164-2.5 0-2.5 2.5C8 31.75 13.744 38 21.75 38c8.005 0 13.75-6.25 13.75-11.25 0-2.5-1.651-2.665-2.5-2.5-3.716.723-6.721 1.25-11.25 1.25m-10-10s0-2.5 2.5-2.5 2.5 2.5 2.5 2.5V18s0 2.5-2.5 2.5-2.5-2.5-2.5-2.5v-2.5zm15 0s0-2.5 2.5-2.5 2.5 2.5 2.5 2.5V18s0 2.5-2.5 2.5-2.5-2.5-2.5-2.5v-2.5z",
     fill: "#664500"
-  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("path", {
+  }), Object(react_["jsx"])("path", {
     d: "M10.5 26.75S14.25 28 21.75 28 33 26.75 33 26.75s-2.5 5-11.25 5-11.25-5-11.25-5",
     fill: "#FFF"
-  }))));
+  })));
 }
 
-/* harmony default export */ var f600 = (SvgF600);
-// CONCATENATED MODULE: ./src/Feedback/svgs/f615.svg
-var f615_g;
-
+/* harmony default export */ var f600 = (f600_SvgComponent);
+// CONCATENATED MODULE: ./src/Feedback/svgs/f615.js
 function f615_extends() { f615_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return f615_extends.apply(this, arguments); }
 
 
 
-function SvgF615(props) {
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("svg", f615_extends({
+
+function f615_SvgComponent(props) {
+  return Object(react_["jsx"])("svg", f615_extends({
+    viewBox: "0 0 48 48",
     width: 48,
     height: 48,
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), f615_g || (f615_g = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("g", {
+  }, props), Object(react_["jsx"])("g", {
     fill: "none"
-  }, /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("path", {
+  }, Object(react_["jsx"])("path", {
     d: "M47.5 24.25C47.5 37.367 36.867 48 23.75 48 10.634 48 0 37.367 0 24.25 0 11.134 10.634.5 23.75.5 36.867.5 47.5 11.134 47.5 24.25",
     fill: "#FFCC4D"
-  }), /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("path", {
+  }), Object(react_["jsx"])("path", {
     d: "M18.162 22.154c0 2.702-1.564 4.89-3.493 4.89-1.93 0-3.493-2.188-3.493-4.89 0-2.7 1.564-4.89 3.493-4.89 1.93 0 3.493 2.19 3.493 4.89m18.162 0c0 2.702-1.564 4.89-3.493 4.89-1.93 0-3.493-2.188-3.493-4.89 0-2.7 1.564-4.89 3.493-4.89 1.93 0 3.493 2.19 3.493 4.89M15.368 38.22c2.794-6.985 18.161-6.985 18.161-4.19 0 1.396-11.176-1.398-18.161 4.19",
     fill: "#664500"
-  }))));
+  })));
 }
 
-/* harmony default export */ var f615 = (SvgF615);
-// CONCATENATED MODULE: ./src/Feedback/svgs/f62d.svg
-var f62d_path, f62d_path2, f62d_path3, f62d_path4, _ellipse, _ellipse2;
-
+/* harmony default export */ var f615 = (f615_SvgComponent);
+// CONCATENATED MODULE: ./src/Feedback/svgs/f62d.js
 function f62d_extends() { f62d_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return f62d_extends.apply(this, arguments); }
 
 
 
-function SvgF62D(props) {
-  return /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("svg", f62d_extends({
+
+function f62d_SvgComponent(props) {
+  return Object(react_["jsx"])("svg", f62d_extends({
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 36 36"
-  }, props), f62d_path || (f62d_path = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("path", {
+  }, props), Object(react_["jsx"])("path", {
     fill: "#FFCC4D",
     d: "M36 18c0 9.941-8.059 18-18 18S0 27.941 0 18 8.059 0 18 0s18 8.059 18 18"
-  })), f62d_path2 || (f62d_path2 = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("path", {
+  }), Object(react_["jsx"])("path", {
     fill: "#664500",
     d: "M22 27c0 2.763-1.791 3-4 3-2.21 0-4-.237-4-3 0-2.761 1.79-6 4-6 2.209 0 4 3.239 4 6zm8-12a.987.987 0 01-.371-.072c-5.229-2.091-7.372-5.241-7.461-5.374a1 1 0 011.662-1.113c.019.027 1.93 2.785 6.541 4.629A1 1 0 0130 15zM6 15a1.001 1.001 0 01-.372-1.929c4.612-1.844 6.523-4.602 6.542-4.629a1.002 1.002 0 011.387-.27.998.998 0 01.275 1.383c-.089.133-2.232 3.283-7.46 5.374A1.015 1.015 0 016 15z"
-  })), f62d_path3 || (f62d_path3 = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("path", {
+  }), Object(react_["jsx"])("path", {
     fill: "#5DADEC",
     d: "M24 16h4v19l-4-.046V16zM8 35l4-.046V16H8v19z"
-  })), f62d_path4 || (f62d_path4 = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("path", {
+  }), Object(react_["jsx"])("path", {
     fill: "#664500",
     d: "M14.999 18c-.15 0-.303-.034-.446-.105-3.512-1.756-7.07-.018-7.105 0a1 1 0 11-.895-1.789c.182-.09 4.498-2.197 8.895 0A1 1 0 0114.999 18zm14 0c-.15 0-.303-.034-.446-.105-3.513-1.756-7.07-.018-7.105 0a1 1 0 11-.895-1.789c.182-.09 4.501-2.196 8.895 0A1 1 0 0128.999 18z"
-  })), _ellipse || (_ellipse = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("ellipse", {
+  }), Object(react_["jsx"])("ellipse", {
     fill: "#5DADEC",
     cx: 18,
     cy: 34,
     rx: 18,
     ry: 2
-  })), _ellipse2 || (_ellipse2 = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"]("ellipse", {
+  }), Object(react_["jsx"])("ellipse", {
     fill: "#E75A70",
     cx: 18,
     cy: 27,
     rx: 3,
     ry: 2
-  })));
+  }));
 }
 
-/* harmony default export */ var f62d = (SvgF62D);
+/* harmony default export */ var f62d = (f62d_SvgComponent);
 // CONCATENATED MODULE: ./node_modules/@react-stately/utils/dist/module.js
 
 function useControlledState(value, defaultValue, onChange) {
@@ -20843,6 +20841,11 @@ var Feedback_ref5 =  true ? {
 } : undefined;
 
 var Feedback_ref6 =  true ? {
+  name: "1h7ldow",
+  styles: "width:1.25rem;height:1.25rem"
+} : undefined;
+
+var _ref7 =  true ? {
   name: "1oci3pe",
   styles: "transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:200ms;margin-left:auto"
 } : undefined;
@@ -21081,17 +21084,17 @@ const Feedback = ({
     label: "Select an emoji",
     emojiState: emojiState
   }, EMOJIS.map(emoji => {
+    const SvgComponent = emoji.svg;
     return Object(react_["jsx"])(EmojiRadio, {
       key: emoji.char,
       value: emoji.char,
       label: emoji.label,
       onFocus: e => setFocusedElement(e.target)
-    }, Object(react_["jsx"])(Emoji, {
-      svg: emoji.svg,
-      label: emoji.label
+    }, Object(react_["jsx"])(SvgComponent, {
+      css: Feedback_ref6
     }));
   }))), Object(react_["jsx"])("span", {
-    css: Feedback_ref6
+    css: _ref7
   }, Object(react_["jsx"])(src_Button, Feedback_extends({
     disabled: loading,
     onFocus: e => setFocusedElement(e.target),
@@ -21141,16 +21144,6 @@ Feedback.propTypes = {
    */
   submitButtonProps: prop_types_default.a.any
 };
-const Emoji = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.memo(({
-  svg,
-  label
-}) => Object(react_["jsx"])("img", {
-  decoding: "async",
-  width: 20,
-  height: 20,
-  src: svg,
-  alt: label
-}));
 /* harmony default export */ var src_Feedback = (Feedback);
 // CONCATENATED MODULE: ./src/Typography/UnorderedList.js
 function UnorderedList_extends() { UnorderedList_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return UnorderedList_extends.apply(this, arguments); }
