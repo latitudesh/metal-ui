@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/Maxihost/metal-ui/compare/v3.2.0...v3.3.0) (2021-08-13)
+
+
+### Features
+
+* Convert svgs to react components ([ffff9fb](https://github.com/Maxihost/metal-ui/commit/ffff9fb8c8e2086313f78552539e11560c912704))
+
 # [3.2.0](https://github.com/Maxihost/metal-ui/compare/v3.1.0...v3.2.0) (2021-08-12)
 
 
