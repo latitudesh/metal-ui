@@ -11,8 +11,6 @@ import Input from "../Input";
 import Textarea from "../Textarea";
 import Text from "../Typography/Text";
 
-import useClickAway from "react-use/lib/useClickAway";
-
 import f929 from "./svgs/f929.js";
 import f600 from "./svgs/f600.js";
 import f615 from "./svgs/f615.js";
@@ -22,6 +20,7 @@ import { useRadio, useRadioGroup } from "@react-aria/radio";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { useFocusRing } from "@react-aria/focus";
 import FeedbackButton from "./FeedbackButton";
+import * as PopoverPrimitive from '@radix-ui/react-popover';
 
 const EMOJIS = [
   { code: "f929", char: "🤩", svg: f929, label: "very-happy" },
@@ -83,8 +82,9 @@ const Feedback = ({
   email,
   enableFeedbackText = true,
   enableEmoji = true,
-  openTop = false,
   side = "bottom",
+  sideOffset = 5,
+  align = "start",
   emailProps,
   feedbackTextProps,
   submitButtonProps,
@@ -101,7 +101,6 @@ const Feedback = ({
   const [emailValue, setEmailValue] = useState(emailInitialValue);
   const [feedbackText, setFeedbackText] = useState("");
   const emojiState = useRadioGroupState(props);
-  const containerRef = useRef();
   const emailRef = useRef();
   const textAreaFeedbackRef = useRef();
   const triggerRef = useRef();
@@ -230,11 +229,23 @@ const Feedback = ({
     };
   }, [onKeyDown]);
 
+  const handleTriggerButton = (openTrigger) => {
+    //if user have errorMessage or a success and are closing the popover on buttonTrigger clear error and success
+    if ((errorMessage || success) && !openTrigger) {
+      onErrorDismiss();
+      onSuccessDismiss();
+    }
+    setOpen(openTrigger)
+  }
+
   const disableInputs = Boolean(loading || errorMessage);
-  useClickAway(containerRef, closeFeedbackForm);
+
+  const TriggerButton = React.forwardRef((_, ref) => children
+    ? children({ open, setOpen: handleTriggerButton, ref: ref })
+    : <FeedbackButton open={open} setOpen={handleTriggerButton} ref={ref} />);
+
   return (
     <div
-      ref={containerRef}
       title="Share any feedback about our products and services"
       css={[
         tw`p-0 w-24 relative inline-block antialiased focus:outline-none active:outline-none`,
@@ -242,150 +253,149 @@ const Feedback = ({
       ]}
       {...props}
     >
-      {side === "bottom" && (children
-        ? children({ open, setOpen, ref: triggerRef })
-        : <FeedbackButton open={open} setOpen={setOpen} ref={triggerRef} />)}
-      <form
-        css={[
-          tw`appearance-none border-0 flex leading-6 text-sm rounded`,
-          tw`resize-none z-50 text-foreground flex-col justify-start relative transition-all ease-in-out`,
-          tw`hover:border-foreground focus:border-foreground active:border-foreground`,
-          open &&
-          tw`h-auto border-none border-white shadow-lg bg-white transition-all ease-in-out`,
-        ]}
-        style={{ width: '22rem' }}
-        onSubmit={onSubmit}
-      >
-        {!errorMessage && !success && (
-          <div
+      <PopoverPrimitive.Root onOpenChange={closeFeedbackForm} open={open}>
+        <PopoverPrimitive.Trigger as={TriggerButton} />
+        <PopoverPrimitive.Content sideOffset={sideOffset} side={side} align={align}>
+          <form
             css={[
-              tw`p-4 transition-opacity duration-75 ease relative opacity-100`,
-              !open && tw`hidden opacity-0`,
+              tw`appearance-none border-0 flex leading-6 text-sm rounded`,
+              tw`resize-none z-50 text-foreground flex-col justify-start relative transition-all ease-in-out`,
+              tw`hover:border-foreground focus:border-foreground active:border-foreground`,
+              open &&
+              tw`h-auto border-none border-white shadow-lg bg-white transition-all ease-in-out`,
             ]}
-            aria-expanded={open}
-            data-testid={"form"}
+            style={{ width: '22rem' }}
+            onSubmit={onSubmit}
           >
-            {enableEmail && (
-              <div tw={"mb-2 transition duration-100 ease-in-out"}>
-                <Input
-                  ref={emailRef}
-                  id="feedback-email"
-                  onFocus={(e) => setFocusedElement(e.target)}
-                  type="email"
-                  disabled={disableInputs}
-                  onChange={setEmailValue}
-                  value={emailValue}
-                  {...combinedEmailProps}
-                />
+            {!errorMessage && !success && (
+              <div
+                css={[
+                  tw`p-4 transition-opacity duration-75 ease relative opacity-100`,
+                  !open && tw`hidden opacity-0`,
+                ]}
+                aria-expanded={open}
+                data-testid={"form"}
+              >
+                {enableEmail && (
+                  <div tw={"mb-2 transition duration-100 ease-in-out"}>
+                    <Input
+                      ref={emailRef}
+                      id="feedback-email"
+                      onFocus={(e) => setFocusedElement(e.target)}
+                      type="email"
+                      disabled={disableInputs}
+                      onChange={setEmailValue}
+                      value={emailValue}
+                      {...combinedEmailProps}
+                    />
+                  </div>
+                )}
+
+                {enableFeedbackText && (
+                  <div className={"input"}>
+                    <Textarea
+                      ref={textAreaFeedbackRef}
+                      id="feedback-text"
+                      value={feedbackText}
+                      onChange={(e) => setFeedbackText(e)}
+                      onFocus={(e) => setFocusedElement(e.target)}
+                      disabled={disableInputs}
+                      // Disable the Grammarly extension on this textarea
+                      textareaClassName={cn("feedback-input", {
+                        "text-brand-gray": loading,
+                      })}
+                      {...combinedFeedbackTextProps}
+                    />
+                  </div>
+                )}
               </div>
             )}
 
-            {enableFeedbackText && (
-              <div className={"input"}>
-                <Textarea
-                  ref={textAreaFeedbackRef}
-                  id="feedback-text"
-                  value={feedbackText}
-                  onChange={(e) => setFeedbackText(e)}
-                  onFocus={(e) => setFocusedElement(e.target)}
-                  disabled={disableInputs}
-                  // Disable the Grammarly extension on this textarea
-                  textareaClassName={cn("feedback-input", {
-                    "text-brand-gray": loading,
-                  })}
-                  {...combinedFeedbackTextProps}
-                />
-              </div>
-            )}
-          </div>
-        )}
-
-        {errorMessage && (
-          <div
-            tw={
-              "flex flex-col items-center justify-center p-4 text-center z-50"
-            }
-          >
-            <Text
-              is="p"
-              small
-              color="text-red-600"
-              style={{ marginBottom: "8px" }}
-            >
-              {errorMessage}
-            </Text>
-            <Button
-              type="minimal"
-              onClick={(e) => {
-                e.preventDefault();
-                onErrorDismiss();
-              }}
-              autoFocus
-              label="Go back"
-            />
-          </div>
-        )}
-
-        {success && (
-          <div
-            tw={
-              "flex flex-col items-center justify-center p-4 text-center z-50"
-            }
-          >
-            <Text small is="p">
-              Your feedback has been received!
-            </Text>
-            <Text small is="p">
-              Thank you for your help.
-            </Text>
-          </div>
-        )}
-
-        {!success && !errorMessage && (
-          <div
-            css={[
-              tw`w-full h-16 p-4 flex justify-end items-center gap-4 bg-background border-t border-border transition-opacity duration-200 ease opacity-0`,
-              open && tw`pointer-events-auto opacity-100`,
-              !open && tw`hidden pointer-events-none`,
-            ]}
-          >
-            {enableEmoji && (
-              <span className={"emojis"}>
-                <EmojiRadioGroup
-                  label="Select an emoji"
-                  emojiState={emojiState}
+            {errorMessage && (
+              <div
+                tw={
+                  "flex flex-col items-center justify-center p-4 text-center z-50"
+                }
+              >
+                <Text
+                  is="p"
+                  small
+                  color="text-red-600"
+                  style={{ marginBottom: "8px" }}
                 >
-                  {EMOJIS.map((emoji) => {
-                    const SvgComponent = emoji.svg
-                    return (
-                      <EmojiRadio
-                        key={emoji.char}
-                        value={emoji.char}
-                        label={emoji.label}
-                        onFocus={(e) => setFocusedElement(e.target)}
-                      >
-                        <SvgComponent css={[tw`w-5 h-5`]} />
-                      </EmojiRadio>
-                    );
-                  })}
-                </EmojiRadioGroup>
-              </span>
+                  {errorMessage}
+                </Text>
+                <Button
+                  type="minimal"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onErrorDismiss();
+                  }}
+                  autoFocus
+                  label="Go back"
+                />
+              </div>
             )}
-            <span tw={"transition-opacity duration-200 ease ml-auto"}>
-              <Button
-                disabled={loading}
-                onFocus={(e) => setFocusedElement(e.target)}
-                data-testid={"submit-button"}
-                type={"submit"}
-                {...combinedSubmitButtonProps}
-              />
-            </span>
-          </div>
-        )}
-      </form>
-      {side === "top" && (children
-        ? children({ open, setOpen, ref: triggerRef })
-        : <FeedbackButton open={open} setOpen={setOpen} ref={triggerRef} />)}
+
+            {success && (
+              <div
+                tw={
+                  "flex flex-col items-center justify-center p-4 text-center z-50"
+                }
+              >
+                <Text small is="p">
+                  Your feedback has been received!
+                </Text>
+                <Text small is="p">
+                  Thank you for your help.
+                </Text>
+              </div>
+            )}
+
+            {!success && !errorMessage && (
+              <div
+                css={[
+                  tw`w-full h-16 p-4 flex justify-end items-center gap-4 bg-background border-t border-border transition-opacity duration-200 ease opacity-0`,
+                  open && tw`pointer-events-auto opacity-100`,
+                  !open && tw`hidden pointer-events-none`,
+                ]}
+              >
+                {enableEmoji && (
+                  <span className={"emojis"}>
+                    <EmojiRadioGroup
+                      label="Select an emoji"
+                      emojiState={emojiState}
+                    >
+                      {EMOJIS.map((emoji) => {
+                        const SvgComponent = emoji.svg
+                        return (
+                          <EmojiRadio
+                            key={emoji.char}
+                            value={emoji.char}
+                            label={emoji.label}
+                            onFocus={(e) => setFocusedElement(e.target)}
+                          >
+                            <SvgComponent css={[tw`w-5 h-5`]} />
+                          </EmojiRadio>
+                        );
+                      })}
+                    </EmojiRadioGroup>
+                  </span>
+                )}
+                <span tw={"transition-opacity duration-200 ease ml-auto"}>
+                  <Button
+                    disabled={loading}
+                    onFocus={(e) => setFocusedElement(e.target)}
+                    data-testid={"submit-button"}
+                    type={"submit"}
+                    {...combinedSubmitButtonProps}
+                  />
+                </span>
+              </div>
+            )}
+          </form>
+        </PopoverPrimitive.Content>
+      </PopoverPrimitive.Root>
     </div>
   );
 };
@@ -424,9 +434,17 @@ Feedback.propTypes = {
    */
   submitButtonProps: PropTypes.any,
   /**
- The preferred side of the anchor to render against when open.
- */
-  side: PropTypes.oneOf(['top', 'bottom']),
+   The preferred side of the anchor to render against when open.
+  */
+  side: PropTypes.oneOf(["top", "right", "bottom", "left"]),
+  /**
+   The distance in pixels from the anchor.
+  */
+  sideOffset: PropTypes.number,
+  /**
+    The preferred alignment against the anchor. May change when collisions occur.
+  */
+  align: PropTypes.oneOf(["start", "center", "end"]),
 };
 
 export default Feedback

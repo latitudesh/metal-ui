@@ -15,8 +15,8 @@ The `Feedback` component, including its code, is an adaptation of [Vercel](https
 
 <Preview>
   <Story name="Default">
-    <div className="flex h-full justify-center w-full my-10" style={{ height: '300px' }}>
-      <Feedback url="https://httpbin.org/post" />
+    <div className="flex h-full items-end justify-center w-full my-10" style={{ height: '300px' }}>
+      <Feedback url="https://httpbin.org/post"/>
     </div>
   </Story>
 </Preview>
@@ -27,7 +27,7 @@ Email can be provided via a prop in which case the user does not have to enter i
 
 <Preview>
     <Story name="Provide Email">
-        <div className="flex h-full justify-center w-full my-10" style={{ height: '300px' }}>
+        <div className="flex h-full items-end justify-center w-full my-10" style={{ height: '300px' }}>
             <Feedback url="https://httpbin.org/post" email={"test@email.com"} />
         </div>
     </Story>

@@ -1,8 +1,8 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
-import React, {useCallback} from 'react'
-import {Button} from "../index";
+import React, { useCallback } from 'react'
+import { Button } from "../index";
 import tw from "twin.macro";
 
 const FeedbackButton = React.forwardRef(({ open, setOpen, ...props }, ref) => {
@@ -13,7 +13,7 @@ const FeedbackButton = React.forwardRef(({ open, setOpen, ...props }, ref) => {
     };
     const onClick = useCallback((e) => {
         e.preventDefault();
-        setOpen(true);
+        setOpen(!open);
     }, [setOpen]);
 
     return (
@@ -21,9 +21,6 @@ const FeedbackButton = React.forwardRef(({ open, setOpen, ...props }, ref) => {
             ref={ref}
             css={[
                 tw`flex absolute w-24`,
-                tw`flex-shrink-0 transition-opacity duration-75 ease-out`,
-                open &&
-                tw`opacity-0 pointer-events-none text-brand-gray transition-opacity duration-75 ease-linear`,
             ]}
             onClick={onClick}
             {...combinedProps}
