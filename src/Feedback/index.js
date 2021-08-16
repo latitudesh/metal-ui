@@ -258,11 +258,9 @@ const Feedback = ({
         <PopoverPrimitive.Content sideOffset={sideOffset} side={side} align={align}>
           <form
             css={[
-              tw`appearance-none border-0 flex leading-6 text-sm rounded`,
-              tw`resize-none z-50 text-foreground flex-col justify-start relative transition-all ease-in-out`,
+              tw`h-auto border-white appearance-none border-0 flex leading-6 text-sm rounded shadow-lg bg-white `,
+              tw`resize-none z-50 text-foreground flex-col justify-start relative`,
               tw`hover:border-foreground focus:border-foreground active:border-foreground`,
-              open &&
-              tw`h-auto border-none border-white shadow-lg bg-white transition-all ease-in-out`,
             ]}
             style={{ width: '22rem' }}
             onSubmit={onSubmit}
@@ -270,14 +268,13 @@ const Feedback = ({
             {!errorMessage && !success && (
               <div
                 css={[
-                  tw`p-4 transition-opacity duration-75 ease relative opacity-100`,
-                  !open && tw`hidden opacity-0`,
+                  tw`p-4 relative`,
                 ]}
                 aria-expanded={open}
                 data-testid={"form"}
               >
                 {enableEmail && (
-                  <div tw={"mb-2 transition duration-100 ease-in-out"}>
+                  <div tw={"mb-2"}>
                     <Input
                       ref={emailRef}
                       id="feedback-email"
@@ -355,9 +352,7 @@ const Feedback = ({
             {!success && !errorMessage && (
               <div
                 css={[
-                  tw`w-full h-16 p-4 flex justify-end items-center gap-4 bg-background border-t border-border transition-opacity duration-200 ease opacity-0`,
-                  open && tw`pointer-events-auto opacity-100`,
-                  !open && tw`hidden pointer-events-none`,
+                  tw`w-full h-16 p-4 flex justify-end items-center gap-4 bg-background border-t border-border pointer-events-auto`,
                 ]}
               >
                 {enableEmoji && (
@@ -382,7 +377,7 @@ const Feedback = ({
                     </EmojiRadioGroup>
                   </span>
                 )}
-                <span tw={"transition-opacity duration-200 ease ml-auto"}>
+                <span tw={"ml-auto"}>
                   <Button
                     disabled={loading}
                     onFocus={(e) => setFocusedElement(e.target)}
