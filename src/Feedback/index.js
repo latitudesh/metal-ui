@@ -21,6 +21,7 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { useFocusRing } from "@react-aria/focus";
 import FeedbackButton from "./FeedbackButton";
 import * as PopoverPrimitive from '@radix-ui/react-popover';
+import { useClickAway } from "react-use";
 
 const EMOJIS = [
   { code: "f929", char: "🤩", svg: f929, label: "very-happy" },
@@ -104,6 +105,8 @@ const Feedback = ({
   const emailRef = useRef();
   const textAreaFeedbackRef = useRef();
   const triggerRef = useRef();
+  const formRef = useRef();
+
   const [focusedElement, setFocusedElement] = useState(null);
 
   const combinedEmailProps = {
@@ -211,6 +214,15 @@ const Feedback = ({
       });
   };
 
+  const handleTriggerButton = (openTrigger) => {
+    //if user have errorMessage or a success and are closing the popover on buttonTrigger clear error and success
+    if ((errorMessage || success) && !openTrigger) {
+      onErrorDismiss();
+      onSuccessDismiss();
+    }
+    setOpen(openTrigger)
+  }
+
   const onKeyDown = useCallback(
     (e) => {
       if (e.key === "Escape") {
@@ -229,14 +241,7 @@ const Feedback = ({
     };
   }, [onKeyDown]);
 
-  const handleTriggerButton = (openTrigger) => {
-    //if user have errorMessage or a success and are closing the popover on buttonTrigger clear error and success
-    if ((errorMessage || success) && !openTrigger) {
-      onErrorDismiss();
-      onSuccessDismiss();
-    }
-    setOpen(openTrigger)
-  }
+  useClickAway(formRef, closeFeedbackForm)
 
   const disableInputs = Boolean(loading || errorMessage);
 
@@ -251,12 +256,19 @@ const Feedback = ({
         tw`p-0 w-24 relative inline-block antialiased focus:outline-none active:outline-none`,
         errorMessage && tw`text-transparent`,
       ]}
+      aria-expanded={open}
+      data-testid="container-popover"
       {...props}
     >
       <PopoverPrimitive.Root onOpenChange={closeFeedbackForm} open={open}>
-        <PopoverPrimitive.Trigger as={TriggerButton} />
-        <PopoverPrimitive.Content sideOffset={sideOffset} side={side} align={align}>
+        <PopoverPrimitive.Trigger as={TriggerButton} forwardRef={triggerRef} />
+        <PopoverPrimitive.Content
+          sideOffset={sideOffset}
+          side={side}
+          align={align}
+        >
           <form
+            ref={formRef}
             css={[
               tw`h-auto border-white appearance-none border-0 flex leading-6 text-sm rounded shadow-lg bg-white `,
               tw`resize-none z-50 text-foreground flex-col justify-start relative`,
@@ -264,14 +276,13 @@ const Feedback = ({
             ]}
             style={{ width: '22rem' }}
             onSubmit={onSubmit}
+            data-testid="form"
           >
             {!errorMessage && !success && (
               <div
                 css={[
                   tw`p-4 relative`,
                 ]}
-                aria-expanded={open}
-                data-testid={"form"}
               >
                 {enableEmail && (
                   <div tw={"mb-2"}>
