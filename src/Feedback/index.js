@@ -102,12 +102,7 @@ const Feedback = ({
   const [emailValue, setEmailValue] = useState(emailInitialValue);
   const [feedbackText, setFeedbackText] = useState("");
   const emojiState = useRadioGroupState(props);
-  const emailRef = useRef();
-  const textAreaFeedbackRef = useRef();
-  const triggerRef = useRef();
   const formRef = useRef();
-
-  const [focusedElement, setFocusedElement] = useState(null);
 
   const combinedEmailProps = {
     required: true,
@@ -133,25 +128,6 @@ const Feedback = ({
     variant: "brand-p",
     ...submitButtonProps,
   };
-
-  useEffect(() => {
-    if (open) {
-      if (focusedElement) {
-        // Preserve focus an subsequent uses
-        focusedElement?.focus();
-      } else {
-        // Focus on email on first use
-        // We need this because we aren't using the autoFocus attribute
-        if (enableEmail) {
-          emailRef.current?.focus();
-        } else {
-          textAreaFeedbackRef.current?.focus();
-        }
-      }
-    } else {
-      triggerRef.current?.focus();
-    }
-  }, [open, focusedElement, triggerRef]);
 
   const onErrorDismiss = useCallback(() => {
     setErrorMessage("");
@@ -214,15 +190,6 @@ const Feedback = ({
       });
   };
 
-  const handleTriggerButton = (openTrigger) => {
-    //if user have errorMessage or a success and are closing the popover on buttonTrigger clear error and success
-    if ((errorMessage || success) && !openTrigger) {
-      onErrorDismiss();
-      onSuccessDismiss();
-    }
-    setOpen(openTrigger)
-  }
-
   const onKeyDown = useCallback(
     (e) => {
       if (e.key === "Escape") {
@@ -245,6 +212,14 @@ const Feedback = ({
 
   const disableInputs = Boolean(loading || errorMessage);
 
+  const handleTriggerButton = (tooglePopover) => {
+    //if user have errorMessage or a success and are closing the popover on buttonTrigger clear error and success
+    if ((errorMessage || success) && !tooglePopover) {
+      closeFeedbackForm();
+    }
+    setOpen(tooglePopover)
+  }
+
   const TriggerButton = React.forwardRef((_, ref) => children
     ? children({ open, setOpen: handleTriggerButton, ref: ref })
     : <FeedbackButton open={open} setOpen={handleTriggerButton} ref={ref} />);
@@ -261,7 +236,7 @@ const Feedback = ({
       {...props}
     >
       <PopoverPrimitive.Root onOpenChange={closeFeedbackForm} open={open}>
-        <PopoverPrimitive.Trigger as={TriggerButton} forwardRef={triggerRef} />
+        <PopoverPrimitive.Trigger as={TriggerButton} />
         <PopoverPrimitive.Content
           sideOffset={sideOffset}
           side={side}
@@ -287,9 +262,7 @@ const Feedback = ({
                 {enableEmail && (
                   <div tw={"mb-2"}>
                     <Input
-                      ref={emailRef}
                       id="feedback-email"
-                      onFocus={(e) => setFocusedElement(e.target)}
                       type="email"
                       disabled={disableInputs}
                       onChange={setEmailValue}
@@ -302,11 +275,9 @@ const Feedback = ({
                 {enableFeedbackText && (
                   <div className={"input"}>
                     <Textarea
-                      ref={textAreaFeedbackRef}
                       id="feedback-text"
                       value={feedbackText}
                       onChange={(e) => setFeedbackText(e)}
-                      onFocus={(e) => setFocusedElement(e.target)}
                       disabled={disableInputs}
                       // Disable the Grammarly extension on this textarea
                       textareaClassName={cn("feedback-input", {
@@ -379,7 +350,6 @@ const Feedback = ({
                             key={emoji.char}
                             value={emoji.char}
                             label={emoji.label}
-                            onFocus={(e) => setFocusedElement(e.target)}
                           >
                             <SvgComponent css={[tw`w-5 h-5`]} />
                           </EmojiRadio>
@@ -391,9 +361,8 @@ const Feedback = ({
                 <span tw={"ml-auto"}>
                   <Button
                     disabled={loading}
-                    onFocus={(e) => setFocusedElement(e.target)}
                     data-testid={"submit-button"}
-                    type={"submit"}
+                    type="submit"
                     {...combinedSubmitButtonProps}
                   />
                 </span>
