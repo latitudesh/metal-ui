@@ -7,7 +7,7 @@
 		exports["metal-ui"] = factory(require("react"), require("@emotion/react"), require("react-dom"));
 	else
 		root["metal-ui"] = factory(root["React"], root["@emotion/react"], root["ReactDOM"]);
-})((typeof window !== 'undefined' ? window : this), function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__4__) {
+})((typeof window !== 'undefined' ? window : this), function(__WEBPACK_EXTERNAL_MODULE__0__, __WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__5__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 37);
+/******/ 	return __webpack_require__(__webpack_require__.s = 38);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -120,12 +120,278 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
 if (false) { var throwOnDirectAccess, ReactIs; } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(25)();
+  module.exports = __webpack_require__(26)();
 }
 
 
 /***/ }),
 /* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __extends; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __assign; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __rest; });
+/* unused harmony export __decorate */
+/* unused harmony export __param */
+/* unused harmony export __metadata */
+/* unused harmony export __awaiter */
+/* unused harmony export __generator */
+/* unused harmony export __createBinding */
+/* unused harmony export __exportStar */
+/* unused harmony export __values */
+/* unused harmony export __read */
+/* unused harmony export __spread */
+/* unused harmony export __spreadArrays */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __spreadArray; });
+/* unused harmony export __await */
+/* unused harmony export __asyncGenerator */
+/* unused harmony export __asyncDelegator */
+/* unused harmony export __asyncValues */
+/* unused harmony export __makeTemplateObject */
+/* unused harmony export __importStar */
+/* unused harmony export __importDefault */
+/* unused harmony export __classPrivateFieldGet */
+/* unused harmony export __classPrivateFieldSet */
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    if (typeof b !== "function" && b !== null)
+        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    }
+    return __assign.apply(this, arguments);
+}
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+function __decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+function __param(paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+}
+
+function __metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+}
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+}
+
+var __createBinding = Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+});
+
+function __exportStar(m, o) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
+}
+
+function __values(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+}
+
+function __read(o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+}
+
+/** @deprecated */
+function __spread() {
+    for (var ar = [], i = 0; i < arguments.length; i++)
+        ar = ar.concat(__read(arguments[i]));
+    return ar;
+}
+
+/** @deprecated */
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+}
+
+function __spreadArray(to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+}
+
+function __await(v) {
+    return this instanceof __await ? (this.v = v, this) : new __await(v);
+}
+
+function __asyncGenerator(thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+}
+
+function __asyncDelegator(o) {
+    var i, p;
+    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+}
+
+function __asyncValues(o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+}
+
+function __makeTemplateObject(cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+
+var __setModuleDefault = Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+};
+
+function __importStar(mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+}
+
+function __importDefault(mod) {
+    return (mod && mod.__esModule) ? mod : { default: mod };
+}
+
+function __classPrivateFieldGet(receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+}
+
+function __classPrivateFieldSet(receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+}
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -188,22 +454,22 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__4__;
+module.exports = __WEBPACK_EXTERNAL_MODULE__5__;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var AlgoliaSearchHelper = __webpack_require__(27);
+var AlgoliaSearchHelper = __webpack_require__(28);
 
-var SearchParameters = __webpack_require__(14);
-var SearchResults = __webpack_require__(15);
+var SearchParameters = __webpack_require__(15);
+var SearchResults = __webpack_require__(16);
 
 /**
  * The algoliasearchHelper module is the function that will let its
@@ -245,7 +511,7 @@ function algoliasearchHelper(client, index, opts) {
  * @member module:algoliasearchHelper.version
  * @type {number}
  */
-algoliasearchHelper.version = __webpack_require__(20);
+algoliasearchHelper.version = __webpack_require__(21);
 
 /**
  * Constructor for the Helper.
@@ -272,7 +538,7 @@ module.exports = algoliasearchHelper;
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -354,7 +620,7 @@ module.exports = merge;
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -375,7 +641,7 @@ module.exports = function find(array, comparator) {
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 /* global Map:readonly, Set:readonly, ArrayBuffer:readonly */
@@ -515,7 +781,7 @@ module.exports = function isEqual(a, b) {
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -543,7 +809,7 @@ module.exports = function defaultsPure() {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -568,7 +834,7 @@ module.exports = _objectWithoutPropertiesLoose;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -582,7 +848,7 @@ module.exports = objectHasKeys;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -640,23 +906,23 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
-/* 13 */,
-/* 14 */
+/* 14 */,
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var merge = __webpack_require__(6);
-var defaultsPure = __webpack_require__(9);
-var intersection = __webpack_require__(28);
-var find = __webpack_require__(7);
-var valToNumber = __webpack_require__(29);
-var omit = __webpack_require__(10);
-var objectHasKeys = __webpack_require__(11);
-var isValidUserToken = __webpack_require__(30);
+var merge = __webpack_require__(7);
+var defaultsPure = __webpack_require__(10);
+var intersection = __webpack_require__(29);
+var find = __webpack_require__(8);
+var valToNumber = __webpack_require__(30);
+var omit = __webpack_require__(11);
+var objectHasKeys = __webpack_require__(12);
+var isValidUserToken = __webpack_require__(31);
 
-var RefinementList = __webpack_require__(31);
+var RefinementList = __webpack_require__(32);
 
 /**
  * isEqual, but only for numeric refinement values, possible values:
@@ -2150,21 +2416,21 @@ module.exports = SearchParameters;
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var merge = __webpack_require__(6);
-var defaultsPure = __webpack_require__(9);
-var orderBy = __webpack_require__(16);
-var compact = __webpack_require__(32);
-var find = __webpack_require__(7);
-var findIndex = __webpack_require__(33);
-var formatSort = __webpack_require__(17);
+var merge = __webpack_require__(7);
+var defaultsPure = __webpack_require__(10);
+var orderBy = __webpack_require__(17);
+var compact = __webpack_require__(33);
+var find = __webpack_require__(8);
+var findIndex = __webpack_require__(34);
+var formatSort = __webpack_require__(18);
 
-var generateHierarchicalTree = __webpack_require__(34);
+var generateHierarchicalTree = __webpack_require__(35);
 
 /**
  * @typedef SearchResults.Facet
@@ -3080,7 +3346,7 @@ module.exports = SearchResults;
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3166,13 +3432,13 @@ module.exports = orderBy;
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var find = __webpack_require__(7);
+var find = __webpack_require__(8);
 
 /**
  * Transform sort format from user friendly notation to lodash format
@@ -3211,7 +3477,7 @@ module.exports = function formatSort(sortBy, defaults) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3715,7 +3981,7 @@ function eventTargetAgnosticAddListener(emitter, name, listener, flags) {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3736,7 +4002,7 @@ module.exports = inherits;
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3746,7 +4012,7 @@ module.exports = '3.4.4';
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 function _typeof(obj) {
@@ -3773,7 +4039,7 @@ module.exports = _typeof;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*! algoliasearch-lite.umd.js | 4.8.6 | © Algolia, inc. | https://github.com/algolia/algoliasearch-client-javascript */
@@ -3781,9 +4047,9 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 
 /***/ }),
-/* 23 */,
 /* 24 */,
-/* 25 */
+/* 25 */,
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3796,7 +4062,7 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 
 
-var ReactPropTypesSecret = __webpack_require__(26);
+var ReactPropTypesSecret = __webpack_require__(27);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -3854,7 +4120,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3873,24 +4139,24 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var SearchParameters = __webpack_require__(14);
-var SearchResults = __webpack_require__(15);
-var DerivedHelper = __webpack_require__(35);
-var requestBuilder = __webpack_require__(36);
+var SearchParameters = __webpack_require__(15);
+var SearchResults = __webpack_require__(16);
+var DerivedHelper = __webpack_require__(36);
+var requestBuilder = __webpack_require__(37);
 
-var events = __webpack_require__(18);
-var inherits = __webpack_require__(19);
-var objectHasKeys = __webpack_require__(11);
-var omit = __webpack_require__(10);
-var merge = __webpack_require__(6);
+var events = __webpack_require__(19);
+var inherits = __webpack_require__(20);
+var objectHasKeys = __webpack_require__(12);
+var omit = __webpack_require__(11);
+var merge = __webpack_require__(7);
 
-var version = __webpack_require__(20);
+var version = __webpack_require__(21);
 
 /**
  * Event triggered when a parameter is set or updated
@@ -5347,7 +5613,7 @@ module.exports = AlgoliaSearchHelper;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5366,7 +5632,7 @@ module.exports = intersection;
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5388,7 +5654,7 @@ module.exports = valToNumber;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5403,7 +5669,7 @@ module.exports = function isValidUserToken(userToken) {
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5421,9 +5687,9 @@ module.exports = function isValidUserToken(userToken) {
  * @typedef {Object.<string, SearchParameters.refinementList.Refinements>} SearchParameters.refinementList.RefinementList
  */
 
-var defaultsPure = __webpack_require__(9);
-var omit = __webpack_require__(10);
-var objectHasKeys = __webpack_require__(11);
+var defaultsPure = __webpack_require__(10);
+var omit = __webpack_require__(11);
+var objectHasKeys = __webpack_require__(12);
 
 var lib = {
   /**
@@ -5557,7 +5823,7 @@ module.exports = lib;
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5573,7 +5839,7 @@ module.exports = function compact(array) {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5595,7 +5861,7 @@ module.exports = function find(array, comparator) {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5603,9 +5869,9 @@ module.exports = function find(array, comparator) {
 
 module.exports = generateTrees;
 
-var orderBy = __webpack_require__(16);
-var find = __webpack_require__(7);
-var prepareHierarchicalFacetSortBy = __webpack_require__(17);
+var orderBy = __webpack_require__(17);
+var find = __webpack_require__(8);
+var prepareHierarchicalFacetSortBy = __webpack_require__(18);
 
 function generateTrees(state) {
   return function generate(hierarchicalFacetResult, hierarchicalFacetIndex) {
@@ -5801,14 +6067,14 @@ function format(
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var events = __webpack_require__(18);
-var inherits = __webpack_require__(19);
+var events = __webpack_require__(19);
+var inherits = __webpack_require__(20);
 
 /**
  * A DerivedHelper is a way to create sub requests to
@@ -5846,13 +6112,13 @@ module.exports = DerivedHelper;
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var merge = __webpack_require__(6);
+var merge = __webpack_require__(7);
 
 var requestBuilder = {
   /**
@@ -6174,7 +6440,7 @@ module.exports = requestBuilder;
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6225,7 +6491,7 @@ var prop_types = __webpack_require__(2);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(3);
+var classnames = __webpack_require__(4);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
 // CONCATENATED MODULE: ./src/Typography/Text.js
@@ -7628,11 +7894,11 @@ Box.propTypes = {
 };
 /* harmony default export */ var src_Box = (Box);
 // EXTERNAL MODULE: external {"root":"ReactDOM","commonjs2":"react-dom","commonjs":"react-dom","amd":"react-dom"}
-var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_ = __webpack_require__(4);
+var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_ = __webpack_require__(5);
 var external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_default = /*#__PURE__*/__webpack_require__.n(external_root_ReactDOM_commonjs2_react_dom_commonjs_react_dom_amd_react_dom_);
 
 // EXTERNAL MODULE: ./node_modules/classnames/bind.js
-var bind = __webpack_require__(12);
+var bind = __webpack_require__(13);
 var bind_default = /*#__PURE__*/__webpack_require__.n(bind);
 
 // CONCATENATED MODULE: ./src/Sidesheet/index.js
@@ -9046,7 +9312,7 @@ const TabController = props => {
 
 /* harmony default export */ var providers_TabController = (TabController);
 // EXTERNAL MODULE: ./node_modules/algoliasearch/dist/algoliasearch-lite.umd.js
-var algoliasearch_lite_umd = __webpack_require__(22);
+var algoliasearch_lite_umd = __webpack_require__(23);
 var algoliasearch_lite_umd_default = /*#__PURE__*/__webpack_require__.n(algoliasearch_lite_umd);
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
@@ -9091,7 +9357,7 @@ function _classCallCheck(instance, Constructor) {
   }
 }
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/typeof.js
-var helpers_typeof = __webpack_require__(21);
+var helpers_typeof = __webpack_require__(22);
 var typeof_default = /*#__PURE__*/__webpack_require__.n(helpers_typeof);
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
@@ -9161,7 +9427,7 @@ function _inherits(subClass, superClass) {
   if (superClass) _setPrototypeOf(subClass, superClass);
 }
 // EXTERNAL MODULE: ./node_modules/react-fast-compare/index.js
-var react_fast_compare = __webpack_require__(8);
+var react_fast_compare = __webpack_require__(9);
 var react_fast_compare_default = /*#__PURE__*/__webpack_require__.n(react_fast_compare);
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
@@ -9200,7 +9466,7 @@ function _objectWithoutProperties(source, excluded) {
   return target;
 }
 // EXTERNAL MODULE: ./node_modules/algoliasearch-helper/index.js
-var algoliasearch_helper = __webpack_require__(5);
+var algoliasearch_helper = __webpack_require__(6);
 var algoliasearch_helper_default = /*#__PURE__*/__webpack_require__.n(algoliasearch_helper);
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
@@ -12246,242 +12512,8 @@ var hideOthers = function (originalTarget, parentNode, markerName) {
     };
 };
 
-// CONCATENATED MODULE: ./node_modules/tslib/tslib.es6.js
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-/* global Reflect, Promise */
-
-var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-    return extendStatics(d, b);
-};
-
-function __extends(d, b) {
-    if (typeof b !== "function" && b !== null)
-        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    }
-    return __assign.apply(this, arguments);
-}
-
-function __rest(s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-}
-
-function __decorate(decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-}
-
-function __param(paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-}
-
-function __metadata(metadataKey, metadataValue) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
-}
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-}
-
-var __createBinding = Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-});
-
-function __exportStar(m, o) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
-}
-
-function __values(o) {
-    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
-    if (m) return m.call(o);
-    if (o && typeof o.length === "number") return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
-        }
-    };
-    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
-}
-
-function __read(o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-}
-
-/** @deprecated */
-function __spread() {
-    for (var ar = [], i = 0; i < arguments.length; i++)
-        ar = ar.concat(__read(arguments[i]));
-    return ar;
-}
-
-/** @deprecated */
-function __spreadArrays() {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-}
-
-function __spreadArray(to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
-}
-
-function __await(v) {
-    return this instanceof __await ? (this.v = v, this) : new __await(v);
-}
-
-function __asyncGenerator(thisArg, _arguments, generator) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var g = generator.apply(thisArg, _arguments || []), i, q = [];
-    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
-    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
-    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
-    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
-    function fulfill(value) { resume("next", value); }
-    function reject(value) { resume("throw", value); }
-    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
-}
-
-function __asyncDelegator(o) {
-    var i, p;
-    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
-    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
-}
-
-function __asyncValues(o) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var m = o[Symbol.asyncIterator], i;
-    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
-    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
-    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
-}
-
-function __makeTemplateObject(cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-
-var __setModuleDefault = Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-};
-
-function __importStar(mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-}
-
-function __importDefault(mod) {
-    return (mod && mod.__esModule) ? mod : { default: mod };
-}
-
-function __classPrivateFieldGet(receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-}
-
-function __classPrivateFieldSet(receiver, state, value, kind, f) {
-    if (kind === "m") throw new TypeError("Private method is not writable");
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-}
+// EXTERNAL MODULE: ./node_modules/tslib/tslib.es6.js
+var tslib_es6 = __webpack_require__(3);
 
 // CONCATENATED MODULE: ./node_modules/react-remove-scroll-bar/dist/es2015/constants.js
 var zeroRightClassName = 'right-scroll-bar-position';
@@ -12564,7 +12596,7 @@ function createMedium(defaults, middleware) {
 function createSidecarMedium(options) {
     if (options === void 0) { options = {}; }
     var medium = innerCreateMedium(null);
-    medium.options = __assign({ async: true, ssr: false }, options);
+    medium.options = tslib_es6["a" /* __assign */]({ async: true, ssr: false }, options);
     return medium;
 }
 
@@ -12679,16 +12711,16 @@ var RemoveScroll = external_root_React_commonjs2_react_commonjs_react_amd_react_
         onWheelCapture: nothing,
         onTouchMoveCapture: nothing
     }), callbacks = _a[0], setCallbacks = _a[1];
-    var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? 'div' : _b, rest = __rest(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]);
+    var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? 'div' : _b, rest = tslib_es6["c" /* __rest */](props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]);
     var SideCar = sideCar;
     var containerRef = useMergeRefs([
         ref,
         parentRef
     ]);
-    var containerProps = __assign({}, rest, callbacks);
+    var containerProps = tslib_es6["a" /* __assign */]({}, rest, callbacks);
     return (external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](external_root_React_commonjs2_react_commonjs_react_amd_react_["Fragment"], null,
         enabled && (external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](SideCar, { sideCar: effectCar, removeScrollBar: removeScrollBar, shards: shards, noIsolation: noIsolation, inert: inert, setCallbacks: setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref })),
-        forwardProps ? (external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"](external_root_React_commonjs2_react_commonjs_react_amd_react_["Children"].only(children), __assign({}, containerProps, { ref: containerRef }))) : (external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](Container, __assign({}, containerProps, { className: className, ref: containerRef }), children))));
+        forwardProps ? (external_root_React_commonjs2_react_commonjs_react_amd_react_["cloneElement"](external_root_React_commonjs2_react_commonjs_react_amd_react_["Children"].only(children), tslib_es6["a" /* __assign */]({}, containerProps, { ref: containerRef }))) : (external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](Container, tslib_es6["a" /* __assign */]({}, containerProps, { className: className, ref: containerRef }), children))));
 });
 RemoveScroll.defaultProps = {
     enabled: true,
@@ -12705,7 +12737,7 @@ RemoveScroll.classNames = {
 
 
 var exports_SideCar = function (_a) {
-    var sideCar = _a.sideCar, rest = __rest(_a, ["sideCar"]);
+    var sideCar = _a.sideCar, rest = tslib_es6["c" /* __rest */](_a, ["sideCar"]);
     if (!sideCar) {
         throw new Error('Sidecar: please provide `sideCar` property to import the right car');
     }
@@ -12713,7 +12745,7 @@ var exports_SideCar = function (_a) {
     if (!Target) {
         throw new Error('Sidecar medium not found');
     }
-    return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](Target, __assign({}, rest));
+    return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](Target, tslib_es6["a" /* __assign */]({}, rest));
 };
 exports_SideCar.isSideCarExport = true;
 function exportSidecar(medium, exported) {
@@ -13144,7 +13176,7 @@ function RemoveScrollSideCar(props) {
 
 
 
-var ReactRemoveScroll = external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"](function (props, ref) { return (external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](RemoveScroll, __assign({}, props, { ref: ref, sideCar: sidecar }))); });
+var ReactRemoveScroll = external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"](function (props, ref) { return (external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](RemoveScroll, tslib_es6["a" /* __assign */]({}, props, { ref: ref, sideCar: sidecar }))); });
 ReactRemoveScroll.classNames = RemoveScroll.classNames;
 /* harmony default export */ var Combination = (ReactRemoveScroll);
 
@@ -14530,10 +14562,10 @@ function parseNumberSkeleton(tokens) {
                 result.compactDisplay = 'long';
                 continue;
             case 'scientific':
-                result = __assign(__assign(__assign({}, result), { notation: 'scientific' }), token.options.reduce(function (all, opt) { return (__assign(__assign({}, all), parseNotationOptions(opt))); }, {}));
+                result = Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, result), { notation: 'scientific' }), token.options.reduce(function (all, opt) { return (Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, all), parseNotationOptions(opt))); }, {}));
                 continue;
             case 'engineering':
-                result = __assign(__assign(__assign({}, result), { notation: 'engineering' }), token.options.reduce(function (all, opt) { return (__assign(__assign({}, all), parseNotationOptions(opt))); }, {}));
+                result = Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, result), { notation: 'engineering' }), token.options.reduce(function (all, opt) { return (Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, all), parseNotationOptions(opt))); }, {}));
                 continue;
             case 'notation-simple':
                 result.notation = 'standard';
@@ -14609,22 +14641,22 @@ function parseNumberSkeleton(tokens) {
                 return '';
             });
             if (token.options.length) {
-                result = __assign(__assign({}, result), parseSignificantPrecision(token.options[0]));
+                result = Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, result), parseSignificantPrecision(token.options[0]));
             }
             continue;
         }
         // https://unicode-org.github.io/icu/userguide/format_parse/numbers/skeletons.html#significant-digits-precision
         if (SIGNIFICANT_PRECISION_REGEX.test(token.stem)) {
-            result = __assign(__assign({}, result), parseSignificantPrecision(token.stem));
+            result = Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, result), parseSignificantPrecision(token.stem));
             continue;
         }
         var signOpts = parseSign(token.stem);
         if (signOpts) {
-            result = __assign(__assign({}, result), signOpts);
+            result = Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, result), signOpts);
         }
         var conciseScientificAndEngineeringOpts = parseConciseScientificAndEngineeringStem(token.stem);
         if (conciseScientificAndEngineeringOpts) {
-            result = __assign(__assign({}, result), conciseScientificAndEngineeringOpts);
+            result = Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, result), conciseScientificAndEngineeringOpts);
         }
     }
     return result;
@@ -15213,7 +15245,7 @@ var parser_Parser = /** @class */ (function () {
                 var typeEndPosition_1 = this.clonePosition();
                 this.bumpSpace();
                 if (!this.bumpIf(',')) {
-                    return this.error(ErrorKind.EXPECT_SELECT_ARGUMENT_OPTIONS, createLocation(typeEndPosition_1, __assign({}, typeEndPosition_1)));
+                    return this.error(ErrorKind.EXPECT_SELECT_ARGUMENT_OPTIONS, createLocation(typeEndPosition_1, Object(tslib_es6["a" /* __assign */])({}, typeEndPosition_1)));
                 }
                 this.bumpSpace();
                 // Parse offset:
@@ -15931,7 +15963,7 @@ function pruneLocation(els) {
 }
 function lib_parse(message, opts) {
     if (opts === void 0) { opts = {}; }
-    opts = __assign({ shouldParseSkeletons: true, requiresOtherClause: true }, opts);
+    opts = Object(tslib_es6["a" /* __assign */])({ shouldParseSkeletons: true, requiresOtherClause: true }, opts);
     var result = new parser_Parser(message, opts).parse();
     if (result.err) {
         var error = SyntaxError(ErrorKind[result.err.kind]);
@@ -16043,7 +16075,7 @@ var ErrorCode;
     ErrorCode["MISSING_INTL_API"] = "MISSING_INTL_API";
 })(ErrorCode || (ErrorCode = {}));
 var error_FormatError = /** @class */ (function (_super) {
-    __extends(FormatError, _super);
+    Object(tslib_es6["b" /* __extends */])(FormatError, _super);
     function FormatError(msg, code, originalMessage) {
         var _this = _super.call(this, msg) || this;
         _this.code = code;
@@ -16057,7 +16089,7 @@ var error_FormatError = /** @class */ (function (_super) {
 }(Error));
 
 var error_InvalidValueError = /** @class */ (function (_super) {
-    __extends(InvalidValueError, _super);
+    Object(tslib_es6["b" /* __extends */])(InvalidValueError, _super);
     function InvalidValueError(variableId, value, options, originalMessage) {
         return _super.call(this, "Invalid values for \"" + variableId + "\": \"" + value + "\". Options are \"" + Object.keys(options).join('", "') + "\"", ErrorCode.INVALID_VALUE, originalMessage) || this;
     }
@@ -16065,7 +16097,7 @@ var error_InvalidValueError = /** @class */ (function (_super) {
 }(error_FormatError));
 
 var error_InvalidValueTypeError = /** @class */ (function (_super) {
-    __extends(InvalidValueTypeError, _super);
+    Object(tslib_es6["b" /* __extends */])(InvalidValueTypeError, _super);
     function InvalidValueTypeError(value, type, originalMessage) {
         return _super.call(this, "Value for \"" + value + "\" must be of type " + type, ErrorCode.INVALID_VALUE, originalMessage) || this;
     }
@@ -16073,7 +16105,7 @@ var error_InvalidValueTypeError = /** @class */ (function (_super) {
 }(error_FormatError));
 
 var error_MissingValueError = /** @class */ (function (_super) {
-    __extends(MissingValueError, _super);
+    Object(tslib_es6["b" /* __extends */])(MissingValueError, _super);
     function MissingValueError(variableId, originalMessage) {
         return _super.call(this, "The intl string context variable \"" + variableId + "\" was not provided to the string \"" + originalMessage + "\"", ErrorCode.MISSING_VALUE, originalMessage) || this;
     }
@@ -16275,8 +16307,8 @@ function mergeConfig(c1, c2) {
     if (!c2) {
         return c1;
     }
-    return __assign(__assign(__assign({}, (c1 || {})), (c2 || {})), Object.keys(c1).reduce(function (all, k) {
-        all[k] = __assign(__assign({}, c1[k]), (c2[k] || {}));
+    return Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, (c1 || {})), (c2 || {})), Object.keys(c1).reduce(function (all, k) {
+        all[k] = Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, c1[k]), (c2[k] || {}));
         return all;
     }, {}));
 }
@@ -16287,7 +16319,7 @@ function mergeConfigs(defaultConfig, configs) {
     return Object.keys(defaultConfig).reduce(function (all, k) {
         all[k] = mergeConfig(defaultConfig[k], configs[k]);
         return all;
-    }, __assign({}, defaultConfig));
+    }, Object(tslib_es6["a" /* __assign */])({}, defaultConfig));
 }
 function createFastMemoizeCache(store) {
     return {
@@ -16319,7 +16351,7 @@ function createDefaultFormatters(cache) {
             for (var _i = 0; _i < arguments.length; _i++) {
                 args[_i] = arguments[_i];
             }
-            return new ((_a = Intl.NumberFormat).bind.apply(_a, __spreadArray([void 0], args)))();
+            return new ((_a = Intl.NumberFormat).bind.apply(_a, Object(tslib_es6["d" /* __spreadArray */])([void 0], args)))();
         }, {
             cache: createFastMemoizeCache(cache.number),
             strategy: strategies.variadic,
@@ -16330,7 +16362,7 @@ function createDefaultFormatters(cache) {
             for (var _i = 0; _i < arguments.length; _i++) {
                 args[_i] = arguments[_i];
             }
-            return new ((_a = Intl.DateTimeFormat).bind.apply(_a, __spreadArray([void 0], args)))();
+            return new ((_a = Intl.DateTimeFormat).bind.apply(_a, Object(tslib_es6["d" /* __spreadArray */])([void 0], args)))();
         }, {
             cache: createFastMemoizeCache(cache.dateTime),
             strategy: strategies.variadic,
@@ -16341,7 +16373,7 @@ function createDefaultFormatters(cache) {
             for (var _i = 0; _i < arguments.length; _i++) {
                 args[_i] = arguments[_i];
             }
-            return new ((_a = Intl.PluralRules).bind.apply(_a, __spreadArray([void 0], args)))();
+            return new ((_a = Intl.PluralRules).bind.apply(_a, Object(tslib_es6["d" /* __spreadArray */])([void 0], args)))();
         }, {
             cache: createFastMemoizeCache(cache.pluralRules),
             strategy: strategies.variadic,
@@ -20646,6 +20678,58 @@ const Slot=/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_r
 const[dist_index_module_P,dist_index_module_x]=createContext("Popover");const Popover=e=>{const{children:o,open:t,defaultOpen:n,onOpenChange:a,modal:s=!1}=e,c=external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"](null),[u,i]=external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"](!1),[l=!1,m]=useControllableState({prop:t,defaultProp:n,onChange:a});/*#__PURE__*/return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](react_popper_dist_index_module_Root,null,/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](dist_index_module_P,{contentId:useId(),triggerRef:c,open:l,onOpenChange:m,onOpenToggle:external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"]((()=>m((e=>!e))),[m]),hasCustomAnchor:u,onCustomAnchorAdd:external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"]((()=>i(!0)),[]),onCustomAnchorRemove:external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"]((()=>i(!1)),[]),modal:s},o))};/*#__PURE__*/const PopoverAnchor=/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"](((e,o)=>{const r=dist_index_module_x("PopoverAnchor"),{onCustomAnchorAdd:t,onCustomAnchorRemove:n}=r;return external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"]((()=>(t(),()=>n())),[t,n]),/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](Anchor,extends_extends({},e,{ref:o}))}));/*#__PURE__*/const dist_index_module_A="button";const PopoverTrigger=/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"](((e,o)=>{const{as:r=dist_index_module_A,...a}=e,s=dist_index_module_x("PopoverTrigger"),c=useComposedRefs(o,s.triggerRef),u=/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](Primitive,extends_extends({type:"button","aria-haspopup":"dialog","aria-expanded":s.open,"aria-controls":s.contentId,"data-state":dist_index_module_F(s.open)},a,{as:r,ref:c,onClick:composeEventHandlers(e.onClick,s.onOpenToggle)}));return s.hasCustomAnchor?u:/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](Anchor,{as:Slot},u)}));/*#__PURE__*/const PopoverContent=/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"](((e,o)=>{const{forceMount:r,...t}=e,n=dist_index_module_x("PopoverContent");/*#__PURE__*/return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](Presence,{present:r||n.open},n.modal?/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](react_popover_dist_index_module_E,extends_extends({},t,{ref:o})):/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](index_module_h,extends_extends({},t,{ref:o})))}));/*#__PURE__*/const react_popover_dist_index_module_E=/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"](((r,t)=>{const{portalled:n=!0,...a}=r,s=dist_index_module_x("PopoverContent"),c=external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"](null),i=useComposedRefs(t,c),l=external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"](!1);external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"]((()=>{const o=c.current;if(o)return hideOthers(o)}),[]);const p=n?Portal:external_root_React_commonjs2_react_commonjs_react_amd_react_["Fragment"];/*#__PURE__*/return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](p,null,/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](Combination,null,/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](index_module_O,extends_extends({},a,{ref:i,trapFocus:s.open,disableOutsidePointerEvents:!0,onCloseAutoFocus:composeEventHandlers(r.onCloseAutoFocus,(e=>{var o;e.preventDefault(),l.current||null===(o=s.triggerRef.current)||void 0===o||o.focus()})),onPointerDownOutside:composeEventHandlers(r.onPointerDownOutside,(e=>{const o=e.detail.originalEvent,r=0===o.button&&!0===o.ctrlKey,t=2===o.button||r;l.current=t}),{checkForDefaultPrevented:!1}),onFocusOutside:composeEventHandlers(r.onFocusOutside,(e=>e.preventDefault()),{checkForDefaultPrevented:!1})}))))})),index_module_h=/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"](((e,o)=>{const{portalled:r=!0,...t}=e,n=dist_index_module_x("PopoverContent"),a=external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"](!1),s=r?Portal:external_root_React_commonjs2_react_commonjs_react_amd_react_["Fragment"];/*#__PURE__*/return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](s,null,/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](index_module_O,extends_extends({},t,{ref:o,trapFocus:!1,disableOutsidePointerEvents:!1,onCloseAutoFocus:o=>{var r,t;(null===(r=e.onCloseAutoFocus)||void 0===r||r.call(e,o),o.defaultPrevented)||(a.current||null===(t=n.triggerRef.current)||void 0===t||t.focus(),o.preventDefault());a.current=!1},onInteractOutside:o=>{var r,t;null===(r=e.onInteractOutside)||void 0===r||r.call(e,o),o.defaultPrevented||(a.current=!0);const s=o.target;(null===(t=n.triggerRef.current)||void 0===t?void 0:t.contains(s))&&o.preventDefault()}})))})),index_module_O=/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"](((e,o)=>{const{trapFocus:r,onOpenAutoFocus:n,onCloseAutoFocus:a,disableOutsidePointerEvents:s,onEscapeKeyDown:u,onPointerDownOutside:d,onFocusOutside:m,onInteractOutside:f,...v}=e,P=dist_index_module_x("PopoverContent");return useFocusGuards(),/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](FocusScope,{as:Slot,loop:!0,trapped:r,onMountAutoFocus:n,onUnmountAutoFocus:a},/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](DismissableLayer,{as:Slot,disableOutsidePointerEvents:s,onInteractOutside:f,onEscapeKeyDown:u,onPointerDownOutside:d,onFocusOutside:m,onDismiss:()=>P.onOpenChange(!1)},/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](index_module_Content,extends_extends({"data-state":dist_index_module_F(P.open),role:"dialog",id:P.contentId},v,{ref:o,style:{...v.style,"--radix-popover-content-transform-origin":"var(--radix-popper-transform-origin)"}}))))})),dist_index_module_R="button";const PopoverClose=/*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_["forwardRef"](((e,o)=>{const{as:r=dist_index_module_R,...t}=e,a=dist_index_module_x("PopoverClose");/*#__PURE__*/return external_root_React_commonjs2_react_commonjs_react_amd_react_["createElement"](Primitive,extends_extends({type:"button"},t,{as:r,ref:o,onClick:composeEventHandlers(e.onClick,(()=>a.onOpenChange(!1)))}))}));/*#__PURE__*/const PopoverArrow=extendPrimitive(index_module_Arrow,{displayName:"PopoverArrow"});function dist_index_module_F(e){return e?"open":"closed"}const react_popover_dist_index_module_Root=Popover;const index_module_Anchor=PopoverAnchor;const index_module_Trigger=PopoverTrigger;const react_popover_dist_index_module_Content=PopoverContent;const Close=PopoverClose;const react_popover_dist_index_module_Arrow=PopoverArrow;
 //# sourceMappingURL=index.module.js.map
 
+// CONCATENATED MODULE: ./node_modules/react-use/esm/misc/util.js
+var noop = function () { };
+function on(obj) {
+    var args = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        args[_i - 1] = arguments[_i];
+    }
+    if (obj && obj.addEventListener) {
+        obj.addEventListener.apply(obj, args);
+    }
+}
+function off(obj) {
+    var args = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        args[_i - 1] = arguments[_i];
+    }
+    if (obj && obj.removeEventListener) {
+        obj.removeEventListener.apply(obj, args);
+    }
+}
+var util_isBrowser = typeof window !== 'undefined';
+var isNavigator = typeof navigator !== 'undefined';
+
+// CONCATENATED MODULE: ./node_modules/react-use/esm/useClickAway.js
+
+
+var defaultEvents = ['mousedown', 'touchstart'];
+var useClickAway = function (ref, onClickAway, events) {
+    if (events === void 0) { events = defaultEvents; }
+    var savedCallback = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])(onClickAway);
+    Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+        savedCallback.current = onClickAway;
+    }, [onClickAway]);
+    Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(function () {
+        var handler = function (event) {
+            var el = ref.current;
+            el && !el.contains(event.target) && savedCallback.current(event);
+        };
+        for (var _i = 0, events_1 = events; _i < events_1.length; _i++) {
+            var eventName = events_1[_i];
+            on(document, eventName, handler);
+        }
+        return function () {
+            for (var _i = 0, events_2 = events; _i < events_2.length; _i++) {
+                var eventName = events_2[_i];
+                off(document, eventName, handler);
+            }
+        };
+    }, [events, ref]);
+};
+/* harmony default export */ var esm_useClickAway = (useClickAway);
+
 // CONCATENATED MODULE: ./src/Feedback/index.js
 function Feedback_extends() { Feedback_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return Feedback_extends.apply(this, arguments); }
 
@@ -20654,6 +20738,7 @@ function Feedback_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to s
 /** @jsxRuntime classic */
 
 /** @jsx jsx */
+
 
 
 
@@ -20765,28 +20850,43 @@ function EmojiRadio(props) {
 }
 
 var Feedback_ref3 =  true ? {
-  name: "drxfrq",
-  styles: "transition-property:background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:100ms;margin-bottom:0.5rem"
+  name: "zhlx2k",
+  styles: "height:auto;--tw-border-opacity:1;border-color:rgba(255, 255, 255, var(--tw-border-opacity));appearance:none;border-width:0px;display:flex;line-height:1.25rem;font-size:0.875rem;border-radius:5px;--tw-shadow:0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity));resize:none;z-index:50;--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));flex-direction:column;justify-content:flex-start;position:relative;:hover{--tw-border-opacity:1;border-color:rgba(0, 0, 0, var(--tw-border-opacity));}:focus{--tw-border-opacity:1;border-color:rgba(0, 0, 0, var(--tw-border-opacity));}:active{--tw-border-opacity:1;border-color:rgba(0, 0, 0, var(--tw-border-opacity));}"
 } : undefined;
 
 var Feedback_ref4 =  true ? {
-  name: "1iasts7",
-  styles: "display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;text-align:center;z-index:50"
+  name: "dweznn",
+  styles: "padding:1rem;position:relative"
 } : undefined;
 
 var Feedback_ref5 =  true ? {
+  name: "1gok8e8",
+  styles: "margin-bottom:0.5rem"
+} : undefined;
+
+var Feedback_ref6 =  true ? {
   name: "1iasts7",
   styles: "display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;text-align:center;z-index:50"
 } : undefined;
 
-var Feedback_ref6 =  true ? {
+var _ref7 =  true ? {
+  name: "1iasts7",
+  styles: "display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;text-align:center;z-index:50"
+} : undefined;
+
+var _ref8 =  true ? {
+  name: "1jscwas",
+  styles: "width:100%;height:4rem;padding:1rem;display:flex;justify-content:flex-end;align-items:center;gap:1rem;--tw-bg-opacity:1;background-color:rgba(244, 245, 247, var(--tw-bg-opacity));border-top-width:1px;--tw-border-opacity:1;border-color:rgba(234, 234, 234, var(--tw-border-opacity));pointer-events:auto"
+} : undefined;
+
+var _ref9 =  true ? {
   name: "1h7ldow",
   styles: "width:1.25rem;height:1.25rem"
 } : undefined;
 
-var _ref7 =  true ? {
-  name: "1oci3pe",
-  styles: "transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:200ms;margin-left:auto"
+var _ref10 =  true ? {
+  name: "1o3nkn",
+  styles: "margin-left:auto"
 } : undefined;
 
 const Feedback = ({
@@ -20813,10 +20913,7 @@ const Feedback = ({
   const [emailValue, setEmailValue] = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(emailInitialValue);
   const [feedbackText, setFeedbackText] = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])("");
   const emojiState = useRadioGroupState(props);
-  const emailRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
-  const textAreaFeedbackRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
-  const triggerRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
-  const [focusedElement, setFocusedElement] = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useState"])(null);
+  const formRef = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useRef"])();
   const combinedEmailProps = {
     required: true,
     label: "Email",
@@ -20839,30 +20936,6 @@ const Feedback = ({
     variant: "brand-p",
     ...submitButtonProps
   };
-  Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useEffect"])(() => {
-    if (open) {
-      if (focusedElement) {
-        // Preserve focus an subsequent uses
-        focusedElement === null || focusedElement === void 0 ? void 0 : focusedElement.focus();
-      } else {
-        // Focus on email on first use
-        // We need this because we aren't using the autoFocus attribute
-        if (enableEmail) {
-          var _emailRef$current;
-
-          (_emailRef$current = emailRef.current) === null || _emailRef$current === void 0 ? void 0 : _emailRef$current.focus();
-        } else {
-          var _textAreaFeedbackRef$;
-
-          (_textAreaFeedbackRef$ = textAreaFeedbackRef.current) === null || _textAreaFeedbackRef$ === void 0 ? void 0 : _textAreaFeedbackRef$.focus();
-        }
-      }
-    } else {
-      var _triggerRef$current;
-
-      (_triggerRef$current = triggerRef.current) === null || _triggerRef$current === void 0 ? void 0 : _triggerRef$current.focus();
-    }
-  }, [open, focusedElement, triggerRef]);
   const onErrorDismiss = Object(external_root_React_commonjs2_react_commonjs_react_amd_react_["useCallback"])(() => {
     setErrorMessage("");
   }, []);
@@ -20930,18 +21003,18 @@ const Feedback = ({
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [onKeyDown]);
+  esm_useClickAway(formRef, closeFeedbackForm);
+  const disableInputs = Boolean(loading || errorMessage);
 
-  const handleTriggerButton = openTrigger => {
+  const handleTriggerButton = tooglePopover => {
     //if user have errorMessage or a success and are closing the popover on buttonTrigger clear error and success
-    if ((errorMessage || success) && !openTrigger) {
-      onErrorDismiss();
-      onSuccessDismiss();
+    if ((errorMessage || success) && !tooglePopover) {
+      closeFeedbackForm();
     }
 
-    setOpen(openTrigger);
+    setOpen(tooglePopover);
   };
 
-  const disableInputs = Boolean(loading || errorMessage);
   const TriggerButton = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef((_, ref) => children ? children({
     open,
     setOpen: handleTriggerButton,
@@ -20955,7 +21028,9 @@ const Feedback = ({
     title: "Share any feedback about our products and services",
     css: ["padding:0px;width:6rem;position:relative;display:inline-block;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;:focus{outline:2px solid transparent;outline-offset:2px;}:active{outline:2px solid transparent;outline-offset:2px;}", errorMessage && {
       "color": "transparent"
-    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
+    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined],
+    "aria-expanded": open,
+    "data-testid": "container-popover"
   }, props), Object(react_["jsx"])(react_popover_dist_index_module_Root, {
     onOpenChange: closeFeedbackForm,
     open: open
@@ -20966,36 +21041,19 @@ const Feedback = ({
     side: side,
     align: align
   }, Object(react_["jsx"])("form", {
-    css: ["appearance:none;border-width:0px;display:flex;line-height:1.25rem;font-size:0.875rem;border-radius:5px;resize:none;z-index:50;--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));flex-direction:column;justify-content:flex-start;position:relative;transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;:hover{--tw-border-opacity:1;border-color:rgba(0, 0, 0, var(--tw-border-opacity));}:focus{--tw-border-opacity:1;border-color:rgba(0, 0, 0, var(--tw-border-opacity));}:active{--tw-border-opacity:1;border-color:rgba(0, 0, 0, var(--tw-border-opacity));}", open && {
-      "height": "auto",
-      "borderStyle": "none",
-      "--tw-border-opacity": "1",
-      "borderColor": "rgba(255, 255, 255, var(--tw-border-opacity))",
-      "--tw-shadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-      "boxShadow": "var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)",
-      "--tw-bg-opacity": "1",
-      "backgroundColor": "rgba(255, 255, 255, var(--tw-bg-opacity))",
-      "transitionProperty": "all",
-      "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
-      "transitionDuration": "150ms"
-    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined],
+    ref: formRef,
+    css: Feedback_ref3,
     style: {
       width: '22rem'
     },
-    onSubmit: onSubmit
-  }, !errorMessage && !success && Object(react_["jsx"])("div", {
-    css: ["padding:1rem;transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:75ms;position:relative;opacity:1;", !open && {
-      "display": "none",
-      "opacity": "0"
-    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined],
-    "aria-expanded": open,
+    onSubmit: onSubmit,
     "data-testid": "form"
+  }, !errorMessage && !success && Object(react_["jsx"])("div", {
+    css: Feedback_ref4
   }, enableEmail && Object(react_["jsx"])("div", {
-    css: Feedback_ref3
+    css: Feedback_ref5
   }, Object(react_["jsx"])(src_Input, Feedback_extends({
-    ref: emailRef,
     id: "feedback-email",
-    onFocus: e => setFocusedElement(e.target),
     type: "email",
     disabled: disableInputs,
     onChange: setEmailValue,
@@ -21003,18 +21061,16 @@ const Feedback = ({
   }, combinedEmailProps))), enableFeedbackText && Object(react_["jsx"])("div", {
     className: "input"
   }, Object(react_["jsx"])(src_Textarea, Feedback_extends({
-    ref: textAreaFeedbackRef,
     id: "feedback-text",
     value: feedbackText,
     onChange: e => setFeedbackText(e),
-    onFocus: e => setFocusedElement(e.target),
     disabled: disableInputs // Disable the Grammarly extension on this textarea
     ,
     textareaClassName: classnames_default()("feedback-input", {
       "text-brand-gray": loading
     })
   }, combinedFeedbackTextProps)))), errorMessage && Object(react_["jsx"])("div", {
-    css: Feedback_ref4
+    css: Feedback_ref6
   }, Object(react_["jsx"])(Typography_Text, {
     is: "p",
     small: true,
@@ -21031,7 +21087,7 @@ const Feedback = ({
     autoFocus: true,
     label: "Go back"
   })), success && Object(react_["jsx"])("div", {
-    css: Feedback_ref5
+    css: _ref7
   }, Object(react_["jsx"])(Typography_Text, {
     small: true,
     is: "p"
@@ -21039,13 +21095,7 @@ const Feedback = ({
     small: true,
     is: "p"
   }, "Thank you for your help.")), !success && !errorMessage && Object(react_["jsx"])("div", {
-    css: ["width:100%;height:4rem;padding:1rem;display:flex;justify-content:flex-end;align-items:center;gap:1rem;--tw-bg-opacity:1;background-color:rgba(244, 245, 247, var(--tw-bg-opacity));border-top-width:1px;--tw-border-opacity:1;border-color:rgba(234, 234, 234, var(--tw-border-opacity));transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:200ms;opacity:0;", open && {
-      "pointerEvents": "auto",
-      "opacity": "1"
-    }, !open && {
-      "display": "none",
-      "pointerEvents": "none"
-    },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
+    css: _ref8
   }, enableEmoji && Object(react_["jsx"])("span", {
     className: "emojis"
   }, Object(react_["jsx"])(EmojiRadioGroup, {
@@ -21056,16 +21106,14 @@ const Feedback = ({
     return Object(react_["jsx"])(EmojiRadio, {
       key: emoji.char,
       value: emoji.char,
-      label: emoji.label,
-      onFocus: e => setFocusedElement(e.target)
+      label: emoji.label
     }, Object(react_["jsx"])(SvgComponent, {
-      css: Feedback_ref6
+      css: _ref9
     }));
   }))), Object(react_["jsx"])("span", {
-    css: _ref7
+    css: _ref10
   }, Object(react_["jsx"])(src_Button, Feedback_extends({
     disabled: loading,
-    onFocus: e => setFocusedElement(e.target),
     "data-testid": "submit-button",
     type: "submit"
   }, combinedSubmitButtonProps))))))));
