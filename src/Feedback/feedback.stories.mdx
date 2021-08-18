@@ -15,8 +15,8 @@ The `Feedback` component, including its code, is an adaptation of [Vercel](https
 
 <Preview>
   <Story name="Default">
-    <div className="flex h-full items-top justify-center w-full my-10" style={{ height: '300px' }}>
-      <Feedback url="https://httpbin.org/post" />
+    <div className="flex h-full items-end justify-center w-full my-10" style={{ height: '300px' }} >
+      <Feedback url="https://httpbin.org/post"/>
     </div>
   </Story>
 </Preview>
@@ -27,8 +27,8 @@ Email can be provided via a prop in which case the user does not have to enter i
 
 <Preview>
     <Story name="Provide Email">
-        <div className="flex h-full items-top justify-center w-full my-10" style={{ height: '300px' }}>
-            <Feedback url="https://httpbin.org/post" email={"test@email.com"}/>
+        <div className="flex h-full items-end justify-center w-full my-10" style={{ height: '300px' }}>
+            <Feedback url="https://httpbin.org/post" email={"test@email.com"} />
         </div>
     </Story>
 </Preview>
@@ -37,12 +37,12 @@ Email can be provided via a prop in which case the user does not have to enter i
 
 <Preview>
     <Story name="Custom Trigger">
-        <div className="flex h-full items-top justify-center w-full my-10" style={{ height: '300px' }}>
-            <Feedback url="https://httpbin.org/post">
-                {({ open, setOpen, ref }) => <div>
-                <Button variant="brand-p" size="small" ref={ref} onClick={(e) => {
+        <div className="flex h-full items-end justify-center w-full my-10" style={{ height: '300px' }} >
+            <Feedback url="https://httpbin.org/post" side="top">
+                {({ open, setOpen, ref }) => <div style={{ width: '300px' }}>
+                <Button className="absolute" variant="brand-p" size="normal" ref={ref} onClick={(e) => {
                     e.preventDefault()
-                    setOpen(true);
+                    setOpen(!open);
                 }} label={"Custom Trigger"}/>
                 </div>}
             </Feedback>

@@ -10,8 +10,7 @@ const testEndpoint = 'http://test-endpoint.local';
 describe('Feedback', () => {
     test('opens form on click', async () => {
         render(
-            <Feedback>
-            </Feedback>
+            <Feedback />
         )
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
@@ -22,16 +21,18 @@ describe('Feedback', () => {
     });
 
     test('closes form on clicking outside', async () => {
-        render(<div data-testid={'outside'}>
-            <Feedback>
-            </Feedback>
-        </div>)
+        render(
+            <div data-testid="feedback-wrapper">
+                <Feedback />
+            </div>
+        )
 
-        expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'false')
+        expect(screen.queryByTestId('form')).not.toBeInTheDocument()
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
-        expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'true')
-        fireEvent.mouseDown(screen.getByTestId('outside'))
-        expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'false')
+        expect(screen.getByTestId('form')).toBeInTheDocument()
+        userEvent.click(screen.queryByTestId('feedback-wrapper'))
+        expect(screen.queryByTestId('form')).not.toBeInTheDocument()
+
     })
 
     test('closes form on hitting escape', async () => {
@@ -42,9 +43,9 @@ describe('Feedback', () => {
         </div>)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
-        expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'true')
+        expect(screen.queryByTestId('form')).toBeInTheDocument()
         fireEvent.keyDown(screen.getByLabelText('Feedback'), { key: 'Escape', code: 'Escape' })
-        expect(screen.getByTestId('form')).toHaveAttribute('aria-expanded', 'false')
+        expect(screen.queryByTestId('form')).not.toBeInTheDocument()
     })
 
     test('submits form on hitting enter key with meta key', async () => {
@@ -61,8 +62,8 @@ describe('Feedback', () => {
         </div>)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
-        fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'test@email.com' }});
-        fireEvent.change(screen.getByLabelText('Feedback'), { target: { value: 'This is great!' }});
+        fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'test@email.com' } });
+        fireEvent.change(screen.getByLabelText('Feedback'), { target: { value: 'This is great!' } });
 
         userEvent.type(screen.getByLabelText('Feedback'), '{meta}{enter}');
 
@@ -91,6 +92,7 @@ describe('Feedback', () => {
             </Feedback>
         </div>)
 
+        screen.getByRole('button', { name: 'Feedback' }).focus()
         userEvent.keyboard('{Enter}test@email.com');
         userEvent.tab()
         // Enter feedback
@@ -114,6 +116,7 @@ describe('Feedback', () => {
             body: JSON.stringify(body),
         });
     })
+
     test('dont show inputs in case of error', async () => {
         const fetchMock = jest.fn((url) => {
             return Promise.resolve({ ok: false, status: 404, json: () => Promise.resolve() })
@@ -126,8 +129,8 @@ describe('Feedback', () => {
         </div>)
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
-        fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'test@email.com' }});
-        fireEvent.change(screen.getByLabelText('Feedback'), { target: { value: 'This is great!' }});
+        fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'test@email.com' } });
+        fireEvent.change(screen.getByLabelText('Feedback'), { target: { value: 'This is great!' } });
 
         userEvent.type(screen.getByLabelText('Feedback'), '{meta}{enter}');
 
@@ -163,7 +166,7 @@ describe('Feedback', () => {
         ).not.toBeInTheDocument()
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
-        fireEvent.change(screen.getByLabelText('Feedback'), { target: { value: 'This is great!' }});
+        fireEvent.change(screen.getByLabelText('Feedback'), { target: { value: 'This is great!' } });
 
         userEvent.type(screen.getByLabelText('Feedback'), '{meta}{enter}');
 
@@ -191,7 +194,7 @@ describe('Feedback', () => {
                 {({ open, setOpen, ref }) => <Button ref={ref} onClick={(e) => {
                     e.preventDefault()
                     setOpen(true);
-                }} label={"Feedback"}/>}
+                }} label={"Feedback"} />}
             </Feedback>
         </div>)
 
@@ -200,7 +203,7 @@ describe('Feedback', () => {
         ).not.toBeInTheDocument()
 
         fireEvent.click(screen.getByRole('button', { name: 'Feedback' }))
-        fireEvent.change(screen.getByLabelText('Feedback'), { target: { value: 'This is great!' }});
+        fireEvent.change(screen.getByLabelText('Feedback'), { target: { value: 'This is great!' } });
 
         userEvent.type(screen.getByLabelText('Feedback'), '{meta}{enter}');
 
