@@ -1,3 +1,11 @@
+# [3.4.0](https://github.com/Maxihost/metal-ui/compare/v3.3.1...v3.4.0) (2021-08-18)
+
+
+### Features
+
+* build add popover to feedback component ([8cfcbce](https://github.com/Maxihost/metal-ui/commit/8cfcbce60d64aea11f6c0c71f7b32a1bf65b53fb))
+* tests feedback component ([02da170](https://github.com/Maxihost/metal-ui/commit/02da170bc40323a024a1d6189b2e9b92ba51ff1a))
+
 ## [3.3.1](https://github.com/Maxihost/metal-ui/compare/v3.3.0...v3.3.1) (2021-08-13)
 
 
