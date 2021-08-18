@@ -97,10 +97,10 @@ const Feedback = ({
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [emailValue, setEmailValue] = useState(emailInitialValue);
-  const [feedbackText, setFeedbackText] = useState("");
   const enableEmail = !email;
   const emailInitialValue = email ? email : ""
+  const [emailValue, setEmailValue] = useState(emailInitialValue);
+  const [feedbackText, setFeedbackText] = useState("");
   const emojiState = useRadioGroupState(props);
   const formRef = useRef();
 
