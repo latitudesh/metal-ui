@@ -1,3 +1,42 @@
+## [3.3.1](https://github.com/Maxihost/metal-ui/compare/v3.3.0...v3.3.1) (2021-08-13)
+
+
+### Bug Fixes
+
+* add build ([989aaa7](https://github.com/Maxihost/metal-ui/commit/989aaa76c1f727266746f96ea7f950924123682d))
+
+# [3.3.0](https://github.com/Maxihost/metal-ui/compare/v3.2.0...v3.3.0) (2021-08-13)
+
+
+### Features
+
+* Convert svgs to react components ([ffff9fb](https://github.com/Maxihost/metal-ui/commit/ffff9fb8c8e2086313f78552539e11560c912704))
+
+# [3.2.0](https://github.com/Maxihost/metal-ui/compare/v3.1.0...v3.2.0) (2021-08-12)
+
+
+### Bug Fixes
+
+* Pass props down to the elements instead of manually adding each. ([be9b084](https://github.com/Maxihost/metal-ui/commit/be9b0848d38229c6a3cf2f501d1b60ce2c839d5d))
+
+
+### Features
+
+* Adds `colspan` support to `th` and `td` elements ([240b485](https://github.com/Maxihost/metal-ui/commit/240b485eed974dfcfcfd24bcdec0a596fa79d5ba))
+
+# [3.1.0](https://github.com/Maxihost/metal-ui/compare/v3.0.2...v3.1.0) (2021-08-10)
+
+
+### Bug Fixes
+
+* Remove selected ([639109f](https://github.com/Maxihost/metal-ui/commit/639109f4e88387b3e6e5351130f24368e070ce7a))
+
+
+### Features
+
+* Remove placeholder ([0650981](https://github.com/Maxihost/metal-ui/commit/0650981cd855505c8d46431185fb1e573d893ee4))
+* Update docs ([acdb82e](https://github.com/Maxihost/metal-ui/commit/acdb82e1c64c3e275d6042104fb505a729c7cefe))
+
 ## [3.0.2](https://github.com/Maxihost/metal-ui/compare/v3.0.1...v3.0.2) (2021-08-05)
 
 
