@@ -1,6 +1,5 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from "@emotion/react";
 import React from "react";
 import PropTypes from "prop-types";
 import tw, { styled } from "twin.macro";
