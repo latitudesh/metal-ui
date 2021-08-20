@@ -9,7 +9,7 @@ export { default as Toast } from "./Toast";
 export { default as Input } from "./Input";
 export { default as Textarea } from "./Textarea";
 export { default as Select } from "./Select";
-export { default as Avatar } from "./Avatar/Avatar";
+export { default as Avatar } from "./Avatar/index";
 export { default as AlgoliaSearch } from "./AlgoliaSearch";
 export { default as Badge } from "./Badge";
 export { default as SpinningDots } from "./SpinningDots";
