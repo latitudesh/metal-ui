@@ -4,7 +4,7 @@ import { babel } from '@rollup/plugin-babel';
 
 const files = [
     "AlgoliaSearch",
-    // "Avatar",
+    "Avatar",
     "Badge",
     "Box",
     "Button",
@@ -23,15 +23,14 @@ const files = [
     "Toast",
     "Typography",
 ]
-module.exports = files.map(file => {
-    return {
-        input: `src/${file}/index.js`,
+
+const options = {
         external: [
             "react",
             "react-dom",
             "@emotion/styled",
             "@emotion/react",
-            "@radix-ui/react-dropdown-menu",
+            // "@radix-ui/react-dropdown-menu",
             "classnames",
             "prop-types",
         ],
@@ -47,8 +46,17 @@ module.exports = files.map(file => {
                 'react': 'React',
                 'react-dom': 'ReactDOM'
             },
-            dir: `dist/${file}`,
             format: 'cjs',
         }
     }
-})
+
+module.exports = [...files.map(file => {
+    return {
+        ...options,
+        input: `src/${file}/index.js`,
+        output: {
+            ...options.output,
+            dir: `dist/${file}`,
+        }
+    }
+})]

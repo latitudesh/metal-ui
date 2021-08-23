@@ -13,15 +13,15 @@ export { default as Avatar } from "./Avatar/index";
 export { default as AlgoliaSearch } from "./AlgoliaSearch";
 export { default as Badge } from "./Badge";
 export { default as SpinningDots } from "./SpinningDots";
-export {
-  Dropdown,
-  DropdownTrigger,
-  DropdownContent,
-  DropdownLabel,
-  DropdownItem,
-  DropdownSeparator,
-} from "./DropdownMenu";
-export { default as Feedback } from "./Feedback";
+// export {
+//   Dropdown,
+//   DropdownTrigger,
+//   DropdownContent,
+//   DropdownLabel,
+//   DropdownItem,
+//   DropdownSeparator,
+// } from "./DropdownMenu";
+// export { default as Feedback } from "./Feedback";
 
 export { default as Text } from "./Typography/Text";
 export { default as Heading } from "./Typography/Heading";
