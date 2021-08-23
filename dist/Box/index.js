@@ -1,6 +1,5 @@
 'use strict';
 
-require('react');
 var classNames = require('classnames');
 var PropTypes = require('prop-types');
 var react = require('@emotion/react');
