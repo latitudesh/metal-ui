@@ -14,12 +14,7 @@ const Nav = styled.div(() => [
 ]);
 
 const Header = ({ title, actions, nav }) => (
-  <div
-    tw="relative w-full bg-white"
-    css={
-      !nav && css({ boxShadow: `0 -1px 0 ${theme`colors.accent.three`} inset` })
-    }
-  >
+  <div tw="relative w-full bg-white">
     <div
       tw="flex flex-row items-center justify-between px-10"
       css={[nav ? tw`pt-4 pb-1` : tw`py-4`]}
