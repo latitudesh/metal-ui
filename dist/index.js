@@ -1,5 +1,5 @@
 const Table = require( "./Table");
-const Header  = require( "./Header");
+const Header = require( "./Header");
 const Content  = require( "./Content");
 const Button  = require( "./Button");
 const Box  = require( "./Box");

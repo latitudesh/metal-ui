@@ -3,41 +3,15 @@
 var React = require('react');
 var PropTypes = require('prop-types');
 var react = require('@emotion/react');
-var crypto = require('crypto');
-var http = require('http');
-var https = require('https');
-var url = require('url');
 var classNames = require('classnames');
-var require$$0$1 = require('events');
+var require$$0 = require('events');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-function _interopNamespace(e) {
-  if (e && e.__esModule) return e;
-  var n = Object.create(null);
-  if (e) {
-    Object.keys(e).forEach(function (k) {
-      if (k !== 'default') {
-        var d = Object.getOwnPropertyDescriptor(e, k);
-        Object.defineProperty(n, k, d.get ? d : {
-          enumerable: true,
-          get: function () {
-            return e[k];
-          }
-        });
-      }
-    });
-  }
-  n['default'] = e;
-  return Object.freeze(n);
-}
-
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
-var http__namespace = /*#__PURE__*/_interopNamespace(http);
-var https__namespace = /*#__PURE__*/_interopNamespace(https);
 var classNames__default = /*#__PURE__*/_interopDefaultLegacy(classNames);
-var require$$0__default = /*#__PURE__*/_interopDefaultLegacy(require$$0$1);
+var require$$0__default = /*#__PURE__*/_interopDefaultLegacy(require$$0);
 
 const TabControllerContext = /*#__PURE__*/React.createContext({});
 const useTabController = () => React.useContext(TabControllerContext);
@@ -160,24 +134,65 @@ const TabController = props => {
   }, children);
 };
 
-function getAugmentedNamespace(n) {
-	if (n.__esModule) return n;
-	var a = Object.defineProperty({}, '__esModule', {value: true});
-	Object.keys(n).forEach(function (k) {
-		var d = Object.getOwnPropertyDescriptor(n, k);
-		Object.defineProperty(a, k, d.get ? d : {
-			enumerable: true,
-			get: function () {
-				return n[k];
-			}
-		});
-	});
-	return a;
-}
+function createBrowserLocalStorageCache(options) {
+  const namespaceKey = `algoliasearch-client-js-${options.key}`; // eslint-disable-next-line functional/no-let
 
-var algoliasearch$3 = {exports: {}};
+  let storage;
 
-// @todo Add logger on options to debug when caches go wrong.
+  const getStorage = () => {
+    if (storage === undefined) {
+      storage = options.localStorage || window.localStorage;
+    }
+
+    return storage;
+  };
+
+  const getNamespace = () => {
+    return JSON.parse(getStorage().getItem(namespaceKey) || '{}');
+  };
+
+  return {
+    get(key, defaultValue, events = {
+      miss: () => Promise.resolve()
+    }) {
+      return Promise.resolve().then(() => {
+        const keyAsString = JSON.stringify(key);
+        const value = getNamespace()[keyAsString];
+        return Promise.all([value || defaultValue(), value !== undefined]);
+      }).then(([value, exists]) => {
+        return Promise.all([value, exists || events.miss(value)]);
+      }).then(([value]) => value);
+    },
+
+    set(key, value) {
+      return Promise.resolve().then(() => {
+        const namespace = getNamespace(); // eslint-disable-next-line functional/immutable-data
+
+        namespace[JSON.stringify(key)] = value;
+        getStorage().setItem(namespaceKey, JSON.stringify(namespace));
+        return value;
+      });
+    },
+
+    delete(key) {
+      return Promise.resolve().then(() => {
+        const namespace = getNamespace(); // eslint-disable-next-line functional/immutable-data
+
+        delete namespace[JSON.stringify(key)];
+        getStorage().setItem(namespaceKey, JSON.stringify(namespace));
+      });
+    },
+
+    clear() {
+      return Promise.resolve().then(() => {
+        getStorage().removeItem(namespaceKey);
+      });
+    }
+
+  };
+} // @todo Add logger on options to debug when caches go wrong.
+
+
 function createFallbackableCache(options) {
   const caches = [...options.caches];
   const current = caches.shift(); // eslint-disable-line functional/immutable-data
@@ -248,14 +263,6 @@ function createNullCache() {
   };
 }
 
-var cacheCommon_esm = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  createFallbackableCache: createFallbackableCache,
-  createNullCache: createNullCache
-});
-
-var require$$0 = /*@__PURE__*/getAugmentedNamespace(cacheCommon_esm);
-
 function createInMemoryCache(options = {
   serializable: true
 }) {
@@ -298,13 +305,6 @@ function createInMemoryCache(options = {
   };
 }
 
-var cacheInMemory_esm = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  createInMemoryCache: createInMemoryCache
-});
-
-var require$$1 = /*@__PURE__*/getAugmentedNamespace(cacheInMemory_esm);
-
 function createAuth(authMode, appId, apiKey) {
   const credentials = {
     'x-algolia-api-key': apiKey,
@@ -320,33 +320,6 @@ function createAuth(authMode, appId, apiKey) {
     }
 
   };
-}
-
-function createRetryablePromise(callback) {
-  let retriesCount = 0; // eslint-disable-line functional/no-let
-
-  const retry = () => {
-    retriesCount++;
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve(callback(retry));
-      }, Math.min(100 * retriesCount, 1000));
-    });
-  };
-
-  return callback(retry);
-}
-
-function createWaitablePromise(promise, wait = (_response, _requestOptions) => {
-  return Promise.resolve();
-}) {
-  // eslint-disable-next-line functional/immutable-data
-  return Object.assign(promise, {
-    wait(requestOptions) {
-      return createWaitablePromise(promise.then(response => Promise.all([wait(response, requestOptions), response])).then(promiseResults => promiseResults[1]));
-    }
-
-  });
 } // eslint-disable-next-line functional/prefer-readonly-type
 
 
@@ -377,20 +350,13 @@ function addMethods(base, methods) {
   return base;
 }
 
-function encode$1(format, ...args) {
+function encode(format, ...args) {
   // eslint-disable-next-line functional/no-let
   let i = 0;
   return format.replace(/%s/g, () => encodeURIComponent(args[i++]));
 }
 
 const version$3 = '4.8.6';
-
-const destroy = base => {
-  return () => {
-    return base.transporter.requester.destroy();
-  };
-};
-
 const AuthMode = {
   /**
    * If auth credentials should be in query parameters.
@@ -401,26 +367,6 @@ const AuthMode = {
    * If auth credentials should be in headers.
    */
   WithinHeaders: 1
-};
-
-var clientCommon_esm = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  AuthMode: AuthMode,
-  addMethods: addMethods,
-  createAuth: createAuth,
-  createRetryablePromise: createRetryablePromise,
-  createWaitablePromise: createWaitablePromise,
-  destroy: destroy,
-  encode: encode$1,
-  shuffle: shuffle,
-  version: version$3
-});
-
-const MethodEnum = {
-  Delete: 'DELETE',
-  Get: 'GET',
-  Post: 'POST',
-  Put: 'PUT'
 };
 
 function createMappedRequestOptions(requestOptions, timeout) {
@@ -495,6 +441,13 @@ function createStatelessHost(options) {
     accept: options.accept || CallEnum.Any
   };
 }
+
+const MethodEnum = {
+  Delete: 'DELETE',
+  Get: 'GET',
+  Post: 'POST',
+  Put: 'PUT'
+};
 
 function createRetryableOptions(hostsCache, statelessHosts) {
   return Promise.all(statelessHosts.map(statelessHost => {
@@ -830,13 +783,6 @@ function deserializeFailure({
   }
 
   return createApiError(message, status, stackFrame);
-} // eslint-disable-next-line functional/prefer-readonly-type
-
-
-function encode(format, ...args) {
-  // eslint-disable-next-line functional/no-let
-  let i = 0;
-  return format.replace(/%s/g, () => encodeURIComponent(args[i++]));
 }
 
 function serializeUrl(host, path, queryParameters) {
@@ -924,209 +870,6 @@ function createRetryError(transporterStackTrace) {
   };
 }
 
-var transporter_esm = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  CallEnum: CallEnum,
-  HostStatusEnum: HostStatusEnum,
-  createApiError: createApiError,
-  createDeserializationError: createDeserializationError,
-  createMappedRequestOptions: createMappedRequestOptions,
-  createRetryError: createRetryError,
-  createStatefulHost: createStatefulHost,
-  createStatelessHost: createStatelessHost,
-  createTransporter: createTransporter,
-  createUserAgent: createUserAgent,
-  deserializeFailure: deserializeFailure,
-  deserializeSuccess: deserializeSuccess,
-  isStatefulHostTimeouted: isStatefulHostTimeouted,
-  isStatefulHostUp: isStatefulHostUp,
-  serializeData: serializeData,
-  serializeHeaders: serializeHeaders,
-  serializeQueryParameters: serializeQueryParameters$1,
-  serializeUrl: serializeUrl,
-  stackFrameWithoutCredentials: stackFrameWithoutCredentials,
-  stackTraceWithoutCredentials: stackTraceWithoutCredentials
-});
-
-const createAnalyticsClient = options => {
-  const region = options.region || 'us';
-  const auth = createAuth(AuthMode.WithinHeaders, options.appId, options.apiKey);
-  const transporter = createTransporter({
-    hosts: [{
-      url: `analytics.${region}.algolia.com`
-    }],
-    ...options,
-    headers: { ...auth.headers(),
-      ...{
-        'content-type': 'application/json'
-      },
-      ...options.headers
-    },
-    queryParameters: { ...auth.queryParameters(),
-      ...options.queryParameters
-    }
-  });
-  const appId = options.appId;
-  return addMethods({
-    appId,
-    transporter
-  }, options.methods);
-};
-
-const addABTest = base => {
-  return (abTest, requestOptions) => {
-    return base.transporter.write({
-      method: MethodEnum.Post,
-      path: '2/abtests',
-      data: abTest
-    }, requestOptions);
-  };
-};
-
-const deleteABTest = base => {
-  return (abTestID, requestOptions) => {
-    return base.transporter.write({
-      method: MethodEnum.Delete,
-      path: encode$1('2/abtests/%s', abTestID)
-    }, requestOptions);
-  };
-};
-
-const getABTest = base => {
-  return (abTestID, requestOptions) => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: encode$1('2/abtests/%s', abTestID)
-    }, requestOptions);
-  };
-};
-
-const getABTests = base => {
-  return requestOptions => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: '2/abtests'
-    }, requestOptions);
-  };
-};
-
-const stopABTest = base => {
-  return (abTestID, requestOptions) => {
-    return base.transporter.write({
-      method: MethodEnum.Post,
-      path: encode$1('2/abtests/%s/stop', abTestID)
-    }, requestOptions);
-  };
-};
-
-var clientAnalytics_esm = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  addABTest: addABTest,
-  createAnalyticsClient: createAnalyticsClient,
-  deleteABTest: deleteABTest,
-  getABTest: getABTest,
-  getABTests: getABTests,
-  stopABTest: stopABTest
-});
-
-var require$$2 = /*@__PURE__*/getAugmentedNamespace(clientAnalytics_esm);
-
-var require$$3 = /*@__PURE__*/getAugmentedNamespace(clientCommon_esm);
-
-const createRecommendationClient = options => {
-  const region = options.region || 'us';
-  const auth = createAuth(AuthMode.WithinHeaders, options.appId, options.apiKey);
-  const transporter = createTransporter({
-    hosts: [{
-      url: `recommendation.${region}.algolia.com`
-    }],
-    ...options,
-    headers: { ...auth.headers(),
-      ...{
-        'content-type': 'application/json'
-      },
-      ...options.headers
-    },
-    queryParameters: { ...auth.queryParameters(),
-      ...options.queryParameters
-    }
-  });
-  return addMethods({
-    appId: options.appId,
-    transporter
-  }, options.methods);
-};
-
-const getPersonalizationStrategy = base => {
-  return requestOptions => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: '1/strategies/personalization'
-    }, requestOptions);
-  };
-};
-
-const setPersonalizationStrategy = base => {
-  return (personalizationStrategy, requestOptions) => {
-    return base.transporter.write({
-      method: MethodEnum.Post,
-      path: '1/strategies/personalization',
-      data: personalizationStrategy
-    }, requestOptions);
-  };
-};
-
-var clientRecommendation_esm = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  createRecommendationClient: createRecommendationClient,
-  getPersonalizationStrategy: getPersonalizationStrategy,
-  setPersonalizationStrategy: setPersonalizationStrategy
-});
-
-var require$$4 = /*@__PURE__*/getAugmentedNamespace(clientRecommendation_esm);
-
-function createBrowsablePromise(options) {
-  const browse = data => {
-    return options.request(data).then(response => {
-      /**
-       * First we send to the developer the
-       * batch retrieved from the API.
-       */
-      if (options.batch !== undefined) {
-        options.batch(response.hits);
-      }
-      /**
-       * Then, we ask to the browse concrete implementation
-       * if we should stop browsing. As example, the `browseObjects`
-       * method will stop if the cursor is not present on the response.
-       */
-
-
-      if (options.shouldStop(response)) {
-        return undefined;
-      }
-      /**
-       * Finally, if the response contains a cursor, we browse to the next
-       * batch using that same cursor. Otherwise, we just use the traditional
-       * browsing using the page element.
-       */
-
-
-      if (response.cursor) {
-        return browse({
-          cursor: response.cursor
-        });
-      }
-
-      return browse({
-        page: (data.page || 0) + 1
-      });
-    });
-  };
-
-  return browse({});
-}
-
 const createSearchClient = options => {
   const appId = options.appId;
   const auth = createAuth(options.authMode !== undefined ? options.authMode : AuthMode.WithinHeaders, appId, options.apiKey);
@@ -1174,229 +917,6 @@ const createSearchClient = options => {
   return addMethods(base, options.methods);
 };
 
-function createMissingObjectIDError() {
-  return {
-    name: 'MissingObjectIDError',
-    message: 'All objects must have an unique objectID ' + '(like a primary key) to be valid. ' + 'Algolia is also able to generate objectIDs ' + "automatically but *it's not recommended*. " + "To do it, use the `{'autoGenerateObjectIDIfNotExist': true}` option."
-  };
-}
-
-function createObjectNotFoundError() {
-  return {
-    name: 'ObjectNotFoundError',
-    message: 'Object not found.'
-  };
-}
-
-function createValidUntilNotFoundError() {
-  return {
-    name: 'ValidUntilNotFoundError',
-    message: 'ValidUntil not found in given secured api key.'
-  };
-}
-
-const addApiKey = base => {
-  return (acl, requestOptions) => {
-    const {
-      queryParameters,
-      ...options
-    } = requestOptions || {};
-    const data = {
-      acl,
-      ...(queryParameters !== undefined ? {
-        queryParameters
-      } : {})
-    };
-
-    const wait = (response, waitRequestOptions) => {
-      return createRetryablePromise(retry => {
-        return getApiKey(base)(response.key, waitRequestOptions).catch(apiError => {
-          if (apiError.status !== 404) {
-            throw apiError;
-          }
-
-          return retry();
-        });
-      });
-    };
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Post,
-      path: '1/keys',
-      data
-    }, options), wait);
-  };
-};
-
-const assignUserID = base => {
-  return (userID, clusterName, requestOptions) => {
-    const mappedRequestOptions = createMappedRequestOptions(requestOptions); // eslint-disable-next-line functional/immutable-data
-
-    mappedRequestOptions.queryParameters['X-Algolia-User-ID'] = userID;
-    return base.transporter.write({
-      method: MethodEnum.Post,
-      path: '1/clusters/mapping',
-      data: {
-        cluster: clusterName
-      }
-    }, mappedRequestOptions);
-  };
-};
-
-const assignUserIDs = base => {
-  return (userIDs, clusterName, requestOptions) => {
-    return base.transporter.write({
-      method: MethodEnum.Post,
-      path: '1/clusters/mapping/batch',
-      data: {
-        users: userIDs,
-        cluster: clusterName
-      }
-    }, requestOptions);
-  };
-};
-
-const copyIndex = base => {
-  return (from, to, requestOptions) => {
-    const wait = (response, waitRequestOptions) => {
-      return initIndex(base)(from, {
-        methods: {
-          waitTask
-        }
-      }).waitTask(response.taskID, waitRequestOptions);
-    };
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Post,
-      path: encode$1('1/indexes/%s/operation', from),
-      data: {
-        operation: 'copy',
-        destination: to
-      }
-    }, requestOptions), wait);
-  };
-};
-
-const copyRules = base => {
-  return (from, to, requestOptions) => {
-    return copyIndex(base)(from, to, { ...requestOptions,
-      scope: [ScopeEnum.Rules]
-    });
-  };
-};
-
-const copySettings = base => {
-  return (from, to, requestOptions) => {
-    return copyIndex(base)(from, to, { ...requestOptions,
-      scope: [ScopeEnum.Settings]
-    });
-  };
-};
-
-const copySynonyms = base => {
-  return (from, to, requestOptions) => {
-    return copyIndex(base)(from, to, { ...requestOptions,
-      scope: [ScopeEnum.Synonyms]
-    });
-  };
-};
-
-const deleteApiKey = base => {
-  return (apiKey, requestOptions) => {
-    const wait = (_, waitRequestOptions) => {
-      return createRetryablePromise(retry => {
-        return getApiKey(base)(apiKey, waitRequestOptions).then(retry).catch(apiError => {
-          if (apiError.status !== 404) {
-            throw apiError;
-          }
-        });
-      });
-    };
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Delete,
-      path: encode$1('1/keys/%s', apiKey)
-    }, requestOptions), wait);
-  };
-};
-
-const generateSecuredApiKey = () => {
-  return (parentApiKey, restrictions) => {
-    const queryParameters = serializeQueryParameters$1(restrictions);
-    const securedKey = crypto.createHmac('sha256', parentApiKey).update(queryParameters).digest('hex');
-    return Buffer.from(securedKey + queryParameters).toString('base64');
-  };
-};
-
-const getApiKey = base => {
-  return (apiKey, requestOptions) => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: encode$1('1/keys/%s', apiKey)
-    }, requestOptions);
-  };
-};
-
-const getLogs = base => {
-  return requestOptions => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: '1/logs'
-    }, requestOptions);
-  };
-};
-
-const getSecuredApiKeyRemainingValidity = () => {
-  return securedApiKey => {
-    const decodedString = Buffer.from(securedApiKey, 'base64').toString('ascii');
-    const regex = /validUntil=(\d+)/;
-    const match = decodedString.match(regex);
-
-    if (match === null) {
-      throw createValidUntilNotFoundError();
-    }
-
-    return parseInt(match[1], 10) - Math.round(new Date().getTime() / 1000);
-  };
-};
-
-const getTopUserIDs = base => {
-  return requestOptions => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: '1/clusters/mapping/top'
-    }, requestOptions);
-  };
-};
-
-const getUserID = base => {
-  return (userID, requestOptions) => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: encode$1('1/clusters/mapping/%s', userID)
-    }, requestOptions);
-  };
-};
-
-const hasPendingMappings = base => {
-  return requestOptions => {
-    const {
-      retrieveMappings,
-      ...options
-    } = requestOptions || {};
-
-    if (retrieveMappings === true) {
-      // eslint-disable-next-line functional/immutable-data
-      options.getClusters = true;
-    }
-
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: '1/clusters/mapping/pending'
-    }, options);
-  };
-};
-
 const initIndex = base => {
   return (indexName, options = {}) => {
     const searchIndex = {
@@ -1405,97 +925,6 @@ const initIndex = base => {
       indexName
     };
     return addMethods(searchIndex, options.methods);
-  };
-};
-
-const listApiKeys = base => {
-  return requestOptions => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: '1/keys'
-    }, requestOptions);
-  };
-};
-
-const listClusters = base => {
-  return requestOptions => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: '1/clusters'
-    }, requestOptions);
-  };
-};
-
-const listIndices = base => {
-  return requestOptions => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: '1/indexes'
-    }, requestOptions);
-  };
-};
-
-const listUserIDs = base => {
-  return requestOptions => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: '1/clusters/mapping'
-    }, requestOptions);
-  };
-};
-
-const moveIndex = base => {
-  return (from, to, requestOptions) => {
-    const wait = (response, waitRequestOptions) => {
-      return initIndex(base)(from, {
-        methods: {
-          waitTask
-        }
-      }).waitTask(response.taskID, waitRequestOptions);
-    };
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Post,
-      path: encode$1('1/indexes/%s/operation', from),
-      data: {
-        operation: 'move',
-        destination: to
-      }
-    }, requestOptions), wait);
-  };
-};
-
-const multipleBatch = base => {
-  return (requests, requestOptions) => {
-    const wait = (response, waitRequestOptions) => {
-      return Promise.all(Object.keys(response.taskID).map(indexName => {
-        return initIndex(base)(indexName, {
-          methods: {
-            waitTask
-          }
-        }).waitTask(response.taskID[indexName], waitRequestOptions);
-      }));
-    };
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Post,
-      path: '1/indexes/*/batch',
-      data: {
-        requests
-      }
-    }, requestOptions), wait);
-  };
-};
-
-const multipleGetObjects = base => {
-  return (requests, requestOptions) => {
-    return base.transporter.read({
-      method: MethodEnum.Post,
-      path: '1/indexes/*/objects',
-      data: {
-        requests
-      }
-    }, requestOptions);
   };
 };
 
@@ -1536,365 +965,11 @@ const multipleSearchForFacetValues = base => {
   };
 };
 
-const removeUserID = base => {
-  return (userID, requestOptions) => {
-    const mappedRequestOptions = createMappedRequestOptions(requestOptions); // eslint-disable-next-line functional/immutable-data
-
-    mappedRequestOptions.queryParameters['X-Algolia-User-ID'] = userID;
-    return base.transporter.write({
-      method: MethodEnum.Delete,
-      path: '1/clusters/mapping'
-    }, mappedRequestOptions);
-  };
-};
-
-const restoreApiKey = base => {
-  return (apiKey, requestOptions) => {
-    const wait = (_, waitRequestOptions) => {
-      return createRetryablePromise(retry => {
-        return getApiKey(base)(apiKey, waitRequestOptions).catch(apiError => {
-          if (apiError.status !== 404) {
-            throw apiError;
-          }
-
-          return retry();
-        });
-      });
-    };
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Post,
-      path: encode$1('1/keys/%s/restore', apiKey)
-    }, requestOptions), wait);
-  };
-};
-
-const searchUserIDs = base => {
-  return (query, requestOptions) => {
-    return base.transporter.read({
-      method: MethodEnum.Post,
-      path: '1/clusters/mapping/search',
-      data: {
-        query
-      }
-    }, requestOptions);
-  };
-};
-
-const updateApiKey = base => {
-  return (apiKey, requestOptions) => {
-    const updatedFields = Object.assign({}, requestOptions);
-    const {
-      queryParameters,
-      ...options
-    } = requestOptions || {};
-    const data = queryParameters ? {
-      queryParameters
-    } : {};
-    const apiKeyFields = ['acl', 'indexes', 'referers', 'restrictSources', 'queryParameters', 'description', 'maxQueriesPerIPPerHour', 'maxHitsPerQuery'];
-
-    const hasChanged = getApiKeyResponse => {
-      return Object.keys(updatedFields).filter(updatedField => apiKeyFields.indexOf(updatedField) !== -1).every(updatedField => {
-        return getApiKeyResponse[updatedField] === updatedFields[updatedField];
-      });
-    };
-
-    const wait = (_, waitRequestOptions) => createRetryablePromise(retry => {
-      return getApiKey(base)(apiKey, waitRequestOptions).then(getApiKeyResponse => {
-        return hasChanged(getApiKeyResponse) ? Promise.resolve() : retry();
-      });
-    });
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Put,
-      path: encode$1('1/keys/%s', apiKey),
-      data
-    }, options), wait);
-  };
-};
-
-const batch = base => {
-  return (requests, requestOptions) => {
-    const wait = (response, waitRequestOptions) => {
-      return waitTask(base)(response.taskID, waitRequestOptions);
-    };
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Post,
-      path: encode$1('1/indexes/%s/batch', base.indexName),
-      data: {
-        requests
-      }
-    }, requestOptions), wait);
-  };
-};
-
-const browseObjects = base => {
-  return requestOptions => {
-    return createBrowsablePromise({
-      shouldStop: response => response.cursor === undefined,
-      ...requestOptions,
-      request: data => base.transporter.read({
-        method: MethodEnum.Post,
-        path: encode$1('1/indexes/%s/browse', base.indexName),
-        data
-      }, requestOptions)
-    });
-  };
-};
-
-const browseRules = base => {
-  return requestOptions => {
-    const options = {
-      hitsPerPage: 1000,
-      ...requestOptions
-    };
-    return createBrowsablePromise({
-      shouldStop: response => response.hits.length < options.hitsPerPage,
-      ...options,
-
-      request(data) {
-        return searchRules(base)('', { ...options,
-          ...data
-        }).then(response => {
-          return { ...response,
-            hits: response.hits.map(rule => {
-              // eslint-disable-next-line functional/immutable-data,no-param-reassign
-              delete rule._highlightResult;
-              return rule;
-            })
-          };
-        });
-      }
-
-    });
-  };
-};
-
-const browseSynonyms = base => {
-  return requestOptions => {
-    const options = {
-      hitsPerPage: 1000,
-      ...requestOptions
-    };
-    return createBrowsablePromise({
-      shouldStop: response => response.hits.length < options.hitsPerPage,
-      ...options,
-
-      request(data) {
-        return searchSynonyms(base)('', { ...options,
-          ...data
-        }).then(response => {
-          return { ...response,
-            hits: response.hits.map(synonym => {
-              // eslint-disable-next-line functional/immutable-data,no-param-reassign
-              delete synonym._highlightResult;
-              return synonym;
-            })
-          };
-        });
-      }
-
-    });
-  };
-};
-
-const chunkedBatch = base => {
-  return (bodies, action, requestOptions) => {
-    const {
-      batchSize,
-      ...options
-    } = requestOptions || {};
-    const response = {
-      taskIDs: [],
-      objectIDs: []
-    };
-
-    const forEachBatch = (lastIndex = 0) => {
-      // eslint-disable-next-line functional/prefer-readonly-type
-      const bodiesChunk = []; // eslint-disable-next-line functional/no-let
-
-      let index;
-      /* eslint-disable-next-line functional/no-loop-statement */
-
-      for (index = lastIndex; index < bodies.length; index++) {
-        // eslint-disable-next-line functional/immutable-data
-        bodiesChunk.push(bodies[index]);
-
-        if (bodiesChunk.length === (batchSize || 1000)) {
-          break;
-        }
-      }
-
-      if (bodiesChunk.length === 0) {
-        return Promise.resolve(response);
-      }
-
-      return batch(base)(bodiesChunk.map(body => {
-        return {
-          action,
-          body
-        };
-      }), options).then(res => {
-        response.objectIDs = response.objectIDs.concat(res.objectIDs); // eslint-disable-line functional/immutable-data
-
-        response.taskIDs.push(res.taskID); // eslint-disable-line functional/immutable-data
-
-        index++;
-        return forEachBatch(index);
-      });
-    };
-
-    return createWaitablePromise(forEachBatch(), (chunkedBatchResponse, waitRequestOptions) => {
-      return Promise.all(chunkedBatchResponse.taskIDs.map(taskID => {
-        return waitTask(base)(taskID, waitRequestOptions);
-      }));
-    });
-  };
-};
-
-const clearObjects = base => {
-  return requestOptions => {
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Post,
-      path: encode$1('1/indexes/%s/clear', base.indexName)
-    }, requestOptions), (response, waitRequestOptions) => waitTask(base)(response.taskID, waitRequestOptions));
-  };
-};
-
-const clearRules = base => {
-  return requestOptions => {
-    const {
-      forwardToReplicas,
-      ...options
-    } = requestOptions || {};
-    const mappedRequestOptions = createMappedRequestOptions(options);
-
-    if (forwardToReplicas) {
-      mappedRequestOptions.queryParameters.forwardToReplicas = 1; // eslint-disable-line functional/immutable-data
-    }
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Post,
-      path: encode$1('1/indexes/%s/rules/clear', base.indexName)
-    }, mappedRequestOptions), (response, waitRequestOptions) => waitTask(base)(response.taskID, waitRequestOptions));
-  };
-};
-
-const clearSynonyms = base => {
-  return requestOptions => {
-    const {
-      forwardToReplicas,
-      ...options
-    } = requestOptions || {};
-    const mappedRequestOptions = createMappedRequestOptions(options);
-
-    if (forwardToReplicas) {
-      mappedRequestOptions.queryParameters.forwardToReplicas = 1; // eslint-disable-line functional/immutable-data
-    }
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Post,
-      path: encode$1('1/indexes/%s/synonyms/clear', base.indexName)
-    }, mappedRequestOptions), (response, waitRequestOptions) => waitTask(base)(response.taskID, waitRequestOptions));
-  };
-};
-
-const deleteBy = base => {
-  return (filters, requestOptions) => {
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Post,
-      path: encode$1('1/indexes/%s/deleteByQuery', base.indexName),
-      data: filters
-    }, requestOptions), (response, waitRequestOptions) => waitTask(base)(response.taskID, waitRequestOptions));
-  };
-};
-
-const deleteIndex = base => {
-  return requestOptions => {
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Delete,
-      path: encode$1('1/indexes/%s', base.indexName)
-    }, requestOptions), (response, waitRequestOptions) => waitTask(base)(response.taskID, waitRequestOptions));
-  };
-};
-
-const deleteObject = base => {
-  return (objectID, requestOptions) => {
-    return createWaitablePromise(deleteObjects(base)([objectID], requestOptions).then(response => {
-      return {
-        taskID: response.taskIDs[0]
-      };
-    }), (response, waitRequestOptions) => waitTask(base)(response.taskID, waitRequestOptions));
-  };
-};
-
-const deleteObjects = base => {
-  return (objectIDs, requestOptions) => {
-    const objects = objectIDs.map(objectID => {
-      return {
-        objectID
-      };
-    });
-    return chunkedBatch(base)(objects, BatchActionEnum.DeleteObject, requestOptions);
-  };
-};
-
-const deleteRule = base => {
-  return (objectID, requestOptions) => {
-    const {
-      forwardToReplicas,
-      ...options
-    } = requestOptions || {};
-    const mappedRequestOptions = createMappedRequestOptions(options);
-
-    if (forwardToReplicas) {
-      mappedRequestOptions.queryParameters.forwardToReplicas = 1; // eslint-disable-line functional/immutable-data
-    }
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Delete,
-      path: encode$1('1/indexes/%s/rules/%s', base.indexName, objectID)
-    }, mappedRequestOptions), (response, waitRequestOptions) => waitTask(base)(response.taskID, waitRequestOptions));
-  };
-};
-
-const deleteSynonym = base => {
-  return (objectID, requestOptions) => {
-    const {
-      forwardToReplicas,
-      ...options
-    } = requestOptions || {};
-    const mappedRequestOptions = createMappedRequestOptions(options);
-
-    if (forwardToReplicas) {
-      mappedRequestOptions.queryParameters.forwardToReplicas = 1; // eslint-disable-line functional/immutable-data
-    }
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Delete,
-      path: encode$1('1/indexes/%s/synonyms/%s', base.indexName, objectID)
-    }, mappedRequestOptions), (response, waitRequestOptions) => waitTask(base)(response.taskID, waitRequestOptions));
-  };
-};
-
-const exists = base => {
-  return requestOptions => {
-    return getSettings(base)(requestOptions).then(() => true).catch(error => {
-      if (error.status !== 404) {
-        throw error;
-      }
-
-      return false;
-    });
-  };
-};
-
 const findAnswers = base => {
   return (query, queryLanguages, requestOptions) => {
     return base.transporter.read({
       method: MethodEnum.Post,
-      path: encode$1('1/answers/%s/prediction', base.indexName),
+      path: encode('1/answers/%s/prediction', base.indexName),
       data: {
         query,
         queryLanguages
@@ -1904,330 +979,11 @@ const findAnswers = base => {
   };
 };
 
-const findObject = base => {
-  return (callback, requestOptions) => {
-    const {
-      query,
-      paginate,
-      ...options
-    } = requestOptions || {}; // eslint-disable-next-line functional/no-let
-
-    let page = 0;
-
-    const forEachPage = () => {
-      return search(base)(query || '', { ...options,
-        page
-      }).then(result => {
-        // eslint-disable-next-line functional/no-loop-statement
-        for (const [position, hit] of Object.entries(result.hits)) {
-          // eslint-disable-next-line promise/no-callback-in-promise
-          if (callback(hit)) {
-            return {
-              object: hit,
-              position: parseInt(position, 10),
-              page
-            };
-          }
-        }
-
-        page++; // paginate if option was set and has next page
-
-        if (paginate === false || page >= result.nbPages) {
-          throw createObjectNotFoundError();
-        }
-
-        return forEachPage();
-      });
-    };
-
-    return forEachPage();
-  };
-};
-
-const getObject = base => {
-  return (objectID, requestOptions) => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: encode$1('1/indexes/%s/%s', base.indexName, objectID)
-    }, requestOptions);
-  };
-};
-
-const getObjectPosition = () => {
-  return (searchResponse, objectID) => {
-    // eslint-disable-next-line functional/no-loop-statement
-    for (const [position, hit] of Object.entries(searchResponse.hits)) {
-      if (hit.objectID === objectID) {
-        return parseInt(position, 10);
-      }
-    }
-
-    return -1;
-  };
-};
-
-const getObjects = base => {
-  return (objectIDs, requestOptions) => {
-    const {
-      attributesToRetrieve,
-      ...options
-    } = requestOptions || {};
-    const requests = objectIDs.map(objectID => {
-      return {
-        indexName: base.indexName,
-        objectID,
-        ...(attributesToRetrieve ? {
-          attributesToRetrieve
-        } : {})
-      };
-    });
-    return base.transporter.read({
-      method: MethodEnum.Post,
-      path: '1/indexes/*/objects',
-      data: {
-        requests
-      }
-    }, options);
-  };
-};
-
-const getRule = base => {
-  return (objectID, requestOptions) => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: encode$1('1/indexes/%s/rules/%s', base.indexName, objectID)
-    }, requestOptions);
-  };
-};
-
-const getSettings = base => {
-  return requestOptions => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: encode$1('1/indexes/%s/settings', base.indexName),
-      data: {
-        getVersion: 2
-      }
-    }, requestOptions);
-  };
-};
-
-const getSynonym = base => {
-  return (objectID, requestOptions) => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: encode$1(`1/indexes/%s/synonyms/%s`, base.indexName, objectID)
-    }, requestOptions);
-  };
-};
-
-const getTask = base => {
-  return (taskID, requestOptions) => {
-    return base.transporter.read({
-      method: MethodEnum.Get,
-      path: encode$1('1/indexes/%s/task/%s', base.indexName, taskID.toString())
-    }, requestOptions);
-  };
-};
-
-const partialUpdateObject = base => {
-  return (object, requestOptions) => {
-    return createWaitablePromise(partialUpdateObjects(base)([object], requestOptions).then(response => {
-      return {
-        objectID: response.objectIDs[0],
-        taskID: response.taskIDs[0]
-      };
-    }), (response, waitRequestOptions) => waitTask(base)(response.taskID, waitRequestOptions));
-  };
-};
-
-const partialUpdateObjects = base => {
-  return (objects, requestOptions) => {
-    const {
-      createIfNotExists,
-      ...options
-    } = requestOptions || {};
-    const action = createIfNotExists ? BatchActionEnum.PartialUpdateObject : BatchActionEnum.PartialUpdateObjectNoCreate;
-    return chunkedBatch(base)(objects, action, options);
-  };
-};
-
-const replaceAllObjects = base => {
-  return (objects, requestOptions) => {
-    const {
-      safe,
-      autoGenerateObjectIDIfNotExist,
-      batchSize,
-      ...options
-    } = requestOptions || {};
-
-    const operation = (from, to, type, operationRequestOptions) => {
-      return createWaitablePromise(base.transporter.write({
-        method: MethodEnum.Post,
-        path: encode$1('1/indexes/%s/operation', from),
-        data: {
-          operation: type,
-          destination: to
-        }
-      }, operationRequestOptions), (response, waitRequestOptions) => waitTask(base)(response.taskID, waitRequestOptions));
-    };
-
-    const randomSuffix = Math.random().toString(36).substring(7);
-    const temporaryIndexName = `${base.indexName}_tmp_${randomSuffix}`;
-    const saveObjectsInTemporary = saveObjects({
-      appId: base.appId,
-      transporter: base.transporter,
-      indexName: temporaryIndexName
-    }); // @ts-ignore
-    // eslint-disable-next-line prefer-const, functional/no-let, functional/prefer-readonly-type
-
-    let responses = [];
-    const copyWaitablePromise = operation(base.indexName, temporaryIndexName, 'copy', { ...options,
-      scope: ['settings', 'synonyms', 'rules']
-    }); // eslint-disable-next-line functional/immutable-data
-
-    responses.push(copyWaitablePromise);
-    const result = (safe ? copyWaitablePromise.wait(options) : copyWaitablePromise).then(() => {
-      const saveObjectsWaitablePromise = saveObjectsInTemporary(objects, { ...options,
-        autoGenerateObjectIDIfNotExist,
-        batchSize
-      }); // eslint-disable-next-line functional/immutable-data
-
-      responses.push(saveObjectsWaitablePromise);
-      return safe ? saveObjectsWaitablePromise.wait(options) : saveObjectsWaitablePromise;
-    }).then(() => {
-      const moveWaitablePromise = operation(temporaryIndexName, base.indexName, 'move', options); // eslint-disable-next-line functional/immutable-data
-
-      responses.push(moveWaitablePromise);
-      return safe ? moveWaitablePromise.wait(options) : moveWaitablePromise;
-    }).then(() => Promise.all(responses)).then(([copyResponse, saveObjectsResponse, moveResponse]) => {
-      return {
-        objectIDs: saveObjectsResponse.objectIDs,
-        taskIDs: [copyResponse.taskID, ...saveObjectsResponse.taskIDs, moveResponse.taskID]
-      };
-    });
-    return createWaitablePromise(result, (_, waitRequestOptions) => {
-      return Promise.all(responses.map(response => response.wait(waitRequestOptions)));
-    });
-  };
-};
-
-const replaceAllRules = base => {
-  return (rules, requestOptions) => {
-    return saveRules(base)(rules, { ...requestOptions,
-      clearExistingRules: true
-    });
-  };
-};
-
-const replaceAllSynonyms = base => {
-  return (synonyms, requestOptions) => {
-    return saveSynonyms(base)(synonyms, { ...requestOptions,
-      clearExistingSynonyms: true
-    });
-  };
-};
-
-const saveObject = base => {
-  return (object, requestOptions) => {
-    return createWaitablePromise(saveObjects(base)([object], requestOptions).then(response => {
-      return {
-        objectID: response.objectIDs[0],
-        taskID: response.taskIDs[0]
-      };
-    }), (response, waitRequestOptions) => waitTask(base)(response.taskID, waitRequestOptions));
-  };
-};
-
-const saveObjects = base => {
-  return (objects, requestOptions) => {
-    const {
-      autoGenerateObjectIDIfNotExist,
-      ...options
-    } = requestOptions || {};
-    const action = autoGenerateObjectIDIfNotExist ? BatchActionEnum.AddObject : BatchActionEnum.UpdateObject;
-
-    if (action === BatchActionEnum.UpdateObject) {
-      // eslint-disable-next-line functional/no-loop-statement
-      for (const object of objects) {
-        if (object.objectID === undefined) {
-          return createWaitablePromise(Promise.reject(createMissingObjectIDError()));
-        }
-      }
-    }
-
-    return chunkedBatch(base)(objects, action, options);
-  };
-};
-
-const saveRule = base => {
-  return (rule, requestOptions) => {
-    return saveRules(base)([rule], requestOptions);
-  };
-};
-
-const saveRules = base => {
-  return (rules, requestOptions) => {
-    const {
-      forwardToReplicas,
-      clearExistingRules,
-      ...options
-    } = requestOptions || {};
-    const mappedRequestOptions = createMappedRequestOptions(options);
-
-    if (forwardToReplicas) {
-      mappedRequestOptions.queryParameters.forwardToReplicas = 1; // eslint-disable-line functional/immutable-data
-    }
-
-    if (clearExistingRules) {
-      mappedRequestOptions.queryParameters.clearExistingRules = 1; // eslint-disable-line functional/immutable-data
-    }
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Post,
-      path: encode$1('1/indexes/%s/rules/batch', base.indexName),
-      data: rules
-    }, mappedRequestOptions), (response, waitRequestOptions) => waitTask(base)(response.taskID, waitRequestOptions));
-  };
-};
-
-const saveSynonym = base => {
-  return (synonym, requestOptions) => {
-    return saveSynonyms(base)([synonym], requestOptions);
-  };
-};
-
-const saveSynonyms = base => {
-  return (synonyms, requestOptions) => {
-    const {
-      forwardToReplicas,
-      clearExistingSynonyms,
-      replaceExistingSynonyms,
-      ...options
-    } = requestOptions || {};
-    const mappedRequestOptions = createMappedRequestOptions(options);
-
-    if (forwardToReplicas) {
-      mappedRequestOptions.queryParameters.forwardToReplicas = 1; // eslint-disable-line functional/immutable-data
-    }
-
-    if (replaceExistingSynonyms || clearExistingSynonyms) {
-      mappedRequestOptions.queryParameters.replaceExistingSynonyms = 1; // eslint-disable-line functional/immutable-data
-    }
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Post,
-      path: encode$1('1/indexes/%s/synonyms/batch', base.indexName),
-      data: synonyms
-    }, mappedRequestOptions), (response, waitRequestOptions) => waitTask(base)(response.taskID, waitRequestOptions));
-  };
-};
-
 const search = base => {
   return (query, requestOptions) => {
     return base.transporter.read({
       method: MethodEnum.Post,
-      path: encode$1('1/indexes/%s/query', base.indexName),
+      path: encode('1/indexes/%s/query', base.indexName),
       data: {
         query
       },
@@ -2240,7 +996,7 @@ const searchForFacetValues = base => {
   return (facetName, facetQuery, requestOptions) => {
     return base.transporter.read({
       method: MethodEnum.Post,
-      path: encode$1('1/indexes/%s/facets/%s/query', base.indexName, facetName),
+      path: encode('1/indexes/%s/facets/%s/query', base.indexName, facetName),
       data: {
         facetQuery
       },
@@ -2249,273 +1005,50 @@ const searchForFacetValues = base => {
   };
 };
 
-const searchRules = base => {
-  return (query, requestOptions) => {
-    return base.transporter.read({
-      method: MethodEnum.Post,
-      path: encode$1('1/indexes/%s/rules/search', base.indexName),
-      data: {
-        query
-      }
-    }, requestOptions);
-  };
+const LogLevelEnum = {
+  Debug: 1,
+  Info: 2,
+  Error: 3
 };
+/* eslint no-console: 0 */
 
-const searchSynonyms = base => {
-  return (query, requestOptions) => {
-    return base.transporter.read({
-      method: MethodEnum.Post,
-      path: encode$1('1/indexes/%s/synonyms/search', base.indexName),
-      data: {
-        query
-      }
-    }, requestOptions);
-  };
-};
-
-const setSettings = base => {
-  return (settings, requestOptions) => {
-    const {
-      forwardToReplicas,
-      ...options
-    } = requestOptions || {};
-    const mappedRequestOptions = createMappedRequestOptions(options);
-
-    if (forwardToReplicas) {
-      mappedRequestOptions.queryParameters.forwardToReplicas = 1; // eslint-disable-line functional/immutable-data
-    }
-
-    return createWaitablePromise(base.transporter.write({
-      method: MethodEnum.Put,
-      path: encode$1('1/indexes/%s/settings', base.indexName),
-      data: settings
-    }, mappedRequestOptions), (response, waitRequestOptions) => waitTask(base)(response.taskID, waitRequestOptions));
-  };
-};
-
-const waitTask = base => {
-  return (taskID, requestOptions) => {
-    return createRetryablePromise(retry => {
-      return getTask(base)(taskID, requestOptions).then(response => {
-        return response.status !== 'published' ? retry() : undefined;
-      });
-    });
-  };
-};
-
-const ApiKeyACLEnum = {
-  AddObject: 'addObject',
-  Analytics: 'analytics',
-  Browser: 'browse',
-  DeleteIndex: 'deleteIndex',
-  DeleteObject: 'deleteObject',
-  EditSettings: 'editSettings',
-  ListIndexes: 'listIndexes',
-  Logs: 'logs',
-  Recommendation: 'recommendation',
-  Search: 'search',
-  SeeUnretrievableAttributes: 'seeUnretrievableAttributes',
-  Settings: 'settings',
-  Usage: 'usage'
-};
-const BatchActionEnum = {
-  AddObject: 'addObject',
-  UpdateObject: 'updateObject',
-  PartialUpdateObject: 'partialUpdateObject',
-  PartialUpdateObjectNoCreate: 'partialUpdateObjectNoCreate',
-  DeleteObject: 'deleteObject',
-  DeleteIndex: 'delete',
-  ClearIndex: 'clear'
-};
-const ScopeEnum = {
-  Settings: 'settings',
-  Synonyms: 'synonyms',
-  Rules: 'rules'
-};
-const StrategyEnum = {
-  None: 'none',
-  StopIfEnoughMatches: 'stopIfEnoughMatches'
-};
-const SynonymEnum = {
-  Synonym: 'synonym',
-  OneWaySynonym: 'oneWaySynonym',
-  AltCorrection1: 'altCorrection1',
-  AltCorrection2: 'altCorrection2',
-  Placeholder: 'placeholder'
-};
-
-var clientSearch_esm = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  ApiKeyACLEnum: ApiKeyACLEnum,
-  BatchActionEnum: BatchActionEnum,
-  ScopeEnum: ScopeEnum,
-  StrategyEnum: StrategyEnum,
-  SynonymEnum: SynonymEnum,
-  addApiKey: addApiKey,
-  assignUserID: assignUserID,
-  assignUserIDs: assignUserIDs,
-  batch: batch,
-  browseObjects: browseObjects,
-  browseRules: browseRules,
-  browseSynonyms: browseSynonyms,
-  chunkedBatch: chunkedBatch,
-  clearObjects: clearObjects,
-  clearRules: clearRules,
-  clearSynonyms: clearSynonyms,
-  copyIndex: copyIndex,
-  copyRules: copyRules,
-  copySettings: copySettings,
-  copySynonyms: copySynonyms,
-  createBrowsablePromise: createBrowsablePromise,
-  createMissingObjectIDError: createMissingObjectIDError,
-  createObjectNotFoundError: createObjectNotFoundError,
-  createSearchClient: createSearchClient,
-  createValidUntilNotFoundError: createValidUntilNotFoundError,
-  deleteApiKey: deleteApiKey,
-  deleteBy: deleteBy,
-  deleteIndex: deleteIndex,
-  deleteObject: deleteObject,
-  deleteObjects: deleteObjects,
-  deleteRule: deleteRule,
-  deleteSynonym: deleteSynonym,
-  exists: exists,
-  findAnswers: findAnswers,
-  findObject: findObject,
-  generateSecuredApiKey: generateSecuredApiKey,
-  getApiKey: getApiKey,
-  getLogs: getLogs,
-  getObject: getObject,
-  getObjectPosition: getObjectPosition,
-  getObjects: getObjects,
-  getRule: getRule,
-  getSecuredApiKeyRemainingValidity: getSecuredApiKeyRemainingValidity,
-  getSettings: getSettings,
-  getSynonym: getSynonym,
-  getTask: getTask,
-  getTopUserIDs: getTopUserIDs,
-  getUserID: getUserID,
-  hasPendingMappings: hasPendingMappings,
-  initIndex: initIndex,
-  listApiKeys: listApiKeys,
-  listClusters: listClusters,
-  listIndices: listIndices,
-  listUserIDs: listUserIDs,
-  moveIndex: moveIndex,
-  multipleBatch: multipleBatch,
-  multipleGetObjects: multipleGetObjects,
-  multipleQueries: multipleQueries,
-  multipleSearchForFacetValues: multipleSearchForFacetValues,
-  partialUpdateObject: partialUpdateObject,
-  partialUpdateObjects: partialUpdateObjects,
-  removeUserID: removeUserID,
-  replaceAllObjects: replaceAllObjects,
-  replaceAllRules: replaceAllRules,
-  replaceAllSynonyms: replaceAllSynonyms,
-  restoreApiKey: restoreApiKey,
-  saveObject: saveObject,
-  saveObjects: saveObjects,
-  saveRule: saveRule,
-  saveRules: saveRules,
-  saveSynonym: saveSynonym,
-  saveSynonyms: saveSynonyms,
-  search: search,
-  searchForFacetValues: searchForFacetValues,
-  searchRules: searchRules,
-  searchSynonyms: searchSynonyms,
-  searchUserIDs: searchUserIDs,
-  setSettings: setSettings,
-  updateApiKey: updateApiKey,
-  waitTask: waitTask
-});
-
-var require$$5 = /*@__PURE__*/getAugmentedNamespace(clientSearch_esm);
-
-function createNullLogger() {
+function createConsoleLogger(logLevel) {
   return {
-    debug(_message, _args) {
+    debug(message, args) {
+      if (LogLevelEnum.Debug >= logLevel) {
+        console.debug(message, args);
+      }
+
       return Promise.resolve();
     },
 
-    info(_message, _args) {
+    info(message, args) {
+      if (LogLevelEnum.Info >= logLevel) {
+        console.info(message, args);
+      }
+
       return Promise.resolve();
     },
 
-    error(_message, _args) {
+    error(message, args) {
+      console.error(message, args);
       return Promise.resolve();
     }
 
   };
 }
 
-const LogLevelEnum = {
-  Debug: 1,
-  Info: 2,
-  Error: 3
-};
-
-var loggerCommon_esm = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  LogLevelEnum: LogLevelEnum,
-  createNullLogger: createNullLogger
-});
-
-var require$$6 = /*@__PURE__*/getAugmentedNamespace(loggerCommon_esm);
-
-/* eslint functional/prefer-readonly-type: 0 */
-
-const agentOptions = {
-  keepAlive: true
-};
-const defaultHttpAgent = new http.Agent(agentOptions);
-const defaultHttpsAgent = new https.Agent(agentOptions);
-
-function createNodeHttpRequester({
-  agent: userGlobalAgent,
-  httpAgent: userHttpAgent,
-  httpsAgent: userHttpsAgent,
-  requesterOptions = {}
-} = {}) {
-  const httpAgent = userHttpAgent || userGlobalAgent || defaultHttpAgent;
-  const httpsAgent = userHttpsAgent || userGlobalAgent || defaultHttpsAgent;
+function createBrowserXhrRequester() {
   return {
     send(request) {
       return new Promise(resolve => {
-        const url$1 = url.parse(request.url);
-        const path = url$1.query === null ? url$1.pathname : `${url$1.pathname}?${url$1.query}`;
-        const options = { ...requesterOptions,
-          agent: url$1.protocol === 'https:' ? httpsAgent : httpAgent,
-          hostname: url$1.hostname,
-          path,
-          method: request.method,
-          headers: { ...(requesterOptions && requesterOptions.headers ? requesterOptions.headers : {}),
-            ...request.headers
-          },
-          ...(url$1.port !== undefined ? {
-            port: url$1.port || ''
-          } : {})
-        };
-        const req = (url$1.protocol === 'https:' ? https__namespace : http__namespace).request(options, response => {
-          // eslint-disable-next-line functional/no-let
-          let contentBuffers = [];
-          response.on('data', chunk => {
-            contentBuffers = contentBuffers.concat(chunk);
-          });
-          response.on('end', () => {
-            // eslint-disable-next-line @typescript-eslint/no-use-before-define
-            clearTimeout(connectTimeout); // eslint-disable-next-line @typescript-eslint/no-use-before-define
-
-            clearTimeout(responseTimeout);
-            resolve({
-              status: response.statusCode || 0,
-              content: Buffer.concat(contentBuffers).toString(),
-              isTimedOut: false
-            });
-          });
-        });
+        const baseRequester = new XMLHttpRequest();
+        baseRequester.open(request.method, request.url, true);
+        Object.keys(request.headers).forEach(key => baseRequester.setRequestHeader(key, request.headers[key]));
 
         const createTimeout = (timeout, content) => {
           return setTimeout(() => {
-            req.abort();
+            baseRequester.abort();
             resolve({
               status: 0,
               content,
@@ -2526,181 +1059,86 @@ function createNodeHttpRequester({
 
         const connectTimeout = createTimeout(request.connectTimeout, 'Connection timeout'); // eslint-disable-next-line functional/no-let
 
-        let responseTimeout;
-        req.on('error', error => {
+        let responseTimeout; // eslint-disable-next-line functional/immutable-data
+
+        baseRequester.onreadystatechange = () => {
+          if (baseRequester.readyState > baseRequester.OPENED && responseTimeout === undefined) {
+            clearTimeout(connectTimeout);
+            responseTimeout = createTimeout(request.responseTimeout, 'Socket timeout');
+          }
+        }; // eslint-disable-next-line functional/immutable-data
+
+
+        baseRequester.onerror = () => {
+          // istanbul ignore next
+          if (baseRequester.status === 0) {
+            clearTimeout(connectTimeout);
+            clearTimeout(responseTimeout);
+            resolve({
+              content: baseRequester.responseText || 'Network request failed',
+              status: baseRequester.status,
+              isTimedOut: false
+            });
+          }
+        }; //  eslint-disable-next-line functional/immutable-data
+
+
+        baseRequester.onload = () => {
           clearTimeout(connectTimeout);
           clearTimeout(responseTimeout);
           resolve({
-            status: 0,
-            content: error.message,
+            content: baseRequester.responseText,
+            status: baseRequester.status,
             isTimedOut: false
           });
-        });
-        req.once('response', () => {
-          clearTimeout(connectTimeout);
-          responseTimeout = createTimeout(request.responseTimeout, 'Socket timeout');
-        });
+        };
 
-        if (request.data !== undefined) {
-          req.write(request.data);
-        }
-
-        req.end();
+        baseRequester.send(request.data);
       });
-    },
-
-    destroy() {
-      httpAgent.destroy();
-      httpsAgent.destroy();
-      return Promise.resolve();
     }
 
   };
 }
 
-var requesterNodeHttp_esm = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  createNodeHttpRequester: createNodeHttpRequester
-});
-
-var require$$7 = /*@__PURE__*/getAugmentedNamespace(requesterNodeHttp_esm);
-
-var require$$8 = /*@__PURE__*/getAugmentedNamespace(transporter_esm);
-
-var cacheCommon = require$$0;
-
-var cacheInMemory = require$$1;
-
-var clientAnalytics = require$$2;
-
-var clientCommon = require$$3;
-
-var clientRecommendation = require$$4;
-
-var clientSearch = require$$5;
-
-var loggerCommon = require$$6;
-
-var requesterNodeHttp = require$$7;
-
-var transporter = require$$8;
-
-function algoliasearch$2(appId, apiKey, options) {
+function algoliasearch(appId, apiKey, options) {
   const commonOptions = {
     appId,
     apiKey,
     timeouts: {
-      connect: 2,
-      read: 5,
+      connect: 1,
+      read: 2,
       write: 30
     },
-    requester: requesterNodeHttp.createNodeHttpRequester(),
-    logger: loggerCommon.createNullLogger(),
-    responsesCache: cacheCommon.createNullCache(),
-    requestsCache: cacheCommon.createNullCache(),
-    hostsCache: cacheInMemory.createInMemoryCache(),
-    userAgent: transporter.createUserAgent(clientCommon.version).add({
-      segment: 'Node.js',
-      version: process.versions.node
-    })
+    requester: createBrowserXhrRequester(),
+    logger: createConsoleLogger(LogLevelEnum.Error),
+    responsesCache: createInMemoryCache(),
+    requestsCache: createInMemoryCache({
+      serializable: false
+    }),
+    hostsCache: createFallbackableCache({
+      caches: [createBrowserLocalStorageCache({
+        key: `${version$3}-${appId}`
+      }), createInMemoryCache()]
+    }),
+    userAgent: createUserAgent(version$3).add({
+      segment: 'Browser',
+      version: 'lite'
+    }),
+    authMode: AuthMode.WithinQueryParameters
   };
-  return clientSearch.createSearchClient({ ...commonOptions,
+  return createSearchClient({ ...commonOptions,
     ...options,
     methods: {
-      search: clientSearch.multipleQueries,
-      searchForFacetValues: clientSearch.multipleSearchForFacetValues,
-      multipleBatch: clientSearch.multipleBatch,
-      multipleGetObjects: clientSearch.multipleGetObjects,
-      multipleQueries: clientSearch.multipleQueries,
-      copyIndex: clientSearch.copyIndex,
-      copySettings: clientSearch.copySettings,
-      copyRules: clientSearch.copyRules,
-      copySynonyms: clientSearch.copySynonyms,
-      moveIndex: clientSearch.moveIndex,
-      listIndices: clientSearch.listIndices,
-      getLogs: clientSearch.getLogs,
-      listClusters: clientSearch.listClusters,
-      multipleSearchForFacetValues: clientSearch.multipleSearchForFacetValues,
-      getApiKey: clientSearch.getApiKey,
-      addApiKey: clientSearch.addApiKey,
-      listApiKeys: clientSearch.listApiKeys,
-      updateApiKey: clientSearch.updateApiKey,
-      deleteApiKey: clientSearch.deleteApiKey,
-      restoreApiKey: clientSearch.restoreApiKey,
-      assignUserID: clientSearch.assignUserID,
-      assignUserIDs: clientSearch.assignUserIDs,
-      getUserID: clientSearch.getUserID,
-      searchUserIDs: clientSearch.searchUserIDs,
-      listUserIDs: clientSearch.listUserIDs,
-      getTopUserIDs: clientSearch.getTopUserIDs,
-      removeUserID: clientSearch.removeUserID,
-      hasPendingMappings: clientSearch.hasPendingMappings,
-      generateSecuredApiKey: clientSearch.generateSecuredApiKey,
-      getSecuredApiKeyRemainingValidity: clientSearch.getSecuredApiKeyRemainingValidity,
-      destroy: clientCommon.destroy,
+      search: multipleQueries,
+      searchForFacetValues: multipleSearchForFacetValues,
+      multipleQueries,
+      multipleSearchForFacetValues,
       initIndex: base => indexName => {
-        return clientSearch.initIndex(base)(indexName, {
+        return initIndex(base)(indexName, {
           methods: {
-            batch: clientSearch.batch,
-            delete: clientSearch.deleteIndex,
-            findAnswers: clientSearch.findAnswers,
-            getObject: clientSearch.getObject,
-            getObjects: clientSearch.getObjects,
-            saveObject: clientSearch.saveObject,
-            saveObjects: clientSearch.saveObjects,
-            search: clientSearch.search,
-            searchForFacetValues: clientSearch.searchForFacetValues,
-            waitTask: clientSearch.waitTask,
-            setSettings: clientSearch.setSettings,
-            getSettings: clientSearch.getSettings,
-            partialUpdateObject: clientSearch.partialUpdateObject,
-            partialUpdateObjects: clientSearch.partialUpdateObjects,
-            deleteObject: clientSearch.deleteObject,
-            deleteObjects: clientSearch.deleteObjects,
-            deleteBy: clientSearch.deleteBy,
-            clearObjects: clientSearch.clearObjects,
-            browseObjects: clientSearch.browseObjects,
-            getObjectPosition: clientSearch.getObjectPosition,
-            findObject: clientSearch.findObject,
-            exists: clientSearch.exists,
-            saveSynonym: clientSearch.saveSynonym,
-            saveSynonyms: clientSearch.saveSynonyms,
-            getSynonym: clientSearch.getSynonym,
-            searchSynonyms: clientSearch.searchSynonyms,
-            browseSynonyms: clientSearch.browseSynonyms,
-            deleteSynonym: clientSearch.deleteSynonym,
-            clearSynonyms: clientSearch.clearSynonyms,
-            replaceAllObjects: clientSearch.replaceAllObjects,
-            replaceAllSynonyms: clientSearch.replaceAllSynonyms,
-            searchRules: clientSearch.searchRules,
-            getRule: clientSearch.getRule,
-            deleteRule: clientSearch.deleteRule,
-            saveRule: clientSearch.saveRule,
-            saveRules: clientSearch.saveRules,
-            replaceAllRules: clientSearch.replaceAllRules,
-            browseRules: clientSearch.browseRules,
-            clearRules: clientSearch.clearRules
-          }
-        });
-      },
-      initAnalytics: () => clientOptions => {
-        return clientAnalytics.createAnalyticsClient({ ...commonOptions,
-          ...clientOptions,
-          methods: {
-            addABTest: clientAnalytics.addABTest,
-            getABTest: clientAnalytics.getABTest,
-            getABTests: clientAnalytics.getABTests,
-            stopABTest: clientAnalytics.stopABTest,
-            deleteABTest: clientAnalytics.deleteABTest
-          }
-        });
-      },
-      initRecommendation: () => clientOptions => {
-        return clientRecommendation.createRecommendationClient({ ...commonOptions,
-          ...clientOptions,
-          methods: {
-            getPersonalizationStrategy: clientRecommendation.getPersonalizationStrategy,
-            setPersonalizationStrategy: clientRecommendation.setPersonalizationStrategy
+            search,
+            searchForFacetValues,
+            findAnswers
           }
         });
       }
@@ -2709,31 +1147,7 @@ function algoliasearch$2(appId, apiKey, options) {
 } // eslint-disable-next-line functional/immutable-data
 
 
-algoliasearch$2.version = clientCommon.version;
-var algoliasearch_cjs = algoliasearch$2;
-
-/* eslint-disable functional/immutable-data, import/no-commonjs */
-
-const algoliasearch$1 = algoliasearch_cjs;
-/**
- * The Common JS build is the default entry point for the Node environment. Keep in
- * in mind, that for the browser environment, we hint the bundler to use the UMD
- * build instead as specified on the key `browser` of our `package.json` file.
- */
-
-
-algoliasearch$3.exports = algoliasearch$1;
-/**
- * In addition, we also set explicitly the default export below making
- * this Common JS module in compliance with es6 modules specification.
- */
-
-algoliasearch$3.exports.default = algoliasearch$1;
-
-// eslint-disable-next-line functional/immutable-data, import/no-commonjs
-var lite = algoliasearch$3.exports;
-
-var algoliasearch = lite;
+algoliasearch.version = version$3;
 
 function _extends$1() {
   _extends$1 = Object.assign || function (target) {
