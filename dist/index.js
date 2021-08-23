@@ -20637,20 +20637,12 @@ function VisuallyHidden(props) {
 // CONCATENATED MODULE: ./src/Feedback/FeedbackButton.js
 function FeedbackButton_extends() { FeedbackButton_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return FeedbackButton_extends.apply(this, arguments); }
 
-function FeedbackButton_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
-
 /** @jsxRuntime classic */
 
 /** @jsx jsx */
 
 
 
-
-
-var FeedbackButton_ref =  true ? {
-  name: "1fo56k",
-  styles: "display:flex;position:absolute;width:6rem"
-} : undefined;
 
 const FeedbackButton = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(({
   open,
@@ -20668,7 +20660,6 @@ const FeedbackButton = /*#__PURE__*/external_root_React_commonjs2_react_commonjs
   }, [setOpen]);
   return Object(react_["jsx"])(src_Button, FeedbackButton_extends({
     ref: ref,
-    css: FeedbackButton_ref,
     onClick: onClick
   }, combinedProps));
 });
