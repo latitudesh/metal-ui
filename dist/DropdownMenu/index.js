@@ -2,9 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var React = require('react');
+var C = require('react');
 var react = require('@emotion/react');
-var r$3 = require('react-dom');
+var r$4 = require('react-dom');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -28,8 +28,9 @@ function _interopNamespace(e) {
   return Object.freeze(n);
 }
 
-var React__namespace = /*#__PURE__*/_interopNamespace(React);
-var r__default = /*#__PURE__*/_interopDefaultLegacy(r$3);
+var C__namespace = /*#__PURE__*/_interopNamespace(C);
+var C__default = /*#__PURE__*/_interopDefaultLegacy(C);
+var r__default = /*#__PURE__*/_interopDefaultLegacy(r$4);
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -627,7 +628,7 @@ var createStyled = function createStyled(tag, options) {
           mergedProps[key] = props[key];
         }
 
-        mergedProps.theme = React.useContext(react.ThemeContext);
+        mergedProps.theme = C.useContext(react.ThemeContext);
       }
 
       if (typeof props.className === 'string') {
@@ -658,7 +659,7 @@ var createStyled = function createStyled(tag, options) {
 
       newProps.className = className;
       newProps.ref = ref;
-      var ele = /*#__PURE__*/React.createElement(finalTag, newProps);
+      var ele = /*#__PURE__*/C.createElement(finalTag, newProps);
 
       if (!isBrowser && rules !== undefined) {
         var _ref;
@@ -671,7 +672,7 @@ var createStyled = function createStyled(tag, options) {
           next = next.next;
         }
 
-        return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", (_ref = {}, _ref["data-emotion"] = cache.key + " " + serializedNames, _ref.dangerouslySetInnerHTML = {
+        return /*#__PURE__*/C.createElement(C.Fragment, null, /*#__PURE__*/C.createElement("style", (_ref = {}, _ref["data-emotion"] = cache.key + " " + serializedNames, _ref.dangerouslySetInnerHTML = {
           __html: rules
         }, _ref.nonce = cache.sheet.nonce, _ref)), ele);
       }
@@ -705,14 +706,1404 @@ var createStyled = function createStyled(tag, options) {
   };
 };
 
-const t$b = {
+const t$9 = {
   prefix: Math.round(1e10 * Math.random()),
   current: 0
 },
-      n$4 = React__namespace.createContext(t$b);
+      n$3 = /*#__PURE__*/C__namespace.createContext(t$9);
 function useId(r) {
-  const o = React__namespace.useContext(n$4);
-  return Boolean(null === globalThis || void 0 === globalThis ? void 0 : globalThis.document) || o !== t$b || console.warn("When server rendering, you must wrap your application in an <IdProvider> to ensure consistent ids are generated between the client and server."), React__namespace.useMemo(() => r || "radix-id-".concat(o.prefix, "-").concat(++o.current), [r]);
+  const o = C__namespace.useContext(n$3);
+  return Boolean(null === globalThis || void 0 === globalThis ? void 0 : globalThis.document) || o !== t$9 || console.warn("When server rendering, you must wrap your application in an <IdProvider> to ensure consistent ids are generated between the client and server."), C__namespace.useMemo(() => r || `radix-id-${o.prefix}-${++o.current}`, [r]);
+}
+
+let t$8 = 0;
+function useFocusGuards() {
+  C__namespace.useEffect(() => {
+    var e, n;
+    const r = document.querySelectorAll("[data-radix-focus-guard]");
+    return document.body.insertAdjacentElement("afterbegin", null !== (e = r[0]) && void 0 !== e ? e : o$6()), document.body.insertAdjacentElement("beforeend", null !== (n = r[1]) && void 0 !== n ? n : o$6()), t$8++, () => {
+      1 === t$8 && document.querySelectorAll("[data-radix-focus-guard]").forEach(e => e.remove()), t$8--;
+    };
+  }, []);
+}
+
+function o$6() {
+  const e = document.createElement("span");
+  return e.setAttribute("data-radix-focus-guard", ""), e.tabIndex = 0, e.style.cssText = "outline: none; opacity: 0; position: fixed; pointer-events: none", e;
+}
+
+function useCallbackRef$2(r) {
+  const t = C__namespace.useRef(r);
+  return C__namespace.useEffect(() => {
+    t.current = r;
+  }), C__namespace.useCallback((...e) => {
+    var r;
+    return null === (r = t.current) || void 0 === r ? void 0 : r.call(t, ...e);
+  }, []);
+}
+
+function useDirection(t, n) {
+  const [r, o] = C__namespace.useState("ltr"),
+        [i, u] = C__namespace.useState(),
+        c = C__namespace.useRef(0);
+  return C__namespace.useEffect(() => {
+    if (void 0 === n && null != t && t.parentElement) {
+      const e = getComputedStyle(t.parentElement);
+      u(e);
+    }
+  }, [t, n]), C__namespace.useEffect(() => (void 0 === n && function e() {
+    c.current = requestAnimationFrame(() => {
+      const t = null == i ? void 0 : i.direction;
+      t && o(t), e();
+    });
+  }(), () => cancelAnimationFrame(c.current)), [i, n, o]), n || r;
+}
+
+function composeRefs$1(...o) {
+  return e => o.forEach(o => function (o, e) {
+    "function" == typeof o ? o(e) : null != o && (o.current = e);
+  }(o, e));
+}
+function useComposedRefs$1(...e) {
+  return C__namespace.useCallback(composeRefs$1(...e), e);
+}
+
+const Slot = /*#__PURE__*/C__namespace.forwardRef((e, o) => {
+  const {
+    children: l,
+    ...c
+  } = e;
+  return 1 === C__namespace.Children.count(l) ? /*#__PURE__*/C__namespace.createElement(r$3, _extends({}, c, {
+    ref: o
+  }), l) : /*#__PURE__*/C__namespace.createElement(C__namespace.Fragment, null, C__namespace.Children.map(l, e => /*#__PURE__*/C__namespace.isValidElement(e) && e.type === Slottable ? /*#__PURE__*/C__namespace.createElement(r$3, _extends({}, c, {
+    ref: o
+  }), e.props.children) : e));
+});
+Slot.displayName = "Slot";
+const r$3 = /*#__PURE__*/C__namespace.forwardRef((n, r) => {
+  const {
+    children: l,
+    ...c
+  } = n,
+        i = C__namespace.Children.only(l);
+  
+
+  return C__namespace.isValidElement(i) ? /*#__PURE__*/C__namespace.cloneElement(i, { ...o$5(c, i.props),
+    ref: composeRefs$1(r, i.ref)
+  }) : null;
+});
+r$3.displayName = "SlotClone";
+const Slottable = ({
+  children: e
+}) => e;
+
+function o$5(e, t) {
+  const n = { ...t
+  };
+
+  for (const r in t) {
+    const o = e[r],
+          c = t[r];
+    /^on[A-Z]/.test(r) ? n[r] = l$4(c, o) : "style" === r && (n[r] = { ...o,
+      ...c
+    });
+  }
+
+  return { ...e,
+    ...n
+  };
+}
+
+function l$4(e, t) {
+  return function (...n) {
+    null == e || e(...n);
+    n[0] instanceof Event && n[0].defaultPrevented || null == t || t(...n);
+  };
+}
+
+function useControllableState$1({
+  prop: o,
+  defaultProp: r,
+  onChange: n = () => {}
+}) {
+  const [a, u] = function ({
+    defaultProp: o,
+    onChange: r
+  }) {
+    const n = C__namespace.useState(o),
+          [a] = n,
+          u = C__namespace.useRef(a),
+          c = useCallbackRef$2(r);
+    return C__namespace.useEffect(() => {
+      u.current !== a && (c(a), u.current = a);
+    }, [a, u, c]), n;
+  }({
+    defaultProp: r,
+    onChange: n
+  }),
+        c = void 0 !== o,
+        f = c ? o : a,
+        l = useCallbackRef$2(n);
+
+  return [f, C__namespace.useCallback(e => {
+    if (c) {
+      const t = e,
+            r = "function" == typeof e ? t(o) : e;
+      r !== o && l(r);
+    } else u(e);
+  }, [c, o, u, l])];
+}
+
+function t$7() {
+  return (t$7 = Object.assign || function (r) {
+    for (var t = 1; t < arguments.length; t++) {
+      var e = arguments[t];
+
+      for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (r[n] = e[n]);
+    }
+
+    return r;
+  }).apply(this, arguments);
+}
+
+const e$4 = "div";
+const Primitive$2 = C__namespace.forwardRef((n, i) => {
+  const {
+    as: o = e$4,
+    ...a
+  } = n;
+  return C__namespace.createElement(o, t$7({}, a, {
+    ref: i
+  }));
+});
+Primitive$2.displayName = "Primitive";
+
+function n$2() {
+  return (n$2 = Object.assign || function (r) {
+    for (var t = 1; t < arguments.length; t++) {
+      var e = arguments[t];
+
+      for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (r[n] = e[n]);
+    }
+
+    return r;
+  }).apply(this, arguments);
+}
+
+function extendPrimitive$1(t, e) {
+  const i = C__namespace.forwardRef((i, o) => {
+    const a = t,
+          s = { ...e.defaultProps,
+      ...i
+    };
+    return C__namespace.createElement(a, n$2({}, s, {
+      ref: o
+    }));
+  });
+  return i.displayName = e.displayName || "Extended" + t.displayName, i;
+}
+
+function createContext$1(t) {
+  const n = C__namespace.createContext(null);
+
+  function r(t) {
+    const {
+      children: r,
+      ...o
+    } = t,
+          c = C__namespace.useMemo(() => o, Object.values(o));
+    return C__namespace.createElement(n.Provider, {
+      value: c
+    }, r);
+  }
+
+  return r.displayName = t + "Provider", [r, function (r) {
+    const o = C__namespace.useContext(n);
+    if (null === o) throw new Error("`".concat(r, "` must be used within `").concat(t, "`"));
+    return o;
+  }];
+}
+
+function composeRefs(...o) {
+  return e => o.forEach(o => function (o, e) {
+    "function" == typeof o ? o(e) : null != o && (o.current = e);
+  }(o, e));
+}
+function useComposedRefs(...e) {
+  return C__namespace.useCallback(composeRefs(...e), e);
+}
+
+function createCollection() {
+  const n = /*#__PURE__*/C__default['default'].createContext({}),
+        o = e => {
+    const {
+      children: r
+    } = e,
+          o = C__default['default'].useRef(null),
+          c = C__default['default'].useRef(new Map()).current;
+    
+
+    return C__default['default'].createElement(n.Provider, {
+      value: C__default['default'].useMemo(() => ({
+        itemMap: c,
+        collectionRef: o
+      }), [c])
+    }, r);
+  },
+        c = /*#__PURE__*/C__default['default'].forwardRef((o, c) => {
+    const {
+      children: f
+    } = o,
+          l = C__default['default'].useContext(n),
+          u = useComposedRefs$1(c, l.collectionRef);
+    
+
+    return C__default['default'].createElement(Slot, {
+      ref: u
+    }, f);
+  }),
+        f = "data-radix-collection-item",
+        l = /*#__PURE__*/C__default['default'].forwardRef((o, c) => {
+    const {
+      children: l,
+      ...u
+    } = o,
+          i = C__default['default'].useRef(null),
+          a = useComposedRefs$1(c, i),
+          s = C__default['default'].useContext(n);
+    return C__default['default'].useEffect(() => (s.itemMap.set(i, {
+      ref: i,
+      ...u
+    }), () => {
+      s.itemMap.delete(i);
+    })), /*#__PURE__*/C__default['default'].createElement(Slot, {
+      [f]: "",
+      ref: a
+    }, l);
+  });
+
+  return [o, c, l, function () {
+    const e = C__default['default'].useContext(n);
+    return {
+      getItems() {
+        const r = Array.from(e.collectionRef.current.querySelectorAll(`[${f}]`));
+        return Array.from(e.itemMap.values()).sort((e, t) => r.indexOf(e.ref.current) - r.indexOf(t.ref.current));
+      }
+
+    };
+  }];
+}
+
+function composeEventHandlers$1(e, n, {
+  checkForDefaultPrevented: t = !0
+} = {}) {
+  return function (r) {
+    if (null == e || e(r), !1 === t || !r.defaultPrevented) return null == n ? void 0 : n(r);
+  };
+}
+
+const f$1 = {
+  bubbles: !1,
+  cancelable: !0
+},
+      [l$3, m$2, p$2, d$1] = createCollection(),
+      v = "span",
+      [g$1, w] = createContext$1("RovingFocusGroup");
+const RovingFocusGroup = /*#__PURE__*/C__namespace.forwardRef((e, t) => /*#__PURE__*/C__namespace.createElement(l$3, null, /*#__PURE__*/C__namespace.createElement(m$2, null, /*#__PURE__*/C__namespace.createElement(b, _extends({}, e, {
+  ref: t
+})))));
+
+
+const b = /*#__PURE__*/C__namespace.forwardRef((o, n) => {
+  const {
+    as: a = v,
+    orientation: l,
+    dir: m = "ltr",
+    loop: p = !1,
+    currentTabStopId: w,
+    defaultCurrentTabStopId: b,
+    onCurrentTabStopIdChange: x,
+    onEntryFocus: F,
+    ...I
+  } = o,
+        R = C__namespace.useRef(null),
+        h = useComposedRefs(n, R),
+        [T = null, A] = useControllableState$1({
+    prop: w,
+    defaultProp: b,
+    onChange: x
+  }),
+        [y, D] = C__namespace.useState(!1),
+        S = useCallbackRef$2(F),
+        {
+    getItems: C
+  } = d$1(),
+        G = C__namespace.useRef(!1);
+  return C__namespace.useEffect(() => {
+    const e = R.current;
+    if (e) return e.addEventListener("rovingFocusGroup.onEntryFocus", S), () => e.removeEventListener("rovingFocusGroup.onEntryFocus", S);
+  }, [S]), /*#__PURE__*/C__namespace.createElement(g$1, {
+    orientation: l,
+    dir: m,
+    loop: p,
+    currentTabStopId: T,
+    onItemFocus: C__namespace.useCallback(e => A(e), [A]),
+    onItemShiftTab: C__namespace.useCallback(() => D(!0), [])
+  }, /*#__PURE__*/C__namespace.createElement(Primitive$2, _extends({
+    tabIndex: y ? -1 : 0,
+    "aria-orientation": l,
+    "data-orientation": l
+  }, I, {
+    as: a,
+    ref: h,
+    style: {
+      outline: "none",
+      ...o.style
+    },
+    onMouseDown: composeEventHandlers$1(o.onMouseDown, () => {
+      G.current = !0;
+    }),
+    onFocus: composeEventHandlers$1(o.onFocus, e => {
+      const t = !G.current;
+
+      if (e.target === e.currentTarget && t && !y) {
+        const t = new Event("rovingFocusGroup.onEntryFocus", f$1);
+
+        if (e.currentTarget.dispatchEvent(t), !t.defaultPrevented) {
+          const e = C().filter(e => e.focusable);
+          E$1([e.find(e => e.active), e.find(e => e.id === T), ...e].filter(Boolean).map(e => e.ref.current));
+        }
+      }
+
+      G.current = !1;
+    }),
+    onBlur: composeEventHandlers$1(o.onBlur, () => D(!1))
+  })));
+}),
+      x = "span";
+const RovingFocusItem = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
+  const {
+    as: n = x,
+    focusable: i = !0,
+    active: a = !1,
+    ...f
+  } = e,
+        l = useId(),
+        m = w("RovingFocusItem"),
+        v = m.currentTabStopId === l,
+        {
+    getItems: g
+  } = d$1();
+  
+
+  return C__namespace.createElement(p$2, {
+    id: l,
+    focusable: i,
+    active: a
+  }, /*#__PURE__*/C__namespace.createElement(Primitive$2, _extends({
+    tabIndex: v ? 0 : -1,
+    "data-orientation": m.orientation
+  }, f, {
+    as: n,
+    ref: t,
+    onMouseDown: composeEventHandlers$1(e.onMouseDown, e => {
+      i ? m.onItemFocus(l) : e.preventDefault();
+    }),
+    onFocus: composeEventHandlers$1(e.onFocus, () => m.onItemFocus(l)),
+    onKeyDown: composeEventHandlers$1(e.onKeyDown, e => {
+      if ("Tab" === e.key && e.shiftKey) return void m.onItemShiftTab();
+      if (e.target !== e.currentTarget) return;
+
+      const t = function (e, t, r) {
+        const o = function (e, t) {
+          return "rtl" !== t ? e : "ArrowLeft" === e ? "ArrowRight" : "ArrowRight" === e ? "ArrowLeft" : e;
+        }(e.key, r);
+
+        return "vertical" === t && ["ArrowLeft", "ArrowRight"].includes(o) || "horizontal" === t && ["ArrowUp", "ArrowDown"].includes(o) ? void 0 : F$1[o];
+      }(e, m.orientation, m.dir);
+
+      if (void 0 !== t) {
+        e.preventDefault();
+        let n = g().filter(e => e.focusable).map(e => e.ref.current);
+        if ("last" === t) n.reverse();else if ("prev" === t || "next" === t) {
+          "prev" === t && n.reverse();
+          const i = n.indexOf(e.currentTarget);
+          n = m.loop ? (o = i + 1, (r = n).map((e, t) => r[(o + t) % r.length])) : n.slice(i + 1);
+        }
+        setTimeout(() => E$1(n));
+      }
+
+      var r, o;
+    })
+  })));
+});
+
+
+const F$1 = {
+  ArrowLeft: "prev",
+  ArrowUp: "prev",
+  ArrowRight: "next",
+  ArrowDown: "next",
+  PageUp: "first",
+  Home: "first",
+  PageDown: "last",
+  End: "last"
+};
+
+function E$1(e) {
+  const t = document.activeElement;
+
+  for (const r of e) {
+    if (r === t) return;
+    if (r.focus(), document.activeElement !== t) return;
+  }
+}
+
+function t$6() {
+  return (t$6 = Object.assign || function (r) {
+    for (var t = 1; t < arguments.length; t++) {
+      var e = arguments[t];
+
+      for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (r[n] = e[n]);
+    }
+
+    return r;
+  }).apply(this, arguments);
+}
+
+const e$3 = "div";
+const Primitive$1 = C__namespace.forwardRef((n, i) => {
+  const {
+    as: o = e$3,
+    ...a
+  } = n;
+  return C__namespace.createElement(o, t$6({}, a, {
+    ref: i
+  }));
+});
+Primitive$1.displayName = "Primitive";
+
+const useLayoutEffect = Boolean(null === globalThis || void 0 === globalThis ? void 0 : globalThis.document) ? C__namespace.useLayoutEffect : () => {};
+
+function a$2() {
+  return (a$2 = Object.assign || function (t) {
+    for (var o = 1; o < arguments.length; o++) {
+      var r = arguments[o];
+
+      for (var e in r) Object.prototype.hasOwnProperty.call(r, e) && (t[e] = r[e]);
+    }
+
+    return t;
+  }).apply(this, arguments);
+}
+
+const Portal = C__namespace.forwardRef((l, i) => {
+  var n, c;
+  const {
+    containerRef: u,
+    style: d,
+    ...s
+  } = l,
+        p = null !== (n = null == u ? void 0 : u.current) && void 0 !== n ? n : null === globalThis || void 0 === globalThis || null === (c = globalThis.document) || void 0 === c ? void 0 : c.body,
+        [, f] = C__namespace.useState({});
+  return useLayoutEffect(() => {
+    f({});
+  }, []), p ? r__default['default'].createPortal(C__namespace.createElement(Primitive$1, a$2({
+    "data-radix-portal": ""
+  }, s, {
+    ref: i,
+    style: p === document.body ? {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      zIndex: 2147483647,
+      ...d
+    } : void 0
+  })), p) : null;
+});
+Portal.displayName = "Portal";
+
+function t$5() {
+  return (t$5 = Object.assign || function (r) {
+    for (var t = 1; t < arguments.length; t++) {
+      var e = arguments[t];
+
+      for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (r[n] = e[n]);
+    }
+
+    return r;
+  }).apply(this, arguments);
+}
+
+const e$2 = "div";
+const Primitive = C__namespace.forwardRef((n, i) => {
+  const {
+    as: o = e$2,
+    ...a
+  } = n;
+  return C__namespace.createElement(o, t$5({}, a, {
+    ref: i
+  }));
+});
+Primitive.displayName = "Primitive";
+
+function t$4() {
+  return (t$4 = Object.assign || function (r) {
+    for (var e = 1; e < arguments.length; e++) {
+      var t = arguments[e];
+
+      for (var o in t) Object.prototype.hasOwnProperty.call(t, o) && (r[o] = t[o]);
+    }
+
+    return r;
+  }).apply(this, arguments);
+}
+
+const Arrow$2 = C__namespace.forwardRef((n, a) => {
+  const {
+    as: i = o$4,
+    ...s
+  } = n;
+  return C__namespace.createElement(Primitive, t$4({}, s, {
+    as: i,
+    ref: a
+  }));
+});
+const o$4 = C__namespace.forwardRef((r, o) => {
+  const {
+    width: n = 10,
+    height: a = 5,
+    ...i
+  } = r;
+  return C__namespace.createElement("svg", t$4({}, i, {
+    ref: o,
+    width: n,
+    height: a,
+    viewBox: "0 0 30 10",
+    preserveAspectRatio: "none"
+  }), C__namespace.createElement("polygon", {
+    points: "0,0 30,0 15,10"
+  }));
+});
+Arrow$2.displayName = "Arrow";
+const Root$3 = Arrow$2;
+
+function useSize(r) {
+  const [t, i] = C__namespace.useState(void 0);
+  return C__namespace.useEffect(() => {
+    if (r.current) {
+      const e = r.current,
+            t = new ResizeObserver(r => {
+        if (!Array.isArray(r)) return;
+        if (!r.length) return;
+        const t = r[0];
+        let n, o;
+
+        if ("borderBoxSize" in t) {
+          const e = t.borderBoxSize,
+                r = Array.isArray(e) ? e[0] : e;
+          n = r.inlineSize, o = r.blockSize;
+        } else {
+          const r = e.getBoundingClientRect();
+          n = r.width, o = r.height;
+        }
+
+        i({
+          width: n,
+          height: o
+        });
+      });
+      return t.observe(e, {
+        box: "border-box"
+      }), () => {
+        i(void 0), t.unobserve(e);
+      };
+    }
+  }, [r]), t;
+}
+
+function observeElementRect(n, o) {
+  const a = e$1.get(n);
+  return void 0 === a ? (e$1.set(n, {
+    rect: {},
+    callbacks: [o]
+  }), 1 === e$1.size && (t$3 = requestAnimationFrame(c$5))) : a.callbacks.push(o), () => {
+    const c = e$1.get(n);
+    if (void 0 === c) return;
+    const a = c.callbacks.indexOf(o);
+    a > -1 && c.callbacks.splice(a, 1), 0 === c.callbacks.length && (e$1.delete(n), 0 === e$1.size && cancelAnimationFrame(t$3));
+  };
+}
+let t$3;
+const e$1 = new Map();
+
+function c$5() {
+  const n = [];
+  e$1.forEach((t, e) => {
+    const c = e.getBoundingClientRect();
+    var o, a;
+    o = t.rect, a = c, (o.width !== a.width || o.height !== a.height || o.top !== a.top || o.right !== a.right || o.bottom !== a.bottom || o.left !== a.left) && (t.rect = c, n.push(t));
+  }), n.forEach(t => {
+    t.callbacks.forEach(e => e(t.rect));
+  }), t$3 = requestAnimationFrame(c$5);
+}
+
+function useRect(o) {
+  const [u, c] = C__namespace.useState();
+  return useLayoutEffect(() => {
+    if (o.current) {
+      const r = observeElementRect(o.current, c);
+      return () => {
+        c(void 0), r();
+      };
+    }
+  }, [o]), u;
+}
+
+function getPlacementData({
+  anchorRect: c,
+  popperSize: s,
+  arrowSize: f,
+  arrowOffset: l = 0,
+  side: d,
+  sideOffset: h = 0,
+  align: x,
+  alignOffset: g = 0,
+  shouldAvoidCollisions: u = !0,
+  collisionBoundariesRect: w,
+  collisionTolerance: m = 0
+}) {
+  if (!c || !s || !w) return {
+    popperStyles: r$2,
+    arrowStyles: n$1
+  };
+
+  const y = function (e, o, r = 0, n = 0, i) {
+    const c = i ? i.height : 0,
+          a = t$2(o, e, "x"),
+          p = t$2(o, e, "y"),
+          s = p.before - r - c,
+          f = p.after + r + c,
+          l = a.before - r - c,
+          d = a.after + r + c;
+    return {
+      top: {
+        start: {
+          x: a.start + n,
+          y: s
+        },
+        center: {
+          x: a.center,
+          y: s
+        },
+        end: {
+          x: a.end - n,
+          y: s
+        }
+      },
+      right: {
+        start: {
+          x: d,
+          y: p.start + n
+        },
+        center: {
+          x: d,
+          y: p.center
+        },
+        end: {
+          x: d,
+          y: p.end - n
+        }
+      },
+      bottom: {
+        start: {
+          x: a.start + n,
+          y: f
+        },
+        center: {
+          x: a.center,
+          y: f
+        },
+        end: {
+          x: a.end - n,
+          y: f
+        }
+      },
+      left: {
+        start: {
+          x: l,
+          y: p.start + n
+        },
+        center: {
+          x: l,
+          y: p.center
+        },
+        end: {
+          x: l,
+          y: p.end - n
+        }
+      }
+    };
+  }(s, c, h, g, f),
+        b = y[d][x];
+
+  if (!1 === u) {
+    const t = e(b);
+    let r = n$1;
+    f && (r = i$1({
+      popperSize: s,
+      arrowSize: f,
+      arrowOffset: l,
+      side: d,
+      align: x
+    }));
+    return {
+      popperStyles: { ...t,
+        "--radix-popper-transform-origin": o$3(s, d, x, l, f)
+      },
+      arrowStyles: r,
+      placedSide: d,
+      placedAlign: x
+    };
+  }
+
+  const S = DOMRect.fromRect({ ...s,
+    ...b
+  }),
+        O = (z = w, R = m, DOMRect.fromRect({
+    width: z.width - 2 * R,
+    height: z.height - 2 * R,
+    x: z.left + R,
+    y: z.top + R
+  }));
+  var z, R;
+
+  const M = p$1(S, O),
+        D = y[a$1(d)][x],
+        A = function (t, e, o) {
+    const r = a$1(t);
+    return e[t] && !o[r] ? r : t;
+  }(d, M, p$1(DOMRect.fromRect({ ...s,
+    ...D
+  }), O)),
+        I = function (t, e, o, r, n) {
+    const i = "top" === o || "bottom" === o,
+          c = i ? "left" : "top",
+          a = i ? "right" : "bottom",
+          p = i ? "width" : "height",
+          s = e[p] > t[p];
+    if (("start" === r || "center" === r) && (n[c] && s || n[a] && !s)) return "end";
+    if (("end" === r || "center" === r) && (n[a] && s || n[c] && !s)) return "start";
+    return r;
+  }(s, c, d, x, M),
+        v = e(y[A][I]);
+
+  let C = n$1;
+  f && (C = i$1({
+    popperSize: s,
+    arrowSize: f,
+    arrowOffset: l,
+    side: A,
+    align: I
+  }));
+  return {
+    popperStyles: { ...v,
+      "--radix-popper-transform-origin": o$3(s, A, I, l, f)
+    },
+    arrowStyles: C,
+    placedSide: A,
+    placedAlign: I
+  };
+}
+
+function t$2(t, e, o) {
+  const r = t["x" === o ? "left" : "top"],
+        n = "x" === o ? "width" : "height",
+        i = t[n],
+        c = e[n];
+  return {
+    before: r - c,
+    start: r,
+    center: r + (i - c) / 2,
+    end: r + i - c,
+    after: r + i
+  };
+}
+
+function e(t) {
+  const e = Math.round(t.x + window.scrollX),
+        o = Math.round(t.y + window.scrollY);
+  return {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    minWidth: "max-content",
+    willChange: "transform",
+    transform: "translate3d(".concat(e, "px, ").concat(o, "px, 0)")
+  };
+}
+
+function o$3(t, e, o, r, n) {
+  const i = "top" === e || "bottom" === e,
+        c = n ? n.width : 0,
+        a = n ? n.height : 0,
+        p = c / 2 + r;
+  let s = "",
+      f = "";
+  return i ? (s = {
+    start: "".concat(p, "px"),
+    center: "center",
+    end: "".concat(t.width - p, "px")
+  }[o], f = "".concat("top" === e ? t.height + a : -a, "px")) : (s = "".concat("left" === e ? t.width + a : -a, "px"), f = {
+    start: "".concat(p, "px"),
+    center: "center",
+    end: "".concat(t.height - p, "px")
+  }[o]), "".concat(s, " ").concat(f);
+}
+
+const r$2 = {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  opacity: 0,
+  pointerEvents: "none"
+},
+      n$1 = {
+  position: "absolute",
+  opacity: 0
+};
+
+function i$1({
+  popperSize: t,
+  arrowSize: e,
+  arrowOffset: o,
+  side: r,
+  align: n
+}) {
+  const i = (t.width - e.width) / 2,
+        a = (t.height - e.width) / 2,
+        p = {
+    top: 0,
+    right: 90,
+    bottom: 180,
+    left: -90
+  }[r],
+        s = Math.max(e.width, e.height),
+        f = {
+    width: "".concat(s, "px"),
+    height: "".concat(s, "px"),
+    transform: "rotate(".concat(p, "deg)"),
+    willChange: "transform",
+    position: "absolute",
+    [r]: "100%",
+    direction: c$4(r, n)
+  };
+  return "top" !== r && "bottom" !== r || ("start" === n && (f.left = "".concat(o, "px")), "center" === n && (f.left = "".concat(i, "px")), "end" === n && (f.right = "".concat(o, "px"))), "left" !== r && "right" !== r || ("start" === n && (f.top = "".concat(o, "px")), "center" === n && (f.top = "".concat(a, "px")), "end" === n && (f.bottom = "".concat(o, "px"))), f;
+}
+
+function c$4(t, e) {
+  return ("top" !== t && "right" !== t || "end" !== e) && ("bottom" !== t && "left" !== t || "end" === e) ? "ltr" : "rtl";
+}
+
+function a$1(t) {
+  return {
+    top: "bottom",
+    right: "left",
+    bottom: "top",
+    left: "right"
+  }[t];
+}
+
+function p$1(t, e) {
+  return {
+    top: t.top < e.top,
+    right: t.right > e.right,
+    bottom: t.bottom > e.bottom,
+    left: t.left < e.left
+  };
+}
+
+function p() {
+  return (p = Object.assign || function (e) {
+    for (var r = 1; r < arguments.length; r++) {
+      var o = arguments[r];
+
+      for (var t in o) Object.prototype.hasOwnProperty.call(o, t) && (e[t] = o[t]);
+    }
+
+    return e;
+  }).apply(this, arguments);
+}
+
+const [l$2, c$3] = createContext$1("Popper");
+const Popper = C__namespace.forwardRef((e, i) => {
+  const {
+    anchorRef: c,
+    side: f = "bottom",
+    sideOffset: d,
+    align: u = "center",
+    alignOffset: w,
+    collisionTolerance: m,
+    avoidCollisions: y = !0,
+    ...v
+  } = e,
+        [x, g] = C__namespace.useState(),
+        h = useRect(c),
+        R = C__namespace.useRef(null),
+        E = useSize(R),
+        A = C__namespace.useRef(null),
+        O = useSize(A),
+        P = useComposedRefs(i, R),
+        S = function () {
+    const [e, r] = C__namespace.useState(void 0);
+    return C__namespace.useEffect(() => {
+      let e;
+
+      function o() {
+        r({
+          width: window.innerWidth,
+          height: window.innerHeight
+        });
+      }
+
+      function t() {
+        window.clearTimeout(e), e = window.setTimeout(o, 100);
+      }
+
+      return o(), window.addEventListener("resize", t), () => window.removeEventListener("resize", t);
+    }, []), e;
+  }(),
+        b = S ? DOMRect.fromRect({ ...S,
+    x: 0,
+    y: 0
+  }) : void 0,
+        {
+    popperStyles: z,
+    arrowStyles: C,
+    placedSide: T,
+    placedAlign: j
+  } = getPlacementData({
+    anchorRect: h,
+    popperSize: E,
+    arrowSize: O,
+    arrowOffset: x,
+    side: f,
+    sideOffset: d,
+    align: u,
+    alignOffset: w,
+    shouldAvoidCollisions: y,
+    collisionBoundariesRect: b,
+    collisionTolerance: m
+  }),
+        k = void 0 !== T;
+
+  return C__namespace.createElement("div", {
+    style: z,
+    "data-radix-popper-wrapper": ""
+  }, C__namespace.createElement(l$2, {
+    arrowRef: A,
+    arrowStyles: C,
+    onArrowOffsetChange: g
+  }, C__namespace.createElement(Primitive$2, p({
+    "data-side": T,
+    "data-align": j
+  }, v, {
+    style: { ...v.style,
+      animation: k ? void 0 : "none"
+    },
+    ref: P
+  }))));
+});
+Popper.displayName = "Popper";
+const PopperArrow = C__namespace.forwardRef(function (r, o) {
+  const {
+    offset: t,
+    ...i
+  } = r,
+        n = c$3("PopperArrow"),
+        {
+    onArrowOffsetChange: a
+  } = n;
+  return C__namespace.useEffect(() => a(t), [a, t]), C__namespace.createElement("span", {
+    style: { ...n.arrowStyles,
+      pointerEvents: "none"
+    }
+  }, C__namespace.createElement("span", {
+    ref: n.arrowRef,
+    style: {
+      display: "inline-block",
+      verticalAlign: "top",
+      pointerEvents: "auto"
+    }
+  }, C__namespace.createElement(Root$3, p({}, i, {
+    ref: o,
+    style: { ...i.style,
+      display: "block"
+    }
+  }))));
+});
+PopperArrow.displayName = "PopperArrow";
+const Root$2 = Popper;
+const Arrow$1 = PopperArrow;
+
+const Presence = u => {
+  const {
+    present: r,
+    children: o
+  } = u,
+        s = function (e) {
+    const [u, r] = C__namespace.useState(),
+          [o, s] = C__namespace.useState(),
+          i = C__namespace.useRef(e),
+          c = C__namespace.useRef(),
+          d = e ? "mounted" : "unmounted",
+          [m, a] = function (e, t) {
+      return C__namespace.useReducer((e, n) => {
+        const u = t[e][n];
+        return null != u ? u : e;
+      }, e);
+    }(d, {
+      mounted: {
+        UNMOUNT: "unmounted",
+        ANIMATION_OUT: "unmountSuspended"
+      },
+      unmountSuspended: {
+        MOUNT: "mounted",
+        ANIMATION_END: "unmounted"
+      },
+      unmounted: {
+        MOUNT: "mounted"
+      }
+    });
+
+    return C__namespace.useEffect(() => {
+      if (u) {
+        const e = getComputedStyle(u);
+        c.current = t$1(e), s(e);
+      }
+    }, [u]), C__namespace.useEffect(() => {
+      const n = i.current;
+
+      if (n !== e) {
+        const u = c.current,
+              r = t$1(o);
+        if (c.current = r, e) a("MOUNT");else if ("none" === (null == o ? void 0 : o.display)) a("UNMOUNT");else {
+          const e = u !== r;
+          a(n && e ? "ANIMATION_OUT" : "UNMOUNT");
+        }
+        i.current = e;
+      }
+    }, [e, o, a]), C__namespace.useEffect(() => {
+      if (u) {
+        const e = e => {
+          const n = t$1(o),
+                r = e.animationName === n;
+          e.target === u && r && a("ANIMATION_END");
+        };
+
+        return u.addEventListener("animationcancel", e), u.addEventListener("animationend", e), () => {
+          u.removeEventListener("animationcancel", e), u.removeEventListener("animationend", e);
+        };
+      }
+    }, [u, e, o, a]), {
+      ref: e => r(e),
+      isPresent: ["mounted", "unmountSuspended"].includes(m)
+    };
+  }(r),
+        i = "function" == typeof o ? o({
+    present: s.isPresent
+  }) : C__namespace.Children.only(o),
+        c = useComposedRefs(s.ref, i.ref);
+
+  return "function" == typeof o || s.isPresent ? C__namespace.cloneElement(i, {
+    ref: c
+  }) : null;
+};
+
+function t$1(e) {
+  return (null == e ? void 0 : e.animationName) || "none";
+}
+
+Presence.displayName = "Presence";
+
+function n(e) {
+  const t = document.activeElement;
+
+  function n(t) {
+    if (c.paused) return;
+    const n = "focusout" === t.type ? t.relatedTarget : t.target;
+    e.contains(n) || o$2(e, n);
+  }
+
+  const c = {
+    paused: !1,
+    pause: () => c.paused = !0,
+    resume: () => c.paused = !1,
+    trap: function () {
+      document.addEventListener("focusout", n, {
+        capture: !0
+      }), document.addEventListener("focusin", n, {
+        capture: !0
+      });
+    },
+    untrap: function () {
+      document.removeEventListener("focusout", n, {
+        capture: !0
+      }), document.removeEventListener("focusin", n, {
+        capture: !0
+      });
+    },
+    destroy: () => {
+      !function (e) {
+        e.removeAttribute("tabIndex");
+      }(e), c.untrap(), function () {
+        const n = new Event("focusScope.autoFocusOnDestroy", {
+          bubbles: !1,
+          cancelable: !0
+        });
+        e.dispatchEvent(n), n.defaultPrevented || u$2(t);
+      }(), r$1.remove(c);
+    }
+  };
+  return r$1.add(c), function (e) {
+    if (e.tabIndex > -1) return;
+    e.tabIndex = -1;
+  }(e), function () {
+    const t = new Event("focusScope.autoFocusOnCreate", {
+      bubbles: !1,
+      cancelable: !0
+    });
+    e.dispatchEvent(t), t.defaultPrevented || o$2(e, null);
+  }(), c;
+}
+
+function o$2(e, t) {
+  const n = function (e) {
+    return document.createTreeWalker(e, NodeFilter.SHOW_ELEMENT, {
+      acceptNode: e => e.tabIndex >= 0 && !e.disabled ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP
+    });
+  }(e),
+        o = t ? t.compareDocumentPosition(e) : Node.DOCUMENT_POSITION_PRECEDING;
+
+  var r;
+  if (o & Node.DOCUMENT_POSITION_PRECEDING) u$2(null !== (r = n.firstChild()) && void 0 !== r ? r : e);else if (o & Node.DOCUMENT_POSITION_FOLLOWING) {
+    var c;
+    u$2(null !== (c = n.lastChild()) && void 0 !== c ? c : e);
+  }
+}
+
+function u$2(e) {
+  e && e.focus && (e.focus({
+    preventScroll: !0
+  }), function (e) {
+    return e instanceof HTMLInputElement && "select" in e;
+  }(e) && e.select());
+}
+
+const r$1 = function () {
+  let e = [];
+  return {
+    add(t) {
+      const n = e[0];
+      t !== n && (null == n || n.pause()), e = c$2(e, t), e.unshift(t);
+    },
+
+    remove(t) {
+      var n;
+      e = c$2(e, t), null === (n = e[0]) || void 0 === n || n.resume();
+    },
+
+    size: () => e.length
+  };
+}();
+
+function c$2(e, t) {
+  const n = [...e],
+        o = n.indexOf(t);
+  return -1 !== o && n.splice(o, 1), n;
+}
+
+function FocusScope(o) {
+  const {
+    children: u,
+    trapped: r = !1
+  } = o,
+        c = C__namespace.useRef(null),
+        s = C__namespace.useRef(),
+        a = useCallbackRef$2(o.onMountAutoFocus),
+        i = useCallbackRef$2(o.onUnmountAutoFocus);
+  return C__namespace.useEffect(() => {
+    const e = c.current;
+    if (e) return e.addEventListener("focusScope.autoFocusOnCreate", a), e.addEventListener("focusScope.autoFocusOnDestroy", i), s.current = n(e), () => {
+      e.removeEventListener("focusScope.autoFocusOnCreate", a), setTimeout(() => {
+        var t;
+        null === (t = s.current) || void 0 === t || t.destroy(), e.removeEventListener("focusScope.autoFocusOnDestroy", i);
+      }, 0);
+    };
+  }, [c, a, i]), C__namespace.useEffect(() => {
+    var e;
+    if (r) return null === (e = s.current) || void 0 === e || e.trap(), () => {
+      var e;
+      return null === (e = s.current) || void 0 === e ? void 0 : e.untrap();
+    };
+  }, [r]), u({
+    ref: c
+  });
+}
+
+let t,
+    o$1 = 0;
+function useBodyPointerEvents({
+  disabled: n
+}) {
+  useLayoutEffect(() => {
+    if (n) return 0 === o$1 && (t = document.body.style.pointerEvents), document.body.style.pointerEvents = "none", o$1++, () => {
+      o$1--, 0 === o$1 && (document.body.style.pointerEvents = t);
+    };
+  }, [n]);
+}
+
+const [r, o] = m$1(),
+      [u$1, s$1] = f(),
+      [c$1, i] = m$1("TotalLayerCountWithDisabledOutsidePointerEventsProvider"),
+      [a, l$1] = f("RunningLayerCountWithDisabledOutsidePointerEventsProvider");
+function DismissableLayer(e) {
+  const t = 0 === s$1(),
+        o = C__namespace.createElement(d, e);
+  return t ? C__namespace.createElement(r, null, C__namespace.createElement(c$1, null, o)) : o;
+}
+
+function d(r) {
+  const {
+    children: c,
+    disableOutsidePointerEvents: d = !1,
+    onEscapeKeyDown: m,
+    onPointerDownOutside: f,
+    onFocusOutside: v,
+    onInteractOutside: E,
+    onDismiss: p
+  } = r,
+        y = C__namespace.useRef(null),
+        C = o(),
+        w = s$1() + 1,
+        L = w === C,
+        P = i(d),
+        b = l$1() + (d ? 1 : 0),
+        h = b < P;
+  useBodyPointerEvents({
+    disabled: d
+  }), function (t) {
+    const r = useCallbackRef$2(t);
+    C__namespace.useEffect(() => {
+      const e = e => {
+        "Escape" === e.key && r(e);
+      };
+
+      return document.addEventListener("keydown", e), () => document.removeEventListener("keydown", e);
+    }, [r]);
+  }(e => {
+    L && (null == m || m(e), e.defaultPrevented || null == p || p());
+  });
+
+  const x = function (t) {
+    const r = useCallbackRef$2(t),
+          o = C__namespace.useRef(!1);
+    C__namespace.useEffect(() => {
+      const e = e => {
+        o.current || r(e), o.current = !1;
+      };
+
+      return document.addEventListener("mousedown", e), document.addEventListener("touchstart", e), () => {
+        document.removeEventListener("mousedown", e), document.removeEventListener("touchstart", e);
+      };
+    }, [r]);
+
+    const u = () => {
+      o.current = !0;
+    };
+
+    return {
+      onMouseDownCapture: u,
+      onTouchStartCapture: u
+    };
+  }(e => {
+    h || (null == f || f(e), null == E || E(e), e.defaultPrevented || null == p || p());
+  }),
+        D = function (e) {
+    const t = C__namespace.useRef(0);
+    return {
+      onBlurCapture: n => {
+        n.persist(), t.current = window.setTimeout(() => {
+          null == e || e(n);
+        }, 0);
+      },
+      onFocusCapture: () => {
+        window.clearTimeout(t.current);
+      }
+    };
+  }(e => {
+    null == v || v(e), null == E || E(e), e.defaultPrevented || null == p || p();
+  }),
+        T = P > 0 && !h;
+
+  return C__namespace.createElement(u$1, {
+    runningCount: w
+  }, C__namespace.createElement(a, {
+    runningCount: b
+  }, c({
+    ref: y,
+    style: T ? {
+      pointerEvents: "auto"
+    } : {},
+    ...x,
+    ...D
+  })));
+}
+
+function m$1(e) {
+  const t = C__namespace.createContext({
+    total: 0,
+    setTotal: () => {}
+  }),
+        r = ({
+    children: e
+  }) => {
+    const [r, o] = C__namespace.useState(0),
+          u = C__namespace.useMemo(() => ({
+      total: r,
+      setTotal: o
+    }), [r, o]);
+    return C__namespace.createElement(t.Provider, {
+      value: u
+    }, e);
+  };
+
+  return e && (r.displayName = e), [r, function (e = !0) {
+    const {
+      total: r,
+      setTotal: o
+    } = C__namespace.useContext(t);
+    return C__namespace.useLayoutEffect(() => {
+      if (e) return o(e => e + 1), () => o(e => e - 1);
+    }, [e, o]), r;
+  }];
+}
+
+function f(e) {
+  const t = C__namespace.createContext(0),
+        r = e => {
+    const {
+      children: r,
+      runningCount: o
+    } = e;
+    return C__namespace.createElement(t.Provider, {
+      value: o
+    }, r);
+  };
+
+  return e && (r.displayName = e), [r, function () {
+    return C__namespace.useContext(t) || 0;
+  }];
 }
 
 var getDefaultParent = function (originalTarget) {
@@ -1006,7 +2397,7 @@ var SideCar$1 = function (_a) {
     throw new Error('Sidecar medium not found');
   }
 
-  return React__namespace.createElement(Target, __assign({}, rest));
+  return C__namespace.createElement(Target, __assign({}, rest));
 };
 
 SideCar$1.isSideCarExport = true;
@@ -1055,8 +2446,8 @@ function assignRef(ref, value) {
  * @returns {MutableRefObject}
  */
 
-function useCallbackRef$2(initialValue, callback) {
-  var ref = React.useState(function () {
+function useCallbackRef$1(initialValue, callback) {
+  var ref = C.useState(function () {
     return {
       // value
       value: initialValue,
@@ -1101,7 +2492,7 @@ function useCallbackRef$2(initialValue, callback) {
  */
 
 function useMergeRefs(refs, defaultValue) {
-  return useCallbackRef$2(defaultValue, function (newValue) {
+  return useCallbackRef$1(defaultValue, function (newValue) {
     return refs.forEach(function (ref) {
       return assignRef(ref, newValue);
     });
@@ -1116,10 +2507,10 @@ var nothing = function () {
  */
 
 
-var RemoveScroll = React__namespace.forwardRef(function (props, parentRef) {
-  var ref = React__namespace.useRef(null);
+var RemoveScroll = C__namespace.forwardRef(function (props, parentRef) {
+  var ref = C__namespace.useRef(null);
 
-  var _a = React__namespace.useState({
+  var _a = C__namespace.useState({
     onScrollCapture: nothing,
     onWheelCapture: nothing,
     onTouchMoveCapture: nothing
@@ -1146,7 +2537,7 @@ var RemoveScroll = React__namespace.forwardRef(function (props, parentRef) {
 
   var containerProps = __assign$1({}, rest, callbacks);
 
-  return React__namespace.createElement(React__namespace.Fragment, null, enabled && React__namespace.createElement(SideCar, {
+  return C__namespace.createElement(C__namespace.Fragment, null, enabled && C__namespace.createElement(SideCar, {
     sideCar: effectCar,
     removeScrollBar: removeScrollBar,
     shards: shards,
@@ -1155,9 +2546,9 @@ var RemoveScroll = React__namespace.forwardRef(function (props, parentRef) {
     setCallbacks: setCallbacks,
     allowPinchZoom: !!allowPinchZoom,
     lockRef: ref
-  }), forwardProps ? React__namespace.cloneElement(React__namespace.Children.only(children), __assign$1({}, containerProps, {
+  }), forwardProps ? C__namespace.cloneElement(C__namespace.Children.only(children), __assign$1({}, containerProps, {
     ref: containerRef
-  })) : React__namespace.createElement(Container, __assign$1({}, containerProps, {
+  })) : C__namespace.createElement(Container, __assign$1({}, containerProps, {
     className: className,
     ref: containerRef
   }), children));
@@ -1235,7 +2626,7 @@ var stylesheetSingleton = function () {
 var styleHookSingleton = function () {
   var sheet = stylesheetSingleton();
   return function (styles) {
-    React__namespace.useEffect(function () {
+    C__namespace.useEffect(function () {
       sheet.add(styles);
       return function () {
         sheet.remove();
@@ -1311,18 +2702,18 @@ var getStyles = function (_a, allowRelative, gapMode, important) {
 };
 
 var RemoveScrollBar = function (props) {
-  var _a = React__namespace.useState(getGapWidth(props.gapMode)),
+  var _a = C__namespace.useState(getGapWidth(props.gapMode)),
       gap = _a[0],
       setGap = _a[1];
 
-  React__namespace.useEffect(function () {
+  C__namespace.useEffect(function () {
     setGap(getGapWidth(props.gapMode));
   }, [props.gapMode]);
   var noRelative = props.noRelative,
       noImportant = props.noImportant,
       _b = props.gapMode,
       gapMode = _b === void 0 ? 'margin' : _b;
-  return React__namespace.createElement(Style, {
+  return C__namespace.createElement(Style, {
     styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : '')
   });
 };
@@ -1467,18 +2858,18 @@ var generateStyle = function (id) {
 var idCounter = 0;
 var lockStack = [];
 function RemoveScrollSideCar(props) {
-  var shouldPreventQueue = React__namespace.useRef([]);
-  var touchStartRef = React__namespace.useRef([0, 0]);
-  var activeAxis = React__namespace.useRef();
-  var id = React__namespace.useState(idCounter++)[0];
-  var Style = React__namespace.useState(function () {
+  var shouldPreventQueue = C__namespace.useRef([]);
+  var touchStartRef = C__namespace.useRef([0, 0]);
+  var activeAxis = C__namespace.useRef();
+  var id = C__namespace.useState(idCounter++)[0];
+  var Style = C__namespace.useState(function () {
     return styleSingleton();
   })[0];
-  var lastProps = React__namespace.useRef(props);
-  React__namespace.useEffect(function () {
+  var lastProps = C__namespace.useRef(props);
+  C__namespace.useEffect(function () {
     lastProps.current = props;
   }, [props]);
-  React__namespace.useEffect(function () {
+  C__namespace.useEffect(function () {
     if (props.inert) {
       document.body.classList.add("block-interactivity-" + id);
       var allow_1 = [props.lockRef.current].concat((props.shards || []).map(extractRef)).filter(Boolean);
@@ -1495,7 +2886,7 @@ function RemoveScrollSideCar(props) {
 
     return;
   }, [props.inert, props.lockRef.current, props.shards]);
-  var shouldCancelEvent = React__namespace.useCallback(function (event, parent) {
+  var shouldCancelEvent = C__namespace.useCallback(function (event, parent) {
     if ('touches' in event && event.touches.length === 2) {
       return !lastProps.current.allowPinchZoom;
     }
@@ -1535,7 +2926,7 @@ function RemoveScrollSideCar(props) {
     var cancelingAxis = activeAxis.current || currentAxis;
     return handleScroll(cancelingAxis, parent, event, cancelingAxis === 'h' ? deltaX : deltaY, true);
   }, []);
-  var shouldPrevent = React__namespace.useCallback(function (_event) {
+  var shouldPrevent = C__namespace.useCallback(function (_event) {
     var event = _event;
 
     if (!lockStack.length || lockStack[lockStack.length - 1] !== Style) {
@@ -1565,7 +2956,7 @@ function RemoveScrollSideCar(props) {
       }
     }
   }, []);
-  var shouldCancel = React__namespace.useCallback(function (name, delta, target, should) {
+  var shouldCancel = C__namespace.useCallback(function (name, delta, target, should) {
     var event = {
       name: name,
       delta: delta,
@@ -1579,17 +2970,17 @@ function RemoveScrollSideCar(props) {
       });
     }, 1);
   }, []);
-  var scrollTouchStart = React__namespace.useCallback(function (event) {
+  var scrollTouchStart = C__namespace.useCallback(function (event) {
     touchStartRef.current = getTouchXY(event);
     activeAxis.current = undefined;
   }, []);
-  var scrollWheel = React__namespace.useCallback(function (event) {
+  var scrollWheel = C__namespace.useCallback(function (event) {
     shouldCancel(event.type, getDeltaXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
   }, []);
-  var scrollTouchMove = React__namespace.useCallback(function (event) {
+  var scrollTouchMove = C__namespace.useCallback(function (event) {
     shouldCancel(event.type, getTouchXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
   }, []);
-  React__namespace.useEffect(function () {
+  C__namespace.useEffect(function () {
     lockStack.push(Style);
     props.setCallbacks({
       onScrollCapture: scrollWheel,
@@ -1610,1557 +3001,621 @@ function RemoveScrollSideCar(props) {
   }, []);
   var removeScrollBar = props.removeScrollBar,
       inert = props.inert;
-  return React__namespace.createElement(React__namespace.Fragment, null, inert ? React__namespace.createElement(Style, {
+  return C__namespace.createElement(C__namespace.Fragment, null, inert ? C__namespace.createElement(Style, {
     styles: generateStyle(id)
-  }) : null, removeScrollBar ? React__namespace.createElement(RemoveScrollBar, {
+  }) : null, removeScrollBar ? C__namespace.createElement(RemoveScrollBar, {
     gapMode: "margin"
   }) : null);
 }
 
 var SideCar = exportSidecar(effectCar, RemoveScrollSideCar);
 
-var ReactRemoveScroll = React__namespace.forwardRef(function (props, ref) {
-  return React__namespace.createElement(RemoveScroll, __assign$1({}, props, {
+var ReactRemoveScroll = C__namespace.forwardRef(function (props, ref) {
+  return C__namespace.createElement(RemoveScroll, __assign$1({}, props, {
     ref: ref,
     sideCar: SideCar
   }));
 });
 ReactRemoveScroll.classNames = RemoveScroll.classNames;
-var t$a = ReactRemoveScroll;
-
-let t$9 = 0;
-function useFocusGuards() {
-  React__namespace.useEffect(() => {
-    var e, n;
-    const r = document.querySelectorAll("[data-radix-focus-guard]");
-    return document.body.insertAdjacentElement("afterbegin", null !== (e = r[0]) && void 0 !== e ? e : o$5()), document.body.insertAdjacentElement("beforeend", null !== (n = r[1]) && void 0 !== n ? n : o$5()), t$9++, () => {
-      1 === t$9 && document.querySelectorAll("[data-radix-focus-guard]").forEach(e => e.remove()), t$9--;
-    };
-  }, []);
-}
-
-function o$5() {
-  const e = document.createElement("span");
-  return e.setAttribute("data-radix-focus-guard", ""), e.tabIndex = 0, e.style.cssText = "outline: none; opacity: 0; position: fixed; pointer-events: none", e;
-}
-
-function t$8() {
-  return (t$8 = Object.assign || function (r) {
-    for (var t = 1; t < arguments.length; t++) {
-      var e = arguments[t];
-
-      for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (r[n] = e[n]);
-    }
-
-    return r;
-  }).apply(this, arguments);
-}
-
-const e$5 = "div";
-const Primitive$3 = React__namespace.forwardRef((n, i) => {
-  const {
-    as: o = e$5,
-    ...a
-  } = n;
-  return React__namespace.createElement(o, t$8({}, a, {
-    ref: i
-  }));
-});
-Primitive$3.displayName = "Primitive";
-
-const useLayoutEffect = Boolean(null === globalThis || void 0 === globalThis ? void 0 : globalThis.document) ? React__namespace.useLayoutEffect : () => {};
-
-function a$2() {
-  return (a$2 = Object.assign || function (t) {
-    for (var o = 1; o < arguments.length; o++) {
-      var r = arguments[o];
-
-      for (var e in r) Object.prototype.hasOwnProperty.call(r, e) && (t[e] = r[e]);
-    }
-
-    return t;
-  }).apply(this, arguments);
-}
-
-const Portal = React__namespace.forwardRef((l, i) => {
-  var n, c;
-  const {
-    containerRef: u,
-    style: d,
-    ...s
-  } = l,
-        p = null !== (n = null == u ? void 0 : u.current) && void 0 !== n ? n : null === globalThis || void 0 === globalThis || null === (c = globalThis.document) || void 0 === c ? void 0 : c.body,
-        [, f] = React__namespace.useState({});
-  return useLayoutEffect(() => {
-    f({});
-  }, []), p ? r__default['default'].createPortal(React__namespace.createElement(Primitive$3, a$2({
-    "data-radix-portal": ""
-  }, s, {
-    ref: i,
-    style: p === document.body ? {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      zIndex: 2147483647,
-      ...d
-    } : void 0
-  })), p) : null;
-});
-Portal.displayName = "Portal";
-
-function useCallbackRef$1(r) {
-  const t = React__namespace.useRef(r);
-  return React__namespace.useEffect(() => {
-    t.current = r;
-  }), React__namespace.useCallback((...e) => {
-    var r;
-    return null === (r = t.current) || void 0 === r ? void 0 : r.call(t, ...e);
-  }, []);
-}
-
-function n$3(e) {
-  const t = document.activeElement;
-
-  function n(t) {
-    if (c.paused) return;
-    const n = "focusout" === t.type ? t.relatedTarget : t.target;
-    e.contains(n) || o$4(e, n);
-  }
-
-  const c = {
-    paused: !1,
-    pause: () => c.paused = !0,
-    resume: () => c.paused = !1,
-    trap: function () {
-      document.addEventListener("focusout", n, {
-        capture: !0
-      }), document.addEventListener("focusin", n, {
-        capture: !0
-      });
-    },
-    untrap: function () {
-      document.removeEventListener("focusout", n, {
-        capture: !0
-      }), document.removeEventListener("focusin", n, {
-        capture: !0
-      });
-    },
-    destroy: () => {
-      !function (e) {
-        e.removeAttribute("tabIndex");
-      }(e), c.untrap(), function () {
-        const n = new Event("focusScope.autoFocusOnDestroy", {
-          bubbles: !1,
-          cancelable: !0
-        });
-        e.dispatchEvent(n), n.defaultPrevented || u$3(t);
-      }(), r$2.remove(c);
-    }
-  };
-  return r$2.add(c), function (e) {
-    if (e.tabIndex > -1) return;
-    e.tabIndex = -1;
-  }(e), function () {
-    const t = new Event("focusScope.autoFocusOnCreate", {
-      bubbles: !1,
-      cancelable: !0
-    });
-    e.dispatchEvent(t), t.defaultPrevented || o$4(e, null);
-  }(), c;
-}
-
-function o$4(e, t) {
-  const n = function (e) {
-    return document.createTreeWalker(e, NodeFilter.SHOW_ELEMENT, {
-      acceptNode: e => e.tabIndex >= 0 && !e.disabled ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP
-    });
-  }(e),
-        o = t ? t.compareDocumentPosition(e) : Node.DOCUMENT_POSITION_PRECEDING;
-
-  var r;
-  if (o & Node.DOCUMENT_POSITION_PRECEDING) u$3(null !== (r = n.firstChild()) && void 0 !== r ? r : e);else if (o & Node.DOCUMENT_POSITION_FOLLOWING) {
-    var c;
-    u$3(null !== (c = n.lastChild()) && void 0 !== c ? c : e);
-  }
-}
-
-function u$3(e) {
-  e && e.focus && (e.focus({
-    preventScroll: !0
-  }), function (e) {
-    return e instanceof HTMLInputElement && "select" in e;
-  }(e) && e.select());
-}
-
-const r$2 = function () {
-  let e = [];
-  return {
-    add(t) {
-      const n = e[0];
-      t !== n && (null == n || n.pause()), e = c$6(e, t), e.unshift(t);
-    },
-
-    remove(t) {
-      var n;
-      e = c$6(e, t), null === (n = e[0]) || void 0 === n || n.resume();
-    },
-
-    size: () => e.length
-  };
-}();
-
-function c$6(e, t) {
-  const n = [...e],
-        o = n.indexOf(t);
-  return -1 !== o && n.splice(o, 1), n;
-}
-
-function FocusScope(o) {
-  const {
-    children: u,
-    trapped: r = !1
-  } = o,
-        c = React__namespace.useRef(null),
-        s = React__namespace.useRef(),
-        a = useCallbackRef$1(o.onMountAutoFocus),
-        i = useCallbackRef$1(o.onUnmountAutoFocus);
-  return React__namespace.useEffect(() => {
-    const e = c.current;
-    if (e) return e.addEventListener("focusScope.autoFocusOnCreate", a), e.addEventListener("focusScope.autoFocusOnDestroy", i), s.current = n$3(e), () => {
-      e.removeEventListener("focusScope.autoFocusOnCreate", a), setTimeout(() => {
-        var t;
-        null === (t = s.current) || void 0 === t || t.destroy(), e.removeEventListener("focusScope.autoFocusOnDestroy", i);
-      }, 0);
-    };
-  }, [c, a, i]), React__namespace.useEffect(() => {
-    var e;
-    if (r) return null === (e = s.current) || void 0 === e || e.trap(), () => {
-      var e;
-      return null === (e = s.current) || void 0 === e ? void 0 : e.untrap();
-    };
-  }, [r]), u({
-    ref: c
-  });
-}
-
-let t$7,
-    o$3 = 0;
-function useBodyPointerEvents({
-  disabled: n
-}) {
-  useLayoutEffect(() => {
-    if (n) return 0 === o$3 && (t$7 = document.body.style.pointerEvents), document.body.style.pointerEvents = "none", o$3++, () => {
-      o$3--, 0 === o$3 && (document.body.style.pointerEvents = t$7);
-    };
-  }, [n]);
-}
-
-const [r$1, o$2] = m(),
-      [u$2, s$2] = f(),
-      [c$5, i$2] = m("TotalLayerCountWithDisabledOutsidePointerEventsProvider"),
-      [a$1, l$3] = f("RunningLayerCountWithDisabledOutsidePointerEventsProvider");
-function DismissableLayer(e) {
-  const t = 0 === s$2(),
-        o = React__namespace.createElement(d, e);
-  return t ? React__namespace.createElement(r$1, null, React__namespace.createElement(c$5, null, o)) : o;
-}
-
-function d(r) {
-  const {
-    children: c,
-    disableOutsidePointerEvents: d = !1,
-    onEscapeKeyDown: m,
-    onPointerDownOutside: f,
-    onFocusOutside: v,
-    onInteractOutside: E,
-    onDismiss: p
-  } = r,
-        y = React__namespace.useRef(null),
-        C = o$2(),
-        w = s$2() + 1,
-        L = w === C,
-        P = i$2(d),
-        b = l$3() + (d ? 1 : 0),
-        h = b < P;
-  useBodyPointerEvents({
-    disabled: d
-  }), function (t) {
-    const r = useCallbackRef$1(t);
-    React__namespace.useEffect(() => {
-      const e = e => {
-        "Escape" === e.key && r(e);
-      };
-
-      return document.addEventListener("keydown", e), () => document.removeEventListener("keydown", e);
-    }, [r]);
-  }(e => {
-    L && (null == m || m(e), e.defaultPrevented || null == p || p());
-  });
-
-  const x = function (t) {
-    const r = useCallbackRef$1(t),
-          o = React__namespace.useRef(!1);
-    React__namespace.useEffect(() => {
-      const e = e => {
-        o.current || r(e), o.current = !1;
-      };
-
-      return document.addEventListener("mousedown", e), document.addEventListener("touchstart", e), () => {
-        document.removeEventListener("mousedown", e), document.removeEventListener("touchstart", e);
-      };
-    }, [r]);
-
-    const u = () => {
-      o.current = !0;
-    };
-
-    return {
-      onMouseDownCapture: u,
-      onTouchStartCapture: u
-    };
-  }(e => {
-    h || (null == f || f(e), null == E || E(e), e.defaultPrevented || null == p || p());
-  }),
-        D = function (e) {
-    const t = React__namespace.useRef(0);
-    return {
-      onBlurCapture: n => {
-        n.persist(), t.current = window.setTimeout(() => {
-          null == e || e(n);
-        }, 0);
-      },
-      onFocusCapture: () => {
-        window.clearTimeout(t.current);
-      }
-    };
-  }(e => {
-    null == v || v(e), null == E || E(e), e.defaultPrevented || null == p || p();
-  }),
-        T = P > 0 && !h;
-
-  return React__namespace.createElement(u$2, {
-    runningCount: w
-  }, React__namespace.createElement(a$1, {
-    runningCount: b
-  }, c({
-    ref: y,
-    style: T ? {
-      pointerEvents: "auto"
-    } : {},
-    ...x,
-    ...D
-  })));
-}
-
-function m(e) {
-  const t = React__namespace.createContext({
-    total: 0,
-    setTotal: () => {}
-  }),
-        r = ({
-    children: e
-  }) => {
-    const [r, o] = React__namespace.useState(0),
-          u = React__namespace.useMemo(() => ({
-      total: r,
-      setTotal: o
-    }), [r, o]);
-    return React__namespace.createElement(t.Provider, {
-      value: u
-    }, e);
-  };
-
-  return e && (r.displayName = e), [r, function (e = !0) {
-    const {
-      total: r,
-      setTotal: o
-    } = React__namespace.useContext(t);
-    return React__namespace.useLayoutEffect(() => {
-      if (e) return o(e => e + 1), () => o(e => e - 1);
-    }, [e, o]), r;
-  }];
-}
-
-function f(e) {
-  const t = React__namespace.createContext(0),
-        r = e => {
-    const {
-      children: r,
-      runningCount: o
-    } = e;
-    return React__namespace.createElement(t.Provider, {
-      value: o
-    }, r);
-  };
-
-  return e && (r.displayName = e), [r, function () {
-    return React__namespace.useContext(t) || 0;
-  }];
-}
-
-function t$6() {
-  return (t$6 = Object.assign || function (r) {
-    for (var t = 1; t < arguments.length; t++) {
-      var e = arguments[t];
-
-      for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (r[n] = e[n]);
-    }
-
-    return r;
-  }).apply(this, arguments);
-}
-
-const e$4 = "div";
-const Primitive$2 = React__namespace.forwardRef((n, i) => {
-  const {
-    as: o = e$4,
-    ...a
-  } = n;
-  return React__namespace.createElement(o, t$6({}, a, {
-    ref: i
-  }));
-});
-Primitive$2.displayName = "Primitive";
-
-function t$5() {
-  return (t$5 = Object.assign || function (r) {
-    for (var e = 1; e < arguments.length; e++) {
-      var t = arguments[e];
-
-      for (var o in t) Object.prototype.hasOwnProperty.call(t, o) && (r[o] = t[o]);
-    }
-
-    return r;
-  }).apply(this, arguments);
-}
-
-const Arrow$2 = React__namespace.forwardRef((n, a) => {
-  const {
-    as: i = o$1,
-    ...s
-  } = n;
-  return React__namespace.createElement(Primitive$2, t$5({}, s, {
-    as: i,
-    ref: a
-  }));
-});
-const o$1 = React__namespace.forwardRef((r, o) => {
-  const {
-    width: n = 10,
-    height: a = 5,
-    ...i
-  } = r;
-  return React__namespace.createElement("svg", t$5({}, i, {
-    ref: o,
-    width: n,
-    height: a,
-    viewBox: "0 0 30 10",
-    preserveAspectRatio: "none"
-  }), React__namespace.createElement("polygon", {
-    points: "0,0 30,0 15,10"
-  }));
-});
-Arrow$2.displayName = "Arrow";
-const Root$3 = Arrow$2;
-
-function t$4() {
-  return (t$4 = Object.assign || function (r) {
-    for (var t = 1; t < arguments.length; t++) {
-      var e = arguments[t];
-
-      for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (r[n] = e[n]);
-    }
-
-    return r;
-  }).apply(this, arguments);
-}
-
-const e$3 = "div";
-const Primitive$1 = React__namespace.forwardRef((n, i) => {
-  const {
-    as: o = e$3,
-    ...a
-  } = n;
-  return React__namespace.createElement(o, t$4({}, a, {
-    ref: i
-  }));
-});
-Primitive$1.displayName = "Primitive";
-
-function n$2() {
-  return (n$2 = Object.assign || function (r) {
-    for (var t = 1; t < arguments.length; t++) {
-      var e = arguments[t];
-
-      for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (r[n] = e[n]);
-    }
-
-    return r;
-  }).apply(this, arguments);
-}
-
-function extendPrimitive$1(t, e) {
-  const i = React__namespace.forwardRef((i, o) => {
-    const a = t,
-          s = { ...e.defaultProps,
-      ...i
-    };
-    return React__namespace.createElement(a, n$2({}, s, {
-      ref: o
-    }));
-  });
-  return i.displayName = e.displayName || "Extended" + t.displayName, i;
-}
-
-function useSize(r) {
-  const [t, i] = React__namespace.useState(void 0);
-  return React__namespace.useEffect(() => {
-    if (r.current) {
-      const e = r.current,
-            t = new ResizeObserver(r => {
-        if (!Array.isArray(r)) return;
-        if (!r.length) return;
-        const t = r[0];
-        let n, o;
-
-        if ("borderBoxSize" in t) {
-          const e = t.borderBoxSize,
-                r = Array.isArray(e) ? e[0] : e;
-          n = r.inlineSize, o = r.blockSize;
-        } else {
-          const r = e.getBoundingClientRect();
-          n = r.width, o = r.height;
-        }
-
-        i({
-          width: n,
-          height: o
-        });
-      });
-      return t.observe(e, {
-        box: "border-box"
-      }), () => {
-        i(void 0), t.unobserve(e);
-      };
-    }
-  }, [r]), t;
-}
-
-function observeElementRect(n, o) {
-  const a = e$2.get(n);
-  return void 0 === a ? (e$2.set(n, {
-    rect: {},
-    callbacks: [o]
-  }), 1 === e$2.size && (t$3 = requestAnimationFrame(c$4))) : a.callbacks.push(o), () => {
-    const c = e$2.get(n);
-    if (void 0 === c) return;
-    const a = c.callbacks.indexOf(o);
-    a > -1 && c.callbacks.splice(a, 1), 0 === c.callbacks.length && (e$2.delete(n), 0 === e$2.size && cancelAnimationFrame(t$3));
-  };
-}
-let t$3;
-const e$2 = new Map();
-
-function c$4() {
-  const n = [];
-  e$2.forEach((t, e) => {
-    const c = e.getBoundingClientRect();
-    var o, a;
-    o = t.rect, a = c, (o.width !== a.width || o.height !== a.height || o.top !== a.top || o.right !== a.right || o.bottom !== a.bottom || o.left !== a.left) && (t.rect = c, n.push(t));
-  }), n.forEach(t => {
-    t.callbacks.forEach(e => e(t.rect));
-  }), t$3 = requestAnimationFrame(c$4);
-}
-
-function useRect(o) {
-  const [u, c] = React__namespace.useState();
-  return useLayoutEffect(() => {
-    if (o.current) {
-      const r = observeElementRect(o.current, c);
-      return () => {
-        c(void 0), r();
-      };
-    }
-  }, [o]), u;
-}
-
-function createContext$1(t) {
-  const n = React__namespace.createContext(null);
-
-  function r(t) {
-    const {
-      children: r,
-      ...o
-    } = t,
-          c = React__namespace.useMemo(() => o, Object.values(o));
-    return React__namespace.createElement(n.Provider, {
-      value: c
-    }, r);
-  }
-
-  return r.displayName = t + "Provider", [r, function (r) {
-    const o = React__namespace.useContext(n);
-    if (null === o) throw new Error("`".concat(r, "` must be used within `").concat(t, "`"));
-    return o;
-  }];
-}
-
-function composeRefs$1(...o) {
-  return e => o.forEach(o => function (o, e) {
-    "function" == typeof o ? o(e) : null != o && (o.current = e);
-  }(o, e));
-}
-function useComposedRefs$1(...e) {
-  return React__namespace.useCallback(composeRefs$1(...e), e);
-}
-
-function getPlacementData({
-  anchorRect: c,
-  popperSize: s,
-  arrowSize: f,
-  arrowOffset: l = 0,
-  side: d,
-  sideOffset: h = 0,
-  align: x,
-  alignOffset: g = 0,
-  shouldAvoidCollisions: u = !0,
-  collisionBoundariesRect: w,
-  collisionTolerance: m = 0
-}) {
-  if (!c || !s || !w) return {
-    popperStyles: r,
-    arrowStyles: n$1
-  };
-
-  const y = function (e, o, r = 0, n = 0, i) {
-    const c = i ? i.height : 0,
-          a = t$2(o, e, "x"),
-          p = t$2(o, e, "y"),
-          s = p.before - r - c,
-          f = p.after + r + c,
-          l = a.before - r - c,
-          d = a.after + r + c;
-    return {
-      top: {
-        start: {
-          x: a.start + n,
-          y: s
-        },
-        center: {
-          x: a.center,
-          y: s
-        },
-        end: {
-          x: a.end - n,
-          y: s
-        }
-      },
-      right: {
-        start: {
-          x: d,
-          y: p.start + n
-        },
-        center: {
-          x: d,
-          y: p.center
-        },
-        end: {
-          x: d,
-          y: p.end - n
-        }
-      },
-      bottom: {
-        start: {
-          x: a.start + n,
-          y: f
-        },
-        center: {
-          x: a.center,
-          y: f
-        },
-        end: {
-          x: a.end - n,
-          y: f
-        }
-      },
-      left: {
-        start: {
-          x: l,
-          y: p.start + n
-        },
-        center: {
-          x: l,
-          y: p.center
-        },
-        end: {
-          x: l,
-          y: p.end - n
-        }
-      }
-    };
-  }(s, c, h, g, f),
-        b = y[d][x];
-
-  if (!1 === u) {
-    const t = e$1(b);
-    let r = n$1;
-    f && (r = i$1({
-      popperSize: s,
-      arrowSize: f,
-      arrowOffset: l,
-      side: d,
-      align: x
-    }));
-    return {
-      popperStyles: { ...t,
-        "--radix-popper-transform-origin": o(s, d, x, l, f)
-      },
-      arrowStyles: r,
-      placedSide: d,
-      placedAlign: x
-    };
-  }
-
-  const S = DOMRect.fromRect({ ...s,
-    ...b
-  }),
-        O = (z = w, R = m, DOMRect.fromRect({
-    width: z.width - 2 * R,
-    height: z.height - 2 * R,
-    x: z.left + R,
-    y: z.top + R
-  }));
-  var z, R;
-
-  const M = p$1(S, O),
-        D = y[a(d)][x],
-        A = function (t, e, o) {
-    const r = a(t);
-    return e[t] && !o[r] ? r : t;
-  }(d, M, p$1(DOMRect.fromRect({ ...s,
-    ...D
-  }), O)),
-        I = function (t, e, o, r, n) {
-    const i = "top" === o || "bottom" === o,
-          c = i ? "left" : "top",
-          a = i ? "right" : "bottom",
-          p = i ? "width" : "height",
-          s = e[p] > t[p];
-    if (("start" === r || "center" === r) && (n[c] && s || n[a] && !s)) return "end";
-    if (("end" === r || "center" === r) && (n[a] && s || n[c] && !s)) return "start";
-    return r;
-  }(s, c, d, x, M),
-        v = e$1(y[A][I]);
-
-  let C = n$1;
-  f && (C = i$1({
-    popperSize: s,
-    arrowSize: f,
-    arrowOffset: l,
-    side: A,
-    align: I
-  }));
-  return {
-    popperStyles: { ...v,
-      "--radix-popper-transform-origin": o(s, A, I, l, f)
-    },
-    arrowStyles: C,
-    placedSide: A,
-    placedAlign: I
-  };
-}
-
-function t$2(t, e, o) {
-  const r = t["x" === o ? "left" : "top"],
-        n = "x" === o ? "width" : "height",
-        i = t[n],
-        c = e[n];
-  return {
-    before: r - c,
-    start: r,
-    center: r + (i - c) / 2,
-    end: r + i - c,
-    after: r + i
-  };
-}
-
-function e$1(t) {
-  const e = Math.round(t.x + window.scrollX),
-        o = Math.round(t.y + window.scrollY);
-  return {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    minWidth: "max-content",
-    willChange: "transform",
-    transform: "translate3d(".concat(e, "px, ").concat(o, "px, 0)")
-  };
-}
-
-function o(t, e, o, r, n) {
-  const i = "top" === e || "bottom" === e,
-        c = n ? n.width : 0,
-        a = n ? n.height : 0,
-        p = c / 2 + r;
-  let s = "",
-      f = "";
-  return i ? (s = {
-    start: "".concat(p, "px"),
-    center: "center",
-    end: "".concat(t.width - p, "px")
-  }[o], f = "".concat("top" === e ? t.height + a : -a, "px")) : (s = "".concat("left" === e ? t.width + a : -a, "px"), f = {
-    start: "".concat(p, "px"),
-    center: "center",
-    end: "".concat(t.height - p, "px")
-  }[o]), "".concat(s, " ").concat(f);
-}
-
-const r = {
-  position: "fixed",
-  top: 0,
-  left: 0,
-  opacity: 0,
-  pointerEvents: "none"
+var E = ReactRemoveScroll;
+
+const M = ["Enter", " "],
+      y = ["ArrowUp", "PageDown", "End"],
+      R = ["ArrowDown", "PageUp", "Home", ...y],
+      I = {
+  ltr: [...M, "ArrowRight"],
+  rtl: [...M, "ArrowLeft"]
 },
-      n$1 = {
-  position: "absolute",
-  opacity: 0
+      P = {
+  ltr: ["ArrowLeft"],
+  rtl: ["ArrowRight"]
+},
+      [S, k] = createContext$1("Menu");
+const Menu = e => {
+  const {
+    open: t = !1,
+    children: o,
+    onOpenChange: u,
+    modal: a = !0
+  } = e,
+        [i, l] = C__namespace.useState(null),
+        s = C__namespace.useRef(!1),
+        d = useCallbackRef$2(u),
+        m = useDirection(i, e.dir);
+  return C__namespace.useEffect(() => {
+    const e = () => s.current = !0,
+          t = () => s.current = !1;
+
+    return document.addEventListener("keydown", e, {
+      capture: !0
+    }), document.addEventListener("pointerdown", t, {
+      capture: !0
+    }), document.addEventListener("pointermove", t, {
+      capture: !0
+    }), () => {
+      document.removeEventListener("keydown", e, {
+        capture: !0
+      }), document.removeEventListener("pointerdown", t, {
+        capture: !0
+      }), document.removeEventListener("pointermove", t, {
+        capture: !0
+      });
+    };
+  }, []), /*#__PURE__*/C__namespace.createElement(Root$2, null, /*#__PURE__*/C__namespace.createElement(S, {
+    isSubmenu: !1,
+    isUsingKeyboardRef: s,
+    dir: m,
+    open: t,
+    onOpenChange: d,
+    content: i,
+    onContentChange: l,
+    onRootClose: C__namespace.useCallback(() => d(!1), [d]),
+    modal: a
+  }, o));
 };
 
-function i$1({
-  popperSize: t,
-  arrowSize: e,
-  arrowOffset: o,
-  side: r,
-  align: n
-}) {
-  const i = (t.width - e.width) / 2,
-        a = (t.height - e.width) / 2,
-        p = {
-    top: 0,
-    right: 90,
-    bottom: 180,
-    left: -90
-  }[r],
-        s = Math.max(e.width, e.height),
-        f = {
-    width: "".concat(s, "px"),
-    height: "".concat(s, "px"),
-    transform: "rotate(".concat(p, "deg)"),
-    willChange: "transform",
-    position: "absolute",
-    [r]: "100%",
-    direction: c$3(r, n)
-  };
-  return "top" !== r && "bottom" !== r || ("start" === n && (f.left = "".concat(o, "px")), "center" === n && (f.left = "".concat(i, "px")), "end" === n && (f.right = "".concat(o, "px"))), "left" !== r && "right" !== r || ("start" === n && (f.top = "".concat(o, "px")), "center" === n && (f.top = "".concat(a, "px")), "end" === n && (f.bottom = "".concat(o, "px"))), f;
-}
 
-function c$3(t, e) {
-  return ("top" !== t && "right" !== t || "end" !== e) && ("bottom" !== t && "left" !== t || "end" === e) ? "ltr" : "rtl";
-}
-
-function a(t) {
-  return {
-    top: "bottom",
-    right: "left",
-    bottom: "top",
-    left: "right"
-  }[t];
-}
-
-function p$1(t, e) {
-  return {
-    top: t.top < e.top,
-    right: t.right > e.right,
-    bottom: t.bottom > e.bottom,
-    left: t.left < e.left
-  };
-}
-
-function p() {
-  return (p = Object.assign || function (e) {
-    for (var r = 1; r < arguments.length; r++) {
-      var o = arguments[r];
-
-      for (var t in o) Object.prototype.hasOwnProperty.call(o, t) && (e[t] = o[t]);
-    }
-
-    return e;
-  }).apply(this, arguments);
-}
-
-const [l$2, c$2] = createContext$1("Popper");
-const Popper = React__namespace.forwardRef((e, i) => {
-  const {
-    anchorRef: c,
-    side: f = "bottom",
-    sideOffset: d,
-    align: u = "center",
-    alignOffset: w,
-    collisionTolerance: m,
-    avoidCollisions: y = !0,
-    ...v
-  } = e,
-        [x, g] = React__namespace.useState(),
-        h = useRect(c),
-        R = React__namespace.useRef(null),
-        E = useSize(R),
-        A = React__namespace.useRef(null),
-        O = useSize(A),
-        P = useComposedRefs$1(i, R),
-        S = function () {
-    const [e, r] = React__namespace.useState(void 0);
-    return React__namespace.useEffect(() => {
-      let e;
-
-      function o() {
-        r({
-          width: window.innerWidth,
-          height: window.innerHeight
-        });
-      }
-
-      function t() {
-        window.clearTimeout(e), e = window.setTimeout(o, 100);
-      }
-
-      return o(), window.addEventListener("resize", t), () => window.removeEventListener("resize", t);
-    }, []), e;
-  }(),
-        b = S ? DOMRect.fromRect({ ...S,
-    x: 0,
-    y: 0
-  }) : void 0,
-        {
-    popperStyles: z,
-    arrowStyles: C,
-    placedSide: T,
-    placedAlign: j
-  } = getPlacementData({
-    anchorRect: h,
-    popperSize: E,
-    arrowSize: O,
-    arrowOffset: x,
-    side: f,
-    sideOffset: d,
-    align: u,
-    alignOffset: w,
-    shouldAvoidCollisions: y,
-    collisionBoundariesRect: b,
-    collisionTolerance: m
-  }),
-        k = void 0 !== T;
-
-  return React__namespace.createElement("div", {
-    style: z,
-    "data-radix-popper-wrapper": ""
-  }, React__namespace.createElement(l$2, {
-    arrowRef: A,
-    arrowStyles: C,
-    onArrowOffsetChange: g
-  }, React__namespace.createElement(Primitive$1, p({
-    "data-side": T,
-    "data-align": j
-  }, v, {
-    style: { ...v.style,
-      animation: k ? void 0 : "none"
-    },
-    ref: P
-  }))));
-});
-Popper.displayName = "Popper";
-const PopperArrow = React__namespace.forwardRef(function (r, o) {
-  const {
-    offset: t,
-    ...i
-  } = r,
-        n = c$2("PopperArrow"),
-        {
-    onArrowOffsetChange: a
-  } = n;
-  return React__namespace.useEffect(() => a(t), [a, t]), React__namespace.createElement("span", {
-    style: { ...n.arrowStyles,
-      pointerEvents: "none"
-    }
-  }, React__namespace.createElement("span", {
-    ref: n.arrowRef,
-    style: {
-      display: "inline-block",
-      verticalAlign: "top",
-      pointerEvents: "auto"
-    }
-  }, React__namespace.createElement(Root$3, p({}, i, {
-    ref: o,
-    style: { ...i.style,
-      display: "block"
-    }
-  }))));
-});
-PopperArrow.displayName = "PopperArrow";
-const Root$2 = Popper;
-const Arrow$1 = PopperArrow;
-
-function useControllableState$1({
-  prop: o,
-  defaultProp: r,
-  onChange: n = () => {}
-}) {
-  const [a, u] = function ({
-    defaultProp: o,
-    onChange: r
-  }) {
-    const n = React__namespace.useState(o),
-          [a] = n,
-          u = React__namespace.useRef(a),
-          c = useCallbackRef$1(r);
-    return React__namespace.useEffect(() => {
-      u.current !== a && (c(a), u.current = a);
-    }, [a, u, c]), n;
-  }({
-    defaultProp: r,
-    onChange: n
-  }),
-        c = void 0 !== o,
-        f = c ? o : a,
-        l = useCallbackRef$1(n);
-
-  return [f, React__namespace.useCallback(e => {
-    if (c) {
-      const t = e,
-            r = "function" == typeof e ? t(o) : e;
-      r !== o && l(r);
-    } else u(e);
-  }, [c, o, u, l])];
-}
-
-function clamp(t, [n, r]) {
-  return Math.min(r, Math.max(n, t));
-}
-function wrap(t, n) {
-  return (n + t) % n;
-}
-
-const [i, c$1] = createContext$1("RovingFocusGroup");
-function RovingFocusGroup(t) {
+const MenuSub = t => {
   const {
     children: r,
-    orientation: n,
-    loop: c,
-    dir: u
+    open: o = !1,
+    onOpenChange: u
   } = t,
-        [s = !0, l] = useControllableState$1({
-    prop: t.reachable,
-    defaultProp: t.defaultReachable,
-    onChange: t.onReachableChange
-  }),
-        [p, d] = React__namespace.useState(null),
-        f = React__namespace.useCallback((o, e) => {
-    d(t => s ? e || !t ? o : t : null);
-  }, [s]);
-  return React__namespace.createElement(i, {
-    groupId: useId(),
-    orientation: n,
-    dir: u,
-    loop: c,
-    tabStopId: p,
-    onTabStopIdChange: f,
-    reachable: s,
-    onReachableChange: l
-  }, r);
-}
-RovingFocusGroup.displayName = "RovingFocusGroup";
-function useRovingFocus({
-  disabled: e,
-  active: t
-}) {
-  const i = useId(),
-        p = c$1("RovingFocusItem"),
-        d = i === p.tabStopId,
-        {
-    onTabStopIdChange: f
-  } = p;
-  return React__namespace.useEffect(() => {
-    f(i, t);
-  }, [t, i, f]), e ? {
-    tabIndex: -1,
-    onMouseDown: o => o.preventDefault()
-  } : {
-    [l$1]: p.groupId,
-    tabIndex: d ? 0 : -1,
-    onFocus: () => {
-      p.onReachableChange(!0), p.onTabStopIdChange(i);
-    },
-    onKeyDown: o => {
-      const e = function (o, e, t) {
-        const r = function (o, e) {
-          return "rtl" !== e ? o : "ArrowLeft" === o ? "ArrowRight" : "ArrowRight" === o ? "ArrowLeft" : o;
-        }(o.key, t);
-
-        return "vertical" === e && ["ArrowLeft", "ArrowRight"].includes(r) || "horizontal" === e && ["ArrowUp", "ArrowDown"].includes(r) ? void 0 : u$1[r];
-      }(o, p.orientation, p.dir);
-
-      if (s$1.includes(o.key) && o.stopPropagation(), void 0 !== e) {
-        o.preventDefault();
-        const a = (t = p.groupId, Array.from(document.querySelectorAll("[".concat(l$1, '="').concat(t, '"]')))),
-              i = a.length,
-              c = document.activeElement,
-              u = c ? a.indexOf(c) : -1;
-        let s = {
-          first: 0,
-          last: i - 1,
-          prev: u - 1,
-          next: u + 1
-        }[e];
-        s = p.loop ? wrap(s, i) : clamp(s, [0, i - 1]);
-        const d = a[s];
-        d && setTimeout(() => d.focus());
-      }
-
-      var t;
-    }
-  };
-}
-const u$1 = {
-  ArrowLeft: "prev",
-  ArrowUp: "prev",
-  ArrowRight: "next",
-  ArrowDown: "next",
-  PageUp: "first",
-  Home: "first",
-  PageDown: "last",
-  End: "last"
-},
-      s$1 = Object.keys(u$1);
-const l$1 = "data-radix-roving-focus-group-id";
-
-const Presence = u => {
-  const {
-    present: r,
-    children: o
-  } = u,
-        s = function (e) {
-    const [u, r] = React__namespace.useState(),
-          [o, s] = React__namespace.useState(),
-          i = React__namespace.useRef(e),
-          c = React__namespace.useRef(),
-          d = e ? "mounted" : "unmounted",
-          [m, a] = function (e, t) {
-      return React__namespace.useReducer((e, n) => {
-        const u = t[e][n];
-        return null != u ? u : e;
-      }, e);
-    }(d, {
-      mounted: {
-        UNMOUNT: "unmounted",
-        ANIMATION_OUT: "unmountSuspended"
-      },
-      unmountSuspended: {
-        MOUNT: "mounted",
-        ANIMATION_END: "unmounted"
-      },
-      unmounted: {
-        MOUNT: "mounted"
-      }
-    });
-
-    return React__namespace.useEffect(() => {
-      if (u) {
-        const e = getComputedStyle(u);
-        c.current = t$1(e), s(e);
-      }
-    }, [u]), React__namespace.useEffect(() => {
-      const n = i.current;
-
-      if (n !== e) {
-        const u = c.current,
-              r = t$1(o);
-        if (c.current = r, e) a("MOUNT");else if ("none" === (null == o ? void 0 : o.display)) a("UNMOUNT");else {
-          const e = u !== r;
-          a(n && e ? "ANIMATION_OUT" : "UNMOUNT");
-        }
-        i.current = e;
-      }
-    }, [e, o, a]), React__namespace.useEffect(() => {
-      if (u) {
-        const e = e => {
-          const n = t$1(o),
-                r = e.animationName === n;
-          e.target === u && r && a("ANIMATION_END");
-        };
-
-        return u.addEventListener("animationcancel", e), u.addEventListener("animationend", e), () => {
-          u.removeEventListener("animationcancel", e), u.removeEventListener("animationend", e);
-        };
-      }
-    }, [u, e, o, a]), {
-      ref: e => r(e),
-      isPresent: ["mounted", "unmountSuspended"].includes(m)
-    };
-  }(r),
-        i = "function" == typeof o ? o({
-    present: s.isPresent
-  }) : React__namespace.Children.only(o),
-        c = useComposedRefs$1(s.ref, i.ref);
-
-  return "function" == typeof o || s.isPresent ? React__namespace.cloneElement(i, {
-    ref: c
-  }) : null;
+        a = k("MenuSub"),
+        [i, l] = C__namespace.useState(null),
+        [s, d] = C__namespace.useState(null),
+        m = useCallbackRef$2(u);
+  return C__namespace.useEffect(() => (!1 === a.open && m(!1), () => m(!1)), [a.open, m]), /*#__PURE__*/C__namespace.createElement(Root$2, null, /*#__PURE__*/C__namespace.createElement(S, {
+    isSubmenu: !0,
+    isUsingKeyboardRef: a.isUsingKeyboardRef,
+    dir: a.dir,
+    open: o,
+    onOpenChange: m,
+    content: s,
+    onContentChange: d,
+    onRootClose: a.onRootClose,
+    contentId: useId(),
+    trigger: i,
+    onTriggerChange: l,
+    triggerId: useId(),
+    modal: !1
+  }, r));
 };
 
-function t$1(e) {
-  return (null == e ? void 0 : e.animationName) || "none";
-}
 
-Presence.displayName = "Presence";
-
-function composeEventHandlers$1(e, n, {
-  checkForDefaultPrevented: t = !0
-} = {}) {
-  return function (r) {
-    if (null == e || e(r), !1 === t || !r.defaultPrevented) return null == n ? void 0 : n(r);
-  };
-}
-
-function x() {
-  const e = React__namespace.useRef(0),
-        t = React__namespace.useRef(""),
-        o = React__namespace.useCallback(r => {
-    t.current = r, window.clearTimeout(e.current), e.current = window.setTimeout(() => o(""), 1e3);
-  }, []);
-  return {
-    onKeyDownCapture: e => {
-      if (1 === e.key.length && !(e.ctrlKey || e.altKey || e.metaKey)) {
-        const r = e.currentTarget;
-        o(t.current + e.key), " " !== e.key || t.current.startsWith(" ") || e.stopPropagation();
-
-        const n = document.activeElement,
-              a = n ? y(n) : void 0,
-              u = function (e, t, o) {
-          const r = t.length > 1 && Array.from(t).every(e => e === t[0]) ? t[0] : t,
-                n = o ? e.indexOf(o) : -1;
-          let a = (u = e, c = Math.max(n, 0), u.map((e, t) => u[(c + t) % u.length]));
-          var u, c;
-          1 === r.length && (a = a.filter(e => e !== o));
-          const s = a.find(e => e.toLowerCase().startsWith(r.toLowerCase()));
-          return s !== o ? s : void 0;
-        }(Array.from(r.querySelectorAll("[".concat(w, "]"))).map(y), t.current, a),
-              c = r.querySelector("[".concat(w, '="').concat(u, '"]'));
-
-        c && setTimeout(() => c.focus());
-      }
-    }
-  };
-}
-
-const y = e => {
-  var t;
-  return null !== (t = e.getAttribute(w)) && void 0 !== t ? t : "";
-},
-      w = "data-radix-menu-typeahead-item";
-
-function C() {
-  return (C = Object.assign || function (e) {
-    for (var t = 1; t < arguments.length; t++) {
-      var o = arguments[t];
-
-      for (var r in o) Object.prototype.hasOwnProperty.call(o, r) && (e[r] = o[r]);
-    }
-
-    return e;
-  }).apply(this, arguments);
-}
-
-const b = ["ArrowDown", "PageUp", "Home"],
-      D = [...b, "ArrowUp", "PageDown", "End"],
-      [E, I] = createContext$1("Menu");
-const Menu = React__namespace.forwardRef((e, t) => {
+const [D, O, T, A] = createCollection(),
+      [L, F] = createContext$1("MenuContent");
+const MenuContent = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
   const {
-    forceMount: o,
-    open: r = !1,
-    ...n
-  } = e;
-  return React__namespace.createElement(Presence, {
-    present: o || r
-  }, React__namespace.createElement(R, C({
-    "data-state": S(r)
-  }, n, {
-    ref: t,
-    open: r
-  })));
-});
-const R = React__namespace.forwardRef((s, i) => {
-  const {
-    open: l,
-    onOpenChange: d,
-    anchorRef: p,
-    loop: v,
-    trapFocus: y,
-    onOpenAutoFocus: w,
-    onCloseAutoFocus: I,
-    disableOutsidePointerEvents: R,
-    onEscapeKeyDown: g,
-    onPointerDownOutside: F,
-    onFocusOutside: P,
-    onInteractOutside: S,
-    onDismiss: A,
-    disableOutsideScroll: O,
-    portalled: K,
-    ...G
-  } = s,
-        L = useCallbackRef$1(d),
-        N = React__namespace.useRef(null),
-        [T, V] = React__namespace.useState(0),
-        [B, U] = React__namespace.useState(!1),
-        q = x();
-  React__namespace.useEffect(() => {
-    V(B ? -1 : 0);
-  }, [B]);
-  const [j, W] = React__namespace.useState(!1),
-        z = K ? Portal : React__namespace.Fragment,
-        H = O ? t$a : React__namespace.Fragment;
-  return useFocusGuards(), React__namespace.useEffect(() => {
-    const t = N.current;
-    if (t) return hideOthers(t);
-  }, []), React__namespace.createElement(z, null, React__namespace.createElement(H, null, React__namespace.createElement(E, {
-    menuRef: N,
-    onItemsReachableChange: U,
-    onOpenChange: L
-  }, React__namespace.createElement(RovingFocusGroup, {
-    reachable: B,
-    onReachableChange: U,
-    orientation: "vertical",
-    loop: v
-  }, React__namespace.createElement(FocusScope, {
-    trapped: !j && y && l,
-    onMountAutoFocus: w,
-    onUnmountAutoFocus: e => {
-      j ? e.preventDefault() : null == I || I(e);
-    }
-  }, e => React__namespace.createElement(DismissableLayer, {
-    disableOutsidePointerEvents: R,
-    onEscapeKeyDown: g,
-    onPointerDownOutside: composeEventHandlers$1(F, e => {
-      const t = 0 === e.button && !1 === e.ctrlKey;
-      W(!R && t), e.defaultPrevented && W(!1);
-    }, {
-      checkForDefaultPrevented: !1
-    }),
-    onFocusOutside: composeEventHandlers$1(P, e => {
-      y && e.preventDefault();
-    }, {
-      checkForDefaultPrevented: !1
-    }),
-    onInteractOutside: S,
-    onDismiss: A
-  }, t => React__namespace.createElement(Root$2, C({
-    role: "menu"
-  }, G, {
-    ref: composeRefs$1(i, N, e.ref, t.ref),
-    anchorRef: p,
-    tabIndex: T,
-    style: { ...t.style,
-      outline: "none",
-      ...G.style
-    },
-    onBlurCapture: composeEventHandlers$1(G.onBlurCapture, t.onBlurCapture, {
-      checkForDefaultPrevented: !1
-    }),
-    onFocusCapture: composeEventHandlers$1(G.onFocusCapture, t.onFocusCapture, {
-      checkForDefaultPrevented: !1
-    }),
-    onMouseDownCapture: composeEventHandlers$1(G.onMouseDownCapture, t.onMouseDownCapture, {
-      checkForDefaultPrevented: !1
-    }),
-    onTouchStartCapture: composeEventHandlers$1(G.onTouchStartCapture, t.onTouchStartCapture, {
-      checkForDefaultPrevented: !1
-    }),
-    onKeyDownCapture: composeEventHandlers$1(G.onKeyDownCapture, q.onKeyDownCapture),
-    onKeyDown: composeEventHandlers$1(G.onKeyDown, e => {
-      const t = N.current;
-
-      if (e.target === t && D.includes(e.key)) {
-        e.preventDefault();
-        const o = Array.from(t.querySelectorAll(k)),
-              r = b.includes(e.key) ? o[0] : o.reverse()[0];
-        null == r || r.focus();
-      }
-    })
-  }))))))));
-});
-Menu.displayName = "Menu";
-const k = "[".concat("data-radix-menu-item", "]:not([data-disabled])");
-const MenuItem = React__namespace.forwardRef((e, t) => {
-  const {
-    disabled: o,
-    textValue: r,
-    onSelect: n,
-    ...a
+    forceMount: n,
+    ...r
   } = e,
-        u = React__namespace.useRef(null),
-        c = useComposedRefs$1(t, u),
-        l = I("MenuItem"),
-        d = useRovingFocus({
-    disabled: o
-  }),
-        [m, p] = React__namespace.useState("");
-  React__namespace.useEffect(() => {
-    const e = u.current;
-    var t;
-    e && p((null !== (t = e.textContent) && void 0 !== t ? t : "").trim());
-  }, [a.children]);
+        o = k("MenuContent");
+  
 
-  const f = function ({
-    textValue: e,
-    disabled: t
-  }) {
-    return {
-      [w]: t ? void 0 : e
-    };
-  }({
-    textValue: null != r ? r : m,
-    disabled: o
-  }),
-        x = () => {
-    const e = u.current;
+  return C__namespace.createElement(D, null, /*#__PURE__*/C__namespace.createElement(Presence, {
+    present: n || o.open
+  }, /*#__PURE__*/C__namespace.createElement(O, null, o.isSubmenu ? /*#__PURE__*/C__namespace.createElement(V, _extends({}, r, {
+    ref: t
+  })) : /*#__PURE__*/C__namespace.createElement(K, _extends({}, r, {
+    ref: t
+  })))));
+});
+const K = /*#__PURE__*/C__namespace.forwardRef((e, t) => k("MenuContent").modal ? /*#__PURE__*/C__namespace.createElement(G, _extends({}, e, {
+  ref: t
+})) : /*#__PURE__*/C__namespace.createElement(U, _extends({}, e, {
+  ref: t
+}))),
+      G = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
+  const n = k("MenuContent"),
+        r = C__namespace.useRef(null),
+        o = useComposedRefs(t, r);
+  return C__namespace.useEffect(() => {
+    const e = r.current;
+    if (e) return hideOthers(e);
+  }, []), /*#__PURE__*/C__namespace.createElement(N, _extends({}, e, {
+    ref: o,
+    trapFocus: n.open,
+    disableOutsidePointerEvents: n.open,
+    disableOutsideScroll: !0,
+    onFocusOutside: composeEventHandlers$1(e.onFocusOutside, e => e.preventDefault(), {
+      checkForDefaultPrevented: !1
+    }),
+    onDismiss: () => n.onOpenChange(!1)
+  }));
+}),
+      U = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
+  const n = k("MenuContent");
+  
 
-    if (!o && e) {
+  return C__namespace.createElement(N, _extends({}, e, {
+    ref: t,
+    trapFocus: !1,
+    disableOutsidePointerEvents: !1,
+    disableOutsideScroll: !1,
+    onDismiss: () => n.onOpenChange(!1)
+  }));
+}),
+      V = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
+  const n = k("MenuContent"),
+        r = C__namespace.useRef(null),
+        o = useComposedRefs(t, r);
+  return n.isSubmenu ? /*#__PURE__*/C__namespace.createElement(N, _extends({
+    id: n.contentId,
+    "aria-labelledby": n.triggerId
+  }, e, {
+    ref: o,
+    align: "start",
+    side: "rtl" === n.dir ? "left" : "right",
+    portalled: !0,
+    disableOutsidePointerEvents: !1,
+    disableOutsideScroll: !1,
+    trapFocus: !1,
+    onOpenAutoFocus: e => {
       var t;
-      const o = new Event("menu.itemSelect", {
+      n.isUsingKeyboardRef.current && (null === (t = r.current) || void 0 === t || t.focus()), e.preventDefault();
+    },
+    onCloseAutoFocus: e => e.preventDefault(),
+    onFocusOutside: composeEventHandlers$1(e.onFocusOutside, e => {
+      e.target !== n.trigger && n.onOpenChange(!1);
+    }),
+    onEscapeKeyDown: composeEventHandlers$1(e.onEscapeKeyDown, n.onRootClose),
+    onKeyDown: composeEventHandlers$1(e.onKeyDown, e => {
+      const t = e.currentTarget.contains(e.target),
+            r = P[n.dir].includes(e.key);
+      var o;
+      t && r && (n.onOpenChange(!1), null === (o = n.trigger) || void 0 === o || o.focus());
+    })
+  })) : null;
+}),
+      N = /*#__PURE__*/C__namespace.forwardRef((e, n) => {
+  const {
+    loop: r = !1,
+    trapFocus: a,
+    onOpenAutoFocus: l,
+    onCloseAutoFocus: s,
+    disableOutsidePointerEvents: d,
+    onEscapeKeyDown: p,
+    onPointerDownOutside: g,
+    onFocusOutside: h,
+    onInteractOutside: b,
+    onDismiss: M,
+    disableOutsideScroll: I,
+    portalled: P,
+    ...S
+  } = e,
+        D = k("MenuContent"),
+        {
+    getItems: O
+  } = A(),
+        [T, F] = C__namespace.useState(null),
+        K = C__namespace.useRef(null),
+        G = useComposedRefs(n, K, D.onContentChange),
+        U = C__namespace.useRef(0),
+        V = C__namespace.useRef(""),
+        N = C__namespace.useRef(0),
+        X = C__namespace.useRef(null),
+        B = C__namespace.useRef("right"),
+        Y = C__namespace.useRef(0),
+        z = P ? Portal : C__namespace.Fragment,
+        H = I ? E : C__namespace.Fragment,
+        j = e => {
+    var t, n;
+
+    const r = V.current + e,
+          o = O().filter(e => !e.disabled),
+          u = document.activeElement,
+          a = null === (t = o.find(e => e.ref.current === u)) || void 0 === t ? void 0 : t.textValue,
+          i = function (e, t, n) {
+      const r = t.length > 1 && Array.from(t).every(e => e === t[0]) ? t[0] : t,
+            o = n ? e.indexOf(n) : -1;
+      let u = (a = e, i = Math.max(o, 0), a.map((e, t) => a[(i + t) % a.length]));
+      var a, i;
+      1 === r.length && (u = u.filter(e => e !== n));
+      const c = u.find(e => e.toLowerCase().startsWith(r.toLowerCase()));
+      return c !== n ? c : void 0;
+    }(o.map(e => e.textValue), r, a),
+          c = null === (n = o.find(e => e.textValue === i)) || void 0 === n ? void 0 : n.ref.current;
+
+    !function e(t) {
+      V.current = t, window.clearTimeout(U.current), "" !== t && (U.current = window.setTimeout(() => e(""), 1e3));
+    }(r), c && setTimeout(() => c.focus());
+  };
+
+  C__namespace.useEffect(() => () => window.clearTimeout(U.current), []), useFocusGuards();
+  const J = C__namespace.useCallback(e => {
+    var t, n;
+    return B.current === (null === (t = X.current) || void 0 === t ? void 0 : t.side) && function (e, t) {
+      if (!t) return !1;
+      return function (e, t) {
+        const {
+          x: n,
+          y: r
+        } = e;
+        let o = !1;
+
+        for (let e = 0, u = t.length - 1; e < t.length; u = e++) {
+          const a = t[e].x,
+                i = t[e].y,
+                c = t[u].x,
+                l = t[u].y;
+          i > r != l > r && n < (c - a) * (r - i) / (l - i) + a && (o = !o);
+        }
+
+        return o;
+      }({
+        x: e.clientX,
+        y: e.clientY
+      }, t);
+    }(e, null === (n = X.current) || void 0 === n ? void 0 : n.area);
+  }, []);
+  
+
+  return C__namespace.createElement(z, null, /*#__PURE__*/C__namespace.createElement(H, null, /*#__PURE__*/C__namespace.createElement(L, {
+    searchRef: V,
+    onItemEnter: C__namespace.useCallback(e => {
+      J(e) && e.preventDefault();
+    }, [J]),
+    onItemLeave: C__namespace.useCallback(e => {
+      var t;
+      J(e) || (null === (t = K.current) || void 0 === t || t.focus(), F(null));
+    }, [J]),
+    onTriggerLeave: C__namespace.useCallback(e => {
+      J(e) && e.preventDefault();
+    }, [J]),
+    pointerGraceTimerRef: N,
+    onPointerGraceIntentChange: C__namespace.useCallback(e => {
+      X.current = e;
+    }, [])
+  }, /*#__PURE__*/C__namespace.createElement(FocusScope, {
+    as: Slot,
+    trapped: a,
+    onMountAutoFocus: composeEventHandlers$1(l, e => {
+      var t;
+      e.preventDefault(), null === (t = K.current) || void 0 === t || t.focus();
+    }),
+    onUnmountAutoFocus: s
+  }, /*#__PURE__*/C__namespace.createElement(DismissableLayer, {
+    as: Slot,
+    disableOutsidePointerEvents: d,
+    onEscapeKeyDown: p,
+    onPointerDownOutside: g,
+    onFocusOutside: h,
+    onInteractOutside: b,
+    onDismiss: M
+  }, /*#__PURE__*/C__namespace.createElement(RovingFocusGroup, {
+    as: Slot,
+    dir: D.dir,
+    orientation: "vertical",
+    loop: r,
+    currentTabStopId: T,
+    onCurrentTabStopIdChange: F,
+    onEntryFocus: e => {
+      D.isUsingKeyboardRef.current || e.preventDefault();
+    }
+  }, /*#__PURE__*/C__namespace.createElement(undefined, _extends({
+    role: "menu",
+    dir: D.dir,
+    "data-state": W(D.open)
+  }, S, {
+    ref: G,
+    style: {
+      outline: "none",
+      ...S.style
+    },
+    onKeyDown: composeEventHandlers$1(S.onKeyDown, e => {
+      const t = e.target,
+            n = e.currentTarget.contains(t),
+            r = e.ctrlKey || e.altKey || e.metaKey;
+      n && !r && 1 === e.key.length && j(e.key), "Tab" === e.key && e.preventDefault();
+      const o = K.current;
+      if (e.target !== o) return;
+      if (!R.includes(e.key)) return;
+      e.preventDefault();
+      const u = O().filter(e => !e.disabled).map(e => e.ref.current);
+      y.includes(e.key) && u.reverse(), function (e) {
+        const t = document.activeElement;
+
+        for (const n of e) {
+          if (n === t) return;
+          if (n.focus(), document.activeElement !== t) return;
+        }
+      }(u);
+    }),
+    onBlur: composeEventHandlers$1(e.onBlur, e => {
+      e.currentTarget.contains(e.target) || (window.clearTimeout(U.current), V.current = "");
+    }),
+    onPointerMove: composeEventHandlers$1(e.onPointerMove, q(e => {
+      const t = e.target,
+            n = Y.current !== e.clientX;
+
+      if (e.currentTarget.contains(t) && n) {
+        const t = e.clientX > Y.current ? "right" : "left";
+        B.current = t, Y.current = e.clientX;
+      }
+    }))
+  }))))))));
+}),
+      X = "div";
+const MenuItem = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
+  const {
+    disabled: n = !1,
+    onSelect: r,
+    ...o
+  } = e,
+        u = C__namespace.useRef(null),
+        a = k("MenuItem"),
+        i = F("MenuItem"),
+        c = useComposedRefs(t, u),
+        l = () => {
+    const e = u.current;
+
+    if (!n && e) {
+      const t = new Event("menu.itemSelect", {
         bubbles: !0,
         cancelable: !0
       });
-      if (e.dispatchEvent(o), o.defaultPrevented) return;
-      null === (t = l.onOpenChange) || void 0 === t || t.call(l, !1);
+      if (e.addEventListener("menu.itemSelect", e => null == r ? void 0 : r(e), {
+        once: !0
+      }), e.dispatchEvent(t), t.defaultPrevented) return;
+      a.onRootClose();
     }
   };
+  
 
-  return React__namespace.useEffect(() => {
-    const e = u.current;
 
-    if (e) {
-      const t = e => null == n ? void 0 : n(e);
-
-      return e.addEventListener("menu.itemSelect", t), () => e.removeEventListener("menu.itemSelect", t);
-    }
-  }, [n]), React__namespace.createElement(Primitive$1, C({
-    role: "menuitem",
-    "aria-disabled": o || void 0
-  }, a, d, f, {
-    "data-radix-menu-item": "",
+  return C__namespace.createElement(B, _extends({}, o, {
     ref: c,
-    "data-disabled": o ? "" : void 0,
-    onFocus: composeEventHandlers$1(a.onFocus, d.onFocus),
-    onKeyDown: composeEventHandlers$1(a.onKeyDown, composeEventHandlers$1(d.onKeyDown, e => {
-      o || "Enter" !== e.key && " " !== e.key || x();
-    })),
-    onMouseDown: composeEventHandlers$1(a.onMouseDown, d.onMouseDown),
-    onMouseUp: composeEventHandlers$1(a.onMouseUp, x),
-    onMouseMove: composeEventHandlers$1(a.onMouseMove, e => {
-      if (!o) {
-        e.currentTarget.focus();
-      }
-    }),
-    onBlur: composeEventHandlers$1(a.onBlur, e => {
-      l.onItemsReachableChange(!1);
-    }),
-    onMouseLeave: composeEventHandlers$1(a.onMouseLeave, e => {
-      var t;
-      null === (t = l.menuRef.current) || void 0 === t || t.focus();
+    disabled: n,
+    onPointerUp: composeEventHandlers$1(e.onPointerUp, l),
+    onKeyDown: composeEventHandlers$1(e.onKeyDown, e => {
+      const t = "" !== i.searchRef.current;
+      n || t && " " === e.key || M.includes(e.key) && (" " === e.key && e.preventDefault(), l());
     })
   }));
 });
-MenuItem.displayName = "MenuItem";
-const MenuCheckboxItem = React__namespace.forwardRef((e, t) => {
+
+
+const MenuSubTrigger = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
+  const n = k("MenuSubTrigger"),
+        r = F("MenuSubTrigger"),
+        u = C__namespace.useRef(null),
+        {
+    pointerGraceTimerRef: a,
+    onPointerGraceIntentChange: i
+  } = r,
+        c = C__namespace.useCallback(() => {
+    u.current && window.clearTimeout(u.current), u.current = null;
+  }, []);
+  return C__namespace.useEffect(() => c, [c]), C__namespace.useEffect(() => {
+    const e = a.current;
+    return () => {
+      window.clearTimeout(e), i(null);
+    };
+  }, [a, i]), n.isSubmenu ? /*#__PURE__*/C__namespace.createElement(MenuAnchor, {
+    as: Slot
+  }, /*#__PURE__*/C__namespace.createElement(B, _extends({
+    id: n.triggerId,
+    "aria-haspopup": "menu",
+    "aria-expanded": n.open,
+    "aria-controls": n.contentId,
+    "data-state": W(n.open)
+  }, e, {
+    ref: composeRefs(t, n.onTriggerChange),
+    onPointerUp: composeEventHandlers$1(e.onPointerUp, (l = t => {
+      r.onItemEnter(t), t.defaultPrevented || e.disabled || n.open || n.onOpenChange(!0);
+    }, e => "mouse" !== e.pointerType ? l(e) : void 0)),
+    onPointerMove: composeEventHandlers$1(e.onPointerMove, q(t => {
+      r.onItemEnter(t), t.defaultPrevented || e.disabled || n.open || u.current || (r.onPointerGraceIntentChange(null), u.current = window.setTimeout(() => {
+        n.onOpenChange(!0), c();
+      }, 100));
+    })),
+    onPointerLeave: composeEventHandlers$1(e.onPointerLeave, q(e => {
+      var t;
+      c();
+      const o = null === (t = n.content) || void 0 === t ? void 0 : t.getBoundingClientRect();
+
+      if (o) {
+        var u;
+        const t = null === (u = n.content) || void 0 === u ? void 0 : u.dataset.side,
+              i = "right" === t,
+              c = i ? -5 : 5,
+              l = o[i ? "left" : "right"],
+              s = o[i ? "right" : "left"];
+        r.onPointerGraceIntentChange({
+          area: [{
+            x: e.clientX + c,
+            y: e.clientY
+          }, {
+            x: l,
+            y: o.top
+          }, {
+            x: s,
+            y: o.top
+          }, {
+            x: s,
+            y: o.bottom
+          }, {
+            x: l,
+            y: o.bottom
+          }],
+          side: t
+        }), window.clearTimeout(a.current), a.current = window.setTimeout(() => r.onPointerGraceIntentChange(null), 300);
+      } else {
+        if (r.onTriggerLeave(e), e.defaultPrevented) return;
+        r.onPointerGraceIntentChange(null);
+      }
+    })),
+    onKeyDown: composeEventHandlers$1(e.onKeyDown, t => {
+      const o = "" !== r.searchRef.current;
+      var u;
+      e.disabled || o && " " === t.key || I[n.dir].includes(t.key) && (n.onOpenChange(!0), null === (u = n.content) || void 0 === u || u.focus());
+    })
+  }))) : null;
+  var l;
+});
+
+
+const B = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
   const {
-    checked: o = !1,
+    as: n = X,
+    disabled: r = !1,
+    textValue: o,
+    ...u
+  } = e,
+        i = C__namespace.useRef(null),
+        c = useComposedRefs(t, i),
+        l = F("MenuItem"),
+        [s, d] = C__namespace.useState("");
+  return C__namespace.useEffect(() => {
+    const e = i.current;
+    var t;
+    e && d((null !== (t = e.textContent) && void 0 !== t ? t : "").trim());
+  }, [u.children]), /*#__PURE__*/C__namespace.createElement(T, {
+    disabled: r,
+    textValue: null != o ? o : s
+  }, /*#__PURE__*/C__namespace.createElement(RovingFocusItem, _extends({
+    role: "menuitem",
+    "aria-disabled": r || void 0,
+    "data-disabled": r ? "" : void 0,
+    focusable: !r
+  }, u, {
+    as: n,
+    ref: c,
+    onPointerMove: composeEventHandlers$1(e.onPointerMove, q(e => {
+      if (r) l.onItemLeave(e);else if (l.onItemEnter(e), !e.defaultPrevented) {
+        e.currentTarget.focus();
+      }
+    })),
+    onPointerLeave: composeEventHandlers$1(e.onPointerLeave, q(e => l.onItemLeave(e)))
+  })));
+});
+const MenuCheckboxItem = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
+  const {
+    checked: n = !1,
     onCheckedChange: r,
-    ...n
+    ...o
   } = e;
-  return React__namespace.createElement(P.Provider, {
-    value: o
-  }, React__namespace.createElement(MenuItem, C({
+  
+
+  return C__namespace.createElement(H.Provider, {
+    value: n
+  }, /*#__PURE__*/C__namespace.createElement(MenuItem, _extends({
     role: "menuitemcheckbox",
-    "aria-checked": o
-  }, n, {
+    "aria-checked": n
+  }, o, {
     ref: t,
-    "data-state": A(o),
-    onSelect: composeEventHandlers$1(n.onSelect, () => null == r ? void 0 : r(!o), {
+    "data-state": j(n),
+    onSelect: composeEventHandlers$1(o.onSelect, () => null == r ? void 0 : r(!n), {
       checkForDefaultPrevented: !1
     })
   })));
 });
-MenuCheckboxItem.displayName = "MenuCheckboxItem";
-const g = React__namespace.createContext({});
-const MenuRadioGroup = React__namespace.forwardRef((e, t) => {
+
+
+const Y = /*#__PURE__*/C__namespace.createContext({});
+const MenuRadioGroup = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
   const {
-    value: o,
-    onValueChange: r,
-    ...n
+    value: r,
+    onValueChange: o,
+    ...u
   } = e,
-        a = useCallbackRef$1(r),
-        u = React__namespace.useMemo(() => ({
-    value: o,
+        a = useCallbackRef$2(o),
+        i = C__namespace.useMemo(() => ({
+    value: r,
     onValueChange: a
-  }), [o, a]);
-  return React__namespace.createElement(g.Provider, {
-    value: u
-  }, React__namespace.createElement(MenuGroup, C({}, n, {
+  }), [r, a]);
+  
+
+  return C__namespace.createElement(Y.Provider, {
+    value: i
+  }, /*#__PURE__*/C__namespace.createElement(MenuGroup, _extends({}, u, {
     ref: t
   })));
 });
-MenuRadioGroup.displayName = "MenuRadioGroup";
-const MenuRadioItem = React__namespace.forwardRef((e, t) => {
+
+
+const MenuRadioItem = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
   const {
-    value: o,
+    value: n,
     ...r
   } = e,
-        n = React__namespace.useContext(g),
-        a = o === n.value;
-  return React__namespace.createElement(P.Provider, {
-    value: a
-  }, React__namespace.createElement(MenuItem, C({
+        o = C__namespace.useContext(Y),
+        u = n === o.value;
+  
+
+  return C__namespace.createElement(H.Provider, {
+    value: u
+  }, /*#__PURE__*/C__namespace.createElement(MenuItem, _extends({
     role: "menuitemradio",
-    "aria-checked": a
+    "aria-checked": u
   }, r, {
     ref: t,
-    "data-state": A(a),
+    "data-state": j(u),
     onSelect: composeEventHandlers$1(r.onSelect, () => {
       var e;
-      return null === (e = n.onValueChange) || void 0 === e ? void 0 : e.call(n, o);
+      return null === (e = o.onValueChange) || void 0 === e ? void 0 : e.call(o, n);
     }, {
       checkForDefaultPrevented: !1
     })
   })));
 });
-MenuRadioItem.displayName = "MenuRadioItem";
-const F = "span",
-      P = React__namespace.createContext(!1);
-const MenuItemIndicator = React__namespace.forwardRef((e, t) => {
+
+
+const z = "span",
+      H = /*#__PURE__*/C__namespace.createContext(!1);
+const MenuItemIndicator = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
   const {
-    as: o = F,
+    as: n = z,
     forceMount: r,
-    ...n
+    ...o
   } = e,
-        a = React__namespace.useContext(P);
-  return React__namespace.createElement(Presence, {
-    present: r || a
-  }, React__namespace.createElement(Primitive$1, C({}, n, {
-    as: o,
+        u = C__namespace.useContext(H);
+  
+
+  return C__namespace.createElement(Presence, {
+    present: r || u
+  }, /*#__PURE__*/C__namespace.createElement(Primitive$2, _extends({}, o, {
+    as: n,
     ref: t,
-    "data-state": A(a)
+    "data-state": j(u)
   })));
 });
-MenuItemIndicator.displayName = "MenuItemIndicator";
-const MenuGroup = extendPrimitive$1(Primitive$1, {
+
+
+const MenuAnchor = extendPrimitive$1(undefined, {
+  displayName: "MenuAnchor"
+});
+const MenuGroup = extendPrimitive$1(Primitive$2, {
   defaultProps: {
     role: "group"
   },
   displayName: "MenuGroup"
 });
-const MenuLabel = extendPrimitive$1(Primitive$1, {
+const MenuLabel = extendPrimitive$1(Primitive$2, {
   displayName: "MenuLabel"
 });
-const MenuSeparator = extendPrimitive$1(Primitive$1, {
+const MenuSeparator = extendPrimitive$1(Primitive$2, {
   defaultProps: {
     role: "separator",
     "aria-orientation": "horizontal"
@@ -3171,15 +3626,23 @@ const MenuArrow = extendPrimitive$1(Arrow$1, {
   displayName: "MenuArrow"
 });
 
-function S(e) {
+function W(e) {
   return e ? "open" : "closed";
 }
 
-function A(e) {
+function j(e) {
   return e ? "checked" : "unchecked";
 }
 
+function q(e) {
+  return t => "mouse" === t.pointerType ? e(t) : void 0;
+}
+
 const Root$1 = Menu;
+const Sub = MenuSub;
+const Anchor = MenuAnchor;
+const SubTrigger = MenuSubTrigger;
+const Content$1 = MenuContent;
 const Group = MenuGroup;
 const Label$1 = MenuLabel;
 const Item$1 = MenuItem;
@@ -3190,60 +3653,26 @@ const ItemIndicator = MenuItemIndicator;
 const Separator$1 = MenuSeparator;
 const Arrow = MenuArrow;
 
-function t() {
-  return (t = Object.assign || function (r) {
-    for (var t = 1; t < arguments.length; t++) {
-      var e = arguments[t];
-
-      for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (r[n] = e[n]);
-    }
-
-    return r;
-  }).apply(this, arguments);
-}
-
-const e = "div";
-const Primitive = React__namespace.forwardRef((n, i) => {
-  const {
-    as: o = e,
-    ...a
-  } = n;
-  return React__namespace.createElement(o, t({}, a, {
-    ref: i
-  }));
-});
-Primitive.displayName = "Primitive";
-
-function n() {
-  return (n = Object.assign || function (r) {
-    for (var t = 1; t < arguments.length; t++) {
-      var e = arguments[t];
-
-      for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (r[n] = e[n]);
-    }
-
-    return r;
-  }).apply(this, arguments);
-}
-
-function extendPrimitive(t, e) {
-  const i = React__namespace.forwardRef((i, o) => {
-    const a = t,
-          s = { ...e.defaultProps,
+function extendPrimitive(r, o) {
+  const i = /*#__PURE__*/C__namespace.forwardRef((i, n) => {
+    const a = r,
+          s = { ...o.defaultProps,
       ...i
     };
-    return React__namespace.createElement(a, n({}, s, {
-      ref: o
+    
+
+    return C__namespace.createElement(a, _extends({}, s, {
+      ref: n
     }));
   });
-  return i.displayName = e.displayName || "Extended" + t.displayName, i;
+  return i.displayName = o.displayName || "Extended" + r.displayName, i;
 }
 
 function useCallbackRef(r) {
-  const t = React__namespace.useRef(r);
-  return React__namespace.useEffect(() => {
+  const t = C__namespace.useRef(r);
+  return C__namespace.useEffect(() => {
     t.current = r;
-  }), React__namespace.useCallback((...e) => {
+  }), C__namespace.useCallback((...e) => {
     var r;
     return null === (r = t.current) || void 0 === r ? void 0 : r.call(t, ...e);
   }, []);
@@ -3258,11 +3687,11 @@ function useControllableState({
     defaultProp: o,
     onChange: r
   }) {
-    const n = React__namespace.useState(o),
+    const n = C__namespace.useState(o),
           [a] = n,
-          u = React__namespace.useRef(a),
+          u = C__namespace.useRef(a),
           c = useCallbackRef(r);
-    return React__namespace.useEffect(() => {
+    return C__namespace.useEffect(() => {
       u.current !== a && (c(a), u.current = a);
     }, [a, u, c]), n;
   }({
@@ -3273,7 +3702,7 @@ function useControllableState({
         f = c ? o : a,
         l = useCallbackRef(n);
 
-  return [f, React__namespace.useCallback(e => {
+  return [f, C__namespace.useCallback(e => {
     if (c) {
       const t = e,
             r = "function" == typeof e ? t(o) : e;
@@ -3283,33 +3712,26 @@ function useControllableState({
 }
 
 function createContext(t) {
-  const n = React__namespace.createContext(null);
+  const r = /*#__PURE__*/C__namespace.createContext(null);
 
-  function r(t) {
+  function n(t) {
     const {
-      children: r,
+      children: n,
       ...o
     } = t,
-          c = React__namespace.useMemo(() => o, Object.values(o));
-    return React__namespace.createElement(n.Provider, {
-      value: c
-    }, r);
+          u = C__namespace.useMemo(() => o, Object.values(o));
+    
+
+    return C__namespace.createElement(r.Provider, {
+      value: u
+    }, n);
   }
 
-  return r.displayName = t + "Provider", [r, function (r) {
-    const o = React__namespace.useContext(n);
-    if (null === o) throw new Error("`".concat(r, "` must be used within `").concat(t, "`"));
+  return n.displayName = t + "Provider", [n, function (n) {
+    const o = C__namespace.useContext(r);
+    if (null === o) throw new Error(`\`${n}\` must be used within \`${t}\``);
     return o;
   }];
-}
-
-function composeRefs(...o) {
-  return e => o.forEach(o => function (o, e) {
-    "function" == typeof o ? o(e) : null != o && (o.current = e);
-  }(o, e));
-}
-function useComposedRefs(...e) {
-  return React__namespace.useCallback(composeRefs(...e), e);
 }
 
 function composeEventHandlers(e, n, {
@@ -3320,109 +3742,158 @@ function composeEventHandlers(e, n, {
   };
 }
 
-function u() {
-  return (u = Object.assign || function (o) {
-    for (var e = 1; e < arguments.length; e++) {
-      var n = arguments[e];
-
-      for (var r in n) Object.prototype.hasOwnProperty.call(n, r) && (o[r] = n[r]);
-    }
-
-    return o;
-  }).apply(this, arguments);
-}
-
-const [s, c] = createContext("DropdownMenu");
+const [u, c] = createContext("DropdownMenu");
 const DropdownMenu = e => {
   const {
     children: n,
-    open: r,
+    open: t,
     defaultOpen: p,
-    onOpenChange: a
+    onOpenChange: a,
+    dir: i,
+    modal: c = !0
   } = e,
-        d = React__namespace.useRef(null),
-        [u = !1, c] = useControllableState({
-    prop: r,
+        s = C__namespace.useContext(m),
+        [g = !1, w] = useControllableState({
+    prop: t,
     defaultProp: p,
     onChange: a
-  });
-  return React__namespace.createElement(s, {
-    triggerRef: d,
-    contentId: useId(),
-    open: u,
-    onOpenChange: c,
-    onOpenToggle: React__namespace.useCallback(() => c(o => !o), [c])
+  }),
+        D = C__namespace.useCallback(() => w(e => !e), [w]);
+  return s ? /*#__PURE__*/C__namespace.createElement(u, {
+    isRootMenu: !1,
+    open: g,
+    onOpenChange: w,
+    onOpenToggle: D
+  }, /*#__PURE__*/C__namespace.createElement(Sub, {
+    open: g,
+    onOpenChange: w
+  }, n)) : /*#__PURE__*/C__namespace.createElement(l, {
+    dir: i,
+    open: g,
+    onOpenChange: w,
+    onOpenToggle: D,
+    modal: c
   }, n);
 };
-DropdownMenu.displayName = "DropdownMenu";
-const l = "button";
-const DropdownMenuTrigger = React__namespace.forwardRef((o, e) => {
+
+
+const l = n => {
   const {
-    as: r = l,
+    children: r,
+    dir: t,
+    open: p,
+    onOpenChange: a,
+    onOpenToggle: i,
+    modal: c = !0
+  } = n,
+        l = C__namespace.useRef(null);
+  
+
+  return C__namespace.createElement(u, {
+    isRootMenu: !0,
+    triggerId: useId(),
+    triggerRef: l,
+    contentId: useId(),
+    open: p,
+    onOpenChange: a,
+    onOpenToggle: i,
+    modal: c
+  }, /*#__PURE__*/C__namespace.createElement(Root$1, {
+    open: p,
+    onOpenChange: a,
+    dir: t,
+    modal: c
+  }, r));
+},
+      s = "button";
+
+const DropdownMenuTrigger = /*#__PURE__*/C__namespace.forwardRef((e, n) => {
+  const {
+    as: r = s,
     ...t
-  } = o,
-        p = c("DropdownMenuTrigger"),
-        s = useComposedRefs(e, p.triggerRef);
-  return React__namespace.createElement(Primitive, u({
+  } = e,
+        u = c("DropdownMenuTrigger");
+  return u.isRootMenu ? /*#__PURE__*/C__namespace.createElement(Anchor, _extends({
     type: "button",
+    id: u.triggerId,
     "aria-haspopup": "menu",
-    "aria-expanded": !!p.open || void 0,
-    "aria-controls": p.open ? p.contentId : void 0,
-    "data-state": p.open ? "open" : "closed"
+    "aria-expanded": !!u.open || void 0,
+    "aria-controls": u.open ? u.contentId : void 0,
+    "data-state": u.open ? "open" : "closed"
   }, t, {
     as: r,
-    ref: s,
-    onMouseDown: composeEventHandlers(o.onMouseDown, o => {
-      0 === o.button && !1 === o.ctrlKey && p.onOpenToggle();
+    ref: composeRefs$1(n, u.triggerRef),
+    onPointerDown: composeEventHandlers(e.onPointerDown, e => {
+      0 === e.button && !1 === e.ctrlKey && (u.open || e.preventDefault(), u.onOpenToggle());
     }),
-    onKeyDown: composeEventHandlers(o.onKeyDown, o => {
-      [" ", "Enter", "ArrowUp", "ArrowDown"].includes(o.key) && (o.preventDefault(), p.onOpenChange(!0));
+    onKeyDown: composeEventHandlers(e.onKeyDown, e => {
+      [" ", "Enter", "ArrowDown"].includes(e.key) && (e.preventDefault(), u.onOpenChange(!0));
     })
-  }));
+  })) : null;
 });
-DropdownMenuTrigger.displayName = "DropdownMenuTrigger";
-const DropdownMenuContent = React__namespace.forwardRef((o, n) => {
-  const {
-    onCloseAutoFocus: r,
-    disableOutsidePointerEvents: t = !0,
-    disableOutsideScroll: p = !0,
-    portalled: a = !0,
-    ...s
-  } = o,
-        l = c("DropdownMenuContent");
-  return React__namespace.createElement(Root$1, u({
-    id: l.contentId
-  }, s, {
-    ref: n,
-    disableOutsidePointerEvents: t,
-    disableOutsideScroll: p,
-    portalled: a,
-    style: { ...o.style,
+
+
+const m = /*#__PURE__*/C__namespace.createContext(!1);
+const DropdownMenuContent = /*#__PURE__*/C__namespace.forwardRef((e, n) => {
+  const r = c("DropdownMenuContent"),
+        t = { ...e,
+    style: { ...e.style,
       "--radix-dropdown-menu-content-transform-origin": "var(--radix-popper-transform-origin)"
-    },
-    open: l.open,
-    onOpenChange: l.onOpenChange,
-    anchorRef: o.anchorRef || l.triggerRef,
-    trapFocus: !0,
-    onCloseAutoFocus: composeEventHandlers(r, o => {
-      var e;
-      o.preventDefault(), null === (e = l.triggerRef.current) || void 0 === e || e.focus();
-    }),
-    onPointerDownOutside: composeEventHandlers(o.onPointerDownOutside, o => {
-      var e;
-      (null === (e = l.triggerRef.current) || void 0 === e ? void 0 : e.contains(o.target)) && o.preventDefault();
-    }, {
-      checkForDefaultPrevented: !1
-    }),
-    onDismiss: () => l.onOpenChange(!1)
-  }));
+    }
+  };
+  
+
+  return C__namespace.createElement(m.Provider, {
+    value: !0
+  }, r.isRootMenu ? /*#__PURE__*/C__namespace.createElement(g, _extends({}, t, {
+    ref: n
+  })) : /*#__PURE__*/C__namespace.createElement(Content$1, _extends({}, t, {
+    ref: n
+  })));
 });
-DropdownMenuContent.displayName = "DropdownMenuContent";
+
+
+const g = /*#__PURE__*/C__namespace.forwardRef((e, n) => {
+  const {
+    portalled: r = !0,
+    ...t
+  } = e,
+        p = c("DropdownMenuContent"),
+        a = C__namespace.useRef(!1);
+  return p.isRootMenu ? /*#__PURE__*/C__namespace.createElement(Content$1, _extends({
+    id: p.contentId,
+    "aria-labelledby": p.triggerId
+  }, t, {
+    ref: n,
+    portalled: r,
+    onCloseAutoFocus: o => {
+      var n, r;
+      (null === (n = e.onCloseAutoFocus) || void 0 === n || n.call(e, o), o.defaultPrevented) || (a.current || null === (r = p.triggerRef.current) || void 0 === r || r.focus(), o.preventDefault());
+      a.current = !1;
+    },
+    onInteractOutside: o => {
+      var n, r;
+
+      if (null === (n = e.onInteractOutside) || void 0 === n || n.call(e, o), !o.defaultPrevented) {
+        const e = o.detail.originalEvent,
+              n = 0 === e.button && !0 === e.ctrlKey,
+              r = 2 === e.button || n;
+        p.modal && !r || (a.current = !0);
+      }
+
+      const t = o.target;
+      (null === (r = p.triggerRef.current) || void 0 === r ? void 0 : r.contains(t)) && o.preventDefault();
+    }
+  })) : null;
+});
 extendPrimitive(Group, {
   displayName: "DropdownMenuGroup"
 });
 const DropdownMenuLabel = extendPrimitive(Label$1, {
   displayName: "DropdownMenuLabel"
+});
+extendPrimitive(SubTrigger, {
+  displayName: "DropdownMenuTriggerItem"
 });
 const DropdownMenuItem = extendPrimitive(Item$1, {
   displayName: "DropdownMenuItem"

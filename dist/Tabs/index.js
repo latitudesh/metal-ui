@@ -2,8 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var e = require('react');
+var t$1 = require('react');
 var react = require('@emotion/react');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 function _interopNamespace(e) {
   if (e && e.__esModule) return e;
@@ -25,7 +27,8 @@ function _interopNamespace(e) {
   return Object.freeze(n);
 }
 
-var e__namespace = /*#__PURE__*/_interopNamespace(e);
+var t__namespace = /*#__PURE__*/_interopNamespace(t$1);
+var t__default = /*#__PURE__*/_interopDefaultLegacy(t$1);
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -623,7 +626,7 @@ var createStyled = function createStyled(tag, options) {
           mergedProps[key] = props[key];
         }
 
-        mergedProps.theme = e.useContext(react.ThemeContext);
+        mergedProps.theme = t$1.useContext(react.ThemeContext);
       }
 
       if (typeof props.className === 'string') {
@@ -654,7 +657,7 @@ var createStyled = function createStyled(tag, options) {
 
       newProps.className = className;
       newProps.ref = ref;
-      var ele = /*#__PURE__*/e.createElement(finalTag, newProps);
+      var ele = /*#__PURE__*/t$1.createElement(finalTag, newProps);
 
       if (!isBrowser && rules !== undefined) {
         var _ref;
@@ -667,7 +670,7 @@ var createStyled = function createStyled(tag, options) {
           next = next.next;
         }
 
-        return /*#__PURE__*/e.createElement(e.Fragment, null, /*#__PURE__*/e.createElement("style", (_ref = {}, _ref["data-emotion"] = cache.key + " " + serializedNames, _ref.dangerouslySetInnerHTML = {
+        return /*#__PURE__*/t$1.createElement(t$1.Fragment, null, /*#__PURE__*/t$1.createElement("style", (_ref = {}, _ref["data-emotion"] = cache.key + " " + serializedNames, _ref.dangerouslySetInnerHTML = {
           __html: rules
         }, _ref.nonce = cache.sheet.nonce, _ref)), ele);
       }
@@ -701,31 +704,21 @@ var createStyled = function createStyled(tag, options) {
   };
 };
 
-const t$1 = {
-  prefix: Math.round(1e10 * Math.random()),
-  current: 0
-},
-      n$1 = /*#__PURE__*/e__namespace.createContext(t$1);
-function useId$1(r) {
-  const o = e__namespace.useContext(n$1);
-  return Boolean(null === globalThis || void 0 === globalThis ? void 0 : globalThis.document) || o !== t$1 || console.warn("When server rendering, you must wrap your application in an <IdProvider> to ensure consistent ids are generated between the client and server."), e__namespace.useMemo(() => r || `radix-id-${o.prefix}-${++o.current}`, [r]);
-}
-
 const t = {
   prefix: Math.round(1e10 * Math.random()),
   current: 0
 },
-      n = /*#__PURE__*/e__namespace.createContext(t);
+      n = /*#__PURE__*/t__namespace.createContext(t);
 function useId(r) {
-  const o = e__namespace.useContext(n);
-  return Boolean(null === globalThis || void 0 === globalThis ? void 0 : globalThis.document) || o !== t || console.warn("When server rendering, you must wrap your application in an <IdProvider> to ensure consistent ids are generated between the client and server."), e__namespace.useMemo(() => r || `radix-id-${o.prefix}-${++o.current}`, [r]);
+  const o = t__namespace.useContext(n);
+  return Boolean(null === globalThis || void 0 === globalThis ? void 0 : globalThis.document) || o !== t || console.warn("When server rendering, you must wrap your application in an <IdProvider> to ensure consistent ids are generated between the client and server."), t__namespace.useMemo(() => r || `radix-id-${o.prefix}-${++o.current}`, [r]);
 }
 
 function useCallbackRef(r) {
-  const t = e__namespace.useRef(r);
-  return e__namespace.useEffect(() => {
+  const t = t__namespace.useRef(r);
+  return t__namespace.useEffect(() => {
     t.current = r;
-  }), e__namespace.useCallback((...e) => {
+  }), t__namespace.useCallback((...e) => {
     var r;
     return null === (r = t.current) || void 0 === r ? void 0 : r.call(t, ...e);
   }, []);
@@ -740,11 +733,11 @@ function useControllableState({
     defaultProp: o,
     onChange: r
   }) {
-    const n = e__namespace.useState(o),
+    const n = t__namespace.useState(o),
           [a] = n,
-          u = e__namespace.useRef(a),
+          u = t__namespace.useRef(a),
           c = useCallbackRef(r);
-    return e__namespace.useEffect(() => {
+    return t__namespace.useEffect(() => {
       u.current !== a && (c(a), u.current = a);
     }, [a, u, c]), n;
   }({
@@ -755,7 +748,7 @@ function useControllableState({
         f = c ? o : a,
         l = useCallbackRef(n);
 
-  return [f, e__namespace.useCallback(e => {
+  return [f, t__namespace.useCallback(e => {
     if (c) {
       const t = e,
             r = "function" == typeof e ? t(o) : e;
@@ -764,144 +757,164 @@ function useControllableState({
   }, [c, o, u, l])];
 }
 
+const r$1 = "div";
+const Primitive = /*#__PURE__*/t__namespace.forwardRef((o, i) => {
+  const {
+    as: n = r$1,
+    ...a
+  } = o;
+  
+
+  return t__namespace.createElement(n, _extends({}, a, {
+    ref: i
+  }));
+});
+
 function createContext(t) {
-  const r = /*#__PURE__*/e__namespace.createContext(null);
+  const r = /*#__PURE__*/t__namespace.createContext(null);
 
   function n(t) {
     const {
       children: n,
       ...o
     } = t,
-          u = e__namespace.useMemo(() => o, Object.values(o));
+          u = t__namespace.useMemo(() => o, Object.values(o));
     
 
-    return e__namespace.createElement(r.Provider, {
+    return t__namespace.createElement(r.Provider, {
       value: u
     }, n);
   }
 
   return n.displayName = t + "Provider", [n, function (n) {
-    const o = e__namespace.useContext(r);
+    const o = t__namespace.useContext(r);
     if (null === o) throw new Error(`\`${n}\` must be used within \`${t}\``);
     return o;
   }];
 }
 
-function clamp(t, [n, r]) {
-  return Math.min(r, Math.max(n, t));
+function composeRefs(...o) {
+  return e => o.forEach(o => function (o, e) {
+    "function" == typeof o ? o(e) : null != o && (o.current = e);
+  }(o, e));
 }
-function wrap(t, n) {
-  return (n + t) % n;
+function useComposedRefs(...e) {
+  return t__namespace.useCallback(composeRefs(...e), e);
 }
 
-const [i, c$1] = createContext("RovingFocusGroup");
-function RovingFocusGroup(t) {
+const Slot = /*#__PURE__*/t__namespace.forwardRef((e, o) => {
   const {
-    children: r,
-    orientation: n,
-    loop: c,
-    dir: u
-  } = t,
-        [l = !0, s] = useControllableState({
-    prop: t.reachable,
-    defaultProp: t.defaultReachable,
-    onChange: t.onReachableChange
-  }),
-        [p, d] = e__namespace.useState(null),
-        f = e__namespace.useCallback((o, e) => {
-    d(t => l ? e || !t ? o : t : null);
-  }, [l]);
+    children: l,
+    ...c
+  } = e;
+  return 1 === t__namespace.Children.count(l) ? /*#__PURE__*/t__namespace.createElement(r, _extends({}, c, {
+    ref: o
+  }), l) : /*#__PURE__*/t__namespace.createElement(t__namespace.Fragment, null, t__namespace.Children.map(l, e => /*#__PURE__*/t__namespace.isValidElement(e) && e.type === Slottable ? /*#__PURE__*/t__namespace.createElement(r, _extends({}, c, {
+    ref: o
+  }), e.props.children) : e));
+});
+Slot.displayName = "Slot";
+const r = /*#__PURE__*/t__namespace.forwardRef((n, r) => {
+  const {
+    children: l,
+    ...c
+  } = n,
+        i = t__namespace.Children.only(l);
   
 
-  return e__namespace.createElement(i, {
-    groupId: useId(),
-    orientation: n,
-    dir: u,
-    loop: c,
-    tabStopId: p,
-    onTabStopIdChange: f,
-    reachable: l,
-    onReachableChange: s
-  }, r);
-}
+  return t__namespace.isValidElement(i) ? /*#__PURE__*/t__namespace.cloneElement(i, { ...o(c, i.props),
+    ref: composeRefs(r, i.ref)
+  }) : null;
+});
+r.displayName = "SlotClone";
+const Slottable = ({
+  children: e
+}) => e;
 
+function o(e, t) {
+  const n = { ...t
+  };
 
-function useRovingFocus({
-  disabled: e,
-  active: t
-}) {
-  const i = useId(),
-        p = c$1("RovingFocusItem"),
-        d = i === p.tabStopId,
-        {
-    onTabStopIdChange: f
-  } = p;
-  return e__namespace.useEffect(() => {
-    f(i, t);
-  }, [t, i, f]), e ? {
-    tabIndex: -1,
-    onMouseDown: o => o.preventDefault()
-  } : {
-    [s]: p.groupId,
-    tabIndex: d ? 0 : -1,
-    onFocus: () => {
-      p.onReachableChange(!0), p.onTabStopIdChange(i);
-    },
-    onKeyDown: o => {
-      const e = function (o, e, t) {
-        const r = function (o, e) {
-          return "rtl" !== e ? o : "ArrowLeft" === o ? "ArrowRight" : "ArrowRight" === o ? "ArrowLeft" : o;
-        }(o.key, t);
+  for (const r in t) {
+    const o = e[r],
+          c = t[r];
+    /^on[A-Z]/.test(r) ? n[r] = l$2(c, o) : "style" === r && (n[r] = { ...o,
+      ...c
+    });
+  }
 
-        return "vertical" === e && ["ArrowLeft", "ArrowRight"].includes(r) || "horizontal" === e && ["ArrowUp", "ArrowDown"].includes(r) ? void 0 : u$1[r];
-      }(o, p.orientation, p.dir);
-
-      if (l.includes(o.key) && o.stopPropagation(), void 0 !== e) {
-        o.preventDefault();
-        const a = (t = p.groupId, Array.from(document.querySelectorAll(`[${s}="${t}"]`))),
-              i = a.length,
-              c = document.activeElement,
-              u = c ? a.indexOf(c) : -1;
-        let l = {
-          first: 0,
-          last: i - 1,
-          prev: u - 1,
-          next: u + 1
-        }[e];
-        l = p.loop ? wrap(l, i) : clamp(l, [0, i - 1]);
-        const d = a[l];
-        d && setTimeout(() => d.focus());
-      }
-
-      var t;
-    }
+  return { ...e,
+    ...n
   };
 }
-const u$1 = {
-  ArrowLeft: "prev",
-  ArrowUp: "prev",
-  ArrowRight: "next",
-  ArrowDown: "next",
-  PageUp: "first",
-  Home: "first",
-  PageDown: "last",
-  End: "last"
-},
-      l = Object.keys(u$1);
-const s = "data-radix-roving-focus-group-id";
 
-const r = "div";
-const Primitive = /*#__PURE__*/e__namespace.forwardRef((o, i) => {
-  const {
-    as: n = r,
-    ...a
-  } = o;
-  
+function l$2(e, t) {
+  return function (...n) {
+    null == e || e(...n);
+    n[0] instanceof Event && n[0].defaultPrevented || null == t || t(...n);
+  };
+}
 
-  return e__namespace.createElement(n, _extends({}, a, {
-    ref: i
-  }));
-});
+function createCollection() {
+  const n = /*#__PURE__*/t__default['default'].createContext({}),
+        o = e => {
+    const {
+      children: r
+    } = e,
+          o = t__default['default'].useRef(null),
+          c = t__default['default'].useRef(new Map()).current;
+    
+
+    return t__default['default'].createElement(n.Provider, {
+      value: t__default['default'].useMemo(() => ({
+        itemMap: c,
+        collectionRef: o
+      }), [c])
+    }, r);
+  },
+        c = /*#__PURE__*/t__default['default'].forwardRef((o, c) => {
+    const {
+      children: f
+    } = o,
+          l = t__default['default'].useContext(n),
+          u = useComposedRefs(c, l.collectionRef);
+    
+
+    return t__default['default'].createElement(Slot, {
+      ref: u
+    }, f);
+  }),
+        f = "data-radix-collection-item",
+        l = /*#__PURE__*/t__default['default'].forwardRef((o, c) => {
+    const {
+      children: l,
+      ...u
+    } = o,
+          i = t__default['default'].useRef(null),
+          a = useComposedRefs(c, i),
+          s = t__default['default'].useContext(n);
+    return t__default['default'].useEffect(() => (s.itemMap.set(i, {
+      ref: i,
+      ...u
+    }), () => {
+      s.itemMap.delete(i);
+    })), /*#__PURE__*/t__default['default'].createElement(Slot, {
+      [f]: "",
+      ref: a
+    }, l);
+  });
+
+  return [o, c, l, function () {
+    const e = t__default['default'].useContext(n);
+    return {
+      getItems() {
+        const r = Array.from(e.collectionRef.current.querySelectorAll(`[${f}]`));
+        return Array.from(e.itemMap.values()).sort((e, t) => r.indexOf(e.ref.current) - r.indexOf(t.ref.current));
+      }
+
+    };
+  }];
+}
 
 function composeEventHandlers(e, n, {
   checkForDefaultPrevented: t = !0
@@ -911,144 +924,297 @@ function composeEventHandlers(e, n, {
   };
 }
 
-const [c, u] = createContext("Tabs");
-const Tabs$1 = /*#__PURE__*/e__namespace.forwardRef((a, t) => {
+const f$1 = {
+  bubbles: !1,
+  cancelable: !0
+},
+      [l$1, m$1, p$1, d] = createCollection(),
+      v = "span",
+      [g, w] = createContext("RovingFocusGroup");
+const RovingFocusGroup = /*#__PURE__*/t__namespace.forwardRef((e, t) => /*#__PURE__*/t__namespace.createElement(l$1, null, /*#__PURE__*/t__namespace.createElement(m$1, null, /*#__PURE__*/t__namespace.createElement(b$1, _extends({}, e, {
+  ref: t
+})))));
+
+
+const b$1 = /*#__PURE__*/t__namespace.forwardRef((o, n) => {
   const {
-    value: n,
-    onValueChange: i,
+    as: a = v,
+    orientation: l,
+    dir: m = "ltr",
+    loop: p = !1,
+    currentTabStopId: w,
+    defaultCurrentTabStopId: b,
+    onCurrentTabStopIdChange: x,
+    onEntryFocus: F,
+    ...I
+  } = o,
+        R = t__namespace.useRef(null),
+        h = useComposedRefs(n, R),
+        [T = null, A] = useControllableState({
+    prop: w,
+    defaultProp: b,
+    onChange: x
+  }),
+        [y, D] = t__namespace.useState(!1),
+        S = useCallbackRef(F),
+        {
+    getItems: C
+  } = d(),
+        G = t__namespace.useRef(!1);
+  return t__namespace.useEffect(() => {
+    const e = R.current;
+    if (e) return e.addEventListener("rovingFocusGroup.onEntryFocus", S), () => e.removeEventListener("rovingFocusGroup.onEntryFocus", S);
+  }, [S]), /*#__PURE__*/t__namespace.createElement(g, {
+    orientation: l,
+    dir: m,
+    loop: p,
+    currentTabStopId: T,
+    onItemFocus: t__namespace.useCallback(e => A(e), [A]),
+    onItemShiftTab: t__namespace.useCallback(() => D(!0), [])
+  }, /*#__PURE__*/t__namespace.createElement(Primitive, _extends({
+    tabIndex: y ? -1 : 0,
+    "aria-orientation": l,
+    "data-orientation": l
+  }, I, {
+    as: a,
+    ref: h,
+    style: {
+      outline: "none",
+      ...o.style
+    },
+    onMouseDown: composeEventHandlers(o.onMouseDown, () => {
+      G.current = !0;
+    }),
+    onFocus: composeEventHandlers(o.onFocus, e => {
+      const t = !G.current;
+
+      if (e.target === e.currentTarget && t && !y) {
+        const t = new Event("rovingFocusGroup.onEntryFocus", f$1);
+
+        if (e.currentTarget.dispatchEvent(t), !t.defaultPrevented) {
+          const e = C().filter(e => e.focusable);
+          E([e.find(e => e.active), e.find(e => e.id === T), ...e].filter(Boolean).map(e => e.ref.current));
+        }
+      }
+
+      G.current = !1;
+    }),
+    onBlur: composeEventHandlers(o.onBlur, () => D(!1))
+  })));
+}),
+      x = "span";
+const RovingFocusItem = /*#__PURE__*/t__namespace.forwardRef((e, t) => {
+  const {
+    as: n = x,
+    focusable: i = !0,
+    active: a = !1,
+    ...f
+  } = e,
+        l = useId(),
+        m = w("RovingFocusItem"),
+        v = m.currentTabStopId === l,
+        {
+    getItems: g
+  } = d();
+  
+
+  return t__namespace.createElement(p$1, {
+    id: l,
+    focusable: i,
+    active: a
+  }, /*#__PURE__*/t__namespace.createElement(Primitive, _extends({
+    tabIndex: v ? 0 : -1,
+    "data-orientation": m.orientation
+  }, f, {
+    as: n,
+    ref: t,
+    onMouseDown: composeEventHandlers(e.onMouseDown, e => {
+      i ? m.onItemFocus(l) : e.preventDefault();
+    }),
+    onFocus: composeEventHandlers(e.onFocus, () => m.onItemFocus(l)),
+    onKeyDown: composeEventHandlers(e.onKeyDown, e => {
+      if ("Tab" === e.key && e.shiftKey) return void m.onItemShiftTab();
+      if (e.target !== e.currentTarget) return;
+
+      const t = function (e, t, r) {
+        const o = function (e, t) {
+          return "rtl" !== t ? e : "ArrowLeft" === e ? "ArrowRight" : "ArrowRight" === e ? "ArrowLeft" : e;
+        }(e.key, r);
+
+        return "vertical" === t && ["ArrowLeft", "ArrowRight"].includes(o) || "horizontal" === t && ["ArrowUp", "ArrowDown"].includes(o) ? void 0 : F[o];
+      }(e, m.orientation, m.dir);
+
+      if (void 0 !== t) {
+        e.preventDefault();
+        let n = g().filter(e => e.focusable).map(e => e.ref.current);
+        if ("last" === t) n.reverse();else if ("prev" === t || "next" === t) {
+          "prev" === t && n.reverse();
+          const i = n.indexOf(e.currentTarget);
+          n = m.loop ? (o = i + 1, (r = n).map((e, t) => r[(o + t) % r.length])) : n.slice(i + 1);
+        }
+        setTimeout(() => E(n));
+      }
+
+      var r, o;
+    })
+  })));
+});
+
+
+const F = {
+  ArrowLeft: "prev",
+  ArrowUp: "prev",
+  ArrowRight: "next",
+  ArrowDown: "next",
+  PageUp: "first",
+  Home: "first",
+  PageDown: "last",
+  End: "last"
+};
+
+function E(e) {
+  const t = document.activeElement;
+
+  for (const r of e) {
+    if (r === t) return;
+    if (r.focus(), document.activeElement !== t) return;
+  }
+}
+
+const [l, u] = createContext("Tabs");
+const Tabs$1 = /*#__PURE__*/t__namespace.forwardRef((t, a) => {
+  const {
+    value: i,
+    onValueChange: n,
     defaultValue: s,
     orientation: u = "horizontal",
     dir: b = "ltr",
     activationMode: m = "automatic",
     ...f
-  } = a,
-        p = useId$1(),
-        [v, x] = useControllableState({
-    prop: n,
-    onChange: i,
+  } = t,
+        [p, v] = useControllableState({
+    prop: i,
+    onChange: n,
     defaultProp: s
   });
   
 
-  return e__namespace.createElement(c, {
-    baseId: p,
-    value: v,
-    onValueChange: x,
+  return t__namespace.createElement(l, {
+    baseId: useId(),
+    value: p,
+    onValueChange: v,
     orientation: u,
     dir: b,
     activationMode: m
-  }, /*#__PURE__*/e__namespace.createElement(Primitive, _extends({
+  }, /*#__PURE__*/t__namespace.createElement(Primitive, _extends({
     "data-orientation": u
   }, f, {
-    ref: t
+    ref: a
   })));
 });
 
 
-const TabsList$1 = /*#__PURE__*/e__namespace.forwardRef((e, t) => {
+const b = "div";
+const TabsList$1 = /*#__PURE__*/t__namespace.forwardRef((e, a) => {
   const {
+    as: o = b,
     loop: r = !0,
-    ...n
+    ...i
   } = e,
-        i = u("TabsList");
+        n = u("TabsList");
   
 
-  return e__namespace.createElement(RovingFocusGroup, {
-    orientation: i.orientation,
-    loop: r,
-    dir: i.dir
-  }, /*#__PURE__*/e__namespace.createElement(Primitive, _extends({
+  return t__namespace.createElement(RovingFocusGroup, _extends({
     role: "tablist",
-    "aria-orientation": i.orientation,
-    "data-orientation": i.orientation
-  }, n, {
-    ref: t
-  })));
-});
-
-
-const TabsTab$1 = /*#__PURE__*/e__namespace.forwardRef((e, a) => {
-  const {
-    value: r,
-    disabled: i,
-    ...c
-  } = e,
-        f = u("TabsTab"),
-        p = b(f.baseId, r),
-        v = m(f.baseId, r),
-        x = r === f.value,
-        T = useRovingFocus({
-    disabled: i,
-    active: x
-  }),
-        w = useCallbackRef(() => f.onValueChange(r)),
-        h = composeEventHandlers(c.onKeyDown, composeEventHandlers(T.onKeyDown, e => {
-    i || " " !== e.key && "Enter" !== e.key || w();
-  })),
-        y = composeEventHandlers(c.onMouseDown, composeEventHandlers(T.onMouseDown, e => {
-    i || 0 !== e.button || !1 !== e.ctrlKey || w();
-  })),
-        E = composeEventHandlers(c.onFocus, composeEventHandlers(T.onFocus, () => {
-    const e = "manual" !== f.activationMode;
-    x || i || !e || w();
-  }));
-  
-
-  return e__namespace.createElement(Primitive, _extends({
-    role: "tab",
-    "aria-selected": x,
-    "aria-controls": v,
-    "aria-disabled": i || void 0,
-    "data-state": x ? "active" : "inactive",
-    "data-disabled": i ? "" : void 0,
-    "data-orientation": f.orientation,
-    id: p
-  }, c, T, {
-    ref: a,
-    onKeyDown: h,
-    onMouseDown: y,
-    onFocus: E
-  }));
-});
-
-
-const TabsPanel$1 = /*#__PURE__*/e__namespace.forwardRef((e, a) => {
-  const {
-    value: t,
-    ...r
-  } = e,
-        n = u("TabsPanel"),
-        i = b(n.baseId, t),
-        s = m(n.baseId, t),
-        c = t === n.value;
-  
-
-  return e__namespace.createElement(Primitive, _extends({
-    "data-state": c ? "active" : "inactive",
-    "data-orientation": n.orientation,
-    role: "tabpanel",
-    "aria-labelledby": i,
-    hidden: !c,
-    id: s,
-    tabIndex: 0
-  }, r, {
+    orientation: n.orientation,
+    dir: n.dir,
+    loop: r
+  }, i, {
+    as: o,
     ref: a
   }));
 });
 
 
-function b(e, a) {
-  return `${e}-tab-${a}`;
+const m = "div";
+const TabsTrigger = /*#__PURE__*/t__namespace.forwardRef((e, t) => {
+  const {
+    as: o = m,
+    value: r,
+    disabled: n = !1,
+    ...l
+  } = e,
+        b = u("TabsTrigger"),
+        v = f(b.baseId, r),
+        x = p(b.baseId, r),
+        T = r === b.value,
+        g = useCallbackRef(() => b.onValueChange(r));
+  
+
+  return t__namespace.createElement(RovingFocusItem, _extends({
+    role: "tab",
+    "aria-selected": T,
+    "aria-controls": x,
+    "aria-disabled": n || void 0,
+    "data-state": T ? "active" : "inactive",
+    "data-disabled": n ? "" : void 0,
+    id: v
+  }, l, {
+    focusable: !n,
+    active: T,
+    as: o,
+    ref: t,
+    onKeyDown: composeEventHandlers(e.onKeyDown, e => {
+      n || " " !== e.key && "Enter" !== e.key || g();
+    }),
+    onMouseDown: composeEventHandlers(e.onMouseDown, e => {
+      n || 0 !== e.button || !1 !== e.ctrlKey || g();
+    }),
+    onFocus: composeEventHandlers(e.onFocus, () => {
+      const e = "manual" !== b.activationMode;
+      T || n || !e || g();
+    })
+  }));
+});
+
+
+const TabsContent = /*#__PURE__*/t__namespace.forwardRef((e, t) => {
+  const {
+    value: a,
+    ...r
+  } = e,
+        i = u("TabsContent"),
+        n = f(i.baseId, a),
+        s = p(i.baseId, a),
+        l = a === i.value;
+  
+
+  return t__namespace.createElement(Primitive, _extends({
+    "data-state": l ? "active" : "inactive",
+    "data-orientation": i.orientation,
+    role: "tabpanel",
+    "aria-labelledby": n,
+    hidden: !l,
+    id: s,
+    tabIndex: 0
+  }, r, {
+    ref: t
+  }));
+});
+
+
+function f(e, t) {
+  return `${e}-trigger-${t}`;
 }
 
-function m(e, a) {
-  return `${e}-panel-${a}`;
+function p(e, t) {
+  return `${e}-content-${t}`;
 }
 
 const Root = Tabs$1;
 const List = TabsList$1;
-const Tab = TabsTab$1;
-const Panel = TabsPanel$1;
+const Trigger = TabsTrigger;
+const Content = TabsContent;
 
 function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
@@ -1060,7 +1226,7 @@ const Tabs = /*#__PURE__*/createStyled(Root, process.env.NODE_ENV === "productio
 })(() => [{
   "display": "flex",
   "flexDirection": "column"
-}], process.env.NODE_ENV === "production" ? "" : "/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQU1hIiwiZmlsZSI6ImluZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqIEBqc3hSdW50aW1lIGNsYXNzaWMgKi9cbi8qKiBAanN4IGpzeCAqL1xuaW1wb3J0IHsganN4IH0gZnJvbSBcIkBlbW90aW9uL3JlYWN0XCI7XG5pbXBvcnQgdHcsIHsgc3R5bGVkLCBjc3MgfSBmcm9tIFwidHdpbi5tYWNyb1wiO1xuaW1wb3J0ICogYXMgVGFic1ByaW1pdGl2ZSBmcm9tIFwiQHJhZGl4LXVpL3JlYWN0LXRhYnNcIjtcblxuY29uc3QgVGFicyA9IHN0eWxlZChUYWJzUHJpbWl0aXZlLlJvb3QpKCgpID0+IFt0d2BmbGV4IGZsZXgtY29sYF0pO1xuXG5jb25zdCBUYWJzTGlzdCA9IHN0eWxlZChUYWJzUHJpbWl0aXZlLkxpc3QpKCgpID0+IFtcbiAgdHdgZmxleCBmbGV4LXNocmluay0wIGJvcmRlci1iIGJvcmRlci1hY2NlbnQtdGhyZWVgLFxuXSk7XG5cbmNvbnN0IFRhYnNUYWIgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5UYWIpKCgpID0+IFtcbiAgdHdgZmxleC1zaHJpbmstMCBweS0yIHB4LTEgbXItNCB0ZXh0LWFjY2VudC1maXZlIHNlbGVjdC1ub25lIG91dGxpbmUtbm9uZSBjdXJzb3ItcG9pbnRlciB0cmFuc2l0aW9uIGVhc2UtaW4tb3V0IGR1cmF0aW9uLTE1MCBmb250LW5vcm1hbCB0ZXh0LXNtYCxcbiAgdHdgaG92ZXI6KHRleHQtZm9yZWdyb3VuZClgLFxuICBjc3NgXG4gICAgJltyb2xlPVwidGFiXCJdOmZpcnN0LW9mLXR5cGUge1xuICAgICAgcGFkZGluZy1sZWZ0OiAwO1xuICAgIH1cbiAgICAmW2RhdGEtc3RhdGU9XCJhY3RpdmVcIl0ge1xuICAgICAgJHt0d2B0ZXh0LWZvcmVncm91bmQgc2hhZG93YH1cbiAgICAgIGJveC1zaGFkb3c6IGluc2V0IDAgLTFweCAwIDAgY3VycmVudENvbG9yLCAwIDFweCAwIDAgY3VycmVudENvbG9yO1xuICAgIH1cbiAgYCxcbl0pO1xuXG5jb25zdCBUYWJzUGFuZWwgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5QYW5lbCkoKCkgPT4gW3R3YGZsZXgtZ3JvdyBwLTZgXSk7XG5cbmV4cG9ydCB7IFRhYnMsIFRhYnNMaXN0LCBUYWJzVGFiLCBUYWJzUGFuZWwgfTtcbiJdfQ== */");
+}], process.env.NODE_ENV === "production" ? "" : "/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQU1hIiwiZmlsZSI6ImluZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqIEBqc3hSdW50aW1lIGNsYXNzaWMgKi9cbi8qKiBAanN4IGpzeCAqL1xuaW1wb3J0IHsganN4IH0gZnJvbSBcIkBlbW90aW9uL3JlYWN0XCI7XG5pbXBvcnQgdHcsIHsgc3R5bGVkLCBjc3MgfSBmcm9tIFwidHdpbi5tYWNyb1wiO1xuaW1wb3J0ICogYXMgVGFic1ByaW1pdGl2ZSBmcm9tIFwiQHJhZGl4LXVpL3JlYWN0LXRhYnNcIjtcblxuY29uc3QgVGFicyA9IHN0eWxlZChUYWJzUHJpbWl0aXZlLlJvb3QpKCgpID0+IFt0d2BmbGV4IGZsZXgtY29sYF0pO1xuXG5jb25zdCBUYWJzTGlzdCA9IHN0eWxlZChUYWJzUHJpbWl0aXZlLkxpc3QpKCgpID0+IFtcbiAgdHdgZmxleCBmbGV4LXNocmluay0wIGJvcmRlci1iIGJvcmRlci1hY2NlbnQtdGhyZWVgLFxuXSk7XG5cbmNvbnN0IFRhYnNUYWIgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5UcmlnZ2VyKSgoKSA9PiBbXG4gIHR3YGZsZXgtc2hyaW5rLTAgcHktMiBweC0xIG1yLTQgdGV4dC1hY2NlbnQtZml2ZSBzZWxlY3Qtbm9uZSBvdXRsaW5lLW5vbmUgY3Vyc29yLXBvaW50ZXIgdHJhbnNpdGlvbiBlYXNlLWluLW91dCBkdXJhdGlvbi0xNTAgZm9udC1ub3JtYWwgdGV4dC1zbWAsXG4gIHR3YGhvdmVyOih0ZXh0LWZvcmVncm91bmQpYCxcbiAgY3NzYFxuICAgICZbcm9sZT1cInRhYlwiXTpmaXJzdC1vZi10eXBlIHtcbiAgICAgIHBhZGRpbmctbGVmdDogMDtcbiAgICB9XG4gICAgJltkYXRhLXN0YXRlPVwiYWN0aXZlXCJdIHtcbiAgICAgICR7dHdgdGV4dC1mb3JlZ3JvdW5kIHNoYWRvd2B9XG4gICAgICBib3gtc2hhZG93OiBpbnNldCAwIC0xcHggMCAwIGN1cnJlbnRDb2xvciwgMCAxcHggMCAwIGN1cnJlbnRDb2xvcjtcbiAgICB9XG4gIGAsXG5dKTtcblxuY29uc3QgVGFic1BhbmVsID0gc3R5bGVkKFRhYnNQcmltaXRpdmUuQ29udGVudCkoKCkgPT4gW3R3YGZsZXgtZ3JvdyBwLTZgXSk7XG5cbmV4cG9ydCB7IFRhYnMsIFRhYnNMaXN0LCBUYWJzVGFiLCBUYWJzUGFuZWwgfTtcbiJdfQ== */");
 
 const TabsList = /*#__PURE__*/createStyled(List, process.env.NODE_ENV === "production" ? {
   target: "e1klorew2"
@@ -1073,7 +1239,7 @@ const TabsList = /*#__PURE__*/createStyled(List, process.env.NODE_ENV === "produ
   "borderBottomWidth": "1px",
   "--tw-border-opacity": "1",
   "borderColor": "rgba(229, 231, 235, var(--tw-border-opacity))"
-}], process.env.NODE_ENV === "production" ? "" : "/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVFpQiIsImZpbGUiOiJpbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiBAanN4UnVudGltZSBjbGFzc2ljICovXG4vKiogQGpzeCBqc3ggKi9cbmltcG9ydCB7IGpzeCB9IGZyb20gXCJAZW1vdGlvbi9yZWFjdFwiO1xuaW1wb3J0IHR3LCB7IHN0eWxlZCwgY3NzIH0gZnJvbSBcInR3aW4ubWFjcm9cIjtcbmltcG9ydCAqIGFzIFRhYnNQcmltaXRpdmUgZnJvbSBcIkByYWRpeC11aS9yZWFjdC10YWJzXCI7XG5cbmNvbnN0IFRhYnMgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5Sb290KSgoKSA9PiBbdHdgZmxleCBmbGV4LWNvbGBdKTtcblxuY29uc3QgVGFic0xpc3QgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5MaXN0KSgoKSA9PiBbXG4gIHR3YGZsZXggZmxleC1zaHJpbmstMCBib3JkZXItYiBib3JkZXItYWNjZW50LXRocmVlYCxcbl0pO1xuXG5jb25zdCBUYWJzVGFiID0gc3R5bGVkKFRhYnNQcmltaXRpdmUuVGFiKSgoKSA9PiBbXG4gIHR3YGZsZXgtc2hyaW5rLTAgcHktMiBweC0xIG1yLTQgdGV4dC1hY2NlbnQtZml2ZSBzZWxlY3Qtbm9uZSBvdXRsaW5lLW5vbmUgY3Vyc29yLXBvaW50ZXIgdHJhbnNpdGlvbiBlYXNlLWluLW91dCBkdXJhdGlvbi0xNTAgZm9udC1ub3JtYWwgdGV4dC1zbWAsXG4gIHR3YGhvdmVyOih0ZXh0LWZvcmVncm91bmQpYCxcbiAgY3NzYFxuICAgICZbcm9sZT1cInRhYlwiXTpmaXJzdC1vZi10eXBlIHtcbiAgICAgIHBhZGRpbmctbGVmdDogMDtcbiAgICB9XG4gICAgJltkYXRhLXN0YXRlPVwiYWN0aXZlXCJdIHtcbiAgICAgICR7dHdgdGV4dC1mb3JlZ3JvdW5kIHNoYWRvd2B9XG4gICAgICBib3gtc2hhZG93OiBpbnNldCAwIC0xcHggMCAwIGN1cnJlbnRDb2xvciwgMCAxcHggMCAwIGN1cnJlbnRDb2xvcjtcbiAgICB9XG4gIGAsXG5dKTtcblxuY29uc3QgVGFic1BhbmVsID0gc3R5bGVkKFRhYnNQcmltaXRpdmUuUGFuZWwpKCgpID0+IFt0d2BmbGV4LWdyb3cgcC02YF0pO1xuXG5leHBvcnQgeyBUYWJzLCBUYWJzTGlzdCwgVGFic1RhYiwgVGFic1BhbmVsIH07XG4iXX0= */");
+}], process.env.NODE_ENV === "production" ? "" : "/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVFpQiIsImZpbGUiOiJpbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiBAanN4UnVudGltZSBjbGFzc2ljICovXG4vKiogQGpzeCBqc3ggKi9cbmltcG9ydCB7IGpzeCB9IGZyb20gXCJAZW1vdGlvbi9yZWFjdFwiO1xuaW1wb3J0IHR3LCB7IHN0eWxlZCwgY3NzIH0gZnJvbSBcInR3aW4ubWFjcm9cIjtcbmltcG9ydCAqIGFzIFRhYnNQcmltaXRpdmUgZnJvbSBcIkByYWRpeC11aS9yZWFjdC10YWJzXCI7XG5cbmNvbnN0IFRhYnMgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5Sb290KSgoKSA9PiBbdHdgZmxleCBmbGV4LWNvbGBdKTtcblxuY29uc3QgVGFic0xpc3QgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5MaXN0KSgoKSA9PiBbXG4gIHR3YGZsZXggZmxleC1zaHJpbmstMCBib3JkZXItYiBib3JkZXItYWNjZW50LXRocmVlYCxcbl0pO1xuXG5jb25zdCBUYWJzVGFiID0gc3R5bGVkKFRhYnNQcmltaXRpdmUuVHJpZ2dlcikoKCkgPT4gW1xuICB0d2BmbGV4LXNocmluay0wIHB5LTIgcHgtMSBtci00IHRleHQtYWNjZW50LWZpdmUgc2VsZWN0LW5vbmUgb3V0bGluZS1ub25lIGN1cnNvci1wb2ludGVyIHRyYW5zaXRpb24gZWFzZS1pbi1vdXQgZHVyYXRpb24tMTUwIGZvbnQtbm9ybWFsIHRleHQtc21gLFxuICB0d2Bob3ZlcjoodGV4dC1mb3JlZ3JvdW5kKWAsXG4gIGNzc2BcbiAgICAmW3JvbGU9XCJ0YWJcIl06Zmlyc3Qtb2YtdHlwZSB7XG4gICAgICBwYWRkaW5nLWxlZnQ6IDA7XG4gICAgfVxuICAgICZbZGF0YS1zdGF0ZT1cImFjdGl2ZVwiXSB7XG4gICAgICAke3R3YHRleHQtZm9yZWdyb3VuZCBzaGFkb3dgfVxuICAgICAgYm94LXNoYWRvdzogaW5zZXQgMCAtMXB4IDAgMCBjdXJyZW50Q29sb3IsIDAgMXB4IDAgMCBjdXJyZW50Q29sb3I7XG4gICAgfVxuICBgLFxuXSk7XG5cbmNvbnN0IFRhYnNQYW5lbCA9IHN0eWxlZChUYWJzUHJpbWl0aXZlLkNvbnRlbnQpKCgpID0+IFt0d2BmbGV4LWdyb3cgcC02YF0pO1xuXG5leHBvcnQgeyBUYWJzLCBUYWJzTGlzdCwgVGFic1RhYiwgVGFic1BhbmVsIH07XG4iXX0= */");
 
 var _ref = process.env.NODE_ENV === "production" ? {
   name: "11ymp0m",
@@ -1081,11 +1247,11 @@ var _ref = process.env.NODE_ENV === "production" ? {
 } : {
   name: "v6uuzj-TabsTab",
   styles: "&[role=\"tab\"]:first-of-type{padding-left:0;}&[data-state=\"active\"]{--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));--tw-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); box-shadow:inset 0 -1px 0 0 currentColor,0 1px 0 0 currentColor;};label:TabsTab;",
-  map: "/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWVLIiwiZmlsZSI6ImluZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqIEBqc3hSdW50aW1lIGNsYXNzaWMgKi9cbi8qKiBAanN4IGpzeCAqL1xuaW1wb3J0IHsganN4IH0gZnJvbSBcIkBlbW90aW9uL3JlYWN0XCI7XG5pbXBvcnQgdHcsIHsgc3R5bGVkLCBjc3MgfSBmcm9tIFwidHdpbi5tYWNyb1wiO1xuaW1wb3J0ICogYXMgVGFic1ByaW1pdGl2ZSBmcm9tIFwiQHJhZGl4LXVpL3JlYWN0LXRhYnNcIjtcblxuY29uc3QgVGFicyA9IHN0eWxlZChUYWJzUHJpbWl0aXZlLlJvb3QpKCgpID0+IFt0d2BmbGV4IGZsZXgtY29sYF0pO1xuXG5jb25zdCBUYWJzTGlzdCA9IHN0eWxlZChUYWJzUHJpbWl0aXZlLkxpc3QpKCgpID0+IFtcbiAgdHdgZmxleCBmbGV4LXNocmluay0wIGJvcmRlci1iIGJvcmRlci1hY2NlbnQtdGhyZWVgLFxuXSk7XG5cbmNvbnN0IFRhYnNUYWIgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5UYWIpKCgpID0+IFtcbiAgdHdgZmxleC1zaHJpbmstMCBweS0yIHB4LTEgbXItNCB0ZXh0LWFjY2VudC1maXZlIHNlbGVjdC1ub25lIG91dGxpbmUtbm9uZSBjdXJzb3ItcG9pbnRlciB0cmFuc2l0aW9uIGVhc2UtaW4tb3V0IGR1cmF0aW9uLTE1MCBmb250LW5vcm1hbCB0ZXh0LXNtYCxcbiAgdHdgaG92ZXI6KHRleHQtZm9yZWdyb3VuZClgLFxuICBjc3NgXG4gICAgJltyb2xlPVwidGFiXCJdOmZpcnN0LW9mLXR5cGUge1xuICAgICAgcGFkZGluZy1sZWZ0OiAwO1xuICAgIH1cbiAgICAmW2RhdGEtc3RhdGU9XCJhY3RpdmVcIl0ge1xuICAgICAgJHt0d2B0ZXh0LWZvcmVncm91bmQgc2hhZG93YH1cbiAgICAgIGJveC1zaGFkb3c6IGluc2V0IDAgLTFweCAwIDAgY3VycmVudENvbG9yLCAwIDFweCAwIDAgY3VycmVudENvbG9yO1xuICAgIH1cbiAgYCxcbl0pO1xuXG5jb25zdCBUYWJzUGFuZWwgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5QYW5lbCkoKCkgPT4gW3R3YGZsZXgtZ3JvdyBwLTZgXSk7XG5cbmV4cG9ydCB7IFRhYnMsIFRhYnNMaXN0LCBUYWJzVGFiLCBUYWJzUGFuZWwgfTtcbiJdfQ== */",
+  map: "/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWVLIiwiZmlsZSI6ImluZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqIEBqc3hSdW50aW1lIGNsYXNzaWMgKi9cbi8qKiBAanN4IGpzeCAqL1xuaW1wb3J0IHsganN4IH0gZnJvbSBcIkBlbW90aW9uL3JlYWN0XCI7XG5pbXBvcnQgdHcsIHsgc3R5bGVkLCBjc3MgfSBmcm9tIFwidHdpbi5tYWNyb1wiO1xuaW1wb3J0ICogYXMgVGFic1ByaW1pdGl2ZSBmcm9tIFwiQHJhZGl4LXVpL3JlYWN0LXRhYnNcIjtcblxuY29uc3QgVGFicyA9IHN0eWxlZChUYWJzUHJpbWl0aXZlLlJvb3QpKCgpID0+IFt0d2BmbGV4IGZsZXgtY29sYF0pO1xuXG5jb25zdCBUYWJzTGlzdCA9IHN0eWxlZChUYWJzUHJpbWl0aXZlLkxpc3QpKCgpID0+IFtcbiAgdHdgZmxleCBmbGV4LXNocmluay0wIGJvcmRlci1iIGJvcmRlci1hY2NlbnQtdGhyZWVgLFxuXSk7XG5cbmNvbnN0IFRhYnNUYWIgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5UcmlnZ2VyKSgoKSA9PiBbXG4gIHR3YGZsZXgtc2hyaW5rLTAgcHktMiBweC0xIG1yLTQgdGV4dC1hY2NlbnQtZml2ZSBzZWxlY3Qtbm9uZSBvdXRsaW5lLW5vbmUgY3Vyc29yLXBvaW50ZXIgdHJhbnNpdGlvbiBlYXNlLWluLW91dCBkdXJhdGlvbi0xNTAgZm9udC1ub3JtYWwgdGV4dC1zbWAsXG4gIHR3YGhvdmVyOih0ZXh0LWZvcmVncm91bmQpYCxcbiAgY3NzYFxuICAgICZbcm9sZT1cInRhYlwiXTpmaXJzdC1vZi10eXBlIHtcbiAgICAgIHBhZGRpbmctbGVmdDogMDtcbiAgICB9XG4gICAgJltkYXRhLXN0YXRlPVwiYWN0aXZlXCJdIHtcbiAgICAgICR7dHdgdGV4dC1mb3JlZ3JvdW5kIHNoYWRvd2B9XG4gICAgICBib3gtc2hhZG93OiBpbnNldCAwIC0xcHggMCAwIGN1cnJlbnRDb2xvciwgMCAxcHggMCAwIGN1cnJlbnRDb2xvcjtcbiAgICB9XG4gIGAsXG5dKTtcblxuY29uc3QgVGFic1BhbmVsID0gc3R5bGVkKFRhYnNQcmltaXRpdmUuQ29udGVudCkoKCkgPT4gW3R3YGZsZXgtZ3JvdyBwLTZgXSk7XG5cbmV4cG9ydCB7IFRhYnMsIFRhYnNMaXN0LCBUYWJzVGFiLCBUYWJzUGFuZWwgfTtcbiJdfQ== */",
   toString: _EMOTION_STRINGIFIED_CSS_ERROR__
 };
 
-const TabsTab = /*#__PURE__*/createStyled(Tab, process.env.NODE_ENV === "production" ? {
+const TabsTab = /*#__PURE__*/createStyled(Trigger, process.env.NODE_ENV === "production" ? {
   target: "e1klorew1"
 } : {
   target: "e1klorew1",
@@ -1114,9 +1280,9 @@ const TabsTab = /*#__PURE__*/createStyled(Tab, process.env.NODE_ENV === "product
     "--tw-text-opacity": "1",
     "color": "rgba(0, 0, 0, var(--tw-text-opacity))"
   }
-}, _ref], process.env.NODE_ENV === "production" ? "" : "/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVlnQiIsImZpbGUiOiJpbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiBAanN4UnVudGltZSBjbGFzc2ljICovXG4vKiogQGpzeCBqc3ggKi9cbmltcG9ydCB7IGpzeCB9IGZyb20gXCJAZW1vdGlvbi9yZWFjdFwiO1xuaW1wb3J0IHR3LCB7IHN0eWxlZCwgY3NzIH0gZnJvbSBcInR3aW4ubWFjcm9cIjtcbmltcG9ydCAqIGFzIFRhYnNQcmltaXRpdmUgZnJvbSBcIkByYWRpeC11aS9yZWFjdC10YWJzXCI7XG5cbmNvbnN0IFRhYnMgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5Sb290KSgoKSA9PiBbdHdgZmxleCBmbGV4LWNvbGBdKTtcblxuY29uc3QgVGFic0xpc3QgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5MaXN0KSgoKSA9PiBbXG4gIHR3YGZsZXggZmxleC1zaHJpbmstMCBib3JkZXItYiBib3JkZXItYWNjZW50LXRocmVlYCxcbl0pO1xuXG5jb25zdCBUYWJzVGFiID0gc3R5bGVkKFRhYnNQcmltaXRpdmUuVGFiKSgoKSA9PiBbXG4gIHR3YGZsZXgtc2hyaW5rLTAgcHktMiBweC0xIG1yLTQgdGV4dC1hY2NlbnQtZml2ZSBzZWxlY3Qtbm9uZSBvdXRsaW5lLW5vbmUgY3Vyc29yLXBvaW50ZXIgdHJhbnNpdGlvbiBlYXNlLWluLW91dCBkdXJhdGlvbi0xNTAgZm9udC1ub3JtYWwgdGV4dC1zbWAsXG4gIHR3YGhvdmVyOih0ZXh0LWZvcmVncm91bmQpYCxcbiAgY3NzYFxuICAgICZbcm9sZT1cInRhYlwiXTpmaXJzdC1vZi10eXBlIHtcbiAgICAgIHBhZGRpbmctbGVmdDogMDtcbiAgICB9XG4gICAgJltkYXRhLXN0YXRlPVwiYWN0aXZlXCJdIHtcbiAgICAgICR7dHdgdGV4dC1mb3JlZ3JvdW5kIHNoYWRvd2B9XG4gICAgICBib3gtc2hhZG93OiBpbnNldCAwIC0xcHggMCAwIGN1cnJlbnRDb2xvciwgMCAxcHggMCAwIGN1cnJlbnRDb2xvcjtcbiAgICB9XG4gIGAsXG5dKTtcblxuY29uc3QgVGFic1BhbmVsID0gc3R5bGVkKFRhYnNQcmltaXRpdmUuUGFuZWwpKCgpID0+IFt0d2BmbGV4LWdyb3cgcC02YF0pO1xuXG5leHBvcnQgeyBUYWJzLCBUYWJzTGlzdCwgVGFic1RhYiwgVGFic1BhbmVsIH07XG4iXX0= */");
+}, _ref], process.env.NODE_ENV === "production" ? "" : "/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVlnQiIsImZpbGUiOiJpbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKiBAanN4UnVudGltZSBjbGFzc2ljICovXG4vKiogQGpzeCBqc3ggKi9cbmltcG9ydCB7IGpzeCB9IGZyb20gXCJAZW1vdGlvbi9yZWFjdFwiO1xuaW1wb3J0IHR3LCB7IHN0eWxlZCwgY3NzIH0gZnJvbSBcInR3aW4ubWFjcm9cIjtcbmltcG9ydCAqIGFzIFRhYnNQcmltaXRpdmUgZnJvbSBcIkByYWRpeC11aS9yZWFjdC10YWJzXCI7XG5cbmNvbnN0IFRhYnMgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5Sb290KSgoKSA9PiBbdHdgZmxleCBmbGV4LWNvbGBdKTtcblxuY29uc3QgVGFic0xpc3QgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5MaXN0KSgoKSA9PiBbXG4gIHR3YGZsZXggZmxleC1zaHJpbmstMCBib3JkZXItYiBib3JkZXItYWNjZW50LXRocmVlYCxcbl0pO1xuXG5jb25zdCBUYWJzVGFiID0gc3R5bGVkKFRhYnNQcmltaXRpdmUuVHJpZ2dlcikoKCkgPT4gW1xuICB0d2BmbGV4LXNocmluay0wIHB5LTIgcHgtMSBtci00IHRleHQtYWNjZW50LWZpdmUgc2VsZWN0LW5vbmUgb3V0bGluZS1ub25lIGN1cnNvci1wb2ludGVyIHRyYW5zaXRpb24gZWFzZS1pbi1vdXQgZHVyYXRpb24tMTUwIGZvbnQtbm9ybWFsIHRleHQtc21gLFxuICB0d2Bob3ZlcjoodGV4dC1mb3JlZ3JvdW5kKWAsXG4gIGNzc2BcbiAgICAmW3JvbGU9XCJ0YWJcIl06Zmlyc3Qtb2YtdHlwZSB7XG4gICAgICBwYWRkaW5nLWxlZnQ6IDA7XG4gICAgfVxuICAgICZbZGF0YS1zdGF0ZT1cImFjdGl2ZVwiXSB7XG4gICAgICAke3R3YHRleHQtZm9yZWdyb3VuZCBzaGFkb3dgfVxuICAgICAgYm94LXNoYWRvdzogaW5zZXQgMCAtMXB4IDAgMCBjdXJyZW50Q29sb3IsIDAgMXB4IDAgMCBjdXJyZW50Q29sb3I7XG4gICAgfVxuICBgLFxuXSk7XG5cbmNvbnN0IFRhYnNQYW5lbCA9IHN0eWxlZChUYWJzUHJpbWl0aXZlLkNvbnRlbnQpKCgpID0+IFt0d2BmbGV4LWdyb3cgcC02YF0pO1xuXG5leHBvcnQgeyBUYWJzLCBUYWJzTGlzdCwgVGFic1RhYiwgVGFic1BhbmVsIH07XG4iXX0= */");
 
-const TabsPanel = /*#__PURE__*/createStyled(Panel, process.env.NODE_ENV === "production" ? {
+const TabsPanel = /*#__PURE__*/createStyled(Content, process.env.NODE_ENV === "production" ? {
   target: "e1klorew0"
 } : {
   target: "e1klorew0",
@@ -1124,7 +1290,7 @@ const TabsPanel = /*#__PURE__*/createStyled(Panel, process.env.NODE_ENV === "pro
 })(() => [{
   "flexGrow": "1",
   "padding": "1.5rem"
-}], process.env.NODE_ENV === "production" ? "" : "/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQTBCa0IiLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKiogQGpzeFJ1bnRpbWUgY2xhc3NpYyAqL1xuLyoqIEBqc3gganN4ICovXG5pbXBvcnQgeyBqc3ggfSBmcm9tIFwiQGVtb3Rpb24vcmVhY3RcIjtcbmltcG9ydCB0dywgeyBzdHlsZWQsIGNzcyB9IGZyb20gXCJ0d2luLm1hY3JvXCI7XG5pbXBvcnQgKiBhcyBUYWJzUHJpbWl0aXZlIGZyb20gXCJAcmFkaXgtdWkvcmVhY3QtdGFic1wiO1xuXG5jb25zdCBUYWJzID0gc3R5bGVkKFRhYnNQcmltaXRpdmUuUm9vdCkoKCkgPT4gW3R3YGZsZXggZmxleC1jb2xgXSk7XG5cbmNvbnN0IFRhYnNMaXN0ID0gc3R5bGVkKFRhYnNQcmltaXRpdmUuTGlzdCkoKCkgPT4gW1xuICB0d2BmbGV4IGZsZXgtc2hyaW5rLTAgYm9yZGVyLWIgYm9yZGVyLWFjY2VudC10aHJlZWAsXG5dKTtcblxuY29uc3QgVGFic1RhYiA9IHN0eWxlZChUYWJzUHJpbWl0aXZlLlRhYikoKCkgPT4gW1xuICB0d2BmbGV4LXNocmluay0wIHB5LTIgcHgtMSBtci00IHRleHQtYWNjZW50LWZpdmUgc2VsZWN0LW5vbmUgb3V0bGluZS1ub25lIGN1cnNvci1wb2ludGVyIHRyYW5zaXRpb24gZWFzZS1pbi1vdXQgZHVyYXRpb24tMTUwIGZvbnQtbm9ybWFsIHRleHQtc21gLFxuICB0d2Bob3ZlcjoodGV4dC1mb3JlZ3JvdW5kKWAsXG4gIGNzc2BcbiAgICAmW3JvbGU9XCJ0YWJcIl06Zmlyc3Qtb2YtdHlwZSB7XG4gICAgICBwYWRkaW5nLWxlZnQ6IDA7XG4gICAgfVxuICAgICZbZGF0YS1zdGF0ZT1cImFjdGl2ZVwiXSB7XG4gICAgICAke3R3YHRleHQtZm9yZWdyb3VuZCBzaGFkb3dgfVxuICAgICAgYm94LXNoYWRvdzogaW5zZXQgMCAtMXB4IDAgMCBjdXJyZW50Q29sb3IsIDAgMXB4IDAgMCBjdXJyZW50Q29sb3I7XG4gICAgfVxuICBgLFxuXSk7XG5cbmNvbnN0IFRhYnNQYW5lbCA9IHN0eWxlZChUYWJzUHJpbWl0aXZlLlBhbmVsKSgoKSA9PiBbdHdgZmxleC1ncm93IHAtNmBdKTtcblxuZXhwb3J0IHsgVGFicywgVGFic0xpc3QsIFRhYnNUYWIsIFRhYnNQYW5lbCB9O1xuIl19 */");
+}], process.env.NODE_ENV === "production" ? "" : "/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQTBCa0IiLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKiogQGpzeFJ1bnRpbWUgY2xhc3NpYyAqL1xuLyoqIEBqc3gganN4ICovXG5pbXBvcnQgeyBqc3ggfSBmcm9tIFwiQGVtb3Rpb24vcmVhY3RcIjtcbmltcG9ydCB0dywgeyBzdHlsZWQsIGNzcyB9IGZyb20gXCJ0d2luLm1hY3JvXCI7XG5pbXBvcnQgKiBhcyBUYWJzUHJpbWl0aXZlIGZyb20gXCJAcmFkaXgtdWkvcmVhY3QtdGFic1wiO1xuXG5jb25zdCBUYWJzID0gc3R5bGVkKFRhYnNQcmltaXRpdmUuUm9vdCkoKCkgPT4gW3R3YGZsZXggZmxleC1jb2xgXSk7XG5cbmNvbnN0IFRhYnNMaXN0ID0gc3R5bGVkKFRhYnNQcmltaXRpdmUuTGlzdCkoKCkgPT4gW1xuICB0d2BmbGV4IGZsZXgtc2hyaW5rLTAgYm9yZGVyLWIgYm9yZGVyLWFjY2VudC10aHJlZWAsXG5dKTtcblxuY29uc3QgVGFic1RhYiA9IHN0eWxlZChUYWJzUHJpbWl0aXZlLlRyaWdnZXIpKCgpID0+IFtcbiAgdHdgZmxleC1zaHJpbmstMCBweS0yIHB4LTEgbXItNCB0ZXh0LWFjY2VudC1maXZlIHNlbGVjdC1ub25lIG91dGxpbmUtbm9uZSBjdXJzb3ItcG9pbnRlciB0cmFuc2l0aW9uIGVhc2UtaW4tb3V0IGR1cmF0aW9uLTE1MCBmb250LW5vcm1hbCB0ZXh0LXNtYCxcbiAgdHdgaG92ZXI6KHRleHQtZm9yZWdyb3VuZClgLFxuICBjc3NgXG4gICAgJltyb2xlPVwidGFiXCJdOmZpcnN0LW9mLXR5cGUge1xuICAgICAgcGFkZGluZy1sZWZ0OiAwO1xuICAgIH1cbiAgICAmW2RhdGEtc3RhdGU9XCJhY3RpdmVcIl0ge1xuICAgICAgJHt0d2B0ZXh0LWZvcmVncm91bmQgc2hhZG93YH1cbiAgICAgIGJveC1zaGFkb3c6IGluc2V0IDAgLTFweCAwIDAgY3VycmVudENvbG9yLCAwIDFweCAwIDAgY3VycmVudENvbG9yO1xuICAgIH1cbiAgYCxcbl0pO1xuXG5jb25zdCBUYWJzUGFuZWwgPSBzdHlsZWQoVGFic1ByaW1pdGl2ZS5Db250ZW50KSgoKSA9PiBbdHdgZmxleC1ncm93IHAtNmBdKTtcblxuZXhwb3J0IHsgVGFicywgVGFic0xpc3QsIFRhYnNUYWIsIFRhYnNQYW5lbCB9O1xuIl19 */");
 
 exports.Tabs = Tabs;
 exports.TabsList = TabsList;
