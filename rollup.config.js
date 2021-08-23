@@ -30,7 +30,6 @@ const options = {
             "react-dom",
             "@emotion/styled",
             "@emotion/react",
-            // "@radix-ui/react-dropdown-menu",
             "classnames",
             "prop-types",
         ],
@@ -42,6 +41,7 @@ const options = {
             commonjs(),
         ],
         output: {
+            exports: 'auto',
             globals: {
                 'react': 'React',
                 'react-dom': 'ReactDOM'
