@@ -7373,8 +7373,8 @@ function Header_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to str
 
 
 var Header_ref =  true ? {
-  name: "datk8v",
-  styles: "[role=\"tablist\"]{padding-left:2.5rem;padding-right:2.5rem;;}"
+  name: "1lhdbhi",
+  styles: "[role=\"tablist\"]{margin-left:2.5rem;margin-right:2.5rem;;}"
 } : undefined;
 
 const Nav = emotion_styled_base_browser_esm("div",  true ? {
@@ -7382,21 +7382,26 @@ const Nav = emotion_styled_base_browser_esm("div",  true ? {
 } : undefined)(() => [Header_ref],  true ? "" : undefined);
 
 var Header_ref2 =  true ? {
+  name: "g1uvsi",
+  styles: "position:relative;width:100%;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity))"
+} : undefined;
+
+var Header_ref3 =  true ? {
   name: "1ug6i4f",
   styles: "display:flex;flex-direction:row;align-items:center;min-width:0px;padding-top:0.5rem;padding-bottom:0.5rem"
 } : undefined;
 
-var Header_ref3 =  true ? {
+var Header_ref4 =  true ? {
   name: "1h5hd82",
   styles: "overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:0.125rem;font-weight:600"
 } : undefined;
 
-var Header_ref4 =  true ? {
+var Header_ref5 =  true ? {
   name: "psasdh",
   styles: "display:flex;flex-direction:row;align-items:center;justify-content:flex-end;margin-left:0.5rem"
 } : undefined;
 
-var Header_ref5 =  true ? {
+var Header_ref6 =  true ? {
   name: "1kjf4md",
   styles: "display:inline-flex;margin-left:0px"
 } : undefined;
@@ -7406,17 +7411,7 @@ const Header = ({
   actions,
   nav
 }) => Object(react_["jsx"])("div", {
-  css: ["position:relative;width:100%;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity));", !nav &&
-  /*#__PURE__*/
-
-  /*#__PURE__*/
-
-  /*#__PURE__*/
-
-  /*#__PURE__*/
-  Object(react_["css"])({
-    boxShadow: `0 -1px 0 ${"#e5e7eb"} inset`
-  },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
+  css: Header_ref2
 }, Object(react_["jsx"])("div", {
   css: ["display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:2.5rem;padding-right:2.5rem;", nav ? {
     "paddingTop": "1rem",
@@ -7426,14 +7421,14 @@ const Header = ({
     "paddingBottom": "1rem"
   },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
 }, Object(react_["jsx"])("div", {
-  css: Header_ref2
+  css: Header_ref3
 }, Object(react_["jsx"])(Typography_Heading, {
   size: 3,
-  css: Header_ref3
-}, title)), actions && Object(react_["jsx"])("div", {
   css: Header_ref4
-}, Object(react_["jsx"])("div", {
+}, title)), actions && Object(react_["jsx"])("div", {
   css: Header_ref5
+}, Object(react_["jsx"])("div", {
+  css: Header_ref6
 }, actions))), nav && Object(react_["jsx"])(Nav, null, nav));
 
 Header.defaultProps = {

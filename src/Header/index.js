@@ -8,7 +8,7 @@ import tw, { theme, css, styled } from "twin.macro";
 const Nav = styled.div(() => [
   css`
     [role="tablist"] {
-      ${tw`px-10`}
+      ${tw`mx-10`}
     }
   `,
 ]);
