@@ -3,7 +3,6 @@
 import { jsx } from "@emotion/react";
 import React, { useCallback } from "react";
 import { Button } from "../index";
-import tw from "twin.macro";
 
 const FeedbackButton = React.forwardRef(({ open, setOpen, ...props }, ref) => {
   const combinedProps = {
