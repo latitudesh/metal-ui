@@ -228,7 +228,7 @@ const Feedback = ({
     <div
       title="Share any feedback about our products and services"
       css={[
-        tw`p-0 w-24 relative inline-block antialiased focus:outline-none active:outline-none`,
+        tw`p-0 relative inline-block antialiased focus:outline-none active:outline-none`,
         errorMessage && tw`text-transparent`,
       ]}
       aria-expanded={open}
