@@ -1,6 +1,9 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { babel } from '@rollup/plugin-babel';
+import { uglify } from "rollup-plugin-uglify";
+
+const isProduction = process.env.NODE_ENV === 'production'
 
 const files = [
     "AlgoliaSearch",
@@ -39,6 +42,7 @@ const options = {
             }),
             nodeResolve(),
             commonjs(),
+            isProduction && uglify()
         ],
         output: {
             exports: 'auto',
