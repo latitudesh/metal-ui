@@ -2,9 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var C = require('react');
+var C$1 = require('react');
 var react = require('@emotion/react');
-var r$4 = require('react-dom');
+var e$2 = require('react-dom');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -28,9 +28,9 @@ function _interopNamespace(e) {
   return Object.freeze(n);
 }
 
-var C__namespace = /*#__PURE__*/_interopNamespace(C);
-var C__default = /*#__PURE__*/_interopDefaultLegacy(C);
-var r__default = /*#__PURE__*/_interopDefaultLegacy(r$4);
+var C__namespace = /*#__PURE__*/_interopNamespace(C$1);
+var C__default = /*#__PURE__*/_interopDefaultLegacy(C$1);
+var e__default = /*#__PURE__*/_interopDefaultLegacy(e$2);
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -628,7 +628,7 @@ var createStyled = function createStyled(tag, options) {
           mergedProps[key] = props[key];
         }
 
-        mergedProps.theme = C.useContext(react.ThemeContext);
+        mergedProps.theme = C$1.useContext(react.ThemeContext);
       }
 
       if (typeof props.className === 'string') {
@@ -659,7 +659,7 @@ var createStyled = function createStyled(tag, options) {
 
       newProps.className = className;
       newProps.ref = ref;
-      var ele = /*#__PURE__*/C.createElement(finalTag, newProps);
+      var ele = /*#__PURE__*/C$1.createElement(finalTag, newProps);
 
       if (!isBrowser && rules !== undefined) {
         var _ref;
@@ -672,7 +672,7 @@ var createStyled = function createStyled(tag, options) {
           next = next.next;
         }
 
-        return /*#__PURE__*/C.createElement(C.Fragment, null, /*#__PURE__*/C.createElement("style", (_ref = {}, _ref["data-emotion"] = cache.key + " " + serializedNames, _ref.dangerouslySetInnerHTML = {
+        return /*#__PURE__*/C$1.createElement(C$1.Fragment, null, /*#__PURE__*/C$1.createElement("style", (_ref = {}, _ref["data-emotion"] = cache.key + " " + serializedNames, _ref.dangerouslySetInnerHTML = {
           __html: rules
         }, _ref.nonce = cache.sheet.nonce, _ref)), ele);
       }
@@ -706,33 +706,33 @@ var createStyled = function createStyled(tag, options) {
   };
 };
 
-const t$9 = {
+const t$3 = {
   prefix: Math.round(1e10 * Math.random()),
   current: 0
 },
-      n$3 = /*#__PURE__*/C__namespace.createContext(t$9);
+      n$2 = /*#__PURE__*/C__namespace.createContext(t$3);
 function useId(r) {
-  const o = C__namespace.useContext(n$3);
-  return Boolean(null === globalThis || void 0 === globalThis ? void 0 : globalThis.document) || o !== t$9 || console.warn("When server rendering, you must wrap your application in an <IdProvider> to ensure consistent ids are generated between the client and server."), C__namespace.useMemo(() => r || `radix-id-${o.prefix}-${++o.current}`, [r]);
+  const o = C__namespace.useContext(n$2);
+  return Boolean(null === globalThis || void 0 === globalThis ? void 0 : globalThis.document) || o !== t$3 || console.warn("When server rendering, you must wrap your application in an <IdProvider> to ensure consistent ids are generated between the client and server."), C__namespace.useMemo(() => r || `radix-id-${o.prefix}-${++o.current}`, [r]);
 }
 
-let t$8 = 0;
+let t$2 = 0;
 function useFocusGuards() {
   C__namespace.useEffect(() => {
     var e, n;
     const r = document.querySelectorAll("[data-radix-focus-guard]");
-    return document.body.insertAdjacentElement("afterbegin", null !== (e = r[0]) && void 0 !== e ? e : o$6()), document.body.insertAdjacentElement("beforeend", null !== (n = r[1]) && void 0 !== n ? n : o$6()), t$8++, () => {
-      1 === t$8 && document.querySelectorAll("[data-radix-focus-guard]").forEach(e => e.remove()), t$8--;
+    return document.body.insertAdjacentElement("afterbegin", null !== (e = r[0]) && void 0 !== e ? e : o$4()), document.body.insertAdjacentElement("beforeend", null !== (n = r[1]) && void 0 !== n ? n : o$4()), t$2++, () => {
+      1 === t$2 && document.querySelectorAll("[data-radix-focus-guard]").forEach(e => e.remove()), t$2--;
     };
   }, []);
 }
 
-function o$6() {
+function o$4() {
   const e = document.createElement("span");
   return e.setAttribute("data-radix-focus-guard", ""), e.tabIndex = 0, e.style.cssText = "outline: none; opacity: 0; position: fixed; pointer-events: none", e;
 }
 
-function useCallbackRef$2(r) {
+function useCallbackRef$1(r) {
   const t = C__namespace.useRef(r);
   return C__namespace.useEffect(() => {
     t.current = r;
@@ -759,13 +759,13 @@ function useDirection(t, n) {
   }(), () => cancelAnimationFrame(c.current)), [i, n, o]), n || r;
 }
 
-function composeRefs$1(...o) {
+function composeRefs(...o) {
   return e => o.forEach(o => function (o, e) {
     "function" == typeof o ? o(e) : null != o && (o.current = e);
   }(o, e));
 }
-function useComposedRefs$1(...e) {
-  return C__namespace.useCallback(composeRefs$1(...e), e);
+function useComposedRefs(...e) {
+  return C__namespace.useCallback(composeRefs(...e), e);
 }
 
 const Slot = /*#__PURE__*/C__namespace.forwardRef((e, o) => {
@@ -773,14 +773,14 @@ const Slot = /*#__PURE__*/C__namespace.forwardRef((e, o) => {
     children: l,
     ...c
   } = e;
-  return 1 === C__namespace.Children.count(l) ? /*#__PURE__*/C__namespace.createElement(r$3, _extends({}, c, {
+  return 1 === C__namespace.Children.count(l) ? /*#__PURE__*/C__namespace.createElement(r$4, _extends({}, c, {
     ref: o
-  }), l) : /*#__PURE__*/C__namespace.createElement(C__namespace.Fragment, null, C__namespace.Children.map(l, e => /*#__PURE__*/C__namespace.isValidElement(e) && e.type === Slottable ? /*#__PURE__*/C__namespace.createElement(r$3, _extends({}, c, {
+  }), l) : /*#__PURE__*/C__namespace.createElement(C__namespace.Fragment, null, C__namespace.Children.map(l, e => /*#__PURE__*/C__namespace.isValidElement(e) && e.type === Slottable ? /*#__PURE__*/C__namespace.createElement(r$4, _extends({}, c, {
     ref: o
   }), e.props.children) : e));
 });
 Slot.displayName = "Slot";
-const r$3 = /*#__PURE__*/C__namespace.forwardRef((n, r) => {
+const r$4 = /*#__PURE__*/C__namespace.forwardRef((n, r) => {
   const {
     children: l,
     ...c
@@ -788,16 +788,16 @@ const r$3 = /*#__PURE__*/C__namespace.forwardRef((n, r) => {
         i = C__namespace.Children.only(l);
   
 
-  return C__namespace.isValidElement(i) ? /*#__PURE__*/C__namespace.cloneElement(i, { ...o$5(c, i.props),
-    ref: composeRefs$1(r, i.ref)
+  return C__namespace.isValidElement(i) ? /*#__PURE__*/C__namespace.cloneElement(i, { ...o$3(c, i.props),
+    ref: composeRefs(r, i.ref)
   }) : null;
 });
-r$3.displayName = "SlotClone";
+r$4.displayName = "SlotClone";
 const Slottable = ({
   children: e
 }) => e;
 
-function o$5(e, t) {
+function o$3(e, t) {
   const n = { ...t
   };
 
@@ -821,7 +821,7 @@ function l$4(e, t) {
   };
 }
 
-function useControllableState$1({
+function useControllableState({
   prop: o,
   defaultProp: r,
   onChange: n = () => {}
@@ -833,7 +833,7 @@ function useControllableState$1({
     const n = C__namespace.useState(o),
           [a] = n,
           u = C__namespace.useRef(a),
-          c = useCallbackRef$2(r);
+          c = useCallbackRef$1(r);
     return C__namespace.useEffect(() => {
       u.current !== a && (c(a), u.current = a);
     }, [a, u, c]), n;
@@ -843,7 +843,7 @@ function useControllableState$1({
   }),
         c = void 0 !== o,
         f = c ? o : a,
-        l = useCallbackRef$2(n);
+        l = useCallbackRef$1(n);
 
   return [f, C__namespace.useCallback(e => {
     if (c) {
@@ -854,83 +854,54 @@ function useControllableState$1({
   }, [c, o, u, l])];
 }
 
-function t$7() {
-  return (t$7 = Object.assign || function (r) {
-    for (var t = 1; t < arguments.length; t++) {
-      var e = arguments[t];
-
-      for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (r[n] = e[n]);
-    }
-
-    return r;
-  }).apply(this, arguments);
-}
-
-const e$4 = "div";
-const Primitive$2 = C__namespace.forwardRef((n, i) => {
+const r$3 = "div";
+const Primitive = /*#__PURE__*/C__namespace.forwardRef((o, i) => {
   const {
-    as: o = e$4,
+    as: n = r$3,
     ...a
-  } = n;
-  return C__namespace.createElement(o, t$7({}, a, {
+  } = o;
+  
+
+  return C__namespace.createElement(n, _extends({}, a, {
     ref: i
   }));
 });
-Primitive$2.displayName = "Primitive";
-
-function n$2() {
-  return (n$2 = Object.assign || function (r) {
-    for (var t = 1; t < arguments.length; t++) {
-      var e = arguments[t];
-
-      for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (r[n] = e[n]);
-    }
-
-    return r;
-  }).apply(this, arguments);
-}
-
-function extendPrimitive$1(t, e) {
-  const i = C__namespace.forwardRef((i, o) => {
-    const a = t,
-          s = { ...e.defaultProps,
+function extendPrimitive(r, o) {
+  const i = /*#__PURE__*/C__namespace.forwardRef((i, n) => {
+    const a = r,
+          s = { ...o.defaultProps,
       ...i
     };
-    return C__namespace.createElement(a, n$2({}, s, {
-      ref: o
+    
+
+    return C__namespace.createElement(a, _extends({}, s, {
+      ref: n
     }));
   });
-  return i.displayName = e.displayName || "Extended" + t.displayName, i;
+  return i.displayName = o.displayName || "Extended" + r.displayName, i;
 }
 
-function createContext$1(t) {
-  const n = C__namespace.createContext(null);
+function createContext(t) {
+  const r = /*#__PURE__*/C__namespace.createContext(null);
 
-  function r(t) {
+  function n(t) {
     const {
-      children: r,
+      children: n,
       ...o
     } = t,
-          c = C__namespace.useMemo(() => o, Object.values(o));
-    return C__namespace.createElement(n.Provider, {
-      value: c
-    }, r);
+          u = C__namespace.useMemo(() => o, Object.values(o));
+    
+
+    return C__namespace.createElement(r.Provider, {
+      value: u
+    }, n);
   }
 
-  return r.displayName = t + "Provider", [r, function (r) {
-    const o = C__namespace.useContext(n);
-    if (null === o) throw new Error("`".concat(r, "` must be used within `").concat(t, "`"));
+  return n.displayName = t + "Provider", [n, function (n) {
+    const o = C__namespace.useContext(r);
+    if (null === o) throw new Error(`\`${n}\` must be used within \`${t}\``);
     return o;
   }];
-}
-
-function composeRefs(...o) {
-  return e => o.forEach(o => function (o, e) {
-    "function" == typeof o ? o(e) : null != o && (o.current = e);
-  }(o, e));
-}
-function useComposedRefs(...e) {
-  return C__namespace.useCallback(composeRefs(...e), e);
 }
 
 function createCollection() {
@@ -955,7 +926,7 @@ function createCollection() {
       children: f
     } = o,
           l = C__default['default'].useContext(n),
-          u = useComposedRefs$1(c, l.collectionRef);
+          u = useComposedRefs(c, l.collectionRef);
     
 
     return C__default['default'].createElement(Slot, {
@@ -969,7 +940,7 @@ function createCollection() {
       ...u
     } = o,
           i = C__default['default'].useRef(null),
-          a = useComposedRefs$1(c, i),
+          a = useComposedRefs(c, i),
           s = C__default['default'].useContext(n);
     return C__default['default'].useEffect(() => (s.itemMap.set(i, {
       ref: i,
@@ -994,7 +965,7 @@ function createCollection() {
   }];
 }
 
-function composeEventHandlers$1(e, n, {
+function composeEventHandlers(e, n, {
   checkForDefaultPrevented: t = !0
 } = {}) {
   return function (r) {
@@ -1002,13 +973,13 @@ function composeEventHandlers$1(e, n, {
   };
 }
 
-const f$1 = {
+const f$3 = {
   bubbles: !1,
   cancelable: !0
 },
-      [l$3, m$2, p$2, d$1] = createCollection(),
-      v = "span",
-      [g$1, w] = createContext$1("RovingFocusGroup");
+      [l$3, m$2, p$3, d$3] = createCollection(),
+      v$1 = "span",
+      [g$1, w] = createContext("RovingFocusGroup");
 const RovingFocusGroup = /*#__PURE__*/C__namespace.forwardRef((e, t) => /*#__PURE__*/C__namespace.createElement(l$3, null, /*#__PURE__*/C__namespace.createElement(m$2, null, /*#__PURE__*/C__namespace.createElement(b, _extends({}, e, {
   ref: t
 })))));
@@ -1016,7 +987,7 @@ const RovingFocusGroup = /*#__PURE__*/C__namespace.forwardRef((e, t) => /*#__PUR
 
 const b = /*#__PURE__*/C__namespace.forwardRef((o, n) => {
   const {
-    as: a = v,
+    as: a = v$1,
     orientation: l,
     dir: m = "ltr",
     loop: p = !1,
@@ -1028,16 +999,16 @@ const b = /*#__PURE__*/C__namespace.forwardRef((o, n) => {
   } = o,
         R = C__namespace.useRef(null),
         h = useComposedRefs(n, R),
-        [T = null, A] = useControllableState$1({
+        [T = null, A] = useControllableState({
     prop: w,
     defaultProp: b,
     onChange: x
   }),
         [y, D] = C__namespace.useState(!1),
-        S = useCallbackRef$2(F),
+        S = useCallbackRef$1(F),
         {
     getItems: C
-  } = d$1(),
+  } = d$3(),
         G = C__namespace.useRef(!1);
   return C__namespace.useEffect(() => {
     const e = R.current;
@@ -1049,7 +1020,7 @@ const b = /*#__PURE__*/C__namespace.forwardRef((o, n) => {
     currentTabStopId: T,
     onItemFocus: C__namespace.useCallback(e => A(e), [A]),
     onItemShiftTab: C__namespace.useCallback(() => D(!0), [])
-  }, /*#__PURE__*/C__namespace.createElement(Primitive$2, _extends({
+  }, /*#__PURE__*/C__namespace.createElement(Primitive, _extends({
     tabIndex: y ? -1 : 0,
     "aria-orientation": l,
     "data-orientation": l
@@ -1060,24 +1031,24 @@ const b = /*#__PURE__*/C__namespace.forwardRef((o, n) => {
       outline: "none",
       ...o.style
     },
-    onMouseDown: composeEventHandlers$1(o.onMouseDown, () => {
+    onMouseDown: composeEventHandlers(o.onMouseDown, () => {
       G.current = !0;
     }),
-    onFocus: composeEventHandlers$1(o.onFocus, e => {
+    onFocus: composeEventHandlers(o.onFocus, e => {
       const t = !G.current;
 
       if (e.target === e.currentTarget && t && !y) {
-        const t = new Event("rovingFocusGroup.onEntryFocus", f$1);
+        const t = new Event("rovingFocusGroup.onEntryFocus", f$3);
 
         if (e.currentTarget.dispatchEvent(t), !t.defaultPrevented) {
           const e = C().filter(e => e.focusable);
-          E$1([e.find(e => e.active), e.find(e => e.id === T), ...e].filter(Boolean).map(e => e.ref.current));
+          E$2([e.find(e => e.active), e.find(e => e.id === T), ...e].filter(Boolean).map(e => e.ref.current));
         }
       }
 
       G.current = !1;
     }),
-    onBlur: composeEventHandlers$1(o.onBlur, () => D(!1))
+    onBlur: composeEventHandlers(o.onBlur, () => D(!1))
   })));
 }),
       x = "span";
@@ -1093,24 +1064,24 @@ const RovingFocusItem = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
         v = m.currentTabStopId === l,
         {
     getItems: g
-  } = d$1();
+  } = d$3();
   
 
-  return C__namespace.createElement(p$2, {
+  return C__namespace.createElement(p$3, {
     id: l,
     focusable: i,
     active: a
-  }, /*#__PURE__*/C__namespace.createElement(Primitive$2, _extends({
+  }, /*#__PURE__*/C__namespace.createElement(Primitive, _extends({
     tabIndex: v ? 0 : -1,
     "data-orientation": m.orientation
   }, f, {
     as: n,
     ref: t,
-    onMouseDown: composeEventHandlers$1(e.onMouseDown, e => {
+    onMouseDown: composeEventHandlers(e.onMouseDown, e => {
       i ? m.onItemFocus(l) : e.preventDefault();
     }),
-    onFocus: composeEventHandlers$1(e.onFocus, () => m.onItemFocus(l)),
-    onKeyDown: composeEventHandlers$1(e.onKeyDown, e => {
+    onFocus: composeEventHandlers(e.onFocus, () => m.onItemFocus(l)),
+    onKeyDown: composeEventHandlers(e.onKeyDown, e => {
       if ("Tab" === e.key && e.shiftKey) return void m.onItemShiftTab();
       if (e.target !== e.currentTarget) return;
 
@@ -1130,7 +1101,7 @@ const RovingFocusItem = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
           const i = n.indexOf(e.currentTarget);
           n = m.loop ? (o = i + 1, (r = n).map((e, t) => r[(o + t) % r.length])) : n.slice(i + 1);
         }
-        setTimeout(() => E$1(n));
+        setTimeout(() => E$2(n));
       }
 
       var r, o;
@@ -1150,7 +1121,7 @@ const F$1 = {
   End: "last"
 };
 
-function E$1(e) {
+function E$2(e) {
   const t = document.activeElement;
 
   for (const r of e) {
@@ -1159,167 +1130,98 @@ function E$1(e) {
   }
 }
 
-function t$6() {
-  return (t$6 = Object.assign || function (r) {
-    for (var t = 1; t < arguments.length; t++) {
-      var e = arguments[t];
-
-      for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (r[n] = e[n]);
-    }
-
-    return r;
-  }).apply(this, arguments);
-}
-
-const e$3 = "div";
-const Primitive$1 = C__namespace.forwardRef((n, i) => {
-  const {
-    as: o = e$3,
-    ...a
-  } = n;
-  return C__namespace.createElement(o, t$6({}, a, {
-    ref: i
-  }));
-});
-Primitive$1.displayName = "Primitive";
-
 const useLayoutEffect = Boolean(null === globalThis || void 0 === globalThis ? void 0 : globalThis.document) ? C__namespace.useLayoutEffect : () => {};
 
-function a$2() {
-  return (a$2 = Object.assign || function (t) {
-    for (var o = 1; o < arguments.length; o++) {
-      var r = arguments[o];
-
-      for (var e in r) Object.prototype.hasOwnProperty.call(r, e) && (t[e] = r[e]);
-    }
-
-    return t;
-  }).apply(this, arguments);
-}
-
-const Portal = C__namespace.forwardRef((l, i) => {
-  var n, c;
+const Portal = /*#__PURE__*/C__namespace.forwardRef((a, i) => {
+  var n, d;
   const {
-    containerRef: u,
-    style: d,
-    ...s
-  } = l,
-        p = null !== (n = null == u ? void 0 : u.current) && void 0 !== n ? n : null === globalThis || void 0 === globalThis || null === (c = globalThis.document) || void 0 === c ? void 0 : c.body,
+    containerRef: m,
+    style: s,
+    ...u
+  } = a,
+        c = null !== (n = null == m ? void 0 : m.current) && void 0 !== n ? n : null === globalThis || void 0 === globalThis || null === (d = globalThis.document) || void 0 === d ? void 0 : d.body,
         [, f] = C__namespace.useState({});
   return useLayoutEffect(() => {
     f({});
-  }, []), p ? r__default['default'].createPortal(C__namespace.createElement(Primitive$1, a$2({
+  }, []), c ? /*#__PURE__*/e__default['default'].createPortal( /*#__PURE__*/C__namespace.createElement(Primitive, _extends({
     "data-radix-portal": ""
-  }, s, {
+  }, u, {
     ref: i,
-    style: p === document.body ? {
+    style: c === document.body ? {
       position: "absolute",
       top: 0,
       left: 0,
       zIndex: 2147483647,
-      ...d
+      ...s
     } : void 0
-  })), p) : null;
+  })), c) : null;
 });
-Portal.displayName = "Portal";
 
-function t$5() {
-  return (t$5 = Object.assign || function (r) {
-    for (var t = 1; t < arguments.length; t++) {
-      var e = arguments[t];
-
-      for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && (r[n] = e[n]);
-    }
-
-    return r;
-  }).apply(this, arguments);
-}
-
-const e$2 = "div";
-const Primitive = C__namespace.forwardRef((n, i) => {
+const Arrow$2 = /*#__PURE__*/C__namespace.forwardRef((i, n) => {
   const {
-    as: o = e$2,
+    as: s = o$2,
     ...a
-  } = n;
-  return C__namespace.createElement(o, t$5({}, a, {
-    ref: i
+  } = i;
+  
+
+  return C__namespace.createElement(Primitive, _extends({}, a, {
+    as: s,
+    ref: n
   }));
 });
-Primitive.displayName = "Primitive";
-
-function t$4() {
-  return (t$4 = Object.assign || function (r) {
-    for (var e = 1; e < arguments.length; e++) {
-      var t = arguments[e];
-
-      for (var o in t) Object.prototype.hasOwnProperty.call(t, o) && (r[o] = t[o]);
-    }
-
-    return r;
-  }).apply(this, arguments);
-}
-
-const Arrow$2 = C__namespace.forwardRef((n, a) => {
+const o$2 = /*#__PURE__*/C__namespace.forwardRef((e, o) => {
   const {
-    as: i = o$4,
+    width: i = 10,
+    height: n = 5,
     ...s
-  } = n;
-  return C__namespace.createElement(Primitive, t$4({}, s, {
-    as: i,
-    ref: a
-  }));
-});
-const o$4 = C__namespace.forwardRef((r, o) => {
-  const {
-    width: n = 10,
-    height: a = 5,
-    ...i
-  } = r;
-  return C__namespace.createElement("svg", t$4({}, i, {
+  } = e;
+  
+
+  return C__namespace.createElement("svg", _extends({}, s, {
     ref: o,
-    width: n,
-    height: a,
+    width: i,
+    height: n,
     viewBox: "0 0 30 10",
     preserveAspectRatio: "none"
-  }), C__namespace.createElement("polygon", {
+  }), /*#__PURE__*/C__namespace.createElement("polygon", {
     points: "0,0 30,0 15,10"
   }));
 });
-Arrow$2.displayName = "Arrow";
+
+
 const Root$3 = Arrow$2;
 
 function useSize(r) {
-  const [t, i] = C__namespace.useState(void 0);
+  const [i, t] = C__namespace.useState(void 0);
   return C__namespace.useEffect(() => {
-    if (r.current) {
-      const e = r.current,
-            t = new ResizeObserver(r => {
-        if (!Array.isArray(r)) return;
-        if (!r.length) return;
-        const t = r[0];
-        let n, o;
+    if (r) {
+      const e = new ResizeObserver(e => {
+        if (!Array.isArray(e)) return;
+        if (!e.length) return;
+        const i = e[0];
+        let o, n;
 
-        if ("borderBoxSize" in t) {
-          const e = t.borderBoxSize,
+        if ("borderBoxSize" in i) {
+          const e = i.borderBoxSize,
                 r = Array.isArray(e) ? e[0] : e;
-          n = r.inlineSize, o = r.blockSize;
+          o = r.inlineSize, n = r.blockSize;
         } else {
-          const r = e.getBoundingClientRect();
-          n = r.width, o = r.height;
+          const e = r.getBoundingClientRect();
+          o = e.width, n = e.height;
         }
 
-        i({
-          width: n,
-          height: o
+        t({
+          width: o,
+          height: n
         });
       });
-      return t.observe(e, {
+      return e.observe(r, {
         box: "border-box"
       }), () => {
-        i(void 0), t.unobserve(e);
+        t(void 0), e.unobserve(r);
       };
     }
-  }, [r]), t;
+  }, [r]), i;
 }
 
 function observeElementRect(n, o) {
@@ -1327,17 +1229,17 @@ function observeElementRect(n, o) {
   return void 0 === a ? (e$1.set(n, {
     rect: {},
     callbacks: [o]
-  }), 1 === e$1.size && (t$3 = requestAnimationFrame(c$5))) : a.callbacks.push(o), () => {
+  }), 1 === e$1.size && (t$1 = requestAnimationFrame(c$3))) : a.callbacks.push(o), () => {
     const c = e$1.get(n);
     if (void 0 === c) return;
     const a = c.callbacks.indexOf(o);
-    a > -1 && c.callbacks.splice(a, 1), 0 === c.callbacks.length && (e$1.delete(n), 0 === e$1.size && cancelAnimationFrame(t$3));
+    a > -1 && c.callbacks.splice(a, 1), 0 === c.callbacks.length && (e$1.delete(n), 0 === e$1.size && cancelAnimationFrame(t$1));
   };
 }
-let t$3;
+let t$1;
 const e$1 = new Map();
 
-function c$5() {
+function c$3() {
   const n = [];
   e$1.forEach((t, e) => {
     const c = e.getBoundingClientRect();
@@ -1345,24 +1247,24 @@ function c$5() {
     o = t.rect, a = c, (o.width !== a.width || o.height !== a.height || o.top !== a.top || o.right !== a.right || o.bottom !== a.bottom || o.left !== a.left) && (t.rect = c, n.push(t));
   }), n.forEach(t => {
     t.callbacks.forEach(e => e(t.rect));
-  }), t$3 = requestAnimationFrame(c$5);
+  }), t$1 = requestAnimationFrame(c$3);
 }
 
-function useRect(o) {
-  const [u, c] = C__namespace.useState();
-  return useLayoutEffect(() => {
-    if (o.current) {
-      const r = observeElementRect(o.current, c);
+function useRect(e) {
+  const [o, c] = C__namespace.useState();
+  return C__namespace.useEffect(() => {
+    if (e) {
+      const r = observeElementRect(e, c);
       return () => {
         c(void 0), r();
       };
     }
-  }, [o]), u;
+  }, [e]), o;
 }
 
 function getPlacementData({
-  anchorRect: c,
-  popperSize: s,
+  anchorRect: p,
+  popperSize: c,
   arrowSize: f,
   arrowOffset: l = 0,
   side: d,
@@ -1373,46 +1275,46 @@ function getPlacementData({
   collisionBoundariesRect: w,
   collisionTolerance: m = 0
 }) {
-  if (!c || !s || !w) return {
-    popperStyles: r$2,
+  if (!p || !c || !w) return {
+    popperStyles: o$1,
     arrowStyles: n$1
   };
 
-  const y = function (e, o, r = 0, n = 0, i) {
-    const c = i ? i.height : 0,
-          a = t$2(o, e, "x"),
-          p = t$2(o, e, "y"),
-          s = p.before - r - c,
-          f = p.after + r + c,
-          l = a.before - r - c,
-          d = a.after + r + c;
+  const y = function (e, r, o = 0, n = 0, i) {
+    const p = i ? i.height : 0,
+          a = t(r, e, "x"),
+          s = t(r, e, "y"),
+          c = s.before - o - p,
+          f = s.after + o + p,
+          l = a.before - o - p,
+          d = a.after + o + p;
     return {
       top: {
         start: {
           x: a.start + n,
-          y: s
+          y: c
         },
         center: {
           x: a.center,
-          y: s
+          y: c
         },
         end: {
           x: a.end - n,
-          y: s
+          y: c
         }
       },
       right: {
         start: {
           x: d,
-          y: p.start + n
+          y: s.start + n
         },
         center: {
           x: d,
-          y: p.center
+          y: s.center
         },
         end: {
           x: d,
-          y: p.end - n
+          y: s.end - n
         }
       },
       bottom: {
@@ -1432,26 +1334,26 @@ function getPlacementData({
       left: {
         start: {
           x: l,
-          y: p.start + n
+          y: s.start + n
         },
         center: {
           x: l,
-          y: p.center
+          y: s.center
         },
         end: {
           x: l,
-          y: p.end - n
+          y: s.end - n
         }
       }
     };
-  }(s, c, h, g, f),
+  }(c, p, h, g, f),
         b = y[d][x];
 
   if (!1 === u) {
     const t = e(b);
-    let r = n$1;
-    f && (r = i$1({
-      popperSize: s,
+    let o = n$1;
+    f && (o = i$1({
+      popperSize: c,
       arrowSize: f,
       arrowOffset: l,
       side: d,
@@ -1459,114 +1361,112 @@ function getPlacementData({
     }));
     return {
       popperStyles: { ...t,
-        "--radix-popper-transform-origin": o$3(s, d, x, l, f)
+        "--radix-popper-transform-origin": r$2(c, d, x, l, f)
       },
-      arrowStyles: r,
+      arrowStyles: o,
       placedSide: d,
       placedAlign: x
     };
   }
 
-  const S = DOMRect.fromRect({ ...s,
+  const S = DOMRect.fromRect({ ...c,
     ...b
   }),
-        O = (z = w, R = m, DOMRect.fromRect({
-    width: z.width - 2 * R,
-    height: z.height - 2 * R,
-    x: z.left + R,
-    y: z.top + R
+        $ = (O = w, z = m, DOMRect.fromRect({
+    width: O.width - 2 * z,
+    height: O.height - 2 * z,
+    x: O.left + z,
+    y: O.top + z
   }));
-  var z, R;
+  var O, z;
 
-  const M = p$1(S, O),
-        D = y[a$1(d)][x],
-        A = function (t, e, o) {
-    const r = a$1(t);
-    return e[t] && !o[r] ? r : t;
-  }(d, M, p$1(DOMRect.fromRect({ ...s,
-    ...D
-  }), O)),
-        I = function (t, e, o, r, n) {
-    const i = "top" === o || "bottom" === o,
-          c = i ? "left" : "top",
+  const R = s$3(S, $),
+        M = y[a$2(d)][x],
+        D = function (t, e, r) {
+    const o = a$2(t);
+    return e[t] && !r[o] ? o : t;
+  }(d, R, s$3(DOMRect.fromRect({ ...c,
+    ...M
+  }), $)),
+        A = function (t, e, r, o, n) {
+    const i = "top" === r || "bottom" === r,
+          p = i ? "left" : "top",
           a = i ? "right" : "bottom",
-          p = i ? "width" : "height",
-          s = e[p] > t[p];
-    if (("start" === r || "center" === r) && (n[c] && s || n[a] && !s)) return "end";
-    if (("end" === r || "center" === r) && (n[a] && s || n[c] && !s)) return "start";
-    return r;
-  }(s, c, d, x, M),
-        v = e(y[A][I]);
+          s = i ? "width" : "height",
+          c = e[s] > t[s];
+    if (("start" === o || "center" === o) && (n[p] && c || n[a] && !c)) return "end";
+    if (("end" === o || "center" === o) && (n[a] && c || n[p] && !c)) return "start";
+    return o;
+  }(c, p, d, x, R),
+        I = e(y[D][A]);
 
   let C = n$1;
   f && (C = i$1({
-    popperSize: s,
+    popperSize: c,
     arrowSize: f,
     arrowOffset: l,
-    side: A,
-    align: I
+    side: D,
+    align: A
   }));
   return {
-    popperStyles: { ...v,
-      "--radix-popper-transform-origin": o$3(s, A, I, l, f)
+    popperStyles: { ...I,
+      "--radix-popper-transform-origin": r$2(c, D, A, l, f)
     },
     arrowStyles: C,
-    placedSide: A,
-    placedAlign: I
+    placedSide: D,
+    placedAlign: A
   };
 }
 
-function t$2(t, e, o) {
-  const r = t["x" === o ? "left" : "top"],
-        n = "x" === o ? "width" : "height",
+function t(t, e, r) {
+  const o = t["x" === r ? "left" : "top"],
+        n = "x" === r ? "width" : "height",
         i = t[n],
-        c = e[n];
+        p = e[n];
   return {
-    before: r - c,
-    start: r,
-    center: r + (i - c) / 2,
-    end: r + i - c,
-    after: r + i
+    before: o - p,
+    start: o,
+    center: o + (i - p) / 2,
+    end: o + i - p,
+    after: o + i
   };
 }
 
 function e(t) {
-  const e = Math.round(t.x + window.scrollX),
-        o = Math.round(t.y + window.scrollY);
   return {
     position: "absolute",
     top: 0,
     left: 0,
     minWidth: "max-content",
     willChange: "transform",
-    transform: "translate3d(".concat(e, "px, ").concat(o, "px, 0)")
+    transform: `translate3d(${Math.round(t.x + window.scrollX)}px, ${Math.round(t.y + window.scrollY)}px, 0)`
   };
 }
 
-function o$3(t, e, o, r, n) {
+function r$2(t, e, r, o, n) {
   const i = "top" === e || "bottom" === e,
-        c = n ? n.width : 0,
+        p = n ? n.width : 0,
         a = n ? n.height : 0,
-        p = c / 2 + r;
-  let s = "",
+        s = p / 2 + o;
+  let c = "",
       f = "";
-  return i ? (s = {
-    start: "".concat(p, "px"),
+  return i ? (c = {
+    start: `${s}px`,
     center: "center",
-    end: "".concat(t.width - p, "px")
-  }[o], f = "".concat("top" === e ? t.height + a : -a, "px")) : (s = "".concat("left" === e ? t.width + a : -a, "px"), f = {
-    start: "".concat(p, "px"),
+    end: t.width - s + "px"
+  }[r], f = "top" === e ? `${t.height + a}px` : -a + "px") : (c = "left" === e ? `${t.width + a}px` : -a + "px", f = {
+    start: `${s}px`,
     center: "center",
-    end: "".concat(t.height - p, "px")
-  }[o]), "".concat(s, " ").concat(f);
+    end: t.height - s + "px"
+  }[r]), `${c} ${f}`;
 }
 
-const r$2 = {
+const o$1 = {
   position: "fixed",
   top: 0,
   left: 0,
   opacity: 0,
-  pointerEvents: "none"
+  transform: "translate3d(0, -200%, 0)"
 },
       n$1 = {
   position: "absolute",
@@ -1576,36 +1476,36 @@ const r$2 = {
 function i$1({
   popperSize: t,
   arrowSize: e,
-  arrowOffset: o,
-  side: r,
+  arrowOffset: r,
+  side: o,
   align: n
 }) {
   const i = (t.width - e.width) / 2,
         a = (t.height - e.width) / 2,
-        p = {
+        s = {
     top: 0,
     right: 90,
     bottom: 180,
     left: -90
-  }[r],
-        s = Math.max(e.width, e.height),
+  }[o],
+        c = Math.max(e.width, e.height),
         f = {
-    width: "".concat(s, "px"),
-    height: "".concat(s, "px"),
-    transform: "rotate(".concat(p, "deg)"),
+    width: `${c}px`,
+    height: `${c}px`,
+    transform: `rotate(${s}deg)`,
     willChange: "transform",
     position: "absolute",
-    [r]: "100%",
-    direction: c$4(r, n)
+    [o]: "100%",
+    direction: p$2(o, n)
   };
-  return "top" !== r && "bottom" !== r || ("start" === n && (f.left = "".concat(o, "px")), "center" === n && (f.left = "".concat(i, "px")), "end" === n && (f.right = "".concat(o, "px"))), "left" !== r && "right" !== r || ("start" === n && (f.top = "".concat(o, "px")), "center" === n && (f.top = "".concat(a, "px")), "end" === n && (f.bottom = "".concat(o, "px"))), f;
+  return "top" !== o && "bottom" !== o || ("start" === n && (f.left = `${r}px`), "center" === n && (f.left = `${i}px`), "end" === n && (f.right = `${r}px`)), "left" !== o && "right" !== o || ("start" === n && (f.top = `${r}px`), "center" === n && (f.top = `${a}px`), "end" === n && (f.bottom = `${r}px`)), f;
 }
 
-function c$4(t, e) {
+function p$2(t, e) {
   return ("top" !== t && "right" !== t || "end" !== e) && ("bottom" !== t && "left" !== t || "end" === e) ? "ltr" : "rtl";
 }
 
-function a$1(t) {
+function a$2(t) {
   return {
     top: "bottom",
     right: "left",
@@ -1614,7 +1514,7 @@ function a$1(t) {
   }[t];
 }
 
-function p$1(t, e) {
+function s$3(t, e) {
   return {
     top: t.top < e.top,
     right: t.right > e.right,
@@ -1623,38 +1523,57 @@ function p$1(t, e) {
   };
 }
 
-function p() {
-  return (p = Object.assign || function (e) {
-    for (var r = 1; r < arguments.length; r++) {
-      var o = arguments[r];
+const [p$1, l$2] = createContext("Popper");
+const Popper = ({
+  children: e
+}) => {
+  const [r, o] = C__namespace.useState(null);
+  
 
-      for (var t in o) Object.prototype.hasOwnProperty.call(o, t) && (e[t] = o[t]);
-    }
+  return C__namespace.createElement(p$1, {
+    anchor: r,
+    onAnchorChange: o
+  }, e);
+};
 
-    return e;
-  }).apply(this, arguments);
-}
 
-const [l$2, c$3] = createContext$1("Popper");
-const Popper = C__namespace.forwardRef((e, i) => {
+const PopperAnchor = /*#__PURE__*/C__namespace.forwardRef((e, o) => {
   const {
-    anchorRef: c,
-    side: f = "bottom",
+    virtualRef: t,
+    children: n,
+    ...a
+  } = e,
+        p = l$2("PopperAnchor"),
+        f = C__namespace.useRef(null),
+        d = useComposedRefs(o, f);
+  return C__namespace.useEffect(() => {
+    p.onAnchorChange((null == t ? void 0 : t.current) || f.current);
+  }), t ? null : /*#__PURE__*/C__namespace.createElement(Primitive, _extends({}, a, {
+    ref: d
+  }), n);
+});
+
+
+const [f$2, d$2] = createContext("PopperContent");
+const PopperContent = /*#__PURE__*/C__namespace.forwardRef((e, n) => {
+  const {
+    side: p = "bottom",
     sideOffset: d,
     align: u = "center",
-    alignOffset: w,
-    collisionTolerance: m,
-    avoidCollisions: y = !0,
-    ...v
+    alignOffset: m,
+    collisionTolerance: w,
+    avoidCollisions: h = !0,
+    ...x
   } = e,
-        [x, g] = C__namespace.useState(),
-        h = useRect(c),
-        R = C__namespace.useRef(null),
-        E = useSize(R),
-        A = C__namespace.useRef(null),
-        O = useSize(A),
-        P = useComposedRefs(i, R),
-        S = function () {
+        A = l$2("PopperContent"),
+        [v, g] = C__namespace.useState(),
+        E = useRect(A.anchor),
+        [y, C] = C__namespace.useState(null),
+        P = useSize(y),
+        [S, R] = C__namespace.useState(null),
+        O = useSize(S),
+        b = useComposedRefs(n, e => C(e)),
+        z = function () {
     const [e, r] = C__namespace.useState(void 0);
     return C__namespace.useEffect(() => {
       let e;
@@ -1673,96 +1592,102 @@ const Popper = C__namespace.forwardRef((e, i) => {
       return o(), window.addEventListener("resize", t), () => window.removeEventListener("resize", t);
     }, []), e;
   }(),
-        b = S ? DOMRect.fromRect({ ...S,
+        T = z ? DOMRect.fromRect({ ...z,
     x: 0,
     y: 0
   }) : void 0,
         {
-    popperStyles: z,
-    arrowStyles: C,
-    placedSide: T,
-    placedAlign: j
+    popperStyles: k,
+    arrowStyles: L,
+    placedSide: B,
+    placedAlign: D
   } = getPlacementData({
-    anchorRect: h,
-    popperSize: E,
+    anchorRect: E,
+    popperSize: P,
     arrowSize: O,
-    arrowOffset: x,
-    side: f,
+    arrowOffset: v,
+    side: p,
     sideOffset: d,
     align: u,
-    alignOffset: w,
-    shouldAvoidCollisions: y,
-    collisionBoundariesRect: b,
-    collisionTolerance: m
+    alignOffset: m,
+    shouldAvoidCollisions: h,
+    collisionBoundariesRect: T,
+    collisionTolerance: w
   }),
-        k = void 0 !== T;
+        H = void 0 !== B;
+  
+
 
   return C__namespace.createElement("div", {
-    style: z,
-    "data-radix-popper-wrapper": ""
-  }, C__namespace.createElement(l$2, {
-    arrowRef: A,
-    arrowStyles: C,
+    style: k,
+    "data-radix-popper-content-wrapper": ""
+  }, /*#__PURE__*/C__namespace.createElement(f$2, {
+    arrowStyles: L,
+    onArrowChange: R,
     onArrowOffsetChange: g
-  }, C__namespace.createElement(Primitive$2, p({
-    "data-side": T,
-    "data-align": j
-  }, v, {
-    style: { ...v.style,
-      animation: k ? void 0 : "none"
+  }, /*#__PURE__*/C__namespace.createElement(Primitive, _extends({
+    "data-side": B,
+    "data-align": D
+  }, x, {
+    style: { ...x.style,
+      animation: H ? void 0 : "none"
     },
-    ref: P
+    ref: b
   }))));
 });
-Popper.displayName = "Popper";
-const PopperArrow = C__namespace.forwardRef(function (r, o) {
+
+
+const PopperArrow = /*#__PURE__*/C__namespace.forwardRef(function (r, o) {
   const {
     offset: t,
-    ...i
+    ...n
   } = r,
-        n = c$3("PopperArrow"),
+        i = d$2("PopperArrow"),
         {
     onArrowOffsetChange: a
-  } = n;
-  return C__namespace.useEffect(() => a(t), [a, t]), C__namespace.createElement("span", {
-    style: { ...n.arrowStyles,
+  } = i;
+  return C__namespace.useEffect(() => a(t), [a, t]), /*#__PURE__*/C__namespace.createElement("span", {
+    style: { ...i.arrowStyles,
       pointerEvents: "none"
     }
-  }, C__namespace.createElement("span", {
-    ref: n.arrowRef,
+  }, /*#__PURE__*/C__namespace.createElement("span", {
+    ref: i.onArrowChange,
     style: {
       display: "inline-block",
       verticalAlign: "top",
       pointerEvents: "auto"
     }
-  }, C__namespace.createElement(Root$3, p({}, i, {
+  }, /*#__PURE__*/C__namespace.createElement(Root$3, _extends({}, n, {
     ref: o,
-    style: { ...i.style,
+    style: { ...n.style,
       display: "block"
     }
   }))));
 });
-PopperArrow.displayName = "PopperArrow";
+
+
 const Root$2 = Popper;
+const Anchor$1 = PopperAnchor;
+const Content$2 = PopperContent;
 const Arrow$1 = PopperArrow;
 
 const Presence = u => {
   const {
-    present: r,
-    children: o
+    present: o,
+    children: i
   } = u,
-        s = function (e) {
-    const [u, r] = C__namespace.useState(),
-          [o, s] = C__namespace.useState(),
-          i = C__namespace.useRef(e),
-          c = C__namespace.useRef(),
-          d = e ? "mounted" : "unmounted",
-          [m, a] = function (e, t) {
-      return C__namespace.useReducer((e, n) => {
-        const u = t[e][n];
-        return null != u ? u : e;
+        s = function (n) {
+    const [u, o] = C__namespace.useState(),
+          i = C__namespace.useRef({}),
+          s = C__namespace.useRef(n),
+          a = C__namespace.useRef(),
+          c = n ? "mounted" : "unmounted",
+          [d, m] = function (e, n) {
+      return C__namespace.useReducer((e, t) => {
+        const r = n[e][t];
+        return null != r ? r : e;
       }, e);
-    }(d, {
+    }(c, {
       mounted: {
         UNMOUNT: "unmounted",
         ANIMATION_OUT: "unmountSuspended"
@@ -1776,332 +1701,454 @@ const Presence = u => {
       }
     });
 
-    return C__namespace.useEffect(() => {
-      if (u) {
-        const e = getComputedStyle(u);
-        c.current = t$1(e), s(e);
-      }
-    }, [u]), C__namespace.useEffect(() => {
-      const n = i.current;
+    return useLayoutEffect(() => {
+      const e = i.current,
+            t = s.current;
 
-      if (n !== e) {
-        const u = c.current,
-              r = t$1(o);
-        if (c.current = r, e) a("MOUNT");else if ("none" === (null == o ? void 0 : o.display)) a("UNMOUNT");else {
-          const e = u !== r;
-          a(n && e ? "ANIMATION_OUT" : "UNMOUNT");
+      if (t !== n) {
+        const u = a.current,
+              o = r$1(e);
+        if (n) m("MOUNT");else if ("none" === o || "none" === (null == e ? void 0 : e.display)) m("UNMOUNT");else {
+          const e = u !== o;
+          m(t && e ? "ANIMATION_OUT" : "UNMOUNT");
         }
-        i.current = e;
+        s.current = n;
       }
-    }, [e, o, a]), C__namespace.useEffect(() => {
+    }, [n, m]), useLayoutEffect(() => {
       if (u) {
         const e = e => {
-          const n = t$1(o),
-                r = e.animationName === n;
-          e.target === u && r && a("ANIMATION_END");
+          const n = r$1(i.current).includes(e.animationName);
+          e.target === u && n && m("ANIMATION_END");
+        },
+              n = e => {
+          e.target === u && (a.current = r$1(i.current));
         };
 
-        return u.addEventListener("animationcancel", e), u.addEventListener("animationend", e), () => {
-          u.removeEventListener("animationcancel", e), u.removeEventListener("animationend", e);
+        return u.addEventListener("animationstart", n), u.addEventListener("animationcancel", e), u.addEventListener("animationend", e), () => {
+          u.removeEventListener("animationstart", n), u.removeEventListener("animationcancel", e), u.removeEventListener("animationend", e);
         };
       }
-    }, [u, e, o, a]), {
-      ref: e => r(e),
-      isPresent: ["mounted", "unmountSuspended"].includes(m)
+    }, [u, m]), {
+      isPresent: ["mounted", "unmountSuspended"].includes(d),
+      ref: C__namespace.useCallback(e => {
+        e && (i.current = getComputedStyle(e), o(e));
+      }, [])
     };
-  }(r),
-        i = "function" == typeof o ? o({
+  }(o),
+        a = "function" == typeof i ? i({
     present: s.isPresent
-  }) : C__namespace.Children.only(o),
-        c = useComposedRefs(s.ref, i.ref);
+  }) : C__namespace.Children.only(i),
+        c = useComposedRefs(s.ref, a.ref);
 
-  return "function" == typeof o || s.isPresent ? C__namespace.cloneElement(i, {
+  return "function" == typeof i || s.isPresent ? /*#__PURE__*/C__namespace.cloneElement(a, {
     ref: c
   }) : null;
 };
 
-function t$1(e) {
+function r$1(e) {
   return (null == e ? void 0 : e.animationName) || "none";
 }
 
 Presence.displayName = "Presence";
 
-function n(e) {
-  const t = document.activeElement;
-
-  function n(t) {
-    if (c.paused) return;
-    const n = "focusout" === t.type ? t.relatedTarget : t.target;
-    e.contains(n) || o$2(e, n);
-  }
-
-  const c = {
+const c$2 = {
+  bubbles: !1,
+  cancelable: !0
+};
+const FocusScope = /*#__PURE__*/C__namespace.forwardRef((i, f) => {
+  const {
+    loop: l = !1,
+    trapped: m = !1,
+    onMountAutoFocus: p,
+    onUnmountAutoFocus: v,
+    ...E
+  } = i,
+        [F, S] = C__namespace.useState(null),
+        b = useCallbackRef$1(p),
+        T = useCallbackRef$1(v),
+        y = C__namespace.useRef(null),
+        L = useComposedRefs(f, e => S(e)),
+        h = C__namespace.useRef({
     paused: !1,
-    pause: () => c.paused = !0,
-    resume: () => c.paused = !1,
-    trap: function () {
-      document.addEventListener("focusout", n, {
-        capture: !0
-      }), document.addEventListener("focusin", n, {
-        capture: !0
-      });
+
+    pause() {
+      this.paused = !0;
     },
-    untrap: function () {
-      document.removeEventListener("focusout", n, {
-        capture: !0
-      }), document.removeEventListener("focusin", n, {
-        capture: !0
-      });
-    },
-    destroy: () => {
-      !function (e) {
-        e.removeAttribute("tabIndex");
-      }(e), c.untrap(), function () {
-        const n = new Event("focusScope.autoFocusOnDestroy", {
-          bubbles: !1,
-          cancelable: !0
-        });
-        e.dispatchEvent(n), n.defaultPrevented || u$2(t);
-      }(), r$1.remove(c);
+
+    resume() {
+      this.paused = !1;
     }
-  };
-  return r$1.add(c), function (e) {
-    if (e.tabIndex > -1) return;
-    e.tabIndex = -1;
-  }(e), function () {
-    const t = new Event("focusScope.autoFocusOnCreate", {
-      bubbles: !1,
-      cancelable: !0
-    });
-    e.dispatchEvent(t), t.defaultPrevented || o$2(e, null);
-  }(), c;
+
+  }).current;
+  C__namespace.useEffect(() => {
+    if (m) {
+      function e(e) {
+        if (h.paused || !F) return;
+        const t = e.target;
+        F.contains(t) ? y.current = t : a$1(y.current, {
+          select: !0
+        });
+      }
+
+      function t(e) {
+        !h.paused && F && (F.contains(e.relatedTarget) || a$1(y.current, {
+          select: !0
+        }));
+      }
+
+      return document.addEventListener("focusin", e), document.addEventListener("focusout", t), () => {
+        document.removeEventListener("focusin", e), document.removeEventListener("focusout", t);
+      };
+    }
+  }, [m, F, h.paused]), C__namespace.useEffect(() => {
+    if (F) {
+      d$1.add(h);
+      const e = document.activeElement;
+
+      if (!F.contains(e)) {
+        const t = new Event("focusScope.autoFocusOnMount", c$2);
+        F.addEventListener("focusScope.autoFocusOnMount", b), F.dispatchEvent(t), t.defaultPrevented || (!function (e, {
+          select: t = !1
+        } = {}) {
+          const n = document.activeElement;
+
+          for (const o of e) if (a$1(o, {
+            select: t
+          }), document.activeElement !== n) return;
+        }(r(F), {
+          select: !0
+        }), document.activeElement === e && a$1(F));
+      }
+
+      return () => {
+        F.removeEventListener("focusScope.autoFocusOnMount", b), setTimeout(() => {
+          const t = new Event("focusScope.autoFocusOnUnmount", c$2);
+          F.addEventListener("focusScope.autoFocusOnUnmount", T), F.dispatchEvent(t), t.defaultPrevented || a$1(null != e ? e : document.body, {
+            select: !0
+          }), F.removeEventListener("focusScope.autoFocusOnUnmount", T), d$1.remove(h);
+        }, 0);
+      };
+    }
+  }, [F, b, T, h]);
+  const x = C__namespace.useCallback(e => {
+    if (!l && !m) return;
+    if (h.paused) return;
+    const t = "Tab" === e.key && !e.altKey && !e.ctrlKey && !e.metaKey,
+          n = document.activeElement;
+
+    if (t && n) {
+      const t = e.currentTarget,
+            [o, u] = function (e) {
+        const t = r(e),
+              n = s$2(t, e),
+              o = s$2(t.reverse(), e);
+        return [n, o];
+      }(t);
+
+      o && u ? e.shiftKey || n !== u ? e.shiftKey && n === o && (e.preventDefault(), l && a$1(u, {
+        select: !0
+      })) : (e.preventDefault(), l && a$1(o, {
+        select: !0
+      })) : n === t && e.preventDefault();
+    }
+  }, [l, m, h.paused]);
+  
+
+  return C__namespace.createElement(Primitive, _extends({
+    tabIndex: -1
+  }, E, {
+    ref: L,
+    onKeyDown: x
+  }));
+});
+
+
+function r(e) {
+  const t = [],
+        n = document.createTreeWalker(e, NodeFilter.SHOW_ELEMENT, {
+    acceptNode: e => {
+      const t = "INPUT" === e.tagName && "hidden" === e.type;
+      return e.disabled || e.hidden || t ? NodeFilter.FILTER_SKIP : e.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+    }
+  });
+
+  for (; n.nextNode();) t.push(n.currentNode);
+
+  return t;
 }
 
-function o$2(e, t) {
-  const n = function (e) {
-    return document.createTreeWalker(e, NodeFilter.SHOW_ELEMENT, {
-      acceptNode: e => e.tabIndex >= 0 && !e.disabled ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP
-    });
-  }(e),
-        o = t ? t.compareDocumentPosition(e) : Node.DOCUMENT_POSITION_PRECEDING;
+function s$2(e, t) {
+  for (const n of e) if (!i(n, {
+    upTo: t
+  })) return n;
+}
 
-  var r;
-  if (o & Node.DOCUMENT_POSITION_PRECEDING) u$2(null !== (r = n.firstChild()) && void 0 !== r ? r : e);else if (o & Node.DOCUMENT_POSITION_FOLLOWING) {
-    var c;
-    u$2(null !== (c = n.lastChild()) && void 0 !== c ? c : e);
+function i(e, {
+  upTo: t
+}) {
+  if ("hidden" === getComputedStyle(e).visibility) return !0;
+
+  for (; e;) {
+    if (void 0 !== t && e === t) return !1;
+    if ("none" === getComputedStyle(e).display) return !0;
+    e = e.parentElement;
+  }
+
+  return !1;
+}
+
+function a$1(e, {
+  select: t = !1
+} = {}) {
+  if (e && e.focus) {
+    const n = document.activeElement;
+    e.focus({
+      preventScroll: !0
+    }), e !== n && function (e) {
+      return e instanceof HTMLInputElement && "select" in e;
+    }(e) && t && e.select();
   }
 }
 
-function u$2(e) {
-  e && e.focus && (e.focus({
-    preventScroll: !0
-  }), function (e) {
-    return e instanceof HTMLInputElement && "select" in e;
-  }(e) && e.select());
-}
-
-const r$1 = function () {
+const d$1 = function () {
   let e = [];
   return {
     add(t) {
       const n = e[0];
-      t !== n && (null == n || n.pause()), e = c$2(e, t), e.unshift(t);
+      t !== n && (null == n || n.pause()), e = f$1(e, t), e.unshift(t);
     },
 
     remove(t) {
       var n;
-      e = c$2(e, t), null === (n = e[0]) || void 0 === n || n.resume();
-    },
+      e = f$1(e, t), null === (n = e[0]) || void 0 === n || n.resume();
+    }
 
-    size: () => e.length
   };
 }();
 
-function c$2(e, t) {
+function f$1(e, t) {
   const n = [...e],
         o = n.indexOf(t);
   return -1 !== o && n.splice(o, 1), n;
 }
 
-function FocusScope(o) {
-  const {
-    children: u,
-    trapped: r = !1
-  } = o,
-        c = C__namespace.useRef(null),
-        s = C__namespace.useRef(),
-        a = useCallbackRef$2(o.onMountAutoFocus),
-        i = useCallbackRef$2(o.onUnmountAutoFocus);
-  return C__namespace.useEffect(() => {
-    const e = c.current;
-    if (e) return e.addEventListener("focusScope.autoFocusOnCreate", a), e.addEventListener("focusScope.autoFocusOnDestroy", i), s.current = n(e), () => {
-      e.removeEventListener("focusScope.autoFocusOnCreate", a), setTimeout(() => {
-        var t;
-        null === (t = s.current) || void 0 === t || t.destroy(), e.removeEventListener("focusScope.autoFocusOnDestroy", i);
-      }, 0);
+function useEscapeKeydown(n) {
+  const o = useCallbackRef$1(n);
+  C__namespace.useEffect(() => {
+    const e = e => {
+      "Escape" === e.key && o(e);
     };
-  }, [c, a, i]), C__namespace.useEffect(() => {
-    var e;
-    if (r) return null === (e = s.current) || void 0 === e || e.trap(), () => {
-      var e;
-      return null === (e = s.current) || void 0 === e ? void 0 : e.untrap();
-    };
-  }, [r]), u({
-    ref: c
-  });
+
+    return document.addEventListener("keydown", e), () => document.removeEventListener("keydown", e);
+  }, [o]);
 }
 
-let t,
-    o$1 = 0;
+let n,
+    o = 0;
 function useBodyPointerEvents({
-  disabled: n
+  disabled: r
 }) {
-  useLayoutEffect(() => {
-    if (n) return 0 === o$1 && (t = document.body.style.pointerEvents), document.body.style.pointerEvents = "none", o$1++, () => {
-      o$1--, 0 === o$1 && (document.body.style.pointerEvents = t);
+  const u = C__namespace.useRef(!1),
+        c = C__namespace.useRef(!1);
+  C__namespace.useEffect(() => {
+    const e = e => {
+      const t = "mouse" === e.pointerType;
+      u.current = !t, c.current = t && 0 === e.button;
+    },
+          t = () => {
+      u.current = !1, c.current = !1;
     };
-  }, [n]);
-}
 
-const [r, o] = m$1(),
-      [u$1, s$1] = f(),
-      [c$1, i] = m$1("TotalLayerCountWithDisabledOutsidePointerEventsProvider"),
-      [a, l$1] = f("RunningLayerCountWithDisabledOutsidePointerEventsProvider");
-function DismissableLayer(e) {
-  const t = 0 === s$1(),
-        o = C__namespace.createElement(d, e);
-  return t ? C__namespace.createElement(r, null, C__namespace.createElement(c$1, null, o)) : o;
-}
+    return document.addEventListener("pointerdown", e), document.addEventListener("pointerup", t), () => {
+      document.removeEventListener("pointerdown", e), document.removeEventListener("pointerup", t);
+    };
+  }, []), useLayoutEffect(() => {
+    if (r) {
+      function e() {
+        0 === o && (document.body.style.pointerEvents = n);
+      }
 
-function d(r) {
-  const {
-    children: c,
-    disableOutsidePointerEvents: d = !1,
-    onEscapeKeyDown: m,
-    onPointerDownOutside: f,
-    onFocusOutside: v,
-    onInteractOutside: E,
-    onDismiss: p
-  } = r,
-        y = C__namespace.useRef(null),
-        C = o(),
-        w = s$1() + 1,
-        L = w === C,
-        P = i(d),
-        b = l$1() + (d ? 1 : 0),
-        h = b < P;
-  useBodyPointerEvents({
-    disabled: d
-  }), function (t) {
-    const r = useCallbackRef$2(t);
-    C__namespace.useEffect(() => {
-      const e = e => {
-        "Escape" === e.key && r(e);
+      return 0 === o && (n = document.body.style.pointerEvents), document.body.style.pointerEvents = "none", o++, () => {
+        o--, u.current ? document.addEventListener("click", e, {
+          once: !0
+        }) : c.current ? document.addEventListener("pointerup", e, {
+          once: !0
+        }) : e();
       };
+    }
+  }, [r]);
+}
 
-      return document.addEventListener("keydown", e), () => document.removeEventListener("keydown", e);
-    }, [r]);
-  }(e => {
-    L && (null == m || m(e), e.defaultPrevented || null == p || p());
+const [s$1, a] = E$1(),
+      [c$1, l$1] = C(),
+      [d, m$1] = E$1(),
+      [f, p] = C();
+const DismissableLayer = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
+  const n = 0 === l$1(),
+        r = /*#__PURE__*/C__namespace.createElement(v, _extends({}, e, {
+    ref: t
+  }));
+  return n ? /*#__PURE__*/C__namespace.createElement(s$1, null, /*#__PURE__*/C__namespace.createElement(d, null, r)) : r;
+});
+
+
+const v = /*#__PURE__*/C__namespace.forwardRef((s, d) => {
+  const {
+    disableOutsidePointerEvents: v = !1,
+    onEscapeKeyDown: E,
+    onPointerDownOutside: C,
+    onFocusOutside: b,
+    onInteractOutside: w,
+    onDismiss: L,
+    ...P
+  } = s,
+        y = a(),
+        D = l$1() + 1,
+        x = D === y,
+        O = m$1(v),
+        g = p() + (v ? 1 : 0),
+        h = g < O;
+  useBodyPointerEvents({
+    disabled: v
+  }), useEscapeKeydown(e => {
+    x && (null == E || E(e), e.defaultPrevented || null == L || L());
   });
 
-  const x = function (t) {
-    const r = useCallbackRef$2(t),
-          o = C__namespace.useRef(!1);
-    C__namespace.useEffect(() => {
+  const {
+    onPointerDownCapture: R
+  } = function (e) {
+    const n = useCallbackRef$1(e),
+          r = C__namespace.useRef(!1);
+    return C__namespace.useEffect(() => {
       const e = e => {
-        o.current || r(e), o.current = !1;
-      };
+        const t = e.target;
 
-      return document.addEventListener("mousedown", e), document.addEventListener("touchstart", e), () => {
-        document.removeEventListener("mousedown", e), document.removeEventListener("touchstart", e);
-      };
-    }, [r]);
+        if (t && !r.current) {
+          const r = new CustomEvent("dismissableLayer.pointerDownOutside", {
+            bubbles: !1,
+            cancelable: !0,
+            detail: {
+              originalEvent: e
+            }
+          });
+          t.addEventListener("dismissableLayer.pointerDownOutside", n, {
+            once: !0
+          }), t.dispatchEvent(r);
+        }
 
-    const u = () => {
-      o.current = !0;
-    };
-
-    return {
-      onMouseDownCapture: u,
-      onTouchStartCapture: u
-    };
-  }(e => {
-    h || (null == f || f(e), null == E || E(e), e.defaultPrevented || null == p || p());
-  }),
-        D = function (e) {
-    const t = C__namespace.useRef(0);
-    return {
-      onBlurCapture: n => {
-        n.persist(), t.current = window.setTimeout(() => {
-          null == e || e(n);
-        }, 0);
+        r.current = !1;
       },
-      onFocusCapture: () => {
-        window.clearTimeout(t.current);
-      }
+            t = window.setTimeout(() => {
+        document.addEventListener("pointerdown", e);
+      }, 0);
+
+      return () => {
+        window.clearTimeout(t), document.removeEventListener("pointerdown", e);
+      };
+    }, [n]), {
+      onPointerDownCapture: () => r.current = !0
     };
   }(e => {
-    null == v || v(e), null == E || E(e), e.defaultPrevented || null == p || p();
+    h || (null == C || C(e), null == w || w(e), e.defaultPrevented || null == L || L());
   }),
-        T = P > 0 && !h;
+        {
+    onBlurCapture: T,
+    onFocusCapture: F
+  } = function (e) {
+    const n = useCallbackRef$1(e),
+          r = C__namespace.useRef(!1);
+    return C__namespace.useEffect(() => {
+      const e = e => {
+        const t = e.target;
 
-  return C__namespace.createElement(u$1, {
-    runningCount: w
-  }, C__namespace.createElement(a, {
-    runningCount: b
-  }, c({
-    ref: y,
-    style: T ? {
-      pointerEvents: "auto"
-    } : {},
-    ...x,
-    ...D
-  })));
-}
+        if (t && !r.current) {
+          const r = new CustomEvent("dismissableLayer.focusOutside", {
+            bubbles: !1,
+            cancelable: !0,
+            detail: {
+              originalEvent: e
+            }
+          });
+          t.addEventListener("dismissableLayer.focusOutside", n, {
+            once: !0
+          }), t.dispatchEvent(r);
+        }
+      };
 
-function m$1(e) {
-  const t = C__namespace.createContext({
+      return document.addEventListener("focusin", e), () => document.removeEventListener("focusin", e);
+    }, [n]), {
+      onFocusCapture: () => r.current = !0,
+      onBlurCapture: () => r.current = !1
+    };
+  }(e => {
+    null == b || b(e), null == w || w(e), e.defaultPrevented || null == L || L();
+  }),
+        B = O > 0 && !h;
+  
+
+
+  return C__namespace.createElement(c$1, {
+    runningCount: D
+  }, /*#__PURE__*/C__namespace.createElement(f, {
+    runningCount: g
+  }, /*#__PURE__*/C__namespace.createElement(Primitive, _extends({}, P, {
+    ref: d,
+    style: {
+      pointerEvents: B ? "auto" : void 0,
+      ...P.style
+    },
+    onPointerDownCapture: composeEventHandlers(s.onPointerDownCapture, R),
+    onBlurCapture: composeEventHandlers(s.onBlurCapture, T),
+    onFocusCapture: composeEventHandlers(s.onFocusCapture, F)
+  }))));
+});
+
+function E$1(e) {
+  const t = /*#__PURE__*/C__namespace.createContext({
     total: 0,
     setTotal: () => {}
   }),
-        r = ({
+        n = ({
     children: e
   }) => {
-    const [r, o] = C__namespace.useState(0),
-          u = C__namespace.useMemo(() => ({
-      total: r,
-      setTotal: o
-    }), [r, o]);
+    const [n, r] = C__namespace.useState(0),
+          o = C__namespace.useMemo(() => ({
+      total: n,
+      setTotal: r
+    }), [n, r]);
+    
+
     return C__namespace.createElement(t.Provider, {
-      value: u
+      value: o
     }, e);
   };
 
-  return e && (r.displayName = e), [r, function (e = !0) {
+  return [n, function (e = !0) {
     const {
-      total: r,
-      setTotal: o
+      total: n,
+      setTotal: r
     } = C__namespace.useContext(t);
     return C__namespace.useLayoutEffect(() => {
-      if (e) return o(e => e + 1), () => o(e => e - 1);
-    }, [e, o]), r;
+      if (e) return r(e => e + 1), () => r(e => e - 1);
+    }, [e, r]), n;
   }];
 }
 
-function f(e) {
-  const t = C__namespace.createContext(0),
-        r = e => {
+function C(e) {
+  const t = /*#__PURE__*/C__namespace.createContext(0),
+        n = e => {
     const {
-      children: r,
-      runningCount: o
+      children: n,
+      runningCount: r
     } = e;
+    
+
     return C__namespace.createElement(t.Provider, {
-      value: o
-    }, r);
+      value: r
+    }, n);
   };
 
-  return e && (r.displayName = e), [r, function () {
+  return [n, function () {
     return C__namespace.useContext(t) || 0;
   }];
 }
@@ -2446,8 +2493,8 @@ function assignRef(ref, value) {
  * @returns {MutableRefObject}
  */
 
-function useCallbackRef$1(initialValue, callback) {
-  var ref = C.useState(function () {
+function useCallbackRef(initialValue, callback) {
+  var ref = C$1.useState(function () {
     return {
       // value
       value: initialValue,
@@ -2492,7 +2539,7 @@ function useCallbackRef$1(initialValue, callback) {
  */
 
 function useMergeRefs(refs, defaultValue) {
-  return useCallbackRef$1(defaultValue, function (newValue) {
+  return useCallbackRef(defaultValue, function (newValue) {
     return refs.forEach(function (ref) {
       return assignRef(ref, newValue);
     });
@@ -3030,7 +3077,7 @@ const M = ["Enter", " "],
   ltr: ["ArrowLeft"],
   rtl: ["ArrowRight"]
 },
-      [S, k] = createContext$1("Menu");
+      [S, k] = createContext("Menu");
 const Menu = e => {
   const {
     open: t = !1,
@@ -3040,7 +3087,7 @@ const Menu = e => {
   } = e,
         [i, l] = C__namespace.useState(null),
         s = C__namespace.useRef(!1),
-        d = useCallbackRef$2(u),
+        d = useCallbackRef$1(u),
         m = useDirection(i, e.dir);
   return C__namespace.useEffect(() => {
     const e = () => s.current = !0,
@@ -3084,7 +3131,7 @@ const MenuSub = t => {
         a = k("MenuSub"),
         [i, l] = C__namespace.useState(null),
         [s, d] = C__namespace.useState(null),
-        m = useCallbackRef$2(u);
+        m = useCallbackRef$1(u);
   return C__namespace.useEffect(() => (!1 === a.open && m(!1), () => m(!1)), [a.open, m]), /*#__PURE__*/C__namespace.createElement(Root$2, null, /*#__PURE__*/C__namespace.createElement(S, {
     isSubmenu: !0,
     isUsingKeyboardRef: a.isUsingKeyboardRef,
@@ -3104,7 +3151,7 @@ const MenuSub = t => {
 
 
 const [D, O, T, A] = createCollection(),
-      [L, F] = createContext$1("MenuContent");
+      [L, F] = createContext("MenuContent");
 const MenuContent = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
   const {
     forceMount: n,
@@ -3138,7 +3185,7 @@ const K = /*#__PURE__*/C__namespace.forwardRef((e, t) => k("MenuContent").modal 
     trapFocus: n.open,
     disableOutsidePointerEvents: n.open,
     disableOutsideScroll: !0,
-    onFocusOutside: composeEventHandlers$1(e.onFocusOutside, e => e.preventDefault(), {
+    onFocusOutside: composeEventHandlers(e.onFocusOutside, e => e.preventDefault(), {
       checkForDefaultPrevented: !1
     }),
     onDismiss: () => n.onOpenChange(!1)
@@ -3176,11 +3223,11 @@ const K = /*#__PURE__*/C__namespace.forwardRef((e, t) => k("MenuContent").modal 
       n.isUsingKeyboardRef.current && (null === (t = r.current) || void 0 === t || t.focus()), e.preventDefault();
     },
     onCloseAutoFocus: e => e.preventDefault(),
-    onFocusOutside: composeEventHandlers$1(e.onFocusOutside, e => {
+    onFocusOutside: composeEventHandlers(e.onFocusOutside, e => {
       e.target !== n.trigger && n.onOpenChange(!1);
     }),
-    onEscapeKeyDown: composeEventHandlers$1(e.onEscapeKeyDown, n.onRootClose),
-    onKeyDown: composeEventHandlers$1(e.onKeyDown, e => {
+    onEscapeKeyDown: composeEventHandlers(e.onEscapeKeyDown, n.onRootClose),
+    onKeyDown: composeEventHandlers(e.onKeyDown, e => {
       const t = e.currentTarget.contains(e.target),
             r = P[n.dir].includes(e.key);
       var o;
@@ -3290,7 +3337,7 @@ const K = /*#__PURE__*/C__namespace.forwardRef((e, t) => k("MenuContent").modal 
   }, /*#__PURE__*/C__namespace.createElement(FocusScope, {
     as: Slot,
     trapped: a,
-    onMountAutoFocus: composeEventHandlers$1(l, e => {
+    onMountAutoFocus: composeEventHandlers(l, e => {
       var t;
       e.preventDefault(), null === (t = K.current) || void 0 === t || t.focus();
     }),
@@ -3313,7 +3360,7 @@ const K = /*#__PURE__*/C__namespace.forwardRef((e, t) => k("MenuContent").modal 
     onEntryFocus: e => {
       D.isUsingKeyboardRef.current || e.preventDefault();
     }
-  }, /*#__PURE__*/C__namespace.createElement(undefined, _extends({
+  }, /*#__PURE__*/C__namespace.createElement(Content$2, _extends({
     role: "menu",
     dir: D.dir,
     "data-state": W(D.open)
@@ -3323,7 +3370,7 @@ const K = /*#__PURE__*/C__namespace.forwardRef((e, t) => k("MenuContent").modal 
       outline: "none",
       ...S.style
     },
-    onKeyDown: composeEventHandlers$1(S.onKeyDown, e => {
+    onKeyDown: composeEventHandlers(S.onKeyDown, e => {
       const t = e.target,
             n = e.currentTarget.contains(t),
             r = e.ctrlKey || e.altKey || e.metaKey;
@@ -3342,10 +3389,10 @@ const K = /*#__PURE__*/C__namespace.forwardRef((e, t) => k("MenuContent").modal 
         }
       }(u);
     }),
-    onBlur: composeEventHandlers$1(e.onBlur, e => {
+    onBlur: composeEventHandlers(e.onBlur, e => {
       e.currentTarget.contains(e.target) || (window.clearTimeout(U.current), V.current = "");
     }),
-    onPointerMove: composeEventHandlers$1(e.onPointerMove, q(e => {
+    onPointerMove: composeEventHandlers(e.onPointerMove, q(e => {
       const t = e.target,
             n = Y.current !== e.clientX;
 
@@ -3387,8 +3434,8 @@ const MenuItem = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
   return C__namespace.createElement(B, _extends({}, o, {
     ref: c,
     disabled: n,
-    onPointerUp: composeEventHandlers$1(e.onPointerUp, l),
-    onKeyDown: composeEventHandlers$1(e.onKeyDown, e => {
+    onPointerUp: composeEventHandlers(e.onPointerUp, l),
+    onKeyDown: composeEventHandlers(e.onKeyDown, e => {
       const t = "" !== i.searchRef.current;
       n || t && " " === e.key || M.includes(e.key) && (" " === e.key && e.preventDefault(), l());
     })
@@ -3422,15 +3469,15 @@ const MenuSubTrigger = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
     "data-state": W(n.open)
   }, e, {
     ref: composeRefs(t, n.onTriggerChange),
-    onPointerUp: composeEventHandlers$1(e.onPointerUp, (l = t => {
+    onPointerUp: composeEventHandlers(e.onPointerUp, (l = t => {
       r.onItemEnter(t), t.defaultPrevented || e.disabled || n.open || n.onOpenChange(!0);
     }, e => "mouse" !== e.pointerType ? l(e) : void 0)),
-    onPointerMove: composeEventHandlers$1(e.onPointerMove, q(t => {
+    onPointerMove: composeEventHandlers(e.onPointerMove, q(t => {
       r.onItemEnter(t), t.defaultPrevented || e.disabled || n.open || u.current || (r.onPointerGraceIntentChange(null), u.current = window.setTimeout(() => {
         n.onOpenChange(!0), c();
       }, 100));
     })),
-    onPointerLeave: composeEventHandlers$1(e.onPointerLeave, q(e => {
+    onPointerLeave: composeEventHandlers(e.onPointerLeave, q(e => {
       var t;
       c();
       const o = null === (t = n.content) || void 0 === t ? void 0 : t.getBoundingClientRect();
@@ -3466,7 +3513,7 @@ const MenuSubTrigger = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
         r.onPointerGraceIntentChange(null);
       }
     })),
-    onKeyDown: composeEventHandlers$1(e.onKeyDown, t => {
+    onKeyDown: composeEventHandlers(e.onKeyDown, t => {
       const o = "" !== r.searchRef.current;
       var u;
       e.disabled || o && " " === t.key || I[n.dir].includes(t.key) && (n.onOpenChange(!0), null === (u = n.content) || void 0 === u || u.focus());
@@ -3502,12 +3549,12 @@ const B = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
   }, u, {
     as: n,
     ref: c,
-    onPointerMove: composeEventHandlers$1(e.onPointerMove, q(e => {
+    onPointerMove: composeEventHandlers(e.onPointerMove, q(e => {
       if (r) l.onItemLeave(e);else if (l.onItemEnter(e), !e.defaultPrevented) {
         e.currentTarget.focus();
       }
     })),
-    onPointerLeave: composeEventHandlers$1(e.onPointerLeave, q(e => l.onItemLeave(e)))
+    onPointerLeave: composeEventHandlers(e.onPointerLeave, q(e => l.onItemLeave(e)))
   })));
 });
 const MenuCheckboxItem = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
@@ -3526,7 +3573,7 @@ const MenuCheckboxItem = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
   }, o, {
     ref: t,
     "data-state": j(n),
-    onSelect: composeEventHandlers$1(o.onSelect, () => null == r ? void 0 : r(!n), {
+    onSelect: composeEventHandlers(o.onSelect, () => null == r ? void 0 : r(!n), {
       checkForDefaultPrevented: !1
     })
   })));
@@ -3540,7 +3587,7 @@ const MenuRadioGroup = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
     onValueChange: o,
     ...u
   } = e,
-        a = useCallbackRef$2(o),
+        a = useCallbackRef$1(o),
         i = C__namespace.useMemo(() => ({
     value: r,
     onValueChange: a
@@ -3572,7 +3619,7 @@ const MenuRadioItem = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
   }, r, {
     ref: t,
     "data-state": j(u),
-    onSelect: composeEventHandlers$1(r.onSelect, () => {
+    onSelect: composeEventHandlers(r.onSelect, () => {
       var e;
       return null === (e = o.onValueChange) || void 0 === e ? void 0 : e.call(o, n);
     }, {
@@ -3595,7 +3642,7 @@ const MenuItemIndicator = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
 
   return C__namespace.createElement(Presence, {
     present: r || u
-  }, /*#__PURE__*/C__namespace.createElement(Primitive$2, _extends({}, o, {
+  }, /*#__PURE__*/C__namespace.createElement(Primitive, _extends({}, o, {
     as: n,
     ref: t,
     "data-state": j(u)
@@ -3603,26 +3650,26 @@ const MenuItemIndicator = /*#__PURE__*/C__namespace.forwardRef((e, t) => {
 });
 
 
-const MenuAnchor = extendPrimitive$1(undefined, {
+const MenuAnchor = extendPrimitive(Anchor$1, {
   displayName: "MenuAnchor"
 });
-const MenuGroup = extendPrimitive$1(Primitive$2, {
+const MenuGroup = extendPrimitive(Primitive, {
   defaultProps: {
     role: "group"
   },
   displayName: "MenuGroup"
 });
-const MenuLabel = extendPrimitive$1(Primitive$2, {
+const MenuLabel = extendPrimitive(Primitive, {
   displayName: "MenuLabel"
 });
-const MenuSeparator = extendPrimitive$1(Primitive$2, {
+const MenuSeparator = extendPrimitive(Primitive, {
   defaultProps: {
     role: "separator",
     "aria-orientation": "horizontal"
   },
   displayName: "MenuSeparator "
 });
-const MenuArrow = extendPrimitive$1(Arrow$1, {
+const MenuArrow = extendPrimitive(Arrow$1, {
   displayName: "MenuArrow"
 });
 
@@ -3652,95 +3699,6 @@ const RadioItem = MenuRadioItem;
 const ItemIndicator = MenuItemIndicator;
 const Separator$1 = MenuSeparator;
 const Arrow = MenuArrow;
-
-function extendPrimitive(r, o) {
-  const i = /*#__PURE__*/C__namespace.forwardRef((i, n) => {
-    const a = r,
-          s = { ...o.defaultProps,
-      ...i
-    };
-    
-
-    return C__namespace.createElement(a, _extends({}, s, {
-      ref: n
-    }));
-  });
-  return i.displayName = o.displayName || "Extended" + r.displayName, i;
-}
-
-function useCallbackRef(r) {
-  const t = C__namespace.useRef(r);
-  return C__namespace.useEffect(() => {
-    t.current = r;
-  }), C__namespace.useCallback((...e) => {
-    var r;
-    return null === (r = t.current) || void 0 === r ? void 0 : r.call(t, ...e);
-  }, []);
-}
-
-function useControllableState({
-  prop: o,
-  defaultProp: r,
-  onChange: n = () => {}
-}) {
-  const [a, u] = function ({
-    defaultProp: o,
-    onChange: r
-  }) {
-    const n = C__namespace.useState(o),
-          [a] = n,
-          u = C__namespace.useRef(a),
-          c = useCallbackRef(r);
-    return C__namespace.useEffect(() => {
-      u.current !== a && (c(a), u.current = a);
-    }, [a, u, c]), n;
-  }({
-    defaultProp: r,
-    onChange: n
-  }),
-        c = void 0 !== o,
-        f = c ? o : a,
-        l = useCallbackRef(n);
-
-  return [f, C__namespace.useCallback(e => {
-    if (c) {
-      const t = e,
-            r = "function" == typeof e ? t(o) : e;
-      r !== o && l(r);
-    } else u(e);
-  }, [c, o, u, l])];
-}
-
-function createContext(t) {
-  const r = /*#__PURE__*/C__namespace.createContext(null);
-
-  function n(t) {
-    const {
-      children: n,
-      ...o
-    } = t,
-          u = C__namespace.useMemo(() => o, Object.values(o));
-    
-
-    return C__namespace.createElement(r.Provider, {
-      value: u
-    }, n);
-  }
-
-  return n.displayName = t + "Provider", [n, function (n) {
-    const o = C__namespace.useContext(r);
-    if (null === o) throw new Error(`\`${n}\` must be used within \`${t}\``);
-    return o;
-  }];
-}
-
-function composeEventHandlers(e, n, {
-  checkForDefaultPrevented: t = !0
-} = {}) {
-  return function (r) {
-    if (null == e || e(r), !1 === t || !r.defaultPrevented) return null == n ? void 0 : n(r);
-  };
-}
 
 const [u, c] = createContext("DropdownMenu");
 const DropdownMenu = e => {
@@ -3822,7 +3780,7 @@ const DropdownMenuTrigger = /*#__PURE__*/C__namespace.forwardRef((e, n) => {
     "data-state": u.open ? "open" : "closed"
   }, t, {
     as: r,
-    ref: composeRefs$1(n, u.triggerRef),
+    ref: composeRefs(n, u.triggerRef),
     onPointerDown: composeEventHandlers(e.onPointerDown, e => {
       0 === e.button && !1 === e.ctrlKey && (u.open || e.preventDefault(), u.onOpenToggle());
     }),

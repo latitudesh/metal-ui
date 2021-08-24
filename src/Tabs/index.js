@@ -1,6 +1,5 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from "@emotion/react";
 import tw, { styled, css } from "twin.macro";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 
