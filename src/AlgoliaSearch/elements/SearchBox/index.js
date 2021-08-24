@@ -64,7 +64,7 @@ const SearchBox = (props) => {
   }, []);
 
   return (
-    <div className="ais-SearchBox pb-2" ref={searchInputRef}>
+    <div className="ais-SearchBox" ref={searchInputRef}>
       <form className="ais-SearchBox-form m-0" noValidate role="search">
         <Input
           ref={inputRef}

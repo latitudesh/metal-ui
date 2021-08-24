@@ -11566,7 +11566,7 @@ const SearchBox = props => {
     }
   }, []);
   return Object(react_["jsx"])("div", {
-    className: "ais-SearchBox pb-2",
+    className: "ais-SearchBox",
     ref: searchInputRef
   }, Object(react_["jsx"])("form", {
     className: "ais-SearchBox-form m-0",
@@ -12241,18 +12241,19 @@ const SearchComponent = props => {
     className: "relative"
   }, Object(react_["jsx"])(elements_SearchBox, {
     id: ALGOLIA_APP_ID,
-    selectedText: selectedItem ? formatSelected(selectedItem) : '',
+    selectedText: selectedItem ? formatSelected(selectedItem) : "",
     inputProps: inputProps,
     placeholder: placeholder,
     onSelect: handleOnSelect
   }), Object(react_["jsx"])("div", {
-    className: "shadow-xl rounded absolute w-full bg-white border border-border",
+    className: "shadow-xl rounded absolute w-full bg-white border border-border mt-2",
     style: {
       visibility: `${isResultsWindowOpen ? "visible" : "hidden"}`
     }
   }, Object(react_["jsx"])("div", {
     className: "overflow-y-auto pl-2 pr-2",
     style: {
+      minHeight: "150px",
       maxHeight: `${scrollableWindowHeight}px`
     },
     ref: scrollWindowRef
