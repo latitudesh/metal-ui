@@ -39,6 +39,7 @@
     "@radix-ui/react-tabs": "^0.0.16",
     "@radix-ui/react-toolbar": "^0.0.9",
     "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/commit-analyzer": "^8.0.1",
@@ -101,7 +102,6 @@
     "@react-aria/radio": "^3.1.4",
     "@react-aria/visually-hidden": "^3.2.2",
     "@react-stately/radio": "^3.3.1",
-    "@rollup/plugin-commonjs": "^20.0.0",
     "react-instantsearch-dom": "^6.7.0",
     "react-use": "^17.2.4"
   }
