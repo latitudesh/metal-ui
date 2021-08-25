@@ -1,3 +1,10 @@
+## [3.4.1](https://github.com/Maxihost/metal-ui/compare/v3.4.0...v3.4.1) (2021-08-20)
+
+
+### Bug Fixes
+
+* Dropdown error ([909c839](https://github.com/Maxihost/metal-ui/commit/909c83938d7b54d32466d2c91401b319bf614570))
+
 # [3.4.0](https://github.com/Maxihost/metal-ui/compare/v3.3.1...v3.4.0) (2021-08-18)
 
 

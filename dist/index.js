@@ -6592,8 +6592,8 @@ Table.Body = ({
 }, props), children);
 
 var Table_ref4 =  true ? {
-  name: "1sn1294",
-  styles: "padding-left:1.5rem;padding-right:1.5rem;padding-top:0.5rem;padding-bottom:0.5rem;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity));text-align:left;font-size:0.75rem;line-height:1.25rem;font-weight:500;--tw-text-opacity:1;color:rgba(0, 0, 0, var(--tw-text-opacity));text-transform:uppercase;letter-spacing:0.05em"
+  name: "1hyz2mm",
+  styles: "padding-left:1.5rem;padding-right:1.5rem;padding-top:0.5rem;padding-bottom:0.5rem;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity));text-align:left;font-size:0.75rem;line-height:1.25rem;font-weight:500;--tw-text-opacity:1;color:rgba(102, 102, 102, var(--tw-text-opacity));text-transform:uppercase;letter-spacing:0.05em"
 } : undefined;
 
 Table.HeaderCell = ({
@@ -7373,8 +7373,8 @@ function Header_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to str
 
 
 var Header_ref =  true ? {
-  name: "datk8v",
-  styles: "[role=\"tablist\"]{padding-left:2.5rem;padding-right:2.5rem;;}"
+  name: "1lhdbhi",
+  styles: "[role=\"tablist\"]{margin-left:2.5rem;margin-right:2.5rem;;}"
 } : undefined;
 
 const Nav = emotion_styled_base_browser_esm("div",  true ? {
@@ -7382,21 +7382,26 @@ const Nav = emotion_styled_base_browser_esm("div",  true ? {
 } : undefined)(() => [Header_ref],  true ? "" : undefined);
 
 var Header_ref2 =  true ? {
+  name: "g1uvsi",
+  styles: "position:relative;width:100%;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity))"
+} : undefined;
+
+var Header_ref3 =  true ? {
   name: "1ug6i4f",
   styles: "display:flex;flex-direction:row;align-items:center;min-width:0px;padding-top:0.5rem;padding-bottom:0.5rem"
 } : undefined;
 
-var Header_ref3 =  true ? {
+var Header_ref4 =  true ? {
   name: "1h5hd82",
   styles: "overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:0.125rem;font-weight:600"
 } : undefined;
 
-var Header_ref4 =  true ? {
+var Header_ref5 =  true ? {
   name: "psasdh",
   styles: "display:flex;flex-direction:row;align-items:center;justify-content:flex-end;margin-left:0.5rem"
 } : undefined;
 
-var Header_ref5 =  true ? {
+var Header_ref6 =  true ? {
   name: "1kjf4md",
   styles: "display:inline-flex;margin-left:0px"
 } : undefined;
@@ -7406,17 +7411,7 @@ const Header = ({
   actions,
   nav
 }) => Object(react_["jsx"])("div", {
-  css: ["position:relative;width:100%;--tw-bg-opacity:1;background-color:rgba(255, 255, 255, var(--tw-bg-opacity));", !nav &&
-  /*#__PURE__*/
-
-  /*#__PURE__*/
-
-  /*#__PURE__*/
-
-  /*#__PURE__*/
-  Object(react_["css"])({
-    boxShadow: `0 -1px 0 ${"#e5e7eb"} inset`
-  },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined),  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
+  css: Header_ref2
 }, Object(react_["jsx"])("div", {
   css: ["display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding-left:2.5rem;padding-right:2.5rem;", nav ? {
     "paddingTop": "1rem",
@@ -7426,14 +7421,14 @@ const Header = ({
     "paddingBottom": "1rem"
   },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined]
 }, Object(react_["jsx"])("div", {
-  css: Header_ref2
+  css: Header_ref3
 }, Object(react_["jsx"])(Typography_Heading, {
   size: 3,
-  css: Header_ref3
-}, title)), actions && Object(react_["jsx"])("div", {
   css: Header_ref4
-}, Object(react_["jsx"])("div", {
+}, title)), actions && Object(react_["jsx"])("div", {
   css: Header_ref5
+}, Object(react_["jsx"])("div", {
+  css: Header_ref6
 }, actions))), nav && Object(react_["jsx"])(Nav, null, nav));
 
 Header.defaultProps = {
@@ -11571,7 +11566,7 @@ const SearchBox = props => {
     }
   }, []);
   return Object(react_["jsx"])("div", {
-    className: "ais-SearchBox pb-2",
+    className: "ais-SearchBox",
     ref: searchInputRef
   }, Object(react_["jsx"])("form", {
     className: "ais-SearchBox-form m-0",
@@ -12246,18 +12241,19 @@ const SearchComponent = props => {
     className: "relative"
   }, Object(react_["jsx"])(elements_SearchBox, {
     id: ALGOLIA_APP_ID,
-    selectedText: selectedItem ? formatSelected(selectedItem) : '',
+    selectedText: selectedItem ? formatSelected(selectedItem) : "",
     inputProps: inputProps,
     placeholder: placeholder,
     onSelect: handleOnSelect
   }), Object(react_["jsx"])("div", {
-    className: "shadow-xl rounded absolute w-full bg-white border border-border",
+    className: "shadow-xl rounded absolute w-full bg-white border border-border mt-2",
     style: {
       visibility: `${isResultsWindowOpen ? "visible" : "hidden"}`
     }
   }, Object(react_["jsx"])("div", {
     className: "overflow-y-auto pl-2 pr-2",
     style: {
+      minHeight: "150px",
       maxHeight: `${scrollableWindowHeight}px`
     },
     ref: scrollWindowRef
@@ -20642,20 +20638,12 @@ function VisuallyHidden(props) {
 // CONCATENATED MODULE: ./src/Feedback/FeedbackButton.js
 function FeedbackButton_extends() { FeedbackButton_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return FeedbackButton_extends.apply(this, arguments); }
 
-function FeedbackButton_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
-
 /** @jsxRuntime classic */
 
 /** @jsx jsx */
 
 
 
-
-
-var FeedbackButton_ref =  true ? {
-  name: "1fo56k",
-  styles: "display:flex;position:absolute;width:6rem"
-} : undefined;
 
 const FeedbackButton = /*#__PURE__*/external_root_React_commonjs2_react_commonjs_react_amd_react_default.a.forwardRef(({
   open,
@@ -20673,7 +20661,6 @@ const FeedbackButton = /*#__PURE__*/external_root_React_commonjs2_react_commonjs
   }, [setOpen]);
   return Object(react_["jsx"])(src_Button, FeedbackButton_extends({
     ref: ref,
-    css: FeedbackButton_ref,
     onClick: onClick
   }, combinedProps));
 });
@@ -21030,7 +21017,7 @@ const Feedback = ({
   }));
   return Object(react_["jsx"])("div", Feedback_extends({
     title: "Share any feedback about our products and services",
-    css: ["padding:0px;width:6rem;position:relative;display:inline-block;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;:focus{outline:2px solid transparent;outline-offset:2px;}:active{outline:2px solid transparent;outline-offset:2px;}", errorMessage && {
+    css: ["padding:0px;position:relative;display:inline-block;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;:focus{outline:2px solid transparent;outline-offset:2px;}:active{outline:2px solid transparent;outline-offset:2px;}", errorMessage && {
       "color": "transparent"
     },  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined,  true ? "" : undefined],
     "aria-expanded": open,
