@@ -3,9 +3,9 @@ const Header = require( "./Header");
 const Content  = require( "./Content");
 const Button  = require( "./Button");
 const Box  = require( "./Box");
-const Sidesheet  = require( "./Sidesheet");
-const Skeleton  = require( "./Skeleton");
-const Toast  = require( "./Toast");
+const Sidesheet = require( "./Sidesheet");
+const Skeleton = require( "./Skeleton");
+const Toast = require( "./Toast");
 const Input  = require( "./Input");
 const Textarea  = require( "./Textarea");
 const Select  = require( "./Select");
@@ -13,8 +13,8 @@ const Avatar  = require( "./Avatar/index");
 const AlgoliaSearch  = require( "./AlgoliaSearch");
 const Badge  = require( "./Badge");
 const SpinningDots  = require( "./SpinningDots");
-const DropdownMenu = require("./DropdownMenu");
 const Feedback = require( "./Feedback");
+const DropdownMenu = require("./DropdownMenu");
 const Typography = require( "./Typography");
 const Tabs = require("./Tabs");
 
@@ -34,8 +34,12 @@ module.exports = {
     AlgoliaSearch,
     Badge,
     SpinningDots,
-    DropdownMenu,
     Feedback,
+    DropdownMenu,
+    // Re export internals for backward compatibility
+    ...DropdownMenu,
     Typography,
+    ...Typography,
     Tabs,
+    ...Tabs,
 }
