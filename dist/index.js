@@ -1,18 +1,18 @@
 const Table = require( "./Table");
 const Header = require( "./Header");
-const Content  = require( "./Content");
-const Button  = require( "./Button");
-const Box  = require( "./Box");
+const Content = require( "./Content");
+const Button = require( "./Button");
+const Box = require( "./Box");
 const Sidesheet = require( "./Sidesheet");
 const Skeleton = require( "./Skeleton");
 const Toast = require( "./Toast");
-const Input  = require( "./Input");
-const Textarea  = require( "./Textarea");
-const Select  = require( "./Select");
-const Avatar  = require( "./Avatar/index");
-const AlgoliaSearch  = require( "./AlgoliaSearch");
-const Badge  = require( "./Badge");
-const SpinningDots  = require( "./SpinningDots");
+const Input = require( "./Input");
+const Textarea = require( "./Textarea");
+const Select = require( "./Select");
+const Avatar = require( "./Avatar/index");
+const AlgoliaSearch = require( "./AlgoliaSearch");
+const Badge = require( "./Badge");
+const SpinningDots = require( "./SpinningDots");
 const Feedback = require( "./Feedback");
 const DropdownMenu = require("./DropdownMenu");
 const Typography = require( "./Typography");
@@ -40,6 +40,6 @@ module.exports = {
     ...DropdownMenu,
     Typography,
     ...Typography,
-    Tabs,
+    // We cannot export Tabs because it has an internal component that is also named Tabs
     ...Tabs,
 }
