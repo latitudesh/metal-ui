@@ -4,7 +4,7 @@
   "description": "Metal UI Design System",
   "main": "dist/index.js",
   "files": [
-    "./dist/**",
+    "./dist/**/*.js",
     "CHANGELOG.md",
     "tailwind-preset.js",
     "package.json",
