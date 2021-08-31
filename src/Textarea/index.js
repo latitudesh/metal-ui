@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import tw from "twin.macro";
 

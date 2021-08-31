@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { PureComponent } from "react";
+import { PureComponent } from "react";
 import PropTypes from "prop-types";
 
 class Heading extends PureComponent {

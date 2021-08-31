@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import algoliasearch from "algoliasearch/lite";
+import algoliasearch from "algoliasearch/dist/algoliasearch-lite.esm.browser";
 import { InstantSearch, Index, Configure } from "react-instantsearch-dom";
 
 import {

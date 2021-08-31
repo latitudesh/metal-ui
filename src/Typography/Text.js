@@ -1,11 +1,11 @@
 import classNames from "classnames";
-import React, { PureComponent } from "react";
+import { PureComponent } from "react";
 import PropTypes from "prop-types";
 
 class Text extends PureComponent {
   static propTypes = {
     bold: PropTypes.bool,
-    
+
     color: PropTypes.string,
 
     is: PropTypes.oneOf(["span", "p", "li"]).isRequired,
