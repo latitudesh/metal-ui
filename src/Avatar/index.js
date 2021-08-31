@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import { PureComponent } from "react";
 import PropTypes from "prop-types";
 import globalGetInitials from "./utils/getInitials";
 import globalHash from "./utils/hash";

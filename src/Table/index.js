@@ -26,7 +26,7 @@ Table.Body = ({ children, ...props }) => (
 
 Table.HeaderCell = ({ children, ...props }) => (
   <th
-    tw="px-6 py-2 bg-white text-left text-xs leading-5 font-medium text-foreground uppercase tracking-wider"
+    tw="px-6 py-2 bg-white text-left text-xs leading-5 font-medium text-accent-five uppercase tracking-wider"
     {...props}
   >
     {children}

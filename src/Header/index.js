@@ -8,18 +8,13 @@ import tw, { theme, css, styled } from "twin.macro";
 const Nav = styled.div(() => [
   css`
     [role="tablist"] {
-      ${tw`px-10`}
+      ${tw`mx-10`}
     }
   `,
 ]);
 
 const Header = ({ title, actions, nav }) => (
-  <div
-    tw="relative w-full bg-white"
-    css={
-      !nav && css({ boxShadow: `0 -1px 0 ${theme`colors.accent.three`} inset` })
-    }
-  >
+  <div tw="relative w-full bg-white">
     <div
       tw="flex flex-row items-center justify-between px-10"
       css={[nav ? tw`pt-4 pb-1` : tw`py-4`]}

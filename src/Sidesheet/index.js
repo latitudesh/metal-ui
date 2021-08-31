@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, cloneElement } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";

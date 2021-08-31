@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import algoliasearch from "algoliasearch/lite";
+import algoliasearch from "algoliasearch/dist/algoliasearch-lite.esm.browser";
 import { InstantSearch, Index, Configure } from "react-instantsearch-dom";
 
 import {
@@ -52,7 +52,7 @@ const SearchComponent = (props) => {
 
   const algoliaClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_SEARCH_KEY);
 
-  const isSelectable = Boolean(onSelect)
+  const isSelectable = Boolean(onSelect);
 
   const searchClient = {
     search(requests) {
@@ -67,7 +67,7 @@ const SearchComponent = (props) => {
   const [filterState, setFilterState] = useState("");
   const [conditionalOperands, setConditionalOperands] = useState(null);
   const [isSearchEmpty, setIsSearchEmpty] = useState(false);
-  const [selectedItem, setSelectedItem] = useState()
+  const [selectedItem, setSelectedItem] = useState();
 
   const handleClickOutside = (e) => {
     if (searchComponentRef.current.contains(e.target)) {
@@ -213,8 +213,8 @@ const SearchComponent = (props) => {
 
       case 13:
         handleKeyNavigation(navigationKeyTypes.ENTER);
-        e.stopPropagation()
-        e.preventDefault()
+        e.stopPropagation();
+        e.preventDefault();
         break;
 
       default:
@@ -225,10 +225,10 @@ const SearchComponent = (props) => {
 
   const handleOnSelect = (hit) => {
     if (isSelectable) {
-      setSelectedItem(hit)
-      onSelect(hit)
+      setSelectedItem(hit);
+      onSelect(hit);
     }
-  }
+  };
 
   const LoaderToRender = customLoader ? customLoader : <Loader />;
   const NoResultsToRender = customNoResults ? customNoResults : <NoResults />;
@@ -243,21 +243,24 @@ const SearchComponent = (props) => {
         <div onKeyDown={handleOnKeyDown} role="listbox" className="relative">
           <SearchBox
             id={ALGOLIA_APP_ID}
-            selectedText={selectedItem ? formatSelected(selectedItem) : ''}
+            selectedText={selectedItem ? formatSelected(selectedItem) : ""}
             inputProps={inputProps}
             placeholder={placeholder}
             onSelect={handleOnSelect}
           />
 
           <div
-            className="shadow-xl rounded absolute w-full bg-white border border-border"
+            className="shadow-xl rounded absolute w-full bg-white border border-border mt-2"
             style={{
               visibility: `${isResultsWindowOpen ? "visible" : "hidden"}`,
             }}
           >
             <div
               className="overflow-y-auto pl-2 pr-2"
-              style={{ maxHeight: `${scrollableWindowHeight}px` }}
+              style={{
+                minHeight: "150px",
+                maxHeight: `${scrollableWindowHeight}px`,
+              }}
               ref={scrollWindowRef}
             >
               {indices.map((algoliaIndice, sectionIndex) => {
