@@ -1,3 +1,10 @@
+## [3.5.1](https://github.com/Maxihost/metal-ui/compare/v3.5.0...v3.5.1) (2021-08-31)
+
+
+### Bug Fixes
+
+* Include all built files ([3699d5e](https://github.com/Maxihost/metal-ui/commit/3699d5ea431700d23dac1e72f3ddfa229a237b66))
+
 # [3.5.0](https://github.com/Maxihost/metal-ui/compare/v3.4.1...v3.5.0) (2021-08-31)
 
 
