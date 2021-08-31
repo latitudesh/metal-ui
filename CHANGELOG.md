@@ -1,3 +1,32 @@
+# [3.5.0](https://github.com/Maxihost/metal-ui/compare/v3.4.1...v3.5.0) (2021-08-31)
+
+
+### Bug Fixes
+
+* Adds margin to tabs ([bc0168d](https://github.com/Maxihost/metal-ui/commit/bc0168d05782ff4b2a5b560bb07cff8e77707268))
+* Dont export tabs ([f554646](https://github.com/Maxihost/metal-ui/commit/f554646206ae85917581d5f465cc2713f8f1ae53))
+* Nested components ([9278349](https://github.com/Maxihost/metal-ui/commit/9278349f8cc9ce153038b348c626c6821051dd69))
+* Removes bottom padding from search results which caused the search input to be incorrectly placed. ([e5d4530](https://github.com/Maxihost/metal-ui/commit/e5d45301ddf48a5e7de46612aa0e855a7f98db2f))
+* Removes fixed width on Feedback button ([dc30530](https://github.com/Maxihost/metal-ui/commit/dc305300e0a779dd706a57296b6b0be614595eb5))
+* Removes unused import ([256af2b](https://github.com/Maxihost/metal-ui/commit/256af2b516155a7e602be95fd69b1c8000d9871a))
+* Removes width from Feedback butto ([a49bf26](https://github.com/Maxihost/metal-ui/commit/a49bf262eba14a246a21d002b02e880d3e181015))
+* Rollup build ([eb8a7c5](https://github.com/Maxihost/metal-ui/commit/eb8a7c52c47a89895300861a195b067a1280890e))
+* Tests ([b485b2c](https://github.com/Maxihost/metal-ui/commit/b485b2cc10e6bd70c898ce731c8ba29d3748c6a1))
+* Undo rename ([edf2930](https://github.com/Maxihost/metal-ui/commit/edf2930599a3f219b2b5450bf0d2cb901beafce5))
+* Use browser algolia build ([a714203](https://github.com/Maxihost/metal-ui/commit/a7142033edb7ea0142dafba963cb32810d45e4ef))
+
+
+### Features
+
+* Add peer dependencies ([c3daa81](https://github.com/Maxihost/metal-ui/commit/c3daa816f012e9cac6e4bd28a5fa5af99085208e))
+* Add proptypes and remove unused imports ([1da0e44](https://github.com/Maxihost/metal-ui/commit/1da0e4420e69f59b0ffa9da80f1b40e3a6b190e5))
+* Export internal components for backward compatibility ([a08c0aa](https://github.com/Maxihost/metal-ui/commit/a08c0aa3908d2b71c8af4220c8eb1f75e9e2c853))
+* Remove unused imports ([bc65c7e](https://github.com/Maxihost/metal-ui/commit/bc65c7edb8fb76d4affd187cb6672ba5ff7d5f28))
+* Rename files and add dist files ([b6b80e9](https://github.com/Maxihost/metal-ui/commit/b6b80e94d29827ebefc437e8eb910940c2c4d7b1))
+* Tree shaking initial commit ([a644e9e](https://github.com/Maxihost/metal-ui/commit/a644e9e192ec761ed58eed2926b6b8ed0793587d))
+* Uglify builds ([459a76c](https://github.com/Maxihost/metal-ui/commit/459a76cf52312e8b6da0fe39a9110ab42c38d54e))
+* Update storybook ([2e7716a](https://github.com/Maxihost/metal-ui/commit/2e7716a32edf3d04e92b2c07f8dfac7237eda310))
+
 ## [3.4.1](https://github.com/Maxihost/metal-ui/compare/v3.4.0...v3.4.1) (2021-08-20)
 
 
