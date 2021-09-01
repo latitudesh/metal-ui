@@ -1,3 +1,23 @@
+# [3.6.0](https://github.com/Maxihost/metal-ui/compare/v3.5.1...v3.6.0) (2021-09-01)
+
+
+### Bug Fixes
+
+* Add next branch ([7a7beb5](https://github.com/Maxihost/metal-ui/commit/7a7beb51f50e43635f9f2fa2ae481e3ad8ef6316))
+* Include all built files 2 ([d3e41eb](https://github.com/Maxihost/metal-ui/commit/d3e41eb77e784bebdf91e67418de24544a51a095))
+
+
+### Features
+
+* Add support for releasing next ([f2c010f](https://github.com/Maxihost/metal-ui/commit/f2c010f5095429b2061f9e1eb125771aea88f177))
+
+## [3.5.1](https://github.com/Maxihost/metal-ui/compare/v3.5.0...v3.5.1) (2021-08-31)
+
+
+### Bug Fixes
+
+* Include all built files ([3699d5e](https://github.com/Maxihost/metal-ui/commit/3699d5ea431700d23dac1e72f3ddfa229a237b66))
+
 # [3.5.0](https://github.com/Maxihost/metal-ui/compare/v3.4.1...v3.5.0) (2021-08-31)
 
 
