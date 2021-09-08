@@ -4,7 +4,7 @@ import { jsx } from "@emotion/react";
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
-import Text from "../Typography/Text";
+import Text from "../Text";
 import tw from "twin.macro";
 
 function XIcon() {
