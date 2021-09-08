@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import Text from "./Text";
+import Text from "../Text";
 
 export default class ListItem extends PureComponent {
   static propTypes = {
