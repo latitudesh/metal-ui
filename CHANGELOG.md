@@ -1,3 +1,10 @@
+## [3.8.1](https://github.com/Maxihost/metal-ui/compare/v3.8.0...v3.8.1) (2021-09-15)
+
+
+### Bug Fixes
+
+* Dist file ([ae39ceb](https://github.com/Maxihost/metal-ui/commit/ae39ceb5bcd9bde2122a9a9479894839cad766aa))
+
 # [3.8.0](https://github.com/Maxihost/metal-ui/compare/v3.7.0...v3.8.0) (2021-09-15)
 
 
