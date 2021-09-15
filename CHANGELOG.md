@@ -1,3 +1,10 @@
+# [3.8.0](https://github.com/Maxihost/metal-ui/compare/v3.7.0...v3.8.0) (2021-09-15)
+
+
+### Features
+
+* Build typography components independently ([b5b4ad1](https://github.com/Maxihost/metal-ui/commit/b5b4ad10f7356ee0e0c3a07d747751fd82a9ceb4))
+
 # [3.7.0](https://github.com/Maxihost/metal-ui/compare/v3.6.1...v3.7.0) (2021-09-15)
 
 
