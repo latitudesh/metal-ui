@@ -1,3 +1,11 @@
+# [3.7.0](https://github.com/Maxihost/metal-ui/compare/v3.6.1...v3.7.0) (2021-09-15)
+
+
+### Features
+
+* Refactor typography ([313ff32](https://github.com/Maxihost/metal-ui/commit/313ff3294fbbf0ae06438e7fb5ca8584707e7b1a))
+* Update build ([4567b97](https://github.com/Maxihost/metal-ui/commit/4567b97bbcd99513e09549b7cd16b30e448d644c))
+
 ## [3.6.1](https://github.com/Maxihost/metal-ui/compare/v3.6.0...v3.6.1) (2021-09-01)
 
 
