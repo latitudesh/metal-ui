@@ -42,6 +42,7 @@ const Box = ({
 
         "flex-wrap": flexWrap === 'wrap',
         "flex-wrap-reverse": flexWrap === 'wrap-reverse',
+        "flex-nowrap": flexWrap === 'nowrap',
 
       })}
     >
