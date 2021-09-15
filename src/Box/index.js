@@ -5,7 +5,6 @@ const Box = ({
   flex,
   alignItems,
   justifyContent,
-  backgroundColor,
   flexDirection,
   flexWrap,
   children,
@@ -18,7 +17,7 @@ const Box = ({
   }
   return (
     <div
-      className={classNames("overflow-hidden", className, {
+      className={classNames("overflow-hidden bg-white", className, {
         flex: Boolean(flex),
         "items-start": alignItems === 'start',
         "items-end": alignItems === 'end',
@@ -32,8 +31,6 @@ const Box = ({
         "justify-between": justifyContent === 'between',
         "justify-around": justifyContent === 'around',
         "justify-evenly": justifyContent === 'evenly',
-
-        [`bg-${backgroundColor}`]: Boolean(backgroundColor),
 
         "flex-row": flexDirection === 'row',
         "flex-row-reverse": flexDirection === 'row-reverse',
@@ -57,7 +54,6 @@ Box.defaultProps = {
   flex: false,
   alignItems: null,
   justifyContent: null,
-  backgroundColor: "white",
   flexDirection: null,
   rootCard: false,
   noPadding: false,
@@ -65,10 +61,6 @@ Box.defaultProps = {
 };
 
 Box.propTypes = {
-  /**
-   * Sets the background color
-   */
-  backgroundColor: PropTypes.string,
   /**
    * When true, renders the Box with `display:flex`
    */
