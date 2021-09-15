@@ -13,17 +13,39 @@ const Box = ({
   rootCard,
   noPadding,
 }) => {
+  if (alignItems === '') {
+
+  }
   return (
     <div
       className={classNames("overflow-hidden", className, {
         flex: Boolean(flex),
-        [`items-${alignItems}`]: Boolean(alignItems),
-        [`justify-${justifyContent}`]: Boolean(justifyContent),
+        "items-start": alignItems === 'start',
+        "items-end": alignItems === 'end',
+        "items-center": alignItems === 'center',
+        "items-baseline": alignItems === 'baseline',
+        "items-stretch": alignItems === 'stretch',
+
+        "justify-start": justifyContent === 'start',
+        "justify-end": justifyContent === 'end',
+        "justify-center": justifyContent === 'center',
+        "justify-between": justifyContent === 'between',
+        "justify-around": justifyContent === 'around',
+        "justify-evenly": justifyContent === 'evenly',
+
         [`bg-${backgroundColor}`]: Boolean(backgroundColor),
-        [`flex-${flexDirection}`]: Boolean(flexDirection),
+
+        "flex-row": flexDirection === 'row',
+        "flex-row-reverse": flexDirection === 'row-reverse',
+        "flex-col": flexDirection === 'col',
+        "flex-col-reverse": flexDirection === 'col-reverse',
+
         [`mb-4 border border-border rounded shadow-sm`]: Boolean(rootCard),
         [`px-6 py-4`]: !Boolean(noPadding),
-        [`flex-${flexWrap}`]: Boolean(flexWrap),
+
+        "flex-wrap": flexWrap === 'wrap',
+        "flex-wrap-reverse": flexWrap === 'wrap-reverse',
+
       })}
     >
       {children}
