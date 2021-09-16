@@ -1,3 +1,10 @@
+## [3.6.1](https://github.com/Maxihost/metal-ui/compare/v3.6.0...v3.6.1) (2021-09-01)
+
+
+### Bug Fixes
+
+* Dist directory ([c1d59da](https://github.com/Maxihost/metal-ui/commit/c1d59da004406aa74fad5194dd28400e19b77b4a))
+
 # [3.6.0](https://github.com/Maxihost/metal-ui/compare/v3.5.1...v3.6.0) (2021-09-01)
 
 

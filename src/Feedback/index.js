@@ -9,7 +9,7 @@ import tw from "twin.macro";
 import Button from "../Button";
 import Input from "../Input";
 import Textarea from "../Textarea";
-import Text from "../Typography/Text";
+import Text from "../Text";
 
 import f929 from "./svgs/f929.js";
 import f600 from "./svgs/f600.js";
