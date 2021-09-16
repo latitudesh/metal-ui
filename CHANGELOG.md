@@ -1,3 +1,18 @@
+# [3.9.0](https://github.com/Maxihost/metal-ui/compare/v3.8.1...v3.9.0) (2021-09-16)
+
+
+### Bug Fixes
+
+* Flex wrap ([6a4cba2](https://github.com/Maxihost/metal-ui/commit/6a4cba204b1ebe1cfbf1311dfefe5e1ffce76100))
+* Sidesheet ([b22a4ee](https://github.com/Maxihost/metal-ui/commit/b22a4eebe3daef5718ffcddbb87b9db755e07073))
+* Stop using string concatenation ([c98c0c6](https://github.com/Maxihost/metal-ui/commit/c98c0c625b965d2128fee26e555e3d4b5becf204))
+
+
+### Features
+
+* Remove support for background color ([1303056](https://github.com/Maxihost/metal-ui/commit/1303056636bd3d26cc1982ffa0649053fa42af5a))
+* Update build ([0f8aeb4](https://github.com/Maxihost/metal-ui/commit/0f8aeb47efcf392b595c8bb5b79f26ec017a2d18))
+
 ## [3.8.1](https://github.com/Maxihost/metal-ui/compare/v3.8.0...v3.8.1) (2021-09-15)
 
 
