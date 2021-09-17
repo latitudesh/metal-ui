@@ -110,7 +110,7 @@ Table.Row.propTypes = {
 };
 
 Table.Cell.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   className: PropTypes.string,
 };
 
