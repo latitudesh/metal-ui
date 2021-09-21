@@ -61,8 +61,8 @@ const Button = React.forwardRef(
           variant == "brand-s" &&
             !disabled &&
             tw`border-brand-gray text-white hover:text-white bg-transparent hover:opacity-80 active:text-white`,
-          size == "small" && tw`px-4 h-8 leading-8 text-sm`,
-          size == "normal" && tw`px-6 h-9 leading-9 text-sm`,
+          size == "small" && tw`py-2 px-2 h-7 leading-5 text-sm`,
+          size == "normal" && tw`py-2 px-6 h-9 leading-6 text-sm`,
           size == "large" && tw`py-2 px-4 h-11 leading-7 text-base`,
           block && tw`w-full`,
         ]}
