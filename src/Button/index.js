@@ -58,7 +58,7 @@ const Button = React.forwardRef(
           variant == "minimal" &&
             !disabled &&
             tw`border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five`,
-          variant == "brand-s" &&
+          variant == "inverted" &&
             !disabled &&
             tw`border-brand-gray text-white hover:text-white bg-transparent hover:opacity-80 active:text-white`,
           size == "small" && tw`py-2 px-2 h-7 leading-5 text-sm`,
@@ -91,7 +91,7 @@ Button.propTypes = {
     "danger",
     "disabled",
     "minimal",
-    "brand-s",
+    "inverted",
   ]),
   size: PropTypes.oneOf(["small", "normal", "large"]),
   isLoading: PropTypes.bool,
