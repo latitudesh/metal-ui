@@ -34,13 +34,13 @@ The `inverted` button is meant to be used against dark backgrounds.
   <Story name="Size">
     <div>
       <Box flex justifyContent="evenly">
-        <Button label="Primary" size="small" />
+        <Button label="Small" size="small" />
         <Button label="Default" />
-        <Button label="Primary" size="large" />
+        <Button label="Large" size="large" />
       </Box>
       <Button label="Block small" size="small" block />
       <div className="mt-2">
-        <Button label="Block normal" block />
+        <Button label="Block default" block />
       </div>
       <div className="mt-2">
         <Button label="Block large" size="large" block />
@@ -56,18 +56,18 @@ Disabled buttons do not inherit `variant` styling.
 <Preview>
   <Story name="Disabled">
     <Box flex justifyContent="around">
-      <Button label="Disabled" disabled />
+      <Button size="small" label="Disabled small" disabled />
       <Button
-        label="Disabled"
+        label="Disabled default"
         disabled
-        iconBefore={<ArrowUpOutline size={20} />}
+        iconBefore={<ArrowUpOutline size={16} />}
       />
       <Button
-        label="Disabled"
+        label="Disabled large"
         disabled
         size="large"
-        iconBefore={<ArrowUpOutline size={20} />}
-        iconAfter={<ArrowUpOutline size={20} />}
+        iconBefore={<ArrowUpOutline size={16} />}
+        iconAfter={<ArrowUpOutline size={16} />}
       />
     </Box>
   </Story>
@@ -82,28 +82,25 @@ Disabled buttons do not inherit `variant` styling.
       <Button label="Loading" variant="secondary" isLoading={true} />
       <Button label="Loading" variant="danger" isLoading={true} />
     </Box>
-    <Box flex justifyContent="around">
-      <Button label="Loading" block isLoading={true} />
-    </Box>
   </Story>
 </Preview>
 
 # With Icon
 
-The component does not handle icon sizing. You should manage that from your project. `20px` is usually the recommended size.
+The component does not handle icon sizing. You should manage that from your project. `16px` is usually the recommended size.
 
 <Preview>
   <Story name="With Icon">
     <Box flex justifyContent="around">
-      <Button iconBefore={<ArrowUpOutline size={20} />} label="Icon before" />
+      <Button iconBefore={<ArrowUpOutline size={16} />} label="Icon before" />
       <Button
-        iconAfter={<ArrowUpOutline size={20} />}
+        iconAfter={<ArrowUpOutline size={16} />}
         variant="secondary"
         label="Icon after"
       />
       <Button
-        iconBefore={<ArrowUpOutline size={20} />}
-        iconAfter={<ArrowUpOutline size={20} />}
+        iconBefore={<ArrowUpOutline size={16} />}
+        iconAfter={<ArrowUpOutline size={16} />}
         variant="secondary"
         label="Icon before and after"
       />

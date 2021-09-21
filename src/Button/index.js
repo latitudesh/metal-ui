@@ -61,9 +61,9 @@ const Button = React.forwardRef(
           variant == "inverted" &&
             !disabled &&
             tw`border-brand-gray text-white hover:text-white bg-transparent hover:opacity-80 active:text-white`,
-          size == "small" && tw`py-2 px-2 h-7 leading-5 text-sm`,
+          size == "small" && tw`py-2 px-3 h-7 leading-5 text-sm`,
           size == "normal" && tw`py-2 px-6 h-9 leading-6 text-sm`,
-          size == "large" && tw`py-2 px-4 h-11 leading-7 text-base`,
+          size == "large" && tw`py-2 px-8 h-11 leading-7 text-base`,
           block && tw`w-full`,
         ]}
         {...rest}
