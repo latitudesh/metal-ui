@@ -54,7 +54,7 @@ const Button = React.forwardRef(
             tw`border-secondary hover:border-foreground text-secondary hover:text-foreground bg-white hover:bg-accent-two active:bg-foreground active:text-white`,
           variant == "danger" &&
             !disabled &&
-            tw`border-error-dark hover:border-error-dark text-white hover:text-error-dark bg-error-dark hover:bg-accent-two active:bg-foreground active:text-white`,
+            tw`border-error-dark hover:border-error text-white bg-error-dark hover:bg-error`,
           variant == "minimal" &&
             !disabled &&
             tw`border-transparent bg-transparent hover:bg-accent-three active:bg-accent-two text-foreground hover:text-accent-seven active:text-accent-five`,
