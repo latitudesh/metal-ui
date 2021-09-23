@@ -1,4 +1,3 @@
-import React from 'react'
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
@@ -6,7 +5,6 @@ const Box = React.forwardRef(({
   flex,
   alignItems,
   justifyContent,
-  backgroundColor,
   flexDirection,
   flexWrap,
   children,
@@ -17,15 +15,33 @@ const Box = React.forwardRef(({
   return (
     <div
       ref={ref}
-      className={classNames("overflow-hidden", className, {
+      className={classNames("overflow-hidden bg-white", className, {
         flex: Boolean(flex),
-        [`items-${alignItems}`]: Boolean(alignItems),
-        [`justify-${justifyContent}`]: Boolean(justifyContent),
-        [`bg-${backgroundColor}`]: Boolean(backgroundColor),
-        [`flex-${flexDirection}`]: Boolean(flexDirection),
+        "items-start": alignItems === 'start',
+        "items-end": alignItems === 'end',
+        "items-center": alignItems === 'center',
+        "items-baseline": alignItems === 'baseline',
+        "items-stretch": alignItems === 'stretch',
+
+        "justify-start": justifyContent === 'start',
+        "justify-end": justifyContent === 'end',
+        "justify-center": justifyContent === 'center',
+        "justify-between": justifyContent === 'between',
+        "justify-around": justifyContent === 'around',
+        "justify-evenly": justifyContent === 'evenly',
+
+        "flex-row": flexDirection === 'row',
+        "flex-row-reverse": flexDirection === 'row-reverse',
+        "flex-col": flexDirection === 'col',
+        "flex-col-reverse": flexDirection === 'col-reverse',
+
         [`mb-4 border border-border rounded shadow-sm`]: Boolean(rootCard),
         [`px-6 py-4`]: !Boolean(noPadding),
-        [`flex-${flexWrap}`]: Boolean(flexWrap),
+
+        "flex-wrap": flexWrap === 'wrap',
+        "flex-wrap-reverse": flexWrap === 'wrap-reverse',
+        "flex-nowrap": flexWrap === 'nowrap',
+
       })}
     >
       {children}
@@ -37,7 +53,6 @@ Box.defaultProps = {
   flex: false,
   alignItems: null,
   justifyContent: null,
-  backgroundColor: "white",
   flexDirection: null,
   rootCard: false,
   noPadding: false,
@@ -45,10 +60,6 @@ Box.defaultProps = {
 };
 
 Box.propTypes = {
-  /**
-   * Sets the background color
-   */
-  backgroundColor: PropTypes.string,
   /**
    * When true, renders the Box with `display:flex`
    */
