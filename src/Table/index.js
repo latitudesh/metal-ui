@@ -6,34 +6,34 @@ import PropTypes from "prop-types";
 import Text from "../Typography/Text";
 import tw from "twin.macro";
 
-const Table = ({ children, ...props }) => (
+const Table = React.forwardRef(({ children, ...props }) => (
   <table tw="w-full max-w-full" {...props}>
     {children}
   </table>
-);
+));
 
-Table.Head = ({ children, ...props }) => (
+Table.Head = React.forwardRef(({ children, ...props }) => (
   <thead tw="border-b border-border rounded" {...props}>
     {children}
   </thead>
-);
+));
 
-Table.Body = ({ children, ...props }) => (
+Table.Body = React.forwardRef(({ children, ...props }) => (
   <tbody tw="bg-white" {...props}>
     {children}
   </tbody>
-);
+));
 
-Table.HeaderCell = ({ children, ...props }) => (
+Table.HeaderCell = React.forwardRef(({ children, ...props }) => (
   <th
     tw="px-6 py-2 bg-white text-left text-xs leading-5 font-medium text-accent-five uppercase tracking-wider"
     {...props}
   >
     {children}
   </th>
-);
+));
 
-Table.Row = ({ children, onClick, isSelectable, ...props }) => (
+Table.Row = React.forwardRef(({ children, onClick, isSelectable, ...props }) => (
   <tr
     onClick={onClick}
     css={[
@@ -45,15 +45,15 @@ Table.Row = ({ children, onClick, isSelectable, ...props }) => (
   >
     {children}
   </tr>
-);
+));
 
-Table.Cell = ({ children, className, ...props }) => (
+Table.Cell = React.forwardRef(({ children, className, ...props }) => (
   <td tw="px-6 py-4" className={className} {...props}>
     {children}
   </td>
-);
+));
 
-Table.TextCell = ({
+Table.TextCell = React.forwardRef(({
   primary,
   primaryClassname,
   secondary,
@@ -81,7 +81,7 @@ Table.TextCell = ({
       </Text>
     )}
   </>
-);
+));
 
 Table.propTypes = {
   children: PropTypes.node.isRequired,

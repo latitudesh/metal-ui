@@ -1,9 +1,11 @@
+import React from 'react'
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const Content = ({ children, size, className, bg }) => {
+const Content = React.forwardRef(({ children, size, className, bg }, ref) => {
   const base = (
     <div
+      ref={ref}
       className={classNames(
         "flex-1 relative overflow-y-auto focus:outline-none",
         {
@@ -28,7 +30,7 @@ const Content = ({ children, size, className, bg }) => {
   );
 
   return base;
-};
+});
 
 Content.defaultProps = {
   bg: "white",
