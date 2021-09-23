@@ -51,8 +51,14 @@ const Skeleton = ({ width, height, className, vertical }) => (
 );
 
 Skeleton.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
+  width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  height: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   className: PropTypes.string,
   vertical: PropTypes.bool,
 };
