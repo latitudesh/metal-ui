@@ -1,7 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
-import classNames from "classnames";
 import PropTypes from "prop-types";
 import tw from 'twin.macro'
 
@@ -20,6 +19,7 @@ const Box = ({
   return (
     <div
       css={[
+        tw`overflow-hidden`,
         Boolean(flex) && tw`flex`,
         alignItems === 'start' && tw`items-start` ,
         alignItems === 'end' && tw`items-end` ,
@@ -46,7 +46,7 @@ const Box = ({
         flexWrap === 'wrap-reverse' && tw`flex-wrap-reverse` ,
         flexWrap === 'nowrap' && tw`flex-nowrap` ,
       ]}
-      className={classNames("overflow-hidden", className)}
+      className={className}
       {...props}
     >
       {children}
