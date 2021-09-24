@@ -24,7 +24,11 @@ const files = [
     "Tabs",
     "Textarea",
     "Toast",
-    "Typography",
+    "Typography", // This contains Text, Heading, UnorderedList and ListItem
+    "Text",
+    "Heading",
+    "UnorderedList",
+    "ListItem",
 ]
 
 const options = {

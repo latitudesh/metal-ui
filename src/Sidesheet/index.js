@@ -124,8 +124,7 @@ const Sidesheet = ({
               </div>
               <Box
                 flex
-                backgroundColor="transparent"
-                className="cursor-pointer"
+                className="cursor-pointer bg-transparent"
                 noPadding
               >
                 <div onClick={() => closeTransition()}>
