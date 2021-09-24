@@ -1,5 +1,9 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
+import tw from 'twin.macro'
 
 const Box = ({
   flex,
@@ -11,37 +15,39 @@ const Box = ({
   className,
   rootCard,
   noPadding,
+  ...props
 }) => {
   return (
     <div
-      className={classNames("overflow-hidden", className, {
-        flex: Boolean(flex),
-        "items-start": alignItems === 'start',
-        "items-end": alignItems === 'end',
-        "items-center": alignItems === 'center',
-        "items-baseline": alignItems === 'baseline',
-        "items-stretch": alignItems === 'stretch',
+      css={[
+        Boolean(flex) && tw`flex`,
+        alignItems === 'start' && tw`items-start` ,
+        alignItems === 'end' && tw`items-end` ,
+        alignItems === 'center' && tw`items-center` ,
+        alignItems === 'baseline' && tw`items-baseline` ,
+        alignItems === 'stretch' && tw`items-stretch` ,
 
-        "justify-start": justifyContent === 'start',
-        "justify-end": justifyContent === 'end',
-        "justify-center": justifyContent === 'center',
-        "justify-between": justifyContent === 'between',
-        "justify-around": justifyContent === 'around',
-        "justify-evenly": justifyContent === 'evenly',
+        justifyContent === 'start' && tw`justify-start` ,
+        justifyContent === 'end' && tw`justify-end` ,
+        justifyContent === 'center' && tw`justify-center` ,
+        justifyContent === 'between' && tw`justify-between` ,
+        justifyContent === 'around' && tw`justify-around` ,
+        justifyContent === 'evenly' && tw`justify-evenly` ,
 
-        "flex-row": flexDirection === 'row',
-        "flex-row-reverse": flexDirection === 'row-reverse',
-        "flex-col": flexDirection === 'col',
-        "flex-col-reverse": flexDirection === 'col-reverse',
+        flexDirection === 'row' && tw`flex-row` ,
+        flexDirection === 'row-reverse' && tw`flex-row-reverse` ,
+        flexDirection === 'col' && tw`flex-col` ,
+        flexDirection === 'col-reverse' && tw`flex-col-reverse` ,
 
-        [`mb-4 border border-border rounded shadow-sm`]: Boolean(rootCard),
-        [`px-6 py-4`]: !Boolean(noPadding),
+        Boolean(rootCard) && tw`mb-4 border border-border rounded shadow-sm` ,
+        !Boolean(noPadding) && tw`px-6 py-4`,
 
-        "flex-wrap": flexWrap === 'wrap',
-        "flex-wrap-reverse": flexWrap === 'wrap-reverse',
-        "flex-nowrap": flexWrap === 'nowrap',
-
-      })}
+        flexWrap === 'wrap' && tw`flex-wrap` ,
+        flexWrap === 'wrap-reverse' && tw`flex-wrap-reverse` ,
+        flexWrap === 'nowrap' && tw`flex-nowrap` ,
+      ]}
+      className={classNames("overflow-hidden", className)}
+      {...props}
     >
       {children}
     </div>
