@@ -1,5 +1,5 @@
 import React from "react";
-import Text from "../../../Typography/Text";
+import Text from "../../../Text";
 
 const NoResults = () => {
   return (
