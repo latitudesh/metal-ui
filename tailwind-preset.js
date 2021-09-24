@@ -30,7 +30,7 @@ module.exports = {
         lightGray: "#f1f5f8",
         uv: "#6359f9",
         deepPurple: "#2B223D",
-        melrose: "#8683e5"
+        melrose: "#8683e5",
       },
       accent: {
         DEFAULT: "#FAFAFA",

@@ -125,7 +125,7 @@ const Feedback = ({
 
   const combinedSubmitButtonProps = {
     label: "Send",
-    variant: "brand-p",
+    variant: "default",
     ...submitButtonProps,
   };
 
