@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
-const Box = React.forwardRef(({
+const Box = ({
   flex,
   alignItems,
   justifyContent,
@@ -11,11 +11,10 @@ const Box = React.forwardRef(({
   className,
   rootCard,
   noPadding,
-}, ref) => {
+}) => {
   return (
     <div
-      ref={ref}
-      className={classNames("overflow-hidden bg-white", className, {
+      className={classNames("overflow-hidden", className, {
         flex: Boolean(flex),
         "items-start": alignItems === 'start',
         "items-end": alignItems === 'end',
@@ -47,7 +46,7 @@ const Box = React.forwardRef(({
       {children}
     </div>
   );
-});
+};
 
 Box.defaultProps = {
   flex: false,
