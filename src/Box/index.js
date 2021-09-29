@@ -2,8 +2,8 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
 import PropTypes from "prop-types";
-import tw from 'twin.macro'
-import classNames from 'classnames'
+import tw from "twin.macro";
+import classNames from "classnames";
 
 const Box = ({
   flex,
@@ -15,42 +15,41 @@ const Box = ({
   className,
   rootCard,
   noPadding,
-  backgroundColor = 'bg-white',
+  backgroundColor,
   ...props
 }) => {
   return (
     <div
-      className={classNames({
-        className: Boolean(className),
-        backgroundColor: Boolean(backgroundColor)
-      })}
+      className={classNames(className, backgroundColor)}
       css={[
         tw`overflow-hidden`,
         Boolean(flex) && tw`flex`,
-        alignItems === 'start' && tw`items-start` ,
-        alignItems === 'end' && tw`items-end` ,
-        alignItems === 'center' && tw`items-center` ,
-        alignItems === 'baseline' && tw`items-baseline` ,
-        alignItems === 'stretch' && tw`items-stretch` ,
+        !Boolean(backgroundColor) && tw`bg-white`,
 
-        justifyContent === 'start' && tw`justify-start` ,
-        justifyContent === 'end' && tw`justify-end` ,
-        justifyContent === 'center' && tw`justify-center` ,
-        justifyContent === 'between' && tw`justify-between` ,
-        justifyContent === 'around' && tw`justify-around` ,
-        justifyContent === 'evenly' && tw`justify-evenly` ,
+        alignItems === "start" && tw`items-start`,
+        alignItems === "end" && tw`items-end`,
+        alignItems === "center" && tw`items-center`,
+        alignItems === "baseline" && tw`items-baseline`,
+        alignItems === "stretch" && tw`items-stretch`,
 
-        flexDirection === 'row' && tw`flex-row` ,
-        flexDirection === 'row-reverse' && tw`flex-row-reverse` ,
-        flexDirection === 'col' && tw`flex-col` ,
-        flexDirection === 'col-reverse' && tw`flex-col-reverse` ,
+        justifyContent === "start" && tw`justify-start`,
+        justifyContent === "end" && tw`justify-end`,
+        justifyContent === "center" && tw`justify-center`,
+        justifyContent === "between" && tw`justify-between`,
+        justifyContent === "around" && tw`justify-around`,
+        justifyContent === "evenly" && tw`justify-evenly`,
 
-        Boolean(rootCard) && tw`mb-4 border border-border rounded shadow-sm` ,
+        flexDirection === "row" && tw`flex-row`,
+        flexDirection === "row-reverse" && tw`flex-row-reverse`,
+        flexDirection === "col" && tw`flex-col`,
+        flexDirection === "col-reverse" && tw`flex-col-reverse`,
+
+        Boolean(rootCard) && tw`mb-4 border border-border rounded shadow-sm`,
         !Boolean(noPadding) && tw`px-6 py-4`,
 
-        flexWrap === 'wrap' && tw`flex-wrap` ,
-        flexWrap === 'wrap-reverse' && tw`flex-wrap-reverse` ,
-        flexWrap === 'nowrap' && tw`flex-nowrap` ,
+        flexWrap === "wrap" && tw`flex-wrap`,
+        flexWrap === "wrap-reverse" && tw`flex-wrap-reverse`,
+        flexWrap === "nowrap" && tw`flex-nowrap`,
       ]}
       {...props}
     >
