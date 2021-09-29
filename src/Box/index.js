@@ -3,6 +3,7 @@
 import { jsx } from "@emotion/react";
 import PropTypes from "prop-types";
 import tw from 'twin.macro'
+import classNames from 'classnames'
 
 const Box = ({
   flex,
@@ -14,10 +15,15 @@ const Box = ({
   className,
   rootCard,
   noPadding,
+  backgroundColor = 'bg-white',
   ...props
 }) => {
   return (
     <div
+      className={classNames({
+        className: Boolean(className),
+        backgroundColor: Boolean(backgroundColor)
+      })}
       css={[
         tw`overflow-hidden`,
         Boolean(flex) && tw`flex`,
@@ -46,7 +52,6 @@ const Box = ({
         flexWrap === 'wrap-reverse' && tw`flex-wrap-reverse` ,
         flexWrap === 'nowrap' && tw`flex-nowrap` ,
       ]}
-      className={className}
       {...props}
     >
       {children}
@@ -111,6 +116,10 @@ Box.propTypes = {
    */
   noPadding: PropTypes.bool,
   className: PropTypes.string,
+  /**
+   * Sets a background color. Should be a tailwind class.
+   */
+  backgroundColor: PropTypes.string,
 };
 
 export default Box;
