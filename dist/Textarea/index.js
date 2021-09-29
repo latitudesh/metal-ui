@@ -96,7 +96,7 @@ const Textarea = /*#__PURE__*/React__default['default'].forwardRef(({
       "--tw-border-opacity": "1",
       "borderColor": "rgba(234, 234, 234, var(--tw-border-opacity))",
       "--tw-bg-opacity": "1",
-      "backgroundColor": "rgba(244, 245, 247, var(--tw-bg-opacity))",
+      "backgroundColor": "rgba(250, 251, 255, var(--tw-bg-opacity))",
       "cursor": "not-allowed",
       "::placeholder": {
         "--tw-placeholder-opacity": "1",

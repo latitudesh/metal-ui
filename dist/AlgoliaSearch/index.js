@@ -8301,7 +8301,7 @@ const Input = /*#__PURE__*/React__default['default'].forwardRef(({
       "--tw-text-opacity": "1",
       "color": "rgba(102, 102, 102, var(--tw-text-opacity))",
       "--tw-bg-opacity": "1",
-      "backgroundColor": "rgba(244, 245, 247, var(--tw-bg-opacity))",
+      "backgroundColor": "rgba(250, 251, 255, var(--tw-bg-opacity))",
       "cursor": "not-allowed",
       "::placeholder": {
         "--tw-placeholder-opacity": "1",
