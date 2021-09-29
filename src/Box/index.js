@@ -1,53 +1,58 @@
+import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
-const Box = React.forwardRef(({
-  flex,
-  alignItems,
-  justifyContent,
-  flexDirection,
-  flexWrap,
-  children,
-  className,
-  rootCard,
-  noPadding,
-}, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={classNames("overflow-hidden bg-white", className, {
-        flex: Boolean(flex),
-        "items-start": alignItems === 'start',
-        "items-end": alignItems === 'end',
-        "items-center": alignItems === 'center',
-        "items-baseline": alignItems === 'baseline',
-        "items-stretch": alignItems === 'stretch',
+const Box = React.forwardRef(
+  (
+    {
+      flex,
+      alignItems,
+      justifyContent,
+      flexDirection,
+      flexWrap,
+      children,
+      className,
+      rootCard,
+      noPadding,
+    },
+    ref
+  ) => {
+    return (
+      <div
+        ref={ref}
+        className={classNames("overflow-hidden bg-white", className, {
+          flex: Boolean(flex),
+          "items-start": alignItems === "start",
+          "items-end": alignItems === "end",
+          "items-center": alignItems === "center",
+          "items-baseline": alignItems === "baseline",
+          "items-stretch": alignItems === "stretch",
 
-        "justify-start": justifyContent === 'start',
-        "justify-end": justifyContent === 'end',
-        "justify-center": justifyContent === 'center',
-        "justify-between": justifyContent === 'between',
-        "justify-around": justifyContent === 'around',
-        "justify-evenly": justifyContent === 'evenly',
+          "justify-start": justifyContent === "start",
+          "justify-end": justifyContent === "end",
+          "justify-center": justifyContent === "center",
+          "justify-between": justifyContent === "between",
+          "justify-around": justifyContent === "around",
+          "justify-evenly": justifyContent === "evenly",
 
-        "flex-row": flexDirection === 'row',
-        "flex-row-reverse": flexDirection === 'row-reverse',
-        "flex-col": flexDirection === 'col',
-        "flex-col-reverse": flexDirection === 'col-reverse',
+          "flex-row": flexDirection === "row",
+          "flex-row-reverse": flexDirection === "row-reverse",
+          "flex-col": flexDirection === "col",
+          "flex-col-reverse": flexDirection === "col-reverse",
 
-        [`mb-4 border border-border rounded shadow-sm`]: Boolean(rootCard),
-        [`px-6 py-4`]: !Boolean(noPadding),
+          [`mb-4 border border-border rounded shadow-sm`]: Boolean(rootCard),
+          [`px-6 py-4`]: !Boolean(noPadding),
 
-        "flex-wrap": flexWrap === 'wrap',
-        "flex-wrap-reverse": flexWrap === 'wrap-reverse',
-        "flex-nowrap": flexWrap === 'nowrap',
-
-      })}
-    >
-      {children}
-    </div>
-  );
-});
+          "flex-wrap": flexWrap === "wrap",
+          "flex-wrap-reverse": flexWrap === "wrap-reverse",
+          "flex-nowrap": flexWrap === "nowrap",
+        })}
+      >
+        {children}
+      </div>
+    );
+  }
+);
 
 Box.defaultProps = {
   flex: false,
