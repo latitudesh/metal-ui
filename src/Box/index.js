@@ -11,10 +11,11 @@ const Box = ({
   className,
   rootCard,
   noPadding,
+  backgroundColor = 'bg-white',
 }) => {
   return (
     <div
-      className={classNames("overflow-hidden", className, {
+      className={classNames("overflow-hidden", className, backgroundColor, {
         flex: Boolean(flex),
         "items-start": alignItems === 'start',
         "items-end": alignItems === 'end',
@@ -105,6 +106,10 @@ Box.propTypes = {
    */
   noPadding: PropTypes.bool,
   className: PropTypes.string,
+  /**
+   * Sets a background color. Should be a tailwind class.
+   */
+  backgroundColor: PropTypes.string,
 };
 
 export default Box;
