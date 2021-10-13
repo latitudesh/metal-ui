@@ -76,7 +76,7 @@ const Input = React.forwardRef(
                 variant === "brand-dark" && [
                   brandDarkStyles,
                   `background-image: url(https://maxihost-assets.s3-sa-east-1.amazonaws.com/metal-ui/error-icon.svg);background-repeat: no-repeat;background-position-x: calc(100% - 16px);
-                background-position-y: 9px;`,
+                background-position-y: 50%;`,
                 ],
             ]}
             {...rest}
