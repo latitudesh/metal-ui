@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
-const Badge = ({ style, children, minimal, className, rounded }) => {
+const Badge = ({ style, children, minimal, className, rounded, ...rest }) => {
   let badgeStyle = [
     {
       "text-foreground": style === "default",
@@ -24,12 +24,13 @@ const Badge = ({ style, children, minimal, className, rounded }) => {
   return (
     <div
       className={classNames(
-        "inline-flex items-center px-2.5 rounded text-sm font-medium h-6 leading-6",
+        "inline-flex items-center px-2.5 rounded text-sm font-medium leading-6",
         !rounded && badgeStyle,
         !rounded && "border border-border",
         rounded && isRounded,
         className
       )}
+      {...rest}
     >
       {!minimal && !rounded && (
         <svg
