@@ -1,3 +1,10 @@
+## [3.6.2](https://github.com/Maxihost/metal-ui/compare/v3.6.1...v3.6.2) (2021-11-10)
+
+
+### Bug Fixes
+
+* Badges shouldnt set a height ([4ebb9d0](https://github.com/Maxihost/metal-ui/commit/4ebb9d0436e1eead8fc8c2df5b90852a312241f5))
+
 ## [3.6.1](https://github.com/Maxihost/metal-ui/compare/v3.6.0...v3.6.1) (2021-09-01)
 
 
