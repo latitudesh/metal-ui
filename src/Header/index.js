@@ -2,8 +2,9 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
 import PropTypes from "prop-types";
-import Heading from "../Typography/Heading";
+import Heading from "../Heading";
 import tw, { theme, css, styled } from "twin.macro";
+import classNames from "classnames";
 
 const Nav = styled.div(() => [
   css`
@@ -13,8 +14,12 @@ const Nav = styled.div(() => [
   `,
 ]);
 
-const Header = ({ title, actions, nav }) => (
-  <div tw="relative w-full bg-white">
+const Header = ({ title, actions, nav, className, backgroundColor }) => (
+  <div
+    tw="relative w-full"
+    className={classNames(className, backgroundColor)}
+    css={[!Boolean(backgroundColor) && tw`bg-white`]}
+  >
     <div
       tw="flex flex-row items-center justify-between px-10"
       css={[nav ? tw`pt-4 pb-1` : tw`py-4`]}
@@ -41,10 +46,11 @@ Header.defaultProps = {
 };
 
 Header.propTypes = {
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  title: PropTypes.node,
   actions: PropTypes.node,
   nav: PropTypes.node,
   filters: PropTypes.node,
+  backgroundColor: PropTypes.string,
 };
 
 export default Header;

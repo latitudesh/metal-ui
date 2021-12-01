@@ -1,16 +1,13 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 var classNames = require('classnames');
-var React = require('react');
+var react = require('react');
 var PropTypes = require('prop-types');
-var react = require('@emotion/react');
+var react$1 = require('@emotion/react');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var classNames__default = /*#__PURE__*/_interopDefaultLegacy(classNames);
-var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
 
 function _defineProperty(obj, key, value) {
@@ -46,43 +43,7 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-class Text extends React.PureComponent {
-  render() {
-    const {
-      className,
-      bold,
-      color,
-      small,
-      is,
-      ...props
-    } = this.props;
-    const Tag = is;
-    return react.jsx(Tag, _extends({
-      className: classNames__default['default'](className, color, {
-        "font-semibold": Boolean(bold),
-        "font-normal": !Boolean(bold),
-        "text-base": !Boolean(small),
-        "text-sm": Boolean(small)
-      })
-    }, props));
-  }
-
-}
-
-_defineProperty(Text, "propTypes", {
-  bold: PropTypes__default['default'].bool,
-  color: PropTypes__default['default'].string,
-  is: PropTypes__default['default'].oneOf(["span", "p", "li"]).isRequired,
-  className: PropTypes__default['default'].string
-});
-
-_defineProperty(Text, "defaultProps", {
-  className: null,
-  color: "text-foreground",
-  is: "span"
-});
-
-class Heading extends React.PureComponent {
+class Heading extends react.PureComponent {
   render() {
     const {
       className,
@@ -91,7 +52,7 @@ class Heading extends React.PureComponent {
       ...props
     } = this.props;
     const HTag = `h${this.props.size}`;
-    return react.jsx(HTag, _extends({
+    return react$1.jsx(HTag, _extends({
       className: classNames__default['default']("", className, {
         "text-4xl font-bold tracking-tighter": size == 1,
         "text-3xl font-semibold tracking-tighter": size == 2,
@@ -126,44 +87,4 @@ _defineProperty(Heading, "defaultProps", {
   className: ""
 });
 
-class UnorderedList extends React.PureComponent {
-  render() {
-    const {
-      children,
-      ...props
-    } = this.props;
-    const finalChildren = React__default['default'].Children.map(children, child => {
-      if (! /*#__PURE__*/React__default['default'].isValidElement(child)) {
-        return child;
-      }
-
-      return /*#__PURE__*/React__default['default'].cloneElement(child, { ...child.props
-      });
-    });
-    return react.jsx("ul", _extends({
-      className: classNames__default['default']("leading-normal list-disc p-0 m-0 ml-4", {})
-    }, props), finalChildren);
-  }
-
-}
-
-class ListItem extends React.PureComponent {
-  render() {
-    const {
-      children,
-      ...props
-    } = this.props;
-    return react.jsx(Text, _extends({
-      is: "li"
-    }, props), children);
-  }
-
-}
-
-_defineProperty(ListItem, "propTypes", { ...Text.propTypes
-});
-
-exports.Heading = Heading;
-exports.ListItem = ListItem;
-exports.Text = Text;
-exports.UnorderedList = UnorderedList;
+module.exports = Heading;

@@ -1,30 +1,57 @@
-import classNames from "classnames";
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import PropTypes from "prop-types";
+import tw from "twin.macro";
+import classNames from "classnames";
 
 const Box = ({
   flex,
   alignItems,
   justifyContent,
-  backgroundColor,
   flexDirection,
   flexWrap,
   children,
   className,
   rootCard,
   noPadding,
+  backgroundColor,
+  ...props
 }) => {
   return (
     <div
-      className={classNames("overflow-hidden", className, {
-        flex: Boolean(flex),
-        [`items-${alignItems}`]: Boolean(alignItems),
-        [`justify-${justifyContent}`]: Boolean(justifyContent),
-        [`bg-${backgroundColor}`]: Boolean(backgroundColor),
-        [`flex-${flexDirection}`]: Boolean(flexDirection),
-        [`mb-4 border border-border rounded shadow-sm`]: Boolean(rootCard),
-        [`px-6 py-4`]: !Boolean(noPadding),
-        [`flex-${flexWrap}`]: Boolean(flexWrap),
-      })}
+      className={classNames(className, backgroundColor)}
+      css={[
+        tw`overflow-hidden`,
+        Boolean(flex) && tw`flex`,
+        !Boolean(backgroundColor) && tw`bg-white`,
+
+        alignItems === "start" && tw`items-start`,
+        alignItems === "end" && tw`items-end`,
+        alignItems === "center" && tw`items-center`,
+        alignItems === "baseline" && tw`items-baseline`,
+        alignItems === "stretch" && tw`items-stretch`,
+
+        justifyContent === "start" && tw`justify-start`,
+        justifyContent === "end" && tw`justify-end`,
+        justifyContent === "center" && tw`justify-center`,
+        justifyContent === "between" && tw`justify-between`,
+        justifyContent === "around" && tw`justify-around`,
+        justifyContent === "evenly" && tw`justify-evenly`,
+
+        flexDirection === "row" && tw`flex-row`,
+        flexDirection === "row-reverse" && tw`flex-row-reverse`,
+        flexDirection === "col" && tw`flex-col`,
+        flexDirection === "col-reverse" && tw`flex-col-reverse`,
+
+        Boolean(rootCard) && tw`mb-4 border border-border rounded shadow-sm`,
+        !Boolean(noPadding) && tw`px-6 py-4`,
+
+        flexWrap === "wrap" && tw`flex-wrap`,
+        flexWrap === "wrap-reverse" && tw`flex-wrap-reverse`,
+        flexWrap === "nowrap" && tw`flex-nowrap`,
+      ]}
+      {...props}
     >
       {children}
     </div>
@@ -35,7 +62,6 @@ Box.defaultProps = {
   flex: false,
   alignItems: null,
   justifyContent: null,
-  backgroundColor: "white",
   flexDirection: null,
   rootCard: false,
   noPadding: false,
@@ -43,10 +69,6 @@ Box.defaultProps = {
 };
 
 Box.propTypes = {
-  /**
-   * Sets the background color
-   */
-  backgroundColor: PropTypes.string,
   /**
    * When true, renders the Box with `display:flex`
    */
@@ -93,6 +115,10 @@ Box.propTypes = {
    */
   noPadding: PropTypes.bool,
   className: PropTypes.string,
+  /**
+   * Sets a background color. Should be a tailwind class.
+   */
+  backgroundColor: PropTypes.string,
 };
 
 export default Box;

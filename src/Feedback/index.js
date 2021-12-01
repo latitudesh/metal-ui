@@ -9,7 +9,7 @@ import tw from "twin.macro";
 import Button from "../Button";
 import Input from "../Input";
 import Textarea from "../Textarea";
-import Text from "../Typography/Text";
+import Text from "../Text";
 
 import f929 from "./svgs/f929.js";
 import f600 from "./svgs/f600.js";
@@ -20,7 +20,7 @@ import { useRadio, useRadioGroup } from "@react-aria/radio";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { useFocusRing } from "@react-aria/focus";
 import FeedbackButton from "./FeedbackButton";
-import * as PopoverPrimitive from '@radix-ui/react-popover';
+import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { useClickAway } from "react-use";
 
 const EMOJIS = [
@@ -98,7 +98,7 @@ const Feedback = ({
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const enableEmail = !email;
-  const emailInitialValue = email ? email : ""
+  const emailInitialValue = email ? email : "";
   const [emailValue, setEmailValue] = useState(emailInitialValue);
   const [feedbackText, setFeedbackText] = useState("");
   const emojiState = useRadioGroupState(props);
@@ -125,7 +125,7 @@ const Feedback = ({
 
   const combinedSubmitButtonProps = {
     label: "Send",
-    variant: "brand-p",
+    variant: "default",
     ...submitButtonProps,
   };
 
@@ -181,7 +181,7 @@ const Feedback = ({
         // Reset the textarea feedbackText on success
         setLoading(false);
         setSuccess(true);
-        setEmailValue(emailInitialValue)
+        setEmailValue(emailInitialValue);
         setFeedbackText("");
       })
       .catch((err) => {
@@ -208,7 +208,7 @@ const Feedback = ({
     };
   }, [onKeyDown]);
 
-  useClickAway(formRef, closeFeedbackForm)
+  useClickAway(formRef, closeFeedbackForm);
 
   const disableInputs = Boolean(loading || errorMessage);
 
@@ -217,12 +217,16 @@ const Feedback = ({
     if ((errorMessage || success) && !tooglePopover) {
       closeFeedbackForm();
     }
-    setOpen(tooglePopover)
-  }
+    setOpen(tooglePopover);
+  };
 
-  const TriggerButton = React.forwardRef((_, ref) => children
-    ? children({ open, setOpen: handleTriggerButton, ref: ref })
-    : <FeedbackButton open={open} setOpen={handleTriggerButton} ref={ref} />);
+  const TriggerButton = React.forwardRef((_, ref) =>
+    children ? (
+      children({ open, setOpen: handleTriggerButton, ref: ref })
+    ) : (
+      <FeedbackButton open={open} setOpen={handleTriggerButton} ref={ref} />
+    )
+  );
 
   return (
     <div
@@ -249,16 +253,12 @@ const Feedback = ({
               tw`resize-none z-50 text-foreground flex-col justify-start relative`,
               tw`hover:border-foreground focus:border-foreground active:border-foreground`,
             ]}
-            style={{ width: '22rem' }}
+            style={{ width: "22rem" }}
             onSubmit={onSubmit}
             data-testid="form"
           >
             {!errorMessage && !success && (
-              <div
-                css={[
-                  tw`p-4 relative`,
-                ]}
-              >
+              <div css={[tw`p-4 relative`]}>
                 {enableEmail && (
                   <div tw={"mb-2"}>
                     <Input
@@ -344,7 +344,7 @@ const Feedback = ({
                       emojiState={emojiState}
                     >
                       {EMOJIS.map((emoji) => {
-                        const SvgComponent = emoji.svg
+                        const SvgComponent = emoji.svg;
                         return (
                           <EmojiRadio
                             key={emoji.char}
@@ -422,4 +422,4 @@ Feedback.propTypes = {
   align: PropTypes.oneOf(["start", "center", "end"]),
 };
 
-export default Feedback
+export default Feedback;
