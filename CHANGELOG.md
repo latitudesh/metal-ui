@@ -1,3 +1,20 @@
+## [3.6.4](https://github.com/Maxihost/metal-ui/compare/v3.6.3...v3.6.4) (2021-12-03)
+
+
+### Bug Fixes
+
+* Cleans up Box and removes adds custom background prop ([1c359d1](https://github.com/Maxihost/metal-ui/commit/1c359d1f7ea7da70c7b5ed45654e96c6803a532e))
+* Passes props down to children ([797725d](https://github.com/Maxihost/metal-ui/commit/797725d1793025c70f87e75b807e6c68e56606be))
+* Table Props ([1ca617d](https://github.com/Maxihost/metal-ui/commit/1ca617d9d83f939f3e011dcd6a8b7218d1a5ad20))
+
+## [3.6.3](https://github.com/Maxihost/metal-ui/compare/v3.6.2...v3.6.3) (2021-12-03)
+
+
+### Bug Fixes
+
+* imports ([1666b99](https://github.com/Maxihost/metal-ui/commit/1666b99f93f2fd41298069e07c4d59bf775decf0))
+* Typography story ([7ce3f60](https://github.com/Maxihost/metal-ui/commit/7ce3f6069982613543cc87374f46afd5f4746805))
+
 ## [3.6.2](https://github.com/Maxihost/metal-ui/compare/v3.6.1...v3.6.2) (2021-11-10)
 
 
