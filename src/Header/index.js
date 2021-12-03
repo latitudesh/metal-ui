@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
 import PropTypes from "prop-types";
-import Heading from "../Typography/Heading";
+import Heading from "../Heading";
 import tw, { theme, css, styled } from "twin.macro";
 
 const Nav = styled.div(() => [
