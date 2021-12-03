@@ -13,7 +13,7 @@ module.exports = {
     colors: {
       transparent: "transparent",
       current: "currentColor",
-      background: "#f4f5f7",
+      background: "#fafbff",
       foreground: "#000000",
       white: "#FFFFFF",
       selection: "#79FFE1",
