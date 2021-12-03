@@ -62,7 +62,7 @@ const Sidesheet = ({
   const [transition, setTransition] = useState(false);
 
   useEffect(() => {
-    let transitionTimeout
+    let transitionTimeout;
 
     if (!isShown) {
       setTransition(false);
@@ -72,7 +72,7 @@ const Sidesheet = ({
       transitionTimeout = setTimeout(() => setTransition(true), 100);
     }
 
-    return () => clearTimeout(transitionTimeout)
+    return () => clearTimeout(transitionTimeout);
   }, [isShown]);
 
   const closeTransition = () => {
@@ -125,7 +125,7 @@ const Sidesheet = ({
               <Box
                 flex
                 backgroundColor="transparent"
-                className="cursor-pointer"
+                className="cursor-pointer bg-transparent"
                 noPadding
               >
                 <div onClick={() => closeTransition()}>
@@ -138,7 +138,12 @@ const Sidesheet = ({
               flexDirection="col"
               className="sidesheet-content relative overflow-y-auto flex-1 rounded"
             >
-              <Box noPadding flex flexDirection="col" className="overflow-visible">
+              <Box
+                noPadding
+                flex
+                flexDirection="col"
+                className="overflow-visible"
+              >
                 {content}
               </Box>
             </Box>
