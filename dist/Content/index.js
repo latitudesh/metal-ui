@@ -1,21 +1,24 @@
 'use strict';
 
+var React = require('react');
 var PropTypes = require('prop-types');
 var classNames = require('classnames');
 var react = require('@emotion/react');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
+var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
 var classNames__default = /*#__PURE__*/_interopDefaultLegacy(classNames);
 
-const Content = ({
+const Content = /*#__PURE__*/React__default['default'].forwardRef(({
   children,
   size,
   className,
   bg
-}) => {
+}, ref) => {
   const base = react.jsx("div", {
+    ref: ref,
     className: classNames__default['default']("flex-1 relative overflow-y-auto focus:outline-none", {
       [`bg-${bg}`]: bg
     }, className)
@@ -31,8 +34,7 @@ const Content = ({
   }, children)));
 
   return base;
-};
-
+});
 Content.defaultProps = {
   bg: "white"
 };
