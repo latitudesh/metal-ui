@@ -1,3 +1,11 @@
+## [3.6.3](https://github.com/Maxihost/metal-ui/compare/v3.6.2...v3.6.3) (2021-12-03)
+
+
+### Bug Fixes
+
+* imports ([1666b99](https://github.com/Maxihost/metal-ui/commit/1666b99f93f2fd41298069e07c4d59bf775decf0))
+* Typography story ([7ce3f60](https://github.com/Maxihost/metal-ui/commit/7ce3f6069982613543cc87374f46afd5f4746805))
+
 ## [3.6.2](https://github.com/Maxihost/metal-ui/compare/v3.6.1...v3.6.2) (2021-11-10)
 
 
