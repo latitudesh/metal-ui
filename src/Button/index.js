@@ -43,7 +43,8 @@ const Button = React.forwardRef(
         className={className}
         ref={ref}
         css={[
-          tw`relative border items-center flex font-medium rounded focus:outline-none focus:ring transition ease-in-out duration-150 justify-center max-w-full cursor-pointer hover:shadow`,
+          tw`relative border items-center flex font-medium rounded focus:outline-none focus:ring transition ease-in-out duration-150 justify-center max-w-full cursor-pointer`,
+          !disabled && tw`hover:shadow`,
           disabled &&
             tw`border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed`,
           variant == "default" &&
@@ -57,7 +58,7 @@ const Button = React.forwardRef(
             tw`border-error-dark text-white bg-error-dark`,
           variant == "minimal" &&
             !disabled &&
-            tw`border-transparent bg-transparent hocus:(text-accent-seven border-border border) text-foreground`,
+            tw`border-transparent bg-transparent hocus:(text-accent-seven border-secondary border) text-foreground`,
           size == "small" && tw`px-4 h-8 leading-8 text-sm`,
           size == "normal" && tw`px-6 h-9 leading-9 text-sm`,
           size == "large" && tw`px-12 h-10 leading-10 text-base`,
