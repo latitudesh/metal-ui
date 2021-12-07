@@ -49,13 +49,13 @@ const Button = React.forwardRef(
             tw`border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed`,
           variant == "default" &&
             !disabled &&
-            tw`border-transparent text-white bg-foreground`,
+            tw`border-transparent text-white bg-foreground hocus:(bg-accent-eight opacity-95)`,
           variant == "secondary" &&
             !disabled &&
             tw`border-secondary text-foreground bg-white`,
           variant == "danger" &&
             !disabled &&
-            tw`border-error-dark text-white bg-error-dark`,
+            tw`border-error-dark text-white bg-error-dark hocus:(opacity-95)`,
           variant == "minimal" &&
             !disabled &&
             tw`border-transparent bg-transparent hocus:(text-accent-seven border-secondary border) text-foreground`,
