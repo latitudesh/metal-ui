@@ -1,3 +1,11 @@
+## [3.6.5](https://github.com/Maxihost/metal-ui/compare/v3.6.4...v3.6.5) (2021-12-03)
+
+
+### Bug Fixes
+
+* Sets Box color to transparent on sidesheet ([f738c18](https://github.com/Maxihost/metal-ui/commit/f738c183cc2c33234fca0389946e8e0053ace3bf))
+* Uses DataURI for Input error icon ([6b84249](https://github.com/Maxihost/metal-ui/commit/6b84249c8e54b636afbd91464e3ce1e45030b25d))
+
 ## [3.6.4](https://github.com/Maxihost/metal-ui/compare/v3.6.3...v3.6.4) (2021-12-03)
 
 
