@@ -1,6 +1,5 @@
 ## [3.6.5](https://github.com/Maxihost/metal-ui/compare/v3.6.4...v3.6.5) (2021-12-03)
 
-
 ### Bug Fixes
 
 * Sets Box color to transparent on sidesheet ([f738c18](https://github.com/Maxihost/metal-ui/commit/f738c183cc2c33234fca0389946e8e0053ace3bf))
