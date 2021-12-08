@@ -5,6 +5,7 @@ Metal UI is a set of UI Components using React and TailwindCSS built by the [Max
 Metal UI is opinionated, in the sense that it explicitly replaces TailwindCSS variants to support Maxihost's brand identity. While there are no support or plan on supporting theming, most components allow for some degree of customization.
 
 In order to use the package you need to have Tailwind installed in your project, as Metal UI doesn't export Tailwind styles. Some components make use of [twin.macro](https://github.com/ben-rogerson/twin.macro) and we're slowly transitioning the code base to use twin.macro for all components so Tailwind dependency can be dropped on projects using Metal UI.
+You will also need to have the GlobalStyles component set up in your app.
 
 We built this for desktop applications, so most components are not optimized for responsiveness.
 
@@ -61,6 +62,22 @@ class AppDocument extends Document {
 export default AppDocument;
 ```
 
+3. Metal UI needs GlobalStyles to be set up.
+
+```javascript
+import { GlobalStyles } from '@maxihost/metal-ui'
+
+function MyApp () {
+  return (
+    <>
+      <GlobalStyles/>
+      <App/>
+    </>
+  );
+}
+
+export default AppDocument;
+```
 ## Example usage
 
 Import the component:
