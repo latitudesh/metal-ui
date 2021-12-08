@@ -1,3 +1,10 @@
+# [3.7.0](https://github.com/Maxihost/metal-ui/compare/v3.6.5...v3.7.0) (2021-12-08)
+
+
+### Features
+
+* Updates Button ([f578cff](https://github.com/Maxihost/metal-ui/commit/f578cff866e2e027f3caf347ec8bf0b24aeca281))
+
 ## [3.6.5](https://github.com/Maxihost/metal-ui/compare/v3.6.4...v3.6.5) (2021-12-03)
 
 
