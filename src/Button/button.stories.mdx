@@ -12,8 +12,6 @@ import Box from "../Box";
 
 # Variants
 
-Brand secondary is meant to be used against dark background.
-
 <Preview>
   <Story name="Variants">
     <Box flex justifyContent="evenly">
@@ -21,10 +19,6 @@ Brand secondary is meant to be used against dark background.
       <Button label="Secondary" variant="secondary" />
       <Button label="Danger" variant="danger" />
       <Button label="Minimal" variant="minimal" />
-      <Button label="Brand primary" variant="brand-p" />
-      <div className="block px-2 py-2 -mt-2 bg-brand-deepPurple">
-        <Button label="Brand secondary" variant="brand-s" />
-      </div>
     </Box>
   </Story>
 </Preview>
@@ -118,8 +112,6 @@ For use in conjunction with NextJS' `next/link`, wrap the button with `<Link>` a
 
 ```javascript
 <Link href="https://www.maxihost.com" passHref>
-  <Button
-    label="Go to website"
-  />
+  <Button label="Go to website" />
 </Link>
 ```
