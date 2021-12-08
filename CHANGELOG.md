@@ -1,3 +1,15 @@
+## [3.7.1](https://github.com/Maxihost/metal-ui/compare/v3.7.0...v3.7.1) (2021-12-08)
+
+
+### Bug Fixes
+
+* Removes unused component @radix-ui/react-toolbar ([51509f5](https://github.com/Maxihost/metal-ui/commit/51509f5b4900ba483846e2bfb9e4b144624de532))
+
+
+### Reverts
+
+* Revert "fix: Removes unused dependency" ([b9cd102](https://github.com/Maxihost/metal-ui/commit/b9cd102951ae42078d3529cdbbfc4da1bbb84e21))
+
 # [3.7.0](https://github.com/Maxihost/metal-ui/compare/v3.6.5...v3.7.0) (2021-12-08)
 
 
