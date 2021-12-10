@@ -29,6 +29,7 @@ const files = [
   "Heading",
   "UnorderedList",
   "ListItem",
+  "GlobalStyles"
 ];
 
 const options = {
