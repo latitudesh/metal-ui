@@ -1,3 +1,16 @@
+# [3.8.0](https://github.com/Maxihost/metal-ui/compare/v3.7.1...v3.8.0) (2021-12-10)
+
+
+### Bug Fixes
+
+* Ref warnings ([a92421a](https://github.com/Maxihost/metal-ui/commit/a92421a2587ab8098eda94b931883010d4d99f1f))
+
+
+### Features
+
+* Add GlobalStyles component ([b800d12](https://github.com/Maxihost/metal-ui/commit/b800d123364ea8951cefb690c0fb903336a4e46b))
+* Use emotion for global styles ([04219ef](https://github.com/Maxihost/metal-ui/commit/04219ef8d6cd6d31302cf0e93a14d722f5ba6c63))
+
 ## [3.7.1](https://github.com/Maxihost/metal-ui/compare/v3.7.0...v3.7.1) (2021-12-08)
 
 
