@@ -6,34 +6,35 @@ import PropTypes from "prop-types";
 import Text from "../Text";
 import tw from "twin.macro";
 
-const Table = ({ children, ...props }) => (
-  <table tw="w-full max-w-full" {...props}>
+const Table = React.forwardRef(({ children, ...props }, ref) => (
+  <table tw="w-full max-w-full" {...props} ref={ref}>
     {children}
   </table>
-);
+));
 
-Table.Head = ({ children, ...props }) => (
-  <thead tw="border-b border-border rounded" {...props}>
+Table.Head = React.forwardRef(({ children, ...props }, ref) => (
+  <thead tw="border-b border-border rounded" {...props} ref={ref}>
     {children}
   </thead>
-);
+));
 
-Table.Body = ({ children, ...props }) => (
-  <tbody tw="bg-white" {...props}>
+Table.Body = React.forwardRef(({ children, ...props }, ref) => (
+  <tbody tw="bg-white" {...props} ref={ref}>
     {children}
   </tbody>
-);
+));
 
-Table.HeaderCell = ({ children, ...props }) => (
+Table.HeaderCell = React.forwardRef(({ children, ...props }, ref) => (
   <th
     tw="px-6 py-2 bg-white text-left text-xs leading-5 font-medium text-accent-five uppercase tracking-wider"
     {...props}
+    ref={ref}
   >
     {children}
   </th>
-);
+));
 
-Table.Row = ({ children, onClick, isSelectable, ...props }) => (
+Table.Row = React.forwardRef(({ children, onClick, isSelectable, ...props }, ref) => (
   <tr
     onClick={onClick}
     css={[
@@ -42,23 +43,24 @@ Table.Row = ({ children, onClick, isSelectable, ...props }) => (
         : null,
     ]}
     {...props}
+    ref={ref}
   >
     {children}
   </tr>
-);
+));
 
-Table.Cell = ({ children, className, ...props }) => (
-  <td tw="px-6 py-4" className={className} {...props}>
+Table.Cell = React.forwardRef(({ children, className, ...props }, ref) => (
+  <td tw="px-6 py-4" className={className} {...props} ref={ref}>
     {children}
   </td>
-);
+));
 
-Table.TextCell = ({
+Table.TextCell = React.forwardRef(({
   primary,
   primaryClassname,
   secondary,
   secondaryClassname,
-}) => (
+}, ref) => (
   <>
     {primary && (
       <Text
@@ -66,6 +68,7 @@ Table.TextCell = ({
         tw="block font-medium truncate"
         css={[secondary && tw`mb-0.5`]}
         className={primaryClassname}
+        ref={ref}
       >
         {primary}
       </Text>
@@ -81,7 +84,7 @@ Table.TextCell = ({
       </Text>
     )}
   </>
-);
+));
 
 Table.propTypes = {
   children: PropTypes.node.isRequired,
@@ -110,7 +113,7 @@ Table.Row.propTypes = {
 };
 
 Table.Cell.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   className: PropTypes.string,
 };
 

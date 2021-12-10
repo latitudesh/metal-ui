@@ -5,9 +5,4 @@ import ListItem from "../ListItem";
 
 // These are present for backward compatibility
 
-export {
-    Text,
-    Heading,
-    UnorderedList,
-    ListItem
-}
+export { Text, Heading, UnorderedList, ListItem };

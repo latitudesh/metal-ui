@@ -16,14 +16,8 @@ const SpinningDots = require( "./SpinningDots");
 const Feedback = require( "./Feedback");
 const DropdownMenu = require("./DropdownMenu");
 const Typography = require( "./Typography");
-
-// These 4 are also included in Typography
-const Text = require( "./Text");
-const Heading = require( "./Heading");
-const UnorderedList = require( "./UnorderedList");
-const ListItem = require( "./ListItem");
-
 const Tabs = require("./Tabs");
+const GlobalStyles = require("./GlobalStyles");
 
 module.exports = {
     Table,
@@ -43,13 +37,11 @@ module.exports = {
     SpinningDots,
     Feedback,
     DropdownMenu,
-    Typography,
-    Text,
-    Heading,
-    UnorderedList,
-    ListItem,
+    GlobalStyles,
     // Re export internals for backward compatibility
     ...DropdownMenu,
+    Typography,
+    ...Typography,
     // We cannot export Tabs because it has an internal component that is also named Tabs
     ...Tabs,
 }

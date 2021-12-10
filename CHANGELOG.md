@@ -1,45 +1,71 @@
-# [3.9.0](https://github.com/Maxihost/metal-ui/compare/v3.8.1...v3.9.0) (2021-09-16)
+# [3.8.0](https://github.com/Maxihost/metal-ui/compare/v3.7.1...v3.8.0) (2021-12-10)
 
 
 ### Bug Fixes
 
-* Flex wrap ([6a4cba2](https://github.com/Maxihost/metal-ui/commit/6a4cba204b1ebe1cfbf1311dfefe5e1ffce76100))
-* Sidesheet ([b22a4ee](https://github.com/Maxihost/metal-ui/commit/b22a4eebe3daef5718ffcddbb87b9db755e07073))
-* Stop using string concatenation ([c98c0c6](https://github.com/Maxihost/metal-ui/commit/c98c0c625b965d2128fee26e555e3d4b5becf204))
+* Ref warnings ([a92421a](https://github.com/Maxihost/metal-ui/commit/a92421a2587ab8098eda94b931883010d4d99f1f))
 
 
 ### Features
 
-* Remove support for background color ([1303056](https://github.com/Maxihost/metal-ui/commit/1303056636bd3d26cc1982ffa0649053fa42af5a))
-* Update build ([0f8aeb4](https://github.com/Maxihost/metal-ui/commit/0f8aeb47efcf392b595c8bb5b79f26ec017a2d18))
+* Add GlobalStyles component ([b800d12](https://github.com/Maxihost/metal-ui/commit/b800d123364ea8951cefb690c0fb903336a4e46b))
+* Use emotion for global styles ([04219ef](https://github.com/Maxihost/metal-ui/commit/04219ef8d6cd6d31302cf0e93a14d722f5ba6c63))
 
-## [3.8.1](https://github.com/Maxihost/metal-ui/compare/v3.8.0...v3.8.1) (2021-09-15)
+## [3.7.1](https://github.com/Maxihost/metal-ui/compare/v3.7.0...v3.7.1) (2021-12-08)
 
 
 ### Bug Fixes
 
-* Dist file ([ae39ceb](https://github.com/Maxihost/metal-ui/commit/ae39ceb5bcd9bde2122a9a9479894839cad766aa))
-
-# [3.8.0](https://github.com/Maxihost/metal-ui/compare/v3.7.0...v3.8.0) (2021-09-15)
+* Removes unused component @radix-ui/react-toolbar ([51509f5](https://github.com/Maxihost/metal-ui/commit/51509f5b4900ba483846e2bfb9e4b144624de532))
 
 
-### Features
+### Reverts
 
-* Build typography components independently ([b5b4ad1](https://github.com/Maxihost/metal-ui/commit/b5b4ad10f7356ee0e0c3a07d747751fd82a9ceb4))
+* Revert "fix: Removes unused dependency" ([b9cd102](https://github.com/Maxihost/metal-ui/commit/b9cd102951ae42078d3529cdbbfc4da1bbb84e21))
 
-# [3.7.0](https://github.com/Maxihost/metal-ui/compare/v3.6.1...v3.7.0) (2021-09-15)
+# [3.7.0](https://github.com/Maxihost/metal-ui/compare/v3.6.5...v3.7.0) (2021-12-08)
 
 
 ### Features
 
-* Refactor typography ([313ff32](https://github.com/Maxihost/metal-ui/commit/313ff3294fbbf0ae06438e7fb5ca8584707e7b1a))
-* Update build ([4567b97](https://github.com/Maxihost/metal-ui/commit/4567b97bbcd99513e09549b7cd16b30e448d644c))
+* Updates Button ([f578cff](https://github.com/Maxihost/metal-ui/commit/f578cff866e2e027f3caf347ec8bf0b24aeca281))
+
+## [3.6.5](https://github.com/Maxihost/metal-ui/compare/v3.6.4...v3.6.5) (2021-12-03)
+
+### Bug Fixes
+
+* Sets Box color to transparent on sidesheet ([f738c18](https://github.com/Maxihost/metal-ui/commit/f738c183cc2c33234fca0389946e8e0053ace3bf))
+* Uses DataURI for Input error icon ([6b84249](https://github.com/Maxihost/metal-ui/commit/6b84249c8e54b636afbd91464e3ce1e45030b25d))
+
+## [3.6.4](https://github.com/Maxihost/metal-ui/compare/v3.6.3...v3.6.4) (2021-12-03)
+
+
+### Bug Fixes
+
+* Cleans up Box and removes adds custom background prop ([1c359d1](https://github.com/Maxihost/metal-ui/commit/1c359d1f7ea7da70c7b5ed45654e96c6803a532e))
+* Passes props down to children ([797725d](https://github.com/Maxihost/metal-ui/commit/797725d1793025c70f87e75b807e6c68e56606be))
+* Table Props ([1ca617d](https://github.com/Maxihost/metal-ui/commit/1ca617d9d83f939f3e011dcd6a8b7218d1a5ad20))
+
+## [3.6.3](https://github.com/Maxihost/metal-ui/compare/v3.6.2...v3.6.3) (2021-12-03)
+
+
+### Bug Fixes
+
+* imports ([1666b99](https://github.com/Maxihost/metal-ui/commit/1666b99f93f2fd41298069e07c4d59bf775decf0))
+* Typography story ([7ce3f60](https://github.com/Maxihost/metal-ui/commit/7ce3f6069982613543cc87374f46afd5f4746805))
+
+## [3.6.2](https://github.com/Maxihost/metal-ui/compare/v3.6.1...v3.6.2) (2021-11-10)
+
+
+### Bug Fixes
+
+* Badges shouldnt set a height ([4ebb9d0](https://github.com/Maxihost/metal-ui/commit/4ebb9d0436e1eead8fc8c2df5b90852a312241f5))
 
 ## [3.6.1](https://github.com/Maxihost/metal-ui/compare/v3.6.0...v3.6.1) (2021-09-01)
 
 
 ### Bug Fixes
-
+ 
 * Dist directory ([c1d59da](https://github.com/Maxihost/metal-ui/commit/c1d59da004406aa74fad5194dd28400e19b77b4a))
 
 # [3.6.0](https://github.com/Maxihost/metal-ui/compare/v3.5.1...v3.6.0) (2021-09-01)

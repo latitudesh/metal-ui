@@ -4,6 +4,8 @@ import { jsx } from "@emotion/react";
 import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import tw from "twin.macro";
+const ErrorSvgDataURI =
+  "data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill-rule='nonzero' fill='none'%3E%3Ccircle fill='%236359F9' cx='10' cy='10' r='10'/%3E%3Cpath d='M9 6.848c0-.909.4-1.515 1-1.515s1 .606 1 1.515v3.637c0 .909-.4 1.515-1 1.515s-1-.606-1-1.515V6.848Zm1 7.819c-.583 0-1-.417-1-1 0-.584.417-1 1-1s1 .416 1 1c0 .583-.417 1-1 1Z' fill='%232B223C'/%3E%3C/g%3E%3C/svg%3E%0A";
 
 const Input = React.forwardRef(
   (
@@ -22,7 +24,6 @@ const Input = React.forwardRef(
     },
     ref
   ) => {
-
     const handleChange = useCallback(
       (event) => {
         if (onChange) {
@@ -75,8 +76,8 @@ const Input = React.forwardRef(
               error &&
                 variant === "brand-dark" && [
                   brandDarkStyles,
-                  `background-image: url(https://maxihost-assets.s3-sa-east-1.amazonaws.com/metal-ui/error-icon.svg);background-repeat: no-repeat;background-position-x: calc(100% - 16px);
-                background-position-y: 9px;`,
+                  `background-image: url("${ErrorSvgDataURI}");background-repeat: no-repeat;background-position-x: calc(100% - 16px);
+                background-position-y: 50%;`,
                 ],
             ]}
             {...rest}
@@ -94,7 +95,7 @@ Input.propTypes = {
   value: PropTypes.string,
   defaultValue: PropTypes.string,
   label: PropTypes.string,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   error: PropTypes.bool,
   disabled: PropTypes.bool,
   variant: PropTypes.oneOf(["brand", "brand-dark"]),

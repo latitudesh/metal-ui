@@ -17,7 +17,7 @@ module.exports = {
       foreground: "#000000",
       white: "#FFFFFF",
       selection: "#79FFE1",
-      secondary: "#666666",
+      secondary: "#d0d3d7",
       link: "#6359f9",
       border: "#EAEAEA",
       code: "#F81CE5",
