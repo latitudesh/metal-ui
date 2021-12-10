@@ -1,3 +1,22 @@
+# [3.9.0](https://github.com/Maxihost/metal-ui/compare/v3.8.0...v3.9.0) (2021-12-10)
+
+
+### Bug Fixes
+
+* Dist file ([ae39ceb](https://github.com/Maxihost/metal-ui/commit/ae39ceb5bcd9bde2122a9a9479894839cad766aa))
+* Flex wrap ([6a4cba2](https://github.com/Maxihost/metal-ui/commit/6a4cba204b1ebe1cfbf1311dfefe5e1ffce76100))
+* Sidesheet ([b22a4ee](https://github.com/Maxihost/metal-ui/commit/b22a4eebe3daef5718ffcddbb87b9db755e07073))
+* Stop using string concatenation ([c98c0c6](https://github.com/Maxihost/metal-ui/commit/c98c0c625b965d2128fee26e555e3d4b5becf204))
+
+
+### Features
+
+* Build typography components independently ([b5b4ad1](https://github.com/Maxihost/metal-ui/commit/b5b4ad10f7356ee0e0c3a07d747751fd82a9ceb4))
+* Refactor typography ([313ff32](https://github.com/Maxihost/metal-ui/commit/313ff3294fbbf0ae06438e7fb5ca8584707e7b1a))
+* Remove support for background color ([1303056](https://github.com/Maxihost/metal-ui/commit/1303056636bd3d26cc1982ffa0649053fa42af5a))
+* Update build ([0f8aeb4](https://github.com/Maxihost/metal-ui/commit/0f8aeb47efcf392b595c8bb5b79f26ec017a2d18))
+* Update build ([4567b97](https://github.com/Maxihost/metal-ui/commit/4567b97bbcd99513e09549b7cd16b30e448d644c))
+
 # [3.8.0](https://github.com/Maxihost/metal-ui/compare/v3.7.1...v3.8.0) (2021-12-10)
 
 
