@@ -17,6 +17,7 @@ const Feedback = require( "./Feedback");
 const DropdownMenu = require("./DropdownMenu");
 const Typography = require( "./Typography");
 const Tabs = require("./Tabs");
+const GlobalStyles = require("./GlobalStyles");
 
 module.exports = {
     Table,
@@ -36,6 +37,7 @@ module.exports = {
     SpinningDots,
     Feedback,
     DropdownMenu,
+    GlobalStyles,
     // Re export internals for backward compatibility
     ...DropdownMenu,
     Typography,
