@@ -1,4 +1,4 @@
-# [3.8.0](https://github.com/Maxihost/metal-ui/compare/v3.7.1...v3.8.0) (2021-12-10)
+# [3.10.0](https://github.com/Maxihost/metal-ui/compare/v3.7.1...v3.10.0) (2021-12-10)
 
 
 ### Bug Fixes
