@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ master, develop, next ]
+    branches: [ master, develop, beta ]
 
   pull_request:
     branches: [ master, develop ]
@@ -37,7 +37,7 @@ jobs:
   release:
     if: github.event_name == 'push' && contains('
       refs/heads/master
-      refs/heads/next
+      refs/heads/beta
       ', github.ref)
 
     runs-on: ubuntu-latest
