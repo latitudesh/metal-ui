@@ -95,27 +95,27 @@ Table.TextCell = React.forwardRef(({
 Table.TextCell.displayName = 'TableTextCell'
 
 Table.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   className: PropTypes.string,
 };
 
 Table.Head.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   className: PropTypes.string,
 };
 
 Table.Body.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   className: PropTypes.string,
 };
 
 Table.HeaderCell.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   className: PropTypes.string,
 };
 
 Table.Row.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   className: PropTypes.string,
   onClick: PropTypes.func,
 };
