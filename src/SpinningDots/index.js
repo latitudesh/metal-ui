@@ -30,7 +30,7 @@ const SpinningDots = ({ className, variant, css }) => {
 
 SpinningDots.propTypes = {
   className: PropTypes.string,
-  css: PropTypes.object,
+  css: PropTypes.array,
   variant: PropTypes.oneOf(["default", "inherit", "light", "dark"]),
 };
 
