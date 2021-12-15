@@ -12,17 +12,21 @@ const Table = React.forwardRef(({ children, ...props }, ref) => (
   </table>
 ));
 
+Table.displayName = 'Table'
+
 Table.Head = React.forwardRef(({ children, ...props }, ref) => (
   <thead tw="border-b border-border rounded" {...props} ref={ref}>
     {children}
   </thead>
 ));
+Table.Head.displayName = 'TableHead'
 
 Table.Body = React.forwardRef(({ children, ...props }, ref) => (
   <tbody tw="bg-white" {...props} ref={ref}>
     {children}
   </tbody>
 ));
+Table.Body.displayName = 'TableBody'
 
 Table.HeaderCell = React.forwardRef(({ children, ...props }, ref) => (
   <th
@@ -33,6 +37,7 @@ Table.HeaderCell = React.forwardRef(({ children, ...props }, ref) => (
     {children}
   </th>
 ));
+Table.HeaderCell.displayName = 'TableHeaderCell'
 
 Table.Row = React.forwardRef(({ children, onClick, isSelectable, ...props }, ref) => (
   <tr
@@ -48,12 +53,14 @@ Table.Row = React.forwardRef(({ children, onClick, isSelectable, ...props }, ref
     {children}
   </tr>
 ));
+Table.Row.displayName = 'TableRow'
 
 Table.Cell = React.forwardRef(({ children, className, ...props }, ref) => (
   <td tw="px-6 py-4" className={className} {...props} ref={ref}>
     {children}
   </td>
 ));
+Table.Cell.displayName = 'TableCell'
 
 Table.TextCell = React.forwardRef(({
   primary,
@@ -85,6 +92,7 @@ Table.TextCell = React.forwardRef(({
     )}
   </>
 ));
+Table.TextCell.displayName = 'TableTextCell'
 
 Table.propTypes = {
   children: PropTypes.node.isRequired,
