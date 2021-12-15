@@ -7,9 +7,9 @@ import tw, { styled } from "twin.macro";
 const SpinningDots = ({ className, variant }) => {
   const StyledIcon = styled.i(() => [
     tw`animate-pulse h-0 w-0 rounded-full border-width[3px]`,
-    variant == "default" && tw`text-accent-six`,
-    variant == "light" && tw`text-accent-three`,
-    variant == "dark" && tw`text-accent-eight`,
+    variant === "default" && tw`text-accent-six`,
+    variant === "light" && tw`text-accent-three`,
+    variant === "dark" && tw`text-accent-eight`,
   ]);
 
   return (
