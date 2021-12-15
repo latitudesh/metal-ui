@@ -102,7 +102,7 @@ Select.propTypes = {
   className: PropTypes.string,
   value: PropTypes.string,
   label: PropTypes.string,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   error: PropTypes.bool,
   disabled: PropTypes.bool,
   variant: PropTypes.oneOf(["brand", "brand-dark"]),
