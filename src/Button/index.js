@@ -67,7 +67,7 @@ const Button = React.forwardRef(
         {...rest}
       >
         {isLoading && (
-          <SpinningDots variant="inherit" className={tw`absolute`} />
+          <SpinningDots variant="inherit" css={[tw`absolute`]} />
         )}
         {ButtonContent}
       </button>
