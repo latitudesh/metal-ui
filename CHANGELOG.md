@@ -1,3 +1,10 @@
+# [3.11.0](https://github.com/Maxihost/metal-ui/compare/v3.10.0...v3.11.0) (2021-12-13)
+
+
+### Features
+
+* Use beta branch instead of next for prereleases ([8525d8f](https://github.com/Maxihost/metal-ui/commit/8525d8f2a52dc9b7ee669306f9758d91b772405a))
+
 # [3.10.0](https://github.com/Maxihost/metal-ui/compare/v3.7.1...v3.10.0) (2021-12-10)
 
 

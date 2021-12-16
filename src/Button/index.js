@@ -47,27 +47,27 @@ const Button = React.forwardRef(
           !disabled && tw`hover:shadow`,
           disabled &&
             tw`border-border text-accent-four hover:text-accent-four active:text-accent-four bg-accent-two hover:bg-accent-two active:bg-accent-two cursor-not-allowed`,
-          variant == "default" &&
+          variant === "default" &&
             !disabled &&
             tw`border-transparent text-white bg-foreground hocus:(bg-accent-eight opacity-95)`,
-          variant == "secondary" &&
+          variant === "secondary" &&
             !disabled &&
             tw`border-secondary text-foreground bg-white`,
-          variant == "danger" &&
+          variant === "danger" &&
             !disabled &&
             tw`border-error-dark text-white bg-error-dark hocus:(opacity-95)`,
-          variant == "minimal" &&
+          variant === "minimal" &&
             !disabled &&
             tw`border-transparent bg-transparent hocus:(text-accent-seven border-secondary border) text-foreground`,
-          size == "small" && tw`px-4 h-8 leading-8 text-sm`,
-          size == "normal" && tw`px-6 h-9 leading-9 text-sm`,
-          size == "large" && tw`px-12 h-10 leading-10 text-base`,
+          size === "small" && tw`px-4 h-8 leading-8 text-sm`,
+          size === "normal" && tw`px-6 h-9 leading-9 text-sm`,
+          size === "large" && tw`px-12 h-10 leading-10 text-base`,
           block && tw`w-full`,
         ]}
         {...rest}
       >
         {isLoading && (
-          <SpinningDots variant="inherit" className={tw`absolute`} />
+          <SpinningDots variant="inherit" css={[tw`absolute`]} />
         )}
         {ButtonContent}
       </button>
