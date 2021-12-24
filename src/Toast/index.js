@@ -107,7 +107,7 @@ const Toast = ({
         >
           <div tw="flex justify-between items-center">
             <div tw="w-11/12">
-              <Text small color={(success || error) && tw`text-white`}>
+              <Text small color={(success || error) && `text-white`}>
                 {text}
               </Text>
             </div>
