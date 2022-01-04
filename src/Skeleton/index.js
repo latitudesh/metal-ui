@@ -25,8 +25,8 @@ const StyledSkeleton = styled.span(({ width, height, vertical }) => [
     #fafafa
   );
   background-size: 400% 100%;
-  width: ${isNaN(width) ? width : width + 'px'};
-  min-height: ${isNaN(height) ? height : height + 'px'};
+  width: ${Number(width) ? width + 'px' : width};
+  min-height: ${Number(height) ? height + 'px' : height};
 `,
 ]);
 
