@@ -25,8 +25,8 @@ const StyledSkeleton = styled.span(({ width, height, vertical }) => [
     #fafafa
   );
   background-size: 400% 100%;
-  width: ${width}px;
-  min-height: ${height}px;
+  width: ${isNaN(width) ? width : width + 'px'};
+  min-height: ${isNaN(height) ? height : height + 'px'};
 `,
 ]);
 
@@ -51,9 +51,18 @@ const Skeleton = ({ width, height, className, vertical }) => (
 );
 
 Skeleton.propTypes = {
+  /**
+   * Numbers will be treated as px while any other css units need to be provided as strings.
+   */
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /**
+   * Numbers will be treated as px while any other css units need to be provided as strings.
+   */
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   className: PropTypes.string,
+  /**
+   * Vertical won't work with percentage widths
+   */
   vertical: PropTypes.bool,
 };
 
