@@ -1,3 +1,20 @@
+# [3.12.0](https://github.com/Maxihost/metal-ui/compare/v3.11.0...v3.12.0) (2021-12-24)
+
+
+### Bug Fixes
+
+* Children shouldnt be required ([4791d59](https://github.com/Maxihost/metal-ui/commit/4791d59988a752cb5a0980a4663c44f35db863d4))
+* Equals operator ([7a5ba15](https://github.com/Maxihost/metal-ui/commit/7a5ba152affbc820ac99b2bc5a94e0194839407a))
+* Ids are only required when labels are provided ([06292de](https://github.com/Maxihost/metal-ui/commit/06292de3455ee16ad88457d965f72ca8ddedb0b0))
+* Proptype warning ([9dcc603](https://github.com/Maxihost/metal-ui/commit/9dcc603eadb43cbedcda7266473f4852593bf43a))
+* Proptype warning ([078620b](https://github.com/Maxihost/metal-ui/commit/078620ba108fa3113e472e55d41abc241423b37d))
+* Spinning dots proptype ([9627412](https://github.com/Maxihost/metal-ui/commit/9627412a41dec34ef1b5d8ee738c121eb833cd5f))
+
+
+### Features
+
+* Add display names ([85e5c72](https://github.com/Maxihost/metal-ui/commit/85e5c72231c8dad9ed0b04ce7ac949d5df5d5d8c))
+
 # [3.11.0](https://github.com/Maxihost/metal-ui/compare/v3.10.0...v3.11.0) (2021-12-13)
 
 
