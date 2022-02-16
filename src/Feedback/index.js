@@ -240,7 +240,7 @@ const Feedback = ({
       {...props}
     >
       <PopoverPrimitive.Root onOpenChange={closeFeedbackForm} open={open}>
-        <PopoverPrimitive.Trigger as={TriggerButton} />
+        <PopoverPrimitive.Trigger asChild={TriggerButton} />
         <PopoverPrimitive.Content
           sideOffset={sideOffset}
           side={side}
