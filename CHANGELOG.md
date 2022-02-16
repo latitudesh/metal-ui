@@ -1,3 +1,11 @@
+## [3.12.1](https://github.com/Maxihost/metal-ui/compare/v3.12.0...v3.12.1) (2022-01-05)
+
+
+### Bug Fixes
+
+* Allow percentage widths for Skeleton ([eb6c5e6](https://github.com/Maxihost/metal-ui/commit/eb6c5e68c86300984ca920c38a619fe8adccf20c))
+* Use Number instead of isNaN ([0ef4984](https://github.com/Maxihost/metal-ui/commit/0ef49841eac7f112389c916f8fd1fd0e3d08d833))
+
 # [3.12.0](https://github.com/Maxihost/metal-ui/compare/v3.11.0...v3.12.0) (2021-12-24)
 
 
