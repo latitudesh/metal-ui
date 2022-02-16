@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 import Box from "../Box";
+import useKeyPressEvent from "react-use/lib/useKeyPressEvent";
 
 function XIcon() {
   return (
@@ -82,6 +83,8 @@ const Sidesheet = ({
       setTimeout(() => setIsOpened(false), 500);
     }
   };
+
+  useKeyPressEvent('Escape', closeTransition);
 
   return (
     <div ref={sideSheet}>
