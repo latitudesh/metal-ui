@@ -1,3 +1,13 @@
+## [3.12.2](https://github.com/Maxihost/metal-ui/compare/v3.12.1...v3.12.2) (2022-02-16)
+
+
+### Bug Fixes
+
+* asChild prop ([b4d95e1](https://github.com/Maxihost/metal-ui/commit/b4d95e1eab674beaf0d0b274e5cf31998a2da8fb))
+* Close sidesheet on hitting escape ([9fad697](https://github.com/Maxihost/metal-ui/commit/9fad69754ba0f5779ad106bc8c1ff5412513ef64))
+* docs asChild prop ([e599dbe](https://github.com/Maxihost/metal-ui/commit/e599dbe176dd5d73a4624def2d2409ce3d2afbb4))
+* Popover Trigger ([3702e9a](https://github.com/Maxihost/metal-ui/commit/3702e9ace047c00754b9b7ff6be3a11a2939a2a3))
+
 ## [3.12.1](https://github.com/Maxihost/metal-ui/compare/v3.12.0...v3.12.1) (2022-01-05)
 
 
