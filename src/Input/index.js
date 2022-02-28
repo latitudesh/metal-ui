@@ -77,7 +77,7 @@ const Input = React.forwardRef(
               tw`block w-full p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0 font-family[inherit]`,
               rightAddon && tw`rounded-l`,
               leftAddon && tw`rounded-r`,
-              !leftAddon && !rightAddon && tw`rounded`,
+              leftAddon && rightAddon && tw`rounded-none`,
               inputClassName && inputClassName,
               !error &&
                 !disabled &&
