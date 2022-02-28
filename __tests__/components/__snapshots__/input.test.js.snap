@@ -71,7 +71,7 @@ exports[`Snapshots/Components/Input Renders input with addon 1`] = `
 
 .emotion-2 {
   --tw-bg-opacity: 1;
-  background-color: rgba(244, 245, 247, var(--tw-bg-opacity));
+  background-color: rgba(234, 234, 234, var(--tw-bg-opacity));
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   display: -webkit-box;

@@ -10,7 +10,7 @@ const ErrorSvgDataURI =
 const Addon = ({children, position}) => {
   return (
     <div css={[
-        tw`bg-background px-3 flex items-center justify-center shadow-sm text-sm text-accent-five`,
+        tw`bg-border px-3 flex items-center justify-center shadow-sm text-sm text-accent-five`,
         position === 'left' && tw`rounded-l`,
         position === 'right' && tw`rounded-r`,
       ]}>
