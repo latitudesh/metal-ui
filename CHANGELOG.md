@@ -1,3 +1,10 @@
+## [3.12.3](https://github.com/Maxihost/metal-ui/compare/v3.12.2...v3.12.3) (2022-02-23)
+
+
+### Bug Fixes
+
+* Update built files ([eb2a8d8](https://github.com/Maxihost/metal-ui/commit/eb2a8d834f93fe83d1341a3f0bc559caef717b2a))
+
 ## [3.12.2](https://github.com/Maxihost/metal-ui/compare/v3.12.1...v3.12.2) (2022-02-16)
 
 
