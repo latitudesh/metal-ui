@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshots/Components/Input Renders input with addon 1`] = `
+exports[`Snapshots/Components/Input Renders input with suffix 1`] = `
 .emotion-0 {
   position: relative;
   display: -webkit-box;
