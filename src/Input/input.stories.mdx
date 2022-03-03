@@ -76,14 +76,14 @@ The dark version of the input is meant to be used against a `deep-purple` backgr
   </Story>
 </Preview>
 
-# With Addon
+# With Prefixes and Suffixes
 
 <Preview>
-  <Story name="Addon">
+  <Story name="Prefixes and Suffixes">
   <div className="flex flex-col gap-2">
-    <Input className="w-1/3" placeholder="Amount" type="number" min={0} step={10} max={100} leftAddon="$"/>
-    <Input className="w-1/3" placeholder="Storage" type="number" min={0} step={10} max={100} rightAddon="TB"/>
-    <Input className="w-1/3" placeholder="Enter a site..." leftAddon='https://' rightAddon=".com"/>
+    <Input className="w-1/3" placeholder="Amount" type="number" min={0} step={10} max={100} prefix="$"/>
+    <Input className="w-1/3" placeholder="Storage" type="number" min={0} step={10} max={100} suffix="TB"/>
+    <Input className="w-1/3" placeholder="Enter a site..." prefix='https://' suffix=".com"/>
     </div>
   </Story>
 </Preview>

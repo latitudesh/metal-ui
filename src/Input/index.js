@@ -31,8 +31,8 @@ const Input = React.forwardRef(
       id,
       error,
       disabled,
-      leftAddon,
-      rightAddon,
+      prefix,
+      suffix,
       ...rest
     },
     ref
@@ -60,7 +60,7 @@ const Input = React.forwardRef(
           </label>
         )}
         <div tw="relative flex">
-          {leftAddon && <Addon position={'left'}>{leftAddon}</Addon>}
+          {prefix && <Addon position={'left'}>{prefix}</Addon>}
           <input
             id={id}
             ref={ref}
@@ -75,9 +75,9 @@ const Input = React.forwardRef(
             value={value}
             css={[
               tw`block w-full p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0 font-family[inherit]`,
-              rightAddon && tw`rounded-l`,
-              leftAddon && tw`rounded-r`,
-              leftAddon && rightAddon && tw`rounded-none`,
+              suffix && tw`rounded-l`,
+              prefix && tw`rounded-r`,
+              prefix && suffix && tw`rounded-none`,
               inputClassName && inputClassName,
               !error &&
                 !disabled &&
@@ -99,7 +99,7 @@ const Input = React.forwardRef(
             ]}
             {...rest}
           />
-          {rightAddon && <Addon position={'right'}>{rightAddon}</Addon>}
+          {suffix && <Addon position={'right'}>{suffix}</Addon>}
         </div>
       </div>
     );
@@ -116,8 +116,8 @@ Input.propTypes = {
   id: PropTypes.string,
   error: PropTypes.bool,
   disabled: PropTypes.bool,
-  rightAddon: PropTypes.node,
-  leftAddon: PropTypes.node,
+  suffix: PropTypes.node,
+  prefix: PropTypes.node,
   variant: PropTypes.oneOf(["brand", "brand-dark"]),
 };
 
