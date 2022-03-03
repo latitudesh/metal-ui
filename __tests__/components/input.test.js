@@ -7,6 +7,11 @@ import '@testing-library/jest-dom/extend-expect'
 import Input from "../../src/Input";
 
 describe("Snapshots/Components/Input", () => {
+  it("Renders input", () => {
+    const component = renderer.create(<Input />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
   it("Renders input with suffix", () => {
     const component = renderer.create(<Input type={'number'} min={0} step={10} max={100} suffix={'TB'}/>);
     const tree = component.toJSON();
