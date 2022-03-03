@@ -7,6 +7,17 @@ import tw from "twin.macro";
 const ErrorSvgDataURI =
   "data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill-rule='nonzero' fill='none'%3E%3Ccircle fill='%236359F9' cx='10' cy='10' r='10'/%3E%3Cpath d='M9 6.848c0-.909.4-1.515 1-1.515s1 .606 1 1.515v3.637c0 .909-.4 1.515-1 1.515s-1-.606-1-1.515V6.848Zm1 7.819c-.583 0-1-.417-1-1 0-.584.417-1 1-1s1 .416 1 1c0 .583-.417 1-1 1Z' fill='%232B223C'/%3E%3C/g%3E%3C/svg%3E%0A";
 
+const Addon = ({children, position}) => {
+  return (
+    <div css={[
+        tw`bg-border px-3 flex items-center justify-center shadow-sm text-sm text-accent-five`,
+        position === 'left' && tw`rounded-l`,
+        position === 'right' && tw`rounded-r`,
+      ]}>
+      {children}
+    </div>
+  )
+}
 const Input = React.forwardRef(
   (
     {
@@ -20,6 +31,8 @@ const Input = React.forwardRef(
       id,
       error,
       disabled,
+      prefix,
+      suffix,
       ...rest
     },
     ref
@@ -46,7 +59,8 @@ const Input = React.forwardRef(
             {label}
           </label>
         )}
-        <div tw="relative">
+        <div tw="relative flex">
+          {prefix && <Addon position={'left'}>{prefix}</Addon>}
           <input
             id={id}
             ref={ref}
@@ -60,7 +74,10 @@ const Input = React.forwardRef(
             disabled={disabled}
             value={value}
             css={[
-              tw`block w-full rounded p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0 font-family[inherit]`,
+              tw`block w-full p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0 font-family[inherit]`,
+              suffix && tw`rounded-l`,
+              prefix && tw`rounded-r`,
+              prefix && suffix && tw`rounded-none`,
               inputClassName && inputClassName,
               !error &&
                 !disabled &&
@@ -82,6 +99,7 @@ const Input = React.forwardRef(
             ]}
             {...rest}
           />
+          {suffix && <Addon position={'right'}>{suffix}</Addon>}
         </div>
       </div>
     );
@@ -98,6 +116,8 @@ Input.propTypes = {
   id: PropTypes.string,
   error: PropTypes.bool,
   disabled: PropTypes.bool,
+  suffix: PropTypes.node,
+  prefix: PropTypes.node,
   variant: PropTypes.oneOf(["brand", "brand-dark"]),
 };
 
