@@ -1,14 +1,14 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { render, fireEvent, waitFor, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom/extend-expect'
 
 import Input from "../../src/Input";
 
 describe("Snapshots/Components/Input", () => {
-  it("Renders input with addon", () => {
-    const component = renderer.create(<Input type={'number'} min={0} step={10} max={100} rightAddon={'TB'}/>);
+  it("Renders input with suffix", () => {
+    const component = renderer.create(<Input type={'number'} min={0} step={10} max={100} suffix={'TB'}/>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
