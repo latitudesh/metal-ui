@@ -1,3 +1,19 @@
+# [3.13.0](https://github.com/Maxihost/metal-ui/compare/v3.12.3...v3.13.0) (2022-03-03)
+
+
+### Bug Fixes
+
+* Allow both left and right addons simultaneously ([def0ec2](https://github.com/Maxihost/metal-ui/commit/def0ec25baf2973a18481713ebb6def0f52ccdd6))
+* Reverts table padding ([6c932a6](https://github.com/Maxihost/metal-ui/commit/6c932a6f46b9e4431950241812300ca2d5d991a4))
+
+
+### Features
+
+* Add addons for inputs ([6899c8a](https://github.com/Maxihost/metal-ui/commit/6899c8a726e38584140acdfcfd7a505e95a4e1ac))
+* Add test for input ([6c04287](https://github.com/Maxihost/metal-ui/commit/6c0428745737e3087186201491edd493e6de15c1))
+* Add test for onChange ([83fc075](https://github.com/Maxihost/metal-ui/commit/83fc07515471e1f289268d476825bddb8770ff5e))
+* Use same color as input border ([e28422e](https://github.com/Maxihost/metal-ui/commit/e28422e0d875d63f27282fb3e46dd723e08ce9d9))
+
 ## [3.12.3](https://github.com/Maxihost/metal-ui/compare/v3.12.2...v3.12.3) (2022-02-23)
 
 
