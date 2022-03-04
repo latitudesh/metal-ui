@@ -78,6 +78,7 @@ const Input = React.forwardRef(
               suffix && tw`rounded-l`,
               prefix && tw`rounded-r`,
               prefix && suffix && tw`rounded-none`,
+              !prefix && !suffix && tw`rounded`,
               inputClassName && inputClassName,
               !error &&
                 !disabled &&
