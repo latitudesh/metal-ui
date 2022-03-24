@@ -1,26 +1,26 @@
-import palette from './palette'
-import colors from './colors'
+import palette from "./palette";
+import colors from "./colors";
 
 /**
  * Fills are used in Avatars and Badges.
  */
-const fills = {}
+const fills = {};
 
 fills.solid = {
   neutral: {
-    color: 'white',
+    color: "white",
     backgroundColor: palette.neutral.base
   },
   blue: {
-    color: 'white',
+    color: "white",
     backgroundColor: palette.blue.base
   },
   red: {
-    color: 'white',
+    color: "white",
     backgroundColor: palette.red.base
   },
   orange: {
-    color: 'white',
+    color: "white",
     backgroundColor: palette.orange.base
   },
   yellow: {
@@ -28,18 +28,18 @@ fills.solid = {
     backgroundColor: palette.yellow.base
   },
   green: {
-    color: 'white',
+    color: "white",
     backgroundColor: palette.green.base
   },
   teal: {
-    color: 'white',
+    color: "white",
     backgroundColor: palette.teal.base
   },
   purple: {
-    color: 'white',
+    color: "white",
     backgroundColor: palette.purple.base
   }
-}
+};
 
 fills.subtle = {
   neutral: {
@@ -74,8 +74,8 @@ fills.subtle = {
     color: palette.purple.dark,
     backgroundColor: palette.purple.light
   }
-}
+};
 
-fills.options = Object.keys(fills.solid)
+fills.options = Object.keys(fills.solid);
 
-export default fills
+export default fills;

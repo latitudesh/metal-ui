@@ -84,7 +84,7 @@ const Sidesheet = ({
     }
   };
 
-  useKeyPressEvent('Escape', closeTransition);
+  useKeyPressEvent("Escape", closeTransition);
 
   return (
     <div ref={sideSheet}>
@@ -104,10 +104,10 @@ const Sidesheet = ({
           <div
             ref={portal}
             style={{
-              transition: `transform .2s cubic-bezier(.3,0,0,1)`,
+              transition: "transform .2s cubic-bezier(.3,0,0,1)",
               transform: transition
                 ? `translateX(calc(100vw - ${width}px - 20px))`
-                : `translateX(100vw)`,
+                : "translateX(100vw)",
               top: 0,
               bottom: 0,
               width: width,

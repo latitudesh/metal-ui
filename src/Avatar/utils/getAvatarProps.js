@@ -1,4 +1,4 @@
-import fills from '../styles/fills'
+import fills from "../styles/fills";
 
 /**
  * @param {boolean} isSolid
@@ -7,15 +7,15 @@ import fills from '../styles/fills'
  * @return {Object} { color, backgroundColor }
  */
 const getAvatarProps = ({ isSolid, color, hashValue }) => {
-  const appearances = fills[isSolid ? 'solid' : 'subtle']
+  const appearances = fills[isSolid ? "solid" : "subtle"];
 
-  if (color === 'automatic') {
-    const keys = Object.keys(appearances)
-    const key = keys[hashValue % keys.length]
-    return appearances[key]
+  if (color === "automatic") {
+    const keys = Object.keys(appearances);
+    const key = keys[hashValue % keys.length];
+    return appearances[key];
   }
 
-  return appearances[color]
-}
+  return appearances[color];
+};
 
-export default getAvatarProps
+export default getAvatarProps;

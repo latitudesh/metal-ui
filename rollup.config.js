@@ -6,7 +6,6 @@ import { uglify } from "rollup-plugin-uglify";
 const isProduction = process.env.NODE_ENV === "production";
 
 const files = [
-  "AlgoliaSearch",
   "Avatar",
   "Badge",
   "Box",
@@ -39,24 +38,24 @@ const options = {
     "@emotion/styled",
     "@emotion/react",
     "classnames",
-    "prop-types",
+    "prop-types"
   ],
   plugins: [
     babel({
-      babelHelpers: "bundled",
+      babelHelpers: "bundled"
     }),
     nodeResolve(),
     commonjs(),
-    isProduction && uglify(),
+    isProduction && uglify()
   ],
   output: {
     exports: "auto",
     globals: {
       react: "React",
-      "react-dom": "ReactDOM",
+      "react-dom": "ReactDOM"
     },
-    format: "cjs",
-  },
+    format: "cjs"
+  }
 };
 
 module.exports = [
@@ -66,8 +65,8 @@ module.exports = [
       input: `src/${file}/index.js`,
       output: {
         ...options.output,
-        dir: `dist/${file}`,
-      },
+        dir: `dist/${file}`
+      }
     };
-  }),
+  })
 ];
