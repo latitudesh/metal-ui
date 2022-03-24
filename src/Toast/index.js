@@ -101,13 +101,13 @@ const Toast = ({
           ]}
           style={{
             right: 20,
-            transition: `all .4s cubic-bezier(.3,0,0,1)`,
-            transform: showToast && `translate(0, -20px)`,
+            transition: "all .4s cubic-bezier(.3,0,0,1)",
+            transform: showToast && "translate(0, -20px)",
           }}
         >
           <div tw="flex justify-between items-center">
             <div tw="w-11/12">
-              <Text small color={(success || error) && `text-white`}>
+              <Text small color={(success || error) && "text-white"}>
                 {text}
               </Text>
             </div>

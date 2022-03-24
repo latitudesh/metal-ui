@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 function SvgComponent(props) {
         return (
@@ -19,8 +19,8 @@ function SvgComponent(props) {
                     <ellipse fill="#5DADEC" cx={18} cy={34} rx={18} ry={2} />
                     <ellipse fill="#E75A70" cx={18} cy={27} rx={3} ry={2} />
             </svg>
-        )
+        );
 }
 
-export default SvgComponent
+export default SvgComponent;
 

@@ -1,5 +1,5 @@
-import palette from './palette'
-import scales from './scales'
+import palette from "./palette";
+import scales from "./scales";
 
 /**
  * This object are functional colors being used the default theme.
@@ -88,4 +88,4 @@ export default {
       danger: palette.red.base,
       warning: palette.orange.base
     }
-  }
+  };

@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
-import React, { useCallback } from 'react'
+import React, { useCallback } from "react";
 import Button from "../Button";
 
 const FeedbackButton = React.forwardRef(({ open, setOpen, ...props }, ref) => {
