@@ -1016,7 +1016,7 @@ const Sidesheet = ({
     }
   };
 
-  _default('Escape', closeTransition);
+  _default("Escape", closeTransition);
   return react.jsx("div", {
     ref: sideSheet
   }, children, isOpened && react.jsx(SidesheetContent, {
@@ -1030,8 +1030,8 @@ const Sidesheet = ({
   }), react.jsx("div", {
     ref: portal,
     style: {
-      transition: `transform .2s cubic-bezier(.3,0,0,1)`,
-      transform: transition ? `translateX(calc(100vw - ${width}px - 20px))` : `translateX(100vw)`,
+      transition: "transform .2s cubic-bezier(.3,0,0,1)",
+      transform: transition ? `translateX(calc(100vw - ${width}px - 20px))` : "translateX(100vw)",
       top: 0,
       bottom: 0,
       width: width,
