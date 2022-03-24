@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/Maxihost/metal-ui/compare/v3.13.1...v4.0.0) (2022-03-24)
+
+
+* Merge pull request #341 from Maxihost/develop ([3591e54](https://github.com/Maxihost/metal-ui/commit/3591e54743eff3ec276984fb7a9c79998bf7b296)), closes [#341](https://github.com/Maxihost/metal-ui/issues/341)
+* Merge pull request #340 from Maxihost/breaking-change/deprecating-algolia-search ([5a26a61](https://github.com/Maxihost/metal-ui/commit/5a26a61bbd7314a7377d9d6598a97c3efd473d50)), closes [#340](https://github.com/Maxihost/metal-ui/issues/340)
+
+
+### BREAKING CHANGES
+
+* removing deprecated AlgoliaSearch component
+* removed deprecated AlgoliaSearch component
+
 ## [3.13.1](https://github.com/Maxihost/metal-ui/compare/v3.13.0...v3.13.1) (2022-03-04)
 
 
