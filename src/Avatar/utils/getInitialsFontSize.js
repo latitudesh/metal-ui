@@ -4,11 +4,11 @@
  * @return {number} font size
  */
 const getAvatarInitialsFontSize = (size, sizeLimitOneCharacter) => {
-    if (size <= sizeLimitOneCharacter) {
-      return Math.ceil(size / 2.2)
-    }
-  
-    return Math.ceil(size / 2.6)
+  if (size <= sizeLimitOneCharacter) {
+    return Math.ceil(size / 2.2);
   }
   
-  export default getAvatarInitialsFontSize
+  return Math.ceil(size / 2.6);
+};
+  
+export default getAvatarInitialsFontSize;

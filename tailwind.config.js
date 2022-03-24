@@ -1,3 +1,3 @@
 module.exports = {
-  presets: [require('./tailwind-preset.js')]
+  presets: [require("./tailwind-preset.js")]
 };

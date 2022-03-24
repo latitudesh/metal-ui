@@ -10,14 +10,14 @@ const ErrorSvgDataURI =
 const Addon = ({children, position}) => {
   return (
     <div css={[
-        tw`bg-border px-3 flex items-center justify-center shadow-sm text-sm text-accent-five`,
-        position === 'left' && tw`rounded-l`,
-        position === 'right' && tw`rounded-r`,
-      ]}>
+      tw`bg-border px-3 flex items-center justify-center shadow-sm text-sm text-accent-five`,
+      position === "left" && tw`rounded-l`,
+      position === "right" && tw`rounded-r`,
+    ]}>
       {children}
     </div>
-  )
-}
+  );
+};
 const Input = React.forwardRef(
   (
     {
@@ -60,7 +60,7 @@ const Input = React.forwardRef(
           </label>
         )}
         <div tw="relative flex">
-          {prefix && <Addon position={'left'}>{prefix}</Addon>}
+          {prefix && <Addon position={"left"}>{prefix}</Addon>}
           <input
             id={id}
             ref={ref}
@@ -93,14 +93,14 @@ const Input = React.forwardRef(
                 tw`text-error border-error hocus:border-error placeholder-error`,
               error &&
                 variant === "brand-dark" && [
-                  brandDarkStyles,
-                  `background-image: url("${ErrorSvgDataURI}");background-repeat: no-repeat;background-position-x: calc(100% - 16px);
+                brandDarkStyles,
+                `background-image: url("${ErrorSvgDataURI}");background-repeat: no-repeat;background-position-x: calc(100% - 16px);
                 background-position-y: 50%;`,
-                ],
+              ],
             ]}
             {...rest}
           />
-          {suffix && <Addon position={'right'}>{suffix}</Addon>}
+          {suffix && <Addon position={"right"}>{suffix}</Addon>}
         </div>
       </div>
     );
