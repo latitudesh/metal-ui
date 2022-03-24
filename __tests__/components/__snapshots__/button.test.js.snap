@@ -23,7 +23,7 @@ exports[`Snapshots/Components/Button Render button 1`] = `
   justify-content: center;
   max-width: 100%;
   cursor: pointer;
-  border-color: transparent;
+  border-color: rgba(0, 0, 0, 0);
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
   --tw-bg-opacity: 1;
