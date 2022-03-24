@@ -1,3 +1,10 @@
+## [3.13.1](https://github.com/Maxihost/metal-ui/compare/v3.13.0...v3.13.1) (2022-03-04)
+
+
+### Bug Fixes
+
+* Input rounding ([673bfdf](https://github.com/Maxihost/metal-ui/commit/673bfdfa66f8fd5c3da90021d1f0e276dbe4dc6e))
+
 # [3.13.0](https://github.com/Maxihost/metal-ui/compare/v3.12.3...v3.13.0) (2022-03-03)
 
 

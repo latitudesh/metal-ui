@@ -100,7 +100,7 @@ describe('Feedback', () => {
         // Tab to emoji radio button
         userEvent.tab()
         // Select the emoji radio then use right arrow to select the next one
-        userEvent.keyboard('{Enter}{ArrowRight}');
+        userEvent.keyboard('{ArrowRight}');
         userEvent.tab()
         userEvent.keyboard('{Enter}');
 
