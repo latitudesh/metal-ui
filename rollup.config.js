@@ -28,6 +28,7 @@ const files = [
   "Heading",
   "UnorderedList",
   "ListItem",
+  "Tooltip",
   "GlobalStyles"
 ];
 

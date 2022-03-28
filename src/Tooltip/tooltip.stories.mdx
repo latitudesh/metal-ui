@@ -1,0 +1,74 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import Tooltip from "./index";
+import Text from "../Text";
+import { InformationCircleOutline } from "heroicons-react";
+
+
+<Meta title="Tooltip" component={Tooltip} />
+
+# API
+
+<Props of={Tooltip} />
+
+# Default
+
+<Preview>
+  <Story name="Default">     
+     <Tooltip text="Consectetur nam repellendus exercitationem explicabo, quo aliquid"> Tooltip here </Tooltip>
+  </Story>  
+</Preview>
+ 
+
+# With JSX Content
+
+<Preview>
+  <Story name="With JSX Content">
+       <Tooltip text={
+        <>
+          <Text is="p" color="white" small className={'w-72'}>
+            JSX components <br />
+            <a href="#" className="underline text-link"> Link </a>
+          </Text>
+        </>
+      }> 
+        Tooltip with JSX Content
+      </Tooltip>
+  </Story>  
+</Preview>
+
+
+# Styled Trigger
+<Preview>
+  <Story name="Styled Trigger">
+      <Tooltip className="underline text-link" text={"Consectetur nam repellendus exercitationem explicabo, quo aliquid"}> Tooltip here
+      </Tooltip>
+  </Story>  
+</Preview>
+
+# Hidden Arrow
+
+<Preview>
+  <Story name="Hidden Arrow">
+      <Tooltip hideArrow  text={"Consectetur nam repellendus exercitationem explicabo, quo aliquid"}>  Tooltip here
+      </Tooltip>
+  </Story>  
+</Preview>
+
+# Placement
+
+Placement is subject to available screen space. If it detects collision for the choosen placement, it will be overriden by a safe one 
+
+<Preview>
+  <Story name="Placement">
+    <div className="flex gap-6"> 
+        <Tooltip placement="top"  text={"Consectetur nam repellendus exercitationem explicabo, quo aliquid"}>  Top (default)
+        </Tooltip>
+        <Tooltip placement="bottom"  text={"Consectetur nam repellendus exercitationem explicabo, quo aliquid"}>  Bottom
+        </Tooltip>
+        <Tooltip placement="right"  text={"Consectetur nam repellendus exercitationem explicabo, quo aliquid"}>  Right
+        </Tooltip> 
+        <Tooltip placement="left"  text={"Consectetur nam repellendus exercitationem explicabo, quo aliquid"}>  Left
+        </Tooltip> 
+    </div>
+  </Story>  
+</Preview>
