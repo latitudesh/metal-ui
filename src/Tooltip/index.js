@@ -19,9 +19,6 @@ const fadeOut = keyframes`
   }`;
 
 
-
-
-
 const HoverCardContent = styled(HoverCard.Content)(() => [
   tw`py-3 px-4 bg-foreground text-white text-sm rounded`], css`
   max-width: 24em;
@@ -33,14 +30,14 @@ const HoverCardContent = styled(HoverCard.Content)(() => [
   }
   `
 );
-const HoverCardTrigger = styled(HoverCard.Trigger)((className) => [
+const HoverCardTrigger = styled(HoverCard.Trigger)(() => [
   tw`inline-block`], css`width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   display: inline-block;`
 );
 
-const Tooltip = ({ children, text, placement, className, hideArrow, sideOffset }) => {
+const Tooltip = ({ children, text, placement, className, hideArrow }) => {
   return (
     <HoverCard.Root openDelay={0} closeDelay={200}>
       <HoverCardTrigger className={className}>
@@ -49,7 +46,6 @@ const Tooltip = ({ children, text, placement, className, hideArrow, sideOffset }
 
       <HoverCardContent
         side={placement}
-        sideOffset={sideOffset}
         onClick={(e) => e.stopPropagation()}
       >
         {text}
