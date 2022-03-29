@@ -37,6 +37,7 @@
     "@emotion/jest": "^11.8.0",
     "@radix-ui/react-dropdown-menu": "^0.1.4",
     "@radix-ui/react-popover": "^0.1.4",
+    "@radix-ui/react-radio-group": "^0.1.5",
     "@radix-ui/react-tabs": "^0.1.4",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^20.0.0",

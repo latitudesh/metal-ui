@@ -1,0 +1,41 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import RadioGroup from "./index";
+
+<Meta title="RadioGroup" component={RadioGroup} />
+
+# API
+
+<Props of={RadioGroup} />
+
+# Default
+
+<Preview>
+  <Story name="Default">
+    <RadioGroup
+    onChange={(value) => console.log("change" + value)}
+    >
+      <RadioGroup.Item value='no-raid'> No RAID </RadioGroup.Item>
+      <RadioGroup.Item value='raid-0'> RAID 0 </RadioGroup.Item>
+      <RadioGroup.Item value='raid-1'> RAID 1 </RadioGroup.Item>
+    </RadioGroup>
+  </Story>
+</Preview>
+
+
+# Card
+
+<Preview>
+  <Story name="Card">
+    <RadioGroup
+    variant="card"
+    defaultValue="london"
+    onChange={(value) => console.log("change" + value)}
+    className="grid grid-cols-3 gap-4 "
+    >
+      <RadioGroup.Item value='london'> London </RadioGroup.Item>
+      <RadioGroup.Item value='chicago'> Chicago </RadioGroup.Item>
+      <RadioGroup.Item value='santiago'> Santiago </RadioGroup.Item>
+      <RadioGroup.Item value='dallas'> Dallas </RadioGroup.Item>
+    </RadioGroup>
+  </Story>
+</Preview>
