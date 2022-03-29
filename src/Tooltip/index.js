@@ -40,7 +40,7 @@ const HoverCardTrigger = styled(HoverCard.Trigger)((className) => [
   display: inline-block;`
 );
 
-const Tooltip = ({ children, text, placement, className, hideArrow, sideOffset }) => {
+const Tooltip = ({ children, text, placement, className, showArrow }) => {
   return (
     <HoverCard.Root openDelay={0} closeDelay={200}>
       <HoverCardTrigger className={className}>
@@ -49,11 +49,10 @@ const Tooltip = ({ children, text, placement, className, hideArrow, sideOffset }
 
       <HoverCardContent
         side={placement}
-        sideOffset={sideOffset}
         onClick={(e) => e.stopPropagation()}
       >
         {text}
-        {!hideArrow && <HoverCard.Arrow offset={20} />}
+        {showArrow && <HoverCard.Arrow offset={20} />}
       </HoverCardContent>
     </HoverCard.Root>
   );
@@ -61,12 +60,13 @@ const Tooltip = ({ children, text, placement, className, hideArrow, sideOffset }
 
 Tooltip.defaultProps = {
   placement: "top",
-  hideArrow: false
+  showArrow: true
 };
 
 Tooltip.propTypes = {
   placement: PropTypes.oneOf(["top", "right", "bottom", "left"]),
-  hideArrow: PropTypes.bool
+  showArrow: PropTypes.bool,
+  className: PropTypes.string
 };
 
 export default Tooltip;
