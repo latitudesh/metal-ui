@@ -1,20 +1,35 @@
-import React from "react";
+import React, {createContext, useContext}  from "react";
 import PropTypes from "prop-types";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import * as Label from "@radix-ui/react-label";
 import tw, { styled , css} from "twin.macro";
 
-const StyledRadioGroup = styled(RadioGroupPrimitive.Root)(({ display, variant }) => [
-  variant === "card" ? tw`gap-4` : tw`gap-3`,
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none">
+      <path
+        d="M7 13l3 3 7-7"
+        stroke="currentColor"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+const StyledRadioGroup = styled(RadioGroupPrimitive.Root)(({ display }) => [
   display === "list" && tw`flex flex-col`,
-  display === "grid" && tw`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4`,
+  display === "grid" && tw`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4`,
 ]);
 
 const StyledItem = styled(RadioGroupPrimitive.Item)(({ variant, disabled }) => [
-  tw`flex gap-2 cursor-pointer focus:outline-none text-left text-accent-seven`,
+  variant === "card" ? tw`mb-4` : tw`mb-3`,
+  tw`flex gap-2 cursor-pointer focus:outline-none text-left text-accent-seven w-full`,
   disabled && tw`text-accent-four`,
   variant === "card" &&
-    tw`items-center px-6 py-4 justify-between rounded border-border shadow-sm border hover:bg-accent-two`, 
+    tw`w-auto px-6 py-4 items-center justify-between rounded border-border shadow-sm border hover:bg-accent-two`, 
   css`&[data-state="checked"] {  ${variant === "card" && tw`bg-accent-two ring-2 ring-offset-2 ring-offset-brand-uv ring-white` }  }`
 ]
 );
@@ -48,22 +63,20 @@ const StyledIndicator = styled(RadioGroupPrimitive.Indicator)(({ variant, disabl
 
 
  
-const RadioGroupTitle = ({children, asLabel, ...props}) => {
+const RadioGroupTitle = ({children, asLabel, htmlFor}) => {
   const style = tw`block text-sm leading-4 font-medium`;
-  
   const RadioGroupTitleLabel = styled(Label.Root)(() => [
     style
   ]);
   const RadioGroupTitleText = styled.div(() => [
     style
   ]);
-
  
   if (asLabel) {
-    return <RadioGroupTitleLabel {...props}>{children}</RadioGroupTitleLabel>;
+    return <RadioGroupTitleLabel htmlFor={htmlFor}>{children}</RadioGroupTitleLabel>;
   }
 
-  return <RadioGroupTitleText {...props}>{children}</RadioGroupTitleText>;
+  return <RadioGroupTitleText>{children}</RadioGroupTitleText>;
 };    
 
 const RadioGroupDescription = styled.div(() => [
@@ -72,57 +85,48 @@ const RadioGroupDescription = styled.div(() => [
 
 
 
-function CheckIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="M7 13l3 3 7-7"
-        stroke="currentColor"
-        strokeWidth={1.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
-const RadioGroupIndicator = ({value,  ...props}) => {
-  return <StyledIndicatorWrapper {...props}>
-    <StyledIndicator {...props}> {props.variant === "card" && <CheckIcon />} 
+const RadioGroupIndicator = ({variant}) => {
+  return <StyledIndicatorWrapper variant={variant} >
+    <StyledIndicator variant={variant}> {variant === "card" && <CheckIcon />} 
     </StyledIndicator>
   </StyledIndicatorWrapper>; 
 };
 
-const RadioGroupItem = ({children, showIndicator, ...props}) => {
-  console.log("props");
-  console.log(props);
-  return <StyledItem { ...props}> 
-    {(showIndicator || props.variant !== "card") && <RadioGroupIndicator  {...props}/> }
+const RadioGroupContext = createContext();
+ 
+function useRadioGroup() {
+  const context = useContext(RadioGroupContext);
+  if (context === undefined) {
+    throw new Error("useRadioGroup must be used within RadioGroupContext Provider");
+  }
+  return context;
+}
+
+const RadioGroup = ({children, showIndicator, ...props}) => {
+  return  <StyledRadioGroup {...props}>
+    <RadioGroupContext.Provider value={ {...props, showIndicator} }> 
+      {children}
+    </RadioGroupContext.Provider>
+  </StyledRadioGroup>; 
+};
+
+const RadioGroupItem = ({children, ...props }) => {
+  const { variant, disabled, required, showIndicator } = useRadioGroup();
+  return <StyledItem 
+    variant={variant} 
+    disabled={disabled} 
+    required={required} 
+    {...props}
+  > 
+    {showIndicator && <RadioGroupIndicator variant={variant}/>}
     <Label.Root className="grow w-full">
       {children} 
     </Label.Root>
   </StyledItem>;
 };
+
  
-const RadioGroup = ({children, showIndicator, id, ...props}) => {
-  return <StyledRadioGroup {...props}>
-    {React.Children.map(children, (child) => {
-      console.log("child");
-      console.log(child);
-      if ( !child ) return;
-      return React.cloneElement(child, {
-        ...child.props, 
-        variant: props.variant, 
-        /**
-         * `disabled` either inherits parent's prop or set its own
-         * Useful for disabling whole group or specific item
-        */ 
-        disabled: child.props.disabled || props.disabled, 
-        showIndicator: showIndicator
-      }); 
-    })}
-  </StyledRadioGroup>;
-};
 
 
 RadioGroup.defaultProps = {

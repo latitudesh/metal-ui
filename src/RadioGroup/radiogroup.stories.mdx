@@ -20,8 +20,6 @@ export const regions = [
   }
 ];
 
-export const test = ['']
-
 
 <Meta title="RadioGroup" component={RadioGroup} />
 
@@ -44,7 +42,7 @@ export const test = ['']
       <RadioGroup
       name="r-default"
       aria-label="Option list"
-      defaultValue="London" 
+      defaultValue="Santiago"  
       onValueChange={(value) => console.log("change: " + value)}
       >
       {regions.map((item, index) => (
@@ -53,11 +51,6 @@ export const test = ['']
             { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
           </RadioGroupItem>
       ))}
-      {test.length && (
-        <RadioGroupItem value='extra'>
-          <RadioGroupTitle> extra </RadioGroupTitle>
-        </RadioGroupItem>
-      )}
       </RadioGroup>
     </form>
   </Story>
@@ -69,26 +62,17 @@ export const test = ['']
   <Story name="Card">
     <form action="">
       <RadioGroup
-      name="r-card"  
-      direction="rtl"
+      name="r-card"   
       defaultValue="London"
       variant="card"
       onValueChange={(value) => console.log("change: " + value)}
       >
       {regions.map((item, index) => (
-          <RadioGroupItem value={item.name} key={index}>
-            <RadioGroupTitle>{item.name}</RadioGroupTitle>
+          <RadioGroupItem value={item.name} key={index} id={item.name}>
+            <RadioGroupTitle htmlFor={item.name}>{item.name}</RadioGroupTitle>
             { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
           </RadioGroupItem>
-      ))}
-      <div> 
-          {regions.map((item, index) => (
-              <RadioGroupItem value={item.name} key={index}>
-                <RadioGroupTitle>{item.name}</RadioGroupTitle>
-                { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
-              </RadioGroupItem>
-          ))}
-      </div> 
+      ))} 
       </RadioGroup>
     </form>
   </Story>
