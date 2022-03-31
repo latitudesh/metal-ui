@@ -1,41 +1,164 @@
 import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
-import RadioGroup from "./index";
+import {RadioGroup, RadioGroupItem, RadioGroupLabel, RadioGroupDescription} from "./index";
+
+
+export const regions = [
+  {
+    name: 'London'
+  },
+  {
+    name: 'Santiago',
+    description: 'Chile',
+  },
+  {
+    name: 'Dallas',
+    description: 'United States',
+  },
+  {
+    name: 'Chicago',
+    description: 'United States',
+  }
+];
+
 
 <Meta title="RadioGroup" component={RadioGroup} />
 
 # API
 
+### RadioGroup
 <Props of={RadioGroup} />
+
+### RadioGroupItem
+<Props of={RadioGroupItem} />
 
 # Default
 
 <Preview>
   <Story name="Default">
-    <RadioGroup
-    onChange={(value) => console.log("change" + value)}
-    >
-      <RadioGroup.Item value='no-raid'> No RAID </RadioGroup.Item>
-      <RadioGroup.Item value='raid-0'> RAID 0 </RadioGroup.Item>
-      <RadioGroup.Item value='raid-1'> RAID 1 </RadioGroup.Item>
-    </RadioGroup>
+    <form action=".">
+      <RadioGroup
+      name="r-default"
+      aria-label="Option list"
+      defaultValue="London" 
+      onValueChange={(value) => console.log("change: " + value)}
+      >
+      {regions.map((item, index) => (
+          <RadioGroupItem value={item.name} key={index}>
+            <RadioGroupLabel>{item.name}</RadioGroupLabel>
+            { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
+          </RadioGroupItem>
+      ))}
+      </RadioGroup>
+    </form>
   </Story>
 </Preview>
-
 
 # Card
 
 <Preview>
   <Story name="Card">
-    <RadioGroup
-    variant="card"
-    defaultValue="london"
-    onChange={(value) => console.log("change" + value)}
-    className="grid grid-cols-3 gap-4 "
+    <form action="">
+      <RadioGroup
+      name="r-card"  
+      direction="rtl"
+      defaultValue="London"
+      variant="card"
+      onValueChange={(value) => console.log("change: " + value)}
+      >
+      {regions.map((item, index) => (
+          <RadioGroupItem value={item.name} key={index}>
+            <RadioGroupLabel>{item.name}</RadioGroupLabel>
+            { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
+          </RadioGroupItem>
+      ))}
+      </RadioGroup>
+    </form>
+  </Story>
+</Preview>
+
+# Grid
+
+<Preview>
+    <Story name="Grid">
+      <form action="">
+      <RadioGroup
+      name="r-grid"
+      defaultValue="London"
+      variant="card"
+      display="grid"
+      onValueChange={(value) => console.log("change: " + value)}
+      >
+        {regions.map((item, index) => (
+          <RadioGroupItem value={item.name} key={index}>
+            <RadioGroupLabel>{item.name}</RadioGroupLabel>
+            { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
+          </RadioGroupItem>
+      ))}
+      </RadioGroup>
+      </form>
+    </Story>
+  
+</Preview>
+
+
+# Disabled
+
+<Preview>
+  <Story name="Disabled">
+    <RadioGroup 
+    name="r-disabled"
+    defaultValue="London"
+    disabled={true} 
+    onValueChange={(value) => console.log("change: " + value)}
     >
-      <RadioGroup.Item value='london'> London </RadioGroup.Item>
-      <RadioGroup.Item value='chicago'> Chicago </RadioGroup.Item>
-      <RadioGroup.Item value='santiago'> Santiago </RadioGroup.Item>
-      <RadioGroup.Item value='dallas'> Dallas </RadioGroup.Item>
+      {regions.map((item, index) => (
+        <RadioGroupItem value={item.name} key={index}>
+          <RadioGroupLabel>{item.name}</RadioGroupLabel> 
+          { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
+        </RadioGroupItem>   
+    ))}
     </RadioGroup>
+    <h3 className="my-6 font-bold">Disabled Item</h3>
+    <RadioGroup 
+    name="r-disabled"
+    defaultValue="London"
+    onValueChange={(value) => console.log("change: " + value)}
+    >
+       <RadioGroupItem value='option-1'>
+          <RadioGroupLabel> Option 1 </RadioGroupLabel> 
+          <RadioGroupDescription> Enabled </RadioGroupDescription>
+        </RadioGroupItem>   
+       <RadioGroupItem value='option-2' disabled={true}>
+          <RadioGroupLabel> Option 2 </RadioGroupLabel> 
+          <RadioGroupDescription> Disabled </RadioGroupDescription>
+        </RadioGroupItem>   
+       <RadioGroupItem value='option-3'>
+          <RadioGroupLabel> Option 3 </RadioGroupLabel> 
+          <RadioGroupDescription> Enabled </RadioGroupDescription>
+        </RadioGroupItem>   
+    </RadioGroup>
+  </Story>
+</Preview>
+
+# Hidden Indicator
+
+<Preview>
+  <Story name="Hidden Indicator">
+    <form action="">
+      <RadioGroup
+      name="r-hidden-indicator"
+      defaultValue="London"
+      variant="card"
+      showIndicator={false}
+      onValueChange={(value) => console.log("change: " + value)}
+      >
+      {regions.map((item, index) => (
+          <RadioGroupItem value={item.name} key={index}>
+            <RadioGroupLabel>{item.name}</RadioGroupLabel>
+            { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
+          </RadioGroupItem>
+      ))}
+      </RadioGroup>
+    </form>
   </Story>
 </Preview>

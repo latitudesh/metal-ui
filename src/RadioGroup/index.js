@@ -1,42 +1,64 @@
-import React, { useState, useEffect, useCallback } from "react";
-
-import PropTypes, { bool, string } from "prop-types";
+import React from "react";
+import PropTypes from "prop-types";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import tw, { styled, css } from "twin.macro";
+import * as Label from "@radix-ui/react-label";
+import tw, { styled , css} from "twin.macro";
 
+const StyledRadioGroup = styled(RadioGroupPrimitive.Root)(({ display, variant }) => [
+  variant === "card" ? tw`gap-4` : tw`gap-3`,
+  display === "list" && tw`flex flex-col`,
+  display === "grid" && tw`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4`,
+]);
 
-const Option = styled.label(({ variant, isChecked }) => [
+const StyledItem = styled(RadioGroupPrimitive.Item)(({ variant, disabled }) => [
+  tw`flex gap-2 cursor-pointer focus:outline-none text-left text-accent-seven`,
+  disabled && tw`text-accent-four`,
+  variant === "card" &&
+    tw`items-center px-6 py-4 justify-between rounded border-border shadow-sm border hover:bg-accent-two`, 
+  css`&[data-state="checked"] {  ${variant === "card" && tw`bg-accent-two ring-2 ring-offset-2 ring-offset-brand-uv ring-white` }  }`
+]
+);
+
+const StyledIndicatorWrapper = styled.div(({ variant}) => [
+  tw`flex items-center justify-center rounded-full focus:outline-none`,
   variant === "card" ?
-    tw` flex items-center gap-2  flex-row-reverse justify-between rounded shadow-sm border border-border px-6 py-4 cursor-pointer flex focus:outline-none`
+    tw`w-6 h-6 order-last`
     :
-    tw`cursor-pointer flex items-center gap-2`,
+    tw`w-4 h-4 border border-accent-three`
+]);
+const StyledIndicator = styled(RadioGroupPrimitive.Indicator)(({ variant, disabled }) => {
+  const bg = () => {
+    if ( disabled ) {
+      return tw`bg-accent-four`;
+    }  if ( variant === "card") {
+      return tw`bg-brand-uv`;
+    }
+    return tw`bg-foreground`;
+  };
+  return [
+    css`[data-state="unchecked"] & {  ${tw`hidden` }  }`,
+    tw`block rounded-full`,
+    bg,
+    variant === "card" ?
+      tw`w-6 h-6 text-white`
+      :
+      tw`w-2 h-2`,
+  ];}
+);
 
-  isChecked && variant === "card" &&
-  tw`bg-accent-two ring-2 ring-offset-2 ring-offset-brand-uv ring-white`
+const RadioGroupLabel = styled(Label.Root)(() => [
+  tw`block text-sm leading-4 font-medium`,
+]);
 
+const RadioGroupDescription = styled.div(() => [
+  tw`block mt-1 text-sm text-accent-four`,
 ]);
 
 
-const StyledRadio = styled(RadioGroupPrimitive.Item)(({ variant }) => [
-  variant === "card" ?
-    tw`w-6 h-6 flex items-center justify-center `
-    :
-    tw`w-3.5 h-3.5 rounded-full block border border-accent-three flex items-center justify-center`
-]);
 
-const StyledIndicator = styled(RadioGroupPrimitive.Indicator)(({ variant }) => [
-  variant === "card" ?
-    tw`block rounded-full w-6 h-6 rounded-full bg-brand-uv text-white`
-    :
-    tw`w-2 h-2 block  rounded-full  bg-foreground`,
-]);
-
-
-const styleCard = tw`bg-accent-two ring-2 ring-offset-2 ring-offset-brand-uv ring-white`;
-
-function CheckIcon(props) {
+function CheckIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" {...props}>
+    <svg viewBox="0 0 24 24" fill="none">
       <path
         d="M7 13l3 3 7-7"
         stroke="currentColor"
@@ -48,73 +70,68 @@ function CheckIcon(props) {
   );
 }
 
-const RadioGroup = ({ variant, children, onChange, required, className, defaultValue, value, arialLabel }) => {
-
-  const [internalValue, setInternalValue] = useState("");
-
-  useEffect(() => {
-    setInternalValue(defaultValue);
-  }, [defaultValue]);
-
-
-  const handleChange = useCallback(
-    (value) => {
-      setInternalValue(value);
-      if (onChange) {
-        onChange(value);
-      }
-    },
-    [setInternalValue, onChange]
-  );
-
-
-  return (
-    <RadioGroupPrimitive.Root
-      defaultValue={defaultValue}
-      aria-label={arialLabel}
-      onValueChange={value => handleChange(value)}
-      className={className}
-      required={required}
-    >
-      {children.map((child, index) => {
-        return <Option
-          key={index}
-          variant={variant}
-          className={child.props.className}
-          isChecked={internalValue === child.props.value}>
-          <StyledRadio value={child.props.value} id={`r${index}`} variant={variant}>
-            <StyledIndicator variant={variant}>
-              {variant === "card" && <CheckIcon />}
-            </StyledIndicator>
-          </StyledRadio>
-          <div>
-            {child}
-          </div>
-        </Option>;
-      })
-      }
-    </RadioGroupPrimitive.Root >
-  );
+const RadioGroupIndicator = ({value,  ...props}) => {
+  return <StyledIndicatorWrapper {...props}>
+    <StyledIndicator {...props}> {props.variant === "card" && <CheckIcon />} 
+    </StyledIndicator>
+  </StyledIndicatorWrapper>; 
 };
 
-
-RadioGroup.Item = ({ children }) => {
-  return <div> {children} </div>;
+const RadioGroupItem = ({children, showIndicator, ...props}) => {
+  return <StyledItem { ...props}> 
+    {(showIndicator || props.variant !== "card") && <RadioGroupIndicator  {...props}/> }
+    <div>{children}</div> 
+  </StyledItem>;
 };
+ 
+const RadioGroup = ({children, showIndicator, ...props}) => {
+  return <StyledRadioGroup {...props}>
+    {React.Children.map(children, (child) => {
+      return React.cloneElement(child, {
+        ...child.props, 
+        variant: props.variant, 
+        /**
+         * `disabled` either inherits parent's prop or set its own
+         * Useful for disabling whole group or specific item
+        */ 
+        disabled: child.props.disabled || props.disabled, 
+        showIndicator: showIndicator
+      }); 
+    })}
+  </StyledRadioGroup>;
+};
+
 
 RadioGroup.defaultProps = {
   variant: "default",
+  display: "list",
   required: false,
+  disabled: false,
+  /**
+   * Effective only for `card` variant
+   */
+  showIndicator: true,
 };
+
 
 RadioGroup.propTypes = {
-  variant: PropTypes.oneOf(["default", "card"]),
-  className: PropTypes.string,
-  children: PropTypes.node,
-  onChange: PropTypes.func,
-  required: PropTypes.bool,
+  name: PropTypes.string,
   defaultValue: PropTypes.string,
-  arialLabel: PropTypes.string,
+  disabled: PropTypes.bool,
+  variant: PropTypes.oneOf(["default", "card"]),
+  display: PropTypes.oneOf(["list", "grid"]),
+  /**
+     * Only effective for `card` variation 
+  */
+  showIndicator: PropTypes.bool,
+  onValueChange: PropTypes.func
 };
 
-export default RadioGroup;
+RadioGroupItem.propTypes = {
+  value: PropTypes.string,
+  disabled: PropTypes.bool
+};
+
+
+
+export { RadioGroup, RadioGroupItem, RadioGroupLabel, RadioGroupDescription };
