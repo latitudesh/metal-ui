@@ -46,9 +46,25 @@ const StyledIndicator = styled(RadioGroupPrimitive.Indicator)(({ variant, disabl
   ];}
 );
 
-const RadioGroupLabel = styled(Label.Root)(() => [
-  tw`block text-sm leading-4 font-medium`,
-]);
+
+ 
+const RadioGroupTitle = ({children, asLabel, ...props}) => {
+  const style = tw`block text-sm leading-4 font-medium`;
+  
+  const RadioGroupTitleLabel = styled(Label.Root)(() => [
+    style
+  ]);
+  const RadioGroupTitleText = styled.div(() => [
+    style
+  ]);
+
+ 
+  if (asLabel) {
+    return <RadioGroupTitleLabel {...props}>{children}</RadioGroupTitleLabel>;
+  }
+
+  return <RadioGroupTitleText {...props}>{children}</RadioGroupTitleText>;
+};    
 
 const RadioGroupDescription = styled.div(() => [
   tw`block mt-1 text-sm text-accent-four`,
@@ -78,15 +94,22 @@ const RadioGroupIndicator = ({value,  ...props}) => {
 };
 
 const RadioGroupItem = ({children, showIndicator, ...props}) => {
+  console.log("props");
+  console.log(props);
   return <StyledItem { ...props}> 
     {(showIndicator || props.variant !== "card") && <RadioGroupIndicator  {...props}/> }
-    <div>{children}</div> 
+    <Label.Root className="grow w-full">
+      {children} 
+    </Label.Root>
   </StyledItem>;
 };
  
-const RadioGroup = ({children, showIndicator, ...props}) => {
+const RadioGroup = ({children, showIndicator, id, ...props}) => {
   return <StyledRadioGroup {...props}>
     {React.Children.map(children, (child) => {
+      console.log("child");
+      console.log(child);
+      if ( !child ) return;
       return React.cloneElement(child, {
         ...child.props, 
         variant: props.variant, 
@@ -114,6 +137,7 @@ RadioGroup.defaultProps = {
 };
 
 
+
 RadioGroup.propTypes = {
   name: PropTypes.string,
   defaultValue: PropTypes.string,
@@ -132,6 +156,13 @@ RadioGroupItem.propTypes = {
   disabled: PropTypes.bool
 };
 
+RadioGroupTitle.propTypes = {
+  asLabel: PropTypes.bool
+};
+RadioGroupTitle.defaultProps = {
+  asLabel: true
+};
 
 
-export { RadioGroup, RadioGroupItem, RadioGroupLabel, RadioGroupDescription };
+
+export { RadioGroup, RadioGroupItem, RadioGroupTitle, RadioGroupDescription };

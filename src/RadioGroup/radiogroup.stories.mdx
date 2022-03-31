@@ -1,5 +1,5 @@
 import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
-import {RadioGroup, RadioGroupItem, RadioGroupLabel, RadioGroupDescription} from "./index";
+import {RadioGroup, RadioGroupItem, RadioGroupTitle, RadioGroupDescription} from "./index";
 
 
 export const regions = [
@@ -20,6 +20,8 @@ export const regions = [
   }
 ];
 
+export const test = ['']
+
 
 <Meta title="RadioGroup" component={RadioGroup} />
 
@@ -30,6 +32,9 @@ export const regions = [
 
 ### RadioGroupItem
 <Props of={RadioGroupItem} />
+
+### RadioGroupTitle
+<Props of={RadioGroupTitle} />
 
 # Default
 
@@ -44,10 +49,15 @@ export const regions = [
       >
       {regions.map((item, index) => (
           <RadioGroupItem value={item.name} key={index}>
-            <RadioGroupLabel>{item.name}</RadioGroupLabel>
+            <RadioGroupTitle>{item.name}</RadioGroupTitle>
             { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
           </RadioGroupItem>
       ))}
+      {test.length && (
+        <RadioGroupItem value='extra'>
+          <RadioGroupTitle> extra </RadioGroupTitle>
+        </RadioGroupItem>
+      )}
       </RadioGroup>
     </form>
   </Story>
@@ -67,10 +77,18 @@ export const regions = [
       >
       {regions.map((item, index) => (
           <RadioGroupItem value={item.name} key={index}>
-            <RadioGroupLabel>{item.name}</RadioGroupLabel>
+            <RadioGroupTitle>{item.name}</RadioGroupTitle>
             { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
           </RadioGroupItem>
       ))}
+      <div> 
+          {regions.map((item, index) => (
+              <RadioGroupItem value={item.name} key={index}>
+                <RadioGroupTitle>{item.name}</RadioGroupTitle>
+                { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
+              </RadioGroupItem>
+          ))}
+      </div> 
       </RadioGroup>
     </form>
   </Story>
@@ -90,7 +108,7 @@ export const regions = [
       >
         {regions.map((item, index) => (
           <RadioGroupItem value={item.name} key={index}>
-            <RadioGroupLabel>{item.name}</RadioGroupLabel>
+            <RadioGroupTitle>{item.name}</RadioGroupTitle>
             { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
           </RadioGroupItem>
       ))}
@@ -113,7 +131,7 @@ export const regions = [
     >
       {regions.map((item, index) => (
         <RadioGroupItem value={item.name} key={index}>
-          <RadioGroupLabel>{item.name}</RadioGroupLabel> 
+          <RadioGroupTitle>{item.name}</RadioGroupTitle> 
           { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
         </RadioGroupItem>   
     ))}
@@ -125,15 +143,15 @@ export const regions = [
     onValueChange={(value) => console.log("change: " + value)}
     >
        <RadioGroupItem value='option-1'>
-          <RadioGroupLabel> Option 1 </RadioGroupLabel> 
+          <RadioGroupTitle> Option 1 </RadioGroupTitle> 
           <RadioGroupDescription> Enabled </RadioGroupDescription>
         </RadioGroupItem>   
        <RadioGroupItem value='option-2' disabled={true}>
-          <RadioGroupLabel> Option 2 </RadioGroupLabel> 
+          <RadioGroupTitle> Option 2 </RadioGroupTitle> 
           <RadioGroupDescription> Disabled </RadioGroupDescription>
         </RadioGroupItem>   
        <RadioGroupItem value='option-3'>
-          <RadioGroupLabel> Option 3 </RadioGroupLabel> 
+          <RadioGroupTitle> Option 3 </RadioGroupTitle> 
           <RadioGroupDescription> Enabled </RadioGroupDescription>
         </RadioGroupItem>   
     </RadioGroup>
@@ -154,8 +172,37 @@ export const regions = [
       >
       {regions.map((item, index) => (
           <RadioGroupItem value={item.name} key={index}>
-            <RadioGroupLabel>{item.name}</RadioGroupLabel>
+            <RadioGroupTitle>{item.name}</RadioGroupTitle>
             { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
+          </RadioGroupItem>
+      ))}
+      </RadioGroup>
+    </form>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Multiple labels">
+    <form action="">
+      <RadioGroup
+      name="r-hidden-indicator"
+      defaultValue="London"
+      variant="card"
+      showIndicator={false}
+      onValueChange={(value) => console.log("change: " + value)}
+      >
+      {regions.map((item, index) => (
+          <RadioGroupItem value={item.name} key={index} id={item.name}>
+            <div className="flex justify-between">
+              <div>
+                <RadioGroupTitle htmlFor={item.name}>{item.name}</RadioGroupTitle>
+                { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
+              </div>
+              <div>
+                <RadioGroupTitle asLabel={false}>$297</RadioGroupTitle>
+                 <RadioGroupDescription>/mo</RadioGroupDescription>
+              </div>
+            </div>
           </RadioGroupItem>
       ))}
       </RadioGroup>
