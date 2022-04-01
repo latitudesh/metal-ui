@@ -102,6 +102,44 @@ export const regions = [
   
 </Preview>
 
+# Collapsed 
+
+<Preview>
+    <Story name="Collapsed">
+      <form action="">
+      <RadioGroup
+      name="r-grid"
+      collapsed="true"
+      variant="card" 
+      onValueChange={(value) => console.log("change: " + value)}
+      >
+        {regions.map((item, index) => (
+          <RadioGroupItem value={item.name} key={index}>
+            <RadioGroupTitle>{item.name}</RadioGroupTitle>
+            { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
+          </RadioGroupItem>
+      ))}
+      </RadioGroup>
+      <RadioGroup
+      className="mt-6"
+      name="r-grid"
+      display="grid"
+      collapsed="true"
+      variant="card" 
+      onValueChange={(value) => console.log("change: " + value)}
+      >
+        {regions.map((item, index) => (
+            <RadioGroupItem value={item.name} key={index}>
+              <RadioGroupTitle>{item.name}</RadioGroupTitle>
+              { item.description && <RadioGroupDescription>{item.description}</RadioGroupDescription>}
+            </RadioGroupItem>
+      ))}
+      </RadioGroup>
+      </form>
+    </Story>
+  
+</Preview>
+
 
 # Disabled
 
@@ -185,6 +223,8 @@ export const regions = [
     </form>
   </Story>
 </Preview>
+
+# Multiple labels
 
 <Preview>
   <Story name="Multiple labels">

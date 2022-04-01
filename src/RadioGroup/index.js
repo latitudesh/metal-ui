@@ -5,21 +5,24 @@ import * as Label from "@radix-ui/react-label";
 import tw, { styled , css} from "twin.macro";
 import { Check } from "heroicons-react";
 
-const StyledRadioGroup = styled(RadioGroupPrimitive.Root)(({ display }) => [
-  display === "list" && tw`flex flex-col`,
-  display === "grid" && tw`grid gap-x-4`,
-  display === "grid" && css`grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));`,
+const StyledRadioGroup = styled(RadioGroupPrimitive.Root)(({ display, collapsed }) => [
+  display === "list" && tw`flex flex-col gap-3`,
+  display === "grid" && tw`grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4`, 
+  collapsed === "true" && css`grid-gap: 1px`,
 ]);
 
-const StyledItem = styled(RadioGroupPrimitive.Item)(({ variant, disabled }) => [
-  variant === "card" ? tw`mb-4` : tw`mb-3`,
-  tw`flex gap-2 cursor-pointer focus:outline-none text-left text-accent-seven w-full`,
+const StyledItem = styled(RadioGroupPrimitive.Item)(({ variant, disabled,collapsed }) => [
+  tw`relative flex gap-2 cursor-pointer focus:outline-none text-left text-accent-seven w-full`,
   disabled && tw`text-accent-four cursor-default`,
   variant === "card" &&
-    tw`w-auto px-6 py-4 items-center justify-between rounded border-border shadow-sm border`, 
+    tw`w-full px-6 py-4 items-center justify-between bg-white`, 
+  variant === "card" &&
+    css`&::before { content:''; box-shadow: 0 0 0 1px rgb(234, 234, 234); ${ tw`block w-full h-full absolute left-0 top-0 pointer-events-none` } }`, 
+  variant === "card" && !collapsed === "true" &&
+    tw`rounded shadow-sm border-border border`, 
   variant === "card" && !disabled &&
   tw`hover:bg-accent-two`, 
-  css`&[data-state="checked"] {  ${variant === "card" && tw`bg-accent-two ring-2 ring-offset-2 ring-offset-brand-uv ring-white` }  }`
+  css`&[data-state="checked"] {  ${variant === "card" && tw`bg-accent-two ring-2 ring-offset-2 ring-inset ring-offset-brand-uv ring-white` }  }`
 ]
 );
 
@@ -92,8 +95,8 @@ function useRadioGroup() {
   return context;
 }
 
-const RadioGroup = ({children, showIndicator, ...props}) => {
-  return  <StyledRadioGroup {...props}>
+const RadioGroup = ({children, showIndicator,  ...props}) => {
+  return  <StyledRadioGroup  {...props}>
     <RadioGroupContext.Provider value={ {...props, showIndicator} }> 
       {children}
     </RadioGroupContext.Provider>
@@ -101,11 +104,13 @@ const RadioGroup = ({children, showIndicator, ...props}) => {
 };
 
 const RadioGroupItem = ({children, ...props }) => {
-  const { variant, disabled, required, showIndicator } = useRadioGroup();
+  const { variant, display, disabled, required, showIndicator, collapsed } = useRadioGroup();
   return <StyledItem 
     variant={variant} 
+    display={display} 
     disabled={disabled} 
     required={required} 
+    collapsed={collapsed} 
     {...props}
   > 
     {showIndicator && <RadioGroupIndicator variant={variant}/>}
@@ -123,9 +128,7 @@ RadioGroup.defaultProps = {
   display: "list",
   required: false,
   disabled: false,
-  /**
-   * Effective only for `card` variant
-   */
+  collapsed: "false",
   showIndicator: true,
 };
 
@@ -137,11 +140,16 @@ RadioGroup.propTypes = {
   disabled: PropTypes.bool,
   variant: PropTypes.oneOf(["default", "card"]),
   display: PropTypes.oneOf(["list", "grid"]),
+  onValueChange: PropTypes.func,
+  /**
+     * Only effective for `card` variation 
+  */
+  collapsed: PropTypes.oneOf(["true", "false"]),
   /**
      * Only effective for `card` variation 
   */
   showIndicator: PropTypes.bool,
-  onValueChange: PropTypes.func
+
 };
 
 RadioGroupItem.propTypes = {
