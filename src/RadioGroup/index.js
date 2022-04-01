@@ -3,39 +3,28 @@ import PropTypes from "prop-types";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import * as Label from "@radix-ui/react-label";
 import tw, { styled , css} from "twin.macro";
-
-
-function CheckIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none">
-      <path
-        d="M7 13l3 3 7-7"
-        stroke="currentColor"
-        strokeWidth={1.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+import { Check } from "heroicons-react";
 
 const StyledRadioGroup = styled(RadioGroupPrimitive.Root)(({ display }) => [
   display === "list" && tw`flex flex-col`,
-  display === "grid" && tw`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4`,
+  display === "grid" && tw`grid gap-x-4`,
+  display === "grid" && css`grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));`,
 ]);
 
 const StyledItem = styled(RadioGroupPrimitive.Item)(({ variant, disabled }) => [
   variant === "card" ? tw`mb-4` : tw`mb-3`,
   tw`flex gap-2 cursor-pointer focus:outline-none text-left text-accent-seven w-full`,
-  disabled && tw`text-accent-four`,
+  disabled && tw`text-accent-four cursor-default`,
   variant === "card" &&
-    tw`w-auto px-6 py-4 items-center justify-between rounded border-border shadow-sm border hover:bg-accent-two`, 
+    tw`w-auto px-6 py-4 items-center justify-between rounded border-border shadow-sm border`, 
+  variant === "card" && !disabled &&
+  tw`hover:bg-accent-two`, 
   css`&[data-state="checked"] {  ${variant === "card" && tw`bg-accent-two ring-2 ring-offset-2 ring-offset-brand-uv ring-white` }  }`
 ]
 );
 
 const StyledIndicatorWrapper = styled.div(({ variant}) => [
-  tw`flex items-center justify-center rounded-full focus:outline-none`,
+  tw`flex items-center justify-center flex-shrink-0 rounded-full focus:outline-none`,
   variant === "card" ?
     tw`w-6 h-6 order-last`
     :
@@ -52,7 +41,7 @@ const StyledIndicator = styled(RadioGroupPrimitive.Indicator)(({ variant, disabl
   };
   return [
     css`[data-state="unchecked"] & {  ${tw`hidden` }  }`,
-    tw`block rounded-full`,
+    tw`flex items-center justify-center rounded-full`,
     bg,
     variant === "card" ?
       tw`w-6 h-6 text-white`
@@ -88,7 +77,7 @@ const RadioGroupDescription = styled.div(() => [
 
 const RadioGroupIndicator = ({variant}) => {
   return <StyledIndicatorWrapper variant={variant} >
-    <StyledIndicator variant={variant}> {variant === "card" && <CheckIcon />} 
+    <StyledIndicator variant={variant}> {variant === "card" && <Check className="h-4 w-4"/>} 
     </StyledIndicator>
   </StyledIndicatorWrapper>; 
 };
