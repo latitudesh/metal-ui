@@ -22,8 +22,8 @@ const StyledItem = styled(RadioGroupPrimitive.Item)(( { disabled }) => {
     disabled && tw`text-accent-four cursor-default`,
     variant === "card" &&
     tw`w-full px-6 py-4 items-center justify-between bg-white`, 
-    variant === "card" &&
-    css`&::before { content:''; box-shadow: 0 0 0 1px rgb(234, 234, 234); ${ tw`block w-full h-full absolute left-0 top-0 pointer-events-none` } }`, 
+    variant === "card" && collapsed &&
+    css`box-shadow: 0 0 0 1px rgb(234, 234, 234);`, 
     variant === "card" && !collapsed &&
     tw`rounded shadow-sm border-border border`, 
     variant === "card" && !disabled &&
