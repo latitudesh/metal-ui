@@ -38,7 +38,7 @@ export const regions = [
 
 <Preview>
   <Story name="Default">
-     <RadioGroup 
+     <RadioGroup  
     defaultValue="option-1"
   >
    <RadioGroupItem id="option-1" value="option-1">
@@ -109,7 +109,7 @@ export const regions = [
       <form action="">
       <RadioGroup
       name="r-grid"
-      collapsed="true"
+      collapsed
       variant="card" 
       onValueChange={(value) => console.log("change: " + value)}
       >
@@ -123,9 +123,9 @@ export const regions = [
       <RadioGroup
       className="mt-6"
       name="r-grid"
-      display="grid"
-      collapsed="true"
+      display="grid" 
       variant="card" 
+      collapsed
       onValueChange={(value) => console.log("change: " + value)}
       >
         {regions.map((item, index) => (
