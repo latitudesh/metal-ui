@@ -29,6 +29,7 @@ const files = [
   "UnorderedList",
   "ListItem",
   "Tooltip",
+  "RadioGroup",
   "GlobalStyles"
 ];
 

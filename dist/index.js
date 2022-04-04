@@ -17,31 +17,33 @@ const DropdownMenu = require("./DropdownMenu");
 const Typography = require("./Typography");
 const Tabs = require("./Tabs");
 const Tooltip = require("./Tooltip");
+const RadioGroup = require("./RadioGroup");
 const GlobalStyles = require("./GlobalStyles");
 
 module.exports = {
-    Table,
-    Header,
-    Content,
-    Button,
-    Box,
-    Sidesheet,
-    Skeleton,
-    Toast,
-    Input,
-    Textarea,
-    Select,
-    Avatar,
-    Badge,
-    SpinningDots,
-    Feedback,
-    DropdownMenu,
-    Tooltip,
-    GlobalStyles,
-    // Re export internals for backward compatibility
-    ...DropdownMenu,
-    Typography,
-    ...Typography,
-    // We cannot export Tabs because it has an internal component that is also named Tabs
-    ...Tabs
+  Table,
+  Header,
+  Content,
+  Button,
+  Box,
+  Sidesheet,
+  Skeleton,
+  Toast,
+  Input,
+  Textarea,
+  Select,
+  Avatar,
+  Badge,
+  SpinningDots,
+  Feedback,
+  DropdownMenu,
+  Tooltip,
+  RadioGroup,
+  GlobalStyles,
+  // Re export internals for backward compatibility
+  ...DropdownMenu,
+  Typography,
+  ...Typography,
+  // We cannot export Tabs because it has an internal component that is also named Tabs
+  ...Tabs
 };
