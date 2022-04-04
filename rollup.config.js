@@ -28,8 +28,9 @@ const files = [
   "Heading",
   "UnorderedList",
   "ListItem",
-  "GlobalStyles",
-  "RadioGroup"
+  "Tooltip",
+  "RadioGroup",
+  "GlobalStyles"
 ];
 
 const options = {
