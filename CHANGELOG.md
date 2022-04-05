@@ -1,3 +1,29 @@
+# [4.1.0](https://github.com/Maxihost/metal-ui/compare/v4.0.0...v4.1.0) (2022-04-05)
+
+
+### Bug Fixes
+
+* adding index.js ([ae85632](https://github.com/Maxihost/metal-ui/commit/ae85632fc3e13b72bd247441acb400644236c78d))
+* centering tooltip arrow when align is end ([cbeda85](https://github.com/Maxihost/metal-ui/commit/cbeda850753bf2b6246d80ba92766dad4bc045c2))
+* conflicts ([948f778](https://github.com/Maxihost/metal-ui/commit/948f778294e7fa763a6c0f765754144cb5ababed))
+* conflicts ([0388948](https://github.com/Maxihost/metal-ui/commit/03889487c5584f030b2dcde8b7403ea5ae03f369))
+* renaming hideArrow to showArrow ([15c6b07](https://github.com/Maxihost/metal-ui/commit/15c6b078e80ce7ac83f3980355d364a3044dd281))
+* renaming hideArrow to showArrow ([fbc2986](https://github.com/Maxihost/metal-ui/commit/fbc2986642401d5b4d7dcd67d18c40b3fadd4eab))
+* rounded border conflict in card display ([71f5a0f](https://github.com/Maxihost/metal-ui/commit/71f5a0f2249c2e14bd12df3f7c149a96d4bceab8))
+
+
+### Features
+
+* better usage of context API ([1ba4793](https://github.com/Maxihost/metal-ui/commit/1ba4793eaf4f790875ff9a5bc605a1b3def8f404))
+* card variant ([bcf78a6](https://github.com/Maxihost/metal-ui/commit/bcf78a646cf2413a3f121681bc0de622df7ccc02))
+* collapsed option ([2458469](https://github.com/Maxihost/metal-ui/commit/24584691b99bf1ab1840af5d49a75d300560384f))
+* disabled style and label from radix ui ([53b2c14](https://github.com/Maxihost/metal-ui/commit/53b2c1415b38c03163777a77e9d387c5c7c86a76))
+* grid with minmax, improvement to disabled style ([0d52d1d](https://github.com/Maxihost/metal-ui/commit/0d52d1d912cbe45ad152a2377bb5dc21f50d669f))
+* radioGroup with context API ([120955c](https://github.com/Maxihost/metal-ui/commit/120955c990ae4a47bbec5f0918f36a2e74a0b271))
+* support for tooltip style prop ([534e2c3](https://github.com/Maxihost/metal-ui/commit/534e2c35dd3f1db270536e200bb47be58153ab72))
+* tooltip ([71a6303](https://github.com/Maxihost/metal-ui/commit/71a6303144ad5975f514a088fe6f29ba7299d190))
+* version without provider ([8dbca30](https://github.com/Maxihost/metal-ui/commit/8dbca306ecba8e242ba55833bcee01365c05518c))
+
 # [4.0.0](https://github.com/Maxihost/metal-ui/compare/v3.13.1...v4.0.0) (2022-03-24)
 
 
