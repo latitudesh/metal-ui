@@ -1,3 +1,10 @@
+## [4.1.2](https://github.com/Maxihost/metal-ui/compare/v4.1.1...v4.1.2) (2022-04-05)
+
+
+### Bug Fixes
+
+* updating build ([989c8b0](https://github.com/Maxihost/metal-ui/commit/989c8b0a0d8ed9882477e31aa6026e63f1e90d37))
+
 ## [4.1.1](https://github.com/Maxihost/metal-ui/compare/v4.1.0...v4.1.1) (2022-04-05)
 
 
