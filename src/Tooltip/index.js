@@ -28,6 +28,9 @@ const HoverCardContent = styled(HoverCard.Content)(() => [
   &[data-state='closed'] {
     animation: ${fadeOut} .1s ease-out forwards;
   }
+  &[data-align='end'] {
+   transform: translateX(8px)
+  }
   `
 );
 const HoverCardTrigger = styled(HoverCard.Trigger)(() => [
@@ -37,9 +40,9 @@ const HoverCardTrigger = styled(HoverCard.Trigger)(() => [
   display: inline-block;`
 );
 
-const Tooltip = ({ children, text, placement, className, showArrow, style }) => {
+const Tooltip = ({ children, text, placement, className, showArrow, style, ...props }) => {
   return (
-    <HoverCard.Root openDelay={0} closeDelay={200}>
+    <HoverCard.Root openDelay={0} closeDelay={200} {...props}>
       <HoverCardTrigger className={className}>
         {children}
       </HoverCardTrigger>
@@ -50,7 +53,7 @@ const Tooltip = ({ children, text, placement, className, showArrow, style }) => 
         onClick={(e) => e.stopPropagation()}
       >
         {text}
-        {showArrow && <HoverCard.Arrow offset={20} />}
+        {showArrow && <HoverCard.Arrow offset={10} />}
       </HoverCardContent>
     </HoverCard.Root>
   );
@@ -58,7 +61,7 @@ const Tooltip = ({ children, text, placement, className, showArrow, style }) => 
 
 Tooltip.defaultProps = {
   placement: "top",
-  showArrow: true
+  showArrow: true,
 };
 
 Tooltip.propTypes = {
