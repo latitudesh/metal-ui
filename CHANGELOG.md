@@ -1,3 +1,10 @@
+## [4.1.1](https://github.com/Maxihost/metal-ui/compare/v4.1.0...v4.1.1) (2022-04-05)
+
+
+### Bug Fixes
+
+* adding spreading props support for radioGroupItem ([81a5103](https://github.com/Maxihost/metal-ui/commit/81a510365092e54138122bf728ab402ee9b16561))
+
 # [4.1.0](https://github.com/Maxihost/metal-ui/compare/v4.0.0...v4.1.0) (2022-04-05)
 
 
