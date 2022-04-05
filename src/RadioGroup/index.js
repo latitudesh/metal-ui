@@ -117,9 +117,9 @@ const RadioGroup = ({children, showIndicator, collapsed, defaultValue,  ...props
   </RadioGroupContext.Provider>;
 };
 
-const RadioGroupItem = ({children, value, disabled }) => {
+const RadioGroupItem = ({children, value, disabled,  ...props }) => {
   const { showIndicator, disabled: disabledGroup } = useRadioGroup();
-  return <StyledItem value={value} disabled={disabled || disabledGroup}> 
+  return <StyledItem value={value} disabled={disabled || disabledGroup} {...props}> 
     {showIndicator && <RadioGroupIndicator />}
     <Label.Root className="grow w-full">
       {children} 
