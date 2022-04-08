@@ -46,6 +46,7 @@ const options = {
     "@radix-ui/react-popover",
     "@radix-ui/react-radio-group",
     "@radix-ui/react-tabs",
+    "@radix-ui/react-label",
   ],
   plugins: [
     babel({
