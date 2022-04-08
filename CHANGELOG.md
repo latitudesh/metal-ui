@@ -1,3 +1,10 @@
+## [4.1.3](https://github.com/Maxihost/metal-ui/compare/v4.1.2...v4.1.3) (2022-04-08)
+
+
+### Bug Fixes
+
+* adding support to spreading props on RadiRadioGroupTitle ([92ac41d](https://github.com/Maxihost/metal-ui/commit/92ac41dfc79619631c9fde8d6b4b13d6b090d541))
+
 ## [4.1.2](https://github.com/Maxihost/metal-ui/compare/v4.1.1...v4.1.2) (2022-04-05)
 
 
