@@ -1,7 +1,6 @@
 import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
 import Tooltip from "./index";
 import Text from "../Text";
-import { InformationCircleOutline } from "heroicons-react";
 
 
 <Meta title="Tooltip" component={Tooltip} />
@@ -13,11 +12,11 @@ import { InformationCircleOutline } from "heroicons-react";
 # Default
 
 <Preview>
-  <Story name="Default">     
+  <Story name="Default">
      <Tooltip text="Consectetur nam repellendus exercitationem explicabo, quo aliquid"> Tooltip here </Tooltip>
-  </Story>  
+  </Story>
 </Preview>
- 
+
 
 # With JSX Content
 
@@ -30,10 +29,10 @@ import { InformationCircleOutline } from "heroicons-react";
             <a href="#" className="underline text-link"> Link </a>
           </Text>
         </>
-      }> 
+      }>
         Tooltip with JSX Content
       </Tooltip>
-  </Story>  
+  </Story>
 </Preview>
 
 
@@ -42,7 +41,7 @@ import { InformationCircleOutline } from "heroicons-react";
   <Story name="Styled Trigger">
       <Tooltip className="underline text-link" text={"Consectetur nam repellendus exercitationem explicabo, quo aliquid"}> Tooltip here
       </Tooltip>
-  </Story>  
+  </Story>
 </Preview>
 
 # Hidden Arrow
@@ -51,24 +50,24 @@ import { InformationCircleOutline } from "heroicons-react";
   <Story name="Hidden Arrow">
       <Tooltip showArrow={false} text={"Consectetur nam repellendus exercitationem explicabo, quo aliquid"}>  Tooltip here
       </Tooltip>
-  </Story>  
+  </Story>
 </Preview>
 
 # Placement
 
-Placement is subject to available screen space. If it detects collision for the choosen placement, it will be overriden by a safe one 
+Placement is subject to available screen space. If it detects collision for the choosen placement, it will be overriden by a safe one
 
 <Preview>
   <Story name="Placement">
-    <div className="flex gap-6"> 
+    <div className="flex gap-6">
         <Tooltip placement="top"  text={"Consectetur nam repellendus exercitationem explicabo, quo aliquid"}>  Top (default)
         </Tooltip>
         <Tooltip placement="bottom"  text={"Consectetur nam repellendus exercitationem explicabo, quo aliquid"}>  Bottom
         </Tooltip>
         <Tooltip placement="right"  text={"Consectetur nam repellendus exercitationem explicabo, quo aliquid"}>  Right
-        </Tooltip> 
+        </Tooltip>
         <Tooltip placement="left"  text={"Consectetur nam repellendus exercitationem explicabo, quo aliquid"}>  Left
-        </Tooltip> 
+        </Tooltip>
     </div>
-  </Story>  
+  </Story>
 </Preview>
