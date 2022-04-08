@@ -47,6 +47,9 @@ const StyledIndicator = styled(RadioGroupPrimitive.Indicator)(() => {
   const { variant, disabled } = useRadioGroup();
   const bg = () => {
     if (disabled) {
+      if (variant === "card") {
+        return tw`bg-accent-three`;
+      }
       return tw`bg-accent-four`;
     } if (variant === "card") {
       return tw`bg-brand-uv`;
@@ -76,8 +79,12 @@ const RadioGroupIndicator = () => {
 
 
 
-const RadioGroupTitle = ({ children, asLabel, htmlFor }) => {
-  const style = tw`block text-sm leading-4 font-medium`;
+const RadioGroupTitle = ({ children, asLabel, htmlFor, ...props }) => {
+  const { variant } = useRadioGroup();
+  const style = [
+    tw`block text-sm font-medium`,
+    variant === "default" && tw`leading-4`,
+  ];
   const RadioGroupTitleLabel = styled(Label.Root)(() => [
     style
   ]);
@@ -86,14 +93,14 @@ const RadioGroupTitle = ({ children, asLabel, htmlFor }) => {
   ]);
 
   if (asLabel) {
-    return <RadioGroupTitleLabel htmlFor={htmlFor}>{children}</RadioGroupTitleLabel>;
+    return <RadioGroupTitleLabel htmlFor={htmlFor} {...props}>{children}</RadioGroupTitleLabel>;
   }
-  return <RadioGroupTitleText>{children}</RadioGroupTitleText>;
+  return <RadioGroupTitleText {...props}>{children}</RadioGroupTitleText>;
 };
 
-const RadioGroupDescription = styled.div(() => [
-  tw`block mt-1 text-sm text-accent-four`,
-]);
+const RadioGroupDescription = ({ children, ...props }) => (
+  <div css={tw`block mt-1 text-sm text-accent-four`} {...props}> {children} </div>
+);
 
 
 const RadioGroupContext = createContext();
@@ -112,7 +119,7 @@ const RadioGroup = ({ children, showIndicator, collapsed, defaultValue, ...props
       ...props,
       showIndicator,
       defaultValue,
-      collapsed: collapsed
+      collapsed
     }}>
     <StyledRadioGroup defaultValue={defaultValue} {...props}>
       {children}
