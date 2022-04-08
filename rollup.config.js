@@ -47,6 +47,7 @@ const options = {
     "@radix-ui/react-radio-group",
     "@radix-ui/react-tabs",
     "@radix-ui/react-label",
+    "@heroicons/react"
   ],
   plugins: [
     babel({
