@@ -1,7 +1,7 @@
 import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
 import Button from "./index";
 import Icon from "../../util/Icon";
-import { ArrowUpOutline } from "heroicons-react";
+import ArrowUpOutline from "@heroicons/react/outline/ArrowUpIcon";
 import Box from "../Box";
 
 <Meta title="Button" component={Button} />
@@ -55,14 +55,14 @@ Disabled buttons do not inherit `variant` styling.
       <Button
         label="Disabled"
         disabled
-        iconBefore={<ArrowUpOutline size={20} />}
+        iconBefore={<ArrowUpOutline width={20} height={20} />}
       />
       <Button
         label="Disabled"
         disabled
         size="large"
-        iconBefore={<ArrowUpOutline size={20} />}
-        iconAfter={<ArrowUpOutline size={20} />}
+        iconBefore={<ArrowUpOutline width={20} height={20} />}
+        iconAfter={<ArrowUpOutline width={20} height={20} />}
       />
     </Box>
   </Story>
@@ -90,15 +90,15 @@ The component does not handle icon sizing. You should manage that from your proj
 <Preview>
   <Story name="With Icon">
     <Box flex justifyContent="around">
-      <Button iconBefore={<ArrowUpOutline size={20} />} label="Icon before" />
+      <Button iconBefore={<ArrowUpOutline width={20} height={20} />} label="Icon before" />
       <Button
-        iconAfter={<ArrowUpOutline size={20} />}
+        iconAfter={<ArrowUpOutline width={20} height={20} />}
         variant="secondary"
         label="Icon after"
       />
       <Button
-        iconBefore={<ArrowUpOutline size={20} />}
-        iconAfter={<ArrowUpOutline size={20} />}
+        iconBefore={<ArrowUpOutline width={20} height={20} />}
+        iconAfter={<ArrowUpOutline width={20} height={20} />}
         variant="secondary"
         label="Icon before and after"
       />
