@@ -59,7 +59,7 @@
     "babel-loader": "8.1.0",
     "babel-plugin-macros": "^3.0.1",
     "babel-plugin-twin": "^1.0.2",
-    "babel-preset-react-app": "^9.1.2",
+    "babel-preset-react-app": "^10.0.1",
     "classnames": "^2.2.6",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
