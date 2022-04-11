@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import * as Label from "@radix-ui/react-label";
 import tw, { styled, css } from "twin.macro";
-import { Check } from "heroicons-react";
+import Check from "@heroicons/react/solid/CheckIcon";
 
 const StyledRadioGroup = styled(RadioGroupPrimitive.Root)(() => {
   const { display, collapsed } = useRadioGroup();
@@ -154,11 +154,11 @@ RadioGroup.propTypes = {
   display: PropTypes.oneOf(["list", "grid"]),
   onValueChange: PropTypes.func,
   /**
-     * Only effective for `grid` display 
+     * Only effective for `grid` display
   */
   collapsed: PropTypes.bool,
   /**
-     * Only effective for `card` variation 
+     * Only effective for `card` variation
   */
   showIndicator: PropTypes.bool,
 };

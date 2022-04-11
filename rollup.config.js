@@ -40,7 +40,14 @@ const options = {
     "@emotion/styled",
     "@emotion/react",
     "classnames",
-    "prop-types"
+    "prop-types",
+    "@radix-ui/react-dropdown-menu",
+    "@radix-ui/react-hover-card",
+    "@radix-ui/react-popover",
+    "@radix-ui/react-radio-group",
+    "@radix-ui/react-tabs",
+    "@radix-ui/react-label",
+    "@heroicons/react"
   ],
   plugins: [
     babel({
