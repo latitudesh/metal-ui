@@ -1,3 +1,17 @@
+# [4.2.0](https://github.com/Maxihost/metal-ui/compare/v4.1.3...v4.2.0) (2022-04-11)
+
+
+### Bug Fixes
+
+* Add missing dependency ([e685f06](https://github.com/Maxihost/metal-ui/commit/e685f06217679c7eedad58efb55025ef071246c6))
+* Reduce heroicons import size ([5115b30](https://github.com/Maxihost/metal-ui/commit/5115b3026d656000d369e438afe4fa875bee1b93))
+* Set heroicons as external ([77f0566](https://github.com/Maxihost/metal-ui/commit/77f0566f132a3d51610be9ea36097dfb7b72a512))
+
+
+### Features
+
+* Move Radix deps to prod deps ([7fb8f09](https://github.com/Maxihost/metal-ui/commit/7fb8f095d9404a1870e8d5740907ecd4abf9cf07))
+
 ## [4.1.3](https://github.com/Maxihost/metal-ui/compare/v4.1.2...v4.1.3) (2022-04-08)
 
 
