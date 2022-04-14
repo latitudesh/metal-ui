@@ -113,12 +113,14 @@ function useRadioGroup() {
   return context;
 }
 
-const RadioGroup = ({ children, showIndicator, collapsed, defaultValue, ...props }) => {
+const RadioGroup = ({ children, showIndicator, collapsed, defaultValue, variant, display, ...props }) => {
   return <RadioGroupContext.Provider
     value={{
       ...props,
       showIndicator,
       defaultValue,
+      variant,
+      display,
       collapsed
     }}>
     <StyledRadioGroup defaultValue={defaultValue} {...props}>
