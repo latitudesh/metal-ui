@@ -1,3 +1,10 @@
+## [4.2.1](https://github.com/Maxihost/metal-ui/compare/v4.2.0...v4.2.1) (2022-04-14)
+
+
+### Bug Fixes
+
+* radioGroup API props leaking to html ([8b181d3](https://github.com/Maxihost/metal-ui/commit/8b181d361e8cd88f1c35afa0c5b4413b22cba636))
+
 # [4.2.0](https://github.com/Maxihost/metal-ui/compare/v4.1.3...v4.2.0) (2022-04-11)
 
 
