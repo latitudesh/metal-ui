@@ -16,13 +16,19 @@ const Box = ({
   rootCard,
   noPadding,
   backgroundColor,
+  overflow,
   ...props
 }) => {
   return (
     <div
       className={classNames(className, backgroundColor)}
       css={[
-        tw`overflow-hidden`,
+        overflow === 'overflow-auto' && tw`overflow-auto`,
+        overflow === 'overflow-hidden' && tw`overflow-hidden`,
+        overflow === 'overflow-clip' && tw`overflow-clip`,
+        overflow === 'overflow-visible' && tw`overflow-visible`,
+        overflow === 'overflow-scroll' && tw`overflow-scroll`,
+
         Boolean(flex) && tw`flex`,
         !Boolean(backgroundColor) && tw`bg-white`,
 
@@ -66,6 +72,7 @@ Box.defaultProps = {
   rootCard: false,
   noPadding: false,
   flexWrap: null,
+  overflow: 'overflow-hidden'
 };
 
 Box.propTypes = {
@@ -119,6 +126,10 @@ Box.propTypes = {
    * Sets a background color. Should be a tailwind class.
    */
   backgroundColor: PropTypes.string,
+  /**
+   * Sets the overflow property. Should be a tailwind class.
+   */
+  overflow: PropTypes.string,
 };
 
 export default Box;
