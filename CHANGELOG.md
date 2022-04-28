@@ -1,3 +1,10 @@
+## [4.2.2](https://github.com/Maxihost/metal-ui/compare/v4.2.1...v4.2.2) (2022-04-28)
+
+
+### Bug Fixes
+
+* Allow setting overflow on box ([2ffa1cd](https://github.com/Maxihost/metal-ui/commit/2ffa1cd6857a304dfef97efed8e1d15b5ea562d7))
+
 ## [4.2.1](https://github.com/Maxihost/metal-ui/compare/v4.2.0...v4.2.1) (2022-04-14)
 
 
