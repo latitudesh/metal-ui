@@ -64,7 +64,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^8.11.0",
-    "jest": "^26.0.1",
+    "jest": "^28.0.3",
     "path": "^0.12.7",
     "postcss": "^7.0.35",
     "prop-types": "^15.7.2",
