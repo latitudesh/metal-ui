@@ -57,7 +57,12 @@ The dark version of the input is meant to be used against a `deep-purple` backgr
 
 <Preview>
   <Story name="Brand variants">
-    <Input className="w-1/3" variant="brand" label="Name" placeholder="Text here..."/>
+    <Input
+      className="w-1/3"
+      variant="brand"
+      label="Name"
+      placeholder="Text here..."
+    />
     <div className="bg-brand-deepPurple p-2 my-2 block">
       <Input
         className="w-1/3"
@@ -80,10 +85,62 @@ The dark version of the input is meant to be used against a `deep-purple` backgr
 
 <Preview>
   <Story name="Prefixes and Suffixes">
-  <div className="flex flex-col gap-2">
-    <Input className="w-1/3" placeholder="Amount" type="number" min={0} step={10} max={100} prefix="$"/>
-    <Input className="w-1/3" placeholder="Storage" type="number" min={0} step={10} max={100} suffix="TB"/>
-    <Input className="w-1/3" placeholder="Enter a site..." prefix='https://' suffix=".com"/>
+    <div className="flex flex-col gap-2">
+      <Input
+        className="w-1/3"
+        placeholder="Amount"
+        type="number"
+        min={0}
+        step={10}
+        max={100}
+        prefix="$"
+      />
+      <Input
+        className="w-1/3"
+        placeholder="Storage"
+        type="number"
+        min={0}
+        step={10}
+        max={100}
+        suffix="TB"
+      />
+      <Input
+        className="w-1/3"
+        placeholder="Enter a site..."
+        prefix="https://"
+        suffix=".com"
+      />
+    </div>
+  </Story>
+</Preview>
+
+# Sizes
+
+<Preview>
+  <Story name="Sizes">
+    <div class="mt-2">
+      <Input
+        className="w-1/3"
+        label="Name"
+        placeholder="small..."
+        size="small"
+      />
+    </div>
+    <div class="mt-5">
+      <Input
+        className="w-1/3"
+        label="Name"
+        placeholder="normal..."
+        size="normal"
+      />
+    </div>
+    <div class="mt-5">
+      <Input
+        className="w-1/3"
+        label="Name"
+        placeholder="large..."
+        size="large"
+      />
     </div>
   </Story>
 </Preview>

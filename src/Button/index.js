@@ -59,16 +59,15 @@ const Button = React.forwardRef(
           variant === "minimal" &&
             !disabled &&
             tw`border-transparent bg-transparent hocus:(text-accent-seven border-secondary border) text-foreground`,
+          size === "xsmall" && tw`px-4 h-6 leading-6 text-xs`,
           size === "small" && tw`px-4 h-8 leading-8 text-sm`,
           size === "normal" && tw`px-6 h-9 leading-9 text-sm`,
           size === "large" && tw`px-12 h-10 leading-10 text-base`,
-          block && tw`w-full`,
+          block && tw`w-full`
         ]}
         {...rest}
       >
-        {isLoading && (
-          <SpinningDots variant="inherit" css={[tw`absolute`]} />
-        )}
+        {isLoading && <SpinningDots variant="inherit" css={[tw`absolute`]} />}
         {ButtonContent}
       </button>
     );
@@ -88,10 +87,10 @@ Button.propTypes = {
     "secondary",
     "danger",
     "disabled",
-    "minimal",
+    "minimal"
   ]),
-  size: PropTypes.oneOf(["small", "normal", "large"]),
-  isLoading: PropTypes.bool,
+  size: PropTypes.oneOf(["xsmall", "small", "normal", "large"]),
+  isLoading: PropTypes.bool
 };
 
 Button.defaultProps = {
@@ -99,7 +98,7 @@ Button.defaultProps = {
   variant: "default",
   type: "button",
   isLoading: false,
-  disabled: false,
+  disabled: false
 };
 
 export default Button;
