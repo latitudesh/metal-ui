@@ -25,21 +25,11 @@ const slideUp = keyframes`
     transform: translateY(-16px);
   }`;
 
-
-const DropdownContent = styled(DropdownPrimitive.Content)(({ animated }) => [
+const DropdownContent = styled(DropdownPrimitive.Content)(() => [
   tw`mt-2 shadow-lg bg-white rounded`,
   css`
     min-width: 150px;
-  `,
-  animated &&
-    css`
-      &[data-state="open"] {
-        animation: ${slideDown} 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
-      }
-      &[data-state="closed"] {
-        animation: ${slideUp} 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
-      }
-    `
+  `
 ]);
 
 const DropdownLabel = styled(DropdownPrimitive.Label)(() => [
@@ -61,18 +51,10 @@ const DropdownSeparator = styled(DropdownPrimitive.Separator)(() => [
   tw`bg-accent-two border-b border-border`
 ]);
 
-
-DropdownContent.propTypes = {
-  animated: PropTypes.bool
-};
-
 DropdownContent.defaultProps = {
-  animated: false,
   onCloseAutoFocus: (e) => e.preventDefault(),
   disableOutsidePointerEvents: false
 };
-
-
 
 export {
   Dropdown,

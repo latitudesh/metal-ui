@@ -114,20 +114,3 @@ When using a `button` as a custom trigger, set `DropdownTrigger` as a different 
     </Dropdown>
   </Story>
 </Preview>
-
-# Animated
-
-<Preview>
-  <Story name="Animated">
-    <Dropdown>
-      <DropdownTrigger asChild="span">
-        <Button label="Animated" />
-      </DropdownTrigger>
-      <DropdownContent animated>
-        <DropdownItem onSelect={() => console.log("cut")}>Cut</DropdownItem>
-        <DropdownItem onSelect={() => console.log("copy")}>Copy</DropdownItem>
-        <DropdownItem onSelect={() => console.log("paste")}>Paste</DropdownItem>
-      </DropdownContent>
-    </Dropdown>
-  </Story>
-</Preview>
