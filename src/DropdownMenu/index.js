@@ -7,24 +7,15 @@ import { keyframes } from "@emotion/react";
 const Dropdown = DropdownPrimitive.Root;
 const DropdownTrigger = DropdownPrimitive.Trigger;
 
-const slideDown = keyframes`
+const slideUp = keyframes`
   0% {
-    opacity: 0; 
-    transform: translateY(-16px)
+    opacity: 0;
+    transform: translateY(2px);
   }
   to {
     opacity: 1;
-    transform: translateY(0px)
+    transform: translateY(0);
   }`;
-const slideUp = keyframes`
-  0% {
-    opacity: 1
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-16px);
-  }`;
-
 
 const DropdownContent = styled(DropdownPrimitive.Content)(({ animated }) => [
   tw`mt-2 shadow-lg bg-white rounded`,
@@ -33,17 +24,18 @@ const DropdownContent = styled(DropdownPrimitive.Content)(({ animated }) => [
   `,
   animated &&
     css`
+      animation-duration: 300ms;
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      animation-fill-mode: forwards;
+      will-change: transform, opacity;
       &[data-state="open"] {
-        animation: ${slideDown} 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+        animation-name: ${slideUp};
       }
-      &[data-state="closed"] {
-        animation: ${slideUp} 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
-      }
-    `
+    `,
 ]);
 
 const DropdownLabel = styled(DropdownPrimitive.Label)(() => [
-  tw`px-4 py-2 text-xs text-accent-six uppercase`
+  tw`px-4 py-2 text-xs text-accent-six uppercase`,
 ]);
 
 const DropdownItem = styled(DropdownPrimitive.Item)(() => [
@@ -54,25 +46,22 @@ const DropdownItem = styled(DropdownPrimitive.Item)(() => [
     &[data-disabled] {
       ${tw`text-accent-three cursor-default`}
     }
-  `
+  `,
 ]);
 
 const DropdownSeparator = styled(DropdownPrimitive.Separator)(() => [
-  tw`bg-accent-two border-b border-border`
+  tw`bg-accent-two border-b border-border`,
 ]);
 
-
 DropdownContent.propTypes = {
-  animated: PropTypes.bool
+  animated: PropTypes.bool,
 };
 
 DropdownContent.defaultProps = {
   animated: false,
   onCloseAutoFocus: (e) => e.preventDefault(),
-  disableOutsidePointerEvents: false
+  disableOutsidePointerEvents: false,
 };
-
-
 
 export {
   Dropdown,
@@ -80,5 +69,5 @@ export {
   DropdownContent,
   DropdownLabel,
   DropdownItem,
-  DropdownSeparator
+  DropdownSeparator,
 };
