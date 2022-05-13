@@ -1,3 +1,11 @@
+# [4.3.0](https://github.com/Maxihost/metal-ui/compare/v4.2.2...v4.3.0) (2022-05-13)
+
+
+### Features
+
+* animated dropdown by default ([3cccc27](https://github.com/Maxihost/metal-ui/commit/3cccc27054340f788ce0aa9b392c210c4cacd255))
+* new additions ([03a81f0](https://github.com/Maxihost/metal-ui/commit/03a81f09c666b3e566fefd2bb9732ba585ca72a7))
+
 ## [4.2.2](https://github.com/Maxihost/metal-ui/compare/v4.2.1...v4.2.2) (2022-04-28)
 
 
