@@ -29,11 +29,17 @@ import Box from "../Box";
   <Story name="Size">
     <div>
       <Box flex justifyContent="evenly">
+        <Button label="Primary" size="xsmall" />
         <Button label="Primary" size="small" />
         <Button label="Default" />
         <Button label="Primary" size="large" />
       </Box>
-      <Button label="Block small" size="small" block />
+      <div class="mt-2">
+        <Button label="Block small" size="xsmall" block />
+      </div>
+      <div class="mt-2">
+        <Button label="Block small" size="small" block />
+      </div>
       <div className="mt-2">
         <Button label="Block normal" block />
       </div>
@@ -73,6 +79,7 @@ Disabled buttons do not inherit `variant` styling.
 <Preview>
   <Story name="Loading">
     <Box flex justifyContent="around">
+      <Button label="Loading" size="xsmall" isLoading={true} />
       <Button label="Loading" isLoading={true} />
       <Button label="Loading" variant="secondary" isLoading={true} />
       <Button label="Loading" variant="danger" isLoading={true} />
@@ -90,7 +97,15 @@ The component does not handle icon sizing. You should manage that from your proj
 <Preview>
   <Story name="With Icon">
     <Box flex justifyContent="around">
-      <Button iconBefore={<ArrowUpOutline width={20} height={20} />} label="Icon before" />
+      <Button
+        iconBefore={<ArrowUpOutline width={12} height={12} />}
+        label="Icon before"
+        size="xsmall"
+      />
+      <Button
+        iconBefore={<ArrowUpOutline width={20} height={20} />}
+        label="Icon before"
+      />
       <Button
         iconAfter={<ArrowUpOutline width={20} height={20} />}
         variant="secondary"

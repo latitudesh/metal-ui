@@ -7,13 +7,15 @@ import tw from "twin.macro";
 const ErrorSvgDataURI =
   "data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill-rule='nonzero' fill='none'%3E%3Ccircle fill='%236359F9' cx='10' cy='10' r='10'/%3E%3Cpath d='M9 6.848c0-.909.4-1.515 1-1.515s1 .606 1 1.515v3.637c0 .909-.4 1.515-1 1.515s-1-.606-1-1.515V6.848Zm1 7.819c-.583 0-1-.417-1-1 0-.584.417-1 1-1s1 .416 1 1c0 .583-.417 1-1 1Z' fill='%232B223C'/%3E%3C/g%3E%3C/svg%3E%0A";
 
-const Addon = ({children, position}) => {
+const Addon = ({ children, position }) => {
   return (
-    <div css={[
-      tw`bg-border px-3 flex items-center justify-center shadow-sm text-sm text-accent-five`,
-      position === "left" && tw`rounded-l`,
-      position === "right" && tw`rounded-r`,
-    ]}>
+    <div
+      css={[
+        tw`bg-border px-3 flex items-center justify-center shadow-sm text-sm text-accent-five`,
+        position === "left" && tw`rounded-l`,
+        position === "right" && tw`rounded-r`
+      ]}
+    >
       {children}
     </div>
   );
@@ -33,6 +35,7 @@ const Input = React.forwardRef(
       disabled,
       prefix,
       suffix,
+      size,
       ...rest
     },
     ref
@@ -74,7 +77,7 @@ const Input = React.forwardRef(
             disabled={disabled}
             value={value}
             css={[
-              tw`block w-full p-2 transition duration-150 ease-in-out sm:text-sm sm:leading-5 border shadow-sm focus:outline-none focus:ring-0 font-family[inherit]`,
+              tw`block w-full p-2 transition duration-150 ease-in-out sm:leading-5 border shadow-sm focus:outline-none focus:ring-0 font-family[inherit]`,
               suffix && tw`rounded-l`,
               prefix && tw`rounded-r`,
               prefix && suffix && tw`rounded-none`,
@@ -95,8 +98,11 @@ const Input = React.forwardRef(
                 variant === "brand-dark" && [
                 brandDarkStyles,
                 `background-image: url("${ErrorSvgDataURI}");background-repeat: no-repeat;background-position-x: calc(100% - 16px);
-                background-position-y: 50%;`,
-              ],
+                background-position-y: 50%;`
+              ],  
+              size === "small" && tw` h-8 leading-8 text-xs`,
+              size === "normal" && tw` h-9 leading-9 text-sm`,
+              size === "large" && tw` h-10 leading-10 text-base`
             ]}
             {...rest}
           />
@@ -106,6 +112,10 @@ const Input = React.forwardRef(
     );
   }
 );
+
+Input.defaultProps = {
+  size: "normal"
+};
 
 Input.propTypes = {
   onChange: PropTypes.func,
@@ -120,6 +130,7 @@ Input.propTypes = {
   suffix: PropTypes.node,
   prefix: PropTypes.node,
   variant: PropTypes.oneOf(["brand", "brand-dark"]),
+  size: PropTypes.oneOf(["small", "normal", "large"])
 };
 
 export default Input;

@@ -1,18 +1,45 @@
 import tw, { styled, css } from "twin.macro";
 import * as DropdownPrimitive from "@radix-ui/react-dropdown-menu";
+import PropTypes from "prop-types";
+
+import { keyframes } from "@emotion/react";
 
 const Dropdown = DropdownPrimitive.Root;
 const DropdownTrigger = DropdownPrimitive.Trigger;
 
-const DropdownContent = styled(DropdownPrimitive.Content)(() => [
+const slideDown = keyframes`
+  0% {
+    opacity: 0; 
+    transform: translateY(-2px)
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px)
+  }`;
+const slideUp = keyframes`
+  0% {
+    opacity: 1
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-2px);
+  }`;
+
+const DropdownContent = styled(DropdownPrimitive.Content)(({ animated }) => [
   tw`mt-2 shadow-lg bg-white rounded`,
   css`
     min-width: 150px;
-  `,
+    &[data-state="open"] {
+      animation: ${slideDown} 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+    }
+    &[data-state="closed"] {
+      animation: ${slideUp} 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+    }
+  `
 ]);
 
 const DropdownLabel = styled(DropdownPrimitive.Label)(() => [
-  tw`px-4 py-2 text-xs text-accent-six uppercase`,
+  tw`px-4 py-2 text-xs text-accent-six uppercase`
 ]);
 
 const DropdownItem = styled(DropdownPrimitive.Item)(() => [
@@ -23,7 +50,7 @@ const DropdownItem = styled(DropdownPrimitive.Item)(() => [
     &[data-disabled] {
       ${tw`text-accent-three cursor-default`}
     }
-  `,
+  `
 ]);
 
 const DropdownSeparator = styled(DropdownPrimitive.Separator)(() => [
@@ -32,7 +59,7 @@ const DropdownSeparator = styled(DropdownPrimitive.Separator)(() => [
 
 DropdownContent.defaultProps = {
   onCloseAutoFocus: (e) => e.preventDefault(),
-  disableOutsidePointerEvents: false,
+  disableOutsidePointerEvents: false
 };
 
 export {
@@ -41,5 +68,5 @@ export {
   DropdownContent,
   DropdownLabel,
   DropdownItem,
-  DropdownSeparator,
+  DropdownSeparator
 };
