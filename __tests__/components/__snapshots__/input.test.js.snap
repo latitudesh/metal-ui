@@ -25,6 +25,9 @@ exports[`Snapshots/Components/Input Renders input 1`] = `
   border-color: rgba(234, 234, 234, var(--tw-border-opacity));
   --tw-text-opacity: 1;
   color: rgba(0, 0, 0, var(--tw-text-opacity));
+  height: 2.25rem;
+  line-height: 1.25rem;
+  font-size: 0.875rem;
 }
 
 .emotion-1:focus {
@@ -37,7 +40,6 @@ exports[`Snapshots/Components/Input Renders input 1`] = `
 
 @media (min-width: 640px) {
   .emotion-1 {
-    font-size: 0.875rem;
     line-height: 1.25rem;
   }
 }
@@ -108,6 +110,9 @@ exports[`Snapshots/Components/Input Renders input with suffix 1`] = `
   border-color: rgba(234, 234, 234, var(--tw-border-opacity));
   --tw-text-opacity: 1;
   color: rgba(0, 0, 0, var(--tw-text-opacity));
+  height: 2.25rem;
+  line-height: 1.25rem;
+  font-size: 0.875rem;
 }
 
 .emotion-1:focus {
@@ -120,7 +125,6 @@ exports[`Snapshots/Components/Input Renders input with suffix 1`] = `
 
 @media (min-width: 640px) {
   .emotion-1 {
-    font-size: 0.875rem;
     line-height: 1.25rem;
   }
 }
