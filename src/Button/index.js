@@ -59,7 +59,7 @@ const Button = React.forwardRef(
           variant === "minimal" &&
             !disabled &&
             tw`border-transparent bg-transparent hocus:(text-accent-seven border-secondary border) text-foreground`,
-          size === "xsmall" && tw`px-2 h-6 leading-6 text-[13px]`,
+          size === "xsmall" && tw`px-4 h-6 leading-6 text-[13px]`,
           size === "small" && tw`px-4 h-8 leading-8 text-sm`,
           size === "normal" && tw`px-6 h-9 leading-9 text-sm`,
           size === "large" && tw`px-12 h-10 leading-10 text-base`,
