@@ -1,3 +1,10 @@
+## [4.3.1](https://github.com/Maxihost/metal-ui/compare/v4.3.0...v4.3.1) (2022-05-13)
+
+
+### Bug Fixes
+
+* adjusting horizontal space for xsmall button ([1800628](https://github.com/Maxihost/metal-ui/commit/1800628f611ee494778f355f3a74dbc2e6356ce5))
+
 # [4.3.0](https://github.com/Maxihost/metal-ui/compare/v4.2.2...v4.3.0) (2022-05-13)
 
 
