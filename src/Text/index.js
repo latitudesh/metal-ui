@@ -20,7 +20,7 @@ class Text extends PureComponent {
   };
 
   render() {
-    const { className, bold, color, small, xsmall, is, ...props } = this.props;
+    const { className, bold, color, small, is, ...props } = this.props;
 
     const Tag = is;
 
@@ -29,9 +29,8 @@ class Text extends PureComponent {
         className={classNames(className, color, {
           "font-semibold": Boolean(bold),
           "font-normal": !Boolean(bold),
-          "text-base": !Boolean(small) && !Boolean(xsmall),
-          "text-sm": Boolean(small),
-          "text-xs": Boolean(xsmall)
+          "text-base": !Boolean(small),
+          "text-sm": Boolean(small)
         })}
         {...props}
       />
