@@ -23,6 +23,10 @@ exports[`Snapshots/Components/Button Render button 1`] = `
   justify-content: center;
   max-width: 100%;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   border-color: rgba(0, 0, 0, 0);
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
