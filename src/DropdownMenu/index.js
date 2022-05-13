@@ -10,7 +10,7 @@ const DropdownTrigger = DropdownPrimitive.Trigger;
 const slideDown = keyframes`
   0% {
     opacity: 0; 
-    transform: translateY(-16px)
+    transform: translateY(-2px)
   }
   to {
     opacity: 1;
@@ -22,13 +22,19 @@ const slideUp = keyframes`
   }
   to {
     opacity: 0;
-    transform: translateY(-16px);
+    transform: translateY(-2px);
   }`;
 
-const DropdownContent = styled(DropdownPrimitive.Content)(() => [
+const DropdownContent = styled(DropdownPrimitive.Content)(({ animated }) => [
   tw`mt-2 shadow-lg bg-white rounded`,
   css`
     min-width: 150px;
+    &[data-state="open"] {
+      animation: ${slideDown} 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+    }
+    &[data-state="closed"] {
+      animation: ${slideUp} 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+    }
   `
 ]);
 
