@@ -15,7 +15,7 @@
     "test--ci": "jest --ci",
     "dev": "start-storybook ./public 9001",
     "deploy-storybook": "storybook-to-ghpages",
-    "build": "rollup --config rollup.config.js"
+    "build": "NODE_ENV=production rollup --config rollup.config.js"
   },
   "repository": {
     "type": "git",
