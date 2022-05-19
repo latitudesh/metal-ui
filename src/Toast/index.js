@@ -84,9 +84,12 @@ const Toast = ({
   }, [dismissTime]);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       setShowToast(true);
     }, 10);
+    return () => {
+      clearTimeout(timeout)
+    }
   }, []);
 
   if (open) {
