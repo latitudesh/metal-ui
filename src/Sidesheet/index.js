@@ -77,11 +77,13 @@ const Sidesheet = ({
   }, [isShown]);
 
   const closeTransition = () => {
+    let timeout
     if (isOpened && transition) {
       onClose();
       setTransition(false);
-      setTimeout(() => setIsOpened(false), 500);
+      timeout = setTimeout(() => setIsOpened(false), 500);
     }
+    return () => clearTimeout(timeout)
   };
 
   useKeyPressEvent("Escape", closeTransition);

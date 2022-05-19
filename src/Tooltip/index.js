@@ -40,10 +40,10 @@ const HoverCardTrigger = styled(HoverCard.Trigger)(() => [
   display: inline-block;`
 );
 
-const Tooltip = ({ children, text, placement, className, showArrow, style, ...props }) => {
+const Tooltip = ({ children, text, placement, className, showArrow, style, asChild, ...props }) => {
   return (
     <HoverCard.Root openDelay={0} closeDelay={200} {...props}>
-      <HoverCardTrigger className={className}>
+      <HoverCardTrigger className={className} asChild={asChild}>
         {children}
       </HoverCardTrigger>
 
