@@ -1,6 +1,6 @@
 {
   "name": "@maxihost/metal-ui",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "description": "Metal UI Design System",
   "main": "dist/index.js",
   "files": [
@@ -104,10 +104,10 @@
     "@radix-ui/react-popover": "^0.1.6",
     "@radix-ui/react-radio-group": "^0.1.5",
     "@radix-ui/react-tabs": "^0.1.5",
-    "@react-aria/focus": "^3.4.0",
-    "@react-aria/radio": "^3.1.4",
-    "@react-aria/visually-hidden": "^3.2.2",
-    "@react-stately/radio": "^3.3.1",
+    "@react-aria/focus": "^3.6.0",
+    "@react-aria/radio": "^3.2.0",
+    "@react-aria/visually-hidden": "^3.3.0",
+    "@react-stately/radio": "^3.4.0",
     "react-instantsearch-dom": "^6.7.0",
     "react-use": "^17.2.4"
   }

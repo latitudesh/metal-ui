@@ -1,3 +1,11 @@
+## [4.3.2](https://github.com/Maxihost/metal-ui/compare/v4.3.1...v4.3.2) (2022-05-19)
+
+
+### Bug Fixes
+
+* Add support for asChild ([332e688](https://github.com/Maxihost/metal-ui/commit/332e68894e66ffa74774eac07b5c691ac102420e))
+* Clear timeouts on unmount ([ff37e2d](https://github.com/Maxihost/metal-ui/commit/ff37e2d2923069b644f005815b02820fc876f3e0))
+
 ## [4.3.1](https://github.com/Maxihost/metal-ui/compare/v4.3.0...v4.3.1) (2022-05-13)
 
 
