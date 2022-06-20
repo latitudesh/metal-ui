@@ -142,7 +142,7 @@ const Sidesheet = ({
               flex
               flexDirection="col"
               overflow={"overflow-y-auto"}
-              className="sidesheet-content relative overflow-y-auto flex-1 rounded"
+              className="sidesheet-content relative flex-1 rounded"
             >
               <Box
                 noPadding
