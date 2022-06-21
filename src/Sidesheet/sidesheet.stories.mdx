@@ -62,3 +62,29 @@ import Text from "../Text";
     }}
   </Story>
 </Preview>
+
+# With Long Content
+
+<Preview>
+  <Story name="With Long Content">
+    {() => {
+      const [isShown, setIsShown] = useState(false);
+      return (
+        <Sidesheet
+          title={"Title"}
+          onClose={() => setIsShown(false)}
+          isShown={isShown}
+          content={
+            <div style={{ height: "105vh" }}> Box with long content</div>
+          }
+        >
+          <Button
+            type="secondary"
+            onClick={() => setIsShown(true)}
+            label="Open Sidesheet"
+          />
+        </Sidesheet>
+      );
+    }}
+  </Story>
+</Preview>
