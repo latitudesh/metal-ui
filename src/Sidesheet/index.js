@@ -141,15 +141,17 @@ const Sidesheet = ({
             <Box
               flex
               flexDirection="col"
-              className="sidesheet-content relative overflow-y-auto flex-1 rounded"
+              overflow={"overflow-y-auto"}
+              className="sidesheet-content relative flex-1 rounded"
             >
               <Box
                 noPadding
                 flex
                 flexDirection="col"
+                overflow={"overflow-y-auto"}
                 className="overflow-visible"
               >
-                {content}
+               <div className="flex-shrink-0">{content}</div>
               </Box>
             </Box>
             {action && (

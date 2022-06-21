@@ -28,6 +28,7 @@ const Box = ({
         overflow === 'overflow-clip' && tw`overflow-clip`,
         overflow === 'overflow-visible' && tw`overflow-visible`,
         overflow === 'overflow-scroll' && tw`overflow-scroll`,
+        overflow === 'overflow-y-auto' && tw`overflow-y-auto`,
 
         Boolean(flex) && tw`flex`,
         !Boolean(backgroundColor) && tw`bg-white`,
