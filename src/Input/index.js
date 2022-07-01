@@ -99,7 +99,7 @@ const Input = React.forwardRef(
                 brandDarkStyles,
                 `background-image: url("${ErrorSvgDataURI}");background-repeat: no-repeat;background-position-x: calc(100% - 16px);
                 background-position-y: 50%;`
-              ],  
+              ],
               size === "small" && tw` h-8 leading-8 text-xs`,
               size === "normal" && tw` h-9 leading-9 text-sm`,
               size === "large" && tw` h-10 leading-10 text-base`
