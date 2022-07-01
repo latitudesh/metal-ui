@@ -8,6 +8,7 @@ exports[`Snapshots/Components/Input Renders input 1`] = `
   display: -ms-flexbox;
   display: flex;
   height: 100%;
+  width: 100%;
 }
 
 .emotion-1 {
@@ -93,6 +94,7 @@ exports[`Snapshots/Components/Input Renders input with suffix 1`] = `
   display: -ms-flexbox;
   display: flex;
   height: 100%;
+  width: 100%;
 }
 
 .emotion-1 {
