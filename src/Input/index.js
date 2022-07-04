@@ -71,7 +71,7 @@ const Input = React.forwardRef(
             {label}
           </label>
         )}
-        <div tw="relative flex h-full w-full">
+        <div tw="relative flex">
           {prefix && <Addon position={"left"}>{prefix}</Addon>}
           <input
             id={id}
