@@ -92,7 +92,7 @@ const Input = React.forwardRef(
             css={[
               tw`block w-full p-2 transition duration-150 ease-in-out sm:leading-5 border focus:outline-none focus:ring-0 font-family[inherit]`,
               !isTextEditable && tw`shadow-sm`,
-              isTextEditable && tw`border-transparent hocus:border-accent-five `,
+              isTextEditable && tw`border-transparent hover:border-border focus:border-accent-five `,
               suffix && tw`rounded-l`,
               prefix && tw`rounded-r`,
               prefix && suffix && tw`rounded-none`,
