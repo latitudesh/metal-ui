@@ -86,19 +86,19 @@ const Input = React.forwardRef(
             value={value}
             style={{
               ...style,
-              ...(variant === 'text-editable' && textEditableStyles)
+              ...(isTextEditable && textEditableStyles)
             }}
             css={[
               tw`block w-full p-2 transition duration-150 ease-in-out sm:leading-5 border focus:outline-none focus:ring-0 font-family[inherit]`,
-              variant !== 'text-editable' && tw`shadow-sm`,
-              variant === 'text-editable' && tw`border-transparent hocus:border-accent-five `,
+              !isTextEditable && tw`shadow-sm`,
+              isTextEditable && tw`border-transparent hocus:border-accent-five `,
               suffix && tw`rounded-l`,
               prefix && tw`rounded-r`,
               prefix && suffix && tw`rounded-none`,
               !prefix && !suffix && tw`rounded`,
               inputClassName && inputClassName,
               !error &&
-                !disabled && variant !== 'text-editable' &&
+                !disabled && !isTextEditable &&
                 tw`border-border text-foreground hocus:border-accent-five placeholder-accent-five`,
               disabled &&
                 tw`border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five`,
@@ -114,9 +114,9 @@ const Input = React.forwardRef(
                 `background-image: url("${ErrorSvgDataURI}");background-repeat: no-repeat;background-position-x: calc(100% - 16px);
                 background-position-y: 50%;`
               ],
-              variant !== 'text-editable' && size === "small" && tw` h-8 leading-8 text-xs`,
-              variant !== 'text-editable' && size === "normal" && tw` h-9 leading-9 text-sm`,
-              variant !== 'text-editable' && size === "large" && tw` h-10 leading-10 text-base`
+              !isTextEditable && size === "small" && tw` h-8 leading-8 text-xs`,
+              !isTextEditable && size === "normal" && tw` h-9 leading-9 text-sm`,
+              !isTextEditable && size === "large" && tw` h-10 leading-10 text-base`
             ]}
             {...rest}
           />
