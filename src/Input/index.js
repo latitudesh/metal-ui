@@ -37,7 +37,6 @@ const Input = React.forwardRef(
       suffix,
       size,
       style = {},
-      onKeyDown,
       ...rest
     },
     ref
@@ -119,12 +118,6 @@ const Input = React.forwardRef(
               !isTextEditable && size === "normal" && tw` h-9 leading-9 text-sm`,
               !isTextEditable && size === "large" && tw` h-10 leading-10 text-base`
             ]}
-            onKeyDown={(e) => {
-              if (isTextEditable && e.key === 'Escape') {
-                e.target?.blur?.()
-              }
-              onKeyDown?.(e)
-            }}
             {...rest}
           />
           {suffix && <Addon position={"right"}>{suffix}</Addon>}
