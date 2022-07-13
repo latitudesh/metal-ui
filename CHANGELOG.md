@@ -1,3 +1,16 @@
+# [4.4.0](https://github.com/Maxihost/metal-ui/compare/v4.3.2...v4.4.0) (2022-06-21)
+
+
+### Bug Fixes
+
+* remove overflow class and adding prop to Box ([fc059fb](https://github.com/Maxihost/metal-ui/commit/fc059fbc58fd736bf02579c017e00b0ded6f2842))
+* Sidesheet vertical scroll ([59db3f7](https://github.com/Maxihost/metal-ui/commit/59db3f72f5364c92745eca45a23666ac72164f28))
+
+
+### Features
+
+* Update react spectrum libraries ([3d6b877](https://github.com/Maxihost/metal-ui/commit/3d6b8778868c2fee46f7918bc3c6f6e065e5d12f))
+
 ## [4.3.2](https://github.com/Maxihost/metal-ui/compare/v4.3.1...v4.3.2) (2022-05-19)
 
 

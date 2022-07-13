@@ -17,9 +17,9 @@ exports[`Snapshots/Components/Input Renders input 1`] = `
   width: 100%;
   padding: 0.5rem;
   border-width: 1px;
+  font-family: inherit;
   --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow);
-  font-family: inherit;
   border-radius: 5px;
   --tw-border-opacity: 1;
   border-color: rgba(234, 234, 234, var(--tw-border-opacity));
@@ -79,6 +79,7 @@ exports[`Snapshots/Components/Input Renders input 1`] = `
       aria-required={false}
       className="emotion-1"
       onChange={[Function]}
+      style={Object {}}
     />
   </div>
 </div>
@@ -101,9 +102,9 @@ exports[`Snapshots/Components/Input Renders input with suffix 1`] = `
   width: 100%;
   padding: 0.5rem;
   border-width: 1px;
+  font-family: inherit;
   --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow);
-  font-family: inherit;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   --tw-border-opacity: 1;
@@ -194,6 +195,7 @@ exports[`Snapshots/Components/Input Renders input with suffix 1`] = `
       min={0}
       onChange={[Function]}
       step={10}
+      style={Object {}}
       type="number"
     />
     <div
