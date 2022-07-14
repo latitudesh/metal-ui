@@ -4,6 +4,7 @@ import { jsx } from "@emotion/react";
 import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import tw from "twin.macro";
+import Label from "../Label";
 const ErrorSvgDataURI =
   "data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill-rule='nonzero' fill='none'%3E%3Ccircle fill='%236359F9' cx='10' cy='10' r='10'/%3E%3Cpath d='M9 6.848c0-.909.4-1.515 1-1.515s1 .606 1 1.515v3.637c0 .909-.4 1.515-1 1.515s-1-.606-1-1.515V6.848Zm1 7.819c-.583 0-1-.417-1-1 0-.584.417-1 1-1s1 .416 1 1c0 .583-.417 1-1 1Z' fill='%232B223C'/%3E%3C/g%3E%3C/svg%3E%0A";
 
@@ -54,13 +55,9 @@ const Input = React.forwardRef(
     return (
       <div className={className}>
         {label && (
-          <label
-            tw="block text-sm leading-5 font-medium text-accent-six normal-case mb-1"
-            htmlFor={id}
-            css={[variant === "brand-dark" && !disabled && tw`text-white`]}
-          >
+          <Label htmlFor={id}>
             {label}
-          </label>
+          </Label>
         )}
         <div tw="relative flex">
           {prefix && <Addon position={"left"}>{prefix}</Addon>}
@@ -99,7 +96,7 @@ const Input = React.forwardRef(
                 brandDarkStyles,
                 `background-image: url("${ErrorSvgDataURI}");background-repeat: no-repeat;background-position-x: calc(100% - 16px);
                 background-position-y: 50%;`
-              ],  
+              ],
               size === "small" && tw` h-8 leading-8 text-xs`,
               size === "normal" && tw` h-9 leading-9 text-sm`,
               size === "large" && tw` h-10 leading-10 text-base`
