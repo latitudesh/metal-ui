@@ -37,6 +37,7 @@ const Input = React.forwardRef(
       prefix,
       suffix,
       size,
+      style = {},
       ...rest
     },
     ref
@@ -52,6 +53,13 @@ const Input = React.forwardRef(
 
     const brandDarkStyles = tw`border-transparent text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-transparent bg-opacity-30)`;
 
+    const textEditableStyles = {
+      letterSpacing: 'inherit',
+      fontSize: 'inherit',
+      fontWeight: 'inherit',
+      lineHeight: 'inherit',
+    }
+    const isTextEditable = variant === 'text-editable'
     return (
       <div className={className}>
         {label && (
@@ -73,15 +81,21 @@ const Input = React.forwardRef(
             aria-invalid={!!error}
             disabled={disabled}
             value={value}
+            style={{
+              ...style,
+              ...(isTextEditable && textEditableStyles)
+            }}
             css={[
-              tw`block w-full p-2 transition duration-150 ease-in-out sm:leading-5 border shadow-sm focus:outline-none focus:ring-0 font-family[inherit]`,
+              tw`block w-full p-2 transition duration-150 ease-in-out sm:leading-5 border focus:outline-none focus:ring-0 font-family[inherit]`,
+              !isTextEditable && tw`shadow-sm`,
+              isTextEditable && tw`border-transparent hover:border-border focus:border-accent-five `,
               suffix && tw`rounded-l`,
               prefix && tw`rounded-r`,
               prefix && suffix && tw`rounded-none`,
               !prefix && !suffix && tw`rounded`,
               inputClassName && inputClassName,
               !error &&
-                !disabled &&
+                !disabled && !isTextEditable &&
                 tw`border-border text-foreground hocus:border-accent-five placeholder-accent-five`,
               disabled &&
                 tw`border-border text-accent-five bg-background cursor-not-allowed placeholder-accent-five`,
@@ -97,9 +111,9 @@ const Input = React.forwardRef(
                 `background-image: url("${ErrorSvgDataURI}");background-repeat: no-repeat;background-position-x: calc(100% - 16px);
                 background-position-y: 50%;`
               ],
-              size === "small" && tw` h-8 leading-8 text-xs`,
-              size === "normal" && tw` h-9 leading-9 text-sm`,
-              size === "large" && tw` h-10 leading-10 text-base`
+              !isTextEditable && size === "small" && tw` h-8 leading-8 text-xs`,
+              !isTextEditable && size === "normal" && tw` h-9 leading-9 text-sm`,
+              !isTextEditable && size === "large" && tw` h-10 leading-10 text-base`
             ]}
             {...rest}
           />
@@ -126,7 +140,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   suffix: PropTypes.node,
   prefix: PropTypes.node,
-  variant: PropTypes.oneOf(["brand", "brand-dark"]),
+  variant: PropTypes.oneOf(["brand", "brand-dark", "text-editable"]),
   size: PropTypes.oneOf(["small", "normal", "large"])
 };
 
