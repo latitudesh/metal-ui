@@ -38,8 +38,7 @@ const Textarea = React.forwardRef(
     return (
       <div className={className}>
         {label && (
-          <Label
-            htmlFor={id} >
+          <Label htmlFor={id} variant={variant} disabled={disabled}>
             {label}
           </Label>
         )}
