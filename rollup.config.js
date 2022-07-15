@@ -15,6 +15,7 @@ const files = [
   "Feedback",
   "Header",
   "Input",
+  "Label",
   "Select",
   "Sidesheet",
   "Skeleton",
