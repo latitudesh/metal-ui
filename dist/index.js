@@ -7,6 +7,7 @@ const Sidesheet = require("./Sidesheet");
 const Skeleton = require("./Skeleton");
 const Toast = require("./Toast");
 const Input = require("./Input");
+const Label = require("./Label");
 const Textarea = require("./Textarea");
 const Select = require("./Select");
 const Avatar = require("./Avatar/index");
@@ -30,6 +31,7 @@ module.exports = {
   Skeleton,
   Toast,
   Input,
+  Label,
   Textarea,
   Select,
   Avatar,
