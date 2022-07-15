@@ -4,6 +4,7 @@ import { jsx } from "@emotion/react";
 import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import tw from "twin.macro";
+import Label from "../Label";
 
 const Select = React.forwardRef(
   (
@@ -41,13 +42,9 @@ const Select = React.forwardRef(
     return (
       <div className={className}>
         {label && (
-          <label
-            tw="block text-sm font-medium leading-5 text-accent-six normal-case mb-1"
-            css={[variant == "brand-dark" && !disabled && tw`text-white`]}
-            htmlFor={id}
-          >
+          <Label htmlFor={id} variant={variant} disabled={disabled}>
             {label}
-          </label>
+          </Label>
         )}
         <div className="relative">
           <select
