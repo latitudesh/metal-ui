@@ -4,6 +4,7 @@ import { jsx } from "@emotion/react";
 import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import tw from "twin.macro";
+import Label from "../Label";
 
 const Textarea = React.forwardRef(
   (
@@ -37,13 +38,9 @@ const Textarea = React.forwardRef(
     return (
       <div className={className}>
         {label && (
-          <label
-            tw="block text-sm leading-5 font-medium text-accent-six mb-1 normal-case"
-            htmlFor={id}
-            css={[variant === "brand-dark" && !disabled && tw`text-white`]}
-          >
+          <Label htmlFor={id} variant={variant} disabled={disabled}>
             {label}
-          </label>
+          </Label>
         )}
 
         <textarea

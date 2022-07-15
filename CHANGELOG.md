@@ -1,3 +1,24 @@
+# [4.5.0](https://github.com/Maxihost/metal-ui/compare/v4.4.0...v4.5.0) (2022-07-15)
+
+
+### Bug Fixes
+
+* Full width ([d6474e4](https://github.com/Maxihost/metal-ui/commit/d6474e41e13059a650f67497e15c46f8bfc37313))
+* Input height ([fc4d124](https://github.com/Maxihost/metal-ui/commit/fc4d12455774366c6549e76fbf25771a69566c76))
+* Remove keydown ([9e3e2c9](https://github.com/Maxihost/metal-ui/commit/9e3e2c9e9d42df06793666f7fa441563cb4be733))
+* Separate hover and focus states ([971d54a](https://github.com/Maxihost/metal-ui/commit/971d54a7c8e43f9fb86abaf4fe893847fe9f5164))
+* Tests ([fd516b2](https://github.com/Maxihost/metal-ui/commit/fd516b27764ffe73b59d6a579f3ba65118ba8f27))
+* Undo full width and height and fix tests ([f911ad1](https://github.com/Maxihost/metal-ui/commit/f911ad1859db5529cf8cbbd14f957f8ea35be3ef))
+* Variants and disabled state ([f81a9ff](https://github.com/Maxihost/metal-ui/commit/f81a9ff36e213860cee935562d0b15110feb40e3))
+* Warning ([54936bb](https://github.com/Maxihost/metal-ui/commit/54936bb883e1fa008b3f306fa2b167d70c671120))
+
+
+### Features
+
+* Add label component ([4d23bd6](https://github.com/Maxihost/metal-ui/commit/4d23bd6075ec110c43b4e47d530a53185efcb00f))
+* Blur on escape ([22086b3](https://github.com/Maxihost/metal-ui/commit/22086b33c31e0a0e8ed3668cd8dcf3fa43838d0b))
+* Create a inline editable text input variant ([73b2674](https://github.com/Maxihost/metal-ui/commit/73b267483edc1f1d8d3e0d7aa8e3c6277b95bfdc))
+
 # [4.4.0](https://github.com/Maxihost/metal-ui/compare/v4.3.2...v4.4.0) (2022-06-21)
 
 
