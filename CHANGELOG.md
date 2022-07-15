@@ -1,3 +1,10 @@
+## [4.5.1](https://github.com/Maxihost/metal-ui/compare/v4.5.0...v4.5.1) (2022-07-15)
+
+
+### Bug Fixes
+
+* Dist label ([e31b088](https://github.com/Maxihost/metal-ui/commit/e31b0882311f9ae27229c5b495ddb14090a2426d))
+
 # [4.5.0](https://github.com/Maxihost/metal-ui/compare/v4.4.0...v4.5.0) (2022-07-15)
 
 
