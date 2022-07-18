@@ -1,0 +1,30 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import Editable from "./index";
+import { useState } from 'react'
+
+<Meta title="Editable" component={Editable} />
+
+# API
+
+This component is an inline editable text input. It inherits typographic properties from its parent html element.
+<Props of={Editable} />
+
+# Default
+
+export const EditableWithState = () => {
+    const [value, setValue] = useState('Click to Edit')
+    return (
+    <h1 className='text-2xl'>
+        <Editable value={value} onSave={x => {
+            setValue(x)
+            return true
+        }}/>
+        </h1>
+    )
+}
+
+<Preview>
+  <Story name="Default">
+    <EditableWithState/>
+  </Story>
+</Preview>
