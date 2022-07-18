@@ -94,6 +94,19 @@ Table.TextCell = React.forwardRef(({
 ));
 Table.TextCell.displayName = "TableTextCell";
 
+Table.Foot = React.forwardRef(({ children, className, ...props }, ref) => (
+  <tfoot
+    tw="border-t border-border"
+    className={className}
+    {...props}
+    ref={ref}
+  >
+    {children}
+  </tfoot>
+));
+
+Table.Foot.displayName = "TableFoot";
+
 Table.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
