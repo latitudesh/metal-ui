@@ -1,3 +1,11 @@
+# [4.6.0](https://github.com/Maxihost/metal-ui/compare/v4.5.1...v4.6.0) (2022-07-22)
+
+
+### Features
+
+* Add editable component ([cd9e15a](https://github.com/Maxihost/metal-ui/commit/cd9e15ac1efaebdb0cc9eeb1b8c4f8bef62a63f1))
+* Add table footer ([8b41f76](https://github.com/Maxihost/metal-ui/commit/8b41f766cae38091d3e7915dd14c487dc63e1a13))
+
 ## [4.5.1](https://github.com/Maxihost/metal-ui/compare/v4.5.0...v4.5.1) (2022-07-15)
 
 
