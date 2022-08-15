@@ -36,21 +36,18 @@ const files = [
 ];
 
 const options = {
-  external: [
+  external: (name) => {
+    const externals = [
     "react",
     "react-dom",
-    "@emotion/styled",
-    "@emotion/react",
+    "@emotion",
     "classnames",
     "prop-types",
-    "@radix-ui/react-dropdown-menu",
-    "@radix-ui/react-hover-card",
-    "@radix-ui/react-popover",
-    "@radix-ui/react-radio-group",
-    "@radix-ui/react-tabs",
-    "@radix-ui/react-label",
-    "@heroicons/react"
-  ],
+    "@radix-ui",
+    "@heroicons/react",
+  ]
+    return externals.some(e => name.includes(e))
+  },
   plugins: [
     babel({
       babelHelpers: "bundled"
