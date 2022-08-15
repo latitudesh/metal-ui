@@ -8,18 +8,21 @@ const isProduction = process.env.NODE_ENV === "production";
 
 const options = {
   input: 'src/index.js',
-  external: (name) => {
-    const externals = [
-      "react",
-      "react-dom",
-      "@emotion",
-      "classnames",
-      "prop-types",
-      "@radix-ui",
-      "@heroicons/react",
-    ]
-    return externals.some(e => name.includes(e))
-  },
+  external: [
+    "react",
+    "react-dom",
+    "@emotion/styled",
+    "@emotion/react",
+    "classnames",
+    "prop-types",
+    "@radix-ui/react-dropdown-menu",
+    "@radix-ui/react-hover-card",
+    "@radix-ui/react-popover",
+    "@radix-ui/react-radio-group",
+    "@radix-ui/react-tabs",
+    "@radix-ui/react-label",
+    "@heroicons/react"
+  ],
   plugins: [
     babel({
       babelHelpers: "bundled"
