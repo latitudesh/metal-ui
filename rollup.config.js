@@ -3,25 +3,18 @@ import commonjs from "@rollup/plugin-commonjs";
 import { babel } from "@rollup/plugin-babel";
 import { uglify } from "rollup-plugin-uglify";
 import { visualizer } from "rollup-plugin-visualizer";
+import { peerDependencies, dependencies } from "./package.json";
 
 const isProduction = process.env.NODE_ENV === "production";
 
 const options = {
   input: 'src/index.js',
   external: [
-    "react",
-    "react-dom",
-    "@emotion/styled",
-    "@emotion/react",
-    "classnames",
-    "prop-types",
-    "@radix-ui/react-dropdown-menu",
-    "@radix-ui/react-hover-card",
-    "@radix-ui/react-popover",
-    "@radix-ui/react-radio-group",
-    "@radix-ui/react-tabs",
-    "@radix-ui/react-label",
-    "@heroicons/react"
+    ...Object.keys(peerDependencies),
+    ...Object.keys(dependencies),
+    "@emotion/unitless",
+    "@emotion/memoize",
+    "@emotion/hash",
   ],
   plugins: [
     babel({
@@ -32,20 +25,23 @@ const options = {
     isProduction && uglify(),
     visualizer()
   ],
-  output: [{
-    exports: "auto",
-    dir: 'dist',
-    preserveModules: true,
-    globals: {
-      react: "React",
-      "react-dom": "ReactDOM"
+  output: [
+    {
+      exports: "auto",
+      dir: 'dist',
+      preserveModules: true,
+      preserveModulesRoot: 'src',
+      globals: {
+        react: "React",
+        "react-dom": "ReactDOM"
+      },
+      format: "cjs"
     },
-    format: "cjs"
-  },
     {
       exports: "auto",
       dir: 'esm',
       preserveModules: true,
+      preserveModulesRoot: 'src',
       globals: {
         react: "React",
         "react-dom": "ReactDOM"
