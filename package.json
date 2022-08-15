@@ -3,8 +3,10 @@
   "version": "4.6.0",
   "description": "Metal UI Design System",
   "main": "dist/index.js",
+  "module": "esm/index.js",
   "files": [
     "dist/",
+    "esm/",
     "CHANGELOG.md",
     "tailwind-preset.js",
     "package.json",
@@ -77,6 +79,7 @@
     "rollup": "^2.56.2",
     "rollup-plugin-jsx": "^1.0.3",
     "rollup-plugin-uglify": "^6.0.4",
+    "rollup-plugin-visualizer": "^5.7.1",
     "semantic-release": "^17.1.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
     "twin.macro": "^2.3.0",
