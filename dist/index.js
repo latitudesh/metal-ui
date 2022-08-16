@@ -1,1 +1,53 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var index=require("./Table/index.js"),index$1=require("./Header/index.js"),index$2=require("./Content/index.js"),index$3=require("./Button/index.js"),index$4=require("./Box/index.js"),index$5=require("./Sidesheet/index.js"),index$6=require("./Skeleton/index.js"),index$7=require("./Toast/index.js"),index$8=require("./Input/index.js"),index$9=require("./Editable/index.js"),index$a=require("./Label/index.js"),index$b=require("./Textarea/index.js"),index$c=require("./Select/index.js"),index$d=require("./Avatar/index.js"),index$e=require("./Badge/index.js"),index$f=require("./SpinningDots/index.js"),index$g=require("./Feedback/index.js"),index$h=require("./DropdownMenu/index.js"),index$l=require("./Typography/index.js"),index$m=require("./Tabs/index.js"),index$i=require("./Tooltip/index.js"),index$j=require("./RadioGroup/index.js"),index$k=require("./GlobalStyles/index.js");exports.Table=index,exports.Header=index$1,exports.Content=index$2,exports.Button=index$3,exports.Box=index$4,exports.Sidesheet=index$5,exports.Skeleton=index$6,exports.Toast=index$7,exports.Input=index$8,exports.Editable=index$9,exports.Label=index$a,exports.Textarea=index$b,exports.Select=index$c,exports.Avatar=index$d,exports.Badge=index$e,exports.SpinningDots=index$f,exports.Feedback=index$g,exports.DropdownMenu=index$h,exports.Typography=index$l,exports.Tabs=index$m,exports.Tooltip=index$i,exports.RadioGroup=index$j,exports.GlobalStyles=index$k;
+const Table = require("./Table");
+const Header = require("./Header");
+const Content = require("./Content");
+const Button = require("./Button");
+const Box = require("./Box");
+const Sidesheet = require("./Sidesheet");
+const Skeleton = require("./Skeleton");
+const Toast = require("./Toast");
+const Input = require("./Input");
+const Editable = require("./Editable");
+const Label = require("./Label");
+const Textarea = require("./Textarea");
+const Select = require("./Select");
+const Avatar = require("./Avatar/index");
+const Badge = require("./Badge");
+const SpinningDots = require("./SpinningDots");
+const Feedback = require("./Feedback");
+const DropdownMenu = require("./DropdownMenu");
+const Typography = require("./Typography");
+const Tabs = require("./Tabs");
+const Tooltip = require("./Tooltip");
+const RadioGroup = require("./RadioGroup");
+const GlobalStyles = require("./GlobalStyles");
+
+module.exports = {
+  Table,
+  Header,
+  Content,
+  Button,
+  Box,
+  Sidesheet,
+  Skeleton,
+  Toast,
+  Input,
+  Editable,
+  Label,
+  Textarea,
+  Select,
+  Avatar,
+  Badge,
+  SpinningDots,
+  Feedback,
+  DropdownMenu,
+  Tooltip,
+  RadioGroup,
+  GlobalStyles,
+  // Re export internals for backward compatibility
+  ...DropdownMenu,
+  Typography,
+  ...Typography,
+  // We cannot export Tabs because it has an internal component that is also named Tabs
+  ...Tabs
+};
