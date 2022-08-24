@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
-import classNames from "classnames/bind";
+import classNames from "classnames";
 import Box from "../Box";
-import useKeyPressEvent from "react-use/lib/useKeyPressEvent";
+import { useKeyPressEvent } from "react-use";
 
 function XIcon() {
   return (
