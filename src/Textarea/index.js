@@ -70,7 +70,7 @@ const Textarea = React.forwardRef(
             variant === "brand-dark" &&
               !disabled &&
               tw`border-transparent text-white bg-brand-melrose bg-opacity-20 placeholder-brand-melrose hocus:(border-transparent bg-opacity-30)`,
-            resize && tw`resize-none`
+            !resize && tw`resize-none`
           ]}
           {...rest}
         />
@@ -80,7 +80,7 @@ const Textarea = React.forwardRef(
 );
 
 Textarea.defaultProps = {
-  resize: true,
+  resize: false,
   rows: 3,
 };
 

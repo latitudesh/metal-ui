@@ -79,7 +79,7 @@ Button.propTypes = {
   className: PropTypes.string,
   iconBefore: PropTypes.element,
   iconAfter: PropTypes.element,
-  label: PropTypes.string,
+  label: PropTypes.node,
   onClick: PropTypes.func,
   type: PropTypes.string,
   variant: PropTypes.oneOf([
