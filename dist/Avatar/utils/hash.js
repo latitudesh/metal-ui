@@ -1,0 +1,1 @@
+"use strict";function hashCode(t){const e=String(t);let r=0;var h;if(0===e.trim().length)return r;for(let t=0;t<e.length;t++)h=e.charCodeAt(t),r=(r<<5)-r+h,r&=r;return Math.abs(r)}module.exports=hashCode;
