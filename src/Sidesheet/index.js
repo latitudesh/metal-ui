@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
-import classNames from "classnames/bind";
+import classNames from "classnames";
 import Box from "../Box";
-import useKeyPressEvent from "react-use/lib/useKeyPressEvent";
+import { useKeyPressEvent } from "react-use";
 
 function XIcon() {
   return (
@@ -142,14 +142,15 @@ const Sidesheet = ({
               flex
               flexDirection="col"
               overflow={"overflow-y-auto"}
-              className="sidesheet-content relative flex-1 rounded"
+              className="sidesheet-content relative flex-1 rounded px-3 py-3"
+              noPadding
             >
               <Box
                 noPadding
                 flex
                 flexDirection="col"
                 overflow={"overflow-y-auto"}
-                className="overflow-visible"
+                className="overflow-visible px-3 py-3"
               >
                <div className="flex-shrink-0">{content}</div>
               </Box>

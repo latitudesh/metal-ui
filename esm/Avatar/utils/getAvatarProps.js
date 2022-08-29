@@ -1,0 +1,1 @@
+import fills from"../styles/fills.js";const getAvatarProps=({isSolid:s,color:t,hashValue:l})=>{var a,s=fills[s?"solid":"subtle"];return"automatic"===t?s[(a=Object.keys(s))[l%a.length]]:s[t]};export{getAvatarProps as default};
