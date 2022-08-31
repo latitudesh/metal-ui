@@ -12,6 +12,8 @@ const options = {
   external: [
     ...Object.keys(peerDependencies),
     ...Object.keys(dependencies),
+    "@heroicons/react/solid",
+    "@heroicons/react/outline",
     "@emotion/unitless",
     "@emotion/memoize",
     "@emotion/hash",
