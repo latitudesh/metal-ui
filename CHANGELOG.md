@@ -1,3 +1,11 @@
+## [4.7.1-beta.1](https://github.com/Maxihost/metal-ui/compare/v4.7.0...v4.7.1-beta.1) (2022-09-01)
+
+
+### Bug Fixes
+
+* Add built files ([6626652](https://github.com/Maxihost/metal-ui/commit/6626652556f79c1291048e030ce4859791b120aa))
+* Ignored node_modules ([2d6bbe7](https://github.com/Maxihost/metal-ui/commit/2d6bbe77391c01c8a031cdac50f7f3aac09d73e9))
+
 # [4.7.0](https://github.com/Maxihost/metal-ui/compare/v4.6.0...v4.7.0) (2022-08-29)
 
 
