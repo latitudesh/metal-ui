@@ -1,3 +1,19 @@
+# [4.7.0](https://github.com/Maxihost/metal-ui/compare/v4.6.0...v4.7.0) (2022-08-29)
+
+
+### Bug Fixes
+
+* Filter more modules ([c0b70a3](https://github.com/Maxihost/metal-ui/commit/c0b70a3cae23b9d16cdf5421ac0503a88fb6267a))
+* Revert externals ([928b388](https://github.com/Maxihost/metal-ui/commit/928b388eca19364dd4be3a983ee5c67306c59573))
+* Sidesheet scrollbar, textarea resize and button label proptype ([c03ce47](https://github.com/Maxihost/metal-ui/commit/c03ce47c8b624ed32731141227510e35f0aa5408))
+
+
+### Features
+
+* Clean build ([9d3df58](https://github.com/Maxihost/metal-ui/commit/9d3df58ceb4f3afb57b2e0267807ea13c52100b7))
+* Improve externals ([dfeeead](https://github.com/Maxihost/metal-ui/commit/dfeeeada4e03da2795eb9bf0ce6e07375c17756c))
+* Simplify build ([8a51da9](https://github.com/Maxihost/metal-ui/commit/8a51da93ecf4a075feb85e4d4d0478e91bdbc0a0))
+
 # [4.6.0](https://github.com/Maxihost/metal-ui/compare/v4.5.1...v4.6.0) (2022-07-22)
 
 

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import * as Label from "@radix-ui/react-label";
 import tw, { styled, css } from "twin.macro";
-import Check from "@heroicons/react/solid/CheckIcon";
+import { CheckIcon as Check } from "@heroicons/react/solid";
 
 const StyledRadioGroup = styled(RadioGroupPrimitive.Root)(() => {
   const { display, collapsed } = useRadioGroup();
