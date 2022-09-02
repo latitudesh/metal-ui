@@ -56,7 +56,7 @@ Table.Row = React.forwardRef(({ children, onClick, isSelectable, ...props }, ref
 Table.Row.displayName = "TableRow";
 
 Table.Cell = React.forwardRef(({ children, className, ...props }, ref) => (
-  <td tw="px-6 py-4" className={className} {...props} ref={ref}>
+  <td  tw="px-6 py-4" className={className} {...props} ref={ref}>
     {children}
   </td>
 ));
@@ -67,12 +67,14 @@ Table.TextCell = React.forwardRef(({
   primaryClassname,
   secondary,
   secondaryClassname,
+  title
 }, ref) => (
   <>
     {primary && (
       <Text
         small
         tw="block font-medium truncate"
+        title={title || (typeof primary === 'string' && primary)}
         css={[secondary && tw`mb-0.5`]}
         className={primaryClassname}
         ref={ref}
@@ -84,7 +86,8 @@ Table.TextCell = React.forwardRef(({
       <Text
         small
         color="text-accent-five"
-        tw="block truncate"
+        tw="block truncate"  
+        title={title || (typeof secondary === 'string' && secondary)}
         className={secondaryClassname}
       >
         {secondary}
