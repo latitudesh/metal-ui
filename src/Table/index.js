@@ -67,12 +67,14 @@ Table.TextCell = React.forwardRef(({
   primaryClassname,
   secondary,
   secondaryClassname,
+  title
 }, ref) => (
   <>
     {primary && (
       <Text
         small
         tw="block font-medium truncate"
+        title={title || (typeof primary === 'string' && primary)}
         css={[secondary && tw`mb-0.5`]}
         className={primaryClassname}
         ref={ref}
@@ -84,7 +86,8 @@ Table.TextCell = React.forwardRef(({
       <Text
         small
         color="text-accent-five"
-        tw="block truncate"
+        tw="block truncate"  
+        title={title || (typeof secondary === 'string' && secondary)}
         className={secondaryClassname}
       >
         {secondary}

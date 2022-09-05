@@ -129,6 +129,38 @@ Use `Table.TextCell` to add multi-line content to a table.
   </Story>
 </Preview>
 
+# Custom TextCell title
+
+Add `title` to `Table.TextCell` if `primary` or `secondary` are not strings (Objects instead, for example)
+
+<Preview>
+  <Story name="Custom TextCell title">
+    <Table>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>IP</Table.HeaderCell>
+          <Table.HeaderCell>Device</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>
+            <Table.TextCell title="HTML - content" primary={
+            <div>
+              <div> HTML </div>
+              <div> content </div>
+            </div>
+          } />
+          </Table.Cell>
+          <Table.Cell>
+            <Table.TextCell secondary="master-db-prod.maxihost.com" />
+          </Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  </Story>
+</Preview>
+
 # Table Props
 
 <ArgsTable of={Table} />
