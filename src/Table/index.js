@@ -4,10 +4,22 @@ import { jsx } from "@emotion/react";
 import React from "react";
 import PropTypes from "prop-types";
 import Text from "../Text";
-import tw from "twin.macro";
+import tw , {  css } from "twin.macro"; 
+
 
 const Table = React.forwardRef(({ children, ...props }, ref) => (
-  <table tw="w-full max-w-full" {...props} ref={ref}>
+  <table tw="w-full max-w-full" {...props} ref={ref}
+    css={[
+      props.addSidePadding && css`
+        th:first-child, td:first-child {
+          padding-left: 1.5rem
+        }
+        th:last-child, td:last-child {
+          padding-right: 1.5rem
+        }
+      `
+    ]}
+  > 
     {children}
   </table>
 ));
@@ -112,7 +124,7 @@ Table.Foot.displayName = "TableFoot";
 
 Table.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string,
+  className: PropTypes.string, 
 };
 
 Table.Head.propTypes = {
