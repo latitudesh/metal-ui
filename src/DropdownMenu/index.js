@@ -26,7 +26,7 @@ const slideUp = keyframes`
   }`;
 
 const DropdownContent = styled(DropdownPrimitive.Content)(({ animated }) => [
-  tw`mt-2 shadow-lg bg-white rounded`,
+  tw`mt-2 shadow-lg bg-white rounded z-10`,
   css`
     min-width: 150px;
     &[data-state="open"] {

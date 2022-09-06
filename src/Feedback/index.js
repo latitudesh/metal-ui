@@ -242,6 +242,7 @@ const Feedback = ({
           <TriggerButton />
         </PopoverPrimitive.Trigger>
         <PopoverPrimitive.Content
+          css={tw`z-10`}
           sideOffset={sideOffset}
           side={side}
           align={align}
