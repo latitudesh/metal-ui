@@ -1,4 +1,4 @@
-## [4.7.1-beta.1](https://github.com/Maxihost/metal-ui/compare/v4.7.0...v4.7.1-beta.1) (2022-09-01)
+## [4.7.1](https://github.com/Maxihost/metal-ui/compare/v4.7.0...v4.7.1) (2022-09-05)
 
 
 ### Bug Fixes
