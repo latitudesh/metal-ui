@@ -29,7 +29,7 @@ const Textarea = React.forwardRef(
     const handleChange = useCallback(
       (event) => {
         if (onChange) {
-          onChange(event.target.value);
+          onChange(event.target.value, event);
         }
       },
       [onChange]
