@@ -1,3 +1,15 @@
+# [4.8.0-beta.1](https://github.com/Maxihost/metal-ui/compare/v4.7.1...v4.8.0-beta.1) (2022-09-06)
+
+
+### Bug Fixes
+
+* Z-index for dropdown and feedback ([5549b9c](https://github.com/Maxihost/metal-ui/commit/5549b9cd1a5256f289ee41ab107413652c2a7506))
+
+
+### Features
+
+* Update radix ui packages ([192ef9b](https://github.com/Maxihost/metal-ui/commit/192ef9b047808e66b6ce58aa5fa39f10eb6bae55))
+
 ## [4.7.1](https://github.com/Maxihost/metal-ui/compare/v4.7.0...v4.7.1) (2022-09-05)
 
 
