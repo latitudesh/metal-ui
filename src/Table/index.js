@@ -7,22 +7,27 @@ import Text from "../Text";
 import tw , {  css } from "twin.macro"; 
 
 
-const Table = React.forwardRef(({ children, ...props }, ref) => (
+const Table = React.forwardRef(({ children, addSidePadding, ...props }, ref) => (
   <table tw="w-full max-w-full" {...props} ref={ref}
     css={[
-      props.addSidePadding && css`
-        th:first-child, td:first-child {
-          padding-left: 1.5rem
+      css`
+        a[href]:hover, button:hover {
+          opacity: .5
         }
-        th:last-child, td:last-child {
+      `,
+      addSidePadding  && css`
+        th:first-of-type, td:first-of-type {
+          padding-left: 1.5rem; 
+        }
+        th:last-of-type, td:last-of-type {
           padding-right: 1.5rem
         }
       `,
-      !props.addSidePadding && css`
-        th:first-child, td:first-child {
+      !addSidePadding && css`
+        th:first-of-type, td:first-of-type {
           padding-left: 0
         }
-        th:last-child, td:last-child {
+        th:last-of-type, td:last-of-type {
           padding-right: 0
         }
       `
@@ -94,7 +99,7 @@ Table.TextCell = React.forwardRef(({
       <Text
         small
         tw="block font-medium truncate"
-        title={title || (typeof primary === 'string' && primary)}
+        title={title || (typeof primary === 'string' ? primary : undefined)}
         css={[secondary && tw`mb-0.5`]}
         className={primaryClassname}
         ref={ref}
@@ -106,8 +111,8 @@ Table.TextCell = React.forwardRef(({
       <Text
         small
         color="text-accent-five"
-        tw="block truncate"  
-        title={title || (typeof secondary === 'string' && secondary)}
+        tw="block truncate"   
+        title={title || (typeof secondary === 'string' ? secondary : undefined)}
         className={secondaryClassname}
       >
         {secondary}
@@ -133,7 +138,7 @@ Table.Foot.displayName = "TableFoot";
 Table.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string, 
-  addSidePadding: PropTypes.bool, 
+  addSidePadding:  PropTypes.bool, 
 };
 
 Table.Head.propTypes = {
