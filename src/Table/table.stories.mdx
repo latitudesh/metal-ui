@@ -129,6 +129,78 @@ Use `Table.TextCell` to add multi-line content to a table.
   </Story>
 </Preview>
 
+# Custom TextCell title
+
+Add `title` to `Table.TextCell` if `primary` or `secondary` are not strings (Objects instead, for example)
+
+<Preview>
+  <Story name="Custom TextCell title">
+    <Table>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>IP</Table.HeaderCell>
+          <Table.HeaderCell>Device</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>
+            <Table.TextCell title="HTML - content" primary={
+            <div>
+              <div> HTML </div>
+              <div> content </div>
+            </div>
+          } />
+          </Table.Cell>
+          <Table.Cell>
+            <Table.TextCell secondary="master-db-prod.maxihost.com" />
+          </Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  </Story>
+</Preview>
+
+ # With addSidePadding
+With `addSidePadding`, first and last cells on each row will keep all sides padding. 
+<Preview> 
+    <Story name="Add Side Padding">
+      <Table addSidePadding>
+        <Table.Head>
+          <Table.Row>
+            <Table.HeaderCell>IP</Table.HeaderCell>
+            <Table.HeaderCell>Type</Table.HeaderCell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>
+              <Table.TextCell primary="10.54.157.26" />
+            </Table.Cell>
+            <Table.Cell>
+              <Table.TextCell primary="Private IPMI" />
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <Table.TextCell primary="192.168.0.2" />
+            </Table.Cell>
+            <Table.Cell>
+              <Table.TextCell primary="Public IPv4" />
+            </Table.Cell>
+          </Table.Row>
+        </Table.Body>
+          <Table.Foot>
+          <Table.Row>
+            <Table.Cell>
+              <Table.TextCell primary="Showing 1 to 2 of 2 items" />
+            </Table.Cell>
+          </Table.Row>
+          </Table.Foot>
+      </Table>
+    </Story> 
+</Preview>
+
 # Table Props
 
 <ArgsTable of={Table} />
