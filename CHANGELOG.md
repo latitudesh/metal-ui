@@ -1,3 +1,10 @@
+# [4.8.0-beta.2](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.1...v4.8.0-beta.2) (2022-09-07)
+
+
+### Features
+
+* Use new radix ui structure ([7973cae](https://github.com/Maxihost/metal-ui/commit/7973cae7758400e441df0149fa0fc6d773e64b33))
+
 # [4.8.0-beta.1](https://github.com/Maxihost/metal-ui/compare/v4.7.1...v4.8.0-beta.1) (2022-09-06)
 
 
