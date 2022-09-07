@@ -64,7 +64,7 @@ Table.Row = React.forwardRef(({ children, onClick, isSelectable, ...props }, ref
     onClick={onClick}
     css={[
       onClick || isSelectable
-        ? tw`hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer`
+        ? tw`cursor-pointer`
         : null,
     ]}
     {...props}
