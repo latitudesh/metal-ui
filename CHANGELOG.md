@@ -1,3 +1,15 @@
+# [4.8.0-beta.5](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.4...v4.8.0-beta.5) (2022-09-07)
+
+
+### Bug Fixes
+
+* width propType ([265fe0c](https://github.com/Maxihost/metal-ui/commit/265fe0c3cd9583fffc923a5c8e97e92d964e912b))
+
+
+### Features
+
+* style for links inside cells ([c82e4fd](https://github.com/Maxihost/metal-ui/commit/c82e4fd9d9b531600473b741b2530ccb6d1e32ed))
+
 # [4.8.0-beta.4](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.3...v4.8.0-beta.4) (2022-09-07)
 
 
