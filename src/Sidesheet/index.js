@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import PropTypes from "prop-types";
+import PropTypes, { string } from "prop-types";
 import classNames from "classnames";
 import Box from "../Box";
 import { useKeyPressEvent } from "react-use";
@@ -176,7 +176,7 @@ Sidesheet.propTypes = {
   content: PropTypes.element,
   children: PropTypes.element,
   className: PropTypes.string,
-  width: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   action: PropTypes.element,
   onClose: PropTypes.func,
   isShown: PropTypes.bool,
