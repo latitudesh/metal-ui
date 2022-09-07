@@ -47,14 +47,16 @@ const Tooltip = ({ children, text, placement, className, showArrow, style, asChi
         {children}
       </HoverCardTrigger>
 
-      <HoverCardContent
-        side={placement}
-        style={style}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {text}
-        {showArrow && <HoverCard.Arrow offset={10} />}
-      </HoverCardContent>
+      <HoverCard.Portal>
+        <HoverCardContent
+          side={placement}
+          style={style}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {text}
+          {showArrow && <HoverCard.Arrow offset={10} />}
+        </HoverCardContent>
+      </HoverCard.Portal>
     </HoverCard.Root>
   );
 };

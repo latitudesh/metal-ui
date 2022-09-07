@@ -6,6 +6,7 @@ import { keyframes } from "@emotion/react";
 
 const Dropdown = DropdownPrimitive.Root;
 const DropdownTrigger = DropdownPrimitive.Trigger;
+const DropdownPortal = DropdownPrimitive.Portal;
 
 const slideDown = keyframes`
   0% {
@@ -25,8 +26,8 @@ const slideUp = keyframes`
     transform: translateY(-2px);
   }`;
 
-const DropdownContent = styled(DropdownPrimitive.Content)(({ animated }) => [
-  tw`mt-2 shadow-lg bg-white rounded z-10`,
+const StyledDropdownContent = styled(DropdownPrimitive.Content)(({ animated }) => [
+  tw`mt-2 shadow-lg bg-white rounded`,
   css`
     min-width: 150px;
     &[data-state="open"] {
@@ -37,6 +38,13 @@ const DropdownContent = styled(DropdownPrimitive.Content)(({ animated }) => [
     }
   `
 ]);
+
+const DropdownContent = ({ children, ...rest }) =>
+  <DropdownPortal>
+    <StyledDropdownContent {...rest} >
+      {children}
+    </StyledDropdownContent>
+  </DropdownPortal>
 
 const DropdownLabel = styled(DropdownPrimitive.Label)(() => [
   tw`px-4 py-2 text-xs text-accent-six uppercase`
