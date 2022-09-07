@@ -1,3 +1,18 @@
+# [4.8.0-beta.3](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.2...v4.8.0-beta.3) (2022-09-07)
+
+
+### Bug Fixes
+
+* removing left padding on first td and th on row ([52f3047](https://github.com/Maxihost/metal-ui/commit/52f3047ec82888e63d2c80a56285a3f1823bfd7e))
+
+
+### Features
+
+* add support for optionally keeping side padding ([f0d061c](https://github.com/Maxihost/metal-ui/commit/f0d061c1868a8fe15fbaa0aacfff9b04fe6059f5))
+* removing padding on last cell ([1ae8947](https://github.com/Maxihost/metal-ui/commit/1ae89473d040de169aa3c3d20771543335b6e283))
+* removing row background on hover ([7bbe8d5](https://github.com/Maxihost/metal-ui/commit/7bbe8d58e5faa37095531527ae9c8ac1e58adcf1))
+* title attribute for TextCell ([188bf1d](https://github.com/Maxihost/metal-ui/commit/188bf1dd88aadf3b60efc3003236aed9bbc70cbc))
+
 # [4.8.0-beta.2](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.1...v4.8.0-beta.2) (2022-09-07)
 
 
