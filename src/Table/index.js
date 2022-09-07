@@ -17,6 +17,14 @@ const Table = React.forwardRef(({ children, ...props }, ref) => (
         th:last-child, td:last-child {
           padding-right: 1.5rem
         }
+      `,
+      !props.addSidePadding && css`
+        th:first-child, td:first-child {
+          padding-left: 0
+        }
+        th:last-child, td:last-child {
+          padding-right: 0
+        }
       `
     ]}
   > 
@@ -42,7 +50,7 @@ Table.Body.displayName = "TableBody";
 
 Table.HeaderCell = React.forwardRef(({ children, ...props }, ref) => (
   <th
-    tw="px-6 first:pl-0 last:pr-0 py-2 bg-white text-left text-xs leading-5 font-medium text-accent-five uppercase tracking-wider"
+    tw="px-6 py-2 bg-white text-left text-xs leading-5 font-medium text-accent-five uppercase tracking-wider"
     {...props}
     ref={ref}
   >
@@ -68,7 +76,7 @@ Table.Row = React.forwardRef(({ children, onClick, isSelectable, ...props }, ref
 Table.Row.displayName = "TableRow";
 
 Table.Cell = React.forwardRef(({ children, className, ...props }, ref) => (
-  <td  tw="px-6 first:pl-0 last:pr-0 py-4" className={className} {...props} ref={ref}>
+  <td  tw="px-6 py-4" className={className} {...props} ref={ref}>
     {children}
   </td>
 ));
@@ -125,6 +133,7 @@ Table.Foot.displayName = "TableFoot";
 Table.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string, 
+  addSidePadding: PropTypes.bool, 
 };
 
 Table.Head.propTypes = {
