@@ -1,3 +1,10 @@
+# [4.8.0-beta.7](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.6...v4.8.0-beta.7) (2022-09-08)
+
+
+### Bug Fixes
+
+* Update build ([fce6561](https://github.com/Maxihost/metal-ui/commit/fce6561f806b2e0cdd02926927a7d8f92743c238))
+
 # [4.8.0-beta.6](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.5...v4.8.0-beta.6) (2022-09-08)
 
 
