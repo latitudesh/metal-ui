@@ -20,7 +20,7 @@ const fadeOut = keyframes`
 
 
 const HoverCardContent = styled(HoverCard.Content)(() => [
-  tw`py-3 px-4 bg-foreground text-white text-sm rounded`], css`
+  tw`py-3 px-4 bg-foreground text-white text-sm rounded z-10`], css`
   max-width: 24em;
   &[data-state='open'] {
     animation: ${fadeIn} .2s ease-out forwards;
