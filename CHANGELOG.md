@@ -1,69 +1,9 @@
-# [4.8.0-beta.7](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.6...v4.8.0-beta.7) (2022-09-08)
+## [4.7.2](https://github.com/Maxihost/metal-ui/compare/v4.7.1...v4.7.2) (2022-09-07)
 
 
 ### Bug Fixes
 
-* Update build ([fce6561](https://github.com/Maxihost/metal-ui/commit/fce6561f806b2e0cdd02926927a7d8f92743c238))
-
-# [4.8.0-beta.6](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.5...v4.8.0-beta.6) (2022-09-08)
-
-
-### Bug Fixes
-
-* Radix ui z-index ([f67dc67](https://github.com/Maxihost/metal-ui/commit/f67dc67fc5061a9db12d47028098393a971fdc18))
-
-# [4.8.0-beta.5](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.4...v4.8.0-beta.5) (2022-09-07)
-
-
-### Bug Fixes
-
-* width propType ([265fe0c](https://github.com/Maxihost/metal-ui/commit/265fe0c3cd9583fffc923a5c8e97e92d964e912b))
-
-
-### Features
-
-* style for links inside cells ([c82e4fd](https://github.com/Maxihost/metal-ui/commit/c82e4fd9d9b531600473b741b2530ccb6d1e32ed))
-
-# [4.8.0-beta.4](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.3...v4.8.0-beta.4) (2022-09-07)
-
-
-### Bug Fixes
-
-* build files ([866b3df](https://github.com/Maxihost/metal-ui/commit/866b3df197afa1d650bbb776e6d377ecc2d0e80f))
-
-# [4.8.0-beta.3](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.2...v4.8.0-beta.3) (2022-09-07)
-
-
-### Bug Fixes
-
-* removing left padding on first td and th on row ([52f3047](https://github.com/Maxihost/metal-ui/commit/52f3047ec82888e63d2c80a56285a3f1823bfd7e))
-
-
-### Features
-
-* add support for optionally keeping side padding ([f0d061c](https://github.com/Maxihost/metal-ui/commit/f0d061c1868a8fe15fbaa0aacfff9b04fe6059f5))
-* removing padding on last cell ([1ae8947](https://github.com/Maxihost/metal-ui/commit/1ae89473d040de169aa3c3d20771543335b6e283))
-* removing row background on hover ([7bbe8d5](https://github.com/Maxihost/metal-ui/commit/7bbe8d58e5faa37095531527ae9c8ac1e58adcf1))
-* title attribute for TextCell ([188bf1d](https://github.com/Maxihost/metal-ui/commit/188bf1dd88aadf3b60efc3003236aed9bbc70cbc))
-
-# [4.8.0-beta.2](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.1...v4.8.0-beta.2) (2022-09-07)
-
-
-### Features
-
-* Use new radix ui structure ([7973cae](https://github.com/Maxihost/metal-ui/commit/7973cae7758400e441df0149fa0fc6d773e64b33))
-
-# [4.8.0-beta.1](https://github.com/Maxihost/metal-ui/compare/v4.7.1...v4.8.0-beta.1) (2022-09-06)
-
-
-### Bug Fixes
-
-* Z-index for dropdown and feedback ([5549b9c](https://github.com/Maxihost/metal-ui/commit/5549b9cd1a5256f289ee41ab107413652c2a7506))
-
-
-### Features
-
-* Update radix ui packages ([192ef9b](https://github.com/Maxihost/metal-ui/commit/192ef9b047808e66b6ce58aa5fa39f10eb6bae55))
+* Pass event to onchange handler ([e2e4950](https://github.com/Maxihost/metal-ui/commit/e2e4950bdb236acf460f25bff05a16c72549433a))
 
 ## [4.7.1](https://github.com/Maxihost/metal-ui/compare/v4.7.0...v4.7.1) (2022-09-05)
 
