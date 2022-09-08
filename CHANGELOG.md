@@ -1,3 +1,10 @@
+# [4.8.0-beta.6](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.5...v4.8.0-beta.6) (2022-09-08)
+
+
+### Bug Fixes
+
+* Radix ui z-index ([f67dc67](https://github.com/Maxihost/metal-ui/commit/f67dc67fc5061a9db12d47028098393a971fdc18))
+
 # [4.8.0-beta.5](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.4...v4.8.0-beta.5) (2022-09-07)
 
 
