@@ -18,7 +18,18 @@ module.exports = {
         assets: "release/*.tgz",
       },
     ],
-    "@semantic-release/git",
+    [
+      "@semantic-release/git", {
+        "assets": [
+          "dist/**/*.{js,css}",
+          "esm/**/*.{js,css}",
+          "CHANGELOG.md",
+          "package.json",
+          "package-lock.json",
+          "tailwind-preset.js"
+        ],
+      }
+    ]
   ],
   preset: "angular",
 };
