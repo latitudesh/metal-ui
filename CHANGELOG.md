@@ -1,3 +1,10 @@
+# [4.8.0-beta.9](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.8...v4.8.0-beta.9) (2022-09-09)
+
+
+### Bug Fixes
+
+* Backwards compatibility ([a41b6d6](https://github.com/Maxihost/metal-ui/commit/a41b6d682cb1c592532c9d2c851ff2d677bc979b))
+
 # [4.8.0-beta.8](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.7...v4.8.0-beta.8) (2022-09-08)
 
 
