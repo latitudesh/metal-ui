@@ -1,3 +1,10 @@
+## [4.7.2](https://github.com/Maxihost/metal-ui/compare/v4.7.1...v4.7.2) (2022-09-07)
+
+
+### Bug Fixes
+
+* Pass event to onchange handler ([e2e4950](https://github.com/Maxihost/metal-ui/commit/e2e4950bdb236acf460f25bff05a16c72549433a))
+
 ## [4.7.1](https://github.com/Maxihost/metal-ui/compare/v4.7.0...v4.7.1) (2022-09-05)
 
 

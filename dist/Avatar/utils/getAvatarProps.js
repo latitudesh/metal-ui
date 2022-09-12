@@ -1,1 +1,0 @@
-"use strict";var fills=require("../styles/fills.js");const getAvatarProps=({isSolid:s,color:t,hashValue:e})=>{var l,s=fills[s?"solid":"subtle"];return"automatic"===t?s[(l=Object.keys(s))[e%l.length]]:s[t]};module.exports=getAvatarProps;
