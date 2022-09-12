@@ -20,7 +20,7 @@ const fadeOut = keyframes`
 
 
 const HoverCardContent = styled(HoverCard.Content)(() => [
-  tw`py-3 px-4 bg-foreground text-white text-sm rounded`], css`
+  tw`py-3 px-4 bg-foreground text-white text-sm rounded z-10`], css`
   max-width: 24em;
   &[data-state='open'] {
     animation: ${fadeIn} .2s ease-out forwards;
@@ -47,14 +47,16 @@ const Tooltip = ({ children, text, placement, className, showArrow, style, asChi
         {children}
       </HoverCardTrigger>
 
-      <HoverCardContent
-        side={placement}
-        style={style}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {text}
-        {showArrow && <HoverCard.Arrow offset={10} />}
-      </HoverCardContent>
+      <HoverCard.Portal>
+        <HoverCardContent
+          side={placement}
+          style={style}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {text}
+          {showArrow && <HoverCard.Arrow offset={10} />}
+        </HoverCardContent>
+      </HoverCard.Portal>
     </HoverCard.Root>
   );
 };
