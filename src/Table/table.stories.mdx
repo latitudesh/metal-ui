@@ -20,6 +20,7 @@ Metal exports the following components for tables:
 - `Table.Body`
 - `Table.Row`
 - `Table.Cell`
+- `Table.CellContent`
 - `Table.TextCell`
 
 # Default
@@ -150,11 +151,11 @@ Add `title` to `Table.TextCell` if `primary` or `secondary` are not strings (Obj
   </Story>
 </Preview>
 
-# With addSidePadding
-With `addSidePadding`, first and last cells on each row will keep all sides padding. 
+# With addEdgesPadding
+With `addEdgesPadding`, first and last cells on each row will keep all edges padding. 
 <Preview> 
-    <Story name="Add Side Padding">
-      <Table addSidePadding>
+    <Story name="Add Edges Padding">
+      <Table addEdgesPadding>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>IP</Table.HeaderCell>

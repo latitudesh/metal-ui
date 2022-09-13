@@ -7,10 +7,10 @@ import Text from "../Text";
 import tw , {  css } from "twin.macro"; 
 
 
-const Table = React.forwardRef(({ children, addSidePadding, ...props }, ref) => (
+const Table = React.forwardRef(({ children, addEdgesPadding, ...props }, ref) => (
   <table tw="w-full max-w-full" {...props} ref={ref}
     css={[
-      addSidePadding  && css` 
+      addEdgesPadding  && css` 
         th:first-of-type, td:first-of-type > div, td:first-of-type > a > div, td:first-of-type > button > div {
           padding-left: 1.5rem; 
         } 
@@ -18,7 +18,7 @@ const Table = React.forwardRef(({ children, addSidePadding, ...props }, ref) => 
           padding-right: 1.5rem
         }
       `,
-      !addSidePadding && css` 
+      !addEdgesPadding && css` 
         th:first-of-type, td:first-of-type > div, td:first-of-type > a > div, td:first-of-type > button > div {
           padding-left: 0
         }
@@ -149,7 +149,7 @@ Table.Foot.displayName = "TableFoot";
 Table.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string, 
-  addSidePadding:  PropTypes.bool, 
+  addEdgesPadding:  PropTypes.bool, 
 };
 
 Table.Head.propTypes = {
