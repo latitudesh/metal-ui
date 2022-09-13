@@ -6,6 +6,7 @@ import {
   ArgsTable,
 } from "@storybook/addon-docs/blocks";
 import Table from "./index";
+import Button from "../Button";
 
 <Meta title="Table" component={Table} />
 
@@ -19,6 +20,7 @@ Metal exports the following components for tables:
 - `Table.Body`
 - `Table.Row`
 - `Table.Cell`
+- `Table.CellContent`
 - `Table.TextCell`
 
 # Default
@@ -35,25 +37,33 @@ Metal exports the following components for tables:
       <Table.Body>
         <Table.Row>
           <Table.Cell>
-            <Table.TextCell primary="10.54.157.26" />
+            <Table.CellContent><Table.TextCell primary="10.54.157.26" /></Table.CellContent>
           </Table.Cell>
-          <Table.Cell>
-            <Table.TextCell primary="Private IPMI" />
-          </Table.Cell>
+         <Table.Cell>
+            <Table.CellContent>
+              <Table.TextCell primary="Private IPMI" />
+            </Table.CellContent>
+          </Table.Cell>  
         </Table.Row>
         <Table.Row>
           <Table.Cell>
-            <Table.TextCell primary="192.168.0.2" />
+            <Table.CellContent>
+                 <Table.TextCell primary="192.168.0.2" />
+            </Table.CellContent>
           </Table.Cell>
           <Table.Cell>
-            <Table.TextCell primary="Public IPv4" />
+            <Table.CellContent>
+                <Table.TextCell primary="Public IPv4" />
+            </Table.CellContent>
           </Table.Cell>
         </Table.Row>
       </Table.Body>
         <Table.Foot>
         <Table.Row>
           <Table.Cell>
-            <Table.TextCell primary="Showing 1 to 2 of 2 items" />
+            <Table.CellContent>
+               <Table.TextCell primary="Showing 1 to 2 of 2 items" />
+            </Table.CellContent>
           </Table.Cell>
         </Table.Row>
         </Table.Foot>
@@ -61,38 +71,6 @@ Metal exports the following components for tables:
   </Story>
 </Preview>
 
-# Clickable row
-
-<Preview>
-  <Story name="Clickable row">
-    <Table>
-      <Table.Head>
-        <Table.Row>
-          <Table.HeaderCell>IP</Table.HeaderCell>
-          <Table.HeaderCell>Type</Table.HeaderCell>
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
-        <Table.Row onClick={() => alert("Clicked")}>
-          <Table.Cell>
-            <Table.TextCell primary="10.54.157.26" />
-          </Table.Cell>
-          <Table.Cell>
-            <Table.TextCell primary="Private IPMI" />
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row onClick={() => alert("Clicked")}>
-          <Table.Cell>
-            <Table.TextCell primary="192.168.0.2" />
-          </Table.Cell>
-          <Table.Cell>
-            <Table.TextCell primary="Public IPv4" />
-          </Table.Cell>
-        </Table.Row>
-      </Table.Body>
-    </Table>
-  </Story>
-</Preview>
 
 # Multi-line content
 
@@ -110,18 +88,26 @@ Use `Table.TextCell` to add multi-line content to a table.
       <Table.Body>
         <Table.Row>
           <Table.Cell>
+             <Table.CellContent>
             <Table.TextCell primary="10.54.157.26" secondary="Private IPMI" />
+             </Table.CellContent>
           </Table.Cell>
           <Table.Cell>
+             <Table.CellContent>
             <Table.TextCell secondary="master-db-prod.maxihost.com" />
+             </Table.CellContent>
           </Table.Cell>
         </Table.Row>
         <Table.Row>
           <Table.Cell>
-            <Table.TextCell primary="192.168.0.2" secondary="Public IPv4" />
+             <Table.CellContent>
+              <Table.TextCell primary="192.168.0.2" secondary="Public IPv4" />
+             </Table.CellContent>
           </Table.Cell>
           <Table.Cell>
-            <Table.TextCell secondary="slave-db-prod.maxihost.com" />
+             <Table.CellContent>
+              <Table.TextCell secondary="slave-db-prod.maxihost.com" />
+             </Table.CellContent>
           </Table.Cell>
         </Table.Row>
       </Table.Body>
@@ -145,15 +131,19 @@ Add `title` to `Table.TextCell` if `primary` or `secondary` are not strings (Obj
       <Table.Body>
         <Table.Row>
           <Table.Cell>
+             <Table.CellContent>
             <Table.TextCell title="HTML - content" primary={
             <div>
               <div> HTML </div>
               <div> content </div>
             </div>
           } />
+           </Table.CellContent>
           </Table.Cell>
           <Table.Cell>
+            <Table.CellContent>
             <Table.TextCell secondary="master-db-prod.maxihost.com" />
+            </Table.CellContent>
           </Table.Cell>
         </Table.Row>
       </Table.Body>
@@ -161,11 +151,11 @@ Add `title` to `Table.TextCell` if `primary` or `secondary` are not strings (Obj
   </Story>
 </Preview>
 
- # With addSidePadding
-With `addSidePadding`, first and last cells on each row will keep all sides padding. 
+# With addEdgesPadding
+With `addEdgesPadding`, first and last cells on each row will keep all edges padding. 
 <Preview> 
-    <Story name="Add Side Padding">
-      <Table addSidePadding>
+    <Story name="Add Edges Padding">
+      <Table addEdgesPadding>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>IP</Table.HeaderCell>
@@ -175,25 +165,91 @@ With `addSidePadding`, first and last cells on each row will keep all sides padd
         <Table.Body>
           <Table.Row>
             <Table.Cell>
-              <Table.TextCell primary="10.54.157.26" />
+              <Table.CellContent>
+                <Table.TextCell primary="10.54.157.26" />
+              </Table.CellContent>
             </Table.Cell>
             <Table.Cell>
-              <Table.TextCell primary="Private IPMI" />
+              <Table.CellContent>
+                 <Table.TextCell primary="Private IPMI" />
+              </Table.CellContent>
             </Table.Cell>
           </Table.Row>
           <Table.Row>
             <Table.Cell>
-              <Table.TextCell primary="192.168.0.2" />
+               <Table.CellContent>
+                 <Table.TextCell primary="192.168.0.2" />
+              </Table.CellContent>
             </Table.Cell>
             <Table.Cell>
-              <Table.TextCell primary="Public IPv4" />
+              <Table.CellContent>
+                <Table.TextCell primary="Public IPv4" />
+              </Table.CellContent>
             </Table.Cell>
           </Table.Row>
         </Table.Body>
           <Table.Foot>
           <Table.Row>
             <Table.Cell>
-              <Table.TextCell primary="Showing 1 to 2 of 2 items" />
+               <Table.CellContent>
+                  <Table.TextCell primary="Showing 1 to 2 of 2 items" />
+              </Table.CellContent>
+            </Table.Cell>
+          </Table.Row>
+          </Table.Foot>
+      </Table>
+    </Story> 
+</Preview>
+
+
+# Clickable Row
+<Preview> 
+    <Story name="Clickable Row">
+      <Table>
+        <Table.Head>
+          <Table.Row>
+            <Table.HeaderCell>IP</Table.HeaderCell>
+            <Table.HeaderCell>Type</Table.HeaderCell>
+            <Table.HeaderCell>Action</Table.HeaderCell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          <Table.Row isClickable>
+            <Table.Cell>
+              <Table.CellContent>
+                <Table.TextCell primary="10.54.157.26" />
+              </Table.CellContent>
+            </Table.Cell>
+            <Table.Cell>
+              <Table.CellContent>
+                 <Table.TextCell primary="Private IPMI" />
+              </Table.CellContent>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row isClickable>
+            <Table.Cell>
+               <Table.CellContent>
+                 <Table.TextCell primary="192.168.0.2" />
+              </Table.CellContent>
+            </Table.Cell>
+            <Table.Cell>
+              <Table.CellContent>
+                <Table.TextCell primary="Public IPv4" />
+              </Table.CellContent>
+            </Table.Cell>
+            <Table.Cell className="opacity-100">
+              <Table.CellContent> 
+                 <Button label="Action" />
+              </Table.CellContent>
+            </Table.Cell>
+          </Table.Row>
+        </Table.Body>
+          <Table.Foot>
+          <Table.Row>
+            <Table.Cell>
+               <Table.CellContent>
+                  <Table.TextCell primary="Showing 1 to 2 of 2 items" />
+              </Table.CellContent>
             </Table.Cell>
           </Table.Row>
           </Table.Foot>

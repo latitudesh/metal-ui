@@ -7,27 +7,23 @@ import Text from "../Text";
 import tw , {  css } from "twin.macro"; 
 
 
-const Table = React.forwardRef(({ children, addSidePadding, ...props }, ref) => (
+const Table = React.forwardRef(({ children, addEdgesPadding, ...props }, ref) => (
   <table tw="w-full max-w-full" {...props} ref={ref}
     css={[
-      css`
-        a[href]:hover, button:hover {
-          opacity: .5
-        }
-      `,
-      addSidePadding  && css`
-        th:first-of-type, td:first-of-type {
+      addEdgesPadding  && css` 
+        th:first-of-type, td:first-of-type > div, td:first-of-type > a > div, td:first-of-type > button > div {
           padding-left: 1.5rem; 
-        }
-        th:last-of-type, td:last-of-type {
+        } 
+        th:last-of-type, td:last-of-type > div, td:last-of-type > a > div, td:last-of-type > button > div {
           padding-right: 1.5rem
         }
       `,
-      !addSidePadding && css`
-        th:first-of-type, td:first-of-type {
+      !addEdgesPadding && css` 
+        th:first-of-type, td:first-of-type > div, td:first-of-type > a > div, td:first-of-type > button > div {
           padding-left: 0
         }
-        th:last-of-type, td:last-of-type {
+        th:last-of-type, td:last-of-type > div, td:last-of-type > a > div, 
+        td:last-of-type > button > div {
           padding-right: 0
         }
       `
@@ -64,13 +60,21 @@ Table.HeaderCell = React.forwardRef(({ children, ...props }, ref) => (
 ));
 Table.HeaderCell.displayName = "TableHeaderCell";
 
-Table.Row = React.forwardRef(({ children, onClick, isSelectable, ...props }, ref) => (
+Table.Row = React.forwardRef(({ children, isClickable, onClick, ...props }, ref) => (
   <tr
     onClick={onClick}
     css={[
-      onClick || isSelectable
-        ? tw`cursor-pointer`
-        : null,
+      isClickable && css`
+        &:hover td:not(.opacity-100) {
+          opacity: .5; 
+        }
+      `,
+      !isClickable && css`
+        a[href]:hover, button:hover {
+          opacity: .5
+        }
+      `,
+      isClickable && tw`cursor-pointer`
     ]}
     {...props}
     ref={ref}
@@ -81,11 +85,18 @@ Table.Row = React.forwardRef(({ children, onClick, isSelectable, ...props }, ref
 Table.Row.displayName = "TableRow";
 
 Table.Cell = React.forwardRef(({ children, className, ...props }, ref) => (
-  <td  tw="px-6 py-4" className={className} {...props} ref={ref}>
+  <td className={className} {...props} ref={ref}>
     {children}
   </td>
 ));
 Table.Cell.displayName = "TableCell";
+
+Table.CellContent = React.forwardRef(({ children, className, ...props }, ref) => (
+  <div tw="px-6 py-4" className={className} {...props} ref={ref}>
+    {children}
+  </div>
+));
+Table.CellContent.displayName = "TableCellContent";
 
 Table.TextCell = React.forwardRef(({
   primary,
@@ -138,7 +149,7 @@ Table.Foot.displayName = "TableFoot";
 Table.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string, 
-  addSidePadding:  PropTypes.bool, 
+  addEdgesPadding:  PropTypes.bool, 
 };
 
 Table.Head.propTypes = {
