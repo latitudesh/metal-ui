@@ -1,3 +1,10 @@
+# [4.8.0-beta.10](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.9...v4.8.0-beta.10) (2022-09-13)
+
+
+### Features
+
+* table cell content ([db4373c](https://github.com/Maxihost/metal-ui/commit/db4373cacac709214bf333ebfa03749ef9cdd9f9))
+
 # [4.8.0-beta.9](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.8...v4.8.0-beta.9) (2022-09-09)
 
 
