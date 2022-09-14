@@ -7,28 +7,8 @@ import Text from "../Text";
 import tw , {  css } from "twin.macro"; 
 
 
-const Table = React.forwardRef(({ children, addEdgesPadding, ...props }, ref) => (
-  <table tw="w-full max-w-full" {...props} ref={ref}
-    css={[
-      addEdgesPadding  && css` 
-        th:first-of-type, td:first-of-type > div, td:first-of-type > a > div, td:first-of-type > button > div {
-          padding-left: 1.5rem; 
-        } 
-        th:last-of-type, td:last-of-type > div, td:last-of-type > a > div, td:last-of-type > button > div {
-          padding-right: 1.5rem
-        }
-      `,
-      !addEdgesPadding && css` 
-        th:first-of-type, td:first-of-type > div, td:first-of-type > a > div, td:first-of-type > button > div {
-          padding-left: 0
-        }
-        th:last-of-type, td:last-of-type > div, td:last-of-type > a > div, 
-        td:last-of-type > button > div {
-          padding-right: 0
-        }
-      `
-    ]}
-  > 
+const Table = React.forwardRef(({ children, ...props }, ref) => (
+  <table tw="w-full max-w-full" {...props} ref={ref}> 
     {children}
   </table>
 ));
@@ -64,17 +44,7 @@ Table.Row = React.forwardRef(({ children, isClickable, onClick, ...props }, ref)
   <tr
     onClick={onClick}
     css={[
-      isClickable && css`
-        &:hover td:not(.opacity-100) {
-          opacity: .5; 
-        }
-      `,
-      !isClickable && css`
-        a[href]:hover, button:hover {
-          opacity: .5
-        }
-      `,
-      isClickable && tw`cursor-pointer`
+      isClickable && tw`hover:bg-accent-two cursor-pointer`
     ]}
     {...props}
     ref={ref}
@@ -149,7 +119,6 @@ Table.Foot.displayName = "TableFoot";
 Table.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string, 
-  addEdgesPadding:  PropTypes.bool, 
 };
 
 Table.Head.propTypes = {
