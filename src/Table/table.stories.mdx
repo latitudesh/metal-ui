@@ -151,57 +151,6 @@ Add `title` to `Table.TextCell` if `primary` or `secondary` are not strings (Obj
   </Story>
 </Preview>
 
-# With addEdgesPadding
-With `addEdgesPadding`, first and last cells on each row will keep all edges padding. 
-<Preview> 
-    <Story name="Add Edges Padding">
-      <Table addEdgesPadding>
-        <Table.Head>
-          <Table.Row>
-            <Table.HeaderCell>IP</Table.HeaderCell>
-            <Table.HeaderCell>Type</Table.HeaderCell>
-          </Table.Row>
-        </Table.Head>
-        <Table.Body>
-          <Table.Row>
-            <Table.Cell>
-              <Table.CellContent>
-                <Table.TextCell primary="10.54.157.26" />
-              </Table.CellContent>
-            </Table.Cell>
-            <Table.Cell>
-              <Table.CellContent>
-                 <Table.TextCell primary="Private IPMI" />
-              </Table.CellContent>
-            </Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>
-               <Table.CellContent>
-                 <Table.TextCell primary="192.168.0.2" />
-              </Table.CellContent>
-            </Table.Cell>
-            <Table.Cell>
-              <Table.CellContent>
-                <Table.TextCell primary="Public IPv4" />
-              </Table.CellContent>
-            </Table.Cell>
-          </Table.Row>
-        </Table.Body>
-          <Table.Foot>
-          <Table.Row>
-            <Table.Cell>
-               <Table.CellContent>
-                  <Table.TextCell primary="Showing 1 to 2 of 2 items" />
-              </Table.CellContent>
-            </Table.Cell>
-          </Table.Row>
-          </Table.Foot>
-      </Table>
-    </Story> 
-</Preview>
-
-
 # Clickable Row
 <Preview> 
     <Story name="Clickable Row">
@@ -216,28 +165,42 @@ With `addEdgesPadding`, first and last cells on each row will keep all edges pad
         <Table.Body>
           <Table.Row isClickable>
             <Table.Cell>
+              <a href="#">
               <Table.CellContent>
-                <Table.TextCell primary="10.54.157.26" />
+                  <Table.TextCell primary="10.54.157.26" />
               </Table.CellContent>
+              </a>
             </Table.Cell>
             <Table.Cell>
-              <Table.CellContent>
-                 <Table.TextCell primary="Private IPMI" />
+               <a href="#">
+                <Table.CellContent>
+                  <Table.TextCell primary="Private IPMI" />
+                </Table.CellContent>
+              </a>
+            </Table.Cell>
+            <Table.Cell>
+              <Table.CellContent> 
+                 <Button label="Action" />
               </Table.CellContent>
             </Table.Cell>
+            
           </Table.Row>
           <Table.Row isClickable>
             <Table.Cell>
-               <Table.CellContent>
-                 <Table.TextCell primary="192.168.0.2" />
-              </Table.CellContent>
+               <a href="#">
+                 <Table.CellContent>
+                   <Table.TextCell primary="192.168.0.2" />
+                 </Table.CellContent>
+               </a>
             </Table.Cell>
             <Table.Cell>
-              <Table.CellContent>
-                <Table.TextCell primary="Public IPv4" />
-              </Table.CellContent>
+              <a href="#">
+                <Table.CellContent>
+                  <Table.TextCell primary="Public IPv4" />
+                </Table.CellContent>
+              </a>
             </Table.Cell>
-            <Table.Cell className="opacity-100">
+            <Table.Cell>
               <Table.CellContent> 
                  <Button label="Action" />
               </Table.CellContent>
