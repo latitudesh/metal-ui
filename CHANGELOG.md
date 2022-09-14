@@ -1,3 +1,10 @@
+# [4.8.0-beta.11](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.10...v4.8.0-beta.11) (2022-09-14)
+
+
+### Features
+
+* dropping edgesPadding support ([c604e74](https://github.com/Maxihost/metal-ui/commit/c604e74af76b1070c5b90ff365f53976404fe8d6))
+
 # [4.8.0-beta.10](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.9...v4.8.0-beta.10) (2022-09-13)
 
 
