@@ -59,6 +59,9 @@ jobs:
     - name: Yarn Install
       run: yarn install --frozen-lockfile
 
+    - name: Build
+      run: yarn run build
+
     - name: Publish with Semantic Release
       run: npx semantic-release
       env:

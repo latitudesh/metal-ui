@@ -1,10 +1,12 @@
+### Features
+
+* Commit built files before release ([a2db40b](https://github.com/Maxihost/metal-ui/commit/a2db40ba2b0166661a7defe3b526857026ddf63c))
 ## [4.7.3](https://github.com/Maxihost/metal-ui/compare/v4.7.2...v4.7.3) (2022-09-08)
 
 
 ### Bug Fixes
 
 * Update build ([0c795e1](https://github.com/Maxihost/metal-ui/commit/0c795e1f7e4b7a63f741e6bf9d400127db8e1e84))
-
 ## [4.7.2](https://github.com/Maxihost/metal-ui/compare/v4.7.1...v4.7.2) (2022-09-07)
 
 

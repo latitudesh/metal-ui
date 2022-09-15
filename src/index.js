@@ -47,3 +47,7 @@ export {
   Typography,
   Tabs
 }
+
+// For backwards compatibility
+export * from './Typography'
+export * from './DropdownMenu'

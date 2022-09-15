@@ -241,7 +241,9 @@ const Feedback = ({
         <PopoverPrimitive.Trigger asChild>
           <TriggerButton />
         </PopoverPrimitive.Trigger>
+        <PopoverPrimitive.Portal>
         <PopoverPrimitive.Content
+          css={tw`z-10`}
           sideOffset={sideOffset}
           side={side}
           align={align}
@@ -370,6 +372,7 @@ const Feedback = ({
             )}
           </form>
         </PopoverPrimitive.Content>
+        </PopoverPrimitive.Portal>
       </PopoverPrimitive.Root>
     </div>
   );
