@@ -4,10 +4,11 @@ import { jsx } from "@emotion/react";
 import React from "react";
 import PropTypes from "prop-types";
 import Text from "../Text";
-import tw from "twin.macro";
+import tw from "twin.macro"; 
+
 
 const Table = React.forwardRef(({ children, ...props }, ref) => (
-  <table tw="w-full max-w-full" {...props} ref={ref}>
+  <table tw="w-full max-w-full" {...props} ref={ref}> 
     {children}
   </table>
 ));
@@ -39,13 +40,11 @@ Table.HeaderCell = React.forwardRef(({ children, ...props }, ref) => (
 ));
 Table.HeaderCell.displayName = "TableHeaderCell";
 
-Table.Row = React.forwardRef(({ children, onClick, isSelectable, ...props }, ref) => (
+Table.Row = React.forwardRef(({ children, isClickable, onClick, ...props }, ref) => (
   <tr
     onClick={onClick}
     css={[
-      onClick || isSelectable
-        ? tw`hover:bg-accent-two focus:outline-none focus:bg-accent-two cursor-pointer`
-        : null,
+      isClickable && tw`hover:bg-accent-two cursor-pointer`
     ]}
     {...props}
     ref={ref}
@@ -56,23 +55,32 @@ Table.Row = React.forwardRef(({ children, onClick, isSelectable, ...props }, ref
 Table.Row.displayName = "TableRow";
 
 Table.Cell = React.forwardRef(({ children, className, ...props }, ref) => (
-  <td tw="px-6 py-4" className={className} {...props} ref={ref}>
+  <td className={className} {...props} ref={ref}>
     {children}
   </td>
 ));
 Table.Cell.displayName = "TableCell";
+
+Table.CellContent = React.forwardRef(({ children, className, ...props }, ref) => (
+  <div tw="px-6 py-4" className={className} {...props} ref={ref}>
+    {children}
+  </div>
+));
+Table.CellContent.displayName = "TableCellContent";
 
 Table.TextCell = React.forwardRef(({
   primary,
   primaryClassname,
   secondary,
   secondaryClassname,
+  title
 }, ref) => (
   <>
     {primary && (
       <Text
         small
         tw="block font-medium truncate"
+        title={title || (typeof primary === 'string' ? primary : undefined)}
         css={[secondary && tw`mb-0.5`]}
         className={primaryClassname}
         ref={ref}
@@ -84,7 +92,8 @@ Table.TextCell = React.forwardRef(({
       <Text
         small
         color="text-accent-five"
-        tw="block truncate"
+        tw="block truncate"   
+        title={title || (typeof secondary === 'string' ? secondary : undefined)}
         className={secondaryClassname}
       >
         {secondary}
@@ -109,7 +118,7 @@ Table.Foot.displayName = "TableFoot";
 
 Table.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string,
+  className: PropTypes.string, 
 };
 
 Table.Head.propTypes = {
