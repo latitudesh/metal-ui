@@ -61,6 +61,10 @@ DropdownContent.defaultProps = {
   disableOutsidePointerEvents: false,
 };
 
+Dropdown.defaultProps = {
+  modal: false,
+};
+
 export {
   Dropdown,
   DropdownTrigger,
