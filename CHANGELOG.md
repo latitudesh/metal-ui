@@ -1,3 +1,11 @@
+## [4.8.1](https://github.com/Maxihost/metal-ui/compare/v4.8.0...v4.8.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* **DropdownMenu:** Allows interaction with outside elements when DropdownMenu is open ([cbeab10](https://github.com/Maxihost/metal-ui/commit/cbeab1045bba196bdc8edc843302dc911ae8b3e7))
+* **DropdownMenu:** Makes open animation faster and removes animation on close ([e00b93c](https://github.com/Maxihost/metal-ui/commit/e00b93cc0077225aad0813e71fe081befc046d28))
+
 # [4.8.0](https://github.com/Maxihost/metal-ui/compare/v4.7.3...v4.8.0) (2022-09-15)
 
 
