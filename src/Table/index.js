@@ -4,7 +4,7 @@ import { jsx } from "@emotion/react";
 import React from "react";
 import PropTypes from "prop-types";
 import Text from "../Text";
-import tw , {  css } from "twin.macro"; 
+import tw from "twin.macro"; 
 
 
 const Table = React.forwardRef(({ children, ...props }, ref) => (

@@ -1,36 +1,48 @@
-# [4.8.0-beta.11](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.10...v4.8.0-beta.11) (2022-09-14)
+## [4.8.1](https://github.com/Maxihost/metal-ui/compare/v4.8.0...v4.8.1) (2022-09-20)
 
 
-### Features
+### Bug Fixes
 
-* dropping edgesPadding support ([c604e74](https://github.com/Maxihost/metal-ui/commit/c604e74af76b1070c5b90ff365f53976404fe8d6))
+* **DropdownMenu:** Allows interaction with outside elements when DropdownMenu is open ([cbeab10](https://github.com/Maxihost/metal-ui/commit/cbeab1045bba196bdc8edc843302dc911ae8b3e7))
+* **DropdownMenu:** Makes open animation faster and removes animation on close ([e00b93c](https://github.com/Maxihost/metal-ui/commit/e00b93cc0077225aad0813e71fe081befc046d28))
 
-# [4.8.0-beta.10](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.9...v4.8.0-beta.10) (2022-09-13)
-
-
-### Features
-
-* table cell content ([db4373c](https://github.com/Maxihost/metal-ui/commit/db4373cacac709214bf333ebfa03749ef9cdd9f9))
-
-# [4.8.0-beta.9](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.8...v4.8.0-beta.9) (2022-09-09)
+# [4.8.0](https://github.com/Maxihost/metal-ui/compare/v4.7.3...v4.8.0) (2022-09-15)
 
 
 ### Bug Fixes
 
 * Backwards compatibility ([a41b6d6](https://github.com/Maxihost/metal-ui/commit/a41b6d682cb1c592532c9d2c851ff2d677bc979b))
-
-# [4.8.0-beta.8](https://github.com/Maxihost/metal-ui/compare/v4.8.0-beta.7...v4.8.0-beta.8) (2022-09-08)
-
-
-### Bug Fixes
-
-* Pass event to onchange handler ([e2e4950](https://github.com/Maxihost/metal-ui/commit/e2e4950bdb236acf460f25bff05a16c72549433a))
+* build files ([866b3df](https://github.com/Maxihost/metal-ui/commit/866b3df197afa1d650bbb776e6d377ecc2d0e80f))
+* Ci step typo ([2d606f5](https://github.com/Maxihost/metal-ui/commit/2d606f5ab1f7235597d3c3698c69b595c1247d81))
+* Radix ui z-index ([f67dc67](https://github.com/Maxihost/metal-ui/commit/f67dc67fc5061a9db12d47028098393a971fdc18))
+* removing left padding on first td and th on row ([52f3047](https://github.com/Maxihost/metal-ui/commit/52f3047ec82888e63d2c80a56285a3f1823bfd7e))
+* Update build ([fce6561](https://github.com/Maxihost/metal-ui/commit/fce6561f806b2e0cdd02926927a7d8f92743c238))
+* width propType ([265fe0c](https://github.com/Maxihost/metal-ui/commit/265fe0c3cd9583fffc923a5c8e97e92d964e912b))
+* Z-index for dropdown and feedback ([5549b9c](https://github.com/Maxihost/metal-ui/commit/5549b9cd1a5256f289ee41ab107413652c2a7506))
 
 
 ### Features
 
+* add support for optionally keeping side padding ([f0d061c](https://github.com/Maxihost/metal-ui/commit/f0d061c1868a8fe15fbaa0aacfff9b04fe6059f5))
 * Commit built files before release ([a2db40b](https://github.com/Maxihost/metal-ui/commit/a2db40ba2b0166661a7defe3b526857026ddf63c))
+* dropping edgesPadding support ([c604e74](https://github.com/Maxihost/metal-ui/commit/c604e74af76b1070c5b90ff365f53976404fe8d6))
+* removing padding on last cell ([1ae8947](https://github.com/Maxihost/metal-ui/commit/1ae89473d040de169aa3c3d20771543335b6e283))
+* removing row background on hover ([7bbe8d5](https://github.com/Maxihost/metal-ui/commit/7bbe8d58e5faa37095531527ae9c8ac1e58adcf1))
+* style for links inside cells ([c82e4fd](https://github.com/Maxihost/metal-ui/commit/c82e4fd9d9b531600473b741b2530ccb6d1e32ed))
+* table cell content ([db4373c](https://github.com/Maxihost/metal-ui/commit/db4373cacac709214bf333ebfa03749ef9cdd9f9))
+* title attribute for TextCell ([188bf1d](https://github.com/Maxihost/metal-ui/commit/188bf1dd88aadf3b60efc3003236aed9bbc70cbc))
+* Update radix ui packages ([192ef9b](https://github.com/Maxihost/metal-ui/commit/192ef9b047808e66b6ce58aa5fa39f10eb6bae55))
+* Use new radix ui structure ([7973cae](https://github.com/Maxihost/metal-ui/commit/7973cae7758400e441df0149fa0fc6d773e64b33))
 
+### Features
+
+* Commit built files before release ([a2db40b](https://github.com/Maxihost/metal-ui/commit/a2db40ba2b0166661a7defe3b526857026ddf63c))
+## [4.7.3](https://github.com/Maxihost/metal-ui/compare/v4.7.2...v4.7.3) (2022-09-08)
+
+
+### Bug Fixes
+
+* Update build ([0c795e1](https://github.com/Maxihost/metal-ui/commit/0c795e1f7e4b7a63f741e6bf9d400127db8e1e84))
 ## [4.7.2](https://github.com/Maxihost/metal-ui/compare/v4.7.1...v4.7.2) (2022-09-07)
 
 
@@ -214,6 +226,7 @@
 
 * Merge pull request #341 from Maxihost/develop ([3591e54](https://github.com/Maxihost/metal-ui/commit/3591e54743eff3ec276984fb7a9c79998bf7b296)), closes [#341](https://github.com/Maxihost/metal-ui/issues/341)
 * Merge pull request #340 from Maxihost/breaking-change/deprecating-algolia-search ([5a26a61](https://github.com/Maxihost/metal-ui/commit/5a26a61bbd7314a7377d9d6598a97c3efd473d50)), closes [#340](https://github.com/Maxihost/metal-ui/issues/340)
+
 
 
 ### BREAKING CHANGES
