@@ -228,6 +228,7 @@
 * Merge pull request #340 from Maxihost/breaking-change/deprecating-algolia-search ([5a26a61](https://github.com/Maxihost/metal-ui/commit/5a26a61bbd7314a7377d9d6598a97c3efd473d50)), closes [#340](https://github.com/Maxihost/metal-ui/issues/340)
 
 
+
 ### BREAKING CHANGES
 
 * removing deprecated AlgoliaSearch component
