@@ -81,7 +81,7 @@ const Sidesheet = ({
     if (isOpened && transition) {
       onClose();
       setTransition(false);
-      timeout = setTimeout(() => setIsOpened(false), 500);
+      timeout = setTimeout(() => setIsOpened(false), 300);
     }
     return () => clearTimeout(timeout)
   };
@@ -93,77 +93,77 @@ const Sidesheet = ({
       {children}
       {isOpened && (
         <SidesheetContent id="sidesheet">
-          <div
-            onClick={() => closeTransition()}
-            css={[
-              tw`fixed z-50 inset-0 opacity-25 duration-200 delay-100 transition`,
-              transition && tw`bg-accent-eight`,
-              !transition && tw`bg-transparent`,
-            ]} 
-          />
-          <div
-            ref={portal}
-            style={{
-              transition: "transform .2s cubic-bezier(.3,0,0,1)",
-              transform: transition
-                ? `translateX(0)`
-                : "translateX(100%)",
-              top: 0,
-              bottom: 0,
-              right:0,
-              width: width,
-              maxWidth: "calc(100vw - 20px)",
-              height: "calc(100% - 20px)",
-            }}
-            tw="fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
-          >
-            <Box
-              flex
-              alignItems="center"
-              tw="relative border-b border-border rounded rounded-b-none"
+            <div
+              onClick={isOpened ?  () => closeTransition() : null}
+              css={[
+                tw`fixed z-50 inset-0 opacity-25 duration-200 delay-100 transition`,
+                transition && tw`bg-accent-eight`,
+                !transition && tw`bg-transparent`,
+              ]}
+            />
+            <div
+              ref={portal}
+              style={{
+                transition: "transform .2s cubic-bezier(.3,0,0,1)",
+                transform: transition
+                  ? `translateX(0)`
+                  : "translateX(100%)",
+                top: 0,
+                bottom: 0,
+                right:0,
+                width: width,
+                maxWidth: "calc(100vw - 20px)",
+                height: "calc(100% - 20px)",
+              }}
+              tw="fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
             >
-              <div tw="text-foreground flex-auto truncate leading-6">
-                {title} 
-              </div>
               <Box
                 flex
-                backgroundColor="transparent"
-                className="cursor-pointer bg-transparent"
-                noPadding
+                alignItems="center"
+                tw="relative border-b border-border rounded rounded-b-none"
               >
-                <div onClick={() => closeTransition()}>
-                  <XIcon />
+                <div tw="text-foreground flex-auto truncate leading-6">
+                  {title}
                 </div>
+                <Box
+                  flex
+                  backgroundColor="transparent"
+                  className="cursor-pointer bg-transparent"
+                  noPadding
+                >
+                  <div onClick={() => closeTransition()}>
+                    <XIcon />
+                  </div>
+                </Box>
               </Box>
-            </Box>
-            <Box
-              flex
-              flexDirection="col"
-              overflow={"overflow-y-auto"}
-              className="sidesheet-content relative flex-1 rounded px-3 py-3"
-              noPadding
-            >
               <Box
-                noPadding
                 flex
                 flexDirection="col"
                 overflow={"overflow-y-auto"}
-                className="overflow-visible px-3 py-3"
+                className="sidesheet-content relative flex-1 rounded px-3 py-3"
+                noPadding
               >
-               <div tw="flex-shrink-0">{content}</div>
+                <Box
+                  noPadding
+                  flex
+                  flexDirection="col"
+                  overflow={"overflow-y-auto"}
+                  className="overflow-visible px-3 py-3"
+                >
+                 <div tw="flex-shrink-0">{content}</div>
+                </Box>
               </Box>
-            </Box>
-            {action && (
-              <Box
-                flex
-                justifyContent="evenly"
-                alignItems="center"
-                className="sidesheet-action h-16 border-t border-border relative flex-initial rounded rounded-t-none"
-              >
-                {action}
-              </Box>
-            )}
-          </div>
+              {action && (
+                <Box
+                  flex
+                  justifyContent="evenly"
+                  alignItems="center"
+                  className="sidesheet-action h-16 border-t border-border relative flex-initial rounded rounded-t-none"
+                >
+                  {action}
+                </Box>
+              )}
+            </div> 
         </SidesheetContent>
       )}
     </div>
