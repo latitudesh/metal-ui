@@ -1,3 +1,11 @@
+## [4.8.2-beta.1](https://github.com/Maxihost/metal-ui/compare/v4.8.1...v4.8.2-beta.1) (2022-09-23)
+
+
+### Bug Fixes
+
+* moving classes to tw macro ([522a3f9](https://github.com/Maxihost/metal-ui/commit/522a3f90d91991c893d34d1008384065a35c65c9))
+* sidesheet timing ([cd8c99c](https://github.com/Maxihost/metal-ui/commit/cd8c99ce128135a84d04a7fc231451a454337c5c))
+
 ## [4.8.1](https://github.com/Maxihost/metal-ui/compare/v4.8.0...v4.8.1) (2022-09-20)
 
 
