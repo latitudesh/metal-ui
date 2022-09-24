@@ -50,7 +50,6 @@ const SidesheetContent = ({ id, children }) => {
 const Sidesheet = ({
   title,
   children,
-  className,
   action,
   content,
   width = 400,
@@ -128,7 +127,7 @@ const Sidesheet = ({
                 <Box
                   flex
                   backgroundColor="transparent"
-                  className="cursor-pointer bg-transparent"
+                  tw="cursor-pointer bg-transparent"
                   noPadding
                 >
                   <div onClick={() => closeTransition()}>
@@ -140,7 +139,7 @@ const Sidesheet = ({
                 flex
                 flexDirection="col"
                 overflow={"overflow-y-auto"}
-                className="sidesheet-content relative flex-1 rounded px-3 py-3"
+                tw="relative flex-1 rounded px-3 py-3"
                 noPadding
               >
                 <Box
@@ -148,7 +147,7 @@ const Sidesheet = ({
                   flex
                   flexDirection="col"
                   overflow={"overflow-y-auto"}
-                  className="overflow-visible px-3 py-3"
+                  tw="overflow-visible px-3 py-3"
                 >
                  <div tw="flex-shrink-0">{content}</div>
                 </Box>
@@ -158,7 +157,7 @@ const Sidesheet = ({
                   flex
                   justifyContent="evenly"
                   alignItems="center"
-                  className="sidesheet-action h-16 border-t border-border relative flex-initial rounded rounded-t-none"
+                  tw="h-16 border-t border-border relative flex-initial rounded rounded-t-none"
                 >
                   {action}
                 </Box>
@@ -173,7 +172,6 @@ const Sidesheet = ({
 Sidesheet.propTypes = {
   content: PropTypes.element,
   children: PropTypes.element,
-  className: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   action: PropTypes.element,
   onClose: PropTypes.func,
