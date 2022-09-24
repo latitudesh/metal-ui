@@ -1,3 +1,11 @@
+## [4.8.3](https://github.com/Maxihost/metal-ui/compare/v4.8.2...v4.8.3) (2022-09-24)
+
+
+### Bug Fixes
+
+* removing unused props ([7b20d04](https://github.com/Maxihost/metal-ui/commit/7b20d04613e87954c86e7e0e4c5717db0c51d364))
+* sidesheet box classes to twin.macro ([9bac823](https://github.com/Maxihost/metal-ui/commit/9bac82378633556c0de194bff294752f45720e6d))
+
 ## [4.8.2](https://github.com/Maxihost/metal-ui/compare/v4.8.1...v4.8.2) (2022-09-24)
 
 
