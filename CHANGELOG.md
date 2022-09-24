@@ -1,3 +1,10 @@
+## [4.8.2](https://github.com/Maxihost/metal-ui/compare/v4.8.1...v4.8.2) (2022-09-24)
+
+
+### Bug Fixes
+
+* Multiple sidesheet fixes ([659472b](https://github.com/Maxihost/metal-ui/commit/659472bc7841af8abd19d73cb2f50f2d8e86fd28))
+
 ## [4.8.1](https://github.com/Maxihost/metal-ui/compare/v4.8.0...v4.8.1) (2022-09-20)
 
 
