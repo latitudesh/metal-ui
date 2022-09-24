@@ -50,7 +50,6 @@ const SidesheetContent = ({ id, children }) => {
 const Sidesheet = ({
   title,
   children,
-  className,
   action,
   content,
   width = 400,
@@ -173,7 +172,6 @@ const Sidesheet = ({
 Sidesheet.propTypes = {
   content: PropTypes.element,
   children: PropTypes.element,
-  className: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   action: PropTypes.element,
   onClose: PropTypes.func,
