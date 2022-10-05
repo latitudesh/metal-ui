@@ -103,18 +103,14 @@ const Sidesheet = ({
             <div
               ref={portal}
               style={{
-                transition: "transform .2s cubic-bezier(.3,0,0,1)",
                 transform: transition
                   ? `translateX(0)`
                   : "translateX(100%)",
-                top: 0,
-                bottom: 0,
-                right:0,
                 width: width,
                 maxWidth: "calc(100vw - 20px)",
                 height: "calc(100% - 20px)",
               }}
-              tw="fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
+              tw="fixed right-0 top-0 bottom-0 z-50 min-w-0 bg-white transition-transform duration-100  motion-reduce:transition-none h-full flex flex-col shadow-xl m-2 rounded"
             >
               <Box
                 flex
