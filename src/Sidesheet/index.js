@@ -3,7 +3,8 @@ import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import Box from "../Box";
 import { useKeyPressEvent } from "react-use";
-import tw from "twin.macro";
+import tw, { css } from "twin.macro";
+
 
 function XIcon() {
   return (
@@ -103,15 +104,21 @@ const Sidesheet = ({
             <div
               ref={portal}
               style={{
-                transform: transition
-                  ? `translateX(0)`
-                  : "translateX(100%)",
                 width: width,
                 maxWidth: "calc(100vw - 20px)",
                 height: "calc(100% - 20px)",
               }}
-              tw="fixed right-0 top-0 bottom-0 z-50 min-w-0 bg-white transition-transform duration-100  motion-reduce:transition-none h-full flex flex-col shadow-xl m-2 rounded"
-            >
+              css={[
+                css`
+                  transform: translateX(${ transition ? '0' : '100%' })
+                `,
+                css`
+                @media (prefers-reduced-motion) {
+                  transform: none;
+                  opacity: ${ transition ? '1' : '0' }
+                }`,
+                tw`fixed right-0 top-0 bottom-0 z-50 min-w-0 bg-white duration-100 h-full flex flex-col shadow-xl m-2 rounded transition-transform  motion-reduce:transition-opacity`
+              ]}>
               <Box
                 flex
                 alignItems="center"
