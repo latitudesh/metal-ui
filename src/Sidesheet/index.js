@@ -96,7 +96,7 @@ const Sidesheet = ({
             <div
               onClick={isOpened ?  () => closeTransition() : null}
               css={[
-                tw`fixed z-50 inset-0 opacity-25 duration-200 delay-100 transition`,
+                tw`fixed z-50 inset-0 opacity-25 duration-200 transition`,
                 transition && tw`bg-accent-eight`,
                 !transition && tw`bg-transparent`,
               ]}
