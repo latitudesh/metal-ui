@@ -67,7 +67,7 @@ const Sidesheet = ({
 
     if (!isShown) {
       setTransition(false);
-      transitionTimeout = setTimeout(() => setIsOpened(false), 300);
+      transitionTimeout = setTimeout(() => setIsOpened(false), 100);
     } else {
       setIsOpened(true);
       transitionTimeout = setTimeout(() => setTransition(true), 100);
@@ -81,7 +81,7 @@ const Sidesheet = ({
     if (isOpened && transition) {
       onClose();
       setTransition(false);
-      timeout = setTimeout(() => setIsOpened(false), 300);
+      timeout = setTimeout(() => setIsOpened(false), 100);
     }
     return () => clearTimeout(timeout)
   };
@@ -96,7 +96,7 @@ const Sidesheet = ({
             <div
               onClick={isOpened ?  () => closeTransition() : null}
               css={[
-                tw`fixed z-50 inset-0 opacity-25 duration-200 transition`,
+                tw`fixed z-50 inset-0 opacity-25 duration-100 transition`,
                 transition && tw`bg-accent-eight`,
                 !transition && tw`bg-transparent`,
               ]}
