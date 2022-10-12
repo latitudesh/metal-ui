@@ -3,7 +3,8 @@ import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import Box from "../Box";
 import { useKeyPressEvent } from "react-use";
-import tw from "twin.macro";
+import tw, { css } from "twin.macro";
+
 
 function XIcon() {
   return (
@@ -66,7 +67,7 @@ const Sidesheet = ({
 
     if (!isShown) {
       setTransition(false);
-      transitionTimeout = setTimeout(() => setIsOpened(false), 300);
+      transitionTimeout = setTimeout(() => setIsOpened(false), 100);
     } else {
       setIsOpened(true);
       transitionTimeout = setTimeout(() => setTransition(true), 100);
@@ -80,7 +81,7 @@ const Sidesheet = ({
     if (isOpened && transition) {
       onClose();
       setTransition(false);
-      timeout = setTimeout(() => setIsOpened(false), 300);
+      timeout = setTimeout(() => setIsOpened(false), 100);
     }
     return () => clearTimeout(timeout)
   };
@@ -95,7 +96,7 @@ const Sidesheet = ({
             <div
               onClick={isOpened ?  () => closeTransition() : null}
               css={[
-                tw`fixed z-50 inset-0 opacity-25 duration-200 delay-100 transition`,
+                tw`fixed z-50 inset-0 opacity-25 duration-100 transition`,
                 transition && tw`bg-accent-eight`,
                 !transition && tw`bg-transparent`,
               ]}
@@ -103,19 +104,21 @@ const Sidesheet = ({
             <div
               ref={portal}
               style={{
-                transition: "transform .2s cubic-bezier(.3,0,0,1)",
-                transform: transition
-                  ? `translateX(0)`
-                  : "translateX(100%)",
-                top: 0,
-                bottom: 0,
-                right:0,
                 width: width,
                 maxWidth: "calc(100vw - 20px)",
                 height: "calc(100% - 20px)",
               }}
-              tw="fixed z-50 min-w-0 bg-white duration-300 delay-200 h-full flex flex-col shadow-xl m-2 rounded"
-            >
+              css={[
+                css`
+                  transform: translateX(${ transition ? '0' : '100%' })
+                `,
+                css`
+                @media (prefers-reduced-motion) {
+                  transform: none;
+                  opacity: ${ transition ? '1' : '0' }
+                }`,
+                tw`fixed right-0 top-0 bottom-0 z-50 min-w-0 bg-white duration-100 h-full flex flex-col shadow-xl m-2 rounded transition-transform  motion-reduce:transition-opacity`
+              ]}>
               <Box
                 flex
                 alignItems="center"
