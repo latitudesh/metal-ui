@@ -1,3 +1,17 @@
+# [4.9.0](https://github.com/Maxihost/metal-ui/compare/v4.8.3...v4.9.0) (2022-10-12)
+
+
+### Bug Fixes
+
+* reduced delay ([bc8de23](https://github.com/Maxihost/metal-ui/commit/bc8de23f07b4cc621e5434664cca66556fc07238))
+* Sidesheet - faster transition and support for reduced motion ([9684d68](https://github.com/Maxihost/metal-ui/commit/9684d68d781caef32344a4919017ffb044fe4072))
+* synched durations ([afef38a](https://github.com/Maxihost/metal-ui/commit/afef38af6dc31abcda2d312e87057ec15afd16bc))
+
+
+### Features
+
+* opacity for reduced motion ([74e894b](https://github.com/Maxihost/metal-ui/commit/74e894bbe44b3a3cc2f3455840a1878bacd38f56))
+
 ## [4.8.3](https://github.com/Maxihost/metal-ui/compare/v4.8.2...v4.8.3) (2022-09-24)
 
 
