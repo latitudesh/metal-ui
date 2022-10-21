@@ -75,7 +75,7 @@
     "react-hot-loader": "^4.13.0",
     "react-instantsearch-dom": "^6.7.0",
     "react-svg": "^11.0.20",
-    "react-test-renderer": "^16.13.1",
+    "react-test-renderer": "^18.1.0",
     "rollup": "^2.56.2",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-jsx": "^1.0.3",
