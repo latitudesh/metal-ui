@@ -1,5 +1,7 @@
 # Metal UI
 
+> **Metal UI is now in maintenance mode. This means we might continue to post minor updates to the project. However, we won’t be developing any new features.**
+
 Metal UI is a set of UI Components using React and TailwindCSS built by the [Latitude.sh](https://www.latitude.sh) team.
 
 Metal UI is opinionated, in the sense that it explicitly replaces TailwindCSS variants to support Latitude.sh's brand identity. While there are no support or plan on supporting theming, most components allow for some degree of customization.
